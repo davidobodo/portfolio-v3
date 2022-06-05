@@ -30,7 +30,6 @@
     svg {
         width: 100px;
         height: 100px;
-        animation: fill 800ms ease-in-out forwards 1.5s;
 
         @media (min-width: $md) {
             width: 200px;
@@ -41,30 +40,15 @@
             &:nth-child(1) {
                 stroke-dasharray: 300px;
                 stroke-dashoffset: 300px;
-                animation: draw-line 1.5s ease-in-out forwards;
             }
             &:nth-child(2) {
                 stroke-dasharray: 300px;
                 stroke-dashoffset: 300px;
-                animation: draw-line 1.5s ease-in-out forwards 0.3s;
             }
         }
     }
 }
 
-@keyframes draw-line {
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
-@keyframes fill {
-    from {
-        fill: transparent;
-    }
-    to {
-        fill: #fcfcfc;
-    }
-}
 @keyframes noise {
     0% {
         transform: translate3d(0, 9rem, 0);
