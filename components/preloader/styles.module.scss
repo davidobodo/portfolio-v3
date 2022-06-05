@@ -1,0 +1,51 @@
+.preloader {
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+
+    &:after {
+        content: "";
+        width: calc(100% + 20rem);
+        height: calc(100% + 20rem);
+        background-position: 50%;
+        position: absolute;
+        left: -10rem;
+        top: -10rem;
+        // background-image: url("../../assets/images/grain.png");
+        opacity: 0.08;
+        will-change: transform;
+        -webkit-animation: noise 1s steps(2) infinite;
+        animation: noise 1s steps(2) infinite;
+    }
+
+    svg {
+        width: 100px;
+        height: 100px;
+        // animation: fill 800ms ease-in-out forwards 1.5s;
+
+        // @media (min-width: $tablet-breakpoint) {
+        //     width: 200px;
+        //     height: 200px;
+        // }
+
+        path {
+            &:nth-child(1) {
+                stroke-dasharray: 300px;
+                stroke-dashoffset: 300px;
+                // animation: draw-line 1.5s ease-in-out forwards;
+            }
+            &:nth-child(2) {
+                stroke-dasharray: 300px;
+                stroke-dashoffset: 300px;
+                // animation: draw-line 1.5s ease-in-out forwards 0.3s;
+            }
+        }
+    }
+}

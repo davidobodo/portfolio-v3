@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
+import { Preloader } from "#/components";
 
 const Home: NextPage = () => {
     return (
@@ -10,6 +11,7 @@ const Home: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Preloader />
         </div>
     );
 };
