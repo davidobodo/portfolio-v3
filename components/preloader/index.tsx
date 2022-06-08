@@ -1,18 +1,24 @@
-import React, { Ref } from "react";
+import React, { Ref, useState, useEffect } from "react";
 import styles from "./styles.module.scss";
+import { DEFAULT_MOBILE_HEIGHT } from "#/constants";
 
 type Props = {
     logoRef: Ref<SVGSVGElement>;
     preloaderBgRef: Ref<HTMLDivElement>;
+    windowInnerHeight: number | null;
 };
 
-export default function Preloader({ preloaderBgRef, logoRef }: Props) {
+export default function Preloader({ preloaderBgRef, logoRef, windowInnerHeight }: Props) {
+    const [bannerHeight, setBannerHeight] = useState<number>(DEFAULT_MOBILE_HEIGHT);
+    // Mainly because of the 100vh issue on mobile devices
+    useEffect(() => {
+        if (windowInnerHeight) {
+            setBannerHeight(windowInnerHeight);
+        }
+    }, [windowInnerHeight]);
+
     return (
-        <div
-            className={styles.preloader}
-            ref={preloaderBgRef}
-            style={{ height: typeof window !== "undefined" ? window.innerHeight + "px" : "100vh" }}
-        >
+        <div className={styles.preloader} ref={preloaderBgRef} style={{ height: bannerHeight + "px" }}>
             <svg
                 width="94"
                 height="98"
