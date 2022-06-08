@@ -18,7 +18,11 @@ export default function Preloader({ preloaderBgRef, logoRef, windowInnerHeight }
     }, [windowInnerHeight]);
 
     return (
-        <div className={styles.preloader} ref={preloaderBgRef} style={{ height: bannerHeight + "px" }}>
+        <div
+            className={styles.preloader}
+            ref={preloaderBgRef}
+            style={{ height: typeof window !== "undefined" ? bannerHeight + "px" : "100vh" }}
+        >
             <svg
                 width="94"
                 height="98"
