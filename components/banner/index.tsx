@@ -76,7 +76,7 @@ export default function Banner({
             </div>
             <div className={styles.bottomSection}>
                 <div className={styles.scrollAlert}>
-                    <img src="/images/arrow.webp" alt="" />
+                    <img src="/images/arrow.webp" alt="" width="60" height="60" />
                     <span>Scroll</span>
                 </div>
 
