@@ -14,7 +14,8 @@ const Home: NextPage = () => {
         firstSubFieldRef,
         secondSubFieldRef,
         profilePicRef,
-        scrollIndicatorRef
+        scrollIndicatorRef,
+        mobilePicRef
     } = useInitAnimation();
 
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
                 windowInnerWidth={windowInnerWidth}
                 profilePicRef={profilePicRef}
                 scrollIndicatorRef={scrollIndicatorRef}
+                mobilePicRef={mobilePicRef}
             />
             <div className={styles.noise}></div>
         </div>

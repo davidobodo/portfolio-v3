@@ -10,6 +10,7 @@ export default function useInitAnimation() {
     const firstSubFieldRef = useRef(null);
     const secondSubFieldRef = useRef(null);
     const profilePicRef = useRef<HTMLDivElement>(null);
+    const mobilePicRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -23,10 +24,19 @@ export default function useInitAnimation() {
                 .to(nameRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
                 .to(fieldRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
                 .to(firstSubFieldRef.current, { y: 0 })
-                .to(secondSubFieldRef.current, { y: 0 })
-                .to(profilePicRef.current, { opacity: 1 })
-                .to(profilePicRef.current!.querySelector("polyline"), { strokeDashoffset: 0, duration: 1 })
-                .to(scrollIndicatorRef.current, { opacity: 1 });
+                .to(secondSubFieldRef.current, { y: 0 });
+
+            // Because the animation for mobile image is different from the animation for desktop image
+            if (window.innerWidth < 768) {
+                tl.to(mobilePicRef.current, { width: "100%" });
+            } else {
+                tl.to(profilePicRef.current, { opacity: 1 }).to(profilePicRef.current!.querySelector("polyline"), {
+                    strokeDashoffset: 0,
+                    duration: 1
+                });
+            }
+
+            tl.to(scrollIndicatorRef.current, { opacity: 1 });
         }
     }, [preloaderBgRef, logoRef]);
 
@@ -39,6 +49,7 @@ export default function useInitAnimation() {
         firstSubFieldRef,
         secondSubFieldRef,
         profilePicRef,
-        scrollIndicatorRef
+        scrollIndicatorRef,
+        mobilePicRef
     };
 }
