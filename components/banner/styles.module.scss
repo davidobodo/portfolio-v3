@@ -26,7 +26,7 @@
                 letter-spacing: -2px;
 
                 @media (min-width: $md) {
-                    font-size: 9vw;
+                    font-size: 8vw;
                 }
 
                 @media (min-width: $xxl) {
@@ -99,13 +99,16 @@
 
             .letterwrapper {
                 span {
-                    // color: green;
-                    // transform: translateX(-200px);
+                    transform: translateX(-200px);
                 }
             }
 
             .subfieldwrapper {
                 margin-top: 10px;
+
+                .subfieldtext {
+                    transform: translateY(-20px);
+                }
             }
         }
 
@@ -114,25 +117,41 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            background-image: url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800);
+            background-position: center;
 
             //----------
             max-height: calc(100vh - 440px);
-            height: 350px;
             width: 100%; // 355px
+            height: 350px;
             //----------
+            opacity: 0;
 
             @media (min-width: $md) {
                 //----------
-                max-height: none;
-                height: 350px;
                 width: 250px;
+                height: 350px;
+                max-height: none;
                 //----------
             }
             @media (min-width: $xxl) {
                 //----------
-                height: 500px;
                 width: 380px;
+                height: 500px;
                 //----------
+            }
+
+            svg {
+                background: var(--black);
+                mix-blend-mode: darken;
+
+                polyline {
+                    fill: none;
+                    stroke: var(--light-brown);
+                    stroke-width: 200;
+                    stroke-dasharray: 20000;
+                    stroke-dashoffset: 20000;
+                }
             }
         }
     }
@@ -147,6 +166,7 @@
             align-items: center;
             justify-content: flex-end;
             padding-bottom: 4px;
+            opacity: 0;
 
             @media (min-width: $md) {
                 padding-bottom: 7px;
@@ -170,6 +190,12 @@
         .bottomSectionText {
             text-align: right;
 
+            .letterwrapper {
+                span {
+                    transform: translateX(200px);
+                }
+            }
+
             .subfieldwrapper {
                 margin-bottom: 5px;
 
@@ -177,6 +203,7 @@
                     justify-content: flex-end;
                     margin-bottom: 5px;
                     padding-right: 4px;
+                    transform: translateY(30px);
                 }
             }
         }

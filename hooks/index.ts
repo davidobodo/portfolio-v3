@@ -1,3 +1,3 @@
 import { default as useInitAnimation } from "./useInitAnimation";
-
-export { useInitAnimation };
+import { default as useWindowSize } from "./useWindowSize";
+export { useInitAnimation, useWindowSize };

@@ -1,21 +1,26 @@
-import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/globals.module.scss";
+import type { NextPage } from "next";
 import { Preloader, Banner } from "#/components";
-import { useInitAnimation } from "#/hooks";
-import { useRef } from "react";
+import { useInitAnimation, useWindowSize } from "#/hooks";
+import styles from "#/styles/home.module.scss";
 
 const Home: NextPage = () => {
-    const { preloaderBgRef, logoRef } = useInitAnimation();
-    const bannerRef = useRef(null);
-    const fieldRef = useRef(null);
-    const nameRef = useRef(null);
-    const firstSubFieldRef = useRef(null);
-    const secondSubFieldRef = useRef(null);
+    const {
+        preloaderBgRef,
+        logoRef,
+        bannerRef,
+        fieldRef,
+        nameRef,
+        firstSubFieldRef,
+        secondSubFieldRef,
+        profilePicRef,
+        scrollIndicatorRef
+    } = useInitAnimation();
 
-    const windowInnerHeight = typeof window !== "undefined" ? window.innerHeight : undefined;
+    const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+
     return (
-        <div className={styles.container}>
+        <>
             <Head>
                 <title>David Obodo</title>
                 <meta name="description" content="David Obodo's portfolio website" />
@@ -29,8 +34,12 @@ const Home: NextPage = () => {
                 firstSubFieldRef={firstSubFieldRef}
                 secondSubFieldRef={secondSubFieldRef}
                 windowInnerHeight={windowInnerHeight}
+                windowInnerWidth={windowInnerWidth}
+                profilePicRef={profilePicRef}
+                scrollIndicatorRef={scrollIndicatorRef}
             />
-        </div>
+            <div className={styles.noise}></div>
+        </>
     );
 };
 

@@ -1,0 +1,1 @@
+export const DEFAULT_MOBILE_HEIGHT = 812;

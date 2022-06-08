@@ -1,16 +1,11 @@
-@import "#/styles/globals.module.scss";
-
-.preloader {
-    background-color: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.noise {
     width: 100%;
+    height: 100%;
     position: fixed;
-    z-index: 5;
     left: 0;
-    overflow: hidden; // So that the "after styles" (see line 15 and 16) dont overflow
+    top: 0;
+    pointer-events: none;
+    z-index: 1;
 
     &:after {
         content: "";
@@ -20,35 +15,48 @@
         position: absolute;
         left: -10rem;
         top: -10rem;
-        background-image: url("/images/grain.png");
-        opacity: 0.08;
+        background-image: url("/images/noise.png");
         will-change: transform;
         -webkit-animation: noise 1s steps(2) infinite;
         animation: noise 1s steps(2) infinite;
     }
-
-    svg {
-        width: 100px;
-        height: 100px;
-
-        @media (min-width: $md) {
-            width: 200px;
-            height: 200px;
-        }
-
-        path {
-            &:nth-child(1) {
-                stroke-dasharray: 300px;
-                stroke-dashoffset: 300px;
-            }
-            &:nth-child(2) {
-                stroke-dasharray: 300px;
-                stroke-dashoffset: 300px;
-            }
-        }
-    }
 }
 
+@-webkit-keyframes noise {
+    0% {
+        transform: translate3d(0, 9rem, 0);
+    }
+    10% {
+        transform: translate3d(-1rem, -4rem, 0);
+    }
+    20% {
+        transform: translate3d(-8rem, 2rem, 0);
+    }
+    30% {
+        transform: translate3d(9rem, -9rem, 0);
+    }
+    40% {
+        transform: translate3d(-2rem, 7rem, 0);
+    }
+    50% {
+        transform: translate3d(-9rem, -4rem, 0);
+    }
+    60% {
+        transform: translate3d(2rem, 6rem, 0);
+    }
+    70% {
+        transform: translate3d(7rem, -8rem, 0);
+    }
+    80% {
+        transform: translate3d(-9rem, 1rem, 0);
+    }
+    90% {
+        transform: translate3d(6rem, -5rem, 0);
+    }
+    to {
+        transform: translate3d(-7rem, 0, 0);
+    }
+}
 @keyframes noise {
     0% {
         transform: translate3d(0, 9rem, 0);

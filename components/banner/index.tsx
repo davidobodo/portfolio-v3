@@ -1,13 +1,18 @@
-import styles from "./styles.module.scss";
+import Image from "next/image";
 import { useState, useEffect, Ref } from "react";
+import { DEFAULT_MOBILE_HEIGHT } from "#/constants";
+import styles from "./styles.module.scss";
 
 type Props = {
     bannerRef: Ref<HTMLDivElement>;
-    windowInnerHeight?: number;
+    windowInnerHeight: number | null;
+    windowInnerWidth: number | null;
     fieldRef: Ref<HTMLHeadingElement>;
     firstSubFieldRef: Ref<HTMLDivElement>;
     secondSubFieldRef: Ref<HTMLDivElement>;
     nameRef: Ref<HTMLHeadingElement>;
+    profilePicRef: Ref<HTMLDivElement>;
+    scrollIndicatorRef: Ref<HTMLDivElement>;
 };
 
 export default function Banner({
@@ -16,9 +21,28 @@ export default function Banner({
     fieldRef,
     firstSubFieldRef,
     secondSubFieldRef,
-    nameRef
+    nameRef,
+    profilePicRef,
+    windowInnerWidth,
+    scrollIndicatorRef
 }: Props) {
-    const [bannerHeight, setBannerHeight] = useState<number>();
+    const [bannerHeight, setBannerHeight] = useState<number>(DEFAULT_MOBILE_HEIGHT);
+    const [svgViewbox, setSvgViewbox] = useState("0 0 350 355");
+
+    // Alter the viewbox so that our svg animation doesnt overflow outside the container
+    useEffect(() => {
+        if (windowInnerWidth) {
+            if (windowInnerWidth > 1536) {
+                setSvgViewbox("0 0 380 500");
+            } else if (windowInnerWidth > 768) {
+                setSvgViewbox("0 0 250 350");
+            } else {
+                setSvgViewbox("0 0 350 355");
+            }
+        }
+    }, [windowInnerWidth]);
+
+    // Mainly because of the 100vh issue on mobile devices
     useEffect(() => {
         if (windowInnerHeight) {
             setBannerHeight(windowInnerHeight);
@@ -31,7 +55,7 @@ export default function Banner({
     const nameB = "OBODO";
 
     return (
-        <div className={styles.banner} ref={bannerRef} style={{ height: bannerHeight + "px" }}>
+        <div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
             <div className={styles.topSection}>
                 <div className={styles.topSectionTexts}>
                     <h1 ref={fieldRef} className={styles.bigText}>
@@ -39,7 +63,7 @@ export default function Banner({
                             {fieldA.split("").map((item, i) => {
                                 return (
                                     <span className={styles.letterwrapper} key={i}>
-                                        <span>{item}</span>
+                                        <span data-key="letter">{item}</span>
                                     </span>
                                 );
                             })}
@@ -48,7 +72,7 @@ export default function Banner({
                             {fieldB.split("").map((item, i) => {
                                 return (
                                     <span className={styles.letterwrapper} key={i}>
-                                        <span>{item}</span>
+                                        <span data-key="letter">{item}</span>
                                     </span>
                                 );
                             })}
@@ -61,22 +85,18 @@ export default function Banner({
                     </div>
                 </div>
 
-                <div className={styles.image}></div>
-                {/* 
-                        <div className="banner-2__top-section__right-section">
-                            <div
-                                className="image"
-                                style={{
-                                    backgroundImage:
-                                        "url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800)"
-                                }}
-                            ></div>
-                        </div> */}
-                {/* <ImageStripped scribbleImgRef={scribbleImgRef} /> */}
+                <div className={styles.image} ref={profilePicRef}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox={svgViewbox}>
+                        <polyline
+                            points="0,154 131,0 0,348 269,0 0,562 437,0 
+	0,766 565,14 0,1062 719,0 289,1062 843,0 543,1062 995,0 729,1062 1161,0 947,1062 1307,0 1143,1062 1500,162 1299,1062 1500,830"
+                        />
+                    </svg>
+                </div>
             </div>
             <div className={styles.bottomSection}>
-                <div className={styles.scrollAlert}>
-                    <img src="/images/arrow.webp" alt="" width="60" height="60" />
+                <div className={styles.scrollAlert} ref={scrollIndicatorRef}>
+                    <Image src="/images/arrow.webp" alt="arrow down" width="60" height="60" objectFit="contain" />
                     <span>Scroll</span>
                 </div>
 
@@ -91,7 +111,7 @@ export default function Banner({
                             {nameA.split("").map((item, i) => {
                                 return (
                                     <span className={styles.letterwrapper} key={i}>
-                                        <span className="letter">{item}</span>
+                                        <span data-key="letter">{item}</span>
                                     </span>
                                 );
                             })}
@@ -100,7 +120,7 @@ export default function Banner({
                             {nameB.split("").map((item, i) => {
                                 return (
                                     <span className={styles.letterwrapper} key={i}>
-                                        <span className="letter">{item}</span>
+                                        <span data-key="letter">{item}</span>
                                     </span>
                                 );
                             })}
