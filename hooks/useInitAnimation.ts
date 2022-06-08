@@ -6,7 +6,6 @@ export default function useInitAnimation() {
     const logoRef = useRef<SVGSVGElement>(null);
 
     useEffect(() => {
-        console.log("MOUNTED ");
         if (preloaderBgRef.current && logoRef.current) {
             const tl = gsap.timeline();
 

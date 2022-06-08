@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/globals.module.scss";
-import { Preloader } from "#/components";
+import { Preloader, Banner } from "#/components";
 import { useInitAnimation } from "#/hooks";
 
 const Home: NextPage = () => {
@@ -14,6 +14,7 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} />
+            <Banner />
         </div>
     );
 };

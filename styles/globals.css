@@ -1,19 +1,14 @@
-html,
-body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-        Helvetica Neue, sans-serif;
+@font-face {
+    font-family: "sf-pro-bold";
+    src: url("/fonts/sf-pro/SFPRODISPLAYBOLD.OTF");
 }
-
-a {
-    color: inherit;
-    text-decoration: none;
+@font-face {
+    font-family: "sf-pro-medium";
+    src: url("/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF");
 }
-
-* {
-    box-sizing: border-box;
-    font-size: 62.5%;
+@font-face {
+    font-family: "sf-pro-regular";
+    src: url("/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF");
 }
 
 :root {
@@ -21,4 +16,21 @@ a {
     /* COLORS */
     /* ---------------------------------------------------- */
     --black: #000;
+    --light-brown: #e1dfdd;
+
+    /* ---------------------------------------------------- */
+    /* SPACING */
+    /* ---------------------------------------------------- */
+    --spacing-x: 2vw;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: "sf-pro-regular";
 }
