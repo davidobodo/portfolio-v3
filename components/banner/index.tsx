@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useState, useEffect, Ref } from "react";
 import { DEFAULT_MOBILE_HEIGHT } from "#/constants";
 import styles from "./styles.module.scss";
