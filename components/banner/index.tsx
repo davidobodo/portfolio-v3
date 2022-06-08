@@ -3,7 +3,7 @@ import { useState, useEffect, Ref } from "react";
 
 type Props = {
     bannerRef: Ref<HTMLDivElement>;
-    windowInnerHeight: number;
+    windowInnerHeight?: number;
     fieldRef: Ref<HTMLHeadingElement>;
     firstSubFieldRef: Ref<HTMLDivElement>;
     secondSubFieldRef: Ref<HTMLDivElement>;
