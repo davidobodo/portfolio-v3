@@ -1,5 +1,17 @@
 @import "#/styles/globals.module.scss";
 
+.blackCover {
+    width: 100%;
+    position: fixed;
+    background-color: var(--black);
+    left: 0px;
+    top: -10px;
+    height: 1px;
+    z-index: 2;
+    transform-origin: top;
+    will-change: transform;
+}
+
 // ---------------------------------------------
 // BIG TEXT
 // ---------------------------------------------

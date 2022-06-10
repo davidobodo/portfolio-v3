@@ -13,6 +13,7 @@ type Props = {
     profilePicRef: Ref<HTMLDivElement>;
     mobilePicRef: Ref<HTMLDivElement>;
     scrollIndicatorRef: Ref<HTMLDivElement>;
+    blackCoverRef: Ref<HTMLDivElement>;
 };
 
 export default function Banner({
@@ -26,7 +27,8 @@ export default function Banner({
     windowInnerWidth,
     scrollIndicatorRef,
     mobilePicRef
-}: Props) {
+}: // blackCoverRef
+Props) {
     const [bannerHeight, setBannerHeight] = useState<number>(DEFAULT_MOBILE_HEIGHT);
     const [svgViewbox, setSvgViewbox] = useState("0 0 350 355");
 
@@ -57,6 +59,8 @@ export default function Banner({
 
     return (
         <div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
+            {/* <div className={styles.blackCover} ref={blackCoverRef}></div> */}
+
             <div className={styles.topSection}>
                 <div className={styles.topSectionTexts}>
                     <h1 ref={fieldRef} className={styles.bigText}>

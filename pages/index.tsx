@@ -1,10 +1,20 @@
 import Head from "next/head";
 import type { NextPage } from "next";
-import { Preloader, Banner } from "#/components";
-import { useInitAnimation, useWindowSize } from "#/hooks";
 import styles from "#/styles/home.module.scss";
+import { Preloader, Banner, About } from "#/components";
+import {
+    useInitAnimation,
+    useWindowSize,
+    useAboutAnimation,
+    useRegisterGsapScrollTrigger,
+    usePinRadialGradient,
+    useTransitionToDark
+} from "#/hooks";
 
 const Home: NextPage = () => {
+    useRegisterGsapScrollTrigger();
+    const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+
     const {
         preloaderBgRef,
         logoRef,
@@ -17,8 +27,9 @@ const Home: NextPage = () => {
         scrollIndicatorRef,
         mobilePicRef
     } = useInitAnimation();
-
-    const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+    const { blackCoverRef } = useTransitionToDark({ bannerRef });
+    const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
+    const { aboutListRef } = useAboutAnimation();
 
     return (
         <div>
@@ -39,7 +50,14 @@ const Home: NextPage = () => {
                 profilePicRef={profilePicRef}
                 scrollIndicatorRef={scrollIndicatorRef}
                 mobilePicRef={mobilePicRef}
+                blackCoverRef={blackCoverRef}
             />
+            <div className={styles.darkSection} ref={darkSectionRef}>
+                <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>
+                <div className={styles.darkSectionContent}>
+                    <About aboutListRef={aboutListRef} />
+                </div>
+            </div>
             <div className={styles.noise}></div>
         </div>
     );
