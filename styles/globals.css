@@ -21,11 +21,18 @@
     --black: #000;
     --light-brown: #e1dfdd;
     --ash: #86868b;
+    --ash2: #767676;
+    --ash3: #6e6e73;
 
     /* ---------------------------------------------------- */
     /* SPACING */
     /* ---------------------------------------------------- */
     --spacing-x: 2vw;
+
+    /* ---------------------------------------------------- */
+    /* SIZES*/
+    /* ---------------------------------------------------- */
+    --max-width: 1280px;
 }
 
 html {
@@ -37,4 +44,13 @@ body {
     margin: 0;
     font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-family: "sf-pro-regular";
+}
+
+h1,
+h1,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "sf-pro-bold";
 }

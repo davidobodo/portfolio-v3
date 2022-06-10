@@ -1,5 +1,6 @@
-import { default as Preloader } from "./preloader";
-import { default as Banner } from "./banner";
-import { default as About } from "./about";
+import Preloader from "./preloader";
+import Banner from "./banner";
+import About from "./about";
+import Work from "./work";
 
-export { Preloader, Banner, About };
+export { Preloader, Banner, About, Work };

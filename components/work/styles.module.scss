@@ -1,0 +1,106 @@
+.container {
+    min-height: 250vh;
+
+    .contentWrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .tabs {
+            display: grid;
+            grid-gap: 8rem;
+            grid-template-columns: 1.5fr 1fr;
+            max-width: var(--max-width);
+            margin: auto;
+
+            .tabHeaders {
+                position: relative;
+
+                .bgGradient {
+                    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
+                    height: 83px;
+                    width: 100%;
+                    position: absolute;
+                    top: 0px;
+                }
+
+                .tabHeader {
+                    color: var(--ash);
+                    cursor: pointer;
+                    list-style: none;
+
+                    font-family: "sf-pro-bold";
+                    font-weight: 600;
+                    opacity: 0.2;
+                    font-size: 60px;
+                    line-height: 1.05;
+                    font-weight: 600;
+                    letter-spacing: -0.015em;
+                    padding: 1rem 4rem 1rem 2rem;
+                }
+            }
+
+            .tabDetails {
+                position: relative;
+
+                .tabDetail {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    // transform: translateY(60px);
+                    opacity: 0;
+                    color: var(--ash);
+
+                    &:nth-child(3) {
+                        opacity: 1;
+                    }
+
+                    h4 {
+                        font-size: 21px;
+                        line-height: 1.19048;
+                        font-weight: 600;
+                        letter-spacing: 0.011em;
+                        margin-bottom: 2rem;
+                    }
+
+                    p {
+                        font-size: 18px;
+                        line-height: 1.5;
+                        font-weight: 600;
+                        letter-spacing: 0.011em;
+                        margin-bottom: 2rem;
+                        font-family: "sf-pro-medium";
+                    }
+
+                    ul {
+                        list-style: none;
+
+                        li {
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: 1.2rem;
+                            padding-left: 30px;
+                            position: relative;
+                            font-family: "sf-pro-medium";
+                            line-height: 1.5;
+
+                            &:before {
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                width: 6px;
+                                height: 6px;
+                                background-color: var(--ash3);
+                                display: flex;
+                                border-radius: 50%;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

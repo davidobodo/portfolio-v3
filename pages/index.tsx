@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About } from "#/components";
+import { Preloader, Banner, About, Work } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
@@ -36,8 +36,8 @@ const Home: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
-            <Banner
+            {/* <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} /> */}
+            {/* <Banner
                 bannerRef={bannerRef}
                 fieldRef={fieldRef}
                 nameRef={nameRef}
@@ -48,11 +48,12 @@ const Home: NextPage = () => {
                 profilePicRef={profilePicRef}
                 scrollIndicatorRef={scrollIndicatorRef}
                 mobilePicRef={mobilePicRef}
-            />
+            /> */}
             <div className={styles.darkSection} ref={darkSectionRef}>
-                <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>
+                {/* <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div> */}
                 <div className={styles.darkSectionContent}>
-                    <About aboutListRef={aboutListRef} />
+                    {/* <About aboutListRef={aboutListRef} /> */}
+                    <Work />
                 </div>
             </div>
             <div className={styles.noise}></div>
