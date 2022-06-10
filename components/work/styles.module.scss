@@ -1,21 +1,29 @@
 .container {
+    // Has the long height that helps span the animation through a long scroll distance
     min-height: 250vh;
 
-    .contentWrapper {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        position: relative;
+    .tabs {
+        // Note: GSAP makes this fixed, since we apply "pinning to it". Hence our SVG is positioned relative to this
+        height: 100vh; // So content can be this tall and animated SVG runs from the bottom of the viewport to the top
 
-        .tabs {
+        .tabsInner {
+            // Holds the work content
             display: grid;
             grid-gap: 8rem;
             grid-template-columns: 1.5fr 1fr;
             max-width: var(--max-width);
             margin: auto;
+            height: 100%;
+        }
+
+        // Since the height of this headers column is 100vh, "tabHeadersContainer" was brought in to center the tabHeaders
+        .tabHeadersContainer {
+            display: flex;
+            align-items: center; // Helps to alifn the content to the center of the container
 
             .tabHeaders {
                 position: relative;
+                overflow: hidden;
 
                 .bgGradient {
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
@@ -23,84 +31,105 @@
                     width: 100%;
                     position: absolute;
                     top: 0px;
+                    transform: translateY(-83px);
                 }
 
                 .tabHeader {
                     color: var(--ash);
                     cursor: pointer;
                     list-style: none;
-
                     font-family: "sf-pro-bold";
                     font-weight: 600;
-                    opacity: 0.2;
                     font-size: 60px;
                     line-height: 1.05;
                     font-weight: 600;
                     letter-spacing: -0.015em;
                     padding: 1rem 4rem 1rem 2rem;
+                    opacity: 0.2;
                 }
             }
+        }
 
-            .tabDetails {
-                position: relative;
+        .tabDetails {
+            position: relative;
+            display: flex;
+            align-items: center; // Helps to alifn the content to the center of the container
 
-                .tabDetail {
-                    position: absolute;
-                    display: flex;
-                    align-items: center;
-                    // transform: translateY(60px);
-                    opacity: 0;
-                    color: var(--ash);
+            .tabDetail {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                transform: translateY(40px);
+                opacity: 0;
+                color: var(--ash);
 
-                    &:nth-child(3) {
-                        opacity: 1;
-                    }
+                h4 {
+                    font-size: 21px;
+                    line-height: 1.19048;
+                    font-weight: 600;
+                    letter-spacing: 0.011em;
+                    margin-bottom: 2rem;
+                }
 
-                    h4 {
-                        font-size: 21px;
-                        line-height: 1.19048;
-                        font-weight: 600;
-                        letter-spacing: 0.011em;
-                        margin-bottom: 2rem;
-                    }
+                p {
+                    font-size: 18px;
+                    line-height: 1.5;
+                    font-weight: 600;
+                    letter-spacing: 0.011em;
+                    margin-bottom: 2rem;
+                    font-family: "sf-pro-medium";
+                }
 
-                    p {
+                ul {
+                    list-style: none;
+
+                    li {
                         font-size: 18px;
-                        line-height: 1.5;
                         font-weight: 600;
-                        letter-spacing: 0.011em;
-                        margin-bottom: 2rem;
+                        margin-bottom: 1.2rem;
+                        padding-left: 30px;
+                        position: relative;
                         font-family: "sf-pro-medium";
-                    }
+                        line-height: 1.5;
 
-                    ul {
-                        list-style: none;
-
-                        li {
-                            font-size: 18px;
-                            font-weight: 600;
-                            margin-bottom: 1.2rem;
-                            padding-left: 30px;
-                            position: relative;
-                            font-family: "sf-pro-medium";
-                            line-height: 1.5;
-
-                            &:before {
-                                content: "";
-                                position: absolute;
-                                left: 0;
-                                width: 6px;
-                                height: 6px;
-                                background-color: var(--ash3);
-                                display: flex;
-                                border-radius: 50%;
-                                top: 50%;
-                                transform: translateY(-50%);
-                            }
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            width: 6px;
+                            height: 6px;
+                            background-color: var(--ash3);
+                            display: flex;
+                            border-radius: 50%;
+                            top: 50%;
+                            transform: translateY(-50%);
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+.svgContainer {
+    position: absolute;
+    width: 100%;
+    bottom: -20%;
+
+    .svgAnimation {
+        width: 100%;
+        height: 13vw;
+        text {
+            font-family: Roboto, Arial, sans-serif;
+            font-family: "sf-pro-bold";
+            font-size: 18vw;
+            display: block;
+            stroke-width: 0px;
+            stroke-dashoffset: -1500;
+            stroke-dashoffset: 0;
+            stroke-dasharray: 2000;
+            stroke-linecap: butt;
+            stroke-linejoin: round;
         }
     }
 }

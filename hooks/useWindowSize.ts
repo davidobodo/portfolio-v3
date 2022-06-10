@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 const nullDimensions = {
-    innerHeight: null,
-    innerWidth: null,
-    outerHeight: null,
-    outerWidth: null
+    innerHeight: 0,
+    innerWidth: 0,
+    outerHeight: 0,
+    outerWidth: 0
 };
 
 export default function useWindowSize() {

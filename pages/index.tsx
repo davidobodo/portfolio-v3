@@ -7,7 +7,8 @@ import {
     useWindowSize,
     useAboutAnimation,
     useRegisterGsapScrollTrigger,
-    usePinRadialGradient
+    usePinRadialGradient,
+    useWorkAnimation
 } from "#/hooks";
 
 const Home: NextPage = () => {
@@ -28,6 +29,13 @@ const Home: NextPage = () => {
     } = useInitAnimation();
     const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
     const { aboutListRef } = useAboutAnimation();
+    const {
+        workContainerRef,
+        workTabsRef,
+        activeWorkBgGradient,
+        workTitlesContainerRef,
+        workDetailsContainerRef
+    } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 
     return (
         <div>
@@ -36,8 +44,8 @@ const Home: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            {/* <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} /> */}
-            {/* <Banner
+            <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
+            <Banner
                 bannerRef={bannerRef}
                 fieldRef={fieldRef}
                 nameRef={nameRef}
@@ -48,12 +56,20 @@ const Home: NextPage = () => {
                 profilePicRef={profilePicRef}
                 scrollIndicatorRef={scrollIndicatorRef}
                 mobilePicRef={mobilePicRef}
-            /> */}
+            />
             <div className={styles.darkSection} ref={darkSectionRef}>
-                {/* <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div> */}
+                <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>
                 <div className={styles.darkSectionContent}>
-                    {/* <About aboutListRef={aboutListRef} /> */}
-                    <Work />
+                    <About aboutListRef={aboutListRef} />
+                    <Work
+                        workContainerRef={workContainerRef}
+                        workTabsRef={workTabsRef}
+                        activeWorkBgGradient={activeWorkBgGradient}
+                        workTitlesContainerRef={workTitlesContainerRef}
+                        workDetailsContainerRef={workDetailsContainerRef}
+                    />
+
+                    <div style={{ height: "200vh", width: "100%" }}></div>
                 </div>
             </div>
             <div className={styles.noise}></div>

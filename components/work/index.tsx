@@ -1,27 +1,43 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
-export default function Work() {
-    return (
-        <div className={styles.container}>
-            <div className={styles.contentWrapper}>
-                <div className={styles.tabs}>
-                    <ul className={styles.tabHeaders}>
-                        <div className={styles.bgGradient}></div>
-                        {WORK.map((item, i) => {
-                            return (
-                                <li className={styles.tabHeader} key={i}>
-                                    {item.company}
-                                </li>
-                            );
-                        })}
-                    </ul>
+import { Ref } from "react";
 
-                    <div className={styles.tabDetails}>
+type Props = {
+    workContainerRef: Ref<HTMLDivElement>;
+    workTabsRef: Ref<HTMLDivElement>;
+    activeWorkBgGradient: Ref<HTMLLIElement>;
+    workTitlesContainerRef: Ref<HTMLUListElement>;
+    workDetailsContainerRef: Ref<HTMLDivElement>;
+};
+export default function Work({
+    workContainerRef,
+    workTabsRef,
+    activeWorkBgGradient,
+    workTitlesContainerRef,
+    workDetailsContainerRef
+}: Props) {
+    return (
+        <div className={styles.container} ref={workContainerRef}>
+            <div className={styles.tabs} ref={workTabsRef}>
+                <div className={styles.tabsInner}>
+                    <div className={styles.tabHeadersContainer}>
+                        <ul className={styles.tabHeaders} ref={workTitlesContainerRef}>
+                            <li className={styles.bgGradient} ref={activeWorkBgGradient}></li>
+                            {WORK.map((item, i) => {
+                                return (
+                                    <li className={styles.tabHeader} key={i}>
+                                        {item.company}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    <div className={styles.tabDetails} ref={workDetailsContainerRef}>
                         {WORK.map((item, i) => {
                             const { title, company, location, range, url, work } = item;
                             return (
                                 <div className={styles.tabDetail} key={i} data-goto={`active-work-${i}`}>
-                                    <section className="tabs__tab-panels__tab-panel__inner">
+                                    <section>
                                         <h4>{company}</h4>
                                         <p>
                                             To cancel unwanted external sound, <br /> AirPods Max use a total of six{" "}
@@ -40,7 +56,20 @@ export default function Work() {
                         })}
                     </div>
                 </div>
+                <SectionBgSVG text="work" />
             </div>
+        </div>
+    );
+}
+
+function SectionBgSVG({ text, color = "rgba(255, 255, 255, 0.02)" }: { text: string; color?: string }) {
+    return (
+        <div id="work-svg" className={styles.svgContainer}>
+            <svg className={styles.svgAnimation}>
+                <text x="0" y="95%" stroke={color} fill={color}>
+                    {text}
+                </text>
+            </svg>
         </div>
     );
 }

@@ -1,5 +1,10 @@
 const DEFAULT_MOBILE_HEIGHT = 812;
 
+const DATA_VALUES = {
+    workSvgViewportHeight: 0.13,
+    workTitleHeightDesktop: 83
+};
+
 const ABOUT_NOTE = [
     "4 years dedicating my time into converting designs into",
     "pixel-perfect,",
@@ -81,4 +86,4 @@ const WORK = [
     }
 ];
 
-export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT };
+export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, DATA_VALUES };
