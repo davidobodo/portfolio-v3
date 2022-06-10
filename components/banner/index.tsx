@@ -1,9 +1,9 @@
-import { useState, useEffect, Ref } from "react";
-import { DEFAULT_MOBILE_HEIGHT } from "#/constants";
+import { useState, useEffect, Ref, useRef, RefObject } from "react";
 import styles from "./styles.module.scss";
+import gsap from "gsap";
 
 type Props = {
-    bannerRef: Ref<HTMLDivElement>;
+    bannerRef: RefObject<HTMLDivElement>;
     windowInnerHeight: number | null;
     windowInnerWidth: number | null;
     fieldRef: Ref<HTMLHeadingElement>;
@@ -13,7 +13,6 @@ type Props = {
     profilePicRef: Ref<HTMLDivElement>;
     mobilePicRef: Ref<HTMLDivElement>;
     scrollIndicatorRef: Ref<HTMLDivElement>;
-    blackCoverRef: Ref<HTMLDivElement>;
 };
 
 export default function Banner({
@@ -27,12 +26,11 @@ export default function Banner({
     windowInnerWidth,
     scrollIndicatorRef,
     mobilePicRef
-}: // blackCoverRef
-Props) {
-    const [bannerHeight, setBannerHeight] = useState<number>(DEFAULT_MOBILE_HEIGHT);
-    const [svgViewbox, setSvgViewbox] = useState("0 0 350 355");
+}: Props) {
+    const [bannerHeight, setBannerHeight] = useState<number>();
 
     // Alter the viewbox so that our svg animation doesnt overflow outside the container
+    const [svgViewbox, setSvgViewbox] = useState("0 0 350 355");
     useEffect(() => {
         if (windowInnerWidth) {
             if (windowInnerWidth > 1536) {
@@ -45,12 +43,34 @@ Props) {
         }
     }, [windowInnerWidth]);
 
-    // Mainly because of the 100vh issue on mobile devices
     useEffect(() => {
+        // Mainly because of the 100vh issue on mobile devices
         if (windowInnerHeight) {
             setBannerHeight(windowInnerHeight);
         }
-    }, [windowInnerHeight]);
+    }, []);
+
+    const blackCoverRef = useRef(null);
+    useEffect(() => {
+        // Only create this timeline when the correct banner height has been set
+        if (bannerHeight === window.innerHeight) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: bannerRef.current,
+                    toggleActions: "restart pause reverse pause",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                    pin: true,
+                    pinSpacing: false
+                }
+            });
+            tl.to(blackCoverRef.current, {
+                scaleY: window.innerHeight / 2,
+                transformOrigin: "top"
+            });
+        }
+    }, [bannerHeight]);
 
     const fieldA = "SOFTWARE";
     const fieldB = "DEVELOPER";
@@ -59,7 +79,7 @@ Props) {
 
     return (
         <div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
-            {/* <div className={styles.blackCover} ref={blackCoverRef}></div> */}
+            <div className={styles.blackCover} ref={blackCoverRef}></div>
 
             <div className={styles.topSection}>
                 <div className={styles.topSectionTexts}>

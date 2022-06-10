@@ -7,8 +7,7 @@ import {
     useWindowSize,
     useAboutAnimation,
     useRegisterGsapScrollTrigger,
-    usePinRadialGradient,
-    useTransitionToDark
+    usePinRadialGradient
 } from "#/hooks";
 
 const Home: NextPage = () => {
@@ -27,7 +26,6 @@ const Home: NextPage = () => {
         scrollIndicatorRef,
         mobilePicRef
     } = useInitAnimation();
-    const { blackCoverRef } = useTransitionToDark({ bannerRef });
     const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
     const { aboutListRef } = useAboutAnimation();
 
@@ -50,7 +48,6 @@ const Home: NextPage = () => {
                 profilePicRef={profilePicRef}
                 scrollIndicatorRef={scrollIndicatorRef}
                 mobilePicRef={mobilePicRef}
-                blackCoverRef={blackCoverRef}
             />
             <div className={styles.darkSection} ref={darkSectionRef}>
                 <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>

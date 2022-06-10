@@ -83,8 +83,7 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--light-brown);
-    min-height: 100vh;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem 1rem;
 
     @media (min-width: $md) {
         padding: 3rem;
