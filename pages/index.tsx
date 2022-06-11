@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About, Work, Thoughts } from "#/components";
+import { Preloader, Banner, About, Work, Thoughts, Skills } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
                         mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
                     />
                     <Thoughts.One textWrapperRef={thoughtOneText} />
-
+                    <Skills />
                     <div className={styles.noise}></div>
                 </div>
             </div>

@@ -1,0 +1,107 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    min-height: 250vh; // So animation can scroll through a distance
+
+    .contentWrapper {
+        height: 100vh; // Hols both the svg animation and the actual content displayed . SVG animation would be positioned relative to this
+        display: flex;
+        align-items: center; // In order to position the actual skills content in the center
+
+        .wrapper {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: var(--max-width);
+
+            .heading {
+                position: relative;
+
+                .subTitle {
+                    font-weight: 600;
+                    line-height: 0.9;
+                    font-weight: 600;
+                    letter-spacing: -0.015em;
+                    color: var(--ash);
+                    font-size: 36px;
+                    margin-bottom: 7rem;
+                    position: relative;
+                    z-index: 1;
+
+                    @media (min-width: $md) {
+                        font-size: 80px;
+                    }
+
+                    strong {
+                        color: #fff;
+                    }
+                }
+
+                .image {
+                    position: absolute;
+                    width: 29vw;
+                    height: 39vw;
+                    max-width: 68rem;
+                    max-height: 90rem;
+                    background-color: #28282b;
+                    left: -25%;
+                    top: 10rem;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+
+            .skillsList {
+                display: grid;
+                grid-gap: 4rem;
+                grid-template-columns: 1fr 0.8fr 1.4fr;
+
+                .skills {
+                    color: var(--ash);
+                    margin-bottom: 4rem;
+
+                    h4 {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        margin-bottom: 2.4rem;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                    }
+
+                    ul {
+                        list-style: none;
+                        li {
+                            font-size: 16px;
+                            font-weight: 600;
+                            margin-bottom: 2rem;
+                            padding-left: 30px;
+                            position: relative;
+
+                            &:before {
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                width: 6px;
+                                height: 6px;
+                                background-color: var(--ash2);
+                                display: flex;
+                                border-radius: 50%;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                        }
+                    }
+
+                    &.others {
+                        ul {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            grid-column-gap: 4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

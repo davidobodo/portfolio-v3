@@ -3,5 +3,6 @@ import Banner from "./banner";
 import About from "./about";
 import Work from "./work";
 import Thoughts from "./thoughts";
+import Skills from "./skills";
 
-export { Preloader, Banner, About, Work, Thoughts };
+export { Preloader, Banner, About, Work, Thoughts, Skills };
