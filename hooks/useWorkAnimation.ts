@@ -10,7 +10,9 @@ export default function useWorkAnimation({
     windowInnerHeight: number;
     windowInnerWidth: number;
 }) {
-    DATA_VALUES;
+    //-----------------------------------------
+    //DESKTOP ANIMATION
+    //-----------------------------------------
     const workContainerRef = useRef(null);
     const workTabsRef = useRef<HTMLDivElement>(null);
     const workTitlesContainerRef = useRef<HTMLUListElement>(null);
@@ -19,32 +21,37 @@ export default function useWorkAnimation({
     const [tl, setTl] = useState<gsap.core.Timeline>();
 
     function animateWorkSvg(progress: number) {
-        const progressEquivalent = normalize(progress, 0, 100);
-        const displacement = (progressEquivalent / 100) * workTabsRef.current!.clientHeight;
-        const svgHeight = DATA_VALUES.workSvgViewportHeight * windowInnerWidth;
-        const final = displacement - svgHeight;
-        return final;
+        if (workTabsRef.current) {
+            const progressEquivalent = normalize(progress, 0, 100);
+            const displacement = (progressEquivalent / 100) * workTabsRef.current.clientHeight;
+            const svgHeight = DATA_VALUES.workSvgViewportHeight * windowInnerWidth;
+            const final = displacement - svgHeight;
+
+            return final;
+        }
     }
 
     useEffect(() => {
-        if (workContainerRef.current && workTabsRef.current) {
-            const svgElement = workTabsRef.current.querySelector("#work-svg") as HTMLElement;
+        if (windowInnerWidth > 768) {
+            if (workContainerRef.current && workTabsRef.current) {
+                const svgElement = workTabsRef.current.querySelector("#work-svg") as HTMLElement;
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: workContainerRef.current,
-                    start: "top top",
-                    end: "bottom bottom",
-                    toggleActions: "restart pause reverse pause",
-                    scrub: true,
-                    pin: workTabsRef.current,
-                    pinSpacing: false,
-                    onUpdate: (self) => {
-                        svgElement.style.bottom = animateWorkSvg(self.progress) + "px";
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: workContainerRef.current,
+                        start: "top top",
+                        end: "bottom bottom",
+                        toggleActions: "restart pause reverse pause",
+                        scrub: true,
+                        pin: workTabsRef.current,
+                        pinSpacing: false,
+                        onUpdate: (self) => {
+                            svgElement.style.bottom = animateWorkSvg(self.progress) + "px";
+                        }
                     }
-                }
-            });
-            setTl(tl);
+                });
+                setTl(tl);
+            }
         }
     }, [workContainerRef, workTabsRef, windowInnerHeight, windowInnerWidth]);
 
@@ -118,11 +125,91 @@ export default function useWorkAnimation({
             }
         }
     }, [tl, workTitlesContainerRef, workDetailsContainerRef]);
+
+    //-----------------------------------------
+    //MOBILE ANIMATION
+    //-----------------------------------------
+    const mobileWorkContainerRef = useRef(null);
+    const mobileWorkContentWrapperRef = useRef<HTMLDivElement>(null);
+    const mobileWorkTitlesContainerRef = useRef<HTMLUListElement>(null);
+    const mobileWorkDetailsContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (windowInnerWidth < 768) {
+            if (
+                mobileWorkContainerRef.current &&
+                mobileWorkTitlesContainerRef.current &&
+                mobileWorkDetailsContainerRef.current
+            ) {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: mobileWorkContainerRef.current,
+                        start: "top top",
+                        end: "bottom bottom",
+                        toggleActions: "restart pause reverse pause",
+                        scrub: true,
+                        pin: mobileWorkContentWrapperRef.current,
+                        pinSpacing: false
+                    }
+                });
+
+                const titles = (mobileWorkTitlesContainerRef.current.children as unknown) as HTMLElement[];
+
+                const details = mobileWorkDetailsContainerRef.current.children;
+
+                const posDic: Record<string, string | number> = {};
+
+                for (let k = 0; k < titles.length; k++) {
+                    posDic[k] = titles[k].offsetLeft;
+                }
+
+                let timelineActions: {
+                    target: Element;
+                    vars: Record<string, string | number>;
+                    options?: string;
+                }[] = [];
+
+                //Create the animation for the timeline
+                for (let i = 0; i < details.length; i++) {
+                    const target = details[i];
+                    const topTarget = titles[i];
+
+                    //Increase bottom opacity
+                    timelineActions.push({ target: topTarget, vars: { opacity: 1 } });
+                    if (i !== 0) {
+                        timelineActions.push({
+                            target: mobileWorkTitlesContainerRef.current,
+                            vars: { left: -posDic[i] + 20 }
+                        });
+                        // Dont need to increase the first items opacity since its already visible
+                    }
+                    timelineActions.push({ target, vars: { opacity: 1 } });
+
+                    //Decrease bottom opacity
+                    if (i !== details.length - 1) {
+                        timelineActions.push({ target: topTarget, vars: { opacity: 0.2 } });
+                        //Dont need to decrease the last items opacity so its still visible in the DOM when we scroll out
+                        timelineActions.push({ target, vars: { opacity: 0 } });
+                    }
+                }
+
+                //Execute the timeline
+                for (let j = 0; j < timelineActions.length; j++) {
+                    const { target, vars, options } = timelineActions[j];
+                    tl.to(target, vars, options);
+                }
+            }
+        }
+    }, [mobileWorkContainerRef, mobileWorkContentWrapperRef, windowInnerWidth]);
     return {
         workContainerRef,
         workTabsRef,
         activeWorkBgGradient,
         workTitlesContainerRef,
-        workDetailsContainerRef
+        workDetailsContainerRef,
+        mobileWorkDetailsContainerRef,
+        mobileWorkTitlesContainerRef,
+        mobileWorkContainerRef,
+        mobileWorkContentWrapperRef
     };
 }

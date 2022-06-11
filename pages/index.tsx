@@ -34,7 +34,11 @@ const Home: NextPage = () => {
         workTabsRef,
         activeWorkBgGradient,
         workTitlesContainerRef,
-        workDetailsContainerRef
+        workDetailsContainerRef,
+        mobileWorkDetailsContainerRef,
+        mobileWorkTitlesContainerRef,
+        mobileWorkContainerRef,
+        mobileWorkContentWrapperRef
     } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 
     return (
@@ -67,6 +71,10 @@ const Home: NextPage = () => {
                         activeWorkBgGradient={activeWorkBgGradient}
                         workTitlesContainerRef={workTitlesContainerRef}
                         workDetailsContainerRef={workDetailsContainerRef}
+                        mobileWorkDetailsContainerRef={mobileWorkDetailsContainerRef}
+                        mobileWorkTitlesContainerRef={mobileWorkTitlesContainerRef}
+                        mobileWorkContainerRef={mobileWorkContainerRef}
+                        mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
                     />
 
                     <div style={{ height: "200vh", width: "100%" }}></div>
