@@ -86,4 +86,9 @@ const WORK = [
     }
 ];
 
-export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, DATA_VALUES };
+const IMAGES = {
+    one:
+        "https://images.unsplash.com/photo-1553608578-d6fd2621a3d8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1hbiUyMHNpdHRpbmclMjBvbiUyMGNoYWlyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800"
+};
+
+export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, DATA_VALUES, IMAGES };

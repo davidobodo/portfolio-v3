@@ -1,0 +1,59 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    margin-bottom: 40vh;
+    margin: auto;
+    max-width: var(--max-width);
+    padding-top: 15vh;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    .textWrapper {
+        margin-bottom: 8.4rem;
+        .paragraph {
+            margin-bottom: 2.4rem;
+
+            .textLine {
+                color: var(--ash3);
+                line-height: 2;
+                font-weight: 600;
+                letter-spacing: -0.015em;
+                position: relative;
+                overflow: hidden;
+                font-size: 12px;
+
+                @media (min-width: $md) {
+                    font-size: 24px;
+                }
+
+                span {
+                    display: block;
+                    opacity: 0;
+                    transform: translateY(40px) rotate(10deg) skewX(30deg);
+                    transform-origin: left;
+                    strong {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .imageWrapper {
+        @media (min-width: $md) {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .image {
+            width: 100%;
+            background-color: #28282b;
+            height: 50vh;
+            background-size: cover;
+            background-position: center;
+            @media (min-width: $md) {
+                width: 50%;
+            }
+        }
+    }
+}

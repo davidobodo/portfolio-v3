@@ -1,14 +1,15 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About, Work } from "#/components";
+import { Preloader, Banner, About, Work, Thoughts } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
     useAboutAnimation,
     useRegisterGsapScrollTrigger,
     usePinRadialGradient,
-    useWorkAnimation
+    useWorkAnimation,
+    useRevealText
 } from "#/hooks";
 
 const Home: NextPage = () => {
@@ -41,6 +42,8 @@ const Home: NextPage = () => {
         mobileWorkContentWrapperRef
     } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 
+    const { textWrapperRef: thoughtOneText } = useRevealText();
+
     return (
         <div>
             <Head>
@@ -48,6 +51,7 @@ const Home: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
             <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
             <Banner
                 bannerRef={bannerRef}
@@ -76,11 +80,11 @@ const Home: NextPage = () => {
                         mobileWorkContainerRef={mobileWorkContainerRef}
                         mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
                     />
+                    <Thoughts.One textWrapperRef={thoughtOneText} />
 
-                    <div style={{ height: "200vh", width: "100%" }}></div>
+                    <div className={styles.noise}></div>
                 </div>
             </div>
-            <div className={styles.noise}></div>
         </div>
     );
 };
