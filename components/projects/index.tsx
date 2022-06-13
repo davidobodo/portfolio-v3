@@ -1,10 +1,17 @@
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 import { Button } from "../index";
-export default function Projects({ projectsListWrapperRef }) {
+import { Ref } from "react";
+export default function Projects({
+    projectsListWrapperRef,
+    projectTitleRef
+}: {
+    projectsListWrapperRef: Ref<HTMLDivElement>;
+    projectTitleRef: Ref<HTMLDivElement>;
+}) {
     return (
         <div className={styles.container}>
-            <h3 className={styles.sectionTitle}>
+            <h3 className={styles.sectionTitle} ref={projectTitleRef}>
                 <span>A few</span>
                 <span> select </span>
                 <span>

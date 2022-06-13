@@ -46,7 +46,7 @@ const Home: NextPage = () => {
     const { textWrapperRef: thoughtOneText } = useRevealText();
     const { textWrapperRef: thoughtTwoText } = useRevealText();
     const { skillsListRef, skillsContainerRef } = useSkillsAnimation({ windowInnerWidth });
-    const { projectsListWrapperRef } = useProjectAnimation();
+    const { projectsListWrapperRef, projectTitleRef } = useProjectAnimation();
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
     return (
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
                         <Thoughts.One textWrapperRef={thoughtOneText} />
                         <Skills skillsListRef={skillsListRef} skillsContainerRef={skillsContainerRef} />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
-                        <Projects projectsListWrapperRef={projectsListWrapperRef} />
+                        <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} />
                     </div>
                 </div>
             </div>

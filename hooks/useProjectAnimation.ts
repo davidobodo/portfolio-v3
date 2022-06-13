@@ -2,8 +2,8 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
 export default function useProjectAnimation() {
+    // HORIZONTAL SCROLLING
     const projectsListWrapperRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
         if (projectsListWrapperRef.current) {
             const scrollView = projectsListWrapperRef.current.children[0] as HTMLDivElement;
@@ -24,7 +24,28 @@ export default function useProjectAnimation() {
             });
         }
     }, []);
+
+    //TITLE DISPLACEMENT
+    const projectTitleRef = useRef<HTMLHeadElement>(null);
+    useEffect(() => {
+        if (projectTitleRef.current) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: projectTitleRef.current,
+                    toggleActions: "restart pause reverse pause",
+                    start: "top center",
+                    end: "bottom center",
+                    scrub: true
+                }
+            });
+
+            tl.to(projectTitleRef.current.children[0], { x: 80 })
+                .to(projectTitleRef.current.children[1], { x: -100 }, "<")
+                .to(projectTitleRef.current.children[2], { x: 80 }, "<");
+        }
+    }, [projectTitleRef]);
     return {
-        projectsListWrapperRef
+        projectsListWrapperRef,
+        projectTitleRef
     };
 }
