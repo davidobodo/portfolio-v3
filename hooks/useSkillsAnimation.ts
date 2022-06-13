@@ -9,6 +9,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
     const skillsContainerRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if (skillsContainerRef.current && skillsListRef.current) {
+            return;
             const svgElement = skillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
             const tl = gsap.timeline({
                 scrollTrigger: {

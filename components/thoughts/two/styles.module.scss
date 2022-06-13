@@ -1,0 +1,45 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    margin: auto;
+    max-width: var(--max-width);
+    padding-top: 15vh;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @media (min-width: $md) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .textWrapper {
+        margin-bottom: 8.4rem;
+        .paragraph {
+            margin-bottom: 2.4rem;
+
+            .textLine {
+                color: var(--ash3);
+                line-height: 2;
+                font-weight: 600;
+                letter-spacing: -0.015em;
+                position: relative;
+                overflow: hidden;
+                font-size: 12px;
+
+                @media (min-width: $md) {
+                    font-size: 24px;
+                }
+
+                span {
+                    display: block;
+                    opacity: 0;
+                    transform: translateY(40px) rotate(10deg) skewX(30deg);
+                    transform-origin: left;
+                    strong {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

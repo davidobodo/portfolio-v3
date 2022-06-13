@@ -70,7 +70,7 @@
                         letter-spacing: 2px;
                         color: var(--white);
 
-                        opacity: 0;
+                        // opacity: 0;
                     }
 
                     ul {
@@ -81,7 +81,7 @@
                             margin-bottom: 2rem;
                             padding-left: 30px;
                             position: relative;
-                            opacity: 0;
+                            // opacity: 0;
 
                             &:before {
                                 content: "";

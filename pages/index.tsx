@@ -44,6 +44,7 @@ const Home: NextPage = () => {
     } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 
     const { textWrapperRef: thoughtOneText } = useRevealText();
+    const { textWrapperRef: thoughtTwoText } = useRevealText();
 
     const { skillsListRef, skillsContainerRef } = useSkillsAnimation({ windowInnerWidth });
 
@@ -85,7 +86,7 @@ const Home: NextPage = () => {
                     />
                     <Thoughts.One textWrapperRef={thoughtOneText} />
                     <Skills skillsListRef={skillsListRef} skillsContainerRef={skillsContainerRef} />
-
+                    <Thoughts.Two textWrapperRef={thoughtTwoText} />
                     <div style={{ height: "150vh" }}></div>
                     <div className={styles.noise}></div>
                 </div>
