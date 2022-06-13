@@ -1,0 +1,58 @@
+import styles from "./styles.module.scss";
+import { PROJECTS } from "#/constants/projects";
+import { Button } from "../index";
+export default function Projects({ projectsListWrapperRef }) {
+    return (
+        <div className={styles.container}>
+            <h3 className={styles.sectionTitle}>
+                <span>A few</span>
+                <span> select </span>
+                <span>
+                    <strong>Projects</strong>{" "}
+                </span>
+            </h3>
+
+            <div className={styles.projectsListWrapper} ref={projectsListWrapperRef}>
+                <div className={styles.projectsList}>
+                    {PROJECTS.slice(0, 5).map((item, i) => {
+                        const { title, details, live_link, tech } = item;
+                        return (
+                            <div className={styles.project} key={i}>
+                                <div
+                                    style={{
+                                        backgroundImage: `url(https://images.unsplash.com/photo-1655056853039-c0cb33a9c5b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60)`
+                                    }}
+                                    className={styles.projectImage}
+                                ></div>
+                                <div className={styles.projectOverlay}></div>
+
+                                <div className={styles.projectDetails}>
+                                    <h1>{title}</h1>
+                                    <p>{details}</p>
+                                    <div className={styles.buttonWrapper}>
+                                        <Button label="View Project" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+
+                    <div className={styles.project + " " + styles.viewAll}>
+                        <div></div>
+                        <div className={styles.content}>
+                            <a>
+                                <span>View all projects</span>
+                                <img
+                                    src="https://assets-global.website-files.com/5c51b8093dcfd38165099093/5f959b1cd3283e540294ea95_icon-enclosed-arrow.svg"
+                                    alt=""
+                                />
+                            </a>
+                        </div>
+                        <div></div>
+                        <div className={styles.liquid}></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

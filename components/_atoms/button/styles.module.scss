@@ -1,0 +1,19 @@
+.button {
+    border: 1px solid var(--white);
+    background-color: transparent;
+    padding: 0px 35px;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    outline: none;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+
+    span {
+        margin-right: 1rem;
+    }
+}

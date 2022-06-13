@@ -1,0 +1,193 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    .sectionTitle {
+        color: var(--ash3);
+        font-size: 60px;
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: -0.002em;
+        margin-bottom: 8rem;
+
+        @media (min-width: $md) {
+            font-size: 100px;
+        }
+
+        span {
+            display: block;
+        }
+
+        strong {
+            color: #fff;
+        }
+    }
+
+    .projectsListWrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        border: 1px solid red;
+
+        .projectsList {
+            display: flex;
+            height: 80vh;
+            // width: 100%;
+            padding-left: var(--spacing-x);
+            border-top: 1px solid var(--ash3);
+            border-bottom: 1px solid var(--ash3);
+
+            .project {
+                border-right: 1px solid var(--ash3);
+                padding: 100px;
+                padding-right: 130px;
+                height: 100%;
+                width: 30vw;
+                max-width: 500px;
+                min-width: 400px;
+                flex-shrink: 0;
+                position: relative; // For the background image
+                overflow: hidden; // So the background image scaling up wont show outside
+                cursor: pointer;
+
+                .projectImage {
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0px;
+                    top: 0px;
+                    opacity: 0;
+                    will-change: opacity, transform;
+                    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+                }
+
+                .projectOverlay {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0px;
+                    left: 0px;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    // will-change: background-color;
+                    // transition: background-color 500ms ease-in-out;
+                    z-index: 1; // So its ontop the background image
+                }
+
+                .projectDetails {
+                    position: relative; // So it stays ontop of the overlay
+                    z-index: 2;
+                    height: 100%;
+                    display: grid;
+                    grid-template-rows: 22.5em auto auto;
+                    color: var(--ash);
+
+                    h1 {
+                        font-size: 3.6rem;
+                    }
+
+                    p {
+                        font-size: 24px;
+                        font-weight: 600;
+                        line-height: 30px;
+                        margin-bottom: 2rem;
+                        transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+                        will-change: opacity, transform;
+                    }
+
+                    .buttonWrapper {
+                        margin-top: auto;
+                    }
+                }
+
+                &:hover {
+                    .projectImage {
+                        opacity: 1;
+                        transform: scale(1.08);
+                    }
+
+                    .projectDetails {
+                        color: var(--white);
+
+                        p {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                    }
+                }
+
+                &.viewAll {
+                    display: flex;
+                    padding-right: 0px;
+                    display: grid;
+                    grid-template-rows: 22.5em auto auto;
+                    position: relative;
+                    a {
+                        font-size: 4rem;
+                        background-color: transparent;
+                        border: 0px;
+                        color: #fff;
+                        display: flex;
+                        align-items: center;
+
+                        span {
+                            margin-right: 1rem;
+                        }
+
+                        img {
+                            height: 30px;
+                        }
+                    }
+
+                    .content {
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    .liquid {
+                        position: absolute;
+                        background: var(--ash3);
+                        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+                        transition: 0.5s;
+                        width: 100%;
+                        height: 50%;
+                        bottom: 0px;
+
+                        &:before,
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 200%;
+                            height: 200%;
+                            top: 0;
+                            left: 50%;
+                            transform: translate(-50%, -75%);
+                            background: #000;
+                        }
+                    }
+
+                    .liquid:before {
+                        border-radius: 45%;
+                        background: rgba(20, 20, 20, 1);
+                        animation: animate 5s linear infinite;
+                    }
+                    .liquid:after {
+                        border-radius: 40%;
+                        background: rgba(0, 0, 0, 0.5);
+                        animation: animate 10s linear infinite;
+                    }
+
+                    @keyframes animate {
+                        0% {
+                            transform: translate(-50%, -75%) rotate(0deg);
+                        }
+                        100% {
+                            transform: translate(-50%, -75%) rotate(360deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

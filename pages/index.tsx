@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About, Work, Thoughts, Skills } from "#/components";
+import { Preloader, Banner, About, Work, Thoughts, Skills, Projects } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
@@ -10,13 +10,13 @@ import {
     usePinRadialGradient,
     useWorkAnimation,
     useRevealText,
-    useSkillsAnimation
+    useSkillsAnimation,
+    useProjectAnimation
 } from "#/hooks";
 
 const Home: NextPage = () => {
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-
     const {
         preloaderBgRef,
         logoRef,
@@ -42,11 +42,11 @@ const Home: NextPage = () => {
         mobileWorkContainerRef,
         mobileWorkContentWrapperRef
     } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
-
     const { textWrapperRef: thoughtOneText } = useRevealText();
     const { textWrapperRef: thoughtTwoText } = useRevealText();
-
     const { skillsListRef, skillsContainerRef } = useSkillsAnimation({ windowInnerWidth });
+
+    const { projectsListWrapperRef } = useProjectAnimation();
 
     return (
         <div>
@@ -87,6 +87,7 @@ const Home: NextPage = () => {
                     <Thoughts.One textWrapperRef={thoughtOneText} />
                     <Skills skillsListRef={skillsListRef} skillsContainerRef={skillsContainerRef} />
                     <Thoughts.Two textWrapperRef={thoughtTwoText} />
+                    <Projects projectsListWrapperRef={projectsListWrapperRef} />
                     <div style={{ height: "150vh" }}></div>
                     <div className={styles.noise}></div>
                 </div>

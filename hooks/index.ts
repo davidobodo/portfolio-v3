@@ -6,6 +6,7 @@ import usePinRadialGradient from "./usePinRadialGradient";
 import useWorkAnimation from "./useWorkAnimation";
 import useRevealText from "./useRevealText";
 import useSkillsAnimation from "./useSkillsAnimation";
+import useProjectAnimation from "./useProjectAnimation";
 
 export {
     useInitAnimation,
@@ -15,5 +16,6 @@ export {
     usePinRadialGradient,
     useWorkAnimation,
     useRevealText,
-    useSkillsAnimation
+    useSkillsAnimation,
+    useProjectAnimation
 };
