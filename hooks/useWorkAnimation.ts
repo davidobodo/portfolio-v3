@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
 import { normalize } from "#/utils";
 import { DATA_VALUES } from "#/constants";
+import { TTimelineAction } from "#/interfaces";
 
 export default function useWorkAnimation({
     windowInnerHeight,
@@ -20,21 +21,24 @@ export default function useWorkAnimation({
     const activeWorkBgGradient = useRef<HTMLLIElement>(null);
     const [tl, setTl] = useState<gsap.core.Timeline>();
 
-    function animateWorkSvg(progress: number) {
-        if (workTabsRef.current) {
-            const progressEquivalent = normalize(progress, 0, 100);
-            const displacement = (progressEquivalent / 100) * workTabsRef.current.clientHeight;
-            const svgHeight = DATA_VALUES.workSvgViewportHeight * windowInnerWidth;
-            const final = displacement - svgHeight;
+    function animateWorkSvg(
+        progress: number,
+        parentElement: HTMLElement,
+        svgViewportHeightRatio: number,
+        windowWidth: number
+    ) {
+        const progressEquivalent = normalize(progress, 0, 100);
+        const displacement = (progressEquivalent / 100) * parentElement.clientHeight;
+        const svgHeight = svgViewportHeightRatio * windowWidth;
+        const final = displacement - svgHeight;
 
-            return final;
-        }
+        return final;
     }
 
     useEffect(() => {
         if (windowInnerWidth > 768) {
             if (workContainerRef.current && workTabsRef.current) {
-                const svgElement = workTabsRef.current.querySelector("#work-svg") as HTMLElement;
+                const svgElement = workTabsRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
 
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -46,7 +50,13 @@ export default function useWorkAnimation({
                         pin: workTabsRef.current,
                         pinSpacing: false,
                         onUpdate: (self) => {
-                            svgElement.style.bottom = animateWorkSvg(self.progress) + "px";
+                            svgElement.style.bottom =
+                                animateWorkSvg(
+                                    self.progress,
+                                    workTabsRef.current as HTMLDivElement,
+                                    DATA_VALUES.workSvgViewportHeight,
+                                    windowInnerWidth
+                                ) + "px";
                         }
                     }
                 });
@@ -60,14 +70,7 @@ export default function useWorkAnimation({
             const titles = workTitlesContainerRef.current.children;
             const details = workDetailsContainerRef.current.children;
 
-            let timelineActions: {
-                target?: Element;
-                vars?: Record<string, string | number>;
-                action?: string;
-                options?: string;
-                isLabel?: boolean;
-                label?: string;
-            }[] = [];
+            let timelineActions: TTimelineAction[] = [];
 
             // CREATE TIMELINE ACTIONS
             for (let i = 0; i < details.length; i++) {
@@ -163,11 +166,7 @@ export default function useWorkAnimation({
                     posDic[k] = titles[k].offsetLeft;
                 }
 
-                let timelineActions: {
-                    target: Element;
-                    vars: Record<string, string | number>;
-                    options?: string;
-                }[] = [];
+                let timelineActions: TTimelineAction[] = [];
 
                 //Create the animation for the timeline
                 for (let i = 0; i < details.length; i++) {
@@ -196,7 +195,10 @@ export default function useWorkAnimation({
                 //Execute the timeline
                 for (let j = 0; j < timelineActions.length; j++) {
                     const { target, vars, options } = timelineActions[j];
-                    tl.to(target, vars, options);
+
+                    if (target && vars) {
+                        tl.to(target, vars, options);
+                    }
                 }
             }
         }

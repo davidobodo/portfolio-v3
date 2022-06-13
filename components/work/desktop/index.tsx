@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
+import { FaintBgText } from "../../index";
 import { Ref } from "react";
 
 export type ViewDesktopProps = {
@@ -56,20 +57,8 @@ export default function ViewDesktop({
                         })}
                     </div>
                 </div>
-                <SectionBgSVG text="work" />
+                <FaintBgText text="work" />
             </div>
-        </div>
-    );
-}
-
-function SectionBgSVG({ text, color = "rgba(255, 255, 255, 0.02)" }: { text: string; color?: string }) {
-    return (
-        <div id="work-svg" className={styles.svgContainer}>
-            <svg className={styles.svgAnimation}>
-                <text x="0" y="95%" stroke={color} fill={color}>
-                    {text}
-                </text>
-            </svg>
         </div>
     );
 }

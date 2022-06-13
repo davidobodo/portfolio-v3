@@ -1,9 +1,15 @@
 import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants/tech-stacks";
+import { Ref } from "react";
+import { FaintBgText } from "../index";
 
-export default function Skills() {
+type Props = {
+    skillsListRef: Ref<HTMLDivElement>;
+    skillsContainerRef: Ref<HTMLDivElement>;
+};
+export default function Skills({ skillsListRef, skillsContainerRef }: Props) {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} ref={skillsContainerRef}>
             <div className={styles.contentWrapper}>
                 <div className={styles.wrapper}>
                     <div className={styles.heading}>
@@ -19,10 +25,10 @@ export default function Skills() {
                             }}
                         ></div>
                     </div>
-                    <div className={styles.skillsList}>
+                    <div className={styles.skillsList} ref={skillsListRef}>
                         <div></div>
                         <div>
-                            <section className={styles.skills}>
+                            <section className={styles.skills} data-id="skill">
                                 <h4>Languages</h4>
                                 <ul>
                                     {["html", "css", "sass", "javascript", "typescript", "solidity"].map((key, i) => {
@@ -31,7 +37,7 @@ export default function Skills() {
                                     })}
                                 </ul>
                             </section>
-                            <section className={styles.skills}>
+                            <section className={styles.skills} data-id="skill">
                                 <h4>Special</h4>
                                 <ul>
                                     <li>
@@ -41,7 +47,7 @@ export default function Skills() {
                             </section>
                         </div>
 
-                        <section className={styles.skills + " " + styles.others}>
+                        <section className={styles.skills + " " + styles.others} data-id="skill">
                             <h4>Frameworks/ Libraries/ Others</h4>
                             <ul>
                                 {[
@@ -70,6 +76,11 @@ export default function Skills() {
                         </section>
                     </div>
                 </div>
+                <FaintBgText
+                    text="skills"
+                    containerStyles={{ width: "42vw", right: "0px", bottom: "0%" }}
+                    svgStyles={{ height: "15vw" }}
+                />
             </div>
         </div>
     );

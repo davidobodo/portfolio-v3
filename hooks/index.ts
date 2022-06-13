@@ -5,6 +5,7 @@ import useRegisterGsapScrollTrigger from "./useRegisterGsapScrollTrigger";
 import usePinRadialGradient from "./usePinRadialGradient";
 import useWorkAnimation from "./useWorkAnimation";
 import useRevealText from "./useRevealText";
+import useSkillsAnimation from "./useSkillsAnimation";
 
 export {
     useInitAnimation,
@@ -13,5 +14,6 @@ export {
     useRegisterGsapScrollTrigger,
     usePinRadialGradient,
     useWorkAnimation,
-    useRevealText
+    useRevealText,
+    useSkillsAnimation
 };

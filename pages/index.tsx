@@ -9,7 +9,8 @@ import {
     useRegisterGsapScrollTrigger,
     usePinRadialGradient,
     useWorkAnimation,
-    useRevealText
+    useRevealText,
+    useSkillsAnimation
 } from "#/hooks";
 
 const Home: NextPage = () => {
@@ -43,6 +44,8 @@ const Home: NextPage = () => {
     } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 
     const { textWrapperRef: thoughtOneText } = useRevealText();
+
+    const { skillsListRef, skillsContainerRef } = useSkillsAnimation({ windowInnerWidth });
 
     return (
         <div>
@@ -81,7 +84,9 @@ const Home: NextPage = () => {
                         mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
                     />
                     <Thoughts.One textWrapperRef={thoughtOneText} />
-                    <Skills />
+                    <Skills skillsListRef={skillsListRef} skillsContainerRef={skillsContainerRef} />
+
+                    <div style={{ height: "150vh" }}></div>
                     <div className={styles.noise}></div>
                 </div>
             </div>
