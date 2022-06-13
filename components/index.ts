@@ -6,8 +6,9 @@ import Thoughts from "./thoughts";
 import Skills from "./skills";
 import FaintBgText from "./faint-bg-text";
 import Projects from "./projects";
+import Contact from "./contact";
 
 import Atoms from "./_atoms";
 const { Button } = Atoms;
 
-export { Preloader, Banner, About, Work, Thoughts, Skills, FaintBgText, Projects, Button };
+export { Preloader, Banner, About, Work, Thoughts, Skills, FaintBgText, Projects, Button, Contact };
