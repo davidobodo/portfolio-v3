@@ -8,6 +8,7 @@ import useRevealText from "./useRevealText";
 import useSkillsAnimation from "./useSkillsAnimation";
 import useProjectAnimation from "./useProjectAnimation";
 import useCalculateFooterHeight from "./useCalculateFooterHeight";
+import useScrollToTop from "./useScollToTop";
 
 export {
     useInitAnimation,
@@ -19,5 +20,6 @@ export {
     useRevealText,
     useSkillsAnimation,
     useProjectAnimation,
-    useCalculateFooterHeight
+    useCalculateFooterHeight,
+    useScrollToTop
 };

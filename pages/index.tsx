@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
+import { Preloader, Banner, About, Work, Thoughts, Skills, Projects, Contact, Button } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
@@ -12,10 +12,12 @@ import {
     useRevealText,
     useSkillsAnimation,
     useProjectAnimation,
-    useCalculateFooterHeight
+    useCalculateFooterHeight,
+    useScrollToTop
 } from "#/hooks";
 
 const Home: NextPage = () => {
+    useScrollToTop();
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
     const {

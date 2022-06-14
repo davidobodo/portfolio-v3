@@ -28,7 +28,7 @@ export default function useWorkAnimation({
         windowWidth: number
     ) {
         const progressEquivalent = normalize(progress, 0, 100);
-        const displacement = (progressEquivalent / 100) * parentElement.clientHeight;
+        const displacement = (progressEquivalent / 100) * parentElement?.clientHeight;
         const svgHeight = svgViewportHeightRatio * windowWidth;
         const final = displacement - svgHeight;
 
@@ -172,7 +172,6 @@ export default function useWorkAnimation({
                 });
 
                 const titles = (mobileWorkTitlesContainerRef.current.children as unknown) as HTMLElement[];
-
                 const details = mobileWorkDetailsContainerRef.current.children;
 
                 const posDic: Record<string, string | number> = {};

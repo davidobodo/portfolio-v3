@@ -9,7 +9,7 @@ export default function useRevealText() {
             gsap.to(allLines, {
                 scrollTrigger: {
                     trigger: textWrapperRef.current,
-                    start: "top center",
+                    start: "top 80%",
                     toggleActions: "restart pause pause reverse"
                 },
                 opacity: 1,

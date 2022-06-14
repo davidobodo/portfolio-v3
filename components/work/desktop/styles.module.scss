@@ -26,7 +26,9 @@
         // Since the height of this headers column is 100vh, "tabHeadersContainer" was brought in to center the tabHeaders
         .tabHeadersContainer {
             display: flex;
-            align-items: center; // Helps to alifn the content to the center of the container
+            // align-items: center; // Helps to align the content to the center of the container
+            flex-direction: column;
+            justify-content: center;
 
             .tabHeaders {
                 position: relative;
@@ -54,6 +56,18 @@
                     opacity: 0.1;
                 }
             }
+
+            // .btnWrapper {
+            //     margin-top: 10rem;
+            //     padding-left: 2.2rem;
+
+            //     a {
+            //         font-size: 18px;
+            //         color: var(--white);
+            //         font-family: "sf-pro-bold";
+            //         letter-spacing: 0.05em;
+            //     }
+            // }
         }
 
         .tabDetails {
@@ -67,7 +81,7 @@
                 align-items: center;
                 transform: translateY(40px);
                 opacity: 0;
-                color: var(--ash);
+                color: var(--ash3);
                 visibility: hidden;
 
                 h4 {

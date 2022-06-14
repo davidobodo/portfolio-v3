@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
-import { FaintBgText } from "../../index";
+import { FaintBgText, Button } from "../../index";
 import { Ref } from "react";
 
 export type ViewDesktopProps = {
@@ -32,6 +32,9 @@ export default function ViewDesktop({
                                 );
                             })}
                         </ul>
+                        {/* <div className={styles.btnWrapper}>
+                            <a href="">Resume &#8594;</a>
+                        </div> */}
                     </div>
                     <div className={styles.tabDetails} ref={workDetailsContainerRef}>
                         {WORK.map((item, i) => {
