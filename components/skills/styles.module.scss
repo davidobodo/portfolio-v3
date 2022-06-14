@@ -28,13 +28,23 @@
                     margin-bottom: 7rem;
                     position: relative;
                     z-index: 1;
+                    // font-family: "sf-pro-bold";
 
                     @media (min-width: $md) {
                         font-size: 80px;
                     }
 
-                    strong {
-                        color: #fff;
+                    span {
+                        display: block;
+                        overflow: hidden;
+
+                        span {
+                            transform: translateY(80px);
+                        }
+
+                        strong {
+                            color: #fff;
+                        }
                     }
                 }
 
@@ -50,6 +60,8 @@
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
+
+                    width: 0px;
                 }
             }
 
@@ -59,7 +71,7 @@
                 grid-template-columns: 1fr 0.8fr 1.4fr;
 
                 .skills {
-                    color: var(--ash);
+                    color: var(--ash3);
                     margin-bottom: 4rem;
 
                     h4 {
@@ -70,31 +82,35 @@
                         letter-spacing: 2px;
                         color: var(--white);
 
-                        // opacity: 0;
+                        opacity: 0;
                     }
 
                     ul {
                         list-style: none;
-                        li {
-                            font-size: 22px;
-                            font-weight: 600;
-                            margin-bottom: 2rem;
-                            padding-left: 30px;
-                            position: relative;
-                            // opacity: 0;
 
-                            &:before {
-                                content: "";
-                                position: absolute;
-                                left: 0;
+                        li {
+                            font-weight: 600;
+                            position: relative;
+                            font-size: 18px;
+                            line-height: 2;
+                            font-family: "sf-pro-bold";
+                            overflow: hidden;
+
+                            .circle {
                                 width: 6px;
                                 height: 6px;
-                                background-color: var(--ash2);
+                                background-color: var(--ash3);
                                 display: flex;
                                 border-radius: 50%;
-                                top: 50%;
-                                transform: translateY(-50%);
+
+                                margin-right: 2rem;
                             }
+                        }
+
+                        li > span {
+                            transform: translateY(30px);
+                            display: flex;
+                            align-items: center;
                         }
                     }
 

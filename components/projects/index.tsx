@@ -7,7 +7,7 @@ export default function Projects({
     projectTitleRef
 }: {
     projectsListWrapperRef: Ref<HTMLDivElement>;
-    projectTitleRef: Ref<HTMLDivElement>;
+    projectTitleRef: Ref<HTMLHeadingElement>;
 }) {
     return (
         <div className={styles.container}>

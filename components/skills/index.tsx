@@ -6,16 +6,32 @@ import { FaintBgText } from "../index";
 type Props = {
     skillsListRef: Ref<HTMLDivElement>;
     skillsContainerRef: Ref<HTMLDivElement>;
+    skillsContentWrapperRef: Ref<HTMLDivElement>;
+    skillsSectionTitlteRef: Ref<HTMLHeadingElement>;
 };
-export default function Skills({ skillsListRef, skillsContainerRef }: Props) {
+export default function Skills({
+    skillsListRef,
+    skillsContainerRef,
+    skillsContentWrapperRef,
+    skillsSectionTitlteRef
+}: Props) {
     return (
         <div className={styles.container} ref={skillsContainerRef}>
-            <div className={styles.contentWrapper}>
+            <div className={styles.contentWrapper} ref={skillsContentWrapperRef}>
                 <div className={styles.wrapper}>
                     <div className={styles.heading}>
-                        <h2 className={styles.subTitle}>
-                            Used by <br /> <strong>my hands</strong> <br />
-                            and mind
+                        <h2 className={styles.subTitle} ref={skillsSectionTitlteRef}>
+                            <span>
+                                <span>Used by</span>
+                            </span>
+                            <span>
+                                <span>
+                                    <strong>my hands</strong>
+                                </span>
+                            </span>
+                            <span>
+                                <span>and mind</span>
+                            </span>
                         </h2>
 
                         <div
@@ -23,6 +39,7 @@ export default function Skills({ skillsListRef, skillsContainerRef }: Props) {
                             style={{
                                 backgroundImage: `url('https://images.unsplash.com/photo-1499914485622-a88fac536970?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGFuZHMlMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800')`
                             }}
+                            data-id="hand-image"
                         ></div>
                     </div>
                     <div className={styles.skillsList} ref={skillsListRef}>
@@ -33,7 +50,14 @@ export default function Skills({ skillsListRef, skillsContainerRef }: Props) {
                                 <ul>
                                     {["html", "css", "sass", "javascript", "typescript", "solidity"].map((key, i) => {
                                         const skill = TECH_STACKS[key];
-                                        return <li key={i}>{skill?.label}</li>;
+                                        return (
+                                            <li key={i}>
+                                                <span>
+                                                    <span className={styles.circle}></span>
+                                                    {skill?.label}
+                                                </span>
+                                            </li>
+                                        );
                                     })}
                                 </ul>
                             </section>
@@ -41,7 +65,10 @@ export default function Skills({ skillsListRef, skillsContainerRef }: Props) {
                                 <h4>Special</h4>
                                 <ul>
                                     <li>
-                                        Googling <span>😜</span>
+                                        <span>
+                                            <span className={styles.circle}></span>
+                                            Googling <span>😜</span>
+                                        </span>
                                     </li>
                                 </ul>
                             </section>
@@ -70,7 +97,14 @@ export default function Skills({ skillsListRef, skillsContainerRef }: Props) {
                                     "netlify"
                                 ].map((key, i) => {
                                     const skill = TECH_STACKS[key];
-                                    return <li key={i}>{skill?.label}</li>;
+                                    return (
+                                        <li key={i}>
+                                            <span>
+                                                <span className={styles.circle}></span>
+                                                {skill?.label}
+                                            </span>
+                                        </li>
+                                    );
                                 })}
                             </ul>
                         </section>

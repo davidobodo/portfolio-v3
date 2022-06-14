@@ -26,7 +26,7 @@ export default function useProjectAnimation() {
     }, []);
 
     //TITLE DISPLACEMENT
-    const projectTitleRef = useRef<HTMLHeadElement>(null);
+    const projectTitleRef = useRef<HTMLHeadingElement>(null);
     useEffect(() => {
         if (projectTitleRef.current) {
             const tl = gsap.timeline({

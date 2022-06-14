@@ -9,7 +9,7 @@ function animateFaintSvg(
     windowWidth: number
 ) {
     const progressEquivalent = normalize(progress, 0, 100);
-    const displacement = (progressEquivalent / 100) * parentElement.clientHeight;
+    const displacement = (progressEquivalent / 100) * parentElement?.clientHeight;
     const svgHeight = svgViewportHeightRatio * windowWidth;
     const final = displacement - svgHeight;
 

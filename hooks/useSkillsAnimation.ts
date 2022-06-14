@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { animateFaintSvg } from "#/utils";
 import { DATA_VALUES } from "#/constants";
 import { TTimelineAction } from "#/interfaces";
@@ -7,22 +7,47 @@ import { TTimelineAction } from "#/interfaces";
 export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
     const skillsListRef = useRef<HTMLDivElement>(null);
     const skillsContainerRef = useRef<HTMLDivElement>(null);
+    const skillsContentWrapperRef = useRef<HTMLDivElement>(null);
+    const skillsSectionTitlteRef = useRef<HTMLHeadingElement>(null);
+
     useEffect(() => {
-        if (skillsContainerRef.current && skillsListRef.current) {
-            return;
+        if (skillsSectionTitlteRef.current) {
+            const titleTexts = skillsSectionTitlteRef.current.querySelectorAll("span>span");
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: skillsSectionTitlteRef.current,
+                    start: "top 80%",
+                    toggleActions: "restart pause pause reverse"
+                }
+            });
+            tl.to(titleTexts, {
+                y: 0
+            })
+                .to(titleTexts[0], { x: 150 })
+                .to(titleTexts[2], { x: 150 }, "<");
+        }
+    }, [skillsSectionTitlteRef.current]);
+
+    const [tl, setTl] = useState<gsap.core.Timeline>();
+    useEffect(() => {
+        if (skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
             const svgElement = skillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
+
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: skillsContainerRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
                     toggleActions: "restart pause reverse pause",
                     scrub: true,
-                    pin: skillsContainerRef.current?.firstElementChild,
+                    pin: skillsContentWrapperRef.current,
                     pinSpacing: false,
                     onUpdate: (self) => {
                         svgElement.style.bottom =
                             animateFaintSvg(
                                 self.progress,
-                                skillsContainerRef.current?.firstElementChild as HTMLElement,
+                                skillsContentWrapperRef.current as HTMLElement,
                                 DATA_VALUES.skillsSvgViewportHeight,
                                 windowInnerWidth
                             ) + "px";
@@ -30,20 +55,28 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
                 }
             });
 
+            setTl(tl);
+        }
+    }, [skillsListRef.current, skillsContainerRef.current, skillsContentWrapperRef.current]);
+    useEffect(() => {
+        if (tl && skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
             let timelineActions: TTimelineAction[] = [];
 
+            const image = skillsContainerRef.current.querySelector('[data-id="hand-image"]') as HTMLElement;
             const skillLists = skillsListRef.current.querySelectorAll('[data-id="skill"]');
 
             // CREATE TIMELINE ACTIONS
+            timelineActions.push({ target: image, vars: { width: "29vw", duration: 2 } });
+
             for (let i = 0; i < skillLists.length; i++) {
                 const header = skillLists[i].firstElementChild as HTMLElement;
-                const list = header?.nextElementSibling;
-                const listItems = (list?.children as unknown) as HTMLElement;
+                const list = header?.nextElementSibling; // The "UL tag"
+                const listItems = (list?.querySelectorAll("li>span") as unknown) as HTMLElement;
 
                 //show heading
                 timelineActions.push({ target: header, vars: { opacity: 1 } });
                 //show list
-                timelineActions.push({ target: listItems, vars: { opacity: 1, stagger: 0.2 } });
+                timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
             }
 
             // EXECUTE TIMELINE ACTIONS
@@ -55,10 +88,12 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
                 }
             }
         }
-    }, []);
+    }, [tl, skillsListRef.current, skillsContainerRef.current, skillsContentWrapperRef.current]);
 
     return {
         skillsListRef,
-        skillsContainerRef
+        skillsContainerRef,
+        skillsContentWrapperRef,
+        skillsSectionTitlteRef
     };
 }
