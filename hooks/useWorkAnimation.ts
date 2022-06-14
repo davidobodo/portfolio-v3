@@ -76,18 +76,33 @@ export default function useWorkAnimation({
             for (let i = 0; i < details.length; i++) {
                 const target = details[i];
 
-                //Increase title opacity
-                timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } });
-
                 // Move the background gradient
                 timelineActions.push({
                     target: activeWorkBgGradient.current as Element,
                     vars: { y: i * DATA_VALUES.workTitleHeightDesktop },
-                    options: "<"
+                    options: i === 0 ? " " : "<"
                 });
 
+                if (i !== 0) {
+                    // Decrease details opacity
+                    timelineActions.push({
+                        target,
+                        vars: { opacity: 0 },
+                        options: ">-25%", // start at 25% towards the end of the previous animation
+                        action: "decrease opac"
+                    });
+                }
+
+                //Increase title opacity
+                timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } });
+
                 // Increase details opacity
-                timelineActions.push({ target, vars: { opacity: 1 }, action: "increase opac" });
+                timelineActions.push({
+                    target,
+                    vars: { opacity: 1, visibility: "visible" },
+                    options: "<",
+                    action: "increase opac"
+                });
 
                 // Add a label at this point to the timeline (Might be useful for click events)
                 timelineActions.push({ isLabel: true, label: `active-${i}` });
@@ -97,16 +112,16 @@ export default function useWorkAnimation({
 
                 // Dont decrease opacity for the last item
                 if (i !== details.length - 1) {
+                    // Decrease title opacity
+                    timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } });
+
                     // Decrease details opacity
                     timelineActions.push({
                         target,
-                        vars: { opacity: 0 },
+                        vars: { opacity: 0, visibility: "hidden" },
                         options: ">-25%", // start at 25% towards the end of the previous animation
                         action: "decrease opac"
                     });
-
-                    // Decrease title opacity
-                    timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.2 } });
                 }
             }
 

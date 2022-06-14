@@ -34,14 +34,14 @@
 
                 .bgGradient {
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
-                    height: 63px;
+                    height: 83px;
                     width: 100vw;
                     position: absolute;
-                    top: 0px;
+                    transform: translate(0px, -83px);
                 }
 
                 .tabHeader {
-                    color: var(--ash);
+                    color: var(--white);
                     cursor: pointer;
                     list-style: none;
                     font-family: "sf-pro-bold";
@@ -51,7 +51,7 @@
                     font-weight: 600;
                     letter-spacing: -0.015em;
                     padding: 1rem 4rem 1rem 2rem;
-                    opacity: 0.2;
+                    opacity: 0.1;
                 }
             }
         }
@@ -68,22 +68,43 @@
                 transform: translateY(40px);
                 opacity: 0;
                 color: var(--ash);
+                visibility: hidden;
 
                 h4 {
-                    font-size: 21px;
+                    font-size: 18px;
                     line-height: 1.19048;
                     font-weight: 600;
-                    letter-spacing: 0.011em;
+                    letter-spacing: 0.021em;
                     margin-bottom: 2rem;
+                    color: var(--white);
                 }
 
-                p {
+                .notes {
                     font-size: 18px;
-                    line-height: 1.5;
+                    line-height: 2;
+                    margin-bottom: 1rem;
+                    font-family: "sf-pro-bold";
+                    width: 360px;
+
+                    a {
+                        cursor: pointer;
+                        color: inherit;
+
+                        &:hover {
+                            color: var(--white);
+                        }
+                    }
+                    ol {
+                        padding-left: 1.8rem;
+                    }
+                }
+
+                span {
+                    font-size: 16px;
+                    line-height: 1.19048;
                     font-weight: 600;
-                    letter-spacing: 0.011em;
-                    margin-bottom: 2rem;
-                    font-family: "sf-pro-medium";
+                    margin-bottom: 4rem;
+                    display: block;
                 }
 
                 ul {
@@ -91,11 +112,10 @@
 
                     li {
                         font-size: 18px;
-                        font-weight: 600;
                         margin-bottom: 1.2rem;
                         padding-left: 30px;
                         position: relative;
-                        font-family: "sf-pro-medium";
+                        font-family: "sf-pro-bold";
                         line-height: 1.5;
 
                         &:before {
@@ -109,6 +129,16 @@
                             border-radius: 50%;
                             top: 50%;
                             transform: translateY(-50%);
+                        }
+
+                        a {
+                            text-decoration: underline;
+                            cursor: pointer;
+                            color: inherit;
+
+                            &:hover {
+                                color: var(--white);
+                            }
                         }
                     }
                 }

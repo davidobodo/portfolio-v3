@@ -38,7 +38,7 @@ export default function FirstThought({ textWrapperRef }: { textWrapperRef: Ref<H
 
                     <div className={styles.textLine}>
                         <span>
-                            using the most <strong>efficient algorithms </strong> to ensure optimal
+                            using the most <strong>efficient algorithms </strong> to ensure
                         </span>
                     </div>
 

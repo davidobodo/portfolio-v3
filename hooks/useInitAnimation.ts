@@ -31,8 +31,7 @@ export default function useInitAnimation() {
                 tl.to(mobilePicRef.current, { width: "100%" });
             } else {
                 tl.to(profilePicRef.current, { opacity: 1 }).to(profilePicRef.current!.querySelector("polyline"), {
-                    strokeDashoffset: 0,
-                    duration: 1
+                    strokeDashoffset: 0
                 });
             }
 

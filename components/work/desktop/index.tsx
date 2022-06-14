@@ -35,21 +35,24 @@ export default function ViewDesktop({
                     </div>
                     <div className={styles.tabDetails} ref={workDetailsContainerRef}>
                         {WORK.map((item, i) => {
-                            const { title, company, location, range, url } = item;
+                            const { title, company, location, range, url, note, urlLabel } = item;
                             return (
                                 <div className={styles.tabDetail} key={i} data-goto={`active-work-${i}`}>
                                     <section>
                                         <h4>{company}</h4>
-                                        <p>
-                                            To cancel unwanted external sound, <br /> AirPods Max use a total of six{" "}
-                                            <br /> outward-facing microp
-                                        </p>
+                                        <div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
+
+                                        <span>{range}</span>
 
                                         <ul>
-                                            <li>Title : {title}</li>
-                                            <li>Location : {location}</li>
-                                            <li>Company Url : {url}</li>
-                                            <li>{range}</li>
+                                            <li> {title}</li>
+
+                                            {location && <li> {location}</li>}
+                                            <li>
+                                                <a href={url} target="_blank">
+                                                    {urlLabel ? urlLabel : url}
+                                                </a>
+                                            </li>
                                         </ul>
                                     </section>
                                 </div>
