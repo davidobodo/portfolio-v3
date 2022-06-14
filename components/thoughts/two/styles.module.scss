@@ -6,14 +6,20 @@
     padding-top: 15vh;
     padding-left: 2rem;
     padding-right: 2rem;
+    height: 100vh;
 
     @media (min-width: $md) {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1.5fr;
     }
 
     .textWrapper {
         margin-bottom: 8.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: right;
+
         .paragraph {
             margin-bottom: 2.4rem;
 
@@ -25,6 +31,7 @@
                 position: relative;
                 overflow: hidden;
                 font-size: 12px;
+                font-family: "sf-pro-bold";
 
                 @media (min-width: $md) {
                     font-size: 24px;

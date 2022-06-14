@@ -1,24 +1,26 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-    .sectionTitle {
-        color: var(--ash3);
-        font-size: 60px;
-        line-height: 1;
-        font-weight: 600;
-        letter-spacing: -0.002em;
-        margin-bottom: 8rem;
+    .sectionTitleWrapper {
+        .sectionTitle {
+            color: var(--ash3);
+            font-size: 60px;
+            line-height: 1;
+            font-weight: 600;
+            letter-spacing: -0.002em;
+            margin-bottom: 8rem;
 
-        @media (min-width: $md) {
-            font-size: 100px;
-        }
+            @media (min-width: $md) {
+                font-size: 100px;
+            }
 
-        span {
-            display: block;
-        }
+            span {
+                display: block;
+            }
 
-        strong {
-            color: #fff;
+            strong {
+                color: #fff;
+            }
         }
     }
 

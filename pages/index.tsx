@@ -61,9 +61,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
+            {/* <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} /> */}
             <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
-                <Banner
+                {/* <Banner
                     bannerRef={bannerRef}
                     fieldRef={fieldRef}
                     nameRef={nameRef}
@@ -74,11 +74,11 @@ const Home: NextPage = () => {
                     profilePicRef={profilePicRef}
                     scrollIndicatorRef={scrollIndicatorRef}
                     mobilePicRef={mobilePicRef}
-                />
+                /> */}
                 <div className={styles.darkSection} ref={darkSectionRef}>
                     <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>
                     <div className={styles.darkSectionContent}>
-                        <About aboutListRef={aboutListRef} />
+                        {/* <About aboutListRef={aboutListRef} />
                         <Work
                             workContainerRef={workContainerRef}
                             workTabsRef={workTabsRef}
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
                             skillsContainerRef={skillsContainerRef}
                             skillsContentWrapperRef={skillsContentWrapperRef}
                             skillsSectionTitlteRef={skillsSectionTitlteRef}
-                        />
+                        /> */}
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} />
                     </div>

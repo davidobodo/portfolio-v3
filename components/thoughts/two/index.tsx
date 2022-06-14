@@ -10,16 +10,13 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
                     <div className={styles.textLine}>
                         <span>
                             {" "}
-                            Truth is the life of a programmer requires one to <strong>
-                                learn new things everyday
-                            </strong>{" "}
-                            ,
+                            Truth is the life of a programmer requires one to <strong>learn new things</strong>
                         </span>
                     </div>
 
                     <div className={styles.textLine}>
                         <span>
-                            technology keeps changing at a <strong>very fast pace.</strong>
+                            everyday, cause technology keeps changing at a <strong>very fast pace.</strong>
                         </span>
                     </div>
                 </div>

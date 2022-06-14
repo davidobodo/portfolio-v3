@@ -11,13 +11,15 @@ export default function Projects({
 }) {
     return (
         <div className={styles.container}>
-            <h3 className={styles.sectionTitle} ref={projectTitleRef}>
-                <span>A few</span>
-                <span> select </span>
-                <span>
-                    <strong>Projects</strong>{" "}
-                </span>
-            </h3>
+            <div className={styles.sectionTitleWrapper}>
+                <h3 className={styles.sectionTitle} ref={projectTitleRef}>
+                    <span>A few</span>
+                    <span> select </span>
+                    <span>
+                        <strong>Projects</strong>{" "}
+                    </span>
+                </h3>
+            </div>
 
             <div className={styles.projectsListWrapper} ref={projectsListWrapperRef}>
                 <div className={styles.projectsList}>
