@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
-import { FaintBgText, Button } from "../../index";
+import { FaintBgText } from "../../index";
 import { Ref } from "react";
 
 export type ViewDesktopProps = {
@@ -52,7 +52,7 @@ export default function ViewDesktop({
 
                                             {location && <li> {location}</li>}
                                             <li>
-                                                <a href={url} target="_blank">
+                                                <a href={url} target="_blank" rel="noreferrer">
                                                     {urlLabel ? urlLabel : url}
                                                 </a>
                                             </li>

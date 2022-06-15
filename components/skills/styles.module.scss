@@ -28,10 +28,9 @@
                     margin-bottom: 7rem;
                     position: relative;
                     z-index: 1;
-                    // font-family: "sf-pro-bold";
 
                     @media (min-width: $md) {
-                        font-size: 100px;
+                        font-size: 80px;
                     }
 
                     span {
@@ -39,7 +38,8 @@
                         overflow: hidden;
 
                         span {
-                            transform: translateY(80px);
+                            transform: translate(80px, 80px);
+                            line-height: 1.1;
                         }
 
                         strong {

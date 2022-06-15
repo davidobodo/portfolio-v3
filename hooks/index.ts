@@ -4,11 +4,12 @@ import useAboutAnimation from "./useAboutAnimation";
 import useRegisterGsapScrollTrigger from "./useRegisterGsapScrollTrigger";
 import usePinRadialGradient from "./usePinRadialGradient";
 import useWorkAnimation from "./useWorkAnimation";
-import useRevealText from "./useRevealText";
+import useRevealParagraph from "./useRevealParagraph";
 import useSkillsAnimation from "./useSkillsAnimation";
 import useProjectAnimation from "./useProjectAnimation";
 import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useScrollToTop from "./useScollToTop";
+import useRevealHeading from "./useRevealHeading";
 
 export {
     useInitAnimation,
@@ -17,9 +18,10 @@ export {
     useRegisterGsapScrollTrigger,
     usePinRadialGradient,
     useWorkAnimation,
-    useRevealText,
+    useRevealParagraph,
     useSkillsAnimation,
     useProjectAnimation,
     useCalculateFooterHeight,
-    useScrollToTop
+    useScrollToTop,
+    useRevealHeading
 };

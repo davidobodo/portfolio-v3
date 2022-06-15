@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import { Button } from "../index";
 export default function Contact() {
+    const handleClick = () => {};
     return (
         <div className={styles.container}>
             <div className={styles.contentWrapper}>
@@ -84,7 +85,7 @@ export default function Contact() {
                         </div>
 
                         <div className={styles.btnWrapper}>
-                            <Button label="Send" />
+                            <Button label="Send" onClick={handleClick} type="submit" ariaLabel="send" />
                         </div>
                     </form>
                 </div>

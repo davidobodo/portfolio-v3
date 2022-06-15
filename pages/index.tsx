@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About, Work, Thoughts, Skills, Projects, Contact, Button } from "#/components";
+import { Preloader, Banner, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
@@ -9,11 +9,12 @@ import {
     useRegisterGsapScrollTrigger,
     usePinRadialGradient,
     useWorkAnimation,
-    useRevealText,
+    useRevealParagraph,
     useSkillsAnimation,
     useProjectAnimation,
     useCalculateFooterHeight,
-    useScrollToTop
+    useScrollToTop,
+    useRevealHeading
 } from "#/hooks";
 
 const Home: NextPage = () => {
@@ -45,12 +46,15 @@ const Home: NextPage = () => {
         mobileWorkContainerRef,
         mobileWorkContentWrapperRef
     } = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
-    const { textWrapperRef: thoughtOneText } = useRevealText();
-    const { textWrapperRef: thoughtTwoText } = useRevealText();
-    const { skillsListRef, skillsContainerRef, skillsContentWrapperRef, skillsSectionTitlteRef } = useSkillsAnimation({
+    const { textWrapperRef: thoughtOneText } = useRevealParagraph();
+    const { textWrapperRef: thoughtTwoText } = useRevealParagraph();
+
+    const { headingRef: skillsSectionTitlteRef } = useRevealHeading();
+    const { skillsListRef, skillsContainerRef, skillsContentWrapperRef } = useSkillsAnimation({
         windowInnerWidth
     });
-    const { projectsListWrapperRef, projectTitleRef } = useProjectAnimation();
+    const { headingRef: projectTitleRef } = useRevealHeading();
+    const { projectsListWrapperRef } = useProjectAnimation();
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
     return (
@@ -61,9 +65,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} /> */}
+            <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
             <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
-                {/* <Banner
+                <Banner
                     bannerRef={bannerRef}
                     fieldRef={fieldRef}
                     nameRef={nameRef}
@@ -74,11 +78,11 @@ const Home: NextPage = () => {
                     profilePicRef={profilePicRef}
                     scrollIndicatorRef={scrollIndicatorRef}
                     mobilePicRef={mobilePicRef}
-                /> */}
+                />
                 <div className={styles.darkSection} ref={darkSectionRef}>
                     <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>
                     <div className={styles.darkSectionContent}>
-                        {/* <About aboutListRef={aboutListRef} />
+                        <About aboutListRef={aboutListRef} />
                         <Work
                             workContainerRef={workContainerRef}
                             workTabsRef={workTabsRef}
@@ -96,7 +100,7 @@ const Home: NextPage = () => {
                             skillsContainerRef={skillsContainerRef}
                             skillsContentWrapperRef={skillsContentWrapperRef}
                             skillsSectionTitlteRef={skillsSectionTitlteRef}
-                        /> */}
+                        />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} />
                     </div>

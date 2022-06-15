@@ -23,29 +23,9 @@ export default function useProjectAnimation() {
                 }
             });
         }
-    }, []);
+    }, [projectsListWrapperRef.current]);
 
-    //TITLE DISPLACEMENT
-    const projectTitleRef = useRef<HTMLHeadingElement>(null);
-    useEffect(() => {
-        if (projectTitleRef.current) {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: projectTitleRef.current,
-                    toggleActions: "restart pause reverse pause",
-                    start: "top center",
-                    end: "bottom center",
-                    scrub: true
-                }
-            });
-
-            tl.to(projectTitleRef.current.children[0], { x: 80 })
-                .to(projectTitleRef.current.children[1], { x: -100 }, "<")
-                .to(projectTitleRef.current.children[2], { x: 80 }, "<");
-        }
-    }, [projectTitleRef]);
     return {
-        projectsListWrapperRef,
-        projectTitleRef
+        projectsListWrapperRef
     };
 }

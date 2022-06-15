@@ -8,26 +8,6 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
     const skillsListRef = useRef<HTMLDivElement>(null);
     const skillsContainerRef = useRef<HTMLDivElement>(null);
     const skillsContentWrapperRef = useRef<HTMLDivElement>(null);
-    const skillsSectionTitlteRef = useRef<HTMLHeadingElement>(null);
-
-    useEffect(() => {
-        if (skillsSectionTitlteRef.current) {
-            const titleTexts = skillsSectionTitlteRef.current.querySelectorAll("span>span");
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: skillsSectionTitlteRef.current,
-                    start: "top 80%",
-                    toggleActions: "restart pause pause reverse"
-                }
-            });
-            tl.to(titleTexts, {
-                y: 0
-            })
-                .to(titleTexts[0], { x: 150 })
-                .to(titleTexts[2], { x: 150 }, "<");
-        }
-    }, [skillsSectionTitlteRef.current]);
 
     const [tl, setTl] = useState<gsap.core.Timeline>();
     useEffect(() => {
@@ -93,7 +73,6 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
     return {
         skillsListRef,
         skillsContainerRef,
-        skillsContentWrapperRef,
-        skillsSectionTitlteRef
+        skillsContentWrapperRef
     };
 }

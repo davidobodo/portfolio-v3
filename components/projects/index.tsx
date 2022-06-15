@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 import { Button } from "../index";
@@ -9,22 +10,29 @@ export default function Projects({
     projectsListWrapperRef: Ref<HTMLDivElement>;
     projectTitleRef: Ref<HTMLHeadingElement>;
 }) {
+    const handleClick = () => {};
     return (
         <div className={styles.container}>
             <div className={styles.sectionTitleWrapper}>
-                <h3 className={styles.sectionTitle} ref={projectTitleRef}>
-                    <span>A few</span>
-                    <span> select </span>
+                <h2 className={styles.sectionTitle} ref={projectTitleRef}>
                     <span>
-                        <strong>Projects</strong>{" "}
+                        <span>A few</span>
                     </span>
-                </h3>
+                    <span>
+                        <span>select</span>
+                    </span>
+                    <span>
+                        <span>
+                            <strong>Projects</strong>{" "}
+                        </span>
+                    </span>
+                </h2>
             </div>
 
             <div className={styles.projectsListWrapper} ref={projectsListWrapperRef}>
                 <div className={styles.projectsList}>
                     {PROJECTS.slice(0, 5).map((item, i) => {
-                        const { title, details, live_link, tech } = item;
+                        const { title, details } = item;
                         return (
                             <div className={styles.project} key={i}>
                                 <div
@@ -39,7 +47,7 @@ export default function Projects({
                                     <h1>{title}</h1>
                                     <p>{details}</p>
                                     <div className={styles.buttonWrapper}>
-                                        <Button label="View Project" />
+                                        <Button label="View Project" ariaLabel="view project" onClick={handleClick} />
                                     </div>
                                 </div>
                             </div>
@@ -51,9 +59,11 @@ export default function Projects({
                         <div className={styles.content}>
                             <a>
                                 <span>View all projects</span>
-                                <img
+                                <Image
                                     src="https://assets-global.website-files.com/5c51b8093dcfd38165099093/5f959b1cd3283e540294ea95_icon-enclosed-arrow.svg"
                                     alt=""
+                                    width={30}
+                                    height={30}
                                 />
                             </a>
                         </div>

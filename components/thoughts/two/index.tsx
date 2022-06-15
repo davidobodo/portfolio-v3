@@ -30,12 +30,12 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
                     </div>
 
                     <div className={styles.textLine}>
-                        <span>Learn to solve what ever problem is encountered, ain't that why </span>
+                        <span>Learn to solve what ever problem is encountered, ain&quot;t that why </span>
                     </div>
 
                     <div className={styles.textLine}>
                         <span>
-                            <strong> "Googling" is almost our best friend 😅</strong>
+                            <strong> &quot;Googling&quot; is almost our best friend 😅</strong>
                             <strong>?</strong>
                         </span>
                     </div>

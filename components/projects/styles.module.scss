@@ -2,24 +2,38 @@
 
 .container {
     .sectionTitleWrapper {
+        max-width: var(--max-width);
+        margin: auto;
+        margin-bottom: 8rem;
+        // border: 1px solid green;
+
         .sectionTitle {
-            color: var(--ash3);
-            font-size: 60px;
-            line-height: 1;
             font-weight: 600;
-            letter-spacing: -0.002em;
-            margin-bottom: 8rem;
+            line-height: 0.9;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--ash);
+            font-size: 36px;
+            margin-bottom: 7rem;
+            position: relative;
+            z-index: 1;
 
             @media (min-width: $md) {
-                font-size: 100px;
+                font-size: 80px;
             }
 
             span {
                 display: block;
-            }
+                overflow: hidden;
 
-            strong {
-                color: #fff;
+                span {
+                    transform: translate(80px, 80px);
+                    line-height: 1.1;
+                }
+
+                strong {
+                    color: #fff;
+                }
             }
         }
     }
@@ -35,6 +49,7 @@
             height: 80vh;
             // width: 100%;
             padding-left: var(--spacing-x);
+            padding-left: 16.5vw;
             border-top: 1px solid var(--ash3);
             border-bottom: 1px solid var(--ash3);
 
@@ -42,6 +57,7 @@
                 border-right: 1px solid var(--ash3);
                 padding: 100px;
                 padding-right: 130px;
+                padding-left: 70px;
                 height: 100%;
                 width: 30vw;
                 max-width: 500px;
@@ -82,11 +98,12 @@
                     z-index: 2;
                     height: 100%;
                     display: grid;
-                    grid-template-rows: 22.5em auto auto;
+                    grid-template-rows: 34% auto auto;
                     color: var(--ash);
 
                     h1 {
                         font-size: 3.6rem;
+                        letter-spacing: 0.021em;
                     }
 
                     p {
@@ -94,12 +111,23 @@
                         font-weight: 600;
                         line-height: 30px;
                         margin-bottom: 2rem;
+                        font-size: 18px;
+                        line-height: 2;
+                        margin-bottom: 1rem;
+                        font-family: "sf-pro-bold";
                         transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
                         will-change: opacity, transform;
                     }
 
                     .buttonWrapper {
                         margin-top: auto;
+
+                        button {
+                            color: var(--ash3);
+                            border: 2px solid var(--ash3);
+
+                            font-family: "sf-pro-bold";
+                        }
                     }
                 }
 
@@ -115,6 +143,13 @@
                         p {
                             opacity: 0;
                             transform: translateY(30px);
+                        }
+                    }
+
+                    .buttonWrapper {
+                        button {
+                            color: var(--white);
+                            border-color: var(--white);
                         }
                     }
                 }

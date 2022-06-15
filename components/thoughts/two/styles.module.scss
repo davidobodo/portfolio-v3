@@ -40,8 +40,8 @@
                 span {
                     display: block;
                     opacity: 0;
-                    transform: translateY(40px) rotate(10deg) skewX(30deg);
-                    transform-origin: left;
+                    transform: translateY(40px) rotate(-10deg) skewX(30deg);
+                    transform-origin: right;
                     strong {
                         color: #fff;
                     }
