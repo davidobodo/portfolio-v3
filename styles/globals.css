@@ -47,6 +47,18 @@ body {
     font-family: "sf-pro-regular";
 }
 
+body::-webkit-scrollbar {
+    width: 7px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--light-brown);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--black);
+}
+
 h1,
 h2,
 h3,

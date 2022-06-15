@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 import { Button } from "../index";
@@ -59,12 +59,17 @@ export default function Projects({
                         <div className={styles.content}>
                             <a>
                                 <span>View all projects</span>
-                                <Image
+                                <img
                                     src="https://assets-global.website-files.com/5c51b8093dcfd38165099093/5f959b1cd3283e540294ea95_icon-enclosed-arrow.svg"
+                                    alt=""
+                                />
+                                {/* <Image
+                                    // src="https://assets-global.website-files.com/5c51b8093dcfd38165099093/5f959b1cd3283e540294ea95_icon-enclosed-arrow.svg"
+                                    src=""
                                     alt=""
                                     width={30}
                                     height={30}
-                                />
+                                /> */}
                             </a>
                         </div>
                         <div></div>
