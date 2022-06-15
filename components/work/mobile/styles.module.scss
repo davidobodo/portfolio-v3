@@ -56,7 +56,7 @@
 
             .tabDetails {
                 position: relative;
-                height: 320px; //Assumption from text height
+                height: 564px; //Assumption from text height
 
                 .tabDetail {
                     position: absolute;
@@ -65,6 +65,7 @@
                     padding-left: 2rem;
                     padding-right: 2rem;
                     opacity: 0;
+                    width: 100vw;
 
                     // &:nth-child(1) {
                     //     opacity: 1;
@@ -72,21 +73,31 @@
 
                     color: var(--ash);
 
-                    h4 {
-                        font-size: 21px;
-                        line-height: 1.19048;
-                        font-weight: 600;
-                        letter-spacing: 0.011em;
-                        margin-bottom: 2rem;
+                    .notes {
+                        font-size: 18px;
+                        line-height: 2;
+                        margin-bottom: 1rem;
+                        font-family: "sf-pro-bold";
+
+                        a {
+                            cursor: pointer;
+                            color: inherit;
+
+                            &:hover {
+                                color: var(--white);
+                            }
+                        }
+                        ol {
+                            padding-left: 1.8rem;
+                        }
                     }
 
-                    p {
-                        font-size: 18px;
-                        line-height: 1.5;
+                    span {
+                        font-size: 16px;
+                        line-height: 1.19048;
                         font-weight: 600;
-                        letter-spacing: 0.011em;
-                        margin-bottom: 2rem;
-                        font-family: "sf-pro-medium";
+                        margin-bottom: 4rem;
+                        display: block;
                     }
 
                     ul {
@@ -94,11 +105,10 @@
 
                         li {
                             font-size: 18px;
-                            font-weight: 600;
                             margin-bottom: 1.2rem;
                             padding-left: 30px;
                             position: relative;
-                            font-family: "sf-pro-medium";
+                            font-family: "sf-pro-bold";
                             line-height: 1.5;
 
                             &:before {
@@ -112,6 +122,16 @@
                                 border-radius: 50%;
                                 top: 50%;
                                 transform: translateY(-50%);
+                            }
+
+                            a {
+                                text-decoration: underline;
+                                cursor: pointer;
+                                color: inherit;
+
+                                &:hover {
+                                    color: var(--white);
+                                }
                             }
                         }
                     }

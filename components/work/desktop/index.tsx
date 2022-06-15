@@ -40,7 +40,7 @@ export default function ViewDesktop({
                         {WORK.map((item, i) => {
                             const { title, company, location, range, url, note, urlLabel } = item;
                             return (
-                                <div className={styles.tabDetail} key={i} data-goto={`active-work-${i}`}>
+                                <div className={styles.tabDetail} key={i}>
                                     <section>
                                         <h4>{company}</h4>
                                         <div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />

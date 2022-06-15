@@ -31,20 +31,23 @@ export default function ViewMobile({
 
                     <div className={styles.tabDetails} ref={mobileWorkDetailsContainerRef}>
                         {WORK.map((item, i) => {
-                            const { title, location, range, url } = item;
+                            const { title, location, range, url, note, urlLabel } = item;
                             return (
-                                <div className={styles.tabDetail} key={i} data-goto={`active-work-${i}`}>
+                                <div className={styles.tabDetail} key={i}>
                                     <section>
-                                        <p>
-                                            To cancel unwanted external sound, <br /> AirPods Max use a total of six{" "}
-                                            <br /> outward-facing microp
-                                        </p>
+                                        <div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
+
+                                        <span>{range}</span>
 
                                         <ul>
-                                            <li>Title : {title}</li>
-                                            <li>Location : {location}</li>
-                                            <li>Company Url : {url}</li>
-                                            <li>{range}</li>
+                                            <li> {title}</li>
+
+                                            {location && <li> {location}</li>}
+                                            <li>
+                                                <a href={url} target="_blank" rel="noreferrer">
+                                                    {urlLabel ? urlLabel : url}
+                                                </a>
+                                            </li>
                                         </ul>
                                     </section>
                                 </div>
