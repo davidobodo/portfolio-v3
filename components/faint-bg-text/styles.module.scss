@@ -17,6 +17,9 @@
             stroke-dasharray: 2000;
             stroke-linecap: butt;
             stroke-linejoin: round;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none;
         }
     }
 }

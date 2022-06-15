@@ -40,6 +40,11 @@ html {
     font-size: 62.5%;
 }
 
+*::selection {
+    background: var(--light-brown);
+    color: var(--black);
+}
+
 body {
     padding: 0;
     margin: 0;
