@@ -12,7 +12,7 @@ import {
     useRevealParagraph,
     useSkillsAnimation,
     useProjectAnimation,
-    useCalculateFooterHeight,
+    // useCalculateFooterHeight,
     useScrollToTop,
     useRevealHeading
 } from "#/hooks";
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
     } = useSkillsAnimation({ windowInnerWidth });
     const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
     const { projectsListWrapperRef } = useProjectAnimation();
-    const { footerHeight, footerRef } = useCalculateFooterHeight();
+    // const { footerHeight, footerRef } = useCalculateFooterHeight();
 
     return (
         <div>
