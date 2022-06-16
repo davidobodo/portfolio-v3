@@ -7,6 +7,13 @@
         margin-bottom: 8rem;
         // border: 1px solid green;
 
+        padding-left: 16.5vw;
+        padding-right: 2rem;
+
+        @media (min-width: $md) {
+            padding: 0px;
+        }
+
         .sectionTitle {
             font-weight: 600;
             line-height: 0.9;
@@ -27,12 +34,26 @@
                 overflow: hidden;
 
                 span {
-                    transform: translate(80px, 80px);
                     line-height: 1.1;
+                    transform: translate(80px, 40px);
+
+                    @media (min-width: $md) {
+                        transform: translate(80px, 80px);
+                    }
+
+                    strong {
+                        color: #fff;
+                    }
                 }
 
-                strong {
-                    color: #fff;
+                &:nth-child(2) {
+                    span {
+                        transform: translate(40px, 40px);
+
+                        @media (min-width: $md) {
+                            transform: translate(80px, 80px);
+                        }
+                    }
                 }
             }
         }
@@ -55,17 +76,25 @@
 
             .project {
                 border-right: 1px solid var(--ash3);
-                padding: 100px;
-                padding-right: 130px;
-                padding-left: 70px;
+
                 height: 100%;
-                width: 30vw;
                 max-width: 500px;
-                min-width: 400px;
                 flex-shrink: 0;
                 position: relative; // For the background image
                 overflow: hidden; // So the background image scaling up wont show outside
                 cursor: pointer;
+                width: 80vw;
+                padding: 70px;
+                padding-right: 40px;
+                padding-left: 40px;
+
+                @media (min-width: $md) {
+                    width: 30vw;
+                    min-width: 400px;
+                    padding: 100px;
+                    padding-right: 130px;
+                    padding-left: 70px;
+                }
 
                 .projectImage {
                     background-size: cover;
@@ -161,12 +190,16 @@
                     grid-template-rows: 22.5em auto auto;
                     position: relative;
                     a {
-                        font-size: 4rem;
                         background-color: transparent;
                         border: 0px;
                         color: #fff;
                         display: flex;
                         align-items: center;
+                        font-size: 2.4rem;
+
+                        @media (min-width: $md) {
+                            font-size: 4rem;
+                        }
 
                         span {
                             margin-right: 1rem;
