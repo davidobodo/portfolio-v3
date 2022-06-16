@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             </Head>
 
             <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
-            <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
+            <div className={styles.main}>
                 <Banner
                     bannerRef={bannerRef}
                     fieldRef={fieldRef}
@@ -113,9 +113,9 @@ const Home: NextPage = () => {
                 </div>
             </div>
 
-            <footer className={styles.footer} ref={footerRef}>
-                <Contact />
-            </footer>
+            {/* <footer className={styles.footer} ref={footerRef}> */}
+            <Contact />
+            {/* </footer> */}
             <div className={styles.noise}></div>
         </div>
     );

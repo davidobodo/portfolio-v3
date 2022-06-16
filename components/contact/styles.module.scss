@@ -6,15 +6,23 @@
     .contentWrapper {
         max-width: var(--max-width);
         margin: auto;
-        padding: 10vh 0px;
+        padding: 8vh 2rem;
         color: var(--black);
 
         @media (min-width: $md) {
+            padding: 10vh 0rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
 
         .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            @media (min-width: $md) {
+                display: block;
+            }
+
             section {
                 &:first-child {
                     margin-bottom: 6rem;
@@ -60,17 +68,22 @@
         }
 
         .contact {
-            padding: 2rem;
+            padding: 2rem 0px;
 
             @media (min-width: $md) {
                 padding: 5rem;
             }
 
             h3 {
-                font-size: 3vw;
-                margin-bottom: 7rem;
+                font-size: 2.4rem;
+                margin-bottom: 3rem;
                 font-family: "sf-pro-regular";
                 font-weight: 200;
+
+                @media (min-width: $md) {
+                    font-size: 3vw;
+                    margin-bottom: 7rem;
+                }
 
                 &::selection {
                     background: var(--black);
