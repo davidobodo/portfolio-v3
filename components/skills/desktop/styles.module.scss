@@ -96,10 +96,11 @@
                         li {
                             font-weight: 600;
                             position: relative;
-                            font-size: 18px;
+                            font-size: 16px;
                             line-height: 2;
                             font-family: "sf-pro-bold";
                             overflow: hidden;
+                            white-space: nowrap;
 
                             .circle {
                                 width: 6px;

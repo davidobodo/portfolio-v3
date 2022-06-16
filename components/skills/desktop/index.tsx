@@ -84,7 +84,6 @@ export default function SkillsDesktop({
                                     "graphql",
                                     "redux",
                                     "gsap",
-                                    "styledcomponents",
                                     "tailwindcss",
                                     "threejs",
                                     "expressjs",
@@ -94,7 +93,8 @@ export default function SkillsDesktop({
                                     "chakraui",
                                     "gcp",
                                     "heroku",
-                                    "netlify"
+                                    "netlify",
+                                    "styledcomponents"
                                 ].map((key, i) => {
                                     const skill = TECH_STACKS[key];
                                     return (
