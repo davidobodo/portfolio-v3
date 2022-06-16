@@ -4,12 +4,20 @@
     margin: auto;
     margin-bottom: 20vh;
     max-width: var(--max-width);
-    padding-top: 15vh;
     padding-left: 2rem;
     padding-right: 2rem;
 
+    @media (min-width: $md) {
+        padding-top: 15vh;
+    }
+
     .textWrapper {
         margin-bottom: 8.4rem;
+
+        @media (min-width: $md) {
+            width: 50%;
+        }
+
         .paragraph {
             margin-bottom: 2.4rem;
 
@@ -20,7 +28,7 @@
                 letter-spacing: -0.015em;
                 position: relative;
                 overflow: hidden;
-                font-size: 12px;
+                font-size: 18px;
                 font-family: "sf-pro-bold";
 
                 @media (min-width: $md) {
