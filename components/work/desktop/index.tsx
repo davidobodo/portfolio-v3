@@ -3,7 +3,7 @@ import { WORK } from "#/constants";
 import { FaintBgText } from "../../index";
 import { Ref } from "react";
 
-export type ViewDesktopProps = {
+export type WorkDesktopProps = {
     workContainerRef: Ref<HTMLDivElement>;
     workTabsRef: Ref<HTMLDivElement>;
     activeWorkBgGradient: Ref<HTMLLIElement>;
@@ -16,7 +16,7 @@ export default function ViewDesktop({
     activeWorkBgGradient,
     workTitlesContainerRef,
     workDetailsContainerRef
-}: ViewDesktopProps) {
+}: WorkDesktopProps) {
     return (
         <div className={styles.container} ref={workContainerRef}>
             <div className={styles.contentWrapper} ref={workTabsRef}>

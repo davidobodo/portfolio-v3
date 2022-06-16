@@ -1,0 +1,163 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    min-height: 150vh; // So animation can scroll through a distance
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    display: block;
+
+    @media (min-width: $md) {
+        display: none;
+    }
+
+    .contentWrapper {
+        height: 100vh; // Hols both the svg animation and the actual content displayed . SVG animation would be positioned relative to this
+        display: flex;
+        align-items: center; // In order to position the actual skills content in the center
+        width: 100%;
+
+        .wrapper {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: var(--max-width);
+
+            .heading {
+                position: relative;
+
+                .subTitle {
+                    font-weight: 600;
+                    line-height: 0.9;
+                    font-weight: 600;
+                    letter-spacing: -0.015em;
+                    color: var(--ash);
+                    font-size: 36px;
+                    margin-bottom: 7rem;
+                    position: relative;
+                    z-index: 1;
+
+                    @media (min-width: $md) {
+                        font-size: 80px;
+                    }
+
+                    span {
+                        display: block;
+                        overflow: hidden;
+
+                        span {
+                            transform: translate(80px, 40px);
+                            line-height: 1.1;
+
+                            strong {
+                                color: #fff;
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            span {
+                                transform: translate(40px, 40px);
+                            }
+                        }
+                    }
+                }
+
+                // .image {
+                //     position: absolute;
+                //     height: 39vw;
+                //     max-width: 68rem;
+                //     max-height: 90rem;
+                //     background-color: #28282b;
+                //     left: -25%;
+                //     top: 10rem;
+                //     background-size: cover;
+                //     background-position: center;
+                //     background-repeat: no-repeat;
+
+                //     width: 50vw;
+                //     height: 50vh;
+                //     left: -2rem;
+
+                //     &:after {
+                //         content: "";
+                //         height: 100%;
+                //         width: 100%;
+                //         background-color: rgba(0, 0, 0, 0.7);
+                //         display: block;
+                //         position: absolute;
+                //         left: 0px;
+                //         top: 0px;
+                //     }
+
+                //     // width: 0px;
+                // }
+            }
+
+            .skillsList {
+                // display: grid;
+                // grid-gap: 4rem;
+                // grid-template-columns: 1fr 0.8fr 1.4fr;
+                position: relative;
+                height: 402px;
+
+                .skillsListInner {
+                    position: absolute;
+                    opacity: 0;
+
+                    .skills {
+                        color: var(--ash3);
+                        margin-bottom: 4rem;
+
+                        h4 {
+                            font-size: 1.6rem;
+                            font-weight: 600;
+                            margin-bottom: 2.4rem;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            color: var(--white);
+
+                            opacity: 0;
+                        }
+
+                        ul {
+                            list-style: none;
+
+                            li {
+                                font-weight: 600;
+                                position: relative;
+                                font-size: 18px;
+                                line-height: 2;
+                                font-family: "sf-pro-bold";
+                                overflow: hidden;
+
+                                .circle {
+                                    width: 6px;
+                                    height: 6px;
+                                    background-color: var(--ash3);
+                                    display: flex;
+                                    border-radius: 50%;
+
+                                    margin-right: 2rem;
+                                }
+                            }
+
+                            li > span {
+                                transform: translateY(30px);
+                                display: flex;
+                                align-items: center;
+                            }
+                        }
+
+                        &.others {
+                            ul {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                grid-column-gap: 4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

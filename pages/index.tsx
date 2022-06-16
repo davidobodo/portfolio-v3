@@ -49,11 +49,15 @@ const Home: NextPage = () => {
     const { textWrapperRef: thoughtOneText } = useRevealParagraph();
     const { textWrapperRef: thoughtTwoText } = useRevealParagraph();
 
-    const { headingRef: skillsSectionTitlteRef } = useRevealHeading();
-    const { skillsListRef, skillsContainerRef, skillsContentWrapperRef } = useSkillsAnimation({
-        windowInnerWidth
-    });
-    const { headingRef: projectTitleRef } = useRevealHeading();
+    const { headingRef: skillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
+    const { headingRef: mobileSkillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
+    const {
+        skillsListRef,
+        skillsContainerRef,
+        skillsContentWrapperRef,
+        mobileSkillsContainerRef
+    } = useSkillsAnimation({ windowInnerWidth });
+    const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
     const { projectsListWrapperRef } = useProjectAnimation();
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
@@ -100,6 +104,8 @@ const Home: NextPage = () => {
                             skillsContainerRef={skillsContainerRef}
                             skillsContentWrapperRef={skillsContentWrapperRef}
                             skillsSectionTitlteRef={skillsSectionTitlteRef}
+                            mobileSkillsContainerRef={mobileSkillsContainerRef}
+                            mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} />

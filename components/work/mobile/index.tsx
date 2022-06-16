@@ -3,7 +3,7 @@ import { WORK } from "#/constants";
 import { FaintBgText } from "../../index";
 import { Ref } from "react";
 
-export type ViewMobileProps = {
+export type WorkMobileProps = {
     mobileWorkDetailsContainerRef: Ref<HTMLDivElement>;
     mobileWorkTitlesContainerRef: Ref<HTMLUListElement>;
     mobileWorkContainerRef: Ref<HTMLDivElement>;
@@ -14,7 +14,7 @@ export default function ViewMobile({
     mobileWorkTitlesContainerRef,
     mobileWorkContainerRef,
     mobileWorkContentWrapperRef
-}: ViewMobileProps) {
+}: WorkMobileProps) {
     return (
         <div className={styles.container} ref={mobileWorkContainerRef}>
             <div className={styles.contentWrapper} ref={mobileWorkContentWrapperRef}>

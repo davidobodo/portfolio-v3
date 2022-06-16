@@ -1,7 +1,7 @@
-import ViewDesktop, { ViewDesktopProps } from "./desktop";
-import ViewMobile, { ViewMobileProps } from "./mobile";
+import WorkDesktop, { WorkDesktopProps } from "./desktop";
+import WorkMobile, { WorkMobileProps } from "./mobile";
 
-type Props = {} & ViewDesktopProps & ViewMobileProps;
+type Props = {} & WorkDesktopProps & WorkMobileProps;
 export default function Work({
     workContainerRef,
     workTabsRef,
@@ -15,14 +15,14 @@ export default function Work({
 }: Props) {
     return (
         <div>
-            <ViewDesktop
+            <WorkDesktop
                 workContainerRef={workContainerRef}
                 workTabsRef={workTabsRef}
                 activeWorkBgGradient={activeWorkBgGradient}
                 workTitlesContainerRef={workTitlesContainerRef}
                 workDetailsContainerRef={workDetailsContainerRef}
             />
-            <ViewMobile
+            <WorkMobile
                 mobileWorkDetailsContainerRef={mobileWorkDetailsContainerRef}
                 mobileWorkTitlesContainerRef={mobileWorkTitlesContainerRef}
                 mobileWorkContainerRef={mobileWorkContainerRef}

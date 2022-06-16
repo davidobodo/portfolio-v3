@@ -70,9 +70,86 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
         }
     }, [tl, skillsListRef.current, skillsContainerRef.current, skillsContentWrapperRef.current]);
 
+    //------------------------------------------
+    //MOBILE ANIMATION
+    //------------------------------------------
+    const mobileSkillsContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (mobileSkillsContainerRef.current) {
+            const svgElement = mobileSkillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
+            const contentWrapper = mobileSkillsContainerRef.current.querySelector(
+                '[data-id="content-wrapper"]'
+            ) as HTMLElement;
+            const listWrapper = mobileSkillsContainerRef.current.querySelector(
+                '[data-id="lists-wrapper"]'
+            ) as HTMLElement;
+            const skillLists = mobileSkillsContainerRef.current.querySelectorAll('[data-id="skill"]');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: mobileSkillsContainerRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
+                    toggleActions: "restart pause reverse pause",
+                    scrub: true,
+                    pin: contentWrapper,
+                    pinSpacing: false,
+                    onUpdate: (self) => {
+                        svgElement.style.bottom =
+                            animateFaintSvg(
+                                self.progress,
+                                contentWrapper,
+                                DATA_VALUES.skillsSvgViewportHeight,
+                                windowInnerWidth
+                            ) + "px";
+                    }
+                }
+            });
+
+            let timelineActions = [];
+
+            // CREATE TIMELINE ACTIONS
+            timelineActions.push({ target: listWrapper.children[0], vars: { opacity: 1 } });
+
+            const { header, listItems } = getListHeaderAndItems(skillLists[0]);
+            timelineActions.push({ target: header, vars: { opacity: 1 } });
+            timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
+
+            const { header: headerTwo, listItems: listItemsTwo } = getListHeaderAndItems(skillLists[1]);
+            timelineActions.push({ target: headerTwo, vars: { opacity: 1 } });
+            timelineActions.push({ target: listItemsTwo, vars: { stagger: 0.2, y: 0 } });
+
+            timelineActions.push({ target: listWrapper.children[0], vars: { opacity: 0 } });
+            timelineActions.push({ target: listWrapper.children[1], vars: { opacity: 1 } });
+
+            const { header: headerThree, listItems: listItemsThree } = getListHeaderAndItems(skillLists[2]);
+            timelineActions.push({ target: headerThree, vars: { opacity: 1 } });
+            timelineActions.push({ target: listItemsThree, vars: { stagger: 0.2, y: 0 } });
+
+            // EXECUTE TIMELINE ACTIONS
+            for (let j = 0; j < timelineActions.length; j++) {
+                const { target, vars } = timelineActions[j];
+
+                if (target && vars) {
+                    tl.to(target, vars);
+                }
+            }
+        }
+    }, [mobileSkillsContainerRef.current, windowInnerWidth]);
     return {
         skillsListRef,
         skillsContainerRef,
-        skillsContentWrapperRef
+        skillsContentWrapperRef,
+        mobileSkillsContainerRef
+    };
+}
+
+function getListHeaderAndItems(element: HTMLElement | Element) {
+    const header = element.firstElementChild as HTMLElement;
+    const listItems = (header?.nextElementSibling?.querySelectorAll("li>span") as unknown) as HTMLElement;
+    return {
+        header,
+        listItems
     };
 }

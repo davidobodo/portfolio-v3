@@ -2,6 +2,11 @@
 
 .container {
     min-height: 150vh; // So animation can scroll through a distance
+    display: none;
+
+    @media (min-width: $md) {
+        display: block;
+    }
 
     .contentWrapper {
         height: 100vh; // Hols both the svg animation and the actual content displayed . SVG animation would be positioned relative to this

@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 
-export default function useRevealHeading() {
+export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidth: number }) {
     const headingRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
@@ -18,11 +18,11 @@ export default function useRevealHeading() {
             tl.to(titleTexts, {
                 y: 0
             })
-                .to(titleTexts[0], { x: 160 })
+                .to(titleTexts[0], { x: windowInnerWidth > 768 ? 160 : 0 })
                 .to(titleTexts[1], { x: 0 }, "<")
-                .to(titleTexts[2], { x: 160 }, "<");
+                .to(titleTexts[2], { x: windowInnerWidth > 768 ? 160 : 0 }, "<");
         }
-    }, [headingRef]);
+    }, [headingRef, windowInnerWidth]);
 
     return {
         headingRef
