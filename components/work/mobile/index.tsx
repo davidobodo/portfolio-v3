@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
+import { FaintBgText } from "../../index";
 import { Ref } from "react";
 
 export type ViewMobileProps = {
@@ -55,6 +56,12 @@ export default function ViewMobile({
                         })}
                     </div>
                 </div>
+                <FaintBgText
+                    text="work"
+                    containerStyles={{ width: "68vw", right: "0px", bottom: "0%" }}
+                    svgStyles={{ height: "30vw" }}
+                    textStyles={{ fontSize: "30vw" }}
+                />
             </div>
         </div>
     );

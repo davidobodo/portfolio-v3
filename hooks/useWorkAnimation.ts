@@ -156,9 +156,13 @@ export default function useWorkAnimation({
         if (windowInnerWidth < 768) {
             if (
                 mobileWorkContainerRef.current &&
+                mobileWorkContentWrapperRef.current &&
                 mobileWorkTitlesContainerRef.current &&
                 mobileWorkDetailsContainerRef.current
             ) {
+                const svgElement = mobileWorkContentWrapperRef.current.querySelector(
+                    '[data-id="faint-svg"]'
+                ) as HTMLElement;
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: mobileWorkContainerRef.current,
@@ -167,7 +171,16 @@ export default function useWorkAnimation({
                         toggleActions: "restart pause reverse pause",
                         scrub: true,
                         pin: mobileWorkContentWrapperRef.current,
-                        pinSpacing: false
+                        pinSpacing: false,
+                        onUpdate: (self) => {
+                            svgElement.style.bottom =
+                                animateWorkSvg(
+                                    self.progress,
+                                    mobileWorkContentWrapperRef.current as HTMLDivElement,
+                                    0.3,
+                                    windowInnerWidth
+                                ) + "px";
+                        }
                     }
                 });
 
