@@ -18,9 +18,13 @@
             display: grid;
             grid-gap: 8rem;
             grid-template-columns: 1.5fr 1fr;
-            max-width: var(--max-width);
             margin: auto;
             height: 100%;
+            max-width: 1024px;
+
+            @media (min-width: $xxl) {
+                max-width: var(--max-width);
+            }
         }
 
         // Since the height of this headers column is 100vh, "tabHeadersContainer" was brought in to center the tabHeaders
@@ -36,7 +40,7 @@
 
                 .bgGradient {
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
-                    height: 83px;
+                    height: 72px;
                     width: 100vw;
                     position: absolute;
                     transform: translate(0px, -83px);
@@ -48,12 +52,13 @@
                     list-style: none;
                     font-family: "sf-pro-bold";
                     font-weight: 600;
-                    font-size: 60px;
                     line-height: 1.05;
                     font-weight: 600;
                     letter-spacing: -0.015em;
                     padding: 1rem 4rem 1rem 2rem;
                     opacity: 0.1;
+
+                    font-size: 50px;
                 }
             }
 

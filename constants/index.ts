@@ -2,7 +2,7 @@ const DEFAULT_MOBILE_HEIGHT = 812;
 
 const DATA_VALUES = {
     workSvgViewportHeight: 0.13,
-    workTitleHeightDesktop: 83,
+    workTitleHeightDesktop: 72,
     skillsSvgViewportHeight: 0.15
 };
 
