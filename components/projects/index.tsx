@@ -5,10 +5,12 @@ import { Button } from "../index";
 import { Ref } from "react";
 export default function Projects({
     projectsListWrapperRef,
-    projectTitleRef
+    projectTitleRef,
+    windowInnerHeight
 }: {
     projectsListWrapperRef: Ref<HTMLDivElement>;
     projectTitleRef: Ref<HTMLHeadingElement>;
+    windowInnerHeight: number;
 }) {
     const handleClick = () => {};
     return (
@@ -45,7 +47,9 @@ export default function Projects({
 
                                 <div className={styles.projectDetails}>
                                     <h1>{title}</h1>
-                                    <p>{details}</p>
+                                    <div>
+                                        <p>{details}</p>
+                                    </div>
                                     <div className={styles.buttonWrapper}>
                                         <Button label="View Project" ariaLabel="view project" onClick={handleClick} />
                                     </div>

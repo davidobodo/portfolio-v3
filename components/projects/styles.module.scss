@@ -2,16 +2,18 @@
 
 .container {
     .sectionTitleWrapper {
-        max-width: var(--max-width);
         margin: auto;
         margin-bottom: 8rem;
-        // border: 1px solid green;
-
         padding-left: 16.5vw;
         padding-right: 2rem;
 
         @media (min-width: $md) {
+            max-width: var(--mini-desktop-max-width);
             padding: 0px;
+        }
+
+        @media (min-width: $xxl) {
+            max-width: var(--max-width);
         }
 
         .sectionTitle {
@@ -24,8 +26,12 @@
             margin-bottom: 7rem;
             position: relative;
             z-index: 1;
+            padding-left: 2rem;
 
             @media (min-width: $md) {
+                font-size: 60px;
+            }
+            @media (min-width: $xxl) {
                 font-size: 80px;
             }
 
@@ -91,9 +97,8 @@
                 @media (min-width: $md) {
                     width: 30vw;
                     min-width: 400px;
-                    padding: 100px;
+                    padding: 8vh;
                     padding-right: 130px;
-                    padding-left: 70px;
                 }
 
                 .projectImage {
@@ -146,6 +151,13 @@
                         font-family: "sf-pro-bold";
                         transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
                         will-change: opacity, transform;
+
+                        @media (min-width: $lg) {
+                            display: none;
+                        }
+                        @media (min-width: $xl) {
+                            display: block;
+                        }
                     }
 
                     .buttonWrapper {
@@ -187,7 +199,7 @@
                     display: flex;
                     padding-right: 0px;
                     display: grid;
-                    grid-template-rows: 22.5em auto auto;
+                    grid-template-rows: 34% auto auto;
                     position: relative;
                     a {
                         background-color: transparent;
