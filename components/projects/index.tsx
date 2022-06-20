@@ -1,4 +1,5 @@
 // import Image from "next/image";
+import Link from "next/link";
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 import { Button } from "../index";
@@ -59,20 +60,11 @@ export default function Projects({
                     <div className={styles.project + " " + styles.viewAll}>
                         <div></div>
                         <div className={styles.content}>
-                            <a>
-                                <span>View all projects</span>
-                                <img
-                                    src="https://assets-global.website-files.com/5c51b8093dcfd38165099093/5f959b1cd3283e540294ea95_icon-enclosed-arrow.svg"
-                                    alt=""
-                                />
-                                {/* <Image
-                                    // src="https://assets-global.website-files.com/5c51b8093dcfd38165099093/5f959b1cd3283e540294ea95_icon-enclosed-arrow.svg"
-                                    src=""
-                                    alt=""
-                                    width={30}
-                                    height={30}
-                                /> */}
-                            </a>
+                            <Link href="/projects">
+                                <a>
+                                    <span>View all projects &#8594;</span>
+                                </a>
+                            </Link>
                         </div>
                         <div></div>
                         <div className={styles.liquid}></div>

@@ -197,20 +197,23 @@
 
                 &.viewAll {
                     display: flex;
-                    padding-right: 0px;
                     display: grid;
                     grid-template-rows: 34% auto auto;
                     position: relative;
+
                     a {
                         background-color: transparent;
                         border: 0px;
-                        color: #fff;
                         display: flex;
                         align-items: center;
-                        font-size: 2.4rem;
+                        font-size: 1.8rem;
+                        text-decoration: none;
+                        color: var(--ash3);
+                        font-family: "sf-pro-bold";
+                        margin-top: 1rem;
 
                         @media (min-width: $md) {
-                            font-size: 4rem;
+                            // font-size: 4rem;
                         }
 
                         span {
@@ -219,6 +222,13 @@
 
                         img {
                             height: 30px;
+                        }
+
+                        &:hover {
+                            span {
+                                text-decoration: underline;
+                                color: var(--white);
+                            }
                         }
                     }
 

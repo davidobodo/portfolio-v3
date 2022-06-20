@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { Button } from "../index";
+import Link from "next/link";
 export default function Contact() {
     const handleClick = () => {};
     return (
@@ -11,19 +12,29 @@ export default function Contact() {
 
                         <ul>
                             <li>
-                                <a href="">Home</a>
+                                <Link href="/">
+                                    <a href="">Home</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="about">About</a>
+                                <Link href="/">
+                                    <a href="about">About</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">Work</a>
+                                <Link href="/">
+                                    <a href="">Work</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">Skills</a>
+                                <Link href="/">
+                                    <a href="">Skills</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">Projects</a>
+                                <Link href="/projects">
+                                    <a>Projects</a>
+                                </Link>
                             </li>
                         </ul>
                     </section>
@@ -32,16 +43,24 @@ export default function Contact() {
                         <h4>Extras</h4>
                         <ul>
                             <li>
-                                <a>Resume</a>
+                                <Link href="/">
+                                    <a>Resume</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">14 rAndom things</a>
+                                <Link href="/">
+                                    <a href="">14 rAndom things</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">Site Credits</a>
+                                <Link href="/">
+                                    <a href="">Site Credits</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">Play a game</a>
+                                <Link href="/">
+                                    <a href="">Play a game</a>
+                                </Link>
                             </li>
                         </ul>
                     </section>
