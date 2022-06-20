@@ -21,6 +21,7 @@ export default function useInitAnimation() {
                 .to(logoRef.current, { fill: "#fcfcfc" })
                 .to(logoRef.current, { opacity: 0 })
                 .to(preloaderBgRef.current, { y: "-100vh" })
+                .to(preloaderBgRef.current, { display: "none" })
                 .to(nameRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
                 .to(fieldRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
                 .to(firstSubFieldRef.current, { y: 0 })

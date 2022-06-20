@@ -36,8 +36,13 @@ export default function useWorkAnimation({
     }
 
     useEffect(() => {
-        if (windowInnerWidth > 768) {
-            if (workContainerRef.current && workTabsRef.current) {
+        if (windowInnerWidth >= 992) {
+            if (
+                workContainerRef.current &&
+                workTabsRef.current &&
+                workTitlesContainerRef.current &&
+                workDetailsContainerRef.current
+            ) {
                 const svgElement = workTabsRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
 
                 const tl = gsap.timeline({
@@ -61,88 +66,84 @@ export default function useWorkAnimation({
                     }
                 });
                 setTl(tl);
-            }
-        }
-    }, [workContainerRef, workTabsRef, windowInnerHeight, windowInnerWidth]);
 
-    useEffect(() => {
-        if (tl && workDetailsContainerRef.current && workTitlesContainerRef.current) {
-            const titles = workTitlesContainerRef.current.children;
-            const details = workDetailsContainerRef.current.children;
+                const titles = workTitlesContainerRef.current.children;
+                const details = workDetailsContainerRef.current.children;
 
-            let timelineActions: TTimelineAction[] = [];
+                let timelineActions: TTimelineAction[] = [];
 
-            // CREATE TIMELINE ACTIONS
-            for (let i = 0; i < details.length; i++) {
-                const target = details[i];
+                // CREATE TIMELINE ACTIONS
+                for (let i = 0; i < details.length; i++) {
+                    const target = details[i];
 
-                // Move the background gradient
-                timelineActions.push({
-                    target: activeWorkBgGradient.current as Element,
-                    vars: { y: i * DATA_VALUES.workTitleHeightDesktop },
-                    options: i === 0 ? " " : "<"
-                });
+                    // Move the background gradient
+                    timelineActions.push({
+                        target: activeWorkBgGradient.current as Element,
+                        vars: { y: i * DATA_VALUES.workTitleHeightDesktop },
+                        options: i === 0 ? " " : "<"
+                    });
 
-                if (i !== 0) {
-                    // Decrease details opacity
+                    if (i !== 0) {
+                        // Decrease details opacity
+                        timelineActions.push({
+                            target,
+                            vars: { opacity: 0 },
+                            options: ">-25%", // start at 25% towards the end of the previous animation
+                            action: "decrease opac"
+                        });
+                    }
+
+                    //Increase title opacity
+                    timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } });
+
+                    // Increase details opacity
                     timelineActions.push({
                         target,
-                        vars: { opacity: 0 },
-                        options: ">-25%", // start at 25% towards the end of the previous animation
-                        action: "decrease opac"
+                        vars: { opacity: 1, visibility: "visible" },
+                        options: "<",
+                        action: "increase opac"
                     });
+
+                    // Add a label at this point to the timeline (Might be useful for click events)
+                    timelineActions.push({ isLabel: true, label: `active-${i}` });
+
+                    // Translate details to their normal position
+                    timelineActions.push({ target, vars: { y: 0 }, options: "<", action: "move up" });
+
+                    // Dont decrease opacity for the last item
+                    if (i !== details.length - 1) {
+                        // Decrease title opacity
+                        timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } });
+
+                        // Decrease details opacity
+                        timelineActions.push({
+                            target,
+                            vars: { opacity: 0, visibility: "hidden" },
+                            options: ">-25%", // start at 25% towards the end of the previous animation
+                            action: "decrease opac"
+                        });
+                    }
                 }
 
-                //Increase title opacity
-                timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } });
+                // EXECUTE TIMELINE ACTIONS
+                for (let j = 0; j < timelineActions.length; j++) {
+                    const { target, vars, options, action, isLabel, label } = timelineActions[j];
 
-                // Increase details opacity
-                timelineActions.push({
-                    target,
-                    vars: { opacity: 1, visibility: "visible" },
-                    options: "<",
-                    action: "increase opac"
-                });
-
-                // Add a label at this point to the timeline (Might be useful for click events)
-                timelineActions.push({ isLabel: true, label: `active-${i}` });
-
-                // Translate details to their normal position
-                timelineActions.push({ target, vars: { y: 0 }, options: "<", action: "move up" });
-
-                // Dont decrease opacity for the last item
-                if (i !== details.length - 1) {
-                    // Decrease title opacity
-                    timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } });
-
-                    // Decrease details opacity
-                    timelineActions.push({
-                        target,
-                        vars: { opacity: 0, visibility: "hidden" },
-                        options: ">-25%", // start at 25% towards the end of the previous animation
-                        action: "decrease opac"
-                    });
-                }
-            }
-
-            // EXECUTE TIMELINE ACTIONS
-            for (let j = 0; j < timelineActions.length; j++) {
-                const { target, vars, options, action, isLabel, label } = timelineActions[j];
-
-                if (isLabel && label) {
-                    tl.add(label);
-                } else {
-                    if (target && vars) {
-                        if (options) {
-                            tl.to(target, vars, options);
-                        } else {
-                            tl.to(target, vars);
+                    if (isLabel && label) {
+                        tl.add(label);
+                    } else {
+                        if (target && vars) {
+                            if (options) {
+                                tl.to(target, vars, options);
+                            } else {
+                                tl.to(target, vars);
+                            }
                         }
                     }
                 }
             }
         }
-    }, [tl, workTitlesContainerRef, workDetailsContainerRef]);
+    }, [workContainerRef, workTabsRef, windowInnerHeight, windowInnerWidth]);
 
     //-----------------------------------------
     //MOBILE ANIMATION
@@ -153,7 +154,7 @@ export default function useWorkAnimation({
     const mobileWorkDetailsContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (windowInnerWidth < 768) {
+        if (windowInnerWidth < 992) {
             if (
                 mobileWorkContainerRef.current &&
                 mobileWorkContentWrapperRef.current &&
