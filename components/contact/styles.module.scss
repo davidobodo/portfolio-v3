@@ -19,6 +19,47 @@
             max-width: var(--max-width);
         }
 
+        a {
+            font-size: 1.8rem;
+            text-decoration: underline;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: var(--black);
+            position: relative;
+
+            span {
+                position: relative;
+            }
+
+            &::selection {
+                background: var(--black);
+                color: var(--light-brown);
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                width: 0%;
+                height: 100%;
+                position: absolute;
+                z-index: 0;
+                background: var(--black);
+                transition: width 200ms ease-in-out;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: var(--light-brown);
+                text-decoration: none;
+                outline: none;
+
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
         .links {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -52,19 +93,6 @@
 
                         &:last-child {
                             margin-bottom: 0px;
-                        }
-
-                        a {
-                            font-size: 1.8rem;
-                            text-decoration: underline;
-                            cursor: pointer;
-                            text-transform: uppercase;
-                            color: var(--black);
-
-                            &::selection {
-                                background: var(--black);
-                                color: var(--light-brown);
-                            }
                         }
                     }
                 }
@@ -140,22 +168,11 @@
 
                     ul {
                         list-style: none;
-                        text-align: right;
 
                         li {
                             margin-bottom: 2rem;
-                            a {
-                                font-size: 1.8rem;
-                                text-decoration: underline;
-                                cursor: pointer;
-                                text-transform: uppercase;
-                                color: var(--black);
-
-                                &::selection {
-                                    background: var(--black);
-                                    color: var(--light-brown);
-                                }
-                            }
+                            display: flex;
+                            justify-content: flex-end;
                         }
                     }
                 }

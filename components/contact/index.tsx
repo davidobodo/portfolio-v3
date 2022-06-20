@@ -13,27 +13,37 @@ export default function Contact() {
                         <ul>
                             <li>
                                 <Link href="/">
-                                    <a href="">Home</a>
+                                    <a href="">
+                                        <span>Home</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/">
-                                    <a href="about">About</a>
+                                    <a href="about">
+                                        <span>About</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/">
-                                    <a href="">Work</a>
+                                    <a href="">
+                                        <span>Work</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/">
-                                    <a href="">Skills</a>
+                                    <a href="">
+                                        <span>Skills</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/projects">
-                                    <a>Projects</a>
+                                    <a>
+                                        <span>Projects </span>
+                                    </a>
                                 </Link>
                             </li>
                         </ul>
@@ -44,22 +54,34 @@ export default function Contact() {
                         <ul>
                             <li>
                                 <Link href="/">
-                                    <a>Resume</a>
+                                    <a>
+                                        {" "}
+                                        <span>Resume</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/">
-                                    <a href="">14 rAndom things</a>
+                                    <a href="">
+                                        {" "}
+                                        <span>14 rAndom things</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/">
-                                    <a href="">Site Credits</a>
+                                    <a href="">
+                                        {" "}
+                                        <span>Site Credits</span>
+                                    </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/">
-                                    <a href="">Play a game</a>
+                                    <a href="">
+                                        {" "}
+                                        <span>Play a game</span>
+                                    </a>
                                 </Link>
                             </li>
                         </ul>
@@ -86,16 +108,24 @@ export default function Contact() {
 
                             <ul>
                                 <li>
-                                    <a>LINKEDIN</a>
+                                    <a href="">
+                                        <span>LINKEDIN</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a>GITHUB</a>
+                                    <a href="">
+                                        <span>GITHUB</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a>TWITTER</a>
+                                    <a href="">
+                                        <span>TWITTER</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a>Email</a>
+                                    <a href="">
+                                        <span>Email</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
