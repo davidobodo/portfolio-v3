@@ -5,20 +5,22 @@
     padding: 10rem 2rem 10rem;
 
     @media (min-width: $md) {
-        width: 900px;
+        width: 50%;
         padding-top: 20rem;
         margin: auto;
+    }
+    @media (min-width: $lg) {
+        width: 700px;
+    }
+
+    @media (min-width: $xxl) {
+        width: 900px;
     }
 
     ul {
         list-style: none;
-
         margin: auto;
         width: 100%;
-
-        @media (min-width: $md) {
-            width: 900px;
-        }
 
         li {
             font-family: sf-pro-bold;
@@ -29,8 +31,11 @@
             line-height: 1.4;
             opacity: 0.2;
 
-            @media (min-width: $md) {
+            @media (min-width: $lg) {
                 line-height: 1.05;
+                font-size: 68px;
+            }
+            @media (min-width: $xxl) {
                 font-size: 80px;
             }
 
