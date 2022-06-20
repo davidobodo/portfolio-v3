@@ -5,12 +5,10 @@ import { Button } from "../index";
 import { Ref } from "react";
 export default function Projects({
     projectsListWrapperRef,
-    projectTitleRef,
-    windowInnerHeight
+    projectTitleRef
 }: {
     projectsListWrapperRef: Ref<HTMLDivElement>;
     projectTitleRef: Ref<HTMLHeadingElement>;
-    windowInnerHeight: number;
 }) {
     const handleClick = () => {};
     return (

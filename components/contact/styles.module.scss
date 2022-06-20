@@ -4,15 +4,19 @@
     background-color: var(--light-brown);
 
     .contentWrapper {
-        max-width: var(--max-width);
         margin: auto;
         padding: 8vh 2rem;
         color: var(--black);
 
         @media (min-width: $md) {
-            padding: 10vh 0rem;
+            padding: 10vh 2rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
+            max-width: var(--mini-desktop-max-width);
+        }
+
+        @media (min-width: $xxl) {
+            max-width: var(--max-width);
         }
 
         .links {
