@@ -35,9 +35,6 @@ export default function Contact() {
                                 <a>Resume</a>
                             </li>
                             <li>
-                                <a href="">Faqs</a>
-                            </li>
-                            <li>
                                 <a href="">14 rAndom things</a>
                             </li>
                             <li>
