@@ -17,8 +17,16 @@
         .wrapper {
             margin-left: auto;
             margin-right: auto;
+
             width: 100%;
-            max-width: var(--max-width);
+
+            @media (min-width: $md) {
+                max-width: var(--mini-desktop-max-width);
+            }
+
+            @media (min-width: $xxl) {
+                max-width: var(--max-width);
+            }
 
             .heading {
                 position: relative;
@@ -33,8 +41,12 @@
                     margin-bottom: 7rem;
                     position: relative;
                     z-index: 1;
+                    padding-left: 2rem;
 
                     @media (min-width: $md) {
+                        font-size: 60px;
+                    }
+                    @media (min-width: $xxl) {
                         font-size: 80px;
                     }
 
@@ -60,13 +72,16 @@
                     max-width: 68rem;
                     max-height: 90rem;
                     background-color: #28282b;
-                    left: -25%;
                     top: 10rem;
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
 
                     width: 0px;
+
+                    @media (min-width: $xl) {
+                        left: -25%;
+                    }
                 }
             }
 

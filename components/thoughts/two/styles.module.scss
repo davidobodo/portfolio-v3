@@ -2,15 +2,19 @@
 
 .container {
     margin: auto;
-    max-width: var(--max-width);
     padding-top: 15vh;
     padding-left: 2rem;
     padding-right: 2rem;
     height: 100vh;
 
-    @media (min-width: $md) {
+    @media (min-width: $lg) {
         display: grid;
         grid-template-columns: 1fr 1.5fr;
+        max-width: var(--mini-desktop-max-width);
+    }
+
+    @media (min-width: $xxl) {
+        max-width: var(--max-width);
     }
 
     .textWrapper {
