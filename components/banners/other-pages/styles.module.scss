@@ -3,7 +3,6 @@
 .nav {
     position: fixed;
     height: 80px;
-    // background-color: red;
     width: 100%;
     top: 0px;
     display: flex;
@@ -145,11 +144,22 @@
     .bottomSection {
         width: 100%;
         padding: 0px 5rem;
-        border-bottom: 1rem solid var(--black);
+        position: relative;
+        // border-bottom: 1rem solid var(--black);
 
         .titleWrapper {
             display: flex;
             justify-content: space-between;
+        }
+
+        .hrLine {
+            height: 1rem;
+            // width: calc(100% + 10rem);
+            width: 0px;
+            left: -5rem;
+            background-color: var(--black);
+            position: absolute;
+            bottom: 0px;
         }
     }
 }

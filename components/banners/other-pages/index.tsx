@@ -30,6 +30,25 @@ export default function Banner({ title }: { title: string }) {
         }
     }, [bannerRef.current]);
 
+    const hrLineRef = useRef(null);
+    useEffect(() => {
+        if (bannerRef.current) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: bannerRef.current
+                    // toggleActions: "restart pause reverse pause",
+                    // start: "top top",
+                    // end: "bottom top",
+                    // scrub: true,
+                    // pin: true,
+                    // pinSpacing: false
+                }
+            });
+
+            tl.to(hrLineRef.current, { width: "calc(100% + 10rem)", duration: 2 });
+        }
+    }, [bannerRef.current]);
+
     return (
         <div className={styles.container} ref={bannerRef}>
             <div className={styles.blackCover} ref={blackCoverRef}></div>
@@ -56,6 +75,7 @@ export default function Banner({ title }: { title: string }) {
                         </span>
                     </h1>
                 </div>
+                <div className={styles.hrLine} ref={hrLineRef}></div>
             </div>
         </div>
     );

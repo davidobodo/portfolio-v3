@@ -1,0 +1,43 @@
+@import "#/styles/globals.module.scss";
+
+// ---------------------------------------------
+// BIG TEXT
+// ---------------------------------------------
+.bigText {
+    position: relative;
+    font-family: "sf-pro-medium";
+    font-weight: 500;
+
+    .line {
+        display: block;
+
+        &:first-child {
+            margin-bottom: 1rem;
+        }
+
+        .letterwrapper {
+            display: inline-flex;
+            overflow: hidden;
+
+            span {
+                text-transform: uppercase;
+                line-height: 0.8em;
+                font-size: 60px;
+                letter-spacing: -2px;
+
+                &::selection {
+                    background: var(--black);
+                    color: var(--light-brown);
+                }
+
+                @media (min-width: $md) {
+                    font-size: 8vw;
+                }
+
+                @media (min-width: $xxl) {
+                    font-size: 160px;
+                }
+            }
+        }
+    }
+}

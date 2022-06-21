@@ -2,6 +2,7 @@ import { useState, useEffect, Ref, useRef, RefObject } from "react";
 import styles from "./styles.module.scss";
 import gsap from "gsap";
 import { ScrollAlert } from "../../index";
+import Heading from "../heading";
 
 type Props = {
     bannerRef: RefObject<HTMLDivElement>;
@@ -84,7 +85,7 @@ export default function Banner({
 
             <div className={styles.topSection}>
                 <div className={styles.topSectionTexts}>
-                    <h1 ref={fieldRef} className={styles.bigText}>
+                    {/* <h1 ref={fieldRef} className={styles.bigText}>
                         <span className={styles.line}>
                             {fieldA.split("").map((item, i) => {
                                 return (
@@ -103,7 +104,11 @@ export default function Banner({
                                 );
                             })}
                         </span>
-                    </h1>
+                    </h1> */}
+                    <div ref={fieldRef}>
+                        <Heading text={fieldA} />
+                        <Heading text={fieldB} />
+                    </div>
                     <div className={styles.subfieldwrapper}>
                         <div className={styles.subfieldtext} ref={firstSubFieldRef}>
                             <span></span> Front end addicted
