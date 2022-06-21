@@ -1,6 +1,7 @@
 import { useState, useEffect, Ref, useRef, RefObject } from "react";
 import styles from "./styles.module.scss";
 import gsap from "gsap";
+import { ScrollAlert } from "../../index";
 
 type Props = {
     bannerRef: RefObject<HTMLDivElement>;
@@ -123,10 +124,7 @@ export default function Banner({
                 </div>
             </div>
             <div className={styles.bottomSection}>
-                <div className={styles.scrollAlert} ref={scrollIndicatorRef}>
-                    <span>&#8595;</span>
-                    <span>Scroll</span>
-                </div>
+                <ScrollAlert containerRef={scrollIndicatorRef} containerStyles={{ opacity: 0 }} />
 
                 <div className={styles.bottomSectionText}>
                     <div className={styles.subfieldwrapper}>

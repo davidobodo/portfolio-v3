@@ -46,6 +46,13 @@ export default function Contact() {
                                     </a>
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/letters">
+                                    <a>
+                                        <span>Letters </span>
+                                    </a>
+                                </Link>
+                            </li>
                         </ul>
                     </section>
 

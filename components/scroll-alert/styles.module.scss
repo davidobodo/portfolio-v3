@@ -1,0 +1,57 @@
+@import "#/styles/globals.module.scss";
+
+.scrollAlert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 4px;
+
+    @media (min-width: $md) {
+        padding-bottom: 7px;
+    }
+
+    img {
+        animation: bounce 1.5s ease-in-out infinite;
+    }
+
+    span {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        letter-spacing: 0.05em;
+
+        @media (min-width: $xxl) {
+            font-size: 1.6rem;
+        }
+
+        &:first-child {
+            font-size: 4rem;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+
+        &::selection {
+            background: var(--black);
+            color: var(--light-brown);
+        }
+    }
+}
+
+// ---------------------------------------------
+// ANIMATION
+// ---------------------------------------------
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(-7px);
+    }
+    25% {
+        transform: translateY(3px);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+    75% {
+        transform: translateY(3px);
+    }
+}

@@ -10,7 +10,7 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Banners.OtherPages title="Projects." />
+            <Banners.OtherPages title="Letters." />
             <Contact />
             <div className="noise"></div>
         </div>

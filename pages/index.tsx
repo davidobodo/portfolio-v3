@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
-import { Preloader, Banner, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
+import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
 import {
     useInitAnimation,
     useWindowSize,
@@ -71,7 +71,7 @@ const Home: NextPage = () => {
 
             <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
             <div className={styles.main}>
-                <Banner
+                <Banners.HomePage
                     bannerRef={bannerRef}
                     fieldRef={fieldRef}
                     nameRef={nameRef}
