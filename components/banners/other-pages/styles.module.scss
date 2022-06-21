@@ -18,6 +18,18 @@
     }
 }
 
+.blackCover {
+    width: 100%;
+    position: fixed;
+    background-color: var(--black);
+    left: 0px;
+    top: -10px;
+    height: 1px;
+    z-index: 2;
+    transform-origin: top;
+    will-change: transform;
+}
+
 .navTitle {
     // path:nth-child(2) {
     //     transform-origin: 20%;

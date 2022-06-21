@@ -3,19 +3,23 @@ import type { NextPage } from "next";
 import styles from "#/styles/home.module.scss";
 import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
 import {
-    useInitAnimation,
+    useRevealParagraph,
     useWindowSize,
-    useAboutAnimation,
     useRegisterGsapScrollTrigger,
     usePinRadialGradient,
-    useWorkAnimation,
-    useRevealParagraph,
-    useSkillsAnimation,
-    useProjectAnimation,
     // useCalculateFooterHeight,
     useScrollToTop,
-    useRevealHeading
+    useRevealHeading,
+    HomePageHooks
 } from "#/hooks";
+
+const {
+    useInitAnimation,
+    useAboutAnimation,
+    useWorkAnimation,
+    useSkillsAnimation,
+    useProjectAnimation
+} = HomePageHooks;
 
 const Home: NextPage = () => {
     useScrollToTop();
