@@ -14,7 +14,7 @@ const Projects: NextPage = () => {
         setFilterBy(e.target.value);
     };
 
-    const [activeKey, setActiveKey] = useState("");
+    const [activeKey, setActiveKey] = useState("all");
 
     const onSetActiveKey = (key: string) => {
         setActiveKey(key);
@@ -84,38 +84,11 @@ const Projects: NextPage = () => {
                             );
                         })}
                     </ul>
-                    {/* {filterBy === "project-nature" ? (
-                        <ul>
-                            <li>
-                                <button>All</button>
-                            </li>
-                            {PROJECT_NATURE.map((item) => {
-                                return (
-                                    <li key={item.key}>
-                                        <button>{item.label}</button>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    ) : (
-                        <ul>
-                            <li>
-                                <button>All</button>
-                            </li>
-                            {Object.values(TECH_STACKS).map((item) => {
-                                return (
-                                    <li key={item.key}>
-                                        <button>{item.label}</button>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    )} */}
                 </aside>
 
                 <section className={styles.content}>
                     <header>{/* <h2>All projects</h2> */}</header>
-                    <Grid />
+                    <Grid activeKey={activeKey} />
                 </section>
             </div>
 

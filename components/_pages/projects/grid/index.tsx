@@ -1,23 +1,27 @@
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 
-export default function Grid() {
+export default function Grid({ activeKey }: { activeKey: string }) {
+    console.log(activeKey, "TEH KEY IN HERE");
     return (
         <div className={styles.container}>
             {PROJECTS.map((item, i) => {
                 const { tech, title, bgImage } = item;
-                // const bgImage =
-                // "https://images.unsplash.com/photo-1655748403948-96f04e5f2cc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60";
 
                 let isLocked = false;
 
-                // if (activeTech.key !== "all") {
-                //     if (!tech.includes(activeTech.key)) {
-                //         isLocked = true;
-                //     }
-                // }
+                if (activeKey !== "all") {
+                    if (!tech.includes(activeKey)) {
+                        isLocked = true;
+                    }
+                }
+
+                // if (isLocked) return null;
                 return (
-                    <div key={i} className={styles.box + " " + styles.free}>
+                    <div
+                        key={i}
+                        className={isLocked ? styles.box + " " + styles.locked : styles.box + " " + styles.free}
+                    >
                         <div className={styles.boxImage} style={{ backgroundImage: `url(${bgImage})` }}></div>
                         <div className={styles.boxOverlay}></div>
                         <div className={styles.boxCircle}>
@@ -25,7 +29,7 @@ export default function Grid() {
                                 View <br /> Project
                             </span>
                         </div>
-                        <div className="box__lock">
+                        <div className={styles.boxLock}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="icon icon-tabler icon-tabler-lock"

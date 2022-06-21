@@ -11,6 +11,7 @@
         position: relative;
         cursor: pointer;
         overflow: hidden;
+        border: 0.1px solid transparent;
 
         .boxImage {
             background-size: cover;
@@ -62,7 +63,7 @@
             }
         }
 
-        &__lock {
+        .boxLock {
             position: absolute;
             top: 0;
             left: 0;
@@ -96,13 +97,14 @@
 
         &.locked {
             cursor: not-allowed;
+            border-color: rgba(255, 255, 255, 0.2);
 
-            .box__overlay {
+            .boxOverlay {
                 // background-color: var(--locked-ash);
-                background-color: rgba(0, 0, 0, 1);
+                background-color: rgba(0, 0, 0, 0.9);
             }
 
-            .box__lock {
+            .boxLock {
                 opacity: 1;
             }
         }
