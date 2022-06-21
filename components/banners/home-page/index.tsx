@@ -85,29 +85,9 @@ export default function Banner({
 
             <div className={styles.topSection}>
                 <div className={styles.topSectionTexts}>
-                    {/* <h1 ref={fieldRef} className={styles.bigText}>
-                        <span className={styles.line}>
-                            {fieldA.split("").map((item, i) => {
-                                return (
-                                    <span className={styles.letterwrapper} key={i}>
-                                        <span data-key="letter">{item}</span>
-                                    </span>
-                                );
-                            })}
-                        </span>
-                        <span className={styles.line}>
-                            {fieldB.split("").map((item, i) => {
-                                return (
-                                    <span className={styles.letterwrapper} key={i}>
-                                        <span data-key="letter">{item}</span>
-                                    </span>
-                                );
-                            })}
-                        </span>
-                    </h1> */}
                     <div ref={fieldRef}>
-                        <Heading text={fieldA} />
-                        <Heading text={fieldB} />
+                        <Heading text={fieldA} revealOrigin="left" />
+                        <Heading text={fieldB} revealOrigin="left" />
                     </div>
                     <div className={styles.subfieldwrapper}>
                         <div className={styles.subfieldtext} ref={firstSubFieldRef}>
@@ -137,26 +117,11 @@ export default function Banner({
                             <span></span> Full stack capable
                         </div>
                     </div>
-                    <h1 ref={nameRef} className={styles.bigText}>
-                        <span className={styles.line}>
-                            {nameA.split("").map((item, i) => {
-                                return (
-                                    <span className={styles.letterwrapper} key={i}>
-                                        <span data-key="letter">{item}</span>
-                                    </span>
-                                );
-                            })}
-                        </span>
-                        <span className={styles.line}>
-                            {nameB.split("").map((item, i) => {
-                                return (
-                                    <span className={styles.letterwrapper} key={i}>
-                                        <span data-key="letter">{item}</span>
-                                    </span>
-                                );
-                            })}
-                        </span>
-                    </h1>
+
+                    <div ref={nameRef}>
+                        <Heading text={nameA} revealOrigin="right" />
+                        <Heading text={nameB} revealOrigin="right" />
+                    </div>
                 </div>
             </div>
         </div>

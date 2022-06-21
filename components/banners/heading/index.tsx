@@ -8,7 +8,7 @@ export default function Heading({
     revealOrigin
 }: {
     text: string;
-    textRef: Ref<HTMLHeadingElement>;
+    textRef?: Ref<HTMLHeadingElement>;
     containerStyles?: Record<string, string | number>;
     revealOrigin: "right" | "left";
 }) {
@@ -18,7 +18,12 @@ export default function Heading({
                 {text.split("").map((item, i) => {
                     return (
                         <span className={styles.letterwrapper} key={i}>
-                            <span data-key="letter" style={{ transform: revealOrigin === "right" ? "" : "" }}>
+                            <span
+                                data-key="letter"
+                                style={{
+                                    transform: revealOrigin === "right" ? "translateX(200px)" : "translateX(-200px)"
+                                }}
+                            >
                                 {item}
                             </span>
                         </span>
