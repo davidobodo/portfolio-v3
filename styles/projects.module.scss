@@ -6,6 +6,7 @@
     background-color: var(--black);
     color: var(--white);
     display: flex;
+    z-index: 1;
 
     .aside {
         width: 300px;

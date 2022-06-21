@@ -113,7 +113,7 @@ const Home: NextPage = () => {
                 </div>
             </div>
 
-            {/* <footer className={styles.footer} ref={footerRef}> */}
+            {/* <footer className="fixed-footer" ref={footerRef}> */}
             <Contact />
             {/* </footer> */}
             <div className="noise"></div>

@@ -171,3 +171,10 @@ h6 {
         transform: translate3d(-7rem, 0, 0);
     }
 }
+
+.fixed-footer {
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    bottom: 0px;
+}

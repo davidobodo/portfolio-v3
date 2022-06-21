@@ -3,8 +3,9 @@ import { NextPage } from "next";
 import { Banners, Contact, Grid } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import styles from "#/styles/projects.module.scss";
+import { useCalculateFooterHeight } from "#/hooks";
 const Projects: NextPage = () => {
-    console.log(TECH_STACKS, "DJFKSJ");
+    const { footerHeight, footerRef } = useCalculateFooterHeight();
     return (
         <div>
             <Head>
@@ -14,7 +15,7 @@ const Projects: NextPage = () => {
             </Head>
 
             <Banners.OtherPages title="Projects." />
-            <div className={styles.main}>
+            <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
                 <aside className={styles.aside}>
                     <div className={styles.filter}>
                         <h4>Filter by</h4>
@@ -40,7 +41,10 @@ const Projects: NextPage = () => {
                     <Grid />
                 </section>
             </div>
-            <Contact />
+
+            <footer className="fixed-footer" ref={footerRef}>
+                <Contact />
+            </footer>
             <div className="noise"></div>
         </div>
     );
