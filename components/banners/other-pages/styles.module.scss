@@ -52,8 +52,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding-top: 10rem;
-
-    padding-bottom: 10vh;
+    padding-bottom: 5rem;
 
     .bigText {
         position: relative;
@@ -97,6 +96,7 @@
     .topSection {
         padding: 0px 5rem;
         display: flex;
+        justify-content: flex-end;
 
         .image {
             background-color: var(--black);
