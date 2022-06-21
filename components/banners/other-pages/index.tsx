@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { ScrollAlert } from "../../index";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Heading from "../heading";
 
 export default function Banner({ title }: { title: string }) {
     const bannerRef = useRef(null);
@@ -31,8 +32,10 @@ export default function Banner({ title }: { title: string }) {
     }, [bannerRef.current]);
 
     const hrLineRef = useRef(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        if (bannerRef.current) {
+        if (bannerRef.current && titleRef.current) {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: bannerRef.current
@@ -45,7 +48,9 @@ export default function Banner({ title }: { title: string }) {
                 }
             });
 
-            tl.to(hrLineRef.current, { width: "calc(100% + 10rem)", duration: 2 });
+            tl.to(hrLineRef.current, { width: "calc(100% + 10rem)", duration: 1 })
+                .to(titleRef.current.querySelectorAll('[data-key="letter"]'), { x: 0, stagger: 0.1, reversed: true })
+                .to(scrollIndicatorRef.current, { opacity: 1 });
         }
     }, [bannerRef.current]);
 
@@ -62,18 +67,12 @@ export default function Banner({ title }: { title: string }) {
 
             <div className={styles.bottomSection}>
                 <div className={styles.titleWrapper}>
-                    <ScrollAlert />
-                    <h1 className={styles.bigText}>
-                        <span className={styles.line}>
-                            {title.split("").map((item, i) => {
-                                return (
-                                    <span className={styles.letterwrapper} key={i}>
-                                        <span data-key="letter">{item}</span>
-                                    </span>
-                                );
-                            })}
-                        </span>
-                    </h1>
+                    <ScrollAlert
+                        containerRef={scrollIndicatorRef}
+                        containerStyles={{ marginBottom: "1rem", opacity: 0 }}
+                    />
+
+                    <Heading text={title} revealOrigin="right" textRef={titleRef} />
                 </div>
                 <div className={styles.hrLine} ref={hrLineRef}></div>
             </div>
