@@ -1,6 +1,6 @@
 .main {
     min-height: 100vh;
-    padding-top: 30rem;
+    padding-top: 1rem;
 
     position: relative;
     background-color: var(--black);
@@ -14,7 +14,7 @@
         top: 0px;
         padding: 3rem;
         height: 100vh;
-        padding-top: 10rem;
+        padding-top: 16rem;
 
         .filter {
             margin-bottom: 4rem;
@@ -31,13 +31,11 @@
                 align-items: center;
                 margin-bottom: 1rem;
                 font-size: 1.4rem;
+                cursor: pointer;
 
-                span {
-                    width: 2rem;
-                    height: 2rem;
-                    border: 1px solid #fff;
-                    border-radius: 50%;
-                    margin-right: 1rem;
+                label {
+                    margin-left: 1rem;
+                    cursor: pointer;
                 }
             }
         }
@@ -46,9 +44,35 @@
             list-style: none;
 
             li {
-                font-size: 1.6rem;
-                margin-bottom: 1rem;
-                font-weight: 600;
+                border-top: 1px dotted transparent;
+                border-bottom: 1px dotted transparent;
+                cursor: pointer;
+                margin-bottom: 5px;
+
+                button {
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: 0px;
+                    width: 100%;
+                    display: flex;
+                    color: #fff;
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    padding: 5px;
+                    outline: none;
+                }
+
+                &.active {
+                    button {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
+
+                &:hover,
+                &:focus-within {
+                    border-color: #fff;
+                }
             }
         }
     }

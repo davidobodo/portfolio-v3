@@ -18,9 +18,9 @@ export default function Banner({ title }: { title: string }) {
                         toggleActions: "restart pause reverse pause",
                         start: "top top",
                         end: "bottom top",
-                        scrub: true,
-                        pin: true,
-                        pinSpacing: false
+                        scrub: true
+                        // pin: true,
+                        // pinSpacing: false
                     }
                 });
                 tl.to(blackCoverRef.current, {
