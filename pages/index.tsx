@@ -116,7 +116,7 @@ const Home: NextPage = () => {
             {/* <footer className={styles.footer} ref={footerRef}> */}
             <Contact />
             {/* </footer> */}
-            <div className={styles.noise}></div>
+            <div className="noise"></div>
         </div>
     );
 };

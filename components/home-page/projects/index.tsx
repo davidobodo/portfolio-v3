@@ -2,7 +2,7 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
-import { Button } from "../index";
+import { Button } from "../../index";
 import { Ref } from "react";
 export default function Projects({
     projectsListWrapperRef,

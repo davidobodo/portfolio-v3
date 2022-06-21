@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants/tech-stacks";
-import { FaintBgText } from "../../index";
+import { FaintBgText } from "../../../index";
 import { Ref } from "react";
 
 export type SkillsMobileProps = {
