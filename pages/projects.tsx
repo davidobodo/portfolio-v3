@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { NextPage } from "next";
-import { Banners, Contact, Grid } from "#/components";
+import { Banners, Contact, Grid, Nav } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import styles from "#/styles/projects.module.scss";
 import { useCalculateFooterHeight } from "#/hooks";
@@ -14,6 +14,7 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
+            <Nav />
             <Banners.OtherPages title="Projects." />
             <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
                 <aside className={styles.aside}>
