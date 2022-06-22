@@ -5,6 +5,7 @@ import Contact from "./contact";
 import ScrollAlert from "./scroll-alert";
 import Banners from "./banners";
 import Nav from "./nav";
+import DarkRadialGradient from "./dark-radial-gradient";
 
 const { Button, Radio } = Atoms;
 
@@ -28,5 +29,6 @@ export {
     Nav,
     Radio,
     SingleProject,
-    SingleLetter
+    SingleLetter,
+    DarkRadialGradient
 };

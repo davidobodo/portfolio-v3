@@ -2,13 +2,13 @@ import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 
 export default function Nav() {
-    const [showLight, setShowLight] = useState(false);
+    const [showLight, setShowLight] = useState(true);
     const handlescroll = () => {
-        if (window.pageYOffset >= 80) {
-            setShowLight(true);
-        } else {
-            setShowLight(false);
-        }
+        // if (window.pageYOffset >= 80) {
+        //     setShowLight(true);
+        // } else {
+        //     setShowLight(false);
+        // }
     };
     useEffect(() => {
         if (typeof window !== "undefined") {

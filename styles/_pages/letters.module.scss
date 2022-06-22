@@ -1,16 +1,28 @@
 .container {
     background-color: var(--black);
     color: var(--white);
+    padding-top: 20rem;
+    position: relative;
+    min-height: 100vh;
     // background: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent);
 
     .wrapper {
         max-width: 900px;
-        // border: 1px solid red;
-        min-height: 100vh;
         margin: auto;
-
+        padding-bottom: 15rem;
         .title {
             font-size: 8rem;
+        }
+
+        .letterWrapper {
+            margin-bottom: 6rem;
+            padding-bottom: 6rem;
+            border-bottom: 1px solid var(--white);
+
+            &:last-child {
+                margin-bottom: 0px;
+                border-bottom: 0px;
+            }
         }
     }
 }

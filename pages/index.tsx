@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
+import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact, DarkRadialGradient } from "#/components";
 import {
     useRevealParagraph,
     useWindowSize,
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
                     mobilePicRef={mobilePicRef}
                 />
                 <div className={styles.darkSection} ref={darkSectionRef}>
-                    <div className={styles.darkSectionGradient} ref={darkSectionRadialGradientRef}></div>
+                    <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
                     <div className={styles.darkSectionContent}>
                         <About aboutListRef={aboutListRef} />
                         <Work

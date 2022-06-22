@@ -1,10 +1,12 @@
 .container {
-    width: 600px;
+    // width: 600px;
     margin: auto;
-    border-bottom: 1px solid var(--white);
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+
     a {
-        color: var(--white);
+        color: var(--ash);
         text-decoration: none;
     }
 
@@ -25,14 +27,21 @@
         }
         &:nth-of-type(3) {
             display: flex;
+            margin-bottom: 0px;
 
             span {
-                border: 1px solid var(--white);
+                border: 1px solid var(--ash);
                 padding: 5px 10px;
                 border-radius: 5px;
                 margin-right: 1rem;
                 opacity: 0.5;
             }
+        }
+    }
+
+    &:hover {
+        a {
+            color: var(--white);
         }
     }
 }

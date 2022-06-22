@@ -1,13 +1,14 @@
 import Head from "next/head";
 import { NextPage } from "next";
-import { useState } from "react";
-import { Banners, Contact, Grid, Nav, Radio, SingleProject } from "#/components";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { Banners, Contact, Grid, Nav, Radio, SingleProject, DarkRadialGradient, ScrollAlert } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useCalculateFooterHeight, useScrollToTop } from "#/hooks";
+import { useCalculateFooterHeight, useScrollToTop, usePinRadialGradient, useRegisterGsapScrollTrigger } from "#/hooks";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 const Projects: NextPage = () => {
-    useScrollToTop();
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
     const [filterBy, setFilterBy] = useState("tech-stack");
@@ -40,8 +41,39 @@ const Projects: NextPage = () => {
             ...Object.values(TECH_STACKS)
         ];
     }
+
+    const bannerRef = useRef(null);
+    const containerRef = useRef(null);
+
+    const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
+
+    // useEffect(() => {
+    //     if (typeof window !== "undefined") {
+    //         gsap.registerPlugin(ScrollTrigger);
+
+    //         const tl = gsap.timeline({
+    //             scrollTrigger: {
+    //                 trigger: bannerRef.current,
+    //                 // markers: true,
+    //                 start: "bottom center",
+    //                 toggleActions: "restart complete pause reverse",
+    //                 onEnter: () => console.log("ENTERED"),
+    //                 onEnterBack: () => console.log("ENTERED BACK"),
+    //                 onLeave: () => console.log("LEAVED"),
+    //                 onLeaveBack: () => console.log("LEAVED BACK")
+    //             }
+    //         });
+
+    //         tl.to(containerRef.current, {
+    //             backgroundColor: "#000"
+    //         })
+    //             .to(containerRef.current.querySelectorAll('[data-key="letter"]'), { color: "#fff" }, "<")
+    //             .to(containerRef.current.querySelectorAll('[data-key="tech-stack"]'), { x: "0px", stagger: 0.1 });
+    //         // .to(containerRef.current.querySelectorAll('[data-key="project"]'), { opacity: 1, stagger: 0.1 });
+    //     }
+    // }, []);
     return (
-        <div>
+        <div className={styles.container} ref={containerRef}>
             <Head>
                 <title>David Obodo - Projects</title>
                 <meta name="description" content="David Obodo's portfolio website" />
@@ -51,10 +83,39 @@ const Projects: NextPage = () => {
             <Nav />
             {/* <SingleProject /> */}
 
-            <Banners.OtherPages title="Projects." />
-            <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
-                <aside className={styles.aside}>
-                    <div className={styles.filter}>
+            {/* <div className={styles.scroller}> */}
+            {/* <Banners.OtherPages title="Projects." bannerRef={bannerRef} /> */}
+            {/* </div> */}
+            <div className={styles.main} ref={darkSectionRef}>
+                <div className={styles.darkSection}>
+                    {/* <div className={styles.banner}>
+                        <h1>Projects</h1>
+
+                        <ul>
+                            <li>Enterprise grade applications</li>
+                            <li>Websites</li>
+                            <li>Learnt from tutorials</li>
+                            <li>Experiments</li>
+                            <li>Playful</li>
+                            <li>Ideas</li>
+                            <li>Its all in here...</li>
+                        </ul>
+
+                        <ScrollAlert
+                            // containerRef={scrollIndicatorRef}
+                            containerStyles={{
+                                marginBottom: "1rem",
+                                position: "absolute",
+                                bottom: "5rem",
+                                right: "5rem",
+                                color: "#e1dfdd"
+                            }}
+                        />
+                    </div> */}
+
+                    <div className={styles.content}>
+                        <aside className={styles.aside}>
+                            {/* <div className={styles.filter}>
                         <h4>Filter by</h4>
 
                         <div className={styles.filterCheck}>
@@ -77,30 +138,38 @@ const Projects: NextPage = () => {
                             />
                             <label htmlFor="project-nature">Project Nature</label>
                         </div>
-                    </div>
-                    <ul>
-                        {filterList.map((item) => {
-                            return (
-                                <li key={item.key} className={activeKey === item.key ? styles.active : ""}>
-                                    <button onClick={() => onSetActiveKey(item.key)}>{item.label}</button>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </aside>
+                    </div> */}
+                            <h4>Tech stack</h4>
+                            <ul>
+                                {filterList.map((item) => {
+                                    return (
+                                        <li key={item.key} className={activeKey === item.key ? styles.active : ""}>
+                                            <button onClick={() => onSetActiveKey(item.key)} data-key="tech-stack">
+                                                <span></span>
+                                                {item.label}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </aside>
 
-                <section className={styles.content}>
-                    <header>
-                        <h2>All projects</h2>
-                        <span></span>
-                    </header>
-                    <Grid activeKey={activeKey} />
-                </section>
+                        <section className={styles.gridWrapper}>
+                            {/* <header>
+                                <h2>Projects</h2>
+                                <span></span>
+                            </header> */}
+                            <Grid activeKey={activeKey} />
+                        </section>
+                    </div>
+                </div>
+
+                <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
             </div>
 
-            <footer className="fixed-footer" ref={footerRef}>
-                <Contact />
-            </footer>
+            {/* <footer className="fixed-footer" ref={footerRef}> */}
+            <Contact />
+            {/* </footer> */}
             <div className="noise"></div>
         </div>
     );
