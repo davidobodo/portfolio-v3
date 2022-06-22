@@ -14,7 +14,9 @@
         top: 0px;
         padding: 3rem;
         height: 100vh;
+        min-height: 100vh;
         padding-top: 16rem;
+        margin-right: 200px;
 
         .filter {
             margin-bottom: 4rem;
@@ -88,10 +90,24 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: sticky;
+            top: 0px;
+            background-color: var(--black);
+            z-index: 4;
+            // background-image: ;
 
             h2 {
                 font-size: 3.6rem;
                 text-transform: uppercase;
+            }
+
+            span {
+                height: 60px;
+                background-color: red;
+                position: absolute;
+                bottom: -30px;
+                width: 100%;
+                display: block;
             }
         }
     }

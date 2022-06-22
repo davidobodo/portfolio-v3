@@ -5,8 +5,9 @@ import { Banners, Contact, Grid, Nav, Radio } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/projects.module.scss";
-import { useCalculateFooterHeight } from "#/hooks";
+import { useCalculateFooterHeight, useScrollToTop } from "#/hooks";
 const Projects: NextPage = () => {
+    useScrollToTop();
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
     const [filterBy, setFilterBy] = useState("tech-stack");
@@ -87,7 +88,11 @@ const Projects: NextPage = () => {
                 </aside>
 
                 <section className={styles.content}>
-                    <header>{/* <h2>All projects</h2> */}</header>
+                    <header>
+                        {/* <h2>All projects</h2> */}
+
+                        {/* <span></span> */}
+                    </header>
                     <Grid activeKey={activeKey} />
                 </section>
             </div>

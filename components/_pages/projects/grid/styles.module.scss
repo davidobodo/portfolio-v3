@@ -51,7 +51,8 @@
             transition: opacity 200ms ease-in-out;
 
             span {
-                background-color: var(--lightest);
+                background-color: var(--white);
+                color: var(--black);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
