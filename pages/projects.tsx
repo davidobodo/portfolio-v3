@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import { useState } from "react";
-import { Banners, Contact, Grid, Nav, Radio } from "#/components";
+import { Banners, Contact, Grid, Nav, Radio, SingleProject } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/projects.module.scss";
@@ -49,6 +49,8 @@ const Projects: NextPage = () => {
             </Head>
 
             <Nav />
+            {/* <SingleProject /> */}
+
             <Banners.OtherPages title="Projects." />
             <div className={styles.main} style={{ marginBottom: footerHeight + "px" }}>
                 <aside className={styles.aside}>
@@ -89,9 +91,8 @@ const Projects: NextPage = () => {
 
                 <section className={styles.content}>
                     <header>
-                        {/* <h2>All projects</h2> */}
-
-                        {/* <span></span> */}
+                        <h2>All projects</h2>
+                        <span></span>
                     </header>
                     <Grid activeKey={activeKey} />
                 </section>

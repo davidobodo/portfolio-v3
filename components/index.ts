@@ -8,7 +8,7 @@ import Nav from "./nav";
 
 const { Button, Radio } = Atoms;
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects } = HomePage;
-const { Grid } = ProjectsPage;
+const { Grid, SingleProject } = ProjectsPage;
 
 export {
     Preloader,
@@ -24,5 +24,6 @@ export {
     Banners,
     Grid,
     Nav,
-    Radio
+    Radio,
+    SingleProject
 };

@@ -1,0 +1,72 @@
+@import "#/styles/globals.module.scss";
+.container {
+    // border: 1px solid red;
+    max-width: 900px;
+    margin: 10vh auto;
+    padding: 0px 2rem;
+
+    section {
+        margin-bottom: 4rem;
+
+        h1,
+        h2 {
+            font-size: 3.6rem;
+            margin-bottom: 2rem;
+            font-family: "sf-pro-bold";
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        p {
+            font-size: 1.8rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-family: "sf-pro-regular";
+        }
+
+        li {
+            font-size: 1.8rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-family: "sf-pro-regular";
+            display: flex;
+            align-items: center;
+
+            .circle {
+                width: 6px;
+                height: 6px;
+                background-color: var(--ash3);
+                display: flex;
+                border-radius: 50%;
+
+                margin-right: 2rem;
+            }
+        }
+    }
+
+    .title {
+    }
+
+    .links {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+    }
+
+    .image {
+        border: 5px solid #000;
+        height: 500px;
+        margin-bottom: 6rem;
+    }
+
+    .about {
+    }
+
+    .tech {
+        ul {
+            list-style: none;
+        }
+    }
+}

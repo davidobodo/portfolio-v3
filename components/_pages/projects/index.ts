@@ -1,7 +1,8 @@
 import Grid from "./grid";
-
+import SingleProject from "./single-project";
 const Projects = {
-    Grid
+    Grid,
+    SingleProject
 };
 
 export default Projects;
