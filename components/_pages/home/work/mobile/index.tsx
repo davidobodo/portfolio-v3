@@ -16,7 +16,7 @@ export default function ViewMobile({
     mobileWorkContentWrapperRef
 }: WorkMobileProps) {
     return (
-        <div className={styles.container} ref={mobileWorkContainerRef}>
+        <div className={styles.container} ref={mobileWorkContainerRef} id="work-section">
             <div className={styles.contentWrapper} ref={mobileWorkContentWrapperRef}>
                 <div className={styles.tabs}>
                     <div className={styles.bgGradient}></div>

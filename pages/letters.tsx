@@ -17,7 +17,7 @@ const Projects: NextPage = () => {
             <Nav />
             <div className={styles.container} ref={darkSectionRef}>
                 <div className={styles.wrapper}>
-                    {/* <h1 className={styles.title}>Letters</h1> */}
+                    <h1 className={styles.title}>Letters/Articles</h1>
 
                     {LETTERS.map((item) => {
                         const { url, title, date, time, summary, tags } = item;

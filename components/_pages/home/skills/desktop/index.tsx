@@ -16,7 +16,7 @@ export default function SkillsDesktop({
     skillsSectionTitlteRef
 }: SkillsDesktopProps) {
     return (
-        <div className={styles.container} ref={skillsContainerRef}>
+        <div className={styles.container} ref={skillsContainerRef} id="skills-section">
             <div className={styles.contentWrapper} ref={skillsContentWrapperRef}>
                 <div className={styles.wrapper}>
                     <div className={styles.heading}>

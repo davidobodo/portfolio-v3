@@ -13,27 +13,27 @@ export default function Contact() {
                         <ul>
                             <li>
                                 <Link href="/">
-                                    <a href="">
+                                    <a>
                                         <span>Home</span>
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/">
-                                    <a href="about">
+                                <Link href="/#about-section">
+                                    <a>
                                         <span>About</span>
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/">
-                                    <a href="">
+                                <Link href="/#work-section">
+                                    <a>
                                         <span>Work</span>
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/">
+                                <Link href="/#skills-section">
                                     <a href="">
                                         <span>Skills</span>
                                     </a>
@@ -60,8 +60,11 @@ export default function Contact() {
                         <h4>Extras</h4>
                         <ul>
                             <li>
-                                <Link href="/">
-                                    <a>
+                                <Link
+                                    href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing"
+                                    passHref
+                                >
+                                    <a target="_blank" rel="noreferrer noopener">
                                         {" "}
                                         <span>Resume</span>
                                     </a>

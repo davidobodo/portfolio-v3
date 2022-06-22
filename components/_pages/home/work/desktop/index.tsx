@@ -18,7 +18,7 @@ export default function ViewDesktop({
     workDetailsContainerRef
 }: WorkDesktopProps) {
     return (
-        <div className={styles.container} ref={workContainerRef}>
+        <div className={styles.container} ref={workContainerRef} id="work-section">
             <div className={styles.contentWrapper} ref={workTabsRef}>
                 <div className={styles.tabs}>
                     <div className={styles.tabHeadersContainer}>

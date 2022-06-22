@@ -1,7 +1,7 @@
 .container {
     background-color: var(--black);
     color: var(--white);
-    padding-top: 20rem;
+    padding-top: 15rem;
     position: relative;
     min-height: 100vh;
     // background: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent);
@@ -12,6 +12,8 @@
         padding-bottom: 15rem;
         .title {
             font-size: 8rem;
+            text-transform: uppercase;
+            margin-bottom: 10rem;
         }
 
         .letterWrapper {

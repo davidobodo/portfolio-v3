@@ -9,7 +9,7 @@ export type SkillsMobileProps = {
 };
 export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSectionTitlteRef }: SkillsMobileProps) {
     return (
-        <div className={styles.container} ref={mobileSkillsContainerRef}>
+        <div className={styles.container} ref={mobileSkillsContainerRef} id="skills-section">
             <div className={styles.contentWrapper} data-id="content-wrapper">
                 <div className={styles.wrapper}>
                     <div className={styles.heading}>
