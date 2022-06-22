@@ -1,6 +1,6 @@
 import Head from "next/head";
 import type { NextPage } from "next";
-import styles from "#/styles/home.module.scss";
+import styles from "#/styles/_pages/home.module.scss";
 import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact } from "#/components";
 import {
     useRevealParagraph,

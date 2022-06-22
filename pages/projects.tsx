@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Banners, Contact, Grid, Nav, Radio, SingleProject } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
-import styles from "#/styles/projects.module.scss";
+import styles from "#/styles/_pages/projects.module.scss";
 import { useCalculateFooterHeight, useScrollToTop } from "#/hooks";
 const Projects: NextPage = () => {
     useScrollToTop();

@@ -1,4 +1,4 @@
-import { HomePage, ProjectsPage } from "./_pages";
+import { HomePage, ProjectsPage, LettersPage } from "./_pages";
 
 import Atoms from "./_atoms";
 import Contact from "./contact";
@@ -7,8 +7,10 @@ import Banners from "./banners";
 import Nav from "./nav";
 
 const { Button, Radio } = Atoms;
+
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects } = HomePage;
 const { Grid, SingleProject } = ProjectsPage;
+const { SingleLetter } = LettersPage;
 
 export {
     Preloader,
@@ -25,5 +27,6 @@ export {
     Grid,
     Nav,
     Radio,
-    SingleProject
+    SingleProject,
+    SingleLetter
 };
