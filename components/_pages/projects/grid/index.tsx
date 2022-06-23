@@ -26,9 +26,7 @@ export default function Grid({ activeKey }: { activeKey: string }) {
                         <div className={styles.boxImage} style={{ backgroundImage: `url(${bgImage})` }}></div>
                         <div className={styles.boxOverlay}></div>
                         <div className={styles.boxCircle}>
-                            <span>
-                                View <br /> Project
-                            </span>
+                            <span>View</span>
                         </div>
                         <div className={styles.boxLock}>
                             <svg

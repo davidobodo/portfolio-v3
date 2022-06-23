@@ -50,9 +50,11 @@
             opacity: 0;
             will-change: opacity;
             transition: opacity 200ms ease-in-out;
+            font-family: "sf-pro-regular";
+            font-size: 1.6rem;
 
             span {
-                background-color: var(--white);
+                background-color: var(--light-brown);
                 color: var(--black);
                 border-radius: 50%;
                 display: flex;
@@ -61,7 +63,7 @@
                 width: 100px;
                 height: 100px;
                 text-align: center;
-                text-transform: uppercase;
+                box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
             }
         }
 
