@@ -1,0 +1,22 @@
+.container {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0px;
+    height: 100%;
+    overflow: auto;
+
+    .backdrop {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0.9);
+        // filter: blur(10px);
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+    }
+}

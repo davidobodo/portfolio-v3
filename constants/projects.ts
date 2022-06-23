@@ -22,7 +22,6 @@ export const PROJECTS = [
         details: "Prodeus web app",
         live_link: "https://www.prodeus.co/",
         tech: ["react", "typescript", "styledcomponents", "html", "sass", "reactquery"],
-        // height: "40rem"
         bgImage: "/images/projects/dashboard.png"
     },
     {
@@ -31,7 +30,6 @@ export const PROJECTS = [
         details: "Official website of cadmils consulting agency",
         live_link: "https://www.cadmils.com/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
-        // height: "40rem"
         bgImage: "/images/projects/cadmils.png"
     },
     {
@@ -40,7 +38,6 @@ export const PROJECTS = [
         details: "Find Hospitals, Clinics, Pharmacies and Health care centers close to you",
         live_link: "https://medic-finder.netlify.app/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        height: "60rem",
         bgImage: "/images/projects/hospital-findr.png"
     },
     {
@@ -49,7 +46,6 @@ export const PROJECTS = [
         details: "Web-based Kanban-style list-making application",
         live_link: "https://d-productivity.now.sh/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        height: "35rem",
         bgImage: "/images/projects/d-productivity.png"
     },
     {
@@ -58,7 +54,6 @@ export const PROJECTS = [
         details: "A site where people can share details of projects together.",
         live_link: "https://myfirst-fullstackproject.firebaseapp.com/signin",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        height: "45rem",
         bgImage: "/images/projects/d-discus.png"
     },
     {
@@ -66,7 +61,6 @@ export const PROJECTS = [
         title: "d-chat",
         details: "A basic chat application.",
         live_link: "https://d-chat-98abe.firebaseapp.com/auth",
-        height: "40rem",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
         bgImage: "/images/projects/d-chat.png"
     },
@@ -75,7 +69,6 @@ export const PROJECTS = [
         title: "d-commerce(WIP)",
         details: "An e-commerce platform",
         live_link: "https://d-commerce-99633.firebaseapp.com/",
-        height: "42rem",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
         bgImage: "/images/projects/d-commerce.png"
     },
@@ -85,7 +78,6 @@ export const PROJECTS = [
         details: "Clone of “Awwwards” (https://www.awwwards.com/) awards site for the year 2020",
         live_link: "https://obododavid.github.io/developer-of-the-year/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        // height: "40rem"
         bgImage: "/images/projects/developer.png"
     },
     {
@@ -94,7 +86,6 @@ export const PROJECTS = [
         details: "Site that makes use of rel link API to shorten links",
         live_link: "https://obododavid.github.io/FEM-shortly/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        // height: "40rem"
         bgImage: "/images/projects/shortly.png"
     },
     {
@@ -102,7 +93,6 @@ export const PROJECTS = [
         title: "Bookmark",
         details: "Bookmark landing page",
         live_link: "https://obododavid.github.io/FEM-bookmark-landing-page/",
-        height: "70rem",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
         bgImage: "/images/projects/bookmark.png"
     },
@@ -111,7 +101,6 @@ export const PROJECTS = [
         title: "Burger builder",
         details: "Build and order your own burger",
         live_link: "https://burger-builder.obododavid5.now.sh/",
-        // height: "40rem"
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/burger-builder.png"
     },
@@ -121,7 +110,6 @@ export const PROJECTS = [
         details: "Simple drum machine",
         live_link: "https://obododavid.github.io/drumMachine/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        // height: "40rem"
         bgImage: "/images/projects/drum-machine.png"
     },
 
@@ -131,7 +119,6 @@ export const PROJECTS = [
         details: "Timer for pomodoro time management technique",
         live_link: "https://pomodoroclock.now.sh/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
-        // height: "40rem"
         bgImage: "/images/projects/pomodoro.png"
     },
     {
@@ -140,7 +127,6 @@ export const PROJECTS = [
         details: "How well do you know super heroes real names?",
         live_link: "https://obododavid.github.io/Learning-javascript-quiz-ninja/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        // height: "40rem"
         bgImage: "/images/projects/quiz-ninja.png"
     },
     {
@@ -149,7 +135,6 @@ export const PROJECTS = [
         details: "clone of freebies(https://freebies.bypeople.com/) website home page",
         live_link: "https://obododavid.github.io/freebies/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        // height: "40rem"
         bgImage: "/images/projects/freebies.png"
     },
     {
@@ -157,7 +142,6 @@ export const PROJECTS = [
         title: "Portfolio v1.0",
         details: "My first portfolio site",
         live_link: "https://obododavid.github.io/portfolio/",
-        height: "40rem",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/pv-1.png"
     }

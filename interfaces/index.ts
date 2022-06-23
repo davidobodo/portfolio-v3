@@ -7,4 +7,13 @@ type TTimelineAction = {
     label?: string;
 };
 
-export type { TTimelineAction };
+type TProject = {
+    id: number;
+    title: string;
+    details: string;
+    live_link: string;
+    tech: string[];
+    bgImage: string;
+};
+
+export type { TTimelineAction, TProject };

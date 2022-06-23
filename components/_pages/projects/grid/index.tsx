@@ -1,8 +1,14 @@
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
+import { TProject } from "#/interfaces";
 
-export default function Grid({ activeKey }: { activeKey: string }) {
-    console.log(activeKey, "TEH KEY IN HERE");
+export default function Grid({
+    activeKey,
+    onSelectProject
+}: {
+    activeKey: string;
+    onSelectProject: (item: TProject) => void;
+}) {
     return (
         <div className={styles.container}>
             {PROJECTS.map((item, i) => {
@@ -22,6 +28,7 @@ export default function Grid({ activeKey }: { activeKey: string }) {
                         key={i}
                         className={isLocked ? styles.box + " " + styles.locked : styles.box + " " + styles.free}
                         data-key="project"
+                        onClick={() => onSelectProject(item)}
                     >
                         <div className={styles.boxImage} style={{ backgroundImage: `url(${bgImage})` }}></div>
                         <div className={styles.boxOverlay}></div>

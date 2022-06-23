@@ -2,12 +2,23 @@ import Head from "next/head";
 import { NextPage } from "next";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { Banners, Contact, Grid, Nav, Radio, SingleProject, DarkRadialGradient, ScrollAlert } from "#/components";
+import {
+    Banners,
+    Contact,
+    Grid,
+    Nav,
+    Radio,
+    SingleProject,
+    DarkRadialGradient,
+    ScrollAlert,
+    Modal
+} from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
 import { useCalculateFooterHeight, useScrollToTop, usePinRadialGradient, useRegisterGsapScrollTrigger } from "#/hooks";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { TProject } from "#/interfaces";
 const Projects: NextPage = () => {
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
@@ -72,6 +83,37 @@ const Projects: NextPage = () => {
     //         // .to(containerRef.current.querySelectorAll('[data-key="project"]'), { opacity: 1, stagger: 0.1 });
     //     }
     // }, []);
+
+    //--------------------------------------------------------
+    //PROJECT MODAL
+    //--------------------------------------------------------
+    const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
+    const onSelectProject = (item: TProject | null) => {
+        setSelectedProject(item);
+    };
+
+    const onMoveToProject = (action: "next" | "previous") => {};
+
+    const onTriggerAction = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const { value } = e.target;
+        switch (value) {
+            case "close":
+                onSelectProject(null);
+                break;
+            case "next":
+                onMoveToProject(value);
+                break;
+            case "previous":
+                onMoveToProject(value);
+                break;
+            default:
+                onSelectProject(null);
+        }
+    };
+    //--------------------------------------------------------
+    //--------------------------------------------------------
+    //--------------------------------------------------------
+
     return (
         <div className={styles.container} ref={containerRef}>
             <Head>
@@ -159,7 +201,7 @@ const Projects: NextPage = () => {
                                 <h2>Projects</h2>
                                 <span></span>
                             </header> */}
-                            <Grid activeKey={activeKey} />
+                            <Grid activeKey={activeKey} onSelectProject={onSelectProject} />
                         </section>
                     </div>
                 </div>
@@ -171,6 +213,10 @@ const Projects: NextPage = () => {
             <Contact />
             {/* </footer> */}
             <div className="noise"></div>
+
+            <Modal show={!!selectedProject}>
+                <SingleProject project={selectedProject} onTriggerAction={onTriggerAction} />
+            </Modal>
         </div>
     );
 };

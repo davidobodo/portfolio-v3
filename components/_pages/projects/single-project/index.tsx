@@ -1,11 +1,35 @@
 import styles from "./styles.module.scss";
+import { TProject } from "#/interfaces";
 
-export default function SingleProject() {
+export default function SingleProject({
+    project,
+    onTriggerAction
+}: {
+    project: TProject | null;
+    onTriggerAction: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}) {
+    if (!project) {
+        return null;
+    }
+
+    const { title, details } = project;
     return (
         <div className={styles.container}>
+            <div>
+                <button onClick={onTriggerAction} value="close">
+                    Close
+                </button>
+                <button onClick={onTriggerAction} value="next">
+                    Next
+                </button>
+                <button onClick={onTriggerAction} value="previous">
+                    Previous
+                </button>
+            </div>
+
             <section className={styles.title}>
-                <h1>rocket.chat</h1>
-                <p>Open Source web chat platform developed as UI/UX Javascript Specialist at Konecty → Rocket.Chat.</p>
+                <h1>{title}</h1>
+                <p>{details}</p>
             </section>
 
             <div className={styles.links}>

@@ -2,8 +2,9 @@
 .container {
     // border: 1px solid red;
     max-width: 900px;
-    margin: 10vh auto;
+    margin: 0px auto;
     padding: 0px 2rem;
+    color: var(--ash);
 
     section {
         margin-bottom: 4rem;
@@ -40,7 +41,6 @@
                 background-color: var(--ash3);
                 display: flex;
                 border-radius: 50%;
-
                 margin-right: 2rem;
             }
         }
