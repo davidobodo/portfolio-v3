@@ -1,0 +1,285 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    .sectionTitleWrapper {
+        margin: auto;
+        margin-bottom: 8rem;
+        padding-left: 16.5vw;
+        padding-right: 2rem;
+
+        @media (min-width: $md) {
+            max-width: var(--mini-desktop-max-width);
+            padding: 0px;
+        }
+
+        @media (min-width: $xxl) {
+            max-width: var(--max-width);
+        }
+
+        .sectionTitle {
+            font-weight: 600;
+            line-height: 0.9;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--ash);
+            font-size: 36px;
+            margin-bottom: 7rem;
+            position: relative;
+            z-index: 1;
+            padding-left: 2rem;
+
+            @media (min-width: $md) {
+                font-size: 60px;
+            }
+            @media (min-width: $xxl) {
+                font-size: 80px;
+            }
+
+            span {
+                display: block;
+                overflow: hidden;
+
+                span {
+                    line-height: 1.1;
+                    transform: translate(80px, 40px);
+
+                    @media (min-width: $md) {
+                        transform: translate(80px, 80px);
+                    }
+
+                    strong {
+                        color: #fff;
+                    }
+                }
+
+                &:nth-child(2) {
+                    span {
+                        transform: translate(40px, 40px);
+
+                        @media (min-width: $md) {
+                            transform: translate(80px, 80px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .projectsListWrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        // border: 1px solid red;
+
+        .projectsList {
+            display: flex;
+            height: 80vh;
+            // width: 100%;
+            padding-left: var(--spacing-x);
+            padding-left: 16.5vw;
+            border-top: 1px solid var(--ash3);
+            border-bottom: 1px solid var(--ash3);
+
+            .project {
+                border-right: 1px solid var(--ash3);
+
+                height: 100%;
+                max-width: 500px;
+                flex-shrink: 0;
+                position: relative; // For the background image
+                overflow: hidden; // So the background image scaling up wont show outside
+                cursor: pointer;
+                width: 80vw;
+                padding: 70px;
+                padding-right: 40px;
+                padding-left: 40px;
+
+                @media (min-width: $md) {
+                    width: 30vw;
+                    min-width: 400px;
+                    padding: 8vh;
+                    padding-right: 130px;
+                }
+
+                .projectImage {
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0px;
+                    top: 0px;
+                    opacity: 0;
+                    will-change: opacity, transform;
+                    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+                }
+
+                .projectOverlay {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0px;
+                    left: 0px;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    // will-change: background-color;
+                    // transition: background-color 500ms ease-in-out;
+                    z-index: 1; // So its ontop the background image
+                }
+
+                .projectDetails {
+                    position: relative; // So it stays ontop of the overlay
+                    z-index: 2;
+                    height: 100%;
+                    display: grid;
+                    grid-template-rows: 34% auto auto;
+                    color: var(--ash);
+
+                    h1 {
+                        font-size: 3.6rem;
+                        letter-spacing: 0.021em;
+                    }
+
+                    p {
+                        font-size: 24px;
+                        font-weight: 600;
+                        line-height: 30px;
+                        margin-bottom: 2rem;
+                        font-size: 18px;
+                        line-height: 2;
+                        margin-bottom: 1rem;
+                        font-family: "sf-pro-bold";
+                        transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+                        will-change: opacity, transform;
+
+                        @media (min-width: $lg) {
+                            display: none;
+                        }
+                        @media (min-width: $xl) {
+                            display: block;
+                        }
+                    }
+
+                    .buttonWrapper {
+                        margin-top: auto;
+
+                        button {
+                            color: var(--ash3);
+                            border: 2px solid var(--ash3);
+
+                            font-family: "sf-pro-bold";
+                        }
+                    }
+                }
+
+                &:hover {
+                    .projectImage {
+                        opacity: 1;
+                        transform: scale(1.08);
+                    }
+
+                    .projectDetails {
+                        color: var(--white);
+
+                        p {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                    }
+
+                    .buttonWrapper {
+                        button {
+                            color: var(--white);
+                            border-color: var(--white);
+                        }
+                    }
+                }
+
+                &.viewAll {
+                    display: flex;
+                    display: grid;
+                    grid-template-rows: 34% auto auto;
+                    position: relative;
+
+                    a {
+                        background-color: transparent;
+                        border: 0px;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.8rem;
+                        text-decoration: none;
+                        color: var(--ash3);
+                        font-family: "sf-pro-bold";
+                        margin-top: 1rem;
+
+                        @media (min-width: $md) {
+                            // font-size: 4rem;
+                        }
+
+                        span {
+                            margin-right: 1rem;
+                        }
+
+                        img {
+                            height: 30px;
+                        }
+
+                        &:hover {
+                            span {
+                                text-decoration: underline;
+                                color: var(--white);
+                            }
+                        }
+                    }
+
+                    .content {
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    .liquid {
+                        position: absolute;
+                        background: var(--ash3);
+                        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+                        transition: 0.5s;
+                        width: 100%;
+                        height: 50%;
+                        bottom: 0px;
+
+                        &:before,
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 200%;
+                            height: 200%;
+                            top: 0;
+                            left: 50%;
+                            transform: translate(-50%, -75%);
+                            background: #000;
+                        }
+                    }
+
+                    .liquid:before {
+                        border-radius: 45%;
+                        background: rgba(20, 20, 20, 1);
+                        animation: animate 5s linear infinite;
+                    }
+                    .liquid:after {
+                        border-radius: 40%;
+                        background: rgba(0, 0, 0, 0.5);
+                        animation: animate 10s linear infinite;
+                    }
+
+                    @keyframes animate {
+                        0% {
+                            transform: translate(-50%, -75%) rotate(0deg);
+                        }
+                        100% {
+                            transform: translate(-50%, -75%) rotate(360deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

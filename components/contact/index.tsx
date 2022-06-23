@@ -137,6 +137,16 @@ export default function Contact() {
                                         <span>Email</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="">
+                                        <span>CODEPEN</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>CODE SANDBOX</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 
