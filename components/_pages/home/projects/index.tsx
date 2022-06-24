@@ -97,7 +97,27 @@ function ProjectsListView() {
                     return (
                         <li className={styles.project} key={i} value={id} data-id={id}>
                             <a href="">
-                                <span className={styles.projectTitle}>{title}</span>
+                                <span
+                                    className={styles.projectTitle}
+                                    style={{
+                                        transform:
+                                            activeProjectPos === i.toString() ? "translateX(-20px)" : "translateX(0px)",
+                                        opacity: activeProjectPos === i.toString() ? "0.5" : "1"
+                                    }}
+                                >
+                                    {title}
+                                </span>
+
+                                <span
+                                    style={{
+                                        transform:
+                                            activeProjectPos === i.toString() ? "translateX(20px)" : "translateX(0px)",
+                                        opacity: activeProjectPos === i.toString() ? "0.5" : "1"
+                                    }}
+                                    className={styles.projectNature}
+                                >
+                                    Web application
+                                </span>
                             </a>
                         </li>
                     );
@@ -138,11 +158,17 @@ function ProjectBox({
         >
             <div className={styles.projectsWrapper}>
                 <ul style={{ transform: `translateY(-${parseInt(activeProjectPos) * 300}px)` }}>
-                    {displayedProjects.map((item) => {
+                    {displayedProjects.map((item, i) => {
                         const { title } = item;
                         return (
                             <li>
-                                <span style={{ fontSize: "60px" }}>{title}</span>
+                                <span
+                                    style={{
+                                        fontSize: "60px"
+                                    }}
+                                >
+                                    {title}
+                                </span>
                             </li>
                         );
                     })}

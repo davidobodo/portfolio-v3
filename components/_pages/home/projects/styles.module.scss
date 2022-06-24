@@ -15,66 +15,6 @@
         max-width: var(--max-width);
     }
 
-    .projectBox {
-        background-color: red;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        z-index: 1;
-        cursor: pointer;
-        transition: transform 200ms ease-in-out;
-        transform-origin: center;
-
-        .projectsWrapper {
-            overflow: hidden;
-            width: 300px;
-            height: 300px;
-            ul {
-                transition: transform 200ms ease-in-out;
-
-                li {
-                    width: 300px;
-                    height: 300px;
-
-                    &:nth-child(1) {
-                        background-color: green;
-                    }
-                    &:nth-child(2) {
-                        background-color: yellow;
-                    }
-                    &:nth-child(3) {
-                        background-color: pink;
-                    }
-                    &:nth-child(4) {
-                        background-color: orange;
-                    }
-                    &:nth-child(5) {
-                        background-color: purple;
-                    }
-                }
-            }
-        }
-
-        .projectsBoxCircle {
-            width: 100px;
-            height: 100px;
-            background-color: black;
-            color: #fff;
-            border-radius: 50%;
-            border: 0px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-            cursor: pointer;
-        }
-    }
-
     .project {
         list-style: none;
         cursor: pointer;
@@ -83,6 +23,7 @@
         align-items: center;
         width: 100%;
         border-bottom: 1px solid var(--ash);
+        cursor: pointer;
 
         &:first-child {
             border-top: 1px solid var(--ash);
@@ -90,6 +31,8 @@
 
         a {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             text-decoration: none;
             padding: 8rem 10rem;
@@ -101,13 +44,71 @@
                 transition: transform 200ms ease-in-out;
                 cursor: pointer;
             }
-        }
 
-        &:hover {
-            .projectTitle {
-                transform: translateX(-20px);
-                opacity: 0.5;
+            .projectNature {
+                transition: transform 200ms ease-in-out;
             }
         }
+    }
+}
+
+.projectBox {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
+    transform-origin: center;
+    cursor: pointer;
+
+    .projectsWrapper {
+        overflow: hidden;
+        width: 300px;
+        height: 300px;
+        cursor: pointer;
+        ul {
+            transition: transform 200ms ease-in-out;
+
+            li {
+                width: 300px;
+                height: 300px;
+
+                &:nth-child(1) {
+                    background-color: green;
+                }
+                &:nth-child(2) {
+                    background-color: yellow;
+                }
+                &:nth-child(3) {
+                    background-color: pink;
+                }
+                &:nth-child(4) {
+                    background-color: orange;
+                }
+                &:nth-child(5) {
+                    background-color: purple;
+                }
+            }
+        }
+    }
+
+    .projectsBoxCircle {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        color: #fff;
+        border-radius: 50%;
+        border: 0px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        cursor: pointer;
     }
 }

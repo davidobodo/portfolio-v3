@@ -6,8 +6,6 @@ import {
     useRevealParagraph,
     useWindowSize,
     useRegisterGsapScrollTrigger,
-
-    // useCalculateFooterHeight,
     useScrollToTop,
     useRevealHeading,
     HomePageHooks
@@ -62,7 +60,6 @@ const Home: NextPage = () => {
     } = useSkillsAnimation({ windowInnerWidth });
     const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
     const { projectsListWrapperRef } = useProjectAnimation();
-    // const { footerHeight, footerRef } = useCalculateFooterHeight();
 
     return (
         <div>
