@@ -8,7 +8,7 @@ type TTimelineAction = {
 };
 
 type TProject = {
-    id: number;
+    id: string;
     title: string;
     details: string;
     live_link: string;

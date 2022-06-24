@@ -1,14 +1,4 @@
 .main {
     z-index: 1;
     position: relative;
-
-    .darkSection {
-        position: relative;
-        background-color: var(--black);
-        overflow: hidden;
-
-        .darkSectionContent {
-            position: relative;
-        }
-    }
 }

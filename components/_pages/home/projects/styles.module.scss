@@ -61,6 +61,7 @@
             background-color: black;
             color: #fff;
             border-radius: 50%;
+            border: 0px;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -69,6 +70,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            outline: none;
+            cursor: pointer;
         }
     }
 

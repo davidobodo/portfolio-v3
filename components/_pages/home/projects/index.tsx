@@ -4,12 +4,14 @@ import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 import { Button } from "../../../index";
 import { Ref, useState, useRef, useEffect } from "react";
+import Router from "next/router";
+import { TProject } from "#/interfaces";
 
 function ProjectsListView() {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectsListRef = useRef(null);
     const pictureBoxRef = useRef(null);
-    const posDic = useRef<Record<number | string, { top: number; bottom: number }>>({});
+    const posDic = useRef<Record<number | string, { top: number; bottom: number; id: string }>>({});
 
     const [mousePos, setMousePos] = useState({
         x: 0,
@@ -20,7 +22,7 @@ function ProjectsListView() {
 
     const squaresize = 150;
 
-    const onSelectActiveProject = (y: number): string | undefined => {
+    const onSelectActiveProjectId = (y: number): string | undefined => {
         for (let key in posDic.current) {
             const { top, bottom } = posDic.current[key];
             if (y > top && y < bottom) {
@@ -29,7 +31,7 @@ function ProjectsListView() {
         }
     };
 
-    const [activeProject, setActiveProject] = useState<string>();
+    const [activeProjectPos, setActiveProjectPos] = useState<string>("0");
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const { clientX, clientY } = e;
         const rect = containerRef.current.getBoundingClientRect();
@@ -42,10 +44,10 @@ function ProjectsListView() {
             y: y
         });
 
-        const activeProject = onSelectActiveProject(y);
+        const activeProjectPos = onSelectActiveProjectId(y);
 
-        if (activeProject) {
-            setActiveProject(activeProject);
+        if (activeProjectPos) {
+            setActiveProjectPos(activeProjectPos);
         }
     };
 
@@ -57,17 +59,26 @@ function ProjectsListView() {
         if (projectsListRef.current) {
             const projects = projectsListRef.current.querySelectorAll("li");
 
-            projects.forEach((element: HTMLElement, i) => {
-                const { top, bottom } = element.getBoundingClientRect();
+            projects.forEach((element: HTMLElement, i: number) => {
+                const { offsetTop, clientHeight } = element;
+                const BORDER_SPACING = 2;
+
                 posDic.current[i] = {
-                    top,
-                    bottom
+                    top: offsetTop,
+                    bottom: offsetTop + clientHeight + BORDER_SPACING,
+                    id: element.dataset.id as string
                 };
             });
         }
-    }, [projectsListRef]);
+    }, []);
 
     const displayedProjects = PROJECTS.slice(0, 5);
+
+    const onViewProject = () => {
+        if (activeProjectPos) {
+            Router.push(`/projects/${displayedProjects[parseInt(activeProjectPos)].id}`);
+        }
+    };
 
     return (
         <div className={styles.container} onMouseMove={handleMouseMove} ref={containerRef}>
@@ -77,13 +88,14 @@ function ProjectsListView() {
                 isVisible={inBoundary}
                 reference={pictureBoxRef}
                 displayedProjects={displayedProjects}
-                activeProject={activeProject}
+                activeProjectPos={activeProjectPos}
+                onViewProject={onViewProject}
             />
             <ul ref={projectsListRef}>
                 {displayedProjects.map((item, i) => {
-                    const { title, details } = item;
+                    const { title, details, id } = item;
                     return (
-                        <li className={styles.project} key={i}>
+                        <li className={styles.project} key={i} value={id} data-id={id}>
                             <a href="">
                                 <span className={styles.projectTitle}>{title}</span>
                             </a>
@@ -97,7 +109,23 @@ function ProjectsListView() {
 
 export default ProjectsListView;
 
-function ProjectBox({ displayedProjects, activeProject, posX, posY, isVisible, reference }) {
+function ProjectBox({
+    displayedProjects,
+    activeProjectPos,
+    posX,
+    posY,
+    isVisible,
+    reference,
+    onViewProject
+}: {
+    displayedProjects: TProject[];
+    activeProjectPos: string;
+    posX: string;
+    posY: string;
+    isVisible: boolean;
+    reference: Ref<HTMLDivElement>;
+    onViewProject: () => void;
+}) {
     return (
         <div
             className={styles.projectBox}
@@ -109,7 +137,7 @@ function ProjectBox({ displayedProjects, activeProject, posX, posY, isVisible, r
             }}
         >
             <div className={styles.projectsWrapper}>
-                <ul style={{ transform: `translateY(-${parseInt(activeProject) * 300}px)` }}>
+                <ul style={{ transform: `translateY(-${parseInt(activeProjectPos) * 300}px)` }}>
                     {displayedProjects.map((item) => {
                         const { title } = item;
                         return (
@@ -121,12 +149,14 @@ function ProjectBox({ displayedProjects, activeProject, posX, posY, isVisible, r
                 </ul>
             </div>
 
-            <div className={styles.projectsBoxCircle}>VIEW PROJECT</div>
+            <button className={styles.projectsBoxCircle} type="button" onClick={onViewProject}>
+                VIEW PROJECT
+            </button>
         </div>
     );
 }
 
-function checkExceededBoundaries(x, y, elemRect) {
+function checkExceededBoundaries(x: number, y: number, elemRect: DOMRect) {
     // passed up
     if (y <= 0) {
         return true;

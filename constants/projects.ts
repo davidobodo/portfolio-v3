@@ -41,7 +41,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/hospital-findr.png"
     },
     {
-        id: 2,
+        id: "d-productivity",
         title: "d-productivity",
         details: "Web-based Kanban-style list-making application",
         live_link: "https://d-productivity.now.sh/",
@@ -49,7 +49,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/d-productivity.png"
     },
     {
-        id: 3,
+        id: "d-Discus",
         title: "d-Discus",
         details: "A site where people can share details of projects together.",
         live_link: "https://myfirst-fullstackproject.firebaseapp.com/signin",
@@ -57,7 +57,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/d-discus.png"
     },
     {
-        id: 4,
+        id: "d-chat",
         title: "d-chat",
         details: "A basic chat application.",
         live_link: "https://d-chat-98abe.firebaseapp.com/auth",
@@ -65,7 +65,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/d-chat.png"
     },
     {
-        id: 5,
+        id: "d-commerce",
         title: "d-commerce(WIP)",
         details: "An e-commerce platform",
         live_link: "https://d-commerce-99633.firebaseapp.com/",
@@ -73,7 +73,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/d-commerce.png"
     },
     {
-        id: 16,
+        id: "developer-of-the-year",
         title: "developer of the year",
         details: "Clone of “Awwwards” (https://www.awwwards.com/) awards site for the year 2020",
         live_link: "https://obododavid.github.io/developer-of-the-year/",
@@ -81,7 +81,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/developer.png"
     },
     {
-        id: 6,
+        id: "shortly",
         title: "Shortly",
         details: "Site that makes use of rel link API to shorten links",
         live_link: "https://obododavid.github.io/FEM-shortly/",
@@ -89,7 +89,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/shortly.png"
     },
     {
-        id: 7,
+        id: "bookmark",
         title: "Bookmark",
         details: "Bookmark landing page",
         live_link: "https://obododavid.github.io/FEM-bookmark-landing-page/",
@@ -97,7 +97,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/bookmark.png"
     },
     {
-        id: 13,
+        id: "burger-builder",
         title: "Burger builder",
         details: "Build and order your own burger",
         live_link: "https://burger-builder.obododavid5.now.sh/",
@@ -105,7 +105,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/burger-builder.png"
     },
     {
-        id: 14,
+        id: "drum-machine",
         title: "Drum Machine",
         details: "Simple drum machine",
         live_link: "https://obododavid.github.io/drumMachine/",
@@ -114,7 +114,7 @@ export const PROJECTS = [
     },
 
     {
-        id: 9,
+        id: "pomodoro-clock",
         title: "Pomodoro clock",
         details: "Timer for pomodoro time management technique",
         live_link: "https://pomodoroclock.now.sh/",
@@ -122,7 +122,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/pomodoro.png"
     },
     {
-        id: 10,
+        id: "quiz-ninja",
         title: "Quiz ninja",
         details: "How well do you know super heroes real names?",
         live_link: "https://obododavid.github.io/Learning-javascript-quiz-ninja/",
@@ -130,7 +130,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/quiz-ninja.png"
     },
     {
-        id: 11,
+        id: "freebies",
         title: "Freebies",
         details: "clone of freebies(https://freebies.bypeople.com/) website home page",
         live_link: "https://obododavid.github.io/freebies/",
@@ -138,7 +138,7 @@ export const PROJECTS = [
         bgImage: "/images/projects/freebies.png"
     },
     {
-        id: 8,
+        id: "pv1",
         title: "Portfolio v1.0",
         details: "My first portfolio site",
         live_link: "https://obododavid.github.io/portfolio/",

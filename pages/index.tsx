@@ -1,12 +1,12 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact, DarkRadialGradient } from "#/components";
+import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact, Noise, Layout } from "#/components";
 import {
     useRevealParagraph,
     useWindowSize,
     useRegisterGsapScrollTrigger,
-    usePinRadialGradient,
+
     // useCalculateFooterHeight,
     useScrollToTop,
     useRevealHeading,
@@ -37,7 +37,6 @@ const Home: NextPage = () => {
         scrollIndicatorRef,
         mobilePicRef
     } = useInitAnimation();
-    const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
     const { aboutListRef } = useAboutAnimation();
     const {
         workContainerRef,
@@ -87,9 +86,9 @@ const Home: NextPage = () => {
                     scrollIndicatorRef={scrollIndicatorRef}
                     mobilePicRef={mobilePicRef}
                 />
-                <div className={styles.darkSection} ref={darkSectionRef}>
-                    <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
-                    <div className={styles.darkSectionContent}>
+
+                <Layout.DarkSection>
+                    <>
                         <About aboutListRef={aboutListRef} />
                         <Work
                             workContainerRef={workContainerRef}
@@ -113,14 +112,12 @@ const Home: NextPage = () => {
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} />
-                    </div>
-                </div>
+                    </>
+                </Layout.DarkSection>
             </div>
 
-            {/* <footer className="fixed-footer" ref={footerRef}> */}
             <Contact />
-            {/* </footer> */}
-            <div className="noise"></div>
+            <Noise />
         </div>
     );
 };
