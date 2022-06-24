@@ -84,36 +84,10 @@ const Projects: NextPage = () => {
     //     }
     // }, []);
 
-    //--------------------------------------------------------
-    //PROJECT MODAL
-    //--------------------------------------------------------
     const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
     const onSelectProject = (item: TProject | null) => {
         setSelectedProject(item);
     };
-
-    const onMoveToProject = (action: "next" | "previous") => {};
-
-    const onTriggerAction = (e: React.MouseEvent<HTMLButtonElement>) => {
-        const { value } = e.target;
-        switch (value) {
-            case "close":
-                onSelectProject(null);
-                break;
-            case "next":
-                onMoveToProject(value);
-                break;
-            case "previous":
-                onMoveToProject(value);
-                break;
-            default:
-                onSelectProject(null);
-        }
-    };
-    //--------------------------------------------------------
-    //--------------------------------------------------------
-    //--------------------------------------------------------
-
     return (
         <div className={styles.container} ref={containerRef}>
             <Head>
@@ -213,10 +187,6 @@ const Projects: NextPage = () => {
             <Contact />
             {/* </footer> */}
             <div className="noise"></div>
-
-            <Modal show={!!selectedProject}>
-                <SingleProject project={selectedProject} onTriggerAction={onTriggerAction} />
-            </Modal>
         </div>
     );
 };
