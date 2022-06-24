@@ -19,6 +19,7 @@ import styles from "#/styles/_pages/projects.module.scss";
 import { useCalculateFooterHeight, useScrollToTop, usePinRadialGradient, useRegisterGsapScrollTrigger } from "#/hooks";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TProject } from "#/interfaces";
+import { Header } from "./letters";
 const Projects: NextPage = () => {
     const { footerHeight, footerRef } = useCalculateFooterHeight();
 
@@ -96,7 +97,9 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Nav />
+            <Header />
+
+            {/* <Nav /> */}
             {/* <SingleProject /> */}
 
             {/* <div className={styles.scroller}> */}

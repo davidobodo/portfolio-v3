@@ -1,11 +1,9 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { Banners, Contact, SingleLetter, Nav, DarkRadialGradient } from "#/components";
+import { Banners, Contact, SingleLetter, Nav, DarkRadialGradient, Layout, Noise } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
 import { LETTERS } from "#/constants/letters";
-import { usePinRadialGradient, useRegisterGsapScrollTrigger } from "#/hooks";
 const Projects: NextPage = () => {
-    const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
     return (
         <>
             <Head>
@@ -14,35 +12,59 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Nav />
-            <div className={styles.container} ref={darkSectionRef}>
-                <div className={styles.wrapper}>
-                    <h1 className={styles.title}>Letters/Articles</h1>
+            <Header />
+            <Layout.DarkSection>
+                <>
+                    <div className={styles.container}>
+                        <div className={styles.wrapper}>
+                            {/* <h1 className={styles.title}>Letters/Articles</h1> */}
 
-                    {LETTERS.map((item) => {
-                        const { url, title, date, time, summary, tags } = item;
-                        return (
-                            <div key={url} className={styles.letterWrapper}>
-                                <SingleLetter
-                                    url={url}
-                                    title={title}
-                                    date={date}
-                                    time={time}
-                                    summary={summary}
-                                    tags={tags}
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
+                            {LETTERS.map((item, i) => {
+                                const { url, title, date, time, summary, tags } = item;
+                                return (
+                                    <div key={url} className={styles.letterWrapper}>
+                                        <SingleLetter
+                                            url={url}
+                                            title={title}
+                                            date={date}
+                                            time={time}
+                                            summary={summary}
+                                            tags={tags}
+                                        />
+                                        <span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </>
+            </Layout.DarkSection>
 
-                <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
-                {/* <Banners.OtherPages title="Letters." /> */}
-            </div>
             <Contact />
-            <div className="noise"></div>
+            <Noise />
         </>
     );
 };
 
 export default Projects;
+
+export function Header() {
+    return (
+        <div className={styles.headerWrapper}>
+            <Nav />
+
+            <header className={styles.header}>
+                <h1>Letters</h1>
+
+                <p className={styles.list}>
+                    Technical write-ups <span></span> Thoughts <span></span> Opinions <span></span> Stories
+                </p>
+
+                <p className={styles.summary}>
+                    Writing is one of the best ways to <span> solidify knowledge </span> and to grant someone the
+                    courtesy of diving into the <span> world of your mind</span>
+                </p>
+            </header>
+        </div>
+    );
+}

@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 
-export default function Nav() {
+export default function Nav({ isLight }: { isLight: boolean }) {
     const [showLight, setShowLight] = useState(true);
     const handlescroll = () => {
         // if (window.pageYOffset >= 80) {
@@ -23,8 +23,8 @@ export default function Nav() {
     return (
         <nav className={styles.nav}>
             <div className={styles.navWrapper}>
-                <NavTitle color="#e1dfdd" style={{ opacity: showLight === true ? 1 : 0 }} />
-                <NavTitle color="#000" style={{ opacity: showLight === true ? 0 : 1 }} />
+                <NavTitle color="#e1dfdd" style={{ opacity: isLight === true ? 1 : 0 }} />
+                <NavTitle color="#000" style={{ opacity: isLight === true ? 0 : 1 }} />
             </div>
         </nav>
     );
