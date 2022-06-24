@@ -15,8 +15,8 @@ const {
     useInitAnimation,
     useAboutAnimation,
     useWorkAnimation,
-    useSkillsAnimation,
-    useProjectAnimation
+    useSkillsAnimation
+    // useProjectAnimation
 } = HomePageHooks;
 
 const Home: NextPage = () => {
@@ -58,8 +58,8 @@ const Home: NextPage = () => {
         skillsContentWrapperRef,
         mobileSkillsContainerRef
     } = useSkillsAnimation({ windowInnerWidth });
-    const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
-    const { projectsListWrapperRef } = useProjectAnimation();
+    // const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
+    // const { projectsListWrapperRef } = useProjectAnimation();
 
     return (
         <div>
@@ -108,7 +108,8 @@ const Home: NextPage = () => {
                             mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
-                        <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} />
+                        {/* <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} /> */}
+                        <Projects />
                     </>
                 </Layout.DarkSection>
             </div>

@@ -1,8 +1,8 @@
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function Nav({ isLight }: { isLight: boolean }) {
-    const [showLight, setShowLight] = useState(true);
+export default function Nav({ isLight }: { isLight?: boolean }) {
+    // const [showLight, setShowLight] = useState(true);
     const handlescroll = () => {
         // if (window.pageYOffset >= 80) {
         //     setShowLight(true);

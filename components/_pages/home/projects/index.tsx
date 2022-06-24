@@ -1,15 +1,12 @@
-// import Image from "next/image";
-import Link from "next/link";
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
-import { Button } from "../../../index";
 import { Ref, useState, useRef, useEffect } from "react";
 import Router from "next/router";
 import { TProject } from "#/interfaces";
 
 function ProjectsListView() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const projectsListRef = useRef(null);
+    const projectsListRef = useRef<HTMLUListElement>(null);
     const pictureBoxRef = useRef(null);
     const posDic = useRef<Record<number | string, { top: number; bottom: number; id: string }>>({});
 
@@ -34,7 +31,7 @@ function ProjectsListView() {
     const [activeProjectPos, setActiveProjectPos] = useState<string>("0");
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const { clientX, clientY } = e;
-        const rect = containerRef.current.getBoundingClientRect();
+        const rect = containerRef.current!.getBoundingClientRect();
         const x = clientX - rect.left;
         const y = clientY - rect.top;
         const hasExceededBoundary = checkExceededBoundaries(x, y, rect);
@@ -50,10 +47,6 @@ function ProjectsListView() {
             setActiveProjectPos(activeProjectPos);
         }
     };
-
-    //1. create a dictionary of positions from project list
-
-    // 2. when y changes, check the project the current position maps to
 
     useEffect(() => {
         if (projectsListRef.current) {
@@ -93,7 +86,7 @@ function ProjectsListView() {
             />
             <ul ref={projectsListRef}>
                 {displayedProjects.map((item, i) => {
-                    const { title, details, id } = item;
+                    const { title, id } = item;
                     return (
                         <li className={styles.project} key={i} value={id} data-id={id}>
                             <a href="">
@@ -161,7 +154,7 @@ function ProjectBox({
                     {displayedProjects.map((item, i) => {
                         const { title } = item;
                         return (
-                            <li>
+                            <li key={i}>
                                 <span
                                     style={{
                                         fontSize: "60px"

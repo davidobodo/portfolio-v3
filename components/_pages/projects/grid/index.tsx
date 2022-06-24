@@ -12,7 +12,7 @@ export default function Grid({
     return (
         <div className={styles.container}>
             {PROJECTS.map((item, i) => {
-                const { tech, title, bgImage } = item;
+                const { tech, bgImage } = item;
 
                 let isLocked = false;
 

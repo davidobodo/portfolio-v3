@@ -1,13 +1,12 @@
 import gsap from "gsap";
 import styles from "./styles.module.scss";
 import { ScrollAlert } from "../../index";
-import { useEffect, useRef } from "react";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useEffect, useRef, RefObject } from "react";
 import Heading from "../heading";
 
-export default function Banner({ title, bannerRef }: { title: string }) {
+export default function Banner({ title, bannerRef }: { title: string; bannerRef: RefObject<HTMLDivElement> }) {
     // const bannerRef = useRef(null);
-    const blackCoverRef = useRef(null);
+    // const blackCoverRef = useRef(null);
     // useEffect(() => {
     //     if (typeof window !== "undefined") {
     //         gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +30,7 @@ export default function Banner({ title, bannerRef }: { title: string }) {
     //     }
     // }, [bannerRef.current]);
 
-    const hrLineRef = useRef(null);
+    // const hrLineRef = useRef(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     useEffect(() => {

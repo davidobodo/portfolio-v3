@@ -1,32 +1,19 @@
 import Head from "next/head";
 import { NextPage } from "next";
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
-import {
-    Banners,
-    Contact,
-    Grid,
-    Nav,
-    Radio,
-    SingleProject,
-    DarkRadialGradient,
-    ScrollAlert,
-    Modal
-} from "#/components";
+import { useState, useRef } from "react";
+import { Contact, Grid, DarkRadialGradient } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
-import { PROJECT_NATURE } from "#/constants";
+// import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useCalculateFooterHeight, useScrollToTop, usePinRadialGradient, useRegisterGsapScrollTrigger } from "#/hooks";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { usePinRadialGradient } from "#/hooks";
 import { TProject } from "#/interfaces";
 import { Header } from "./letters";
+import Router from "next/router";
 const Projects: NextPage = () => {
-    const { footerHeight, footerRef } = useCalculateFooterHeight();
-
-    const [filterBy, setFilterBy] = useState("tech-stack");
-    const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFilterBy(e.target.value);
-    };
+    // const [filterBy, setFilterBy] = useState("tech-stack");
+    // const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     setFilterBy(e.target.value);
+    // };
 
     const [activeKey, setActiveKey] = useState("all");
 
@@ -36,25 +23,24 @@ const Projects: NextPage = () => {
 
     let filterList = [];
 
-    if (filterBy === "project-nature") {
-        filterList = [
-            {
-                key: "all",
-                label: "All"
-            },
-            ...PROJECT_NATURE
-        ];
-    } else {
-        filterList = [
-            {
-                key: "all",
-                label: "All"
-            },
-            ...Object.values(TECH_STACKS)
-        ];
-    }
+    // if (filterBy === "project-nature") {
+    //     filterList = [
+    //         {
+    //             key: "all",
+    //             label: "All"
+    //         },
+    //         ...PROJECT_NATURE
+    //     ];
+    // } else {
+    filterList = [
+        {
+            key: "all",
+            label: "All"
+        },
+        ...Object.values(TECH_STACKS)
+    ];
+    // }
 
-    const bannerRef = useRef(null);
     const containerRef = useRef(null);
 
     const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
@@ -85,9 +71,10 @@ const Projects: NextPage = () => {
     //     }
     // }, []);
 
-    const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
-    const onSelectProject = (item: TProject | null) => {
-        setSelectedProject(item);
+    // const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
+    const onSelectProject = (item: TProject) => {
+        // setSelectedProject(item);
+        Router.push(`/projects/${item.id}`);
     };
     return (
         <div className={styles.container} ref={containerRef}>

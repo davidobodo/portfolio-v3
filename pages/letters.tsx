@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { Banners, Contact, SingleLetter, Nav, DarkRadialGradient, Layout, Noise } from "#/components";
+import { Contact, SingleLetter, Nav, Layout, Noise } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
 import { LETTERS } from "#/constants/letters";
 const Projects: NextPage = () => {
