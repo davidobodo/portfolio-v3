@@ -22,7 +22,8 @@ export const PROJECTS = [
         details: "Prodeus web app",
         live_link: "https://www.prodeus.co/",
         tech: ["react", "typescript", "styledcomponents", "html", "sass", "reactquery"],
-        bgImage: "/images/projects/dashboard.png"
+        bgImage: "/images/projects/dashboard.png",
+        type: "Web Application"
     },
     {
         id: "cadmils",
@@ -30,7 +31,8 @@ export const PROJECTS = [
         details: "Official website of cadmils consulting agency",
         live_link: "https://www.cadmils.com/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
-        bgImage: "/images/projects/cadmils.png"
+        bgImage: "/images/projects/cadmils.png",
+        type: "Website"
     },
     {
         id: "hospital-finder",
@@ -38,7 +40,8 @@ export const PROJECTS = [
         details: "Find Hospitals, Clinics, Pharmacies and Health care centers close to you",
         live_link: "https://medic-finder.netlify.app/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        bgImage: "/images/projects/hospital-findr.png"
+        bgImage: "/images/projects/hospital-findr.png",
+        type: "Web Application"
     },
     {
         id: "d-productivity",
@@ -46,7 +49,8 @@ export const PROJECTS = [
         details: "Web-based Kanban-style list-making application",
         live_link: "https://d-productivity.now.sh/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        bgImage: "/images/projects/d-productivity.png"
+        bgImage: "/images/projects/d-productivity.png",
+        type: "Web Application"
     },
     {
         id: "d-Discus",
@@ -54,7 +58,8 @@ export const PROJECTS = [
         details: "A site where people can share details of projects together.",
         live_link: "https://myfirst-fullstackproject.firebaseapp.com/signin",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        bgImage: "/images/projects/d-discus.png"
+        bgImage: "/images/projects/d-discus.png",
+        type: "Web Application"
     },
     {
         id: "d-chat",

@@ -3,8 +3,10 @@ import { PROJECTS } from "#/constants/projects";
 import { Ref, useState, useRef, useEffect } from "react";
 import Router from "next/router";
 import { TProject } from "#/interfaces";
+import Heading from "./heading";
+import { Button } from "#/components";
 
-function ProjectsListView() {
+function ProjectsListView({ projectTitleRef }: { projectTitleRef: Ref<HTMLHeadingElement> }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectsListRef = useRef<HTMLUListElement>(null);
     const pictureBoxRef = useRef(null);
@@ -73,9 +75,15 @@ function ProjectsListView() {
         }
     };
 
+    const handleGoToProjects = () => {
+        Router.push("/projects");
+    };
+
     return (
-        <div className={styles.container} onMouseMove={handleMouseMove} ref={containerRef}>
-            <ProjectBox
+        <>
+            <Heading projectTitleRef={projectTitleRef} />
+            <div className={styles.container} onMouseMove={handleMouseMove} ref={containerRef}>
+                {/* <ProjectBox
                 posX={mousePos.x - squaresize + "px"}
                 posY={mousePos.y - squaresize + "px"}
                 isVisible={inBoundary}
@@ -83,40 +91,51 @@ function ProjectsListView() {
                 displayedProjects={displayedProjects}
                 activeProjectPos={activeProjectPos}
                 onViewProject={onViewProject}
-            />
-            <ul ref={projectsListRef}>
-                {displayedProjects.map((item, i) => {
-                    const { title, id } = item;
-                    return (
-                        <li className={styles.project} key={i} value={id} data-id={id}>
-                            <a href="">
-                                <span
-                                    className={styles.projectTitle}
-                                    style={{
-                                        transform:
-                                            activeProjectPos === i.toString() ? "translateX(-20px)" : "translateX(0px)",
-                                        opacity: activeProjectPos === i.toString() ? "0.5" : "1"
-                                    }}
-                                >
-                                    {title}
-                                </span>
+            /> */}
+                <ul ref={projectsListRef}>
+                    {displayedProjects.map((item, i) => {
+                        const { title, id, type } = item;
+                        return (
+                            <li className={styles.project} key={i} value={id} data-id={id}>
+                                <a href="">
+                                    <span
+                                        className={styles.projectTitle}
+                                        style={{
+                                            transform:
+                                                activeProjectPos === i.toString()
+                                                    ? "translateX(-20px)"
+                                                    : "translateX(0px)",
+                                            opacity: activeProjectPos === i.toString() ? "0.5" : "1"
+                                        }}
+                                    >
+                                        {title}
+                                    </span>
 
-                                <span
-                                    style={{
-                                        transform:
-                                            activeProjectPos === i.toString() ? "translateX(20px)" : "translateX(0px)",
-                                        opacity: activeProjectPos === i.toString() ? "0.5" : "1"
-                                    }}
-                                    className={styles.projectNature}
-                                >
-                                    Web application
-                                </span>
-                            </a>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
+                                    <span
+                                        style={{
+                                            transform:
+                                                activeProjectPos === i.toString()
+                                                    ? "translateX(20px)"
+                                                    : "translateX(0px)",
+                                            opacity: activeProjectPos === i.toString() ? "0.5" : "1"
+                                        }}
+                                        className={styles.projectNature}
+                                    >
+                                        {type}
+                                    </span>
+
+                                    <span className={styles.number}>{`0${i + 1}`}</span>
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+
+            <div className={styles.btnWrapper}>
+                <Button label="View All" ariaLabel="View All" onClick={handleGoToProjects} />
+            </div>
+        </>
     );
 }
 
@@ -152,16 +171,11 @@ function ProjectBox({
             <div className={styles.projectsWrapper}>
                 <ul style={{ transform: `translateY(-${parseInt(activeProjectPos) * 300}px)` }}>
                     {displayedProjects.map((item, i) => {
-                        const { title } = item;
+                        const { title, bgImage } = item;
                         return (
                             <li key={i}>
-                                <span
-                                    style={{
-                                        fontSize: "60px"
-                                    }}
-                                >
-                                    {title}
-                                </span>
+                                <span style={{ backgroundImage: `url(${bgImage})` }}></span>
+                                <span style={{ backgroundImage: `url(${bgImage})` }}></span>
                             </li>
                         );
                     })}
@@ -169,7 +183,7 @@ function ProjectBox({
             </div>
 
             <button className={styles.projectsBoxCircle} type="button" onClick={onViewProject}>
-                VIEW PROJECT
+                View
             </button>
         </div>
     );

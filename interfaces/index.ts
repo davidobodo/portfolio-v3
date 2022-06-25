@@ -14,6 +14,7 @@ type TProject = {
     live_link: string;
     tech: string[];
     bgImage: string;
+    type?: string;
 };
 
 export type { TTimelineAction, TProject };

@@ -58,7 +58,7 @@ const Home: NextPage = () => {
         skillsContentWrapperRef,
         mobileSkillsContainerRef
     } = useSkillsAnimation({ windowInnerWidth });
-    // const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
+    const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
     // const { projectsListWrapperRef } = useProjectAnimation();
 
     return (
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         {/* <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} /> */}
-                        <Projects />
+                        <Projects projectTitleRef={projectTitleRef} />
                     </>
                 </Layout.DarkSection>
             </div>
