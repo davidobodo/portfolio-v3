@@ -1,4 +1,4 @@
-import { HomePage, ProjectsPage, LettersPage } from "./_pages";
+import { HomePage, ProjectsPage, LettersPage, SingleProject } from "./_pages";
 
 import Atoms from "./_atoms";
 import Layout from "./layout";
@@ -35,5 +35,6 @@ export {
     DarkRadialGradient,
     Modal,
     Layout,
-    Noise
+    Noise,
+    SingleProject
 };
