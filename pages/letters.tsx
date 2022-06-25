@@ -1,8 +1,9 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { Contact, SingleLetter, Nav, Layout, Noise } from "#/components";
+import { Contact, SingleLetter, Nav, Layout, Noise, Banners } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
 import { LETTERS } from "#/constants/letters";
+
 const Projects: NextPage = () => {
     return (
         <>
@@ -11,8 +12,9 @@ const Projects: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
-            <Header />
+            <Nav />
+            {/* <Header title="Letters" /> */}
+            <Banners.Test />
             <Layout.DarkSection>
                 <>
                     <div className={styles.container}>
@@ -48,23 +50,26 @@ const Projects: NextPage = () => {
 
 export default Projects;
 
-export function Header() {
+export function Header({ title }: { title: string }) {
     return (
-        <div className={styles.headerWrapper}>
-            <Nav />
+        <>
+            <div className={styles.headerWrapper}>
+                <Nav />
 
-            <header className={styles.header}>
-                <h1>Letters</h1>
+                <header className={styles.header}>
+                    <h1>{title}</h1>
 
-                <p className={styles.list}>
-                    Technical write-ups <span></span> Thoughts <span></span> Opinions <span></span> Stories
-                </p>
+                    <p className={styles.list}>
+                        Technical write-ups <span></span> Thoughts <span></span> Opinions <span></span> Stories
+                    </p>
 
-                <p className={styles.summary}>
-                    Writing is one of the best ways to <span> solidify knowledge </span> and to grant someone the
-                    courtesy of diving into the <span> world of your mind</span>
-                </p>
-            </header>
-        </div>
+                    <p className={styles.summary}>
+                        Writing is one of the best ways to <span> solidify knowledge </span> and to grant someone the
+                        courtesy of diving into the <span> world of your mind</span>
+                    </p>
+                </header>
+            </div>
+            <div className={styles.headerWrapperPlaceholder}></div>
+        </>
     );
 }

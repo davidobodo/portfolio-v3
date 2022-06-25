@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import { useState, useRef } from "react";
-import { Contact, Grid, DarkRadialGradient } from "#/components";
+import { Contact, Grid, DarkRadialGradient, Noise } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 // import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
@@ -84,14 +84,8 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Header />
+            <Header title="Projects" />
 
-            {/* <Nav /> */}
-            {/* <SingleProject /> */}
-
-            {/* <div className={styles.scroller}> */}
-            {/* <Banners.OtherPages title="Projects." bannerRef={bannerRef} /> */}
-            {/* </div> */}
             <div className={styles.main} ref={darkSectionRef}>
                 <div className={styles.darkSection}>
                     {/* <div className={styles.banner}>
@@ -176,7 +170,7 @@ const Projects: NextPage = () => {
             {/* <footer className="fixed-footer" ref={footerRef}> */}
             <Contact />
             {/* </footer> */}
-            <div className="noise"></div>
+            <Noise />
         </div>
     );
 };

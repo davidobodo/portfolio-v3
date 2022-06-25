@@ -1,0 +1,47 @@
+.container {
+    background-color: var(--light-brown);
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 15rem 5rem 5rem;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+
+    h1 {
+        font-size: 10.5vw;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        line-height: 0.8em;
+        font-family: "sf-pro-medium";
+        font-weight: 500;
+
+        &:nth-child(1) {
+        }
+        &:nth-child(2) {
+            transform: translateX(11vw);
+
+            span {
+                background-color: yellow;
+                line-height: 0.8em;
+            }
+        }
+        &:nth-child(3) {
+            transform: translateX(54vw);
+        }
+        &:nth-child(4) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.placeholder {
+    height: 100vh;
+}

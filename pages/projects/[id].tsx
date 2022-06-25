@@ -19,6 +19,10 @@ export default function SingleProject(props: Props) {
         Router.push(`/projects/${id}`);
     };
 
+    const onGoToProjects = () => {
+        Router.push("/projects");
+    };
+
     if (!currProject) {
         return null;
     }
@@ -50,6 +54,8 @@ export default function SingleProject(props: Props) {
                         )}
 
                         <div className={styles.content}>
+                            <button onClick={onGoToProjects}>CLOSE</button>
+
                             <section className={styles.title}>
                                 <h1>{title}</h1>
                             </section>
