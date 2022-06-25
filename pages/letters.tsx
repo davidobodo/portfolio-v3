@@ -13,8 +13,8 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            {/* <Header title="Letters" /> */}
-            <Banners.Test />
+            <Banners.OtherPages texts={["Letters", "Thoughts", "Stories", "Ideas"]} />
+
             <Layout.DarkSection>
                 <>
                     <div className={styles.container}>

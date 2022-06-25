@@ -1,15 +1,17 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import { useState, useRef } from "react";
-import { Contact, Grid, DarkRadialGradient, Noise } from "#/components";
+import { Contact, Grid, DarkRadialGradient, Noise, Banners, ScrollAlert, Nav } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 // import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
-import { usePinRadialGradient } from "#/hooks";
+import { usePinRadialGradient, useBannerAnimation } from "#/hooks";
 import { TProject } from "#/interfaces";
 import { Header } from "./letters";
 import Router from "next/router";
+import Banner from "#/components/banners/other-pages";
 const Projects: NextPage = () => {
+    const { textWrapperRef } = useBannerAnimation();
     // const [filterBy, setFilterBy] = useState("tech-stack");
     // const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     setFilterBy(e.target.value);
@@ -73,7 +75,6 @@ const Projects: NextPage = () => {
 
     // const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
     const onSelectProject = (item: TProject) => {
-        // setSelectedProject(item);
         Router.push(`/projects/${item.id}`);
     };
     return (
@@ -84,61 +85,16 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Header title="Projects" />
+            <Nav />
+            <Banners.OtherPages
+                texts={["Projects", "Playground", "xperiments", "Replicas"]}
+                textWrapperRef={textWrapperRef}
+            />
 
             <div className={styles.main} ref={darkSectionRef}>
                 <div className={styles.darkSection}>
-                    {/* <div className={styles.banner}>
-                        <h1>Projects</h1>
-
-                        <ul>
-                            <li>Enterprise grade applications</li>
-                            <li>Websites</li>
-                            <li>Learnt from tutorials</li>
-                            <li>Experiments</li>
-                            <li>Playful</li>
-                            <li>Ideas</li>
-                            <li>Its all in here...</li>
-                        </ul>
-
-                        <ScrollAlert
-                            // containerRef={scrollIndicatorRef}
-                            containerStyles={{
-                                marginBottom: "1rem",
-                                position: "absolute",
-                                bottom: "5rem",
-                                right: "5rem",
-                                color: "#e1dfdd"
-                            }}
-                        />
-                    </div> */}
-
                     <div className={styles.content}>
                         <aside className={styles.aside}>
-                            {/* <div className={styles.filter}>
-                        <h4>Filter by</h4>
-
-                        <div className={styles.filterCheck}>
-                            <Radio
-                                id="tech-stack"
-                                name="filter"
-                                value="tech-stack"
-                                onchange={onSelectFilterBy}
-                                checked={filterBy === "tech-stack"}
-                            />
-                            <label htmlFor="tech-stack">Tech Stack</label>
-                        </div>
-                        <div className={styles.filterCheck}>
-                            <Radio
-                                id="project-nature"
-                                name="filter"
-                                value="project-nature"
-                                onchange={onSelectFilterBy}
-                                checked={filterBy === "project-nature"}
-                            />
-                            <label htmlFor="project-nature">Project Nature</label>
-                        </div>
-                    </div> */}
                             <h4>Tech stack</h4>
                             <ul>
                                 {filterList.map((item) => {
@@ -155,10 +111,6 @@ const Projects: NextPage = () => {
                         </aside>
 
                         <section className={styles.gridWrapper}>
-                            {/* <header>
-                                <h2>Projects</h2>
-                                <span></span>
-                            </header> */}
                             <Grid activeKey={activeKey} onSelectProject={onSelectProject} />
                         </section>
                     </div>
@@ -167,9 +119,7 @@ const Projects: NextPage = () => {
                 <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
             </div>
 
-            {/* <footer className="fixed-footer" ref={footerRef}> */}
             <Contact />
-            {/* </footer> */}
             <Noise />
         </div>
     );

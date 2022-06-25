@@ -6,21 +6,6 @@
     background-color: var(--black);
 }
 
-.banner {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-
-    h1 {
-        font-size: 200px;
-        text-transform: uppercase;
-        color: var(--light-brown);
-    }
-}
-
 .scroller {
     // scroll-snap-align: start;
 }

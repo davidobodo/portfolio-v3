@@ -1,121 +1,78 @@
-@import "#/styles/globals.module.scss";
-
-.blackCover {
-    width: 100%;
-    position: fixed;
-    background-color: var(--black);
-    left: 0px;
-    top: -10px;
-    height: 1px;
-    z-index: 2;
-    transform-origin: top;
-    will-change: transform;
-}
-
 .container {
+    background-color: var(--light-brown);
     height: 100vh;
-    // background-color: var(--light-brown);
     display: flex;
     flex-direction: column;
+    padding: 15rem 5rem 5rem;
     justify-content: space-between;
-    padding-top: 10rem;
-    padding-bottom: 5rem;
-    position: relative;
-    z-index: 1;
+    position: fixed;
+    width: 100%;
 
-    .bigText {
-        position: relative;
+    h1 {
+        font-size: 12.5vw;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        line-height: 0.8em;
         font-family: "sf-pro-medium";
         font-weight: 500;
+        display: flex;
+        position: relative;
 
-        .line {
-            display: block;
+        .lineWrapper {
+            position: relative;
 
-            // &:first-child {
-            //     margin-bottom: 1rem;
-            // }
-
-            .letterwrapper {
-                display: inline-flex;
+            .letterWrapper {
                 overflow: hidden;
+                display: inline-flex;
+                position: relative;
+                z-index: 1;
 
-                span {
-                    text-transform: uppercase;
-                    line-height: 0.8em;
-                    font-size: 60px;
-                    letter-spacing: -2px;
-
-                    &::selection {
-                        background: var(--black);
-                        color: var(--light-brown);
-                    }
-
-                    @media (min-width: $md) {
-                        font-size: 8vw;
-                    }
-
-                    @media (min-width: $xxl) {
-                        font-size: 160px;
-                    }
+                .letter {
+                    transform: translateX(-50px);
                 }
             }
-        }
-    }
 
-    .topSection {
-        padding: 0px 5rem;
-        display: flex;
-        justify-content: flex-end;
-
-        .image {
-            background-color: var(--black);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800);
-            background-position: center;
-
-            //----------
-            max-height: calc(100vh - 440px);
-            width: 100%; // 355px
-            height: 350px;
-            //----------
-
-            @media (min-width: $md) {
-                //----------
-                width: 250px;
-                height: 350px;
-                max-height: none;
-                //----------
-            }
-            @media (min-width: $xxl) {
-                //----------
-                width: 380px;
-                height: 500px;
-                //----------
+            .bg {
+                background: linear-gradient(to right, black, var(--brown));
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0px;
             }
         }
-    }
 
-    .bottomSection {
-        width: 100%;
-        padding: 0px 5rem;
-        position: relative;
-        // border-bottom: 1rem solid var(--black);
+        //COLOR CHANGE
+        &:nth-child(2),
+        &:nth-child(4) {
+            .letter {
+                color: var(--light-brown);
+            }
+        }
 
-        .titleWrapper {
+        //INITIAL DISPLACEMENT
+        &:nth-child(2) {
+            margin-left: 10vw;
+        }
+        &:nth-child(3) {
+            margin-left: 20vw;
+        }
+        &:nth-child(4) {
             display: flex;
-            justify-content: space-between;
-        }
-
-        .hrLine {
-            height: 1rem;
-            // width: calc(100% + 10rem);
-            width: 0px;
-            left: -5rem;
-            background-color: var(--black);
-            position: absolute;
-            bottom: 0px;
+            justify-content: flex-end;
         }
     }
+
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+// span {
+//     color: var(--light-brown);
+//     background: linear-gradient(to right, black, var(--brown));
+// }
+
+.placeholder {
+    height: 100vh;
 }

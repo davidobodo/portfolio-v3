@@ -49,6 +49,6 @@ export const LETTERS = [
         time: "3 min",
         summary: `Recently had the need to cancel an http request and after googling a bit I did get the solution I needed. However, `,
         tags: ["programming", "http", "https", "ajax", "javascript", "cancel"],
-        url: "https://medium.com/@obododavid5/journey-to-portfolio-version-3-ba31faf77c97"
+        url: "https://obododavid.hashnode.dev/how-to-cancel-an-httphttps-request"
     }
 ];

@@ -7,6 +7,7 @@ import useRevealParagraph from "./useRevealParagraph";
 import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useScrollToTop from "./useScollToTop";
 import useRevealHeading from "./useRevealHeading";
+import useBannerAnimation from "./useBannerAnimation";
 
 export {
     HomePageHooks,
@@ -16,5 +17,6 @@ export {
     useRevealParagraph,
     useCalculateFooterHeight,
     useScrollToTop,
-    useRevealHeading
+    useRevealHeading,
+    useBannerAnimation
 };
