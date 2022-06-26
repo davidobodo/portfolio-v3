@@ -3,8 +3,10 @@ import Head from "next/head";
 import { Contact, SingleLetter, Nav, Layout, Noise, Banners } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
 import { LETTERS } from "#/constants/letters";
+import { useBannerAnimation } from "#/hooks";
 
-const Projects: NextPage = () => {
+const Letters: NextPage = () => {
+    const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
     return (
         <>
             <Head>
@@ -13,7 +15,11 @@ const Projects: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            <Banners.OtherPages texts={["Letters", "Thoughts", "Stories", "Ideas"]} />
+            <Banners.OtherPages
+                texts={["Letters", "Thoughts", "Stories", "Ideas"]}
+                textWrapperRef={textWrapperRef}
+                scrollIndicatorRef={scrollIndicatorRef}
+            />
 
             <Layout.DarkSection>
                 <>
@@ -48,7 +54,7 @@ const Projects: NextPage = () => {
     );
 };
 
-export default Projects;
+export default Letters;
 
 export function Header({ title }: { title: string }) {
     return (

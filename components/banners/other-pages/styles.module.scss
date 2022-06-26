@@ -28,14 +28,14 @@
                 z-index: 1;
 
                 .letter {
-                    transform: translateX(-50px);
+                    transform: translateX(-100%);
                 }
             }
 
             .bg {
                 background: linear-gradient(to right, black, var(--brown));
                 position: absolute;
-                width: 100%;
+                width: 0%;
                 height: 100%;
                 left: 0px;
             }

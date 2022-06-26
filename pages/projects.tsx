@@ -11,7 +11,7 @@ import { Header } from "./letters";
 import Router from "next/router";
 import Banner from "#/components/banners/other-pages";
 const Projects: NextPage = () => {
-    const { textWrapperRef } = useBannerAnimation();
+    const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
     // const [filterBy, setFilterBy] = useState("tech-stack");
     // const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     setFilterBy(e.target.value);
@@ -89,6 +89,7 @@ const Projects: NextPage = () => {
             <Banners.OtherPages
                 texts={["Projects", "Playground", "xperiments", "Replicas"]}
                 textWrapperRef={textWrapperRef}
+                scrollIndicatorRef={scrollIndicatorRef}
             />
 
             <div className={styles.main} ref={darkSectionRef}>
