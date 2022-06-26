@@ -23,7 +23,8 @@ export const PROJECTS = [
         live_link: "https://www.prodeus.co/",
         tech: ["react", "typescript", "styledcomponents", "html", "sass", "reactquery"],
         bgImage: "/images/projects/dashboard.png",
-        type: "Web Application"
+        type: "Web Application",
+        bgColor: "#dcd0c2"
     },
     {
         id: "cadmils",
@@ -32,7 +33,8 @@ export const PROJECTS = [
         live_link: "https://www.cadmils.com/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
         bgImage: "/images/projects/cadmils.png",
-        type: "Website"
+        type: "Website",
+        bgColor: "#e2d1d9"
     },
     {
         id: "hospital-finder",
@@ -41,7 +43,8 @@ export const PROJECTS = [
         live_link: "https://medic-finder.netlify.app/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
         bgImage: "/images/projects/hospital-findr.png",
-        type: "Web Application"
+        type: "Web Application",
+        bgColor: "#b1a994"
     },
     {
         id: "d-productivity",
@@ -50,7 +53,8 @@ export const PROJECTS = [
         live_link: "https://d-productivity.now.sh/",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/d-productivity.png",
-        type: "Web Application"
+        type: "Web Application",
+        bgColor: "#373737"
     },
     {
         id: "d-Discus",
@@ -59,7 +63,8 @@ export const PROJECTS = [
         live_link: "https://myfirst-fullstackproject.firebaseapp.com/signin",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/d-discus.png",
-        type: "Web Application"
+        type: "Web Application",
+        bgColor: "#373737"
     },
     {
         id: "d-chat",

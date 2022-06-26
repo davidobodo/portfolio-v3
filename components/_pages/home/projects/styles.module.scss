@@ -3,10 +3,10 @@
 .container {
     width: 100%;
     position: relative;
+    padding-bottom: 10rem;
 
     @media (min-width: $md) {
         margin: auto;
-        margin-bottom: 10rem;
         max-width: var(--mini-desktop-max-width);
     }
 
@@ -14,49 +14,53 @@
         max-width: var(--max-width);
     }
 
-    .project {
-        list-style: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        border-bottom: 1px solid var(--ash);
-        cursor: pointer;
-
-        &:first-child {
-            border-top: 1px solid var(--ash);
-        }
-
-        a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            text-decoration: none;
-            padding: 8rem 8rem;
-            color: var(--ash);
+    .projectsList {
+        li {
+            transition: var(--animation-smooth);
+            list-style: none;
+            border-bottom: 1px solid var(--ash);
+            cursor: pointer;
             position: relative;
 
-            .projectTitle {
-                font-size: 80px;
-                font-family: "sf-pro-medium";
-                font-weight: 500;
-                transition: transform 200ms ease-in-out;
-                cursor: pointer;
-
-                font-family: "sf-pro-medium";
-                font-weight: 600;
-                line-height: 1.05;
-                font-weight: 600;
-                letter-spacing: -0.015em;
+            &:first-child {
+                border-top: 1px solid var(--ash);
             }
 
-            .projectNature {
-                transition: transform 200ms ease-in-out;
-                font-size: 1.6rem;
-                font-family: "sf-pro-medium";
-                font-weight: 500;
+            a {
+                transition: var(--animation-fast);
+                padding: calc(var(--section-padding) / 3.5) 8rem calc(var(--section-padding) / 3) 8rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: var(--ash);
+                text-decoration: none;
+
+                h4 {
+                    position: relative;
+                    display: block;
+                    line-height: 1;
+                    transition: var(--animation-fast);
+                    transform: translateX(0);
+                    font-size: clamp(5rem, 5.5vw, 10rem);
+                }
+
+                p {
+                    font-size: 1.6rem;
+                    transition: var(--animation-fast);
+                    transform: translateX(0);
+                }
+
+                &:hover {
+                    opacity: 0.33;
+
+                    h4 {
+                        transform: translateX(calc(var(--container-padding) * -0.1));
+                    }
+
+                    p {
+                        transform: translateX(calc(var(--container-padding) * 0.1));
+                    }
+                }
             }
 
             .number {
@@ -71,103 +75,10 @@
             }
         }
     }
-}
 
-.btnWrapper {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20rem;
-}
-
-.projectBox {
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    z-index: 1;
-    cursor: pointer;
-    // transition: transform;
-    transition-property: transform;
-    transition-duration: 0.2s;
-    // transition-timing-function: cubic-bezier(0.36, 0, 0.66, 0);
-    transition-timing-function: cubic-bezier(0.34, 1, 0.64, 1);
-    transform-origin: center;
-    cursor: pointer;
-
-    .projectsWrapper {
-        overflow: hidden;
-        width: 300px;
-        height: 300px;
-        cursor: pointer;
-        ul {
-            transition: transform 200ms ease-in-out;
-
-            li {
-                width: 300px;
-                height: 300px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-
-                // &:nth-child(1) {
-                //     background-color: green;
-                // }
-                // &:nth-child(2) {
-                //     background-color: yellow;
-                // }
-                // &:nth-child(3) {
-                //     background-color: pink;
-                // }
-                // &:nth-child(4) {
-                //     background-color: orange;
-                // }
-                // &:nth-child(5) {
-                //     background-color: purple;
-                // }
-
-                span {
-                    &:nth-child(1) {
-                        width: 100%;
-                        height: 100%;
-                        filter: blur(4px);
-                        position: absolute;
-                        top: 0px;
-                        left: 0px;
-                        background-position: center;
-                    }
-                    &:nth-child(2) {
-                        width: 80%;
-                        padding-top: 56.6%;
-                        // height: 80%;
-                        // background-color: var(--black);
-                        background-color: transparent;
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        position: relative;
-                    }
-                }
-            }
-        }
-    }
-
-    .projectsBoxCircle {
-        width: 60px;
-        height: 60px;
-        background-color: var(--light-brown);
-        color: var(--black);
-        border-radius: 50%;
-        border: 0px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        font-size: 1.4rem;
-        transform: translate(-50%, -50%);
-        cursor: pointer;
+    .btnWrapper {
         display: flex;
-        align-items: center;
         justify-content: center;
-        outline: none;
-        cursor: pointer;
+        margin-top: 10rem;
     }
 }

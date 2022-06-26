@@ -1,0 +1,173 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    width: 100%;
+    position: relative;
+
+    @media (min-width: $md) {
+        margin: auto;
+        margin-bottom: 10rem;
+        max-width: var(--mini-desktop-max-width);
+    }
+
+    @media (min-width: $xxl) {
+        max-width: var(--max-width);
+    }
+
+    .project {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid var(--ash);
+        cursor: pointer;
+
+        &:first-child {
+            border-top: 1px solid var(--ash);
+        }
+
+        a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-decoration: none;
+            padding: 8rem 8rem;
+            color: var(--ash);
+            position: relative;
+
+            .projectTitle {
+                font-size: 80px;
+                font-family: "sf-pro-medium";
+                font-weight: 500;
+                transition: transform 200ms ease-in-out;
+                cursor: pointer;
+
+                font-family: "sf-pro-medium";
+                font-weight: 600;
+                line-height: 1.05;
+                font-weight: 600;
+                letter-spacing: -0.015em;
+            }
+
+            .projectNature {
+                transition: transform 200ms ease-in-out;
+                font-size: 1.6rem;
+                font-family: "sf-pro-medium";
+                font-weight: 500;
+            }
+
+            .number {
+                position: absolute;
+                font-size: 300px;
+                font-family: "sf-pro-bold";
+                bottom: 0px;
+                right: 0px;
+                color: var(--white);
+                opacity: 0.02;
+                line-height: 0.8em;
+            }
+        }
+    }
+}
+
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20rem;
+}
+
+.projectBox {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    // transition: transform;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    // transition-timing-function: cubic-bezier(0.36, 0, 0.66, 0);
+    transition-timing-function: cubic-bezier(0.34, 1, 0.64, 1);
+    transform-origin: center;
+    cursor: pointer;
+
+    .projectsWrapper {
+        overflow: hidden;
+        width: 300px;
+        height: 300px;
+        cursor: pointer;
+        ul {
+            transition: transform 200ms ease-in-out;
+
+            li {
+                width: 300px;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                // &:nth-child(1) {
+                //     background-color: green;
+                // }
+                // &:nth-child(2) {
+                //     background-color: yellow;
+                // }
+                // &:nth-child(3) {
+                //     background-color: pink;
+                // }
+                // &:nth-child(4) {
+                //     background-color: orange;
+                // }
+                // &:nth-child(5) {
+                //     background-color: purple;
+                // }
+
+                span {
+                    &:nth-child(1) {
+                        width: 100%;
+                        height: 100%;
+                        filter: blur(4px);
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        background-position: center;
+                    }
+                    &:nth-child(2) {
+                        width: 80%;
+                        padding-top: 56.6%;
+                        // height: 80%;
+                        // background-color: var(--black);
+                        background-color: transparent;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+
+    .projectsBoxCircle {
+        width: 60px;
+        height: 60px;
+        background-color: var(--light-brown);
+        color: var(--black);
+        border-radius: 50%;
+        border: 0px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        font-size: 1.4rem;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        cursor: pointer;
+    }
+}
