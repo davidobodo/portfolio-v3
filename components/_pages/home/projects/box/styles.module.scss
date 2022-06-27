@@ -2,7 +2,7 @@
     z-index: 25;
     position: fixed;
     pointer-events: none;
-    transform: translate(-50%, -52%); // Center the box
+    transform: translate(-50%, -50%); // Center the box
     // will-change: transform, width;
     will-change: width;
     left: 0%;
@@ -69,6 +69,19 @@
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: cover;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .inner {
+                        width: 90%;
+                        height: 90%;
+                        background-color: transparent;
+                        display: block;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
                 }
             }
         }

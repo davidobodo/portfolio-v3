@@ -150,17 +150,19 @@ const Home: NextPage = () => {
             <Noise />
 
             <Modal show={!!selectedProjectId} modalRef={modalRef}>
-                <Layout.DarkSection>
-                    <>
+                <div className={styles.modalContent}>
+                    <div className={styles.content}>
                         <Nav isLight={true} />
                         <SingleProject
                             currProjectId={selectedProjectId}
                             onClose={onDeselectProject}
                             modalImgRef={modalImgRef}
                         />
-                        <Noise />
-                    </>
-                </Layout.DarkSection>
+                    </div>
+
+                    <div className={styles.gradient}></div>
+                    <Noise />
+                </div>
             </Modal>
         </div>
     );

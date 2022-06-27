@@ -1,4 +1,3 @@
-// import { PROJECTS } from "./constants";
 import { PROJECTS } from "#/constants/projects";
 import styles from "./styles.module.scss";
 import { Ref } from "react";
@@ -20,22 +19,25 @@ export default function Box({
                 ref={imgRef}
                 data-key="project-box"
             >
-                {/* <div className="mouse-pos-list-image-bounce"> */}
                 <div className={styles.projectsListBoundary}>
-                    {/* <ul className="float-image-wrap"> */}
                     <ul className={styles.projectsList} data-key="projects-list">
                         {PROJECTS.slice(0, 5).map((item, i) => {
                             const { bgColor, bgImage } = item;
                             return (
-                                // <li key={i} className="mouse-pos-list-image-inner visible">
                                 <li key={i} className={styles.project + " " + styles.visible}>
                                     <span
                                         className={styles.overlayImage}
                                         style={{
-                                            backgroundColor: bgColor,
-                                            backgroundImage: `url(${bgImage})`
+                                            backgroundColor: bgColor
                                         }}
-                                    ></span>
+                                    >
+                                        <span
+                                            className={styles.inner}
+                                            style={{
+                                                backgroundImage: `url(${bgImage})`
+                                            }}
+                                        ></span>
+                                    </span>
                                 </li>
                             );
                         })}
