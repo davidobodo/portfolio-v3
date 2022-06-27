@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fork-ts-checker-webpack-plugin": "^7.2.11",
     "gsap": "^3.10.4",
     "next": "12.1.6",
     "react": "18.1.0",

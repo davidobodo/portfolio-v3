@@ -1,22 +1,25 @@
 import styles from "./styles.module.scss";
 import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/icons";
-import { TProject } from "#/interfaces";
 import Router from "next/router";
+import { fetchProjects } from "#/utils";
+import { Ref } from "react";
 
 type Props = {
-    currProject: TProject;
-    nextProject: TProject;
-    prevProject: TProject;
+    currProjectId: string;
+    onClose: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    modalImgRef?: Ref<HTMLDivElement>;
 };
 
-export default function SingleProject({ currProject, prevProject, nextProject }: Props) {
+export default function SingleProject({ currProjectId, onClose, modalImgRef }: Props) {
+    const { currProject, nextProject, prevProject } = fetchProjects(currProjectId);
+
     const onGoToProject = (id: string) => {
         Router.push(`/projects/${id}`);
     };
 
-    const onGoToProjects = () => {
-        Router.push("/projects");
-    };
+    if (!currProject) {
+        return null;
+    }
 
     const { title, bgImage } = currProject;
 
@@ -35,15 +38,19 @@ export default function SingleProject({ currProject, prevProject, nextProject }:
             )}
 
             <div className={styles.content}>
-                <button onClick={onGoToProjects}>CLOSE</button>
-
-                <section className={styles.title}>
+                <button onClick={onClose} className={styles.btnClose} data-key="close-button">
+                    <span>
+                        <strong>↙</strong>
+                    </span>
+                    <span>Close</span>
+                </button>
+                <section className={styles.title} data-key="title">
                     <h1>{title}</h1>
                 </section>
 
-                <div className={styles.image} style={{ backgroundImage: `url(${bgImage})` }}></div>
+                <div className={styles.image} style={{ backgroundImage: `url(${bgImage})` }} ref={modalImgRef}></div>
 
-                <section className={styles.about}>
+                <section className={styles.about} data-key="about">
                     <h2>About this project</h2>
 
                     <p>
@@ -59,7 +66,7 @@ export default function SingleProject({ currProject, prevProject, nextProject }:
                     </p>
                 </section>
 
-                <section className={styles.tech}>
+                <section className={styles.tech} data-key="tech">
                     <h2>Technical Sheet</h2>
                     <p>Code technologies I got involved with while working on this project.</p>
 
@@ -91,7 +98,7 @@ export default function SingleProject({ currProject, prevProject, nextProject }:
                     </ul>
                 </section>
 
-                <div className={styles.links}>
+                <div className={styles.links} data-key="buttons">
                     <a href="">
                         Visit site
                         <ExternalLink />{" "}

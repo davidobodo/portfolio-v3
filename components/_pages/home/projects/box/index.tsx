@@ -15,8 +15,11 @@ export default function Box({
 }) {
     return (
         <>
-            {/* <div className={isActive ? "active mouse-pos-list-image" : "mouse-pos-list-image"} ref={imgRef}> */}
-            <div className={isActive ? styles.container + " " + styles.active : styles.container} ref={imgRef}>
+            <div
+                className={isActive ? styles.container + " " + styles.active : styles.container}
+                ref={imgRef}
+                data-key="project-box"
+            >
                 {/* <div className="mouse-pos-list-image-bounce"> */}
                 <div className={styles.projectsListBoundary}>
                     {/* <ul className="float-image-wrap"> */}

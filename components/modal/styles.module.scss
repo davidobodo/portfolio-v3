@@ -6,13 +6,23 @@
     height: 100%;
     overflow: auto;
 
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--light-brown);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--black);
+    }
+
     .backdrop {
         position: fixed;
         width: 100%;
         height: 100%;
         top: 0px;
-        background-color: rgba(0, 0, 0, 0.9);
-        // filter: blur(10px);
     }
 
     .content {

@@ -2,10 +2,10 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 
 export default function useBoxAnimation() {
-    const imgRef = useRef(null);
-    const btnRef = useRef(null);
-    const textRef = useRef(null);
-    const listRef = useRef(null);
+    const imgRef = useRef<HTMLDivElement>(null);
+    const btnRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<HTMLUListElement>(null);
 
     useEffect(() => {
         let posXImage = 0;
@@ -62,7 +62,7 @@ export default function useBoxAnimation() {
     }, []);
 
     const [isActive, setIsActive] = useState(false);
-    const onMouseEnter = (e) => {
+    const onMouseEnter = () => {
         setIsActive(true);
     };
 
@@ -70,19 +70,22 @@ export default function useBoxAnimation() {
         setIsActive(false);
     };
 
-    const onEnterElement = (e) => {
-        const count = listRef.current.children.length;
+    const onEnterElement = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+        if (listRef.current) {
+            const count = listRef.current.children.length;
 
-        const index = [...listRef.current.children].findIndex((item) => {
-            return item === e.currentTarget;
-        });
+            const index = [...listRef.current.children].findIndex((item) => {
+                return item === e.currentTarget;
+            });
 
-        gsap.to(imgRef.current.querySelector("[data-key='projects-list']"), {
-            y: (index * 100) / (count * -1) + "%",
-            duration: 0.6,
-            // duration: 0.1,
-            ease: "Power2.easeInOut"
-        });
+            if (imgRef.current) {
+                gsap.to(imgRef.current.querySelector("[data-key='projects-list']"), {
+                    y: (index * 100) / (count * -1) + "%",
+                    duration: 0.6,
+                    ease: "Power2.easeInOut"
+                });
+            }
+        }
     };
 
     return {

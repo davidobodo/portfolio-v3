@@ -7,7 +7,15 @@ import { Button } from "../../../index";
 import Heading from "./heading";
 import { Ref } from "react";
 
-export default function Project({ projectTitleRef }: { projectTitleRef: Ref<HTMLHeadingElement> }) {
+export default function Project({
+    projectTitleRef,
+    onViewProject,
+    onRedirectToProjects
+}: {
+    projectTitleRef: Ref<HTMLHeadingElement>;
+    onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
+    onRedirectToProjects: () => void;
+}) {
     const {
         imgRef,
         btnRef,
@@ -31,14 +39,13 @@ export default function Project({ projectTitleRef }: { projectTitleRef: Ref<HTML
                     ref={listRef}
                 >
                     {PROJECTS.slice(0, 5).map((item, i) => {
-                        // const { title, type, link } = item;
-                        const { title, live_link, type } = item;
+                        const { title, type, id } = item;
                         return (
-                            <li key={i} onMouseEnter={onEnterElement}>
-                                <a href={live_link} className="row">
+                            <li key={i} onMouseEnter={onEnterElement} onClick={onViewProject} data-id={id}>
+                                <div className={styles.row}>
                                     <h4>{title}</h4>
                                     <p>{type}</p>
-                                </a>
+                                </div>
 
                                 <span className={styles.number}>{`0${i + 1}`}</span>
                             </li>
@@ -46,7 +53,7 @@ export default function Project({ projectTitleRef }: { projectTitleRef: Ref<HTML
                     })}
                 </ul>
                 <div className={styles.btnWrapper}>
-                    <Button label="View more" />
+                    <Button label="View more" ariaLabel="View more" onClick={onRedirectToProjects} />
                 </div>
             </div>
         </>

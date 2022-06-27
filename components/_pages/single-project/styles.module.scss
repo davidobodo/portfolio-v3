@@ -62,6 +62,8 @@
 
         background-size: cover;
         background-repeat: no-repeat;
+
+        will-change: transform;
     }
 
     .about {
@@ -96,6 +98,66 @@
 
             &:last-child {
                 margin-right: 0px;
+            }
+        }
+    }
+}
+
+.btnClose {
+    display: flex;
+    align-items: center;
+    background-color: var(--ash);
+    border: 0px;
+    height: 40px;
+    border-radius: 3rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    width: 100px;
+    justify-content: center;
+    clip-path: inset(0em 0em 0em 6rem round 999px);
+    transition: clip-path 300ms ease-in-out;
+    cursor: pointer;
+    position: relative;
+    padding-left: 10px;
+    position: fixed;
+    z-index: 10;
+    top: 4rem;
+    right: 5rem;
+
+    span {
+        &:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            position: absolute;
+            left: calc(100% - 40px);
+            transition: left 300ms ease-in-out, transform 300ms ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            strong {
+                transition: opacity 300ms ease-in-out;
+            }
+        }
+
+        &:nth-child(2) {
+            color: var(--white);
+        }
+    }
+
+    &:hover {
+        clip-path: inset(0em 0em 0em 0rem round 999px);
+
+        span {
+            &:nth-child(1) {
+                left: 0px;
+                transform: scale(0.3);
+
+                strong {
+                    opacity: 0;
+                }
             }
         }
     }

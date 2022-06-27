@@ -1,15 +1,13 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import { useState, useRef } from "react";
-import { Contact, Grid, DarkRadialGradient, Noise, Banners, ScrollAlert, Nav } from "#/components";
+import { Contact, Grid, DarkRadialGradient, Noise, Banners, Nav } from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 // import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
 import { usePinRadialGradient, useBannerAnimation } from "#/hooks";
 import { TProject } from "#/interfaces";
-import { Header } from "./letters";
 import Router from "next/router";
-import Banner from "#/components/banners/other-pages";
 const Projects: NextPage = () => {
     const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
     // const [filterBy, setFilterBy] = useState("tech-stack");

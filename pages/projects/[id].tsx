@@ -1,19 +1,16 @@
 import Head from "next/head";
-import styles from "#/styles/_pages/single-project.module.scss";
-import { PROJECTS } from "#/constants/projects";
 import { Nav, Layout, Noise, SingleProject } from "#/components";
-import { TProject } from "#/interfaces";
+import { useRouter } from "next/router";
 
-type Props = {
-    currProject: TProject;
-    nextProject: TProject;
-    prevProject: TProject;
-};
+export default function Project() {
+    const router = useRouter();
+    const { id } = router.query;
 
-export default function Project(props: Props) {
-    const { currProject, nextProject, prevProject } = props;
+    const onClose = () => {
+        router.push("/projects");
+    };
 
-    if (!currProject) {
+    if (!id) {
         return null;
     }
 
@@ -27,49 +24,10 @@ export default function Project(props: Props) {
             <Layout.DarkSection>
                 <>
                     <Nav isLight={true} />
-                    <SingleProject currProject={currProject} nextProject={nextProject} prevProject={prevProject} />
+                    <SingleProject currProjectId={id as string} onClose={onClose} />
                 </>
             </Layout.DarkSection>
             <Noise />
         </div>
-    );
-}
-
-export async function getStaticPaths() {
-    return {
-        paths: PROJECTS.map((item) => {
-            return {
-                params: {
-                    id: item.id
-                }
-            };
-        }),
-        fallback: false // Any route not pre-rendered in paths should result a 404 page
-    };
-}
-
-export async function getStaticProps({ params }: { params: { id: string } }) {
-    const { id } = params;
-
-    const projectsLength = PROJECTS.length;
-
-    for (let i = 0; i < projectsLength; i++) {
-        if (id === PROJECTS[i].id) {
-            return {
-                props: {
-                    currProject: PROJECTS[i],
-                    nextProject: i + 1 < projectsLength ? PROJECTS[i + 1] : null,
-                    prevProject: i - 1 >= 0 ? PROJECTS[i - 1] : null
-                }
-            };
-        }
-    }
-}
-
-function StyledLink({ label }: { label: string }) {
-    return (
-        <a href="" className={styles.link}>
-            {label}
-        </a>
     );
 }

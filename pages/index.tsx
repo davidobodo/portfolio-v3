@@ -1,15 +1,31 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import { Preloader, Banners, About, Work, Thoughts, Skills, Projects, Contact, Noise, Layout } from "#/components";
+import {
+    Preloader,
+    Banners,
+    About,
+    Work,
+    Thoughts,
+    Skills,
+    Projects,
+    Contact,
+    Noise,
+    Layout,
+    Modal,
+    SingleProject,
+    Nav
+} from "#/components";
 import {
     useRevealParagraph,
     useWindowSize,
     useRegisterGsapScrollTrigger,
     useScrollToTop,
     useRevealHeading,
-    HomePageHooks
+    HomePageHooks,
+    useSelectProjectAnimation
 } from "#/hooks";
+import Router from "next/router";
 
 const {
     useInitAnimation,
@@ -61,6 +77,18 @@ const Home: NextPage = () => {
     const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
     // const { projectsListWrapperRef } = useProjectAnimation();
 
+    const {
+        selectedProjectId,
+        onSelectProject,
+        onDeselectProject,
+        modalImgRef,
+        modalRef
+    } = useSelectProjectAnimation();
+
+    const onRedirectToProjects = () => {
+        Router.push("/projects");
+    };
+
     return (
         <div>
             <Head>
@@ -109,13 +137,31 @@ const Home: NextPage = () => {
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         {/* <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} /> */}
-                        <Projects projectTitleRef={projectTitleRef} />
+                        <Projects
+                            projectTitleRef={projectTitleRef}
+                            onViewProject={onSelectProject}
+                            onRedirectToProjects={onRedirectToProjects}
+                        />
                     </>
                 </Layout.DarkSection>
             </div>
 
             <Contact />
             <Noise />
+
+            <Modal show={!!selectedProjectId} modalRef={modalRef}>
+                <Layout.DarkSection>
+                    <>
+                        <Nav isLight={true} />
+                        <SingleProject
+                            currProjectId={selectedProjectId}
+                            onClose={onDeselectProject}
+                            modalImgRef={modalImgRef}
+                        />
+                        <Noise />
+                    </>
+                </Layout.DarkSection>
+            </Modal>
         </div>
     );
 };

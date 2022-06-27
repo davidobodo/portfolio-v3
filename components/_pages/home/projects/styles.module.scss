@@ -26,7 +26,7 @@
                 border-top: 1px solid var(--ash);
             }
 
-            a {
+            .row {
                 transition: var(--animation-fast);
                 padding: calc(var(--section-padding) / 3.5) 8rem calc(var(--section-padding) / 3) 8rem;
                 display: flex;

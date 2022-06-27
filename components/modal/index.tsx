@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.scss";
+import { Ref } from "react";
 
-export default function Modal({ children, show }: { children: JSX.Element; show: boolean }) {
+export default function Modal({
+    children,
+    show,
+    modalRef
+}: {
+    children: JSX.Element;
+    show: boolean;
+    modalRef?: Ref<HTMLDivElement>;
+}) {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -18,7 +27,14 @@ export default function Modal({ children, show }: { children: JSX.Element; show:
     }, [show]);
 
     const modalContent = show ? (
-        <div role="dialog" aria-modal="true" aria-labelledby="" aria-describedby="" className={styles.container}>
+        <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby=""
+            aria-describedby=""
+            className={styles.container}
+            ref={modalRef}
+        >
             <div className={styles.backdrop}></div>
             <div className={styles.content}>{children}</div>
         </div>
