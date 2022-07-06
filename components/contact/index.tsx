@@ -86,14 +86,14 @@ export default function Contact() {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/">
                                     <a href="">
                                         {" "}
                                         <span>Play a game</span>
                                     </a>
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </section>
                 </div>
@@ -118,26 +118,34 @@ export default function Contact() {
 
                             <ul>
                                 <li>
-                                    <a href="">
-                                        <span>LINKEDIN</span>
-                                    </a>
+                                    <Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
+                                        <a target="_blank" rel="noreferrer noopener">
+                                            <span>LINKEDIN</span>
+                                        </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        <span>GITHUB</span>
-                                    </a>
+                                    <Link href="https://github.com/obododavid" passHref>
+                                        <a target="_blank" rel="noreferrer noopener">
+                                            <span>GITHUB</span>
+                                        </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        <span>TWITTER</span>
-                                    </a>
+                                    <Link href="https://twitter.com/phitGeek" passHref>
+                                        <a target="_blank" rel="noreferrer noopener">
+                                            <span>TWITTER</span>
+                                        </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        <span>Email</span>
-                                    </a>
+                                    <Link href="mailto: obododavid5@gmail.com" passHref>
+                                        <a>
+                                            <span>Email</span>
+                                        </a>
+                                    </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <a href="">
                                         <span>CODEPEN</span>
                                     </a>
@@ -146,7 +154,7 @@ export default function Contact() {
                                     <a href="">
                                         <span>CODE SANDBOX</span>
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
 
