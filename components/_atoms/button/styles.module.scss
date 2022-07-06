@@ -12,22 +12,18 @@
     // align-items: center;
     // justify-content: center;
     // color: var(--white);
-
-    span {
-        margin-right: 1rem;
-        font-size: 1.6rem;
-    }
-
-    background-color: transparent;
     border: 1px solid var(--ash);
+    font-size: 1.6rem;
     color: var(--ash);
     text-decoration: none;
     padding: 7px 30px;
     margin-right: 30px;
     cursor: pointer;
+    min-height: 40px;
 
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    background-color: transparent;
 
     svg {
         margin-left: 1rem;

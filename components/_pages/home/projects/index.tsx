@@ -6,6 +6,7 @@ import Box from "./box";
 import { Button } from "../../../index";
 import Heading from "./heading";
 import { Ref } from "react";
+import { SendLink } from "#/components/icons";
 
 export default function Project({
     projectTitleRef,
@@ -78,7 +79,12 @@ export function ProjectListView({
 
             {location === "home" && (
                 <div className={styles.btnWrapper}>
-                    <Button label="View more" ariaLabel="View more" onClick={onRedirectToProjects} />
+                    <Button
+                        label="View more"
+                        ariaLabel="View more"
+                        onClick={onRedirectToProjects}
+                        endAdornment={<SendLink />}
+                    />
                 </div>
             )}
         </div>

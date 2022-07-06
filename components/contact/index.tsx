@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { Button } from "../index";
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
+import { SendLink } from "#/components/icons";
 export default function Contact() {
     const handleClick = () => {};
 
@@ -175,7 +176,13 @@ export default function Contact() {
                             </div>
 
                             <div className={styles.btnWrapper}>
-                                <Button label="Send" onClick={handleClick} type="submit" ariaLabel="send" />
+                                <Button
+                                    label="Send"
+                                    onClick={handleClick}
+                                    type="submit"
+                                    ariaLabel="send"
+                                    endAdornment={<SendLink color="#000" />}
+                                />
                             </div>
                         </form>
                     </div>
