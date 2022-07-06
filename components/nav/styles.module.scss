@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     padding: 0px 5rem;
-    z-index: 5;
+    z-index: 1000;
 
     .navWrapper {
         position: relative;
@@ -23,13 +23,18 @@
 }
 
 .navTitle {
+    position: fixed;
+    z-index: 1000;
+    margin-left: 5rem;
+    margin-top: 4rem;
+
     path:nth-child(2) {
         transform-origin: 20%;
-        animation: rotate 6s ease-in-out infinite;
+        // animation: rotate 6s ease-in-out infinite;
     }
     path:nth-child(4) {
         transform-origin: 30%;
-        animation: rotate 3s ease-in-out infinite;
+        // animation: rotate 3s ease-in-out infinite;
     }
 }
 

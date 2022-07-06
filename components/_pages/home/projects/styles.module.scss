@@ -49,17 +49,17 @@
                     transition: var(--animation-fast);
                     transform: translateX(0);
                 }
+            }
 
-                &:hover {
-                    opacity: 0.33;
+            &:hover {
+                opacity: 0.33;
 
-                    h4 {
-                        transform: translateX(calc(var(--container-padding) * -0.1));
-                    }
+                h4 {
+                    transform: translateX(calc(var(--container-padding) * -0.1));
+                }
 
-                    p {
-                        transform: translateX(calc(var(--container-padding) * 0.1));
-                    }
+                p {
+                    transform: translateX(calc(var(--container-padding) * 0.1));
                 }
             }
 

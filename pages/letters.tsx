@@ -14,6 +14,7 @@ const Letters: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            {/* <Nav /> */}
             <Banners.OtherPages
                 texts={["Letters", "Thoughts", "Stories", "Ideas"]}
                 textWrapperRef={textWrapperRef}

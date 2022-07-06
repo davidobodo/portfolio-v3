@@ -6,7 +6,7 @@ export default function ProjectModal({ selectedProjectId, modalRef, onDeselectPr
         <Modal show={!!selectedProjectId} modalRef={modalRef}>
             <div className={styles.modalContent}>
                 <div className={styles.content}>
-                    <Nav isLight={true} />
+                    {/* <Nav isLight={true} /> */}
                     <SingleProject
                         currProjectId={selectedProjectId}
                         onClose={onDeselectProject}

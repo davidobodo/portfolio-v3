@@ -17,6 +17,8 @@
 
 const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
 
+const TYPES = ["Web Application", "Website", "Learn from Tutorial", "Experiments"];
+
 export const PROJECTS = [
     {
         id: "prodeus",
@@ -75,7 +77,8 @@ export const PROJECTS = [
         live_link: "https://d-chat-98abe.firebaseapp.com/auth",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
         bgImage: "/images/projects/d-chat.png",
-        bgColor: COLORS[0]
+        bgColor: COLORS[0],
+        type: "Web Application"
     },
     {
         id: "d-commerce",
@@ -84,7 +87,8 @@ export const PROJECTS = [
         live_link: "https://d-commerce-99633.firebaseapp.com/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
         bgImage: "/images/projects/d-commerce.png",
-        bgColor: COLORS[1]
+        bgColor: COLORS[1],
+        type: TYPES[0]
     },
     {
         id: "developer-of-the-year",
@@ -93,7 +97,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/developer-of-the-year/",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/developer.png",
-        bgColor: COLORS[2]
+        bgColor: COLORS[2],
+        type: TYPES[3]
     },
     {
         id: "shortly",
@@ -102,7 +107,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/FEM-shortly/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
         bgImage: "/images/projects/shortly.png",
-        bgColor: COLORS[3]
+        bgColor: COLORS[3],
+        type: TYPES[3]
     },
     {
         id: "bookmark",
@@ -111,7 +117,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/FEM-bookmark-landing-page/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
         bgImage: "/images/projects/bookmark.png",
-        bgColor: COLORS[0]
+        bgColor: COLORS[0],
+        type: TYPES[3]
     },
     {
         id: "burger-builder",
@@ -120,7 +127,8 @@ export const PROJECTS = [
         live_link: "https://burger-builder.obododavid5.now.sh/",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/burger-builder.png",
-        bgColor: COLORS[1]
+        bgColor: COLORS[1],
+        type: TYPES[2]
     },
     {
         id: "drum-machine",
@@ -129,7 +137,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/drumMachine/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
         bgImage: "/images/projects/drum-machine.png",
-        bgColor: COLORS[2]
+        bgColor: COLORS[2],
+        type: TYPES[3]
     },
 
     {
@@ -139,7 +148,8 @@ export const PROJECTS = [
         live_link: "https://pomodoroclock.now.sh/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
         bgImage: "/images/projects/pomodoro.png",
-        bgColor: COLORS[3]
+        bgColor: COLORS[3],
+        type: TYPES[3]
     },
     {
         id: "quiz-ninja",
@@ -148,7 +158,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/Learning-javascript-quiz-ninja/",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/quiz-ninja.png",
-        bgColor: COLORS[0]
+        bgColor: COLORS[0],
+        type: TYPES[2]
     },
     {
         id: "freebies",
@@ -157,7 +168,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/freebies/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
         bgImage: "/images/projects/freebies.png",
-        bgColor: COLORS[1]
+        bgColor: COLORS[1],
+        type: TYPES[3]
     },
     {
         id: "pv1",
@@ -166,7 +178,8 @@ export const PROJECTS = [
         live_link: "https://obododavid.github.io/portfolio/",
         tech: ["react", "typescript", "redux", "styledComponents"],
         bgImage: "/images/projects/pv-1.png",
-        bgColor: COLORS[2]
+        bgColor: COLORS[2],
+        type: TYPES[1]
     }
 ];
 // export const PROJECTS = [

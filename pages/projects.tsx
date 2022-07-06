@@ -24,7 +24,7 @@ const Projects: NextPage = () => {
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Nav />
+            {/* <Nav /> */}
             <Banners.OtherPages
                 texts={["Projects", "Playground", "xperiments", "Replicas"]}
                 textWrapperRef={textWrapperRef}

@@ -18,7 +18,7 @@ export default function Contact() {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/#about-section">
                                     <a>
                                         <span>About</span>
@@ -38,7 +38,7 @@ export default function Contact() {
                                         <span>Skills</span>
                                     </a>
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link href="/projects">
                                     <a>

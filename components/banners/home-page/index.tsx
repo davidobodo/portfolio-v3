@@ -74,7 +74,8 @@ export default function Banner({
         }
     }, [bannerHeight]);
 
-    const fieldA = "SOFTWARE";
+    // const fieldA = "SOFTWARE";
+    const fieldA = "FULLSTACK";
     const fieldB = "DEVELOPER";
     const nameA = "DAVID";
     const nameB = "OBODO";
