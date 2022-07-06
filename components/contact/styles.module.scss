@@ -195,3 +195,31 @@
 
 .placeholder {
 }
+
+.marquee {
+    height: 4rem;
+    background-color: var(--black);
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    span {
+        color: var(--ash);
+        font-family: "sf-pro-regular";
+        font-size: 1.6rem;
+        display: block;
+        transform: translateX(100%);
+        animation: scroll 20s linear infinite;
+        will-change: transform;
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+}

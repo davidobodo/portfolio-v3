@@ -186,8 +186,18 @@ export default function Contact() {
                         </form>
                     </div>
                 </div>
+
+                <Marquee />
             </div>
             <div className={styles.placeholder} style={{ height: footerHeight + "px" }}></div>
         </>
+    );
+}
+
+function Marquee() {
+    return (
+        <div className={styles.marquee}>
+            <span>Currently open to Front-end Developer roles with a focus on React Framework...</span>
+        </div>
     );
 }
