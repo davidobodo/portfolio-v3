@@ -1,9 +1,25 @@
 import { Modal, Nav, SingleProject, Noise } from "#/components";
 import styles from "./styles.module.scss";
 
-export default function ProjectModal({ selectedProjectId, modalRef, onDeselectProject, modalImgRef }) {
+import { Ref } from "react";
+type Props = {
+    selectedProjectId: string;
+    modalRef: Ref<HTMLDivElement>;
+    onDeselectProject: () => void;
+    modalImgRef?: Ref<HTMLDivElement>;
+    onGoToProject: (id: string) => void;
+    isOpen: boolean;
+};
+export default function ProjectModal({
+    selectedProjectId,
+    modalRef,
+    onDeselectProject,
+    modalImgRef,
+    onGoToProject,
+    isOpen
+}: Props) {
     return (
-        <Modal show={!!selectedProjectId} modalRef={modalRef}>
+        <Modal show={isOpen} modalRef={modalRef}>
             <div className={styles.modalContent}>
                 <div className={styles.content}>
                     {/* <Nav isLight={true} /> */}
@@ -11,6 +27,7 @@ export default function ProjectModal({ selectedProjectId, modalRef, onDeselectPr
                         currProjectId={selectedProjectId}
                         onClose={onDeselectProject}
                         modalImgRef={modalImgRef}
+                        onGoToProject={onGoToProject}
                     />
                 </div>
 

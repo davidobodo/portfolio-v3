@@ -8,14 +8,11 @@ type Props = {
     currProjectId: string;
     onClose: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     modalImgRef?: Ref<HTMLDivElement>;
+    onGoToProject: (id: string) => void;
 };
 
-export default function SingleProject({ currProjectId, onClose, modalImgRef }: Props) {
+export default function SingleProject({ currProjectId, onClose, modalImgRef, onGoToProject }: Props) {
     const { currProject, nextProject, prevProject } = fetchProjects(currProjectId);
-
-    const onGoToProject = (id: string) => {
-        Router.push(`/projects/${id}`);
-    };
 
     if (!currProject) {
         return null;

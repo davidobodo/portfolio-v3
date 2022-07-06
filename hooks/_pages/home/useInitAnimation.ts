@@ -17,7 +17,10 @@ export default function useInitAnimation() {
         if (preloaderBgRef.current && logoRef.current) {
             const tl = gsap.timeline();
 
-            tl.to(logoRef.current.children, { strokeDashoffset: 0, duration: 2, stagger: 0.8 })
+            tl.add(() => {
+                document.querySelector("body")?.classList.add("hide");
+            })
+                .to(logoRef.current.children, { strokeDashoffset: 0, duration: 2, stagger: 0.8 })
                 .to(logoRef.current, { fill: "#fcfcfc" })
                 .to(logoRef.current, { opacity: 0 })
                 .to(preloaderBgRef.current, { y: "-100vh" })

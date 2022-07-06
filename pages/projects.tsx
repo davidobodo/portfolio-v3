@@ -15,7 +15,9 @@ const Projects: NextPage = () => {
         onSelectProject,
         onDeselectProject,
         modalImgRef,
-        modalRef
+        modalRef,
+        onGoToProject,
+        isOpen
     } = useSelectProjectAnimation();
     return (
         <>
@@ -44,6 +46,8 @@ const Projects: NextPage = () => {
                     modalRef={modalRef}
                     onDeselectProject={onDeselectProject}
                     modalImgRef={modalImgRef}
+                    onGoToProject={onGoToProject}
+                    isOpen={isOpen}
                 />
             </div>
 

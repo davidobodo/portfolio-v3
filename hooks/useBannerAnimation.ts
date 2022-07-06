@@ -20,6 +20,10 @@ function initBannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivE
 
     //CREATE TIMELINE ACTIONS
 
+    tl.add(() => {
+        document.querySelector("body")?.classList.add("hide");
+    });
+
     // 1. Slide in first element
     tl.to(children[0].querySelectorAll("[data-key='letter']"), { x: 0 });
 
@@ -39,4 +43,8 @@ function initBannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivE
     tl.to(children[3].querySelectorAll("[data-key='letter']"), { x: 0 });
 
     tl.to(scrollIndicatorNode, { opacity: 1 });
+
+    tl.add(() => {
+        document.querySelector("body")?.classList.remove("hide");
+    });
 }
