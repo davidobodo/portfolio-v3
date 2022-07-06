@@ -82,13 +82,14 @@ function animateProject({
 
     const tl = gsap.timeline();
 
+    console.log(sourceRect.left, destinationRect.left);
     tl.from(modal, {
         opacity: 0
     })
         .fromTo(
             destination,
             {
-                x: sourceRect.left - destinationRect.left,
+                x: sourceRect.left - destinationRect.left - 200,
                 y: sourceRect.top - destinationRect.top,
                 scale: sourceRect.width / destinationRect.width,
                 duration: 0.2,
