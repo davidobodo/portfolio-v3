@@ -64,10 +64,11 @@ body {
     margin: 0;
     font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-family: "sf-pro-regular";
+    background: var(--light-brown);
 }
 
 body::-webkit-scrollbar {
-    width: 7px;
+    width: 0px;
 }
 
 body::-webkit-scrollbar-track {
@@ -76,6 +77,10 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background: var(--black);
+}
+
+.hide {
+    overflow: hidden !important;
 }
 
 h1,

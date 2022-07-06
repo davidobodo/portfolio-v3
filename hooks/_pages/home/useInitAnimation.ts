@@ -22,6 +22,7 @@ export default function useInitAnimation() {
                 .to(logoRef.current, { opacity: 0 })
                 .to(preloaderBgRef.current, { y: "-100vh" })
                 .to(preloaderBgRef.current, { display: "none" })
+
                 .to(nameRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
                 .to(fieldRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
                 .to(firstSubFieldRef.current, { y: 0 })
@@ -37,6 +38,9 @@ export default function useInitAnimation() {
             }
 
             tl.to(scrollIndicatorRef.current, { opacity: 1 });
+            tl.add(() => {
+                document.querySelector("body")?.classList.remove("hide");
+            });
         }
     }, [preloaderBgRef, logoRef]);
 

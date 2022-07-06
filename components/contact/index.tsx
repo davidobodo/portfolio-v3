@@ -11,7 +11,6 @@ export default function Contact() {
     const [footerHeight, setFooterHeight] = useState(10);
 
     const calculateFooterHeight = (node: HTMLDivElement) => {
-        console.log(node.clientHeight, "djfksdhksdjhk");
         setFooterHeight(node.clientHeight);
     };
     useEffect(() => {
@@ -21,7 +20,7 @@ export default function Contact() {
     }, []);
     return (
         <>
-            <div className={styles.container} ref={containerRef} extra="my-contactsa">
+            <div className={styles.container} ref={containerRef}>
                 <div className={styles.contentWrapper}>
                     <div className={styles.links}>
                         <section>
