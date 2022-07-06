@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { Contact, SingleLetter, Nav, Layout, Noise, Banners } from "#/components";
+import { Contact, SingleLetter, Nav, Layout, Noise, Banners, Logo } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
 import { LETTERS } from "#/constants/letters";
 import { useBannerAnimation } from "#/hooks";
@@ -15,7 +15,7 @@ const Letters: NextPage = () => {
                     <meta name="description" content="David Obodo's portfolio website" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                {/* <Nav /> */}
+                <Nav />
                 <Banners.OtherPages
                     texts={["Letters", "Thoughts", "Stories", "Ideas"]}
                     textWrapperRef={textWrapperRef}

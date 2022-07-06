@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { ScrollAlert } from "../../index";
+import { ScrollAlert, Nav, Logo } from "../../index";
 import { Ref, useRef, useEffect } from "react";
 import gsap from "gsap";
 export default function Banner({
@@ -15,7 +15,7 @@ export default function Banner({
     const bannerRef = useRef(null);
 
     useEffect(() => {
-        if (bannerRef.current) {
+        if (bannerRef.current && blackCoverRef.current) {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: bannerRef.current,
@@ -31,13 +31,21 @@ export default function Banner({
             tl.to(blackCoverRef.current, {
                 scaleY: window.innerHeight / 2,
                 transformOrigin: "top"
-            });
+            }).to(textWrapperRef.current, { opacity: 0 }, "<");
         }
-    }, []);
+    }, [bannerRef.current, blackCoverRef.current]);
     return (
         <>
             <div className={styles.container} ref={bannerRef}>
                 <div className={styles.blackCover} ref={blackCoverRef}></div>
+                <Logo
+                    color="#000"
+                    style={{
+                        position: "absolute",
+                        top: "4rem"
+                    }}
+                />
+
                 <div ref={textWrapperRef}>
                     {texts.map((item, i) => {
                         return (

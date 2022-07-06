@@ -1,0 +1,29 @@
+.container {
+    transition: opacity 200ms ease-in;
+    z-index: 1000;
+
+    path:nth-child(2) {
+        transform-origin: 20%;
+        animation: rotate 6s ease-in-out infinite;
+    }
+    path:nth-child(4) {
+        transform-origin: 30%;
+        animation: rotate 3s ease-in-out infinite;
+    }
+}
+
+@keyframes rotate {
+    0%,
+    100% {
+        transform: rotateY(0deg);
+    }
+    25% {
+        transform: rotateY(90deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    75% {
+        transform: rotateY(360deg);
+    }
+}

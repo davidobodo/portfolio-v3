@@ -212,6 +212,10 @@
         transform: translateX(100%);
         animation: scroll 20s linear infinite;
         will-change: transform;
+
+        strong {
+            color: var(--white);
+        }
     }
 
     @keyframes scroll {

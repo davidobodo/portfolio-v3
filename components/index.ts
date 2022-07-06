@@ -9,6 +9,7 @@ import Nav from "./nav";
 import DarkRadialGradient from "./dark-radial-gradient";
 import Modal, { ProjectModal } from "./modal";
 import Noise from "./noise";
+import Logo from "./logo";
 
 const { Button, Radio } = Atoms;
 
@@ -38,5 +39,6 @@ export {
     Noise,
     SingleProject,
     ProjectListView,
-    ProjectModal
+    ProjectModal,
+    Logo
 };
