@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import { ScrollAlert } from "../../index";
-import { Ref } from "react";
+import { Ref, useRef, useEffect } from "react";
+import gsap from "gsap";
 export default function Banner({
     texts,
     textWrapperRef,
@@ -10,9 +11,33 @@ export default function Banner({
     textWrapperRef: Ref<HTMLDivElement>;
     scrollIndicatorRef: Ref<HTMLDivElement>;
 }) {
+    const blackCoverRef = useRef(null);
+    const bannerRef = useRef(null);
+
+    useEffect(() => {
+        if (bannerRef.current) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: bannerRef.current,
+                    toggleActions: "restart pause reverse pause",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                    pin: true,
+                    pinSpacing: false
+                }
+            });
+
+            tl.to(blackCoverRef.current, {
+                scaleY: window.innerHeight / 2,
+                transformOrigin: "top"
+            });
+        }
+    }, []);
     return (
         <>
-            <div className={styles.container}>
+            <div className={styles.container} ref={bannerRef}>
+                <div className={styles.blackCover} ref={blackCoverRef}></div>
                 <div ref={textWrapperRef}>
                     {texts.map((item, i) => {
                         return (
@@ -38,7 +63,7 @@ export default function Banner({
                     <ScrollAlert containerRef={scrollIndicatorRef} containerStyles={{ opacity: 0 }} />
                 </div>
             </div>
-            <div className={styles.placeholder}></div>
+            {/* <div className={styles.placeholder}></div> */}
         </>
     );
 }

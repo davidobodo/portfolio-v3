@@ -1,3 +1,15 @@
+.blackCover {
+    width: 100%;
+    position: fixed;
+    background-color: var(--black);
+    left: 0px;
+    top: -10px;
+    height: 1px;
+    z-index: 2;
+    transform-origin: top;
+    will-change: transform;
+}
+
 .container {
     background-color: var(--light-brown);
     height: 100vh;
@@ -5,7 +17,7 @@
     flex-direction: column;
     padding: 15rem 5rem 5rem;
     justify-content: space-between;
-    position: fixed;
+    // position: fixed;
     width: 100%;
 
     h1 {
