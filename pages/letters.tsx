@@ -8,13 +8,12 @@ import { useBannerAnimation } from "#/hooks";
 const Letters: NextPage = () => {
     const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
     return (
-        <>
+        <div>
             <Head>
                 <title>David Obodo - Projects</title>
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            {/* <Nav /> */}
             <Banners.OtherPages
                 texts={["Letters", "Thoughts", "Stories", "Ideas"]}
                 textWrapperRef={textWrapperRef}
@@ -24,8 +23,6 @@ const Letters: NextPage = () => {
             <Layout.DarkSection>
                 <div className={styles.container}>
                     <div className={styles.wrapper}>
-                        {/* <h1 className={styles.title}>Letters/Articles</h1> */}
-
                         {LETTERS.map((item, i) => {
                             const { url, title, date, time, summary, tags } = item;
                             return (
@@ -48,7 +45,7 @@ const Letters: NextPage = () => {
 
             <Contact />
             <Noise />
-        </>
+        </div>
     );
 };
 

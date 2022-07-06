@@ -10,8 +10,6 @@ import Router from "next/router";
 const Projects: NextPage = () => {
     const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
 
-    const containerRef = useRef(null);
-
     const {
         selectedProjectId,
         onSelectProject,
@@ -20,7 +18,7 @@ const Projects: NextPage = () => {
         modalRef
     } = useSelectProjectAnimation();
     return (
-        <div className={styles.container} ref={containerRef}>
+        <div className={styles.container}>
             <Head>
                 <title>David Obodo - Projects</title>
                 <meta name="description" content="David Obodo's portfolio website" />

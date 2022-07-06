@@ -63,7 +63,6 @@ export default function Banner({
                     <ScrollAlert containerRef={scrollIndicatorRef} containerStyles={{ opacity: 0 }} />
                 </div>
             </div>
-            {/* <div className={styles.placeholder}></div> */}
         </>
     );
 }
