@@ -79,12 +79,7 @@ export function ProjectListView({
 
             {location === "home" && (
                 <div className={styles.btnWrapper}>
-                    <Button
-                        label="View more"
-                        ariaLabel="View more"
-                        onClick={onRedirectToProjects}
-                        endAdornment={<SendLink />}
-                    />
+                    <Button label="View more" ariaLabel="View more" onClick={onRedirectToProjects} hasLiquid={true} />
                 </div>
             )}
         </div>
