@@ -1,11 +1,21 @@
 import Head from "next/head";
 import { NextPage } from "next";
 import { useState, useRef } from "react";
-import { Contact, Grid, DarkRadialGradient, Noise, Banners, Nav } from "#/components";
+import {
+    Contact,
+    Grid,
+    DarkRadialGradient,
+    Noise,
+    Banners,
+    Nav,
+    ProjectListView,
+    Modal,
+    SingleProject,
+    ProjectModal
+} from "#/components";
 import { TECH_STACKS } from "#/constants/tech-stacks";
-// import { PROJECT_NATURE } from "#/constants";
 import styles from "#/styles/_pages/projects.module.scss";
-import { usePinRadialGradient, useBannerAnimation } from "#/hooks";
+import { usePinRadialGradient, useBannerAnimation, useSelectProjectAnimation } from "#/hooks";
 import { TProject } from "#/interfaces";
 import Router from "next/router";
 const Projects: NextPage = () => {
@@ -45,36 +55,18 @@ const Projects: NextPage = () => {
 
     const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
 
-    // useEffect(() => {
-    //     if (typeof window !== "undefined") {
-    //         gsap.registerPlugin(ScrollTrigger);
-
-    //         const tl = gsap.timeline({
-    //             scrollTrigger: {
-    //                 trigger: bannerRef.current,
-    //                 // markers: true,
-    //                 start: "bottom center",
-    //                 toggleActions: "restart complete pause reverse",
-    //                 onEnter: () => console.log("ENTERED"),
-    //                 onEnterBack: () => console.log("ENTERED BACK"),
-    //                 onLeave: () => console.log("LEAVED"),
-    //                 onLeaveBack: () => console.log("LEAVED BACK")
-    //             }
-    //         });
-
-    //         tl.to(containerRef.current, {
-    //             backgroundColor: "#000"
-    //         })
-    //             .to(containerRef.current.querySelectorAll('[data-key="letter"]'), { color: "#fff" }, "<")
-    //             .to(containerRef.current.querySelectorAll('[data-key="tech-stack"]'), { x: "0px", stagger: 0.1 });
-    //         // .to(containerRef.current.querySelectorAll('[data-key="project"]'), { opacity: 1, stagger: 0.1 });
-    //     }
-    // }, []);
-
-    // const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
-    const onSelectProject = (item: TProject) => {
-        Router.push(`/projects/${item.id}`);
+    const [showFilter, setShowFilter] = useState(false);
+    const onToggleFilter = () => {
+        setShowFilter(!showFilter);
     };
+
+    const {
+        selectedProjectId,
+        onSelectProject,
+        onDeselectProject,
+        modalImgRef,
+        modalRef
+    } = useSelectProjectAnimation();
     return (
         <div className={styles.container} ref={containerRef}>
             <Head>
@@ -93,26 +85,44 @@ const Projects: NextPage = () => {
             <div className={styles.main} ref={darkSectionRef}>
                 <div className={styles.darkSection}>
                     <div className={styles.content}>
-                        <aside className={styles.aside}>
-                            <h4>Tech stack</h4>
-                            <ul>
-                                {filterList.map((item) => {
-                                    return (
-                                        <li key={item.key} className={activeKey === item.key ? styles.active : ""}>
-                                            <button onClick={() => onSetActiveKey(item.key)} data-key="tech-stack">
-                                                <span></span>
-                                                {item.label}
-                                            </button>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                        <aside
+                            className={styles.aside}
+                            style={{ width: showFilter ? "25vw" : "0px", opacity: showFilter ? 1 : 0 }}
+                        >
+                            <div className={styles.asideInner}>
+                                <h4>Tech stack</h4>
+                                <ul>
+                                    {filterList.map((item) => {
+                                        return (
+                                            <li key={item.key} className={activeKey === item.key ? styles.active : ""}>
+                                                <button onClick={() => onSetActiveKey(item.key)} data-key="tech-stack">
+                                                    <span></span>
+                                                    {item.label}
+                                                </button>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         </aside>
 
-                        <section className={styles.gridWrapper}>
+                        {/* <section className={styles.gridWrapper}>
                             <Grid activeKey={activeKey} onSelectProject={onSelectProject} />
+                        </section> */}
+                        <section className={styles.gridWrapper}>
+                            {/* <HomeProjects
+                                location="projects"
+                                // projectTitleRef={projectTitleRef}
+                                // onViewProject={onSelectProject}
+                                // onRedirectToProjects={onRedirectToProjects}
+                            /> */}
+                            <ProjectListView location="projects" onViewProject={onSelectProject} />
                         </section>
                     </div>
+                    {/* 
+                    <button className={styles.btnFilter} aria-label="Show filter" onClick={onToggleFilter}>
+                        Filter
+                    </button> */}
                 </div>
 
                 <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
@@ -120,8 +130,48 @@ const Projects: NextPage = () => {
 
             <Contact />
             <Noise />
+
+            <ProjectModal
+                selectedProjectId={selectedProjectId}
+                modalRef={modalRef}
+                onDeselectProject={onDeselectProject}
+                modalImgRef={modalImgRef}
+            />
         </div>
     );
 };
 
 export default Projects;
+
+// const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
+const onSelectProject = (item: TProject) => {
+    Router.push(`/projects/${item.id}`);
+};
+
+// import { PROJECT_NATURE } from "#/constants";
+
+// useEffect(() => {
+//     if (typeof window !== "undefined") {
+//         gsap.registerPlugin(ScrollTrigger);
+
+//         const tl = gsap.timeline({
+//             scrollTrigger: {
+//                 trigger: bannerRef.current,
+//                 // markers: true,
+//                 start: "bottom center",
+//                 toggleActions: "restart complete pause reverse",
+//                 onEnter: () => console.log("ENTERED"),
+//                 onEnterBack: () => console.log("ENTERED BACK"),
+//                 onLeave: () => console.log("LEAVED"),
+//                 onLeaveBack: () => console.log("LEAVED BACK")
+//             }
+//         });
+
+//         tl.to(containerRef.current, {
+//             backgroundColor: "#000"
+//         })
+//             .to(containerRef.current.querySelectorAll('[data-key="letter"]'), { color: "#fff" }, "<")
+//             .to(containerRef.current.querySelectorAll('[data-key="tech-stack"]'), { x: "0px", stagger: 0.1 });
+//         // .to(containerRef.current.querySelectorAll('[data-key="project"]'), { opacity: 1, stagger: 0.1 });
+//     }
+// }, []);

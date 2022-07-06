@@ -15,6 +15,8 @@
 // import imgShortly from "#/public/images/projects/shortly.png";
 // import imgProdeus from "#/public/images/projects/dashboard.png";
 
+const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
+
 export const PROJECTS = [
     {
         id: "prodeus",
@@ -72,7 +74,8 @@ export const PROJECTS = [
         details: "A basic chat application.",
         live_link: "https://d-chat-98abe.firebaseapp.com/auth",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        bgImage: "/images/projects/d-chat.png"
+        bgImage: "/images/projects/d-chat.png",
+        bgColor: COLORS[0]
     },
     {
         id: "d-commerce",
@@ -80,7 +83,8 @@ export const PROJECTS = [
         details: "An e-commerce platform",
         live_link: "https://d-commerce-99633.firebaseapp.com/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
-        bgImage: "/images/projects/d-commerce.png"
+        bgImage: "/images/projects/d-commerce.png",
+        bgColor: COLORS[1]
     },
     {
         id: "developer-of-the-year",
@@ -88,7 +92,8 @@ export const PROJECTS = [
         details: "Clone of “Awwwards” (https://www.awwwards.com/) awards site for the year 2020",
         live_link: "https://obododavid.github.io/developer-of-the-year/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        bgImage: "/images/projects/developer.png"
+        bgImage: "/images/projects/developer.png",
+        bgColor: COLORS[2]
     },
     {
         id: "shortly",
@@ -96,7 +101,8 @@ export const PROJECTS = [
         details: "Site that makes use of rel link API to shorten links",
         live_link: "https://obododavid.github.io/FEM-shortly/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        bgImage: "/images/projects/shortly.png"
+        bgImage: "/images/projects/shortly.png",
+        bgColor: COLORS[3]
     },
     {
         id: "bookmark",
@@ -104,7 +110,8 @@ export const PROJECTS = [
         details: "Bookmark landing page",
         live_link: "https://obododavid.github.io/FEM-bookmark-landing-page/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
-        bgImage: "/images/projects/bookmark.png"
+        bgImage: "/images/projects/bookmark.png",
+        bgColor: COLORS[0]
     },
     {
         id: "burger-builder",
@@ -112,7 +119,8 @@ export const PROJECTS = [
         details: "Build and order your own burger",
         live_link: "https://burger-builder.obododavid5.now.sh/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        bgImage: "/images/projects/burger-builder.png"
+        bgImage: "/images/projects/burger-builder.png",
+        bgColor: COLORS[1]
     },
     {
         id: "drum-machine",
@@ -120,7 +128,8 @@ export const PROJECTS = [
         details: "Simple drum machine",
         live_link: "https://obododavid.github.io/drumMachine/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        bgImage: "/images/projects/drum-machine.png"
+        bgImage: "/images/projects/drum-machine.png",
+        bgColor: COLORS[2]
     },
 
     {
@@ -129,7 +138,8 @@ export const PROJECTS = [
         details: "Timer for pomodoro time management technique",
         live_link: "https://pomodoroclock.now.sh/",
         tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
-        bgImage: "/images/projects/pomodoro.png"
+        bgImage: "/images/projects/pomodoro.png",
+        bgColor: COLORS[3]
     },
     {
         id: "quiz-ninja",
@@ -137,7 +147,8 @@ export const PROJECTS = [
         details: "How well do you know super heroes real names?",
         live_link: "https://obododavid.github.io/Learning-javascript-quiz-ninja/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        bgImage: "/images/projects/quiz-ninja.png"
+        bgImage: "/images/projects/quiz-ninja.png",
+        bgColor: COLORS[0]
     },
     {
         id: "freebies",
@@ -145,7 +156,8 @@ export const PROJECTS = [
         details: "clone of freebies(https://freebies.bypeople.com/) website home page",
         live_link: "https://obododavid.github.io/freebies/",
         tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
-        bgImage: "/images/projects/freebies.png"
+        bgImage: "/images/projects/freebies.png",
+        bgColor: COLORS[1]
     },
     {
         id: "pv1",
@@ -153,7 +165,8 @@ export const PROJECTS = [
         details: "My first portfolio site",
         live_link: "https://obododavid.github.io/portfolio/",
         tech: ["react", "typescript", "redux", "styledComponents"],
-        bgImage: "/images/projects/pv-1.png"
+        bgImage: "/images/projects/pv-1.png",
+        bgColor: COLORS[2]
     }
 ];
 // export const PROJECTS = [

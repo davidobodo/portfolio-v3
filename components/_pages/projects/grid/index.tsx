@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { PROJECTS } from "#/constants/projects";
 import { TProject } from "#/interfaces";
-
+import { useState } from "react";
 export default function Grid({
     activeKey,
     onSelectProject
@@ -9,10 +9,21 @@ export default function Grid({
     activeKey: string;
     onSelectProject: (item: TProject) => void;
 }) {
+    const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
+
+    const fourGrid = [1, 4, 6, 7, 10, 11, 13, 16];
+    const threeGrid = [1, 5, 9, 11, 13];
+    const twoGrid = [];
+
+    const [hovered, setHovered] = useState(0);
+    const onMouseEnter = (i: number) => {
+        setHovered(i);
+    };
+
     return (
         <div className={styles.container}>
             {PROJECTS.map((item, i) => {
-                const { tech, bgImage } = item;
+                const { tech, bgImage, bgColor } = item;
 
                 let isLocked = false;
 
@@ -29,8 +40,14 @@ export default function Grid({
                         className={isLocked ? styles.box + " " + styles.locked : styles.box + " " + styles.free}
                         data-key="project"
                         onClick={() => onSelectProject(item)}
+                        onMouseEnter={() => onMouseEnter(i)}
                     >
-                        <div className={styles.boxImage} style={{ backgroundImage: `url(${bgImage})` }}></div>
+                        <div
+                            className={styles.boxImage}
+                            // style={{ backgroundColor: `${bgColor}` }}
+                        >
+                            <div className={styles.boxImageInner} style={{ backgroundImage: `url(${bgImage})` }}></div>
+                        </div>
                         <div className={styles.boxOverlay}></div>
                         <div className={styles.boxCircle}>
                             <span>View</span>

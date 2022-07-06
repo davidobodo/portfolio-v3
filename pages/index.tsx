@@ -12,9 +12,7 @@ import {
     Contact,
     Noise,
     Layout,
-    Modal,
-    SingleProject,
-    Nav
+    ProjectModal
 } from "#/components";
 import {
     useRevealParagraph,
@@ -141,6 +139,7 @@ const Home: NextPage = () => {
                             projectTitleRef={projectTitleRef}
                             onViewProject={onSelectProject}
                             onRedirectToProjects={onRedirectToProjects}
+                            location="home"
                         />
                     </>
                 </Layout.DarkSection>
@@ -149,21 +148,12 @@ const Home: NextPage = () => {
             <Contact />
             <Noise />
 
-            <Modal show={!!selectedProjectId} modalRef={modalRef}>
-                <div className={styles.modalContent}>
-                    <div className={styles.content}>
-                        <Nav isLight={true} />
-                        <SingleProject
-                            currProjectId={selectedProjectId}
-                            onClose={onDeselectProject}
-                            modalImgRef={modalImgRef}
-                        />
-                    </div>
-
-                    <div className={styles.gradient}></div>
-                    <Noise />
-                </div>
-            </Modal>
+            <ProjectModal
+                selectedProjectId={selectedProjectId}
+                modalRef={modalRef}
+                onDeselectProject={onDeselectProject}
+                modalImgRef={modalImgRef}
+            />
         </div>
     );
 };

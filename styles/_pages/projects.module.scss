@@ -30,15 +30,22 @@
             // padding: 3rem;
             // padding-left: 8rem;
             // padding-top: 16rem;
-            padding: 14rem 5rem 2rem;
             height: 100vh;
             min-height: 100vh;
             // margin-right: 200px;
             overflow: auto;
             scrollbar-width: none;
+            width: 0px;
+            opacity: 0;
+            will-change: width;
+            transition: width 200ms ease-in-out, opacity 200ms ease-in-out 200ms;
 
             &::-webkit-scrollbar {
                 width: 0px;
+            }
+
+            .asideInner {
+                padding: 14rem 5rem 2rem;
             }
 
             .filter {
@@ -144,9 +151,7 @@
                 justify-content: space-between;
                 position: sticky;
                 top: 0px;
-                // background-color: var(--black);
                 z-index: 4;
-                // background-image: linear-gradient(#000 0%, transparent 50%);
 
                 h2 {
                     font-size: 3.6rem;
@@ -164,4 +169,17 @@
             }
         }
     }
+}
+
+.btnFilter {
+    background-color: red;
+    width: 10rem;
+    height: 10rem;
+    border: 0px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    z-index: 5;
+    cursor: pointer;
 }

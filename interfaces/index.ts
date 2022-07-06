@@ -15,6 +15,7 @@ type TProject = {
     tech: string[];
     bgImage: string;
     type?: string;
+    bgColor?: string;
 };
 
 export type { TTimelineAction, TProject };

@@ -4,7 +4,7 @@ import Work from "./work";
 import Thoughts from "./thoughts";
 import Skills from "./skills";
 import FaintBgText from "./faint-bg-text";
-import Projects from "./projects";
+import Projects, { ProjectListView } from "./projects";
 
 const Home = {
     Preloader,
@@ -13,7 +13,8 @@ const Home = {
     Thoughts,
     Skills,
     FaintBgText,
-    Projects
+    Projects,
+    ProjectListView
 };
 
 export default Home;

@@ -3,6 +3,10 @@ import { createPortal } from "react-dom";
 import styles from "./styles.module.scss";
 import { Ref } from "react";
 
+import Project from "./project-modal";
+
+export const ProjectModal = Project;
+
 export default function Modal({
     children,
     show,

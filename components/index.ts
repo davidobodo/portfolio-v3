@@ -7,12 +7,12 @@ import ScrollAlert from "./scroll-alert";
 import Banners from "./banners";
 import Nav from "./nav";
 import DarkRadialGradient from "./dark-radial-gradient";
-import Modal from "./modal";
+import Modal, { ProjectModal } from "./modal";
 import Noise from "./noise";
 
 const { Button, Radio } = Atoms;
 
-const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects } = HomePage;
+const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
 const { Grid } = ProjectsPage;
 const { SingleLetter } = LettersPage;
 
@@ -36,5 +36,7 @@ export {
     Modal,
     Layout,
     Noise,
-    SingleProject
+    SingleProject,
+    ProjectListView,
+    ProjectModal
 };

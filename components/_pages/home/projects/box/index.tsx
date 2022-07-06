@@ -1,16 +1,19 @@
 import { PROJECTS } from "#/constants/projects";
 import styles from "./styles.module.scss";
 import { Ref } from "react";
+import { TProject } from "#/interfaces";
 export default function Box({
     isActive,
     imgRef,
     btnRef,
-    textRef
+    textRef,
+    displayedProjects
 }: {
     isActive: boolean;
     imgRef: Ref<HTMLDivElement>;
     btnRef: Ref<HTMLDivElement>;
     textRef: Ref<HTMLDivElement>;
+    displayedProjects: TProject[];
 }) {
     return (
         <>
@@ -21,7 +24,7 @@ export default function Box({
             >
                 <div className={styles.projectsListBoundary}>
                     <ul className={styles.projectsList} data-key="projects-list">
-                        {PROJECTS.slice(0, 5).map((item, i) => {
+                        {displayedProjects.map((item, i) => {
                             const { bgColor, bgImage } = item;
                             return (
                                 <li key={i} className={styles.project + " " + styles.visible}>
