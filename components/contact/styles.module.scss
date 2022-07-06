@@ -3,6 +3,10 @@
 .container {
     background-color: var(--light-brown);
     position: relative;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    z-index: 0;
 
     .contentWrapper {
         margin: auto;
@@ -187,4 +191,7 @@
             }
         }
     }
+}
+
+.placeholder {
 }

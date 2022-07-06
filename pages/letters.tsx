@@ -8,45 +8,47 @@ import { useBannerAnimation } from "#/hooks";
 const Letters: NextPage = () => {
     const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
     return (
-        <div>
-            <Head>
-                <title>David Obodo - Projects</title>
-                <meta name="description" content="David Obodo's portfolio website" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            {/* <Nav /> */}
-            <Banners.OtherPages
-                texts={["Letters", "Thoughts", "Stories", "Ideas"]}
-                textWrapperRef={textWrapperRef}
-                scrollIndicatorRef={scrollIndicatorRef}
-            />
+        <>
+            <div className={styles.main}>
+                <Head>
+                    <title>David Obodo - Projects</title>
+                    <meta name="description" content="David Obodo's portfolio website" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                {/* <Nav /> */}
+                <Banners.OtherPages
+                    texts={["Letters", "Thoughts", "Stories", "Ideas"]}
+                    textWrapperRef={textWrapperRef}
+                    scrollIndicatorRef={scrollIndicatorRef}
+                />
 
-            <Layout.DarkSection>
-                <div className={styles.container}>
-                    <div className={styles.wrapper}>
-                        {LETTERS.map((item, i) => {
-                            const { url, title, date, time, summary, tags } = item;
-                            return (
-                                <div key={url} className={styles.letterWrapper}>
-                                    <SingleLetter
-                                        url={url}
-                                        title={title}
-                                        date={date}
-                                        time={time}
-                                        summary={summary}
-                                        tags={tags}
-                                    />
-                                    <span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
-                                </div>
-                            );
-                        })}
+                <Layout.DarkSection>
+                    <div className={styles.container}>
+                        <div className={styles.wrapper}>
+                            {LETTERS.map((item, i) => {
+                                const { url, title, date, time, summary, tags } = item;
+                                return (
+                                    <div key={url} className={styles.letterWrapper}>
+                                        <SingleLetter
+                                            url={url}
+                                            title={title}
+                                            date={date}
+                                            time={time}
+                                            summary={summary}
+                                            tags={tags}
+                                        />
+                                        <span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
-            </Layout.DarkSection>
+                </Layout.DarkSection>
 
+                <Noise />
+            </div>
             <Contact />
-            <Noise />
-        </div>
+        </>
     );
 };
 
