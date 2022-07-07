@@ -96,9 +96,8 @@ export default function Contact() {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/">
-                                            <a href="">
-                                                {" "}
+                                        <Link href="/credits">
+                                            <a>
                                                 <span>Site Credits</span>
                                             </a>
                                         </Link>
