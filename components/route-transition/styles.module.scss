@@ -1,0 +1,11 @@
+.container {
+    background-color: var(--black);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 500;
+    transform-origin: top;
+    transform: scaleY(0);
+}

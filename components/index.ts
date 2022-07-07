@@ -10,6 +10,7 @@ import DarkRadialGradient from "./dark-radial-gradient";
 import Modal, { ProjectModal } from "./modal";
 import Noise from "./noise";
 import Logo from "./logo";
+import RouteTransition from "./route-transition";
 
 const { Button, Radio } = Atoms;
 
@@ -40,5 +41,6 @@ export {
     SingleProject,
     ProjectListView,
     ProjectModal,
-    Logo
+    Logo,
+    RouteTransition
 };
