@@ -1,13 +1,25 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { usePageTransitionContext } from "#/state";
 export default function useBannerAnimation() {
     const textWrapperRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+
+    const { timeline } = usePageTransitionContext();
     useEffect(() => {
         if (textWrapperRef.current && scrollIndicatorRef.current) {
-            initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
+            console.log(timeline, "THE TIMELINE");
+            if (timeline) {
+                timeline.then(() => {
+                    console.log("THE TIMELINE JUST FINISHED");
+                    initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
+                });
+            } else {
+                console.log("HITTING THE TRANSITION IMMEDIATELY");
+                initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
+            }
         }
-    }, []);
+    }, [timeline]);
     return {
         textWrapperRef,
         scrollIndicatorRef

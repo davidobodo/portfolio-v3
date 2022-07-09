@@ -20,7 +20,7 @@ const Projects: NextPage = () => {
         isOpen
     } = useSelectProjectAnimation();
     return (
-        <>
+        <div>
             <Nav />
             <div className={styles.main}>
                 <Head>
@@ -52,7 +52,7 @@ const Projects: NextPage = () => {
             </div>
 
             <Contact />
-        </>
+        </div>
     );
 };
 
@@ -110,9 +110,9 @@ style={{ width: showFilter ? "25vw" : "0px", opacity: showFilter ? 1 : 0 }}
 </aside> */
 }
 // const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
-const onSelectProject = (item: TProject) => {
-    Router.push(`/projects/${item.id}`);
-};
+// const onSelectProject = (item: TProject) => {
+//     Router.push(`/projects/${item.id}`);
+// };
 
 // if (filterBy === "project-nature") {
 //     filterList = [

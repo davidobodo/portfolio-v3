@@ -9,7 +9,7 @@ import useScrollToTop from "./useScollToTop";
 import useRevealHeading from "./useRevealHeading";
 import useBannerAnimation from "./useBannerAnimation";
 import useSelectProjectAnimation from "./useSelectProjectAnimation";
-
+import usePageTransition from "./usePageTransition";
 export {
     HomePageHooks,
     useWindowSize,
@@ -20,5 +20,6 @@ export {
     useScrollToTop,
     useRevealHeading,
     useBannerAnimation,
-    useSelectProjectAnimation
+    useSelectProjectAnimation,
+    usePageTransition
 };
