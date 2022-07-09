@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     useRegisterGsapScrollTrigger();
     return (
         <>
-            <Component {...pageProps} />
             <RouteTransition />
+            <Component {...pageProps} />
         </>
     );
 }
