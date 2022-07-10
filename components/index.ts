@@ -10,8 +10,8 @@ import DarkRadialGradient from "./dark-radial-gradient";
 import Modal, { ProjectModal } from "./modal";
 import Noise from "./noise";
 import Logo from "./logo";
-import RouteTransition from "./route-transition";
-
+import RouteTransitionOverlay from "./route-transition-overlay";
+import Common from "./common";
 const { Button, Radio } = Atoms;
 
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
@@ -42,5 +42,6 @@ export {
     ProjectListView,
     ProjectModal,
     Logo,
-    RouteTransition
+    RouteTransitionOverlay,
+    Common
 };

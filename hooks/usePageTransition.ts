@@ -1,22 +1,31 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { usePageTransitionContext } from "../state";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 export default function usePageTransition() {
     const layersWrapperRef = useRef<HTMLDivElement>(null);
     const noiseRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const { setTransitionTimeline, timeline } = usePageTransitionContext();
 
     const onRouteChange = (path: string) => {
+        if (router.pathname === path) {
+            window.scrollTo({
+                behavior: "smooth",
+                top: 0,
+                left: 0
+            });
+            return;
+        }
         if (timeline) {
             timeline.play();
             timeline.then(() => {
-                Router.push(path);
+                router.push(path);
             });
         } else {
-            Router.push(path);
+            router.push(path);
         }
     };
 

@@ -3,10 +3,8 @@ import { useRef, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { Button } from "../index";
 import { SendLink } from "#/components/icons";
-import { RouteTransition } from "#/components";
-import { usePageTransition } from "#/hooks";
 
-export default function Contact() {
+export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [footerHeight, setFooterHeight] = useState(10);
     const calculateFooterHeight = (node: HTMLDivElement) => {
@@ -18,13 +16,10 @@ export default function Contact() {
         }
     }, []);
 
-    const { layersWrapperRef, noiseRef, onRouteChange } = usePageTransition();
-
     const onSubmitForm = () => {};
 
     return (
         <>
-            <RouteTransition noiseRef={noiseRef} layersWrapperRef={layersWrapperRef} />
             <div className={styles.container} ref={containerRef}>
                 <div className={styles.contentWrapper}>
                     <div className={styles.contentWrapperInner}>
