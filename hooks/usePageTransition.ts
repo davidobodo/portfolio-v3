@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { usePageTransitionContext } from "../state";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 export default function usePageTransition() {
     const layersWrapperRef = useRef<HTMLDivElement>(null);
@@ -50,6 +50,7 @@ export default function usePageTransition() {
     return {
         layersWrapperRef,
         noiseRef,
-        onRouteChange
+        onRouteChange,
+        timeline
     };
 }

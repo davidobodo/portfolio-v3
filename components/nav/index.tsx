@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { Logo } from "../index";
-export default function Nav() {
-    const [showLogo, setShowLogo] = useState(false);
+export default function Nav({ timeline }) {
+    const [isLight, setIsLight] = useState(false);
     const handlescroll = () => {
-        if (window.pageYOffset >= 180) {
-            setShowLogo(true);
+        if (window.pageYOffset >= 95) {
+            setIsLight(true);
         } else {
-            setShowLogo(false);
+            // console.log(timeline.progress());
+            // console.log(timeline.totalProgress());
+            setIsLight(false);
+            // timeline.then(() => {
+            //     console.log("in here");
+            //     setIsLight(false);
+            // });
         }
     };
     useEffect(() => {
@@ -18,16 +24,17 @@ export default function Nav() {
                 window.removeEventListener("scroll", handlescroll);
             }
         };
-    }, []);
+    }, [timeline]);
     return (
         <Logo
             style={{
                 position: "fixed",
-                zIndex: 1000,
+                zIndex: 1003,
                 left: "5rem",
                 top: "4rem",
-                opacity: showLogo ? 1 : 0
+                opacity: isLight ? 1 : 0
             }}
+            color={isLight ? "#e1dfdd" : "#000"}
         />
     );
 }

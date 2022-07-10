@@ -1,5 +1,5 @@
 .container {
-    transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in, color 200ms ease-in-out;
     z-index: 1000;
 
     path:nth-child(2) {
