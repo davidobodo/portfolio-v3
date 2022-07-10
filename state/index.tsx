@@ -1,8 +1,13 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, Dispatch, SetStateAction } from "react";
 
-export const PageTransitionContext = createContext({
+type TContext = {
+    timeline: gsap.core.Timeline | null;
+    setTransitionTimeline: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
+};
+
+export const PageTransitionContext = createContext<TContext>({
     timeline: null,
-    setTransitionTimeline: (tl: gsap.core.Timeline) => {}
+    setTransitionTimeline: () => {}
 });
 
 export const usePageTransitionContext = () => {

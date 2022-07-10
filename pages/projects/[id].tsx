@@ -23,7 +23,7 @@ export default function Project() {
             </Head>
             <Layout.DarkSection>
                 <>
-                    <Nav isLight={true} />
+                    <Nav />
                     <SingleProject currProjectId={id as string} onClose={onClose} />
                 </>
             </Layout.DarkSection>

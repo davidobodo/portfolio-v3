@@ -145,7 +145,7 @@ const Home: NextPage = () => {
                 </Layout.DarkSection>
             </div>
 
-            <Contact />
+            {/* <Contact /> */}
             <Noise />
 
             <ProjectModal

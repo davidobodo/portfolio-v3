@@ -6,17 +6,29 @@ export default function useBannerAnimation() {
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
     const { timeline } = usePageTransitionContext();
+
+    const onPageLoad = ({
+        timeline,
+        textWrapper,
+        scrollIndicator
+    }: {
+        timeline: gsap.core.Timeline;
+        textWrapper: HTMLDivElement;
+        scrollIndicator: HTMLDivElement;
+    }) => {
+        timeline.reverse();
+        timeline.then(() => {
+            initBannerAnimation(textWrapper, scrollIndicator);
+        });
+    };
     useEffect(() => {
         if (textWrapperRef.current && scrollIndicatorRef.current) {
-            console.log(timeline, "THE TIMELINE");
             if (timeline) {
-                timeline.then(() => {
-                    console.log("THE TIMELINE JUST FINISHED");
-                    initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
+                onPageLoad({
+                    timeline,
+                    textWrapper: textWrapperRef.current,
+                    scrollIndicator: scrollIndicatorRef.current
                 });
-            } else {
-                console.log("HITTING THE TRANSITION IMMEDIATELY");
-                initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
             }
         }
     }, [timeline]);

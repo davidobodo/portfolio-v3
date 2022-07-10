@@ -1,15 +1,14 @@
-import styles from "./styles.module.scss";
-import { Button } from "../index";
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
+import styles from "./styles.module.scss";
+import { Button } from "../index";
 import { SendLink } from "#/components/icons";
+import { RouteTransition } from "#/components";
+import { usePageTransition } from "#/hooks";
+
 export default function Contact() {
-    const handleClick = () => {};
-
     const containerRef = useRef<HTMLDivElement>(null);
-
     const [footerHeight, setFooterHeight] = useState(10);
-
     const calculateFooterHeight = (node: HTMLDivElement) => {
         setFooterHeight(node.clientHeight);
     };
@@ -18,8 +17,14 @@ export default function Contact() {
             calculateFooterHeight(containerRef.current);
         }
     }, []);
+
+    const { layersWrapperRef, noiseRef, onRouteChange } = usePageTransition();
+
+    const onSubmitForm = () => {};
+
     return (
         <>
+            <RouteTransition noiseRef={noiseRef} layersWrapperRef={layersWrapperRef} />
             <div className={styles.container} ref={containerRef}>
                 <div className={styles.contentWrapper}>
                     <div className={styles.contentWrapperInner}>
@@ -35,40 +40,15 @@ export default function Contact() {
                                             </a>
                                         </Link>
                                     </li>
-                                    {/* <li>
-                                <Link href="/#about-section">
-                                    <a>
-                                        <span>About</span>
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/#work-section">
-                                    <a>
-                                        <span>Work</span>
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/#skills-section">
-                                    <a href="">
-                                        <span>Skills</span>
-                                    </a>
-                                </Link>
-                            </li> */}
-                                    <li>
-                                        <Link href="/projects">
-                                            <a>
-                                                <span>Projects </span>
-                                            </a>
-                                        </Link>
+                                    <li onClick={() => onRouteChange("/projects")}>
+                                        <a>
+                                            <span>Projects </span>
+                                        </a>
                                     </li>
-                                    <li>
-                                        <Link href="/letters">
-                                            <a>
-                                                <span>Letters </span>
-                                            </a>
-                                        </Link>
+                                    <li onClick={() => onRouteChange("/letters")}>
+                                        <a>
+                                            <span>Letters </span>
+                                        </a>
                                     </li>
                                 </ul>
                             </section>
@@ -95,21 +75,11 @@ export default function Contact() {
                                             </a>
                                         </Link>
                                     </li>
-                                    <li>
-                                        <Link href="/credits">
-                                            <a>
-                                                <span>Site Credits</span>
-                                            </a>
-                                        </Link>
+                                    <li onClick={() => onRouteChange("/credits")}>
+                                        <a>
+                                            <span>Site Credits</span>
+                                        </a>
                                     </li>
-                                    {/* <li>
-                                <Link href="/">
-                                    <a href="">
-                                        {" "}
-                                        <span>Play a game</span>
-                                    </a>
-                                </Link>
-                            </li> */}
                                 </ul>
                             </section>
                         </div>
@@ -161,23 +131,13 @@ export default function Contact() {
                                                 </a>
                                             </Link>
                                         </li>
-                                        {/* <li>
-                                    <a href="">
-                                        <span>CODEPEN</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <span>CODE SANDBOX</span>
-                                    </a>
-                                </li> */}
                                     </ul>
                                 </div>
 
                                 <div className={styles.btnWrapper}>
                                     <Button
                                         label="Send"
-                                        onClick={handleClick}
+                                        onClick={onSubmitForm}
                                         type="submit"
                                         ariaLabel="send"
                                         endAdornment={<SendLink color="#000" />}
