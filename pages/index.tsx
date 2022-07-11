@@ -80,7 +80,9 @@ const Home: NextPage = () => {
         onSelectProject,
         onDeselectProject,
         modalImgRef,
-        modalRef
+        modalRef,
+        isOpen,
+        onGoToProject
     } = useSelectProjectAnimation();
 
     const onRedirectToProjects = () => {
@@ -134,7 +136,6 @@ const Home: NextPage = () => {
                             mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
-                        {/* <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} /> */}
                         <Projects
                             projectTitleRef={projectTitleRef}
                             onViewProject={onSelectProject}
@@ -144,8 +145,6 @@ const Home: NextPage = () => {
                     </>
                 </Layout.DarkSection>
             </div>
-
-            {/* <Contact /> */}
             <Noise />
 
             <ProjectModal
@@ -153,6 +152,8 @@ const Home: NextPage = () => {
                 modalRef={modalRef}
                 onDeselectProject={onDeselectProject}
                 modalImgRef={modalImgRef}
+                isOpen={isOpen}
+                onGoToProject={onGoToProject}
             />
         </div>
     );

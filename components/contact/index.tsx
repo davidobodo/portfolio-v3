@@ -70,10 +70,12 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
                                             </a>
                                         </Link>
                                     </li>
-                                    <li onClick={() => onRouteChange("/credits")}>
-                                        <a>
-                                            <span>Site Credits</span>
-                                        </a>
+                                    <li>
+                                        <Link href="/credits">
+                                            <a>
+                                                <span>Site Credits</span>
+                                            </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </section>
