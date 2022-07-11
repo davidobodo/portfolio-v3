@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 import { Logo } from "../index";
-export default function Nav({ timeline }) {
+export default function Nav() {
     const [isLight, setIsLight] = useState(false);
     const handlescroll = () => {
         if (window.pageYOffset >= 95) {
             setIsLight(true);
         } else {
-            // console.log(timeline.progress());
-            // console.log(timeline.totalProgress());
             setIsLight(false);
-            // timeline.then(() => {
-            //     console.log("in here");
-            //     setIsLight(false);
-            // });
         }
     };
     useEffect(() => {
@@ -24,7 +18,7 @@ export default function Nav({ timeline }) {
                 window.removeEventListener("scroll", handlescroll);
             }
         };
-    }, [timeline]);
+    }, []);
     return (
         <Logo
             style={{

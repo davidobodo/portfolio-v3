@@ -17,7 +17,7 @@ const Projects: NextPage = () => {
     } = useSelectProjectAnimation();
     return (
         <div>
-            {/* <Nav /> */}
+            <Nav />
             <div className={styles.main}>
                 <Head>
                     <title>David Obodo - Projects</title>
