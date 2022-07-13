@@ -1,4 +1,4 @@
-import { Contact, RouteTransitionOverlay } from "../index";
+import { Contact, RouteTransitionOverlay, ScrollToTop } from "../index";
 import { usePageTransition } from "#/hooks";
 
 export default function Common() {
@@ -7,6 +7,7 @@ export default function Common() {
         <div>
             <Contact onRouteChange={onRouteChange} />
             <RouteTransitionOverlay layersWrapperRef={layersWrapperRef} />
+            <ScrollToTop />
         </div>
     );
 }

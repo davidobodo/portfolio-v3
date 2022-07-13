@@ -12,8 +12,9 @@ import Noise from "./noise";
 import Logo from "./logo";
 import RouteTransitionOverlay from "./route-transition-overlay";
 import Common from "./common";
-const { Button, Radio } = Atoms;
+import ScrollToTop from "./scroll-to-top";
 
+const { Button, Radio } = Atoms;
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
 const { Grid } = ProjectsPage;
 const { SingleLetter } = LettersPage;
@@ -43,5 +44,6 @@ export {
     ProjectModal,
     Logo,
     RouteTransitionOverlay,
-    Common
+    Common,
+    ScrollToTop
 };

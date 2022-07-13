@@ -145,8 +145,8 @@ function Form() {
     return (
         <form action="" className={styles.form}>
             <div className={styles.title}>
-                <h1>Would love to hear from you &#8595;.</h1>
-                <span>Currently open to Full time front-end developer role (React.js Major)</span>
+                {/* <h1>Would love to hear from you &#8595;.</h1> */}
+                {/* <span>Currently open to Full time front-end developer role (React.js Major)</span> */}
             </div>
             {/* <h3>Contact</h3> */}
             <div className={styles.twoColumns}>
