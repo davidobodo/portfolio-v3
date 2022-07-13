@@ -1,19 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import {
-    Preloader,
-    Banners,
-    About,
-    Work,
-    Thoughts,
-    Skills,
-    Projects,
-    Noise,
-    Layout,
-    ProjectModal,
-    Nav
-} from "#/components";
+import { Banners, About, Work, Thoughts, Skills, Projects, Noise, Layout, ProjectModal, Nav } from "#/components";
 import {
     useRevealParagraph,
     useWindowSize,
@@ -38,8 +26,6 @@ const Home: NextPage = () => {
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
     const {
-        preloaderBgRef,
-        logoRef,
         bannerRef,
         fieldRef,
         nameRef,
@@ -97,7 +83,6 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
             <Nav />
             <div className={styles.main}>
                 <Banners.HomePage

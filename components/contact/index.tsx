@@ -43,12 +43,10 @@ function Details2({
                         <div className={styles.media} style={{ marginBottom: "60px" }}>
                             <h3>Quick Links</h3>
                             <ul>
-                                <li>
-                                    <Link href="/">
-                                        <a>
-                                            <span>Home</span>
-                                        </a>
-                                    </Link>
+                                <li onClick={() => onRouteChange("/")}>
+                                    <a>
+                                        <span>Home</span>
+                                    </a>
                                 </li>
                                 <li className={styles.line}></li>
                                 <li onClick={() => onRouteChange("/projects")}>

@@ -1,6 +1,7 @@
-.container {
+@import "#/styles/globals.module.scss";
+
+.full {
     transition: opacity 200ms ease-in, color 200ms ease-in-out;
-    // z-index: 1000;
 
     path:nth-child(2) {
         transform-origin: 20%;
@@ -9,6 +10,27 @@
     path:nth-child(4) {
         transform-origin: 30%;
         animation: rotate 3s ease-in-out infinite;
+    }
+}
+
+.initials {
+    width: 100px;
+    height: 100px;
+
+    @media (min-width: $md) {
+        width: 200px;
+        height: 200px;
+    }
+
+    path {
+        &:nth-child(1) {
+            stroke-dasharray: 300px;
+            stroke-dashoffset: 300px;
+        }
+        &:nth-child(2) {
+            stroke-dasharray: 300px;
+            stroke-dashoffset: 300px;
+        }
     }
 }
 

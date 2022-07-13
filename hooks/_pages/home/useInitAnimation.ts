@@ -2,8 +2,6 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
 export default function useInitAnimation() {
-    const preloaderBgRef = useRef<HTMLDivElement>(null);
-    const logoRef = useRef<SVGSVGElement>(null);
     const bannerRef = useRef(null);
     const fieldRef = useRef<HTMLHeadingElement>(null);
     const nameRef = useRef<HTMLHeadingElement>(null);
@@ -36,32 +34,13 @@ export default function useInitAnimation() {
         });
     }
 
-    function loaderAnimation() {
-        const tl = gsap.timeline();
-
-        tl.add(() => {
-            document.querySelector("body")?.classList.add("hide");
-        })
-            .to(logoRef.current!.children, { strokeDashoffset: 0, duration: 2, stagger: 0.8 })
-            .to(logoRef.current, { fill: "#fcfcfc" })
-            .to(logoRef.current, { opacity: 0 })
-            .to(preloaderBgRef.current, { y: "-100vh" })
-            .to(preloaderBgRef.current, { display: "none" });
-
-        return tl;
-    }
-
     useEffect(() => {
-        if (preloaderBgRef.current && logoRef.current) {
-            loaderAnimation().then(() => {
-                bannerAnimation();
-            });
-        }
-    }, [preloaderBgRef, logoRef]);
+        removeLoader().then(() => {
+            bannerAnimation();
+        });
+    }, []);
 
     return {
-        preloaderBgRef,
-        logoRef,
         bannerRef,
         fieldRef,
         nameRef,
@@ -71,4 +50,30 @@ export default function useInitAnimation() {
         scrollIndicatorRef,
         mobilePicRef
     };
+}
+
+function removeLoader() {
+    const tl = gsap.timeline({});
+
+    const logo = document.querySelector("[data-key='logo']");
+    const logoChildren = document.querySelectorAll("[data-key='logo'] path");
+    tl.to(logoChildren, {
+        strokeDashoffset: 0,
+        duration: 2,
+        stagger: 0.8,
+        delay: 1
+    })
+        .to(logo, {
+            fill: "#fcfcfc"
+        })
+        .to(logo, {
+            opacity: 0
+        })
+        .to(logo, {
+            visibility: "hidden"
+        })
+        .to(document.querySelectorAll("[data-key='layer']"), {
+            scaleY: 0
+        });
+    return tl;
 }
