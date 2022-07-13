@@ -5,8 +5,8 @@ export default function Routetransition({ layersWrapperRef }: { layersWrapperRef
     return (
         <div className={styles.container}>
             <div className={styles.layers} ref={layersWrapperRef}>
-                <div className={styles.layer}></div>
-                <div className={styles.layer}></div>
+                <div className={styles.layer} data-key="layer"></div>
+                <div className={styles.layer} data-key="layer"></div>
             </div>
         </div>
     );

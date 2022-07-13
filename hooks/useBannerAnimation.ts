@@ -24,18 +24,34 @@ export default function useBannerAnimation() {
     useEffect(() => {
         if (textWrapperRef.current && scrollIndicatorRef.current) {
             if (timeline) {
+                // Navigating from another page to this page
                 onPageLoad({
                     timeline,
                     textWrapper: textWrapperRef.current,
                     scrollIndicator: scrollIndicatorRef.current
                 });
+            } else {
+                // Navigating to this page from the url input
+                removeLoader().then(() => {
+                    initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
+                });
             }
         }
-    }, [timeline]);
+    }, []);
     return {
         textWrapperRef,
         scrollIndicatorRef
     };
+}
+
+function removeLoader() {
+    const tl = gsap.timeline({});
+
+    tl.to(document.querySelectorAll("[data-key='layer']"), {
+        scaleY: 0,
+        delay: 1
+    });
+    return tl;
 }
 
 function initBannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivElement) {

@@ -26,13 +26,13 @@
 
             &:nth-child(1) {
                 top: 0px;
-                transform: scaleY(0);
+                // transform: scaleY(0);
                 transform-origin: top;
             }
 
             &:nth-child(2) {
                 bottom: 0px;
-                transform: scaleY(0);
+                // transform: scaleY(0);
                 transform-origin: bottom;
             }
         }
