@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 export default function usePageTransition() {
     const layersWrapperRef = useRef<HTMLDivElement>(null);
-    const noiseRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
     const { setTransitionTimeline, timeline } = usePageTransitionContext();
@@ -33,9 +32,11 @@ export default function usePageTransition() {
         const tl = gsap.timeline({ paused: true });
 
         if (layersWrapperRef.current) {
-            tl.to(layersWrapperRef.current?.children[0], { scaleY: 1 })
-                .to(layersWrapperRef.current?.children[1], { scaleY: 1 }, "<")
-                .to(noiseRef.current, { opacity: 1, visibility: "visible" });
+            tl.to(layersWrapperRef.current?.children[0], { scaleY: 1 }).to(
+                layersWrapperRef.current?.children[1],
+                { scaleY: 1 },
+                "<"
+            );
 
             setTransitionTimeline(tl);
         }
@@ -49,7 +50,6 @@ export default function usePageTransition() {
 
     return {
         layersWrapperRef,
-        noiseRef,
         onRouteChange,
         timeline
     };

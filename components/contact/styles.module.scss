@@ -1,154 +1,6 @@
 @import "#/styles/globals.module.scss";
-.container {
-    background-color: var(--light-brown);
-    position: relative;
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
-    z-index: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-
-    .content {
-        width: 100%;
-        padding-top: 4rem;
-        padding-left: 6rem;
-        padding-right: 6rem;
-        padding-bottom: 5rem;
-
-        @media (min-width: $md) {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            // max-width: var(--mini-desktop-max-width);
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (min-width: $xxl) {
-            // max-width: var(--max-width);
-        }
-
-        .title {
-            font-size: 120px;
-        }
-
-        .leftSection {
-            display: flex;
-            align-items: center;
-
-            // flex-direction: column;
-            // align-items: space-between;
-            // justify-content: space-between;
-
-            .leftSectionInner {
-                // border-left: 1px dotted black;
-                // padding-left: 5rem;
-                width: 100%;
-            }
-        }
-
-        .rightSection {
-            display: flex;
-            align-items: center;
-
-            .rightSectionInner {
-                width: 100%;
-                // display: grid;
-                // grid-template-columns: 1fr 1fr;
-            }
-
-            .title {
-                margin-bottom: 6rem;
-            }
-
-            .links {
-            }
-        }
-
-        section {
-            margin-bottom: 6rem;
-
-            &:last-child {
-                margin-bottom: 0px;
-            }
-
-            h3 {
-                margin-bottom: 4rem;
-                font-size: 2.4rem;
-                font-family: "sf-pro-regular";
-                opacity: 0.3;
-            }
-
-            ul {
-                list-style: none;
-                li {
-                    margin-bottom: 1.2rem;
-
-                    &:last-child {
-                        margin-bottom: 0px;
-                    }
-
-                    a {
-                        font-size: 2.8rem;
-                        text-decoration: none;
-                        cursor: pointer;
-                        // text-transform: uppercase;
-                        color: var(--black);
-                        position: relative;
-
-                        span {
-                            position: relative;
-                        }
-
-                        &::selection {
-                            background: var(--black);
-                            color: var(--light-brown);
-                        }
-
-                        &::before {
-                            content: "";
-                            display: block;
-                            width: 0%;
-                            height: 100%;
-                            position: absolute;
-                            z-index: 0;
-                            background: var(--black);
-                            transition: width 200ms ease-in-out;
-                        }
-
-                        &:hover,
-                        &:active,
-                        &:focus {
-                            color: var(--light-brown);
-                            text-decoration: none;
-                            outline: none;
-
-                            &:before {
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-.wouldLove {
-    margin-bottom: 6rem;
-    font-size: 80px;
-    font-family: "sf-pro-regular";
-    font-weight: 200;
-    text-align: right;
-
-    border-right: 1px dotted black;
-    padding-right: 5rem;
-}
 
 .form {
-    // padding-top: 2rem;
-    // margin-right: 7rem;
     h3 {
         font-size: 1.4rem;
         text-transform: uppercase;
@@ -157,20 +9,34 @@
         font-weight: 200;
     }
 
+    .title {
+        margin-bottom: 4rem;
+
+        h1 {
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-family: "sf-pro-regular";
+            font-weight: 200;
+        }
+
+        span {
+            font-size: 1.6rem;
+        }
+    }
+
     .formField {
         margin-bottom: 4rem;
         width: 100%;
 
         label {
             display: none;
-            // text-transform: uppercase;
             font-size: 2.8rem;
             letter-spacing: 1px;
             font-weight: 600;
             margin-bottom: 2rem;
             font-family: "sf-pro-regular";
             font-weight: 200;
-            // opacity: 0.3;
 
             &::selection {
                 background: var(--black);
@@ -195,9 +61,12 @@
         outline: none;
         font-size: 2.8rem;
         font-family: "sf-pro-regular";
+        font-weight: 200;
+
         &::placeholder {
             text-transform: uppercase;
             color: var(--black);
+            opacity: 0.4;
         }
     }
 
@@ -218,6 +87,7 @@
         &::placeholder {
             text-transform: uppercase;
             color: var(--black);
+            opacity: 0.4;
         }
     }
 
@@ -272,7 +142,7 @@
         align-items: center;
 
         li {
-            font-size: 2rem;
+            // font-size: 2rem;
             margin-right: 1rem;
 
             &.line {
@@ -291,12 +161,6 @@
 }
 
 .wrapper {
-    // height: 100vh;
-    // display: flex;
-    // // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-
     background-color: var(--light-brown);
     position: relative;
     position: fixed;
@@ -304,29 +168,51 @@
     bottom: 0px;
     z-index: 0;
     padding-top: 10vh;
-    // min-height: 100vh;
-    // display: flex;
-    // justify-content: center;
+
+    a {
+        font-size: 1.8rem;
+        text-decoration: underline;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: var(--black);
+        position: relative;
+
+        span {
+            position: relative;
+        }
+
+        &::selection {
+            background: var(--black);
+            color: var(--light-brown);
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+            background: var(--black);
+            transition: width 200ms ease-in-out;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: var(--light-brown);
+            text-decoration: none;
+            outline: none;
+
+            &:before {
+                width: 100%;
+            }
+        }
+    }
 }
 
-.marqueeWrapper {
-    overflow: hidden;
-    position: relative;
-}
-
-.longText {
-    margin-bottom: 10rem;
-    margin-top: 10rem;
-    font-size: 160px;
-    font-family: "sf-pro-bold";
-    text-transform: uppercase;
-    white-space: nowrap;
-    position: relative;
-}
 .container2 {
     display: flex;
-    // align-items: flex-end;
-    // border: 1px solid red;
     padding: 0px 6rem;
     padding-bottom: 10vh;
     width: 100%;
@@ -337,25 +223,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-        .top {
-            margin-bottom: 6rem;
-
-            h1 {
-                font-family: "sf-pro-regular";
-                font-weight: 200;
-                font-size: 3rem;
-                margin-bottom: 1rem;
-            }
-
-            span {
-                font-size: 1.4rem;
-                // text-transform: uppercase;
-                margin-bottom: 1rem;
-                font-family: "sf-pro-regular";
-                font-weight: 200;
-            }
-        }
     }
 
     .rightSection {
@@ -366,10 +233,6 @@
 .bottom {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     height: 60px;
-    // position: absolute;
-    // bottom: 0px;
-    // left: 0px;
-    // right: 0px;
     margin: 0px 6rem;
     display: flex;
     justify-content: space-between;
@@ -382,25 +245,18 @@
         height: 100%;
 
         li {
-            font-size: 1.4rem;
             margin-right: 2rem;
-
-            // &.line {
-            //     height: 2px;
-            //     width: 30px;
-            //     background-color: var(--black);
-            // }
 
             a {
                 text-decoration: none;
                 text-transform: uppercase;
                 color: var(--black);
+                font-size: 1.4rem;
             }
         }
     }
 
     p {
         font-size: 1.4rem;
-        // text-transform: uppercase;
     }
 }
