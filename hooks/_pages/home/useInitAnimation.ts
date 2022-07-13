@@ -13,36 +13,48 @@ export default function useInitAnimation() {
     const mobilePicRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
+    function bannerAnimation() {
+        const tl = gsap.timeline();
+
+        tl.to(nameRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
+            .to(fieldRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
+            .to(firstSubFieldRef.current, { y: 0 })
+            .to(secondSubFieldRef.current, { y: 0 });
+
+        // Because the animation for mobile image is different from the animation for desktop image
+        if (window.innerWidth < 768) {
+            tl.to(mobilePicRef.current, { width: "100%" });
+        } else {
+            tl.to(profilePicRef.current, { opacity: 1 }).to(profilePicRef.current!.querySelector("polyline"), {
+                strokeDashoffset: 0
+            });
+        }
+
+        tl.to(scrollIndicatorRef.current, { opacity: 1 });
+        tl.add(() => {
+            document.querySelector("body")?.classList.remove("hide");
+        });
+    }
+
+    function loaderAnimation() {
+        const tl = gsap.timeline();
+
+        tl.add(() => {
+            document.querySelector("body")?.classList.add("hide");
+        })
+            .to(logoRef.current!.children, { strokeDashoffset: 0, duration: 2, stagger: 0.8 })
+            .to(logoRef.current, { fill: "#fcfcfc" })
+            .to(logoRef.current, { opacity: 0 })
+            .to(preloaderBgRef.current, { y: "-100vh" })
+            .to(preloaderBgRef.current, { display: "none" });
+
+        return tl;
+    }
+
     useEffect(() => {
         if (preloaderBgRef.current && logoRef.current) {
-            const tl = gsap.timeline();
-
-            tl.add(() => {
-                document.querySelector("body")?.classList.add("hide");
-            })
-                .to(logoRef.current.children, { strokeDashoffset: 0, duration: 2, stagger: 0.8 })
-                .to(logoRef.current, { fill: "#fcfcfc" })
-                .to(logoRef.current, { opacity: 0 })
-                .to(preloaderBgRef.current, { y: "-100vh" })
-                .to(preloaderBgRef.current, { display: "none" })
-
-                .to(nameRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
-                .to(fieldRef.current!.querySelectorAll('[data-key="letter"]'), { x: 0 })
-                .to(firstSubFieldRef.current, { y: 0 })
-                .to(secondSubFieldRef.current, { y: 0 });
-
-            // Because the animation for mobile image is different from the animation for desktop image
-            if (window.innerWidth < 768) {
-                tl.to(mobilePicRef.current, { width: "100%" });
-            } else {
-                tl.to(profilePicRef.current, { opacity: 1 }).to(profilePicRef.current!.querySelector("polyline"), {
-                    strokeDashoffset: 0
-                });
-            }
-
-            tl.to(scrollIndicatorRef.current, { opacity: 1 });
-            tl.add(() => {
-                document.querySelector("body")?.classList.remove("hide");
+            loaderAnimation().then(() => {
+                bannerAnimation();
             });
         }
     }, [preloaderBgRef, logoRef]);
