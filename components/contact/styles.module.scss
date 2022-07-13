@@ -1,29 +1,116 @@
 @import "#/styles/globals.module.scss";
 
-.form {
-    h3 {
-        font-size: 1.4rem;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-        font-family: "sf-pro-regular";
+.title {
+    // margin-bottom: 4rem;
+
+    h1 {
+        font-size: 4.6rem;
+        // text-transform: uppercase;
+        // margin-bottom: 1rem;
+        font-family: "sf-pro-bold";
         font-weight: 200;
+        position: relative;
+        margin-bottom: 2rem;
+
+        // &::before {
+        //     content: "<h1>";
+        //     font-family: "La Belle Aurore", cursive;
+        //     color: #515152;
+        //     font-size: 18px;
+        //     position: absolute;
+        //     margin-top: -2rem;
+        //     left: -2rem;
+        //     opacity: 0.3;
+        // }
+
+        // &::after {
+        //     content: "<h1/>";
+        //     font-family: "La Belle Aurore", cursive;
+        //     color: #515152;
+        //     font-size: 18px;
+        //     position: absolute;
+        //     left: -2rem;
+        //     bottom: -2rem;
+        //     opacity: 0.3;
+        // }
     }
 
-    .title {
-        margin-bottom: 4rem;
-
-        h1 {
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            font-family: "sf-pro-regular";
-            font-weight: 200;
-        }
+    p {
+        font-size: 1.8rem;
+        width: 80%;
+        font-family: "sf-pro-regular";
+        line-height: 1.5em;
+        max-width: 490px;
+        position: relative;
+        margin-bottom: 2rem;
 
         span {
-            font-size: 1.6rem;
+            position: relative;
+            display: inline-block;
+            color: var(--light-brown);
+
+            &:after {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                background: linear-gradient(to right, black, var(--brown));
+                position: absolute;
+                left: 0px;
+                z-index: -1;
+            }
         }
+
+        // &::before {
+        //     content: "<p>";
+        //     font-family: "La Belle Aurore", cursive;
+        //     color: #515152;
+        //     font-size: 18px;
+        //     position: absolute;
+        //     margin-top: -2rem;
+        //     left: -2rem;
+        //     opacity: 0.3;
+        // }
+
+        // &::after {
+        //     content: "<p/>";
+        //     font-family: "La Belle Aurore", cursive;
+        //     color: #515152;
+        //     font-size: 18px;
+        //     position: absolute;
+        //     left: -2rem;
+        //     bottom: -2rem;
+        //     opacity: 0.3;
+        // }
     }
+    span {
+        // font-size: 1.6rem;
+    }
+}
+
+.form {
+    position: relative;
+    // &::before {
+    //     content: "<form>";
+    //     font-family: "La Belle Aurore", cursive;
+    //     color: #515152;
+    //     font-size: 18px;
+    //     position: absolute;
+    //     margin-top: -2rem;
+    //     left: -2rem;
+    //     opacity: 0.3;
+    // }
+
+    // &::after {
+    //     content: "<form/>";
+    //     font-family: "La Belle Aurore", cursive;
+    //     color: #515152;
+    //     font-size: 18px;
+    //     position: absolute;
+    //     left: -2rem;
+    //     bottom: -2rem;
+    //     opacity: 0.3;
+    // }
 
     .formField {
         margin-bottom: 4rem;
@@ -64,7 +151,7 @@
         font-weight: 200;
 
         &::placeholder {
-            text-transform: uppercase;
+            // text-transform: uppercase;
             color: var(--black);
             opacity: 0.4;
             font-size: 1.8rem;
@@ -83,10 +170,10 @@
         outline: none;
         font-size: 1.8rem;
         overflow: hidden;
-        height: 300px;
+        height: 200px;
 
         &::placeholder {
-            text-transform: uppercase;
+            // text-transform: uppercase;
             color: var(--black);
             opacity: 0.4;
             font-size: 1.8rem;
@@ -109,10 +196,11 @@
             border-color: var(--black);
 
             font-size: max(32px, 4.1666666667vw);
+            font-size: 3.6rem;
             background-color: transparent;
             border: 0px;
             width: 100%;
-            text-transform: uppercase;
+            // text-transform: uppercase;
             font-family: "sf-pro-bold";
             display: flex;
             align-items: center;

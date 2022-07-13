@@ -143,41 +143,52 @@ function Details2({
 
 function Form() {
     return (
-        <form action="" className={styles.form}>
+        <>
             <div className={styles.title}>
                 {/* <h1>Would love to hear from you &#8595;.</h1> */}
+                <h1>Contact me</h1>
+                <p>
+                    I’m currently interested in a <span> Full-time Front-end developer role </span> with a major on
+                    <span>React.js Framework</span>, however still open to other opportunities. However, if you have
+                    other request or question, don’t hesitate to use the form.
+                </p>
                 {/* <span>Currently open to Full time front-end developer role (React.js Major)</span> */}
             </div>
-            {/* <h3>Contact</h3> */}
-            <div className={styles.twoColumns}>
-                <div className={styles.formField}>
-                    <label htmlFor="">Name</label>
-                    <input type="Name" placeholder="Name" />
+            <form action="" className={styles.form}>
+                {/* <h3>Contact</h3> */}
+                <div className={styles.twoColumns}>
+                    <div className={styles.formField}>
+                        <label htmlFor="">Name</label>
+                        <input type="text" placeholder="Name" />
+                    </div>
+                    <div className={styles.formField}>
+                        <label htmlFor="">Email</label>
+                        <input type="Email" placeholder="Email" />
+                    </div>
                 </div>
                 <div className={styles.formField}>
-                    <label htmlFor="">Email</label>
-                    <input type="Email" placeholder="Email" />
+                    <label htmlFor="">Subject</label>
+                    <input type="text" placeholder="Subject" />
                 </div>
-            </div>
+                <div className={styles.formField}>
+                    <label htmlFor="">Message</label>
+                    <textarea name="" id="" cols={30} rows={10} placeholder="Message"></textarea>
+                </div>
 
-            <div className={styles.formField}>
-                <label htmlFor="">Message</label>
-                <textarea name="" id="" cols={30} rows={10} placeholder="Message"></textarea>
-            </div>
-
-            <div className={styles.btnWrapper}>
-                <button>
-                    <span>Submit</span>
-                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="m.819 50.513 8.307 8.238 38.423-38.454-.059 28.89h11.638V.424H10.47l-.14 11.564h28.983L.819 50.513Zm55.31-47.09v42.764V3.424Z"
-                            fill="currentColor"
-                        ></path>
-                    </svg>
-                </button>
-            </div>
-        </form>
+                <div className={styles.btnWrapper}>
+                    <button>
+                        <span>Submit</span>
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="m.819 50.513 8.307 8.238 38.423-38.454-.059 28.89h11.638V.424H10.47l-.14 11.564h28.983L.819 50.513Zm55.31-47.09v42.764V3.424Z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </>
     );
 }
