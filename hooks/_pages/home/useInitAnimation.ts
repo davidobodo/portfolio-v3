@@ -23,9 +23,10 @@ export default function useInitAnimation() {
         if (window.innerWidth < 768) {
             tl.to(mobilePicRef.current, { width: "100%" });
         } else {
-            tl.to(profilePicRef.current, { opacity: 1 }).to(profilePicRef.current!.querySelector("polyline"), {
-                strokeDashoffset: 0
-            });
+            tl.to(profilePicRef.current!.querySelector("span"), { width: 0 });
+            // .to(profilePicRef.current!.querySelector("polyline"), {
+            //     strokeDashoffset: 0
+            // });
         }
 
         tl.to(scrollIndicatorRef.current, { opacity: 1 });
