@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Logo } from "../index";
 export default function Nav() {
-    const [isLight, setIsLight] = useState(false);
+    const [isLight, setIsLight] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
     const handlescroll = () => {
+        // Toggle visibility
         if (window.pageYOffset >= 95) {
-            setIsLight(true);
+            setIsVisible(true);
         } else {
-            setIsLight(false);
+            setIsVisible(false);
         }
     };
     useEffect(() => {
@@ -26,7 +28,7 @@ export default function Nav() {
                 zIndex: 1003,
                 left: "5rem",
                 top: "4rem",
-                opacity: isLight ? 1 : 0
+                opacity: isVisible ? 1 : 0
             }}
             color={isLight ? "#e1dfdd" : "#000"}
         />

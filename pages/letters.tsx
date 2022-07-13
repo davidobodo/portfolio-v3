@@ -11,7 +11,7 @@ const Letters: NextPage = () => {
     return (
         <div className={styles.main}>
             <Head>
-                <title>David Obodo - Projects</title>
+                <title>David Obodo - Letters</title>
                 <meta name="description" content="David Obodo's portfolio website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

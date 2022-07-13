@@ -9,10 +9,10 @@ import {
     Thoughts,
     Skills,
     Projects,
-    Contact,
     Noise,
     Layout,
-    ProjectModal
+    ProjectModal,
+    Nav
 } from "#/components";
 import {
     useRevealParagraph,
@@ -98,6 +98,7 @@ const Home: NextPage = () => {
             </Head>
 
             <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
+            <Nav />
             <div className={styles.main}>
                 <Banners.HomePage
                     bannerRef={bannerRef}
