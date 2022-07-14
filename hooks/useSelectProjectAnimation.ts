@@ -9,6 +9,7 @@ export default function useSelectProjectAnimation() {
     const modalRef = useRef<HTMLDivElement>(null);
     const [isOpen, setIsOpen] = useState(false);
 
+    // Project was clicked on
     const onSelectProject = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
         sourceElem.current = document.querySelector("[data-key='project-box']");
         const id = e.currentTarget.dataset.id as string;
@@ -18,6 +19,7 @@ export default function useSelectProjectAnimation() {
         window.history.pushState(null, "New Page Title", `/projects/${id}`);
     };
 
+    // Next or previous arrow button was pressed
     const onGoToProject = (id: string) => {
         const modal = modalRef.current;
         const modalImage = modalImgRef.current;
@@ -40,6 +42,8 @@ export default function useSelectProjectAnimation() {
     };
 
     const [tl, setTl] = useState<gsap.core.Timeline>();
+
+    // Close single project view
     const onDeselectProject = () => {
         tl?.reverse().then(() => {
             window.history.pushState(null, "New Page Title", router.pathname);
@@ -51,7 +55,7 @@ export default function useSelectProjectAnimation() {
     useEffect(() => {
         if (isOpen) {
             if (sourceElem.current && modalImgRef.current && modalRef.current) {
-                const tl = animateProject({
+                const tl = applyFlipAnim({
                     modal: modalRef.current,
                     source: sourceElem.current,
                     destination: modalImgRef.current
@@ -69,11 +73,12 @@ export default function useSelectProjectAnimation() {
         modalImgRef,
         modalRef,
         onGoToProject,
-        isOpen
+        isOpen,
+        setSelectedProjectId
     };
 }
 
-function animateProject({
+function applyFlipAnim({
     modal,
     source,
     destination
@@ -207,3 +212,5 @@ function displayNextProject({
 
     return displayNextProjectTl;
 }
+
+export { applyFlipAnim, removeCurrentProject, displayNextProject };

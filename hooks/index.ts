@@ -8,7 +8,11 @@ import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useScrollToTop from "./useScollToTop";
 import useRevealHeading from "./useRevealHeading";
 import useBannerAnimation from "./useBannerAnimation";
-import useSelectProjectAnimation from "./useSelectProjectAnimation";
+import useSelectProjectAnimation, {
+    applyFlipAnim,
+    removeCurrentProject,
+    displayNextProject
+} from "./useSelectProjectAnimation";
 import usePageTransition from "./usePageTransition";
 export {
     HomePageHooks,
@@ -21,5 +25,8 @@ export {
     useRevealHeading,
     useBannerAnimation,
     useSelectProjectAnimation,
-    usePageTransition
+    usePageTransition,
+    applyFlipAnim,
+    removeCurrentProject,
+    displayNextProject
 };

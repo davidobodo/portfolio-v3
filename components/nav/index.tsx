@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Logo } from "../index";
-export default function Nav() {
-    const [isLight, setIsLight] = useState(true);
+export default function Nav({ alwaysVisible = false }: { alwaysVisible?: boolean }) {
+    // const [isLight, setIsLight] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
     const handlescroll = () => {
         // Toggle visibility
@@ -12,15 +12,19 @@ export default function Nav() {
         }
     };
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            window.addEventListener("scroll", handlescroll);
-        }
-        return () => {
+        if (alwaysVisible) {
+            setIsVisible(true);
+        } else {
             if (typeof window !== "undefined") {
-                window.removeEventListener("scroll", handlescroll);
+                window.addEventListener("scroll", handlescroll);
             }
-        };
-    }, []);
+            return () => {
+                if (typeof window !== "undefined") {
+                    window.removeEventListener("scroll", handlescroll);
+                }
+            };
+        }
+    }, [alwaysVisible]);
     return (
         <Logo
             style={{
@@ -30,7 +34,8 @@ export default function Nav() {
                 top: "4rem",
                 opacity: isVisible ? 1 : 0
             }}
-            color={isLight ? "#e1dfdd" : "#000"}
+            // color={isLight ? "#e1dfdd" : "#000"}
+            color="#e1dfdd"
         />
     );
 }
