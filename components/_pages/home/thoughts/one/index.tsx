@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 // import { IMAGES } from "#/constants";
 import { Ref, useEffect, useRef } from "react";
 import { expandImage } from "#/utils/animations";
+import { IMAGES } from "#/constants";
 
 export default function FirstThought({ textWrapperRef }: { textWrapperRef: Ref<HTMLDivElement> }) {
     const imageRef = useRef(null);
@@ -40,6 +41,7 @@ export default function FirstThought({ textWrapperRef }: { textWrapperRef: Ref<H
                 <div
                     className={styles.image}
                     style={{ backgroundImage: `url(https://dennissnellenberg.com/assets/img/DSC07312-2.jpg)` }}
+                    // style={{ backgroundImage: `url(${IMAGES.one})` }}
                     ref={imageRef}
                 ></div>
             </div>

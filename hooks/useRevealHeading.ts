@@ -12,7 +12,10 @@ export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidt
                 scrollTrigger: {
                     trigger: headingRef.current,
                     start: "top 80%",
-                    toggleActions: "restart pause pause reverse"
+                    end: "top center",
+                    markers: true,
+                    toggleActions: "restart complete pause reverse",
+                    scrub: true
                 }
             });
             tl.to(titleTexts, {
