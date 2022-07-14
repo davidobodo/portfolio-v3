@@ -112,6 +112,7 @@ const Home: NextPage = () => {
                             mobileWorkContainerRef={mobileWorkContainerRef}
                             mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
                         />
+                        {/* <div style={{ height: "100vh" }}></div> */}
                         <Thoughts.One textWrapperRef={thoughtOneText} />
                         <Skills
                             skillsListRef={skillsListRef}

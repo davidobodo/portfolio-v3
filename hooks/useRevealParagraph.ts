@@ -9,16 +9,18 @@ export default function useRevealText() {
             gsap.to(allLines, {
                 scrollTrigger: {
                     trigger: textWrapperRef.current,
-                    start: "top 70%",
+                    start: "top 60%",
+                    end: "top center",
                     toggleActions: "restart pause pause reverse",
                     scrub: true
+                    // markers: true
                 },
                 opacity: 1,
                 y: 0,
                 skewX: 0,
-                rotation: 0,
-                // ease: "power4.out",
-                stagger: 0.1
+                rotation: 0
+                // ease: "power4.out"
+                // stagger: 0.1
             });
         }
     }, []);
