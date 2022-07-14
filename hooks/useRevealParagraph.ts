@@ -10,13 +10,14 @@ export default function useRevealText() {
                 scrollTrigger: {
                     trigger: textWrapperRef.current,
                     start: "top 70%",
-                    toggleActions: "restart pause pause reverse"
+                    toggleActions: "restart pause pause reverse",
+                    scrub: true
                 },
                 opacity: 1,
                 y: 0,
                 skewX: 0,
                 rotation: 0,
-                ease: "power4.out",
+                // ease: "power4.out",
                 stagger: 0.1
             });
         }

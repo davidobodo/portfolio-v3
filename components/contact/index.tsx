@@ -146,7 +146,9 @@ function Form() {
         <>
             <div className={styles.title}>
                 {/* <h1>Would love to hear from you &#8595;.</h1> */}
-                <h1>Contact me</h1>
+                <h1>
+                    Would love to hear from <br /> you &#8595;.
+                </h1>
                 <p>
                     I’m currently interested in a <span> Full-time Front-end developer role </span> with a major on
                     <span>React.js Framework</span>, however still open to other opportunities. However, if you have

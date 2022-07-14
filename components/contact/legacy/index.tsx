@@ -1,10 +1,32 @@
 import styles from "./styles.module.scss";
-import { Ref } from "react";
+import { Ref, useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "../../index";
 import { SendLink } from "#/components/icons";
+import { Placeholder } from "../placeholder";
 
-export default function Details({
+export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [footerHeight, setFooterHeight] = useState(10);
+    const calculateFooterHeight = (node: HTMLDivElement) => {
+        setFooterHeight(node.clientHeight);
+    };
+    useEffect(() => {
+        if (containerRef.current) {
+            calculateFooterHeight(containerRef.current);
+        }
+    }, []);
+
+    const onSubmitForm = () => {};
+
+    return (
+        <>
+            <Details containerRef={containerRef} onSubmitForm={onSubmitForm} onRouteChange={onRouteChange} />
+            <Placeholder footerHeight={footerHeight} />
+        </>
+    );
+}
+function Details({
     containerRef,
     onSubmitForm,
     onRouteChange
@@ -75,7 +97,17 @@ export default function Details({
                         </section>
                     </div>
                     <div className={styles.contact}>
-                        <h3>Would love to hear from you &#8595;.</h3>
+                        <div>
+                            <h3>Would love to hear from you &#8595;.</h3>
+
+                            <p>
+                                I’m currently interested in a <span> Full-time Front-end developer role </span> with a
+                                major on
+                                <span>React.js Framework</span>, however still open to other opportunities. However, if
+                                you have other request or question, don’t hesitate to use the form.
+                            </p>
+                        </div>
+
                         <form>
                             <div className={styles.twoColumns}>
                                 <div>
@@ -90,6 +122,22 @@ export default function Details({
                                     <div className={styles.formField}>
                                         <label htmlFor="">Message</label>
                                         <textarea name="" id="" cols={30} rows={10}></textarea>
+                                    </div>
+
+                                    <div className={styles.btnWrapper}>
+                                        <button>
+                                            <span>Submit</span>
+                                            <span className={styles.arrow}>&#8594;</span>
+                                            {/* <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    fillRule="evenodd"
+                                                    clipRule="evenodd"
+                                                    d="m.819 50.513 8.307 8.238 38.423-38.454-.059 28.89h11.638V.424H10.47l-.14 11.564h28.983L.819 50.513Zm55.31-47.09v42.764V3.424Z"
+                                                    fill="currentColor"
+                                                    strokeWidth="2px"
+                                                ></path>
+                                            </svg> */}
+                                        </button>
                                     </div>
                                 </div>
 
@@ -125,7 +173,7 @@ export default function Details({
                                 </ul>
                             </div>
 
-                            <div className={styles.btnWrapper}>
+                            {/* <div className={styles.btnWrapper}>
                                 <Button
                                     label="Send"
                                     onClick={onSubmitForm}
@@ -133,7 +181,7 @@ export default function Details({
                                     ariaLabel="send"
                                     endAdornment={<SendLink color="#000" />}
                                 />
-                            </div>
+                            </div> */}
                         </form>
                     </div>
                 </div>

@@ -7,9 +7,10 @@
     width: 100%;
     bottom: 0px;
     z-index: 0;
-    min-height: 100vh;
+    // min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 10vh 0px;
 
     .contentWrapper {
         flex: 1;
@@ -125,12 +126,39 @@
 
                 @media (min-width: $md) {
                     font-size: 3vw;
-                    margin-bottom: 7rem;
+                    // margin-bottom: 7rem;
                 }
 
                 &::selection {
                     background: var(--black);
                     color: var(--light-brown);
+                }
+            }
+
+            p {
+                font-size: 1.8rem;
+                width: 80%;
+                font-family: "sf-pro-regular";
+                line-height: 1.5em;
+                max-width: 490px;
+                position: relative;
+                margin-bottom: 3rem;
+
+                span {
+                    position: relative;
+                    display: inline-block;
+                    color: var(--light-brown);
+
+                    &:after {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        background-color: red;
+                        background: linear-gradient(to right, black, var(--brown));
+                        position: absolute;
+                        left: 0px;
+                        z-index: -1;
+                    }
                 }
             }
 
@@ -188,10 +216,42 @@
                     }
                 }
 
+                // .btnWrapper {
+                //     button {
+                //         color: var(--black);
+                //         border-color: var(--black);
+                //     }
+                // }
+
                 .btnWrapper {
                     button {
                         color: var(--black);
                         border-color: var(--black);
+
+                        font-size: max(32px, 4.1666666667vw);
+                        font-size: 3.6rem;
+                        background-color: transparent;
+                        border: 0px;
+                        width: 100%;
+                        // text-transform: uppercase;
+                        font-family: "sf-pro-regular";
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        span {
+                            &:nth-child(1) {
+                                line-height: 0.8em;
+                            }
+
+                            &:nth-child(2) {
+                            }
+                        }
+
+                        svg {
+                            width: max(24px, 1.4vw);
+                            stroke-width: 2px;
+                        }
                     }
                 }
             }

@@ -12,6 +12,9 @@
         position: relative;
         margin-bottom: 2rem;
 
+        font-family: sf-pro-regular;
+        font-weight: 200;
+
         // &::before {
         //     content: "<h1>";
         //     font-family: "La Belle Aurore", cursive;
@@ -211,7 +214,7 @@
             }
 
             svg {
-                width: max(24px, 3.3333333333vw);
+                width: max(24px, 1.8vw);
             }
         }
     }
