@@ -135,6 +135,14 @@
                         }
                     }
 
+                    p {
+                        font-size: 16px;
+                        line-height: 2;
+                        font-family: "sf-pro-bold";
+                        margin-top: 4rem;
+                        opacity: 0;
+                    }
+
                     &.others {
                         ul {
                             display: grid;

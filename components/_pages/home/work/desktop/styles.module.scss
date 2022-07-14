@@ -76,6 +76,7 @@
 
         .tabDetails {
             position: relative;
+            z-index: 1;
             display: flex;
             align-items: center; // Helps to alifn the content to the center of the container
 

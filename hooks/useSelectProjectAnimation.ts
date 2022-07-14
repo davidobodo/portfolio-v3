@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
-
+import { useRouter } from "next/router";
 export default function useSelectProjectAnimation() {
+    const router = useRouter();
     const [selectedProjectId, setSelectedProjectId] = useState<string>("");
     const sourceElem = useRef<HTMLDivElement | null>(null);
     const modalImgRef = useRef<HTMLDivElement>(null);
@@ -10,8 +11,11 @@ export default function useSelectProjectAnimation() {
 
     const onSelectProject = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
         sourceElem.current = document.querySelector("[data-key='project-box']");
-        setSelectedProjectId(e.currentTarget.dataset.id as string);
+        const id = e.currentTarget.dataset.id as string;
+        setSelectedProjectId(id);
         setIsOpen(true);
+
+        window.history.pushState(null, "New Page Title", `/projects/${id}`);
     };
 
     const onGoToProject = (id: string) => {
@@ -26,7 +30,7 @@ export default function useSelectProjectAnimation() {
 
             tl.then(() => {
                 setSelectedProjectId(id);
-
+                window.history.pushState(null, "New Page Title", `/projects/${id}`);
                 displayNextProject({
                     modalContainer: modal,
                     modalImage: modalImage
@@ -38,6 +42,7 @@ export default function useSelectProjectAnimation() {
     const [tl, setTl] = useState<gsap.core.Timeline>();
     const onDeselectProject = () => {
         tl?.reverse().then(() => {
+            window.history.pushState(null, "New Page Title", router.pathname);
             setSelectedProjectId("");
             setIsOpen(false);
         });
@@ -82,7 +87,6 @@ function animateProject({
 
     const tl = gsap.timeline();
 
-    console.log(sourceRect.left, destinationRect.left);
     tl.from(modal, {
         opacity: 0
     })

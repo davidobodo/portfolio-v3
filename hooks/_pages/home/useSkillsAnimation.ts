@@ -52,11 +52,16 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
                 const header = skillLists[i].firstElementChild as HTMLElement;
                 const list = header?.nextElementSibling; // The "UL tag"
                 const listItems = (list?.querySelectorAll("li>span") as unknown) as HTMLElement;
+                const info = list?.nextElementSibling;
 
                 //show heading
                 timelineActions.push({ target: header, vars: { opacity: 1 } });
                 //show list
                 timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
+
+                if (info) {
+                    timelineActions.push({ target: info, vars: { opacity: 1 } });
+                }
             }
 
             // EXECUTE TIMELINE ACTIONS
