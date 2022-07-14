@@ -49,23 +49,42 @@
             }
         }
     }
+}
 
-    .imageWrapper {
-        @media (min-width: $md) {
-            display: flex;
-            justify-content: flex-end;
+.imageWrapper {
+    margin-bottom: 20vh;
+    margin-left: auto;
+    @media (min-width: $md) {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .image {
+        width: 100%;
+        background-color: #28282b;
+        // height: 50vh;
+        background-size: cover;
+        background-position: center;
+        padding-top: 100vh;
+        // margin-right: 10rem;
+
+        filter: url("https://dennissnellenberg.com/assets/img/DSC07312-2.jpg");
+        filter: gray;
+        /* IE6-9 */
+        -webkit-filter: grayscale(1);
+        /* Google Chrome & Safari 6+ */
+        transition: all 500ms ease-in-out;
+
+        &:hover {
+            filter: none;
+            -webkit-filter: grayscale(0);
         }
 
-        .image {
-            width: 100%;
-            background-color: #28282b;
-            height: 50vh;
-            background-size: cover;
-            background-position: center;
+        width: 0%;
 
-            @media (min-width: $lg) {
-                width: 50%;
-            }
+        @media (min-width: $lg) {
+            // width: 50%;
         }
     }
 }
