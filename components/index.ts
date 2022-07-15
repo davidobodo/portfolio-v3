@@ -9,9 +9,12 @@ import Nav from "./nav";
 import DarkRadialGradient from "./dark-radial-gradient";
 import Modal, { ProjectModal } from "./modal";
 import Noise from "./noise";
+import Logo from "./logo";
+import RouteTransitionOverlay from "./route-transition-overlay";
+import Common from "./common";
+import ScrollToTop from "./scroll-to-top";
 
 const { Button, Radio } = Atoms;
-
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
 const { Grid } = ProjectsPage;
 const { SingleLetter } = LettersPage;
@@ -38,5 +41,9 @@ export {
     Noise,
     SingleProject,
     ProjectListView,
-    ProjectModal
+    ProjectModal,
+    Logo,
+    RouteTransitionOverlay,
+    Common,
+    ScrollToTop
 };

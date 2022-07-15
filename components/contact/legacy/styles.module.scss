@@ -1,0 +1,295 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+    background-color: var(--light-brown);
+    position: relative;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    z-index: 0;
+    // min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10vh 0px;
+
+    .contentWrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            font-size: 1.8rem;
+            text-decoration: underline;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: var(--black);
+            position: relative;
+
+            span {
+                position: relative;
+            }
+
+            &::selection {
+                background: var(--black);
+                color: var(--light-brown);
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                width: 0%;
+                height: 100%;
+                position: absolute;
+                z-index: 0;
+                background: var(--black);
+                transition: width 200ms ease-in-out;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: var(--light-brown);
+                text-decoration: none;
+                outline: none;
+
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .contentWrapperInner {
+            @media (min-width: $md) {
+                // padding: 10vh 2rem;
+                display: grid;
+                grid-template-columns: 1fr 1.2fr;
+                max-width: var(--mini-desktop-max-width);
+            }
+
+            @media (min-width: $xxl) {
+                max-width: var(--max-width);
+            }
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            @media (min-width: $md) {
+                display: block;
+            }
+
+            section {
+                &:first-child {
+                    margin-bottom: 6rem;
+                }
+
+                h4 {
+                    font-size: 1.2rem;
+                    text-transform: uppercase;
+                    margin-bottom: 3rem;
+                    letter-spacing: 1px;
+                    font-weight: 600;
+                    &::selection {
+                        background: var(--black);
+                        color: var(--light-brown);
+                    }
+                }
+
+                ul {
+                    list-style: none;
+
+                    li {
+                        margin-bottom: 2rem;
+
+                        &:last-child {
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .contact {
+            padding: 2rem 0px;
+
+            @media (min-width: $md) {
+                padding: 0px 5rem;
+            }
+
+            h3 {
+                font-size: 2.4rem;
+                margin-bottom: 3rem;
+                font-family: "sf-pro-regular";
+                font-weight: 200;
+
+                @media (min-width: $md) {
+                    font-size: 3vw;
+                    // margin-bottom: 7rem;
+                }
+
+                &::selection {
+                    background: var(--black);
+                    color: var(--light-brown);
+                }
+            }
+
+            p {
+                font-size: 1.8rem;
+                width: 80%;
+                font-family: "sf-pro-regular";
+                line-height: 1.5em;
+                max-width: 490px;
+                position: relative;
+                margin-bottom: 3rem;
+
+                span {
+                    position: relative;
+                    display: inline-block;
+                    color: var(--light-brown);
+
+                    &:after {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        background-color: red;
+                        background: linear-gradient(to right, black, var(--brown));
+                        position: absolute;
+                        left: 0px;
+                        z-index: -1;
+                    }
+                }
+            }
+
+            form {
+                .twoColumns {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+
+                    .formField {
+                        margin-bottom: 4rem;
+                        width: 100%;
+
+                        label {
+                            display: block;
+                            text-transform: uppercase;
+                            font-size: 1.2rem;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                            font-weight: 600;
+
+                            &::selection {
+                                background: var(--black);
+                                color: var(--light-brown);
+                            }
+                        }
+                    }
+
+                    input {
+                        background-color: transparent;
+                        border: 0px;
+                        border-bottom: 1px solid #000;
+                        padding: 1.2rem;
+                        width: 100%;
+                    }
+
+                    textarea {
+                        background-color: transparent;
+                        border: 0px;
+                        border-bottom: 1px solid #000;
+                        display: block;
+                        width: 100%;
+                        padding: 2rem;
+                        font-size: 1.4rem;
+                        height: 60px;
+                    }
+
+                    ul {
+                        list-style: none;
+
+                        li {
+                            margin-bottom: 2rem;
+                            display: flex;
+                            justify-content: flex-end;
+                        }
+                    }
+                }
+
+                // .btnWrapper {
+                //     button {
+                //         color: var(--black);
+                //         border-color: var(--black);
+                //     }
+                // }
+
+                .btnWrapper {
+                    button {
+                        color: var(--black);
+                        border-color: var(--black);
+
+                        font-size: max(32px, 4.1666666667vw);
+                        font-size: 3.6rem;
+                        background-color: transparent;
+                        border: 0px;
+                        width: 100%;
+                        // text-transform: uppercase;
+                        font-family: "sf-pro-regular";
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        span {
+                            &:nth-child(1) {
+                                line-height: 0.8em;
+                            }
+
+                            &:nth-child(2) {
+                            }
+                        }
+
+                        svg {
+                            width: max(24px, 1.4vw);
+                            stroke-width: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.placeholder {
+}
+
+.marquee {
+    height: 4rem;
+    background-color: var(--black);
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    span {
+        color: var(--ash);
+        font-family: "sf-pro-regular";
+        font-size: 1.6rem;
+        display: block;
+        transform: translateX(100%);
+        animation: scroll 20s linear infinite;
+        will-change: transform;
+
+        strong {
+            color: var(--white);
+        }
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+}

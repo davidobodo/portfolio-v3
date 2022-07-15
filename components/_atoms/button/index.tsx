@@ -5,18 +5,23 @@ export default function Button({
     onClick,
     label,
     type = "button",
-    endAdornment
+    endAdornment,
+    hasLiquid
 }: {
     ariaLabel: string;
     onClick: () => void;
     label: string;
     type?: "button" | "reset" | "submit";
     endAdornment?: JSX.Element;
+    hasLiquid?: boolean;
 }) {
     return (
         <button className={styles.button} type={type} aria-label={ariaLabel} onClick={onClick}>
-            <span>{label} </span>
-            {endAdornment && endAdornment}
+            <span className={styles.content}>
+                <span>{label} </span>
+                {endAdornment && endAdornment}
+            </span>
+            {hasLiquid && <span className={styles.liquid}></span>}
         </button>
     );
 }

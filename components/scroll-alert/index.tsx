@@ -9,7 +9,7 @@ export default function ScrollAlert({
     containerStyles?: Record<string, string | number>;
 }) {
     return (
-        <div className={styles.scrollAlert} ref={containerRef} style={{ ...containerStyles }}>
+        <div className={styles.scrollAlert} ref={containerRef} style={{ ...containerStyles }} data-key="scroll-alert">
             <span>&#8595;</span>
             <span>Scroll</span>
         </div>

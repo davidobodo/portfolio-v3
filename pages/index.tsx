@@ -2,17 +2,17 @@ import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
 import {
-    Preloader,
     Banners,
     About,
     Work,
     Thoughts,
     Skills,
     Projects,
-    Contact,
     Noise,
     Layout,
-    ProjectModal
+    ProjectModal,
+    Nav,
+    Button
 } from "#/components";
 import {
     useRevealParagraph,
@@ -21,15 +21,16 @@ import {
     useScrollToTop,
     useRevealHeading,
     HomePageHooks,
-    useSelectProjectAnimation
+    useSelectProjectAnimation,
+    useHomeInit
 } from "#/hooks";
 import Router from "next/router";
 
 const {
-    useInitAnimation,
     useAboutAnimation,
     useWorkAnimation,
     useSkillsAnimation
+
     // useProjectAnimation
 } = HomePageHooks;
 
@@ -37,18 +38,7 @@ const Home: NextPage = () => {
     useScrollToTop();
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-    const {
-        preloaderBgRef,
-        logoRef,
-        bannerRef,
-        fieldRef,
-        nameRef,
-        firstSubFieldRef,
-        secondSubFieldRef,
-        profilePicRef,
-        scrollIndicatorRef,
-        mobilePicRef
-    } = useInitAnimation();
+    const { bannerRef } = useHomeInit();
     const { aboutListRef } = useAboutAnimation();
     const {
         workContainerRef,
@@ -80,7 +70,9 @@ const Home: NextPage = () => {
         onSelectProject,
         onDeselectProject,
         modalImgRef,
-        modalRef
+        modalRef,
+        isOpen,
+        onGoToProject
     } = useSelectProjectAnimation();
 
     const onRedirectToProjects = () => {
@@ -95,20 +87,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Preloader logoRef={logoRef} preloaderBgRef={preloaderBgRef} windowInnerHeight={windowInnerHeight} />
+            <Nav />
             <div className={styles.main}>
-                <Banners.HomePage
-                    bannerRef={bannerRef}
-                    fieldRef={fieldRef}
-                    nameRef={nameRef}
-                    firstSubFieldRef={firstSubFieldRef}
-                    secondSubFieldRef={secondSubFieldRef}
-                    windowInnerHeight={windowInnerHeight}
-                    windowInnerWidth={windowInnerWidth}
-                    profilePicRef={profilePicRef}
-                    scrollIndicatorRef={scrollIndicatorRef}
-                    mobilePicRef={mobilePicRef}
-                />
+                <Banners.HomePage bannerRef={bannerRef} windowInnerHeight={windowInnerHeight} />
 
                 <Layout.DarkSection>
                     <>
@@ -134,18 +115,18 @@ const Home: NextPage = () => {
                             mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
-                        {/* <Projects projectsListWrapperRef={projectsListWrapperRef} projectTitleRef={projectTitleRef} /> */}
-                        <Projects
-                            projectTitleRef={projectTitleRef}
-                            onViewProject={onSelectProject}
-                            onRedirectToProjects={onRedirectToProjects}
-                            location="home"
-                        />
+                        <Projects projectTitleRef={projectTitleRef} onViewProject={onSelectProject} location="home" />
+                        <div className={styles.btnWrapper}>
+                            <Button
+                                label="View more"
+                                ariaLabel="View more"
+                                onClick={onRedirectToProjects}
+                                hasLiquid={true}
+                            />
+                        </div>
                     </>
                 </Layout.DarkSection>
             </div>
-
-            <Contact />
             <Noise />
 
             <ProjectModal
@@ -153,6 +134,8 @@ const Home: NextPage = () => {
                 modalRef={modalRef}
                 onDeselectProject={onDeselectProject}
                 modalImgRef={modalImgRef}
+                isOpen={isOpen}
+                onGoToProject={onGoToProject}
             />
         </div>
     );

@@ -1,0 +1,51 @@
+@import "#/styles/globals.module.scss";
+
+.full {
+    transition: opacity 200ms ease-in, color 200ms ease-in-out;
+
+    path:nth-child(2) {
+        transform-origin: 20%;
+        animation: rotate 6s ease-in-out infinite;
+    }
+    path:nth-child(4) {
+        transform-origin: 30%;
+        animation: rotate 3s ease-in-out infinite;
+    }
+}
+
+.initials {
+    width: 100px;
+    height: 100px;
+
+    @media (min-width: $md) {
+        width: 200px;
+        height: 200px;
+    }
+
+    path {
+        &:nth-child(1) {
+            stroke-dasharray: 300px;
+            stroke-dashoffset: 300px;
+        }
+        &:nth-child(2) {
+            stroke-dasharray: 300px;
+            stroke-dashoffset: 300px;
+        }
+    }
+}
+
+@keyframes rotate {
+    0%,
+    100% {
+        transform: rotateY(0deg);
+    }
+    25% {
+        transform: rotateY(90deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    75% {
+        transform: rotateY(360deg);
+    }
+}

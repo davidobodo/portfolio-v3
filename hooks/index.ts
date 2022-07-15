@@ -1,3 +1,5 @@
+import { useLayoutEffect, useEffect } from "react";
+
 import { HomePageHooks } from "./_pages";
 
 import useWindowSize from "./useWindowSize";
@@ -7,8 +9,17 @@ import useRevealParagraph from "./useRevealParagraph";
 import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useScrollToTop from "./useScollToTop";
 import useRevealHeading from "./useRevealHeading";
-import useBannerAnimation from "./useBannerAnimation";
-import useSelectProjectAnimation from "./useSelectProjectAnimation";
+import useSelectProjectAnimation, {
+    applyFlipAnim,
+    removeCurrentProject,
+    displayNextProject
+} from "./useSelectProjectAnimation";
+import usePageTransition from "./usePageTransition";
+
+import initPageLoads from "./initialPagesLoad";
+
+const { useHomeInit, useCreditsInit, useProjectsLettersInit, useSingleProjectInit } = initPageLoads;
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export {
     HomePageHooks,
@@ -19,6 +30,20 @@ export {
     useCalculateFooterHeight,
     useScrollToTop,
     useRevealHeading,
-    useBannerAnimation,
-    useSelectProjectAnimation
+    useSelectProjectAnimation,
+    usePageTransition,
+    applyFlipAnim,
+    removeCurrentProject,
+    displayNextProject,
+    //---------------------------
+    // PAGES INIT
+    //---------------------------
+    useHomeInit,
+    useCreditsInit,
+    useProjectsLettersInit,
+    useSingleProjectInit,
+    //---------------------------
+    // UTILS
+    //---------------------------
+    useIsomorphicLayoutEffect
 };

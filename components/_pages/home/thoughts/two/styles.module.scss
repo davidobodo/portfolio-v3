@@ -17,8 +17,12 @@
         max-width: var(--max-width);
     }
 
+    .rightSection {
+        display: flex;
+        align-items: center;
+    }
+
     .textWrapper {
-        margin-bottom: 8.4rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -33,7 +37,7 @@
                 font-weight: 600;
                 letter-spacing: -0.015em;
                 position: relative;
-                overflow: hidden;
+                // overflow: hidden;
                 font-size: 18px;
                 font-family: "sf-pro-bold";
 
@@ -44,8 +48,7 @@
                 span {
                     display: block;
                     opacity: 0;
-                    transform: translateY(40px) rotate(-10deg) skewX(30deg);
-                    transform-origin: right;
+                    transform: translateY(200px);
                     strong {
                         color: #fff;
                     }

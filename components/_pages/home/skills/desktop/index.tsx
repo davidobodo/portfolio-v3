@@ -84,7 +84,7 @@ export default function SkillsDesktop({
                                     "graphql",
                                     "redux",
                                     "gsap",
-                                    "tailwindcss",
+                                    // "tailwindcss",
                                     "threejs",
                                     "expressjs",
                                     "jest",
@@ -93,8 +93,8 @@ export default function SkillsDesktop({
                                     "chakraui",
                                     "gcp",
                                     "heroku",
-                                    "netlify",
-                                    "styledcomponents"
+                                    "netlify"
+                                    // "styledcomponents"
                                 ].map((key, i) => {
                                     const skill = TECH_STACKS[key];
                                     return (
@@ -107,6 +107,10 @@ export default function SkillsDesktop({
                                     );
                                 })}
                             </ul>
+                            <p>
+                                This list could get very long cause of a developers need to learn everyday depending on
+                                what provides the best solution to a given problem, so would stop there
+                            </p>
                         </section>
                     </div>
                 </div>

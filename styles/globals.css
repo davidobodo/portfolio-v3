@@ -30,6 +30,7 @@
     --color-white: #ffffff;
     --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent);
 
+    /* // background: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent); */
     /* ---------------------------------------------------- */
     /* SPACING */
     /* ---------------------------------------------------- */
@@ -42,6 +43,11 @@
     /* ---------------------------------------------------- */
     --max-width: 1280px;
     --mini-desktop-max-width: 1024px;
+
+    /* ---------------------------------------------------- */
+    /* Z-INDECES*/
+    /* ---------------------------------------------------- */
+    --z-index-loader: 1000;
 
     /* ---------------------------------------------------- */
     /* ANIMATIONS*/
@@ -64,10 +70,12 @@ body {
     margin: 0;
     font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-family: "sf-pro-regular";
+    background: var(--light-brown);
+    scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
-    width: 7px;
+    width: 0px;
 }
 
 body::-webkit-scrollbar-track {
@@ -76,6 +84,10 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background: var(--black);
+}
+
+.hide {
+    overflow: hidden !important;
 }
 
 h1,

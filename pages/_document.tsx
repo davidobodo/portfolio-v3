@@ -26,7 +26,7 @@ export default function Document() {
                     crossOrigin="anonymous"
                 />
             </Head>
-            <body>
+            <body className="hide">
                 <Main />
                 <NextScript />
                 <div id="modal-root"></div>

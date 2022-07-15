@@ -1,4 +1,10 @@
 @import "#/styles/globals.module.scss";
 
-.container {
+.main {
+    position: relative;
+    z-index: 1;
+
+    .container {
+        min-height: 100vh;
+    }
 }
