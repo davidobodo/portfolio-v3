@@ -1,40 +1,33 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import { usePageTransitionContext } from "#/state";
+import { usePageLeaveAnimationContext } from "#/state";
+import { animPageLoaders } from "#/utils/animations/atoms";
 export default function useBannerAnimation() {
     const textWrapperRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
-    const { timeline } = usePageTransitionContext();
+    const { pageLeaveAnimation } = usePageLeaveAnimationContext();
 
-    const onPageLoad = ({
-        timeline,
-        textWrapper,
-        scrollIndicator
-    }: {
-        timeline: gsap.core.Timeline;
-        textWrapper: HTMLDivElement;
-        scrollIndicator: HTMLDivElement;
-    }) => {
-        timeline.reverse();
-        timeline.then(() => {
-            initBannerAnimation(textWrapper, scrollIndicator);
-        });
-    };
     useEffect(() => {
         if (textWrapperRef.current && scrollIndicatorRef.current) {
-            if (timeline) {
+            if (pageLeaveAnimation) {
                 // Navigating from another page to this page
-                onPageLoad({
-                    timeline,
-                    textWrapper: textWrapperRef.current,
-                    scrollIndicator: scrollIndicatorRef.current
+                pageLeaveAnimation.reverse();
+                pageLeaveAnimation.then(() => {
+                    bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
                 });
             } else {
-                // Navigating to this page from the url input
-                removeLoader().then(() => {
-                    initBannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
-                });
+                // Navigating to this page directly from the browser url input
+
+                const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
+                const logo = document.querySelector("[data-key='logo']") as Element;
+                const logoChildren = document.querySelectorAll("[data-key='logo'] path");
+                const layers = document.querySelectorAll("[data-key='layer']");
+                const master = gsap.timeline();
+                master
+                    .add(drawSvgLogo(logo, logoChildren))
+                    .add(openNoiseLayers(layers))
+                    .add(bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current));
             }
         }
     }, []);
@@ -44,17 +37,7 @@ export default function useBannerAnimation() {
     };
 }
 
-function removeLoader() {
-    const tl = gsap.timeline({});
-
-    tl.to(document.querySelectorAll("[data-key='layer']"), {
-        scaleY: 0,
-        delay: 1
-    });
-    return tl;
-}
-
-function initBannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivElement) {
+function bannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivElement) {
     const { children } = node;
     const tl = gsap.timeline({});
 
@@ -87,4 +70,6 @@ function initBannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivE
     tl.add(() => {
         document.querySelector("body")?.classList.remove("hide");
     });
+
+    return tl;
 }

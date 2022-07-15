@@ -1,4 +1,4 @@
-import useInitAnimation from "./useInitAnimation";
+import useInitAnimation from "./useHomeBannerAnimation";
 import useAboutAnimation from "./useAboutAnimation";
 import useWorkAnimation from "./useWorkAnimation";
 import useSkillsAnimation from "./useSkillsAnimation";

@@ -1,8 +1,7 @@
 import styles from "./styles.module.scss";
 // import { IMAGES } from "#/constants";
 import { Ref, useEffect, useRef } from "react";
-import { expandImage } from "#/utils/animations";
-import { IMAGES } from "#/constants";
+import { expandImage } from "#/utils/animations/atoms";
 
 export default function FirstThought({ textWrapperRef }: { textWrapperRef: Ref<HTMLDivElement> }) {
     const imageRef = useRef(null);

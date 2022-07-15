@@ -25,16 +25,7 @@ const Home: NextPage = () => {
     useScrollToTop();
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-    const {
-        bannerRef,
-        fieldRef,
-        nameRef,
-        firstSubFieldRef,
-        secondSubFieldRef,
-        profilePicRef,
-        scrollIndicatorRef,
-        mobilePicRef
-    } = useInitAnimation();
+    const { bannerRef } = useInitAnimation();
     const { aboutListRef } = useAboutAnimation();
     const {
         workContainerRef,
@@ -87,15 +78,8 @@ const Home: NextPage = () => {
             <div className={styles.main}>
                 <Banners.HomePage
                     bannerRef={bannerRef}
-                    fieldRef={fieldRef}
-                    nameRef={nameRef}
-                    firstSubFieldRef={firstSubFieldRef}
-                    secondSubFieldRef={secondSubFieldRef}
                     windowInnerHeight={windowInnerHeight}
                     windowInnerWidth={windowInnerWidth}
-                    profilePicRef={profilePicRef}
-                    scrollIndicatorRef={scrollIndicatorRef}
-                    mobilePicRef={mobilePicRef}
                 />
 
                 <Layout.DarkSection>

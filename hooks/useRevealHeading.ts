@@ -13,7 +13,6 @@ export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidt
                     trigger: headingRef.current,
                     start: "top 80%",
                     end: "top center",
-                    markers: true,
                     toggleActions: "restart complete pause reverse",
                     scrub: true
                 }
