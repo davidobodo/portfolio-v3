@@ -3,25 +3,29 @@ import { useRef, useEffect } from "react";
 import { animPageLoaders } from "#/utils/animations/atoms";
 import { usePageLeaveAnimationContext } from "#/state";
 
-export default function useHomeBannerAnimation() {
+export default function useHomeInit() {
     const bannerRef = useRef<HTMLDivElement>(null);
 
     const { pageLeaveAnimation } = usePageLeaveAnimationContext();
 
     const bannerRefSelector = gsap.utils.selector(bannerRef);
     useEffect(() => {
-        const nameLetters = bannerRefSelector('[data-key="name"] [data-key="letter"]');
-        const fieldLetters = bannerRefSelector('[data-key="field"] [data-key="letter"]');
-        const subFields = bannerRefSelector('[data-key="sub-field"]');
-
-        const picMobile = bannerRefSelector('[data-key="mobile-image"]');
-        const picDesktopblind = bannerRefSelector('[data-key="desktop-image"] span');
-        const scrollIndicator = bannerRefSelector('[data-key="scroll-alert"]');
+        const nameLetters = (bannerRefSelector(
+            '[data-key="name"] [data-key="letter"]'
+        ) as unknown) as NodeListOf<HTMLSpanElement>;
+        const fieldLetters = (bannerRefSelector(
+            '[data-key="field"] [data-key="letter"]'
+        ) as unknown) as NodeListOf<HTMLSpanElement>;
+        const subFields = (bannerRefSelector('[data-key="sub-field"]') as unknown) as NodeListOf<HTMLDivElement>;
+        const picMobile = (bannerRefSelector('[data-key="mobile-image"]') as unknown) as HTMLDivElement;
+        const picDesktopblind = (bannerRefSelector('[data-key="desktop-image"] span') as unknown) as HTMLDivElement;
+        const scrollIndicator = (bannerRefSelector('[data-key="scroll-alert"]') as unknown) as HTMLDivElement;
 
         if (pageLeaveAnimation) {
             // Navigating from another page to this page
-            pageLeaveAnimation.reverse();
-            pageLeaveAnimation.then(() => {
+
+            const master = gsap.timeline();
+            master.add(pageLeaveAnimation.reverse()).add(
                 bannerAnimation({
                     nameLetters,
                     fieldLetters,
@@ -30,8 +34,12 @@ export default function useHomeBannerAnimation() {
                     picMobile: picMobile,
                     picDesktop: picDesktopblind,
                     scrollIndicator
-                });
-            });
+                })
+            );
+
+            return () => {
+                master.kill();
+            };
         } else {
             // Navigating to this page directly from the browser url input
             const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
@@ -77,7 +85,7 @@ function bannerAnimation({
     subFieldOne: HTMLDivElement;
     subFieldTwo: HTMLDivElement;
     picMobile: HTMLDivElement;
-    picDesktop: HTMLDivElement;
+    picDesktop: HTMLSpanElement;
     scrollIndicator: HTMLDivElement;
 }) {
     const tl = gsap.timeline();

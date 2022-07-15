@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Contact } from "#/components";
-import { useEffect } from "react";
+import { Noise } from "#/components";
+import { useCreditsInit } from "#/hooks";
 export default function Credit() {
+    useCreditsInit();
     const CREDITS = [
         {
             link: "https://www.apple.com/ng/iphone-13-pro/"
@@ -43,9 +44,6 @@ export default function Credit() {
         }
     ];
 
-    useEffect(() => {
-        document.querySelector("body")?.classList.remove("hide");
-    }, []);
     return (
         <>
             <Head>
@@ -79,8 +77,6 @@ export default function Credit() {
                     </ul>
                 </div>
             </div>
-
-            <Contact />
             <Noise />
         </>
     );

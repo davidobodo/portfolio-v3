@@ -3,10 +3,10 @@ import Head from "next/head";
 import { SingleLetter, Nav, Layout, Noise, Banners } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
 import { LETTERS } from "#/constants/letters";
-import { useBannerAnimation } from "#/hooks";
+import { useProjectsLettersInit } from "#/hooks";
 
 const Letters: NextPage = () => {
-    const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
+    const { textWrapperRef, scrollIndicatorRef } = useProjectsLettersInit();
 
     return (
         <div className={styles.main}>

@@ -7,25 +7,10 @@ import Heading from "../heading";
 type Props = {
     bannerRef: RefObject<HTMLDivElement>;
     windowInnerHeight: number | null;
-    windowInnerWidth: number | null;
 };
 
-export default function Banner({ bannerRef, windowInnerHeight, windowInnerWidth }: Props) {
+export default function Banner({ bannerRef, windowInnerHeight }: Props) {
     const [bannerHeight, setBannerHeight] = useState<number>();
-
-    // Alter the viewbox so that our svg animation doesnt overflow outside the container
-    const [svgViewbox, setSvgViewbox] = useState("0 0 350 355");
-    useEffect(() => {
-        if (windowInnerWidth) {
-            if (windowInnerWidth > 1536) {
-                setSvgViewbox("0 0 380 500");
-            } else if (windowInnerWidth > 768) {
-                setSvgViewbox("0 0 250 350");
-            } else {
-                setSvgViewbox("0 0 350 355");
-            }
-        }
-    }, [windowInnerWidth]);
 
     useEffect(() => {
         // Mainly because of the 100vh issue on mobile devices
@@ -56,8 +41,7 @@ export default function Banner({ bannerRef, windowInnerHeight, windowInnerWidth 
         }
     }, [bannerHeight]);
 
-    // const fieldA = "SOFTWARE";
-    const fieldA = "FULLSTACK";
+    const fieldA = "SOFTWARE";
     const fieldB = "DEVELOPER";
     const nameA = "DAVID";
     const nameB = "OBODO";

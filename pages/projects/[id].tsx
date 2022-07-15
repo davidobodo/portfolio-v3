@@ -2,32 +2,13 @@ import Head from "next/head";
 import { Nav, Layout, Noise, SingleProject } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import gsap from "gsap";
 import styles from "#/styles/_pages/single-project.module.scss";
-import { useSelectProjectAnimation, removeCurrentProject, usePageTransition } from "#/hooks";
+import { useSelectProjectAnimation, removeCurrentProject, usePageTransition, useSingleProjectInit } from "#/hooks";
 export default function Project() {
+    useSingleProjectInit();
     const router = useRouter();
     const { id } = router.query;
-
     const { onRouteChange } = usePageTransition();
-
-    function removeLoader() {
-        const tl = gsap.timeline({});
-
-        tl.to(document.querySelectorAll("[data-key='layer']"), {
-            scaleY: 0,
-            delay: 1
-        });
-        tl.add(() => {
-            document.querySelector("body")?.classList.remove("hide");
-        });
-        return tl;
-    }
-
-    useEffect(() => {
-        removeLoader();
-    }, []);
-
     const {
         selectedProjectId,
         // onDeselectProject,

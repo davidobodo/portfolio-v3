@@ -1,21 +1,22 @@
 import styles from "./styles.module.scss";
-import { ScrollAlert, Nav, Logo } from "../../index";
-import { Ref, useRef, useEffect } from "react";
+import { ScrollAlert, Logo } from "../../index";
+import { Ref, RefObject, useRef } from "react";
 import gsap from "gsap";
+import { useIsomorphicLayoutEffect } from "#/hooks";
 export default function Banner({
     texts,
     textWrapperRef,
     scrollIndicatorRef
 }: {
     texts: string[];
-    textWrapperRef: Ref<HTMLDivElement>;
+    textWrapperRef: RefObject<HTMLDivElement>;
     scrollIndicatorRef: Ref<HTMLDivElement>;
 }) {
     const blackCoverRef = useRef(null);
     const bannerRef = useRef(null);
 
-    useEffect(() => {
-        if (bannerRef.current && blackCoverRef.current) {
+    useIsomorphicLayoutEffect(() => {
+        if (bannerRef.current && blackCoverRef.current && textWrapperRef.current) {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: bannerRef.current,

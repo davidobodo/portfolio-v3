@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { NextPage } from "next";
-import { Noise, Banners, Nav, ProjectListView, ProjectModal, Layout, Grid } from "#/components";
+import { Noise, Banners, Nav, ProjectListView, ProjectModal, Layout } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useBannerAnimation, useSelectProjectAnimation } from "#/hooks";
+import { useSelectProjectAnimation, useProjectsLettersInit } from "#/hooks";
 const Projects: NextPage = () => {
-    const { textWrapperRef, scrollIndicatorRef } = useBannerAnimation();
+    const { textWrapperRef, scrollIndicatorRef } = useProjectsLettersInit();
 
     const {
         selectedProjectId,

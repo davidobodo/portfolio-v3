@@ -5,11 +5,12 @@ import { useRegisterGsapScrollTrigger, useScrollToTop } from "#/hooks";
 import { Common } from "#/components";
 import { PageLeaveAnimationContext } from "#/state";
 import { useState } from "react";
+
 function MyApp({ Component, pageProps }: AppProps) {
     useScrollToTop();
     useRegisterGsapScrollTrigger();
 
-    const [pageLeaveAnimation, setPageLeaveAnimation] = useState(null);
+    const [pageLeaveAnimation, setPageLeaveAnimation] = useState<gsap.core.Timeline | null>(null);
 
     return (
         <PageLeaveAnimationContext.Provider

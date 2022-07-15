@@ -3,41 +3,31 @@ import useBoxAnimation from "./useBoxAnimation";
 // import { PROJECTS } from "./constants";
 import { PROJECTS } from "#/constants/projects";
 import Box from "./box";
-import { Button } from "../../../index";
 import Heading from "./heading";
 import { Ref } from "react";
-import { SendLink } from "#/components/icons";
 
 export default function Project({
     projectTitleRef,
     onViewProject,
-    onRedirectToProjects,
     location
 }: {
     projectTitleRef: Ref<HTMLHeadingElement>;
     onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
-    onRedirectToProjects?: () => void;
     location: "home" | "projects";
 }) {
     return (
         <>
             <Heading projectTitleRef={projectTitleRef} />
-            <ProjectListView
-                onViewProject={onViewProject}
-                location={location}
-                onRedirectToProjects={onRedirectToProjects}
-            />
+            <ProjectListView onViewProject={onViewProject} location={location} />
         </>
     );
 }
 
 export function ProjectListView({
     onViewProject,
-    location,
-    onRedirectToProjects
+    location
 }: {
     onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
-    onRedirectToProjects?: () => void;
     location: "home" | "projects";
 }) {
     const {
@@ -76,12 +66,6 @@ export function ProjectListView({
                     );
                 })}
             </ul>
-
-            {location === "home" && (
-                <div className={styles.btnWrapper}>
-                    <Button label="View more" ariaLabel="View more" onClick={onRedirectToProjects} hasLiquid={true} />
-                </div>
-            )}
         </div>
     );
 }

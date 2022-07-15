@@ -2,32 +2,41 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { usePageLeaveAnimationContext } from "#/state";
 import { animPageLoaders } from "#/utils/animations/atoms";
-export default function useBannerAnimation() {
+
+// Used in boths projects and letters page
+export default function useProjectsLettersInit() {
     const textWrapperRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-
     const { pageLeaveAnimation } = usePageLeaveAnimationContext();
 
     useEffect(() => {
         if (textWrapperRef.current && scrollIndicatorRef.current) {
             if (pageLeaveAnimation) {
                 // Navigating from another page to this page
-                pageLeaveAnimation.reverse();
-                pageLeaveAnimation.then(() => {
-                    bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current);
-                });
+                const master = gsap.timeline();
+                master
+                    .add(pageLeaveAnimation.reverse())
+                    .add(bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current));
+
+                return () => {
+                    master.kill();
+                };
             } else {
                 // Navigating to this page directly from the browser url input
-
                 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
                 const logo = document.querySelector("[data-key='logo']") as Element;
                 const logoChildren = document.querySelectorAll("[data-key='logo'] path");
                 const layers = document.querySelectorAll("[data-key='layer']");
+
                 const master = gsap.timeline();
                 master
                     .add(drawSvgLogo(logo, logoChildren))
                     .add(openNoiseLayers(layers))
                     .add(bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current));
+
+                return () => {
+                    master.kill();
+                };
             }
         }
     }, []);

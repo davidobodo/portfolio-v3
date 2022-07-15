@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import { Ref, useRef } from "react";
-import { useRouter } from "next/router";
 import { Logo } from "#/components";
 
 export default function Routetransition({
@@ -10,7 +9,6 @@ export default function Routetransition({
     layersWrapperRef: Ref<HTMLDivElement>;
     loadingTextsRef: Ref<HTMLDivElement>;
 }) {
-    const router = useRouter();
     const texts = useRef(["Loading...", `It's coming...`, "Easy there tiger...", "Just some slow network..."]).current;
 
     return (
@@ -28,8 +26,8 @@ export default function Routetransition({
             <div className={styles.textWrapper} ref={loadingTextsRef}>
                 {texts.map((item, i) => {
                     return (
-                        <div>
-                            <span key={i}>{item}</span>
+                        <div key={i}>
+                            <span>{item}</span>
                         </div>
                     );
                 })}

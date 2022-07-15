@@ -1,8 +1,6 @@
 import styles from "./styles.module.scss";
 import { Ref, useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "../../index";
-import { SendLink } from "#/components/icons";
 import { Placeholder } from "../placeholder";
 
 export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
@@ -108,7 +106,7 @@ function Details({
                             </p>
                         </div>
 
-                        <form>
+                        <form onSubmit={onSubmitForm}>
                             <div className={styles.twoColumns}>
                                 <div>
                                     <div className={styles.formField}>

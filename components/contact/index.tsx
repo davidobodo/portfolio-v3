@@ -99,7 +99,7 @@ function Details2({
                 </div>
                 <div className={styles.rightSection}>
                     <div className={styles.rightSectionInner}>
-                        <Form />
+                        <Form onSubmit={onSubmitForm} />
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@ function Details2({
     );
 }
 
-function Form() {
+function Form({ onSubmit }: { onSubmit: () => void }) {
     return (
         <>
             <div className={styles.title}>
@@ -156,7 +156,7 @@ function Form() {
                 </p>
                 {/* <span>Currently open to Full time front-end developer role (React.js Major)</span> */}
             </div>
-            <form action="" className={styles.form}>
+            <form action="" className={styles.form} onSubmit={onSubmit}>
                 {/* <h3>Contact</h3> */}
                 <div className={styles.twoColumns}>
                     <div className={styles.formField}>

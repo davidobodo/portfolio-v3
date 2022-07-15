@@ -1,4 +1,3 @@
-import { PROJECTS } from "#/constants/projects";
 import styles from "./styles.module.scss";
 import { Ref } from "react";
 import { TProject } from "#/interfaces";

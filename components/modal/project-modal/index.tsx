@@ -1,4 +1,4 @@
-import { Modal, Nav, SingleProject, Noise } from "#/components";
+import { Modal, SingleProject, Noise } from "#/components";
 import styles from "./styles.module.scss";
 
 import { Ref } from "react";

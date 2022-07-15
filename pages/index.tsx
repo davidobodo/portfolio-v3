@@ -1,7 +1,19 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import { Banners, About, Work, Thoughts, Skills, Projects, Noise, Layout, ProjectModal, Nav } from "#/components";
+import {
+    Banners,
+    About,
+    Work,
+    Thoughts,
+    Skills,
+    Projects,
+    Noise,
+    Layout,
+    ProjectModal,
+    Nav,
+    Button
+} from "#/components";
 import {
     useRevealParagraph,
     useWindowSize,
@@ -9,15 +21,16 @@ import {
     useScrollToTop,
     useRevealHeading,
     HomePageHooks,
-    useSelectProjectAnimation
+    useSelectProjectAnimation,
+    useHomeInit
 } from "#/hooks";
 import Router from "next/router";
 
 const {
-    useInitAnimation,
     useAboutAnimation,
     useWorkAnimation,
     useSkillsAnimation
+
     // useProjectAnimation
 } = HomePageHooks;
 
@@ -25,7 +38,7 @@ const Home: NextPage = () => {
     useScrollToTop();
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-    const { bannerRef } = useInitAnimation();
+    const { bannerRef } = useHomeInit();
     const { aboutListRef } = useAboutAnimation();
     const {
         workContainerRef,
@@ -76,11 +89,7 @@ const Home: NextPage = () => {
 
             <Nav />
             <div className={styles.main}>
-                <Banners.HomePage
-                    bannerRef={bannerRef}
-                    windowInnerHeight={windowInnerHeight}
-                    windowInnerWidth={windowInnerWidth}
-                />
+                <Banners.HomePage bannerRef={bannerRef} windowInnerHeight={windowInnerHeight} />
 
                 <Layout.DarkSection>
                     <>
@@ -96,7 +105,6 @@ const Home: NextPage = () => {
                             mobileWorkContainerRef={mobileWorkContainerRef}
                             mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
                         />
-                        {/* <div style={{ height: "100vh" }}></div> */}
                         <Thoughts.One textWrapperRef={thoughtOneText} />
                         <Skills
                             skillsListRef={skillsListRef}
@@ -107,12 +115,15 @@ const Home: NextPage = () => {
                             mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
-                        <Projects
-                            projectTitleRef={projectTitleRef}
-                            onViewProject={onSelectProject}
-                            onRedirectToProjects={onRedirectToProjects}
-                            location="home"
-                        />
+                        <Projects projectTitleRef={projectTitleRef} onViewProject={onSelectProject} location="home" />
+                        <div className={styles.btnWrapper}>
+                            <Button
+                                label="View more"
+                                ariaLabel="View more"
+                                onClick={onRedirectToProjects}
+                                hasLiquid={true}
+                            />
+                        </div>
                     </>
                 </Layout.DarkSection>
             </div>

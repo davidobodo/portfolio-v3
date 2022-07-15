@@ -70,11 +70,6 @@ class AnimPageLoaders {
 
     drawSvgLogo(logoSvg: Element, logoSvgPaths: NodeListOf<Element>) {
         const tl = gsap.timeline();
-
-        // tl.to(logoSvg, {
-        //     opacity: 1,
-        //     visibility: "visible"
-        // })
         tl.to(logoSvgPaths, {
             strokeDashoffset: 0,
             duration: 2,
@@ -98,7 +93,7 @@ class AnimPageLoaders {
 //--------------------------------------------
 // HOME PAGE
 //--------------------------------------------
-function expandImage(imageNode: HTMLDivElement) {
+function expandImage(imageNode: HTMLImageElement) {
     gsap.to(imageNode, {
         scrollTrigger: {
             trigger: imageNode,

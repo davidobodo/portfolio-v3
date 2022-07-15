@@ -1,4 +1,10 @@
 .main {
     z-index: 1;
     position: relative;
+
+    .btnWrapper {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 10rem;
+    }
 }

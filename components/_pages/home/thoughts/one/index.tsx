@@ -4,10 +4,12 @@ import { Ref, useEffect, useRef } from "react";
 import { expandImage } from "#/utils/animations/atoms";
 
 export default function FirstThought({ textWrapperRef }: { textWrapperRef: Ref<HTMLDivElement> }) {
-    const imageRef = useRef(null);
+    const imageRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
-        expandImage(imageRef.current);
+        if (imageRef.current) {
+            expandImage(imageRef.current);
+        }
     }, []);
     return (
         <>

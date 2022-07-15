@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/icons";
-import Router from "next/router";
 import { fetchProjects } from "#/utils";
 import { Ref } from "react";
 
