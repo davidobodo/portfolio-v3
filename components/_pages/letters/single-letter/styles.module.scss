@@ -45,3 +45,28 @@
         }
     }
 }
+
+.letterWrapper {
+    margin-bottom: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 0.01px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    opacity: 0;
+    transform: translateY(100px);
+
+    &:last-child {
+        margin-bottom: 0px;
+        // border-bottom: 0px;
+    }
+
+    .number {
+        position: absolute;
+        font-size: 120px;
+        font-family: "sf-pro-bold";
+        bottom: 0px;
+        right: 0px;
+        color: var(--white);
+        opacity: 0.02;
+        line-height: 0.8em;
+    }
+}

@@ -28,17 +28,16 @@ const Letters: NextPage = () => {
                         {LETTERS.map((item, i) => {
                             const { url, title, date, time, summary, tags } = item;
                             return (
-                                <div key={url} className={styles.letterWrapper}>
-                                    <SingleLetter
-                                        url={url}
-                                        title={title}
-                                        date={date}
-                                        time={time}
-                                        summary={summary}
-                                        tags={tags}
-                                    />
-                                    <span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
-                                </div>
+                                <SingleLetter
+                                    url={url}
+                                    title={title}
+                                    date={date}
+                                    time={time}
+                                    summary={summary}
+                                    tags={tags}
+                                    key={url}
+                                    i={i}
+                                />
                             );
                         })}
                     </div>

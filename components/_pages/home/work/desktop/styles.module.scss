@@ -36,6 +36,7 @@
 
             .tabHeaders {
                 position: relative;
+                z-index: 1;
                 overflow: hidden;
 
                 .bgGradient {
@@ -60,18 +61,6 @@
                     font-size: 50px;
                 }
             }
-
-            // .btnWrapper {
-            //     margin-top: 10rem;
-            //     padding-left: 2.2rem;
-
-            //     a {
-            //         font-size: 18px;
-            //         color: var(--white);
-            //         font-family: "sf-pro-bold";
-            //         letter-spacing: 0.05em;
-            //     }
-            // }
         }
 
         .tabDetails {

@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { animPageLoaders } from "#/utils/animations/atoms";
 const { showLoadingTexts, closeNoiseLayers, hideLoadingTexts } = animPageLoaders;
 
+// const newPageLoader = new AnimPageLoaders();
+
 export default function usePageTransition() {
     //------------------------------------------
     // GLOBAL HELPERS
@@ -94,12 +96,11 @@ export default function usePageTransition() {
     // Register the page leave animation
     useEffect(() => {
         if (!pageLeaveAnimation && layersWrapperRef.current) {
-            setPageLeaveAnimation(
-                closeNoiseLayers({
-                    node: layersWrapperRef.current?.children,
-                    options: { paused: true }
-                })
-            );
+            const tl = closeNoiseLayers({
+                node: layersWrapperRef.current?.children,
+                options: { paused: true }
+            });
+            setPageLeaveAnimation(tl);
         }
     }, [pageLeaveAnimation]);
 

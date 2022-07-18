@@ -27,7 +27,7 @@ import {
 import Router from "next/router";
 
 const {
-    useAboutAnimation,
+    useHomeAboutAnim,
     useWorkAnimation,
     useSkillsAnimation
 
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
     useRegisterGsapScrollTrigger();
     const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
     const { bannerRef } = useHomeInit();
-    const { aboutListRef } = useAboutAnimation();
+    const { aboutListRef } = useHomeAboutAnim();
     const {
         workContainerRef,
         workTabsRef,

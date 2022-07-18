@@ -1,10 +1,10 @@
-import useAboutAnimation from "./useAboutAnimation";
+import useHomeAboutAnim from "./useHomeAboutAnim";
 import useWorkAnimation from "./useWorkAnimation";
 import useSkillsAnimation from "./useSkillsAnimation";
 import useProjectAnimation from "./useProjectAnimation";
 
 const HomePageHooks = {
-    useAboutAnimation,
+    useHomeAboutAnim,
     useWorkAnimation,
     useSkillsAnimation,
     useProjectAnimation

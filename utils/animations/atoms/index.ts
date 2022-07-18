@@ -93,6 +93,46 @@ class AnimPageLoaders {
 //--------------------------------------------
 // HOME PAGE
 //--------------------------------------------
+class AnimHomePage {
+    changeFocusedAboutText(texts: HTMLCollection) {
+        const firstElement = texts[0];
+        const lastElement = texts[texts.length - 1];
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: firstElement,
+                start: "top center",
+                end: "bottom center",
+                endTrigger: lastElement,
+                toggleActions: "restart pause reverse pause",
+                scrub: true
+            }
+        });
+
+        // CREATE ACTIONS TO EXECUTE IN TIMELINE
+        let timelineActions = [];
+        for (let i = 0; i < texts.length; i++) {
+            timelineActions.push({ target: texts[i], vars: { opacity: 1 }, options: i !== 0 ? "<" : "" });
+
+            // Dont decrease the opacity of the last item
+            if (i !== texts.length - 1) {
+                timelineActions.push({ target: texts[i], vars: { opacity: 0.2 }, options: "" });
+            }
+        }
+
+        // EXECUTE TIMELINE ACTIONS
+        for (let j = 0; j < timelineActions.length; j++) {
+            const { target, vars, options } = timelineActions[j];
+            if (options) {
+                tl.to(target, vars, options);
+            } else {
+                tl.to(target, vars);
+            }
+        }
+
+        return tl;
+    }
+}
 function expandImage(imageNode: HTMLImageElement) {
     gsap.to(imageNode, {
         scrollTrigger: {
@@ -105,4 +145,5 @@ function expandImage(imageNode: HTMLImageElement) {
     });
 }
 const animPageLoaders = new AnimPageLoaders();
-export { expandImage, animPageLoaders };
+const homePageAnims = new AnimHomePage();
+export { expandImage, animPageLoaders, homePageAnims, AnimPageLoaders };

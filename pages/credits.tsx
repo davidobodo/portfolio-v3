@@ -9,6 +9,9 @@ export default function Credit() {
             link: "https://www.apple.com/ng/iphone-13-pro/"
         },
         {
+            description: "Richard Ekwonye site"
+        },
+        {
             link: "https://www.youtube.com/watch?v=vJNVramny9k&feature=youtu.be",
             description: "You can easily learn how to perform the preloader in the portfolio with this turorial"
         },
