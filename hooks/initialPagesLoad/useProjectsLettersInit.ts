@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { usePageLeaveAnimationContext } from "#/state";
 import { animPageLoaders } from "#/utils/animations/atoms";
+const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
 
 // Used in boths projects and letters page
 export default function useProjectsLettersInit() {
@@ -12,10 +13,11 @@ export default function useProjectsLettersInit() {
     useEffect(() => {
         if (textWrapperRef.current && scrollIndicatorRef.current) {
             if (pageLeaveAnimation) {
+                const layers = document.querySelectorAll("[data-key='layer']");
                 // Navigating from another page to this page
                 const master = gsap.timeline();
                 master
-                    .add(pageLeaveAnimation.reverse())
+                    .add(openNoiseLayers(layers))
                     .add(bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current));
 
                 return () => {
@@ -23,7 +25,6 @@ export default function useProjectsLettersInit() {
                 };
             } else {
                 // Navigating to this page directly from the browser url input
-                const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
                 const logo = document.querySelector("[data-key='logo']") as Element;
                 const logoChildren = document.querySelectorAll("[data-key='logo'] path");
                 const layers = document.querySelectorAll("[data-key='layer']");

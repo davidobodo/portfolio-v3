@@ -43,19 +43,21 @@ export default function usePageTransition() {
             return;
         }
         if (pageLeaveAnimation) {
-            pageLeaveAnimation.play();
-            pageLeaveAnimation.then(() => {
-                // In case routing hasn't completed after sometime (i.e users network is slow), we would show some texts while we wait
-                const id = setTimeout(() => {
-                    setTriggerLoadingTextsTl(true);
-                    if (loadingTextsRef.current) {
-                        const tl = showLoadingTexts(loadingTextsRef.current, loadingTextsRefSelector("span"));
-                        setLoadingTextsTl(tl);
-                    }
-                }, 500);
-                setLoadingTextsTimeout(id);
-                router.push(path);
-            });
+            if (layersWrapperRef.current) {
+                const tl = closeNoiseLayers({ node: layersWrapperRef.current.children });
+                tl.then(() => {
+                    // In case routing hasn't completed after sometime (i.e users network is slow), we would show some texts while we wait
+                    const id = setTimeout(() => {
+                        setTriggerLoadingTextsTl(true);
+                        if (loadingTextsRef.current) {
+                            const tl = showLoadingTexts(loadingTextsRef.current, loadingTextsRefSelector("span"));
+                            setLoadingTextsTl(tl);
+                        }
+                    }, 500);
+                    setLoadingTextsTimeout(id);
+                    router.push(path);
+                });
+            }
         } else {
             // Although this case should never be met
             router.push(path);
@@ -97,8 +99,7 @@ export default function usePageTransition() {
     useEffect(() => {
         if (!pageLeaveAnimation && layersWrapperRef.current) {
             const tl = closeNoiseLayers({
-                node: layersWrapperRef.current?.children,
-                options: { paused: true }
+                node: layersWrapperRef.current?.children
             });
             setPageLeaveAnimation(tl);
         }

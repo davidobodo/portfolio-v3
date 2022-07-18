@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useRef, useEffect } from "react";
 import { animPageLoaders } from "#/utils/animations/atoms";
 import { usePageLeaveAnimationContext } from "#/state";
+const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
 
 export default function useHomeInit() {
     const bannerRef = useRef<HTMLDivElement>(null);
@@ -23,9 +24,9 @@ export default function useHomeInit() {
 
         if (pageLeaveAnimation) {
             // Navigating from another page to this page
-
+            const layers = document.querySelectorAll("[data-key='layer']");
             const master = gsap.timeline();
-            master.add(pageLeaveAnimation.reverse()).add(
+            master.add(openNoiseLayers(layers)).add(
                 bannerAnimation({
                     nameLetters,
                     fieldLetters,
@@ -42,7 +43,6 @@ export default function useHomeInit() {
             };
         } else {
             // Navigating to this page directly from the browser url input
-            const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
 
             const logo = document.querySelector("[data-key='logo']") as Element;
             const logoChildren = document.querySelectorAll("[data-key='logo'] path");

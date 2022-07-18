@@ -62,8 +62,8 @@ class AnimPageLoaders {
         return tl;
     }
 
-    closeNoiseLayers({ node, options }: { node: NodeListOf<Element> | HTMLCollection; options?: gsap.TimelineVars }) {
-        const tl = gsap.timeline({ ...options });
+    closeNoiseLayers({ node }: { node: NodeListOf<Element> | HTMLCollection }) {
+        const tl = gsap.timeline();
         tl.to(node, { scaleY: 1 });
         return tl;
     }
