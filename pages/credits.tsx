@@ -86,7 +86,7 @@ export default function Credit() {
     const { aboutListRef } = useHomeAboutAnim();
 
     const note = [
-        "I am not a professional designer by skill",
+        `I am not a "professional designer" by skill`,
         `so in order to bring this portfolio's design to what
         it is,`,
         "I had to research,",

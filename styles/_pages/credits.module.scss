@@ -33,6 +33,10 @@
     section {
         margin-bottom: 24rem;
 
+        &:last-child {
+            margin-bottom: 0px;
+        }
+
         h3 {
             font-size: 4rem;
             margin-bottom: 4rem;
