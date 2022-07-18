@@ -133,6 +133,7 @@ class AnimHomePage {
         return tl;
     }
 }
+
 function expandImage(imageNode: HTMLImageElement) {
     gsap.to(imageNode, {
         scrollTrigger: {
@@ -144,6 +145,22 @@ function expandImage(imageNode: HTMLImageElement) {
         width: "100%"
     });
 }
+
+function fadeIn({ node }: { node: Element }) {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: node,
+            start: "top 80%",
+            end: "bottom center",
+            toggleActions: "restart pause reverse pause",
+            scrub: true
+        }
+    });
+
+    tl.to(node, { opacity: 1, y: 0 });
+
+    return tl;
+}
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnims = new AnimHomePage();
-export { expandImage, animPageLoaders, homePageAnims, AnimPageLoaders };
+export { expandImage, animPageLoaders, homePageAnims, AnimPageLoaders, fadeIn };

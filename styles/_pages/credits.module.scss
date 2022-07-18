@@ -1,17 +1,20 @@
-.container {
-    background-color: var(--black);
+.main {
+    position: relative;
+    z-index: 1;
+}
 
-    padding: 5rem;
+.container {
+    // background-color: var(--black);
+
+    // padding: 5rem;
     position: relative;
     z-index: 1;
     color: var(--ash);
     min-height: 100vh;
 
-    .containerInner {
-        max-width: var(--max-width);
-        margin: auto;
-        padding-top: 20vh;
-    }
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 20vh 0px;
 
     h1 {
         font-size: 8rem;
@@ -21,75 +24,92 @@
     }
 
     .summary {
-        margin-bottom: 4rem;
-        font-size: 1.8rem;
-        width: 50%;
-        line-height: 2em;
+        margin-bottom: 30vh;
+        // font-size: 8.8rem;
+        // // width: 50%;
+        // line-height: 0.8em;
     }
 
-    ul {
-        padding-left: 3rem;
-        li {
+    section {
+        margin-bottom: 24rem;
+
+        h3 {
+            font-size: 4rem;
             margin-bottom: 4rem;
-            font-size: 1.8rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            position: relative;
-            color: var(--ash);
+            text-transform: uppercase;
+        }
 
-            &:before {
-                content: "";
-                position: absolute;
-                display: block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background-color: var(--ash);
-                left: -20px;
-                top: 5px;
-            }
-
-            a {
-                color: var(--ash);
+        .list {
+            // padding-left: 3rem;
+            li {
+                margin-bottom: 4rem;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
                 position: relative;
-                display: inline;
+                color: var(--ash);
+                transform: translateY(100px);
+                opacity: 0;
 
-                span {
+                &:before {
+                    // content: "";
+                    // position: absolute;
+                    // display: block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: var(--ash);
+                    left: -20px;
+                    top: 5px;
+                }
+
+                a {
+                    color: var(--ash);
                     position: relative;
-                }
+                    display: inline;
+                    font-size: 3.6rem;
+                    transition: transform 200ms ease-in-out;
 
-                &::selection {
-                    background: var(--black);
-                    color: var(--light-brown);
-                }
+                    span {
+                        position: relative;
+                    }
 
-                &::before {
-                    content: "";
-                    display: block;
-                    width: 0%;
-                    height: 100%;
-                    position: absolute;
-                    z-index: 0;
-                    background: var(--ash);
-                    transition: width 200ms ease-in-out;
-                }
+                    &::selection {
+                        background: var(--black);
+                        color: var(--light-brown);
+                    }
 
-                &:hover,
-                &:active,
-                &:focus {
-                    color: var(--light-brown);
-                    text-decoration: none;
-                    outline: none;
+                    &::before {
+                        // content: "";
+                        // display: block;
+                        width: 0%;
+                        height: 100%;
+                        position: absolute;
+                        z-index: 0;
+                        background: var(--ash);
+                        transition: width 200ms ease-in-out;
+                    }
 
-                    &:before {
-                        width: 100%;
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        color: var(--light-brown);
+                        // text-decoration: none;
+                        outline: none;
+                        transform: translateX(20px);
+
+                        &:before {
+                            width: 100%;
+                        }
                     }
                 }
-            }
 
-            p {
-                opacity: 0.5;
+                p {
+                    opacity: 0.5;
+                    font-size: 2rem;
+                    margin-top: 2rem;
+                    font-family: "sf-pro-regular";
+                }
             }
         }
     }

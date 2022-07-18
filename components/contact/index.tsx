@@ -86,12 +86,10 @@ function Details2({
                                     </Link>
                                 </li>
                                 <li className={styles.line}></li>
-                                <li>
-                                    <Link href="/credits">
-                                        <a>
-                                            <span>Site credits</span>
-                                        </a>
-                                    </Link>
+                                <li onClick={() => onRouteChange("/credits")}>
+                                    <a>
+                                        <span>Site credits</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>

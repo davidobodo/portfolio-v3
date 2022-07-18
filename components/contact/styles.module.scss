@@ -237,6 +237,7 @@
         li {
             // font-size: 2rem;
             margin-right: 1rem;
+            // text-decoration: underline;
 
             &.line {
                 height: 2px;
@@ -245,7 +246,7 @@
             }
 
             a {
-                text-decoration: none;
+                // text-decoration: none;
                 text-transform: uppercase;
                 color: var(--black);
             }
