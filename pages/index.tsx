@@ -1,19 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import {
-    Banners,
-    About,
-    Work,
-    Thoughts,
-    Skills,
-    Projects,
-    Noise,
-    Layout,
-    ProjectModal,
-    Nav,
-    Button
-} from "#/components";
+import { Banners, About, Work, Thoughts, Skills, Projects, Noise, Layout, ProjectModal, Nav } from "#/components";
 import {
     useRevealParagraph,
     useWindowSize,
@@ -26,13 +14,7 @@ import {
 } from "#/hooks";
 import Router from "next/router";
 
-const {
-    useHomeAboutAnim,
-    useWorkAnimation,
-    useSkillsAnimation
-
-    // useProjectAnimation
-} = HomePageHooks;
+const { useHomeAboutAnim, useWorkAnimation, useSkillsAnimation } = HomePageHooks;
 
 const Home: NextPage = () => {
     useScrollToTop();
@@ -116,14 +98,6 @@ const Home: NextPage = () => {
                         />
                         <Thoughts.Two textWrapperRef={thoughtTwoText} />
                         <Projects projectTitleRef={projectTitleRef} onViewProject={onSelectProject} location="home" />
-                        <div className={styles.btnWrapper}>
-                            <Button
-                                label="View more"
-                                ariaLabel="View more"
-                                onClick={onRedirectToProjects}
-                                hasLiquid={true}
-                            />
-                        </div>
                     </>
                 </Layout.DarkSection>
             </div>
