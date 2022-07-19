@@ -1,12 +1,81 @@
 @import "#/styles/globals.module.scss";
 
-.title {
-    // margin-bottom: 4rem;
+.container {
+    background-color: var(--light-brown);
+    position: relative;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    z-index: 0;
+    padding-top: 10vh;
 
+    a {
+        font-size: 1.8rem;
+        text-decoration: underline;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: var(--black);
+        position: relative;
+
+        span {
+            position: relative;
+        }
+
+        &::selection {
+            background: var(--black);
+            color: var(--light-brown);
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+            background: var(--black);
+            transition: width 200ms ease-in-out;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: var(--light-brown);
+            text-decoration: none;
+            outline: none;
+
+            &:before {
+                width: 100%;
+            }
+        }
+    }
+
+    .containerInner {
+        display: flex;
+        padding: 0px 6rem;
+        padding-bottom: 10vh;
+        width: 100%;
+
+        .leftSection {
+            margin-right: 8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rightSection {
+            flex: 1;
+        }
+    }
+}
+
+// ----------------------------------------
+// FORM COMPONENT
+// ----------------------------------------
+.title {
     h1 {
         font-size: 4.6rem;
-        // text-transform: uppercase;
-        // margin-bottom: 1rem;
         font-family: "sf-pro-bold";
         font-weight: 200;
         position: relative;
@@ -14,28 +83,6 @@
 
         font-family: sf-pro-regular;
         font-weight: 200;
-
-        // &::before {
-        //     content: "<h1>";
-        //     font-family: "La Belle Aurore", cursive;
-        //     color: #515152;
-        //     font-size: 18px;
-        //     position: absolute;
-        //     margin-top: -2rem;
-        //     left: -2rem;
-        //     opacity: 0.3;
-        // }
-
-        // &::after {
-        //     content: "<h1/>";
-        //     font-family: "La Belle Aurore", cursive;
-        //     color: #515152;
-        //     font-size: 18px;
-        //     position: absolute;
-        //     left: -2rem;
-        //     bottom: -2rem;
-        //     opacity: 0.3;
-        // }
     }
 
     p {
@@ -63,58 +110,11 @@
                 z-index: -1;
             }
         }
-
-        // &::before {
-        //     content: "<p>";
-        //     font-family: "La Belle Aurore", cursive;
-        //     color: #515152;
-        //     font-size: 18px;
-        //     position: absolute;
-        //     margin-top: -2rem;
-        //     left: -2rem;
-        //     opacity: 0.3;
-        // }
-
-        // &::after {
-        //     content: "<p/>";
-        //     font-family: "La Belle Aurore", cursive;
-        //     color: #515152;
-        //     font-size: 18px;
-        //     position: absolute;
-        //     left: -2rem;
-        //     bottom: -2rem;
-        //     opacity: 0.3;
-        // }
-    }
-    span {
-        // font-size: 1.6rem;
     }
 }
 
 .form {
     position: relative;
-    // &::before {
-    //     content: "<form>";
-    //     font-family: "La Belle Aurore", cursive;
-    //     color: #515152;
-    //     font-size: 18px;
-    //     position: absolute;
-    //     margin-top: -2rem;
-    //     left: -2rem;
-    //     opacity: 0.3;
-    // }
-
-    // &::after {
-    //     content: "<form/>";
-    //     font-family: "La Belle Aurore", cursive;
-    //     color: #515152;
-    //     font-size: 18px;
-    //     position: absolute;
-    //     left: -2rem;
-    //     bottom: -2rem;
-    //     opacity: 0.3;
-    // }
-
     .formField {
         margin-bottom: 4rem;
         width: 100%;
@@ -220,7 +220,13 @@
     }
 }
 
-.media {
+// ----------------------------------------
+// HELPFUL LINKS
+// ----------------------------------------
+.helpfulLinks {
+    &:first-child {
+        margin-bottom: 60px;
+    }
     h3 {
         font-size: 1.4rem;
         text-transform: uppercase;
@@ -254,77 +260,10 @@
     }
 }
 
-.wrapper {
-    background-color: var(--light-brown);
-    position: relative;
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
-    z-index: 0;
-    padding-top: 10vh;
-
-    a {
-        font-size: 1.8rem;
-        text-decoration: underline;
-        cursor: pointer;
-        text-transform: uppercase;
-        color: var(--black);
-        position: relative;
-
-        span {
-            position: relative;
-        }
-
-        &::selection {
-            background: var(--black);
-            color: var(--light-brown);
-        }
-
-        &::before {
-            content: "";
-            display: block;
-            width: 0%;
-            height: 100%;
-            position: absolute;
-            z-index: 0;
-            background: var(--black);
-            transition: width 200ms ease-in-out;
-        }
-
-        &:hover,
-        &:active,
-        &:focus {
-            color: var(--light-brown);
-            text-decoration: none;
-            outline: none;
-
-            &:before {
-                width: 100%;
-            }
-        }
-    }
-}
-
-.container2 {
-    display: flex;
-    padding: 0px 6rem;
-    padding-bottom: 10vh;
-    width: 100%;
-
-    .leftSection {
-        margin-right: 8rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .rightSection {
-        flex: 1;
-    }
-}
-
-.bottom {
+// ----------------------------------------
+// SOCIAL FOOTER
+// ----------------------------------------
+.social {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     height: 60px;
     margin: 0px 6rem;

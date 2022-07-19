@@ -34,66 +34,11 @@ function Details2({
     onRouteChange: (path: string) => void;
 }) {
     return (
-        <div className={styles.wrapper} ref={containerRef}>
-            <div className={styles.container2}>
+        <div className={styles.container} ref={containerRef}>
+            <div className={styles.containerInner}>
                 <div className={styles.leftSection}>
                     <div className={styles.top}></div>
-
-                    <div>
-                        <div className={styles.media} style={{ marginBottom: "60px" }}>
-                            <h3>Quick Links</h3>
-                            <ul>
-                                <li onClick={() => onRouteChange("/")}>
-                                    <a>
-                                        <span>Home</span>
-                                    </a>
-                                </li>
-                                <li className={styles.line}></li>
-                                <li onClick={() => onRouteChange("/projects")}>
-                                    <a>
-                                        <span>Projects</span>
-                                    </a>
-                                </li>
-                                <li className={styles.line}></li>
-                                <li onClick={() => onRouteChange("/letters")}>
-                                    <a>
-                                        <span>Letters </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className={styles.media}>
-                            <h3>Extras</h3>
-                            <ul>
-                                <li>
-                                    <Link
-                                        href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing"
-                                        passHref
-                                    >
-                                        <a target="_blank" rel="noreferrer noopener">
-                                            {" "}
-                                            <span>Resume</span>
-                                        </a>
-                                    </Link>
-                                </li>
-                                <li className={styles.line}></li>
-                                <li>
-                                    <Link href="/">
-                                        <a href="">
-                                            {" "}
-                                            <span>14 rAndom stuffzzzz</span>
-                                        </a>
-                                    </Link>
-                                </li>
-                                <li className={styles.line}></li>
-                                <li onClick={() => onRouteChange("/credits")}>
-                                    <a>
-                                        <span>Site credits</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <HelpfulLinks onRouteChange={onRouteChange} />
                 </div>
                 <div className={styles.rightSection}>
                     <div className={styles.rightSectionInner}>
@@ -101,40 +46,7 @@ function Details2({
                     </div>
                 </div>
             </div>
-            <div className={styles.bottom}>
-                <ul>
-                    <li>
-                        <Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
-                            <a target="_blank" rel="noreferrer noopener">
-                                <span>Linkedin</span>
-                            </a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="https://github.com/obododavid" passHref>
-                            <a target="_blank" rel="noreferrer noopener">
-                                <span>Github</span>
-                            </a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="https://twitter.com/phitGeek" passHref>
-                            <a target="_blank" rel="noreferrer noopener">
-                                <span>Twitter</span>
-                            </a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="mailto: obododavid5@gmail.com" passHref>
-                            <a>
-                                <span>Email</span>
-                            </a>
-                        </Link>
-                    </li>
-                </ul>
-
-                <p> &#169; 2022 David Obodo</p>
-            </div>
+            <Social />
         </div>
     );
 }
@@ -143,7 +55,6 @@ function Form({ onSubmit }: { onSubmit: () => void }) {
     return (
         <>
             <div className={styles.title}>
-                {/* <h1>Would love to hear from you &#8595;.</h1> */}
                 <h1>
                     Would love to hear from <br /> you &#8595;.
                 </h1>
@@ -190,5 +101,106 @@ function Form({ onSubmit }: { onSubmit: () => void }) {
                 </div>
             </form>
         </>
+    );
+}
+
+function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+    return (
+        <>
+            <div>
+                <div className={styles.helpfulLinks}>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li onClick={() => onRouteChange("/")}>
+                            <a>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li className={styles.line}></li>
+                        <li onClick={() => onRouteChange("/projects")}>
+                            <a>
+                                <span>Projects</span>
+                            </a>
+                        </li>
+                        <li className={styles.line}></li>
+                        <li onClick={() => onRouteChange("/letters")}>
+                            <a>
+                                <span>Letters </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div className={styles.helpfulLinks}>
+                    <h3>Extras</h3>
+                    <ul>
+                        <li>
+                            <Link
+                                href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing"
+                                passHref
+                            >
+                                <a target="_blank" rel="noreferrer noopener">
+                                    {" "}
+                                    <span>Resume</span>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className={styles.line}></li>
+                        <li>
+                            <Link href="/">
+                                <a href="">
+                                    {" "}
+                                    <span>14 rAndom stuffzzzz</span>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className={styles.line}></li>
+                        <li onClick={() => onRouteChange("/credits")}>
+                            <a>
+                                <span>Site credits</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </>
+    );
+}
+
+function Social() {
+    return (
+        <div className={styles.social}>
+            <ul>
+                <li>
+                    <Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
+                        <a target="_blank" rel="noreferrer noopener">
+                            <span>Linkedin</span>
+                        </a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/obododavid" passHref>
+                        <a target="_blank" rel="noreferrer noopener">
+                            <span>Github</span>
+                        </a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://twitter.com/phitGeek" passHref>
+                        <a target="_blank" rel="noreferrer noopener">
+                            <span>Twitter</span>
+                        </a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="mailto: obododavid5@gmail.com" passHref>
+                        <a>
+                            <span>Email</span>
+                        </a>
+                    </Link>
+                </li>
+            </ul>
+
+            <p> &#169; 2022 David Obodo</p>
+        </div>
     );
 }

@@ -1,0 +1,57 @@
+.main {
+    position: relative;
+    z-index: 1;
+    // height: 100vh;
+    background-color: var(--light-brown);
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        padding: 10rem 5rem 5rem;
+
+        h1 {
+            font-size: 4vw;
+            font-weight: 500;
+        }
+
+        .top {
+            opacity: 0;
+            transform: translateY(100px);
+            h1 {
+                span {
+                    background: linear-gradient(to right, black, var(--brown));
+                    line-height: 0.8em;
+                    color: var(--light-brown);
+                    display: inline-block;
+                    padding-left: 2rem;
+                    padding-right: 2rem;
+                }
+            }
+        }
+
+        .bottom {
+            opacity: 0;
+            transform: translateY(100px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .bottomRight {
+                text-align: right;
+
+                button {
+                    margin-top: 2rem;
+                    font-size: 2.4rem;
+                    background-color: transparent;
+                    border: 0px;
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

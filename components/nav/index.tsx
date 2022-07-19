@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Logo } from "../index";
-export default function Nav({ alwaysVisible = false }: { alwaysVisible?: boolean }) {
+export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwaysVisible?: boolean; color?: string }) {
     // const [isLight, setIsLight] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
     const handlescroll = () => {
@@ -35,7 +35,7 @@ export default function Nav({ alwaysVisible = false }: { alwaysVisible?: boolean
                 opacity: isVisible ? 1 : 0
             }}
             // color={isLight ? "#e1dfdd" : "#000"}
-            color="#e1dfdd"
+            color={color}
         />
     );
 }
