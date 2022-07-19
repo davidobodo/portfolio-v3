@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from "react";
 import { animateFaintSvg } from "#/utils";
 import { DATA_VALUES } from "#/constants";
 import { TTimelineAction } from "#/interfaces";
+import { useIsomorphicLayoutEffect } from "#/hooks";
 
 export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
     const skillsListRef = useRef<HTMLDivElement>(null);
@@ -10,7 +11,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
     const skillsContentWrapperRef = useRef<HTMLDivElement>(null);
 
     const [tl, setTl] = useState<gsap.core.Timeline>();
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
             const svgElement = skillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
 
@@ -38,7 +39,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
             setTl(tl);
         }
     }, [skillsListRef.current, skillsContainerRef.current, skillsContentWrapperRef.current]);
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (tl && skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
             let timelineActions: TTimelineAction[] = [];
 
@@ -80,7 +81,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
     //------------------------------------------
     const mobileSkillsContainerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (mobileSkillsContainerRef.current) {
             const svgElement = mobileSkillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
             const contentWrapper = mobileSkillsContainerRef.current.querySelector(
