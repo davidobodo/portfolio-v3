@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useRef, useEffect, useState, Ref } from "react";
 import styles from "./styles.module.scss";
-import { Placeholder } from "./placeholder";
+import { useRef, useEffect, useState, Ref } from "react";
+import { SectionPlaceholder } from "../index";
 export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [footerHeight, setFooterHeight] = useState(10);
@@ -19,7 +19,7 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
     return (
         <>
             <Details2 containerRef={containerRef} onSubmitForm={onSubmitForm} onRouteChange={onRouteChange} />
-            <Placeholder footerHeight={footerHeight} />
+            <SectionPlaceholder styles={{ height: footerHeight + "px" }} />
         </>
     );
 }

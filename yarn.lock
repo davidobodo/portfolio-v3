@@ -619,6 +619,11 @@ define-properties@^1.1.3, define-properties@^1.1.4:
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
 
+detect.js@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/detect.js/-/detect.js-2.2.3.tgz#18a00621f959c5ebdcbb84267e1a75442f414ea9"
+  integrity sha512-awS0dy7wPpzoF20kZPjg2yI1RONXXdq/hbA2CJ8BMsO2I1CSm4NdlVEI1YaRh20Xyxoaki/V4aV+mVAldT9aQA==
+
 dir-glob@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/dir-glob/-/dir-glob-3.0.1.tgz#56dbf73d992a4a93ba1584f4534063fd2e41717f"

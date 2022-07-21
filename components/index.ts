@@ -13,6 +13,8 @@ import Logo from "./logo";
 import RouteTransitionOverlay from "./route-transition-overlay";
 import Common from "./common";
 import ScrollToTop from "./scroll-to-top";
+import SectionPlaceholder from "./section-placeholder";
+import BannerCurtain from "./banner-curtain";
 
 const { Button, Radio } = Atoms;
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
@@ -45,5 +47,7 @@ export {
     Logo,
     RouteTransitionOverlay,
     Common,
-    ScrollToTop
+    ScrollToTop,
+    SectionPlaceholder,
+    BannerCurtain
 };

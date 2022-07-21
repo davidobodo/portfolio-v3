@@ -22,36 +22,39 @@
         align-items: center;
     }
 
-    .textWrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: right;
+    .paragraphWrapper {
+        margin-bottom: 8.4rem;
+
+        // @media (min-width: $lg) {
+        //     // width: 50%;
+        // }
 
         .paragraph {
             margin-bottom: 2.4rem;
+            display: flex;
+            flex-wrap: wrap;
 
-            .textLine {
-                color: var(--ash3);
-                line-height: 2;
-                font-weight: 600;
-                letter-spacing: -0.015em;
-                position: relative;
-                // overflow: hidden;
-                font-size: 18px;
+            .wordWrapper {
+                font-size: 1.8rem;
                 font-family: "sf-pro-bold";
+                color: var(--ash3);
+                letter-spacing: -0.015em;
+                line-height: 2;
+                overflow: hidden;
 
                 @media (min-width: $md) {
-                    font-size: 24px;
+                    font-size: 2.4rem;
                 }
 
-                span {
-                    display: block;
-                    opacity: 0;
-                    transform: translateY(200px);
-                    strong {
-                        color: #fff;
-                    }
+                .word {
+                    display: inline-block;
+                    transform: translateY(100%);
+                }
+            }
+
+            strong {
+                .wordWrapper {
+                    color: var(--white);
                 }
             }
         }

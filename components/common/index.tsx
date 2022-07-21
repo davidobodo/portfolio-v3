@@ -1,4 +1,4 @@
-import { Contact, RouteTransitionOverlay, ScrollToTop } from "../index";
+import { Contact, RouteTransitionOverlay, ScrollToTop, Noise } from "../index";
 import { usePageTransition } from "#/hooks";
 import { useRouter } from "next/router";
 
@@ -10,6 +10,7 @@ export default function Common() {
             {router.pathname !== "/projects/[id]" && <Contact onRouteChange={onRouteChange} />}
             <RouteTransitionOverlay layersWrapperRef={layersWrapperRef} loadingTextsRef={loadingTextsRef} />
             <ScrollToTop />
+            <Noise />
         </div>
     );
 }

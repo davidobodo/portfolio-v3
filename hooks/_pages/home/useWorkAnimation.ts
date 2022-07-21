@@ -67,7 +67,6 @@ export default function useWorkAnimation({
 
                             const gradientOpacity = 1 - self.progress;
 
-                            console.log(radialGradient, self.progress, gradientOpacity, "DFJSHJ");
                             radialGradient.style.opacity = gradientOpacity;
                         }
                     }

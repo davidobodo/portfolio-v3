@@ -6,7 +6,7 @@
     position: fixed;
     width: 100%;
     bottom: 0px;
-    z-index: 0;
+    z-index: var(--z-index-contact);
     padding-top: 10vh;
 
     a {

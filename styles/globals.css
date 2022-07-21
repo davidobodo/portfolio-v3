@@ -30,6 +30,7 @@
     --color-white: #ffffff;
     /* --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent); */
     --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent);
+    --work-linear-gradient: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
 
     /* ---------------------------------------------------- */
     /* SPACING */
@@ -46,8 +47,14 @@
 
     /* ---------------------------------------------------- */
     /* Z-INDECES*/
+    /* Pages are divided into various sections*/
     /* ---------------------------------------------------- */
     --z-index-loader: 1000;
+    --z-index-noise: 1;
+    --z-index-banner: 1;
+    --z-index-banner-curtain: 2;
+    --z-index-content: 3;
+    --z-index-contact: 0;
 
     /* ---------------------------------------------------- */
     /* ANIMATIONS*/

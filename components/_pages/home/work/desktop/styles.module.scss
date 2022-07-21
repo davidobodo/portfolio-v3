@@ -40,7 +40,7 @@
                 overflow: hidden;
 
                 .bgGradient {
-                    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
+                    background-image: var(--work-linear-gradient);
                     height: 72px;
                     width: 100vw;
                     position: absolute;

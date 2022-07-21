@@ -1,8 +1,7 @@
 .container {
     background-color: var(--black);
     position: relative;
-    // border-bottom-left-radius: 60px;
-    // border-bottom-right-radius: 60px;
+    z-index: var(--z-index-content);
 
     .content {
         position: relative;

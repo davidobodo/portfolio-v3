@@ -1,4 +1,4 @@
-import gsap from "gsap";
+import gsap,  from "gsap";
 
 //--------------------------------------------
 // SITE LOADER
@@ -94,6 +94,43 @@ class AnimPageLoaders {
 // HOME PAGE
 //--------------------------------------------
 class AnimHomePage {
+    //----
+    bannerAnimation({
+        nameLetters,
+        fieldLetters,
+        subFieldOne,
+        subFieldTwo,
+        picMobile,
+        picDesktop,
+        scrollIndicator
+    }: {
+        nameLetters: NodeListOf<Element>;
+        fieldLetters: NodeListOf<Element>;
+        subFieldOne: HTMLDivElement;
+        subFieldTwo: HTMLDivElement;
+        picMobile: HTMLDivElement;
+        picDesktop: HTMLSpanElement;
+        scrollIndicator: HTMLDivElement;
+    }) {
+        const tl = gsap.timeline();
+
+        tl.to(nameLetters, { x: 0 }).to(fieldLetters, { x: 0 }).to(subFieldOne, { y: 0 }).to(subFieldTwo, { y: 0 });
+
+        // Because the animation for mobile image is different from the animation for desktop image
+        if (window.innerWidth < 768) {
+            tl.to(picMobile, { width: "100%" });
+        } else {
+            tl.to(picDesktop, { width: 0 });
+        }
+
+        tl.to(scrollIndicator, { opacity: 1 });
+        tl.add(() => {
+            document.querySelector("body")?.classList.remove("hide");
+        });
+
+        return tl;
+    }
+    //-----
     changeFocusedAboutText(texts: HTMLCollection) {
         const firstElement = texts[0];
         const lastElement = texts[texts.length - 1];
@@ -131,6 +168,20 @@ class AnimHomePage {
         }
 
         return tl;
+    }
+
+    //-----
+    revealParagraph({ trigger, words, start = "top 60%", end  = "top 40%" }: { trigger: Element; words: NodeListOf<Element>, start?: string; end?: string }) {
+        return gsap.to(words, {
+            scrollTrigger: {
+                trigger,
+                start,
+                end,
+                toggleActions: "restart pause pause reverse",
+                scrub: true,
+            },
+            y: 0,
+        });
     }
 }
 
