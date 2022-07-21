@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from "react";
 import { normalize } from "#/utils";
 import { DATA_VALUES } from "#/constants";
 import { TTimelineAction } from "#/interfaces";
+import { useIsomorphicLayoutEffect } from "#/hooks";
 
 export default function useWorkAnimation({
     windowInnerHeight,
@@ -35,7 +36,7 @@ export default function useWorkAnimation({
         return final;
     }
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (windowInnerWidth >= 992) {
             if (
                 workContainerRef.current &&
@@ -45,6 +46,7 @@ export default function useWorkAnimation({
             ) {
                 const svgElement = workTabsRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
 
+                const radialGradient = document.querySelector('[data-key="radial-gradient"]');
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: workContainerRef.current,
@@ -62,6 +64,11 @@ export default function useWorkAnimation({
                                     DATA_VALUES.workSvgViewportHeight,
                                     windowInnerWidth
                                 ) + "px";
+
+                            const gradientOpacity = 1 - self.progress;
+
+                            console.log(radialGradient, self.progress, gradientOpacity, "DFJSHJ");
+                            radialGradient.style.opacity = gradientOpacity;
                         }
                     }
                 });
@@ -153,7 +160,7 @@ export default function useWorkAnimation({
     const mobileWorkTitlesContainerRef = useRef<HTMLUListElement>(null);
     const mobileWorkDetailsContainerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (windowInnerWidth < 992) {
             if (
                 mobileWorkContainerRef.current &&

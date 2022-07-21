@@ -8,5 +8,12 @@ export default function DarkRadialGradient({
     containerRef?: Ref<HTMLDivElement>;
     containerStyles?: Record<string, string | number>;
 }) {
-    return <div className={styles.container} ref={containerRef} style={{ ...containerStyles }}></div>;
+    return (
+        <div
+            className={styles.container}
+            ref={containerRef}
+            style={{ ...containerStyles }}
+            data-key="radial-gradient"
+        ></div>
+    );
 }
