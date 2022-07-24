@@ -15,9 +15,10 @@ import Common from "./common";
 import ScrollToTop from "./scroll-to-top";
 import SectionPlaceholder from "./section-placeholder";
 import BannerCurtain from "./banner-curtain";
+import Projects, { ProjectListView } from "./projects";
 
 const { Button, Radio } = Atoms;
-const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
+const { Preloader, About, Work, Thoughts, Skills, FaintBgText } = HomePage;
 const { Grid } = ProjectsPage;
 const { SingleLetter } = LettersPage;
 

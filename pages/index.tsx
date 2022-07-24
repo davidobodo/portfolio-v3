@@ -12,7 +12,8 @@ import {
     Layout,
     ProjectModal,
     Nav,
-    BannerCurtain
+    BannerCurtain,
+    ProjectListView
 } from "#/components";
 import {
     useRevealParagraph,

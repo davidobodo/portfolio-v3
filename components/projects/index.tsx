@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import useBoxAnimation from "./useBoxAnimation";
-// import { PROJECTS } from "./constants";
 import { PROJECTS } from "#/constants/projects";
 import Box from "./box";
 import Heading from "./heading";
