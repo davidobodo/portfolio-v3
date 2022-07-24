@@ -83,6 +83,11 @@
 
         font-family: sf-pro-regular;
         font-weight: 200;
+
+        &::selection {
+            background: var(--black);
+            color: var(--light-brown);
+        }
     }
 
     p {
@@ -109,6 +114,11 @@
                 left: 0px;
                 z-index: -1;
             }
+        }
+
+        &::selection {
+            background: var(--black);
+            color: var(--light-brown);
         }
     }
 }

@@ -13,7 +13,6 @@ export default function useRevealText() {
             const paragraphs = textSelector("p");
 
             if (paragraphs) {
-                console.log(paragraphs, "TEH PARA");
                 const master = gsap.timeline();
                 master.add(
                     revealParagraph({

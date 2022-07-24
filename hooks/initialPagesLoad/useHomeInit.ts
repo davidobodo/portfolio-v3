@@ -108,6 +108,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth }) {
     }, [device, windowInnerHeight, windowInnerWidth]);
 
     useIsomorphicLayoutEffect(() => {
+        const banner = document.querySelector('[data-key="banner"]');
         // Only create this timeline when the correct banner height has been set
         if (blackCoverRef.current) {
             const tl = gsap.timeline({
@@ -118,14 +119,27 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth }) {
                     end: "bottom top",
                     scrub: true,
                     // pin: true,
-                    pinSpacing: false
-                    // markers: true
+                    pinSpacing: false,
+                    onEnterBack: () => {
+                        banner.style.zIndex = 1;
+                        blackCoverRef.current.style.zIndex = 2;
+                    },
+                    onLeave: () => {
+                        banner.style.zIndex = -1;
+                        blackCoverRef.current.style.zIndex = -1;
+                    }
+                    // markers: true,
                 }
             });
             tl.to(blackCoverRef.current, {
                 scaleY: 1,
                 transformOrigin: "top"
             });
+
+            // tl.then(() => {
+            //     console.log("THIS TIMELINE JUST GOT COMPLETED");
+
+            // });
         }
     }, []);
 

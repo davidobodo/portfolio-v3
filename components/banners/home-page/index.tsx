@@ -18,7 +18,7 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 
     return (
         <>
-            <div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
+            <div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }} data-key="banner">
                 <div className={styles.topSection}>
                     <div className={styles.topSectionTexts}>
                         <div data-key="field">

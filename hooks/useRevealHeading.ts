@@ -14,8 +14,8 @@ export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidt
                     start: "top 80%",
                     end: "top center",
                     toggleActions: "restart complete pause reverse",
-                    scrub: true,
-                    markers: true
+                    scrub: true
+                    // markers: true
                 }
             });
             tl.to(titleTexts, {
