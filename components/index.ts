@@ -19,7 +19,6 @@ import Projects, { ProjectListView } from "./projects";
 
 const { Button, Radio } = Atoms;
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText } = HomePage;
-const { Grid } = ProjectsPage;
 const { SingleLetter } = LettersPage;
 
 export {
@@ -34,7 +33,6 @@ export {
     Contact,
     ScrollAlert,
     Banners,
-    Grid,
     Nav,
     Radio,
     SingleLetter,

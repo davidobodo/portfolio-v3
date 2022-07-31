@@ -86,11 +86,11 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            <BannerCurtain containerRef={blackCoverRef} />
-            <Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
+            {/* <BannerCurtain containerRef={blackCoverRef} /> */}
+            {/* <Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} /> */}
             <Layout.DarkSection>
                 <>
-                    <About aboutListRef={aboutListRef} />
+                    {/* <About aboutListRef={aboutListRef} />
                     <Work
                         workContainerRef={workContainerRef}
                         workTabsRef={workTabsRef}
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
                         mobileSkillsContainerRef={mobileSkillsContainerRef}
                         mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
                     />
-                    <Thoughts.Two textWrapperRef={thoughtTwoText} />
+                    <Thoughts.Two textWrapperRef={thoughtTwoText} /> */}
 
                     <Projects projectTitleRef={projectTitleRef} onViewProject={onSelectProject} location="home" />
                 </>
