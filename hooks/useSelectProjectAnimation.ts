@@ -11,8 +11,10 @@ export default function useSelectProjectAnimation() {
 
     // Project was clicked on
     const onSelectProject = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-        sourceElem.current = document.querySelector("[data-key='project-box']");
-        const id = e.currentTarget.dataset.id as string;
+        console.log(e.target, 'gfhgfhgf')
+        const {id, type } = e.currentTarget.dataset
+        sourceElem.current =  type === 'list-item' ?document.querySelector("[data-key='project-box']") : e.currentTarget;
+        // const id = e.currentTarget.dataset.id as string;
         setSelectedProjectId(id);
         setIsOpen(true);
 
@@ -98,7 +100,8 @@ function applyFlipAnim({
         .fromTo(
             destination,
             {
-                x: sourceRect.left - destinationRect.left - 200,
+                // x: sourceRect.left - destinationRect.left - 200,
+                x: sourceRect.left - destinationRect.left,
                 y: sourceRect.top - destinationRect.top,
                 scale: sourceRect.width / destinationRect.width,
                 duration: 0.2,

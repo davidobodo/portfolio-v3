@@ -128,7 +128,6 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth }) {
                         banner.style.zIndex = -1;
                         blackCoverRef.current.style.zIndex = -1;
                     }
-                    // markers: true,
                 }
             });
             tl.to(blackCoverRef.current, {

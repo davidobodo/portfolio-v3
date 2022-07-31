@@ -1,18 +1,30 @@
+
+@import "#/styles/globals.module.scss";
+
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
-    padding-bottom: 20vh;
+   padding-bottom: 20vh;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+
+    @media (min-width: $md) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    }
 
     .box {
         height: 250px;
-        height: 350px;
+        height: 200px;
         background-color: var(--lighter);
         position: relative;
         cursor: pointer;
         overflow: hidden;
         // border: 0.1px solid transparent;
         // opacity: 0;
+
+        @media (min-width: $md) {
+            height: 350px;
+        }
 
         .boxImage {
             width: 100%;

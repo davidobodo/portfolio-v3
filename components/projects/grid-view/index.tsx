@@ -3,18 +3,18 @@ import { PROJECTS } from "#/constants/projects";
 import { TProject } from "#/interfaces";
 export function ProjectsGridView({
     activeKey,
-    onSelectProject,
+    onViewProject,
     location
 }: {
     activeKey: string;
-    onSelectProject: (item: TProject) => void;
+    onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
     location: "home" | "projects";
 }) {
     const displayedProjects = location === "home" ? PROJECTS.slice(0, 5) : PROJECTS;
     return (
         <div className={styles.container}>
             {displayedProjects.map((item, i) => {
-                const { tech, bgImage } = item;
+                const { tech, bgImage, id } = item;
 
                 let isLocked = false;
 
@@ -30,7 +30,9 @@ export function ProjectsGridView({
                         key={i}
                         className={isLocked ? styles.box + " " + styles.locked : styles.box + " " + styles.free}
                         data-key="project"
-                        onClick={() => onSelectProject(item)}
+                        data-id={id}
+                        data-type="box-item"
+                        onClick={onViewProject}
                     >
                         <div
                             className={styles.boxImage}
