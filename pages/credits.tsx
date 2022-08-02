@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, About, BannerCurtain } from "#/components";
-import { useCreditsInit, useProjectsLettersInit, HomePageHooks } from "#/hooks";
+import { useCreditsInit, useProjectsLettersInit, HomePageHooks, useWindowSize } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { fadeIn } from "#/utils/animations/atoms";
 const { useHomeAboutAnim } = HomePageHooks;
@@ -81,7 +81,12 @@ export default function Credit() {
 		},
 	];
 
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef } = useProjectsLettersInit();
+	useWindowSize();
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
+		windowInnerHeight,
+		windowInnerWidth,
+	});
 	const { aboutListRef } = useHomeAboutAnim();
 
 	const note = [
@@ -106,17 +111,16 @@ export default function Credit() {
 
 			<BannerCurtain containerRef={blackCoverRef} />
 
-			{/* <div className={styles.main}> */}
 			<Banners.OtherPages
 				texts={["Design", "_____________", "Credits", "_____________"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}
 				bannerRef={bannerRef}
+				bannerHeight={bannerHeight}
 			/>
 
 			<Layout.DarkSection>
 				<div className={styles.container}>
-					{/* <h1>Design Credits</h1> */}
 					<div className={styles.summary}>
 						<About aboutListRef={aboutListRef} textsList={note} />
 					</div>

@@ -195,6 +195,19 @@ class AnimHomePage {
 	}
 }
 
+//--------------------------------------------
+// PROJECTS PAGE
+//--------------------------------------------
+class AnimsProjectsPage {
+	animateFilterSection({ container }) {
+		const tl = gsap.timeline({ paused: true });
+
+		tl.to(container, { x: 0 });
+
+		return tl;
+	}
+}
+
 function expandImage(imageNode: HTMLImageElement) {
 	gsap.to(imageNode, {
 		scrollTrigger: {
@@ -224,4 +237,6 @@ function fadeIn({ node }: { node: Element }) {
 }
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnims = new AnimHomePage();
-export { expandImage, animPageLoaders, homePageAnims, AnimPageLoaders, fadeIn };
+const projectsPageAnima = new AnimsProjectsPage();
+
+export { expandImage, animPageLoaders, homePageAnims, AnimPageLoaders, fadeIn, projectsPageAnima };

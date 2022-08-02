@@ -2,10 +2,15 @@ import styles from "./styles.module.scss";
 import { Ref } from "react";
 import { ProjectListView } from "./list-view";
 import { ProjectsGridView } from "./grid-view";
+import { PROJECTS } from "#/constants/projects";
+
 export default function Project({
 	projectTitleRef,
 	onViewProject,
 	location,
+	displayedProjects,
+	filterBy,
+	filterKey,
 }: {
 	projectTitleRef: Ref<HTMLHeadingElement>;
 	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
@@ -14,10 +19,22 @@ export default function Project({
 	return (
 		<>
 			<div className={styles.gridWrapper}>
-				<ProjectsGridView location={location} onViewProject={onViewProject} />
+				<ProjectsGridView
+					location={location}
+					onViewProject={onViewProject}
+					displayedProjects={displayedProjects}
+					filterBy={filterBy}
+					filterKey={filterKey}
+				/>
 			</div>
 			<div className={styles.listWrapper}>
-				<ProjectListView onViewProject={onViewProject} location={location} />
+				<ProjectListView
+					onViewProject={onViewProject}
+					location={location}
+					displayedProjects={displayedProjects}
+					filterBy={filterBy}
+					filterKey={filterKey}
+				/>
 			</div>
 		</>
 	);
