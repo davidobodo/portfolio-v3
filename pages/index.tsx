@@ -26,6 +26,7 @@ import {
 	useSelectProjectAnimation,
 	useHomeInit,
 } from "#/hooks";
+import { PROJECTS } from "#/constants/projects";
 import Router from "next/router";
 
 const { useHomeAboutAnim, useWorkAnimation, useSkillsAnimation } = HomePageHooks;
@@ -76,7 +77,7 @@ const Home: NextPage = () => {
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
 			<Layout.DarkSection>
-				<>
+				<div className={styles.content}>
 					<About aboutListRef={aboutListRef} />
 					<Work
 						workContainerRef={workContainerRef}
@@ -101,8 +102,8 @@ const Home: NextPage = () => {
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<ProjectsHeading projectTitleRef={projectTitleRef} />
-					<Projects onViewProject={onSelectProject} location="home" />
-				</>
+					<Projects onViewProject={onSelectProject} location="home" displayedProjects={PROJECTS.slice(0, 5)} />
+				</div>
 			</Layout.DarkSection>
 			<ProjectModal
 				selectedProjectId={selectedProjectId}

@@ -1,94 +1,94 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-    margin: auto;
-    margin-bottom: 20vh;
-    padding-left: 2rem;
-    padding-right: 2rem;
+	margin: auto;
+	margin-bottom: 20vh;
+	padding-left: 2rem;
+	padding-right: 2rem;
 
-    @media (min-width: $md) {
-        padding-top: 15vh;
-        max-width: var(--mini-desktop-max-width);
-    }
+	@media (min-width: $md) {
+		padding-top: 15vh;
+		max-width: var(--mini-desktop-max-width);
+	}
 
-    @media (min-width: $xxl) {
-        max-width: var(--max-width);
-    }
+	@media (min-width: $xxl) {
+		max-width: var(--max-width);
+	}
 
-    .paragraphWrapper {
-        margin-bottom: 8.4rem;
+	.paragraphWrapper {
+		margin-bottom: 8.4rem;
 
-        @media (min-width: $lg) {
-            width: 50%;
-        }
+		@media (min-width: $lg) {
+			width: 50%;
+		}
 
-        .paragraph {
-            margin-bottom: 2.4rem;
-            display: flex;
-            flex-wrap: wrap;
+		.paragraph {
+			margin-bottom: 2.4rem;
+			display: flex;
+			flex-wrap: wrap;
 
-            .wordWrapper {
-                font-size: 1.8rem;
-                font-family: "sf-pro-bold";
-                color: var(--ash3);
-                letter-spacing: -0.015em;
-                line-height: 2;
-                overflow: hidden;
+			.wordWrapper {
+				font-size: 1.8rem;
+				font-family: "sf-pro-bold";
+				color: var(--ash3);
+				letter-spacing: -0.015em;
+				line-height: 2;
+				overflow: hidden;
 
-                @media (min-width: $md) {
-                    font-size: 2.4rem;
-                }
+				@media (min-width: $md) {
+					font-size: 2.4rem;
+				}
 
-                .word {
-                    display: inline-block;
-                    transform: translateY(100%);
-                }
-            }
+				.word {
+					display: inline-block;
+					transform: translateY(100%);
+				}
+			}
 
-            strong {
-                .wordWrapper {
-                    color: var(--white);
-                }
-            }
-        }
-    }
+			strong {
+				.wordWrapper {
+					color: var(--white);
+				}
+			}
+		}
+	}
 }
 
 .imageWrapper {
-    margin-bottom: 20vh;
-    margin-left: auto;
-    @media (min-width: $md) {
-        width: 50%;
-        display: flex;
-        justify-content: flex-end;
-    }
+	margin-bottom: 20vh;
+	margin-left: auto;
+	@media (min-width: $md) {
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+	}
 
-    .image {
-        width: 100%;
-        background-color: #28282b;
-        // height: 50vh;
-        background-size: cover;
-        background-position: center;
-        padding-top: 100vh;
-        // margin-right: 10rem;
+	.image {
+		width: 100%;
+		background-color: #28282b;
+		// height: 50vh;
+		background-size: cover;
+		background-position: center;
+		padding-top: 100vh;
+		// margin-right: 10rem;
 
-        filter: url("https://dennissnellenberg.com/assets/img/DSC07312-2.jpg");
-        // filter: url("https://images.unsplash.com/photo-1553608578-d6fd2621a3d8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1hbiUyMHNpdHRpbmclMjBvbiUyMGNoYWlyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800");
-        filter: gray;
-        /* IE6-9 */
-        -webkit-filter: grayscale(1);
-        /* Google Chrome & Safari 6+ */
-        transition: all 500ms ease-in-out;
+		filter: url("https://dennissnellenberg.com/assets/img/DSC07312-2.jpg");
+		// filter: url("https://images.unsplash.com/photo-1553608578-d6fd2621a3d8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1hbiUyMHNpdHRpbmclMjBvbiUyMGNoYWlyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800");
+		filter: gray;
+		/* IE6-9 */
+		-webkit-filter: grayscale(1);
+		/* Google Chrome & Safari 6+ */
+		transition: all 500ms ease-in-out;
 
-        &:hover {
-            filter: none;
-            -webkit-filter: grayscale(0);
-        }
+		&:hover {
+			filter: none;
+			-webkit-filter: grayscale(0);
+		}
 
-        width: 0%;
+		width: 0%;
 
-        @media (min-width: $lg) {
-            // width: 50%;
-        }
-    }
+		@media (min-width: $lg) {
+			// width: 50%;
+		}
+	}
 }

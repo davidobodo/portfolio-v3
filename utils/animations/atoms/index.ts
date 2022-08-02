@@ -175,7 +175,7 @@ class AnimHomePage {
 		trigger,
 		words,
 		start = "top 60%",
-		end = "top 40%",
+		end = "bottom 40%",
 	}: {
 		trigger: Element;
 		words: NodeListOf<Element>;

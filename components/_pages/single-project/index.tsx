@@ -124,18 +124,22 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 			)}
 
 			<div className={styles.mobileNavigator}>
-				{prevProject && (
+				{prevProject ? (
 					<button value="previous" aria-label="previous" onClick={() => onGoToProject(prevProject.id)}>
 						<ChevronLeft />
 						<span>{prevProject.title}</span>
 					</button>
+				) : (
+					<div></div>
 				)}
 
-				{nextProject && (
+				{nextProject ? (
 					<button value="next" aria-label="previous" onClick={() => onGoToProject(nextProject.id)}>
 						<ChevronRight />
 						<span>{nextProject.title}</span>
 					</button>
+				) : (
+					<div></div>
 				)}
 			</div>
 		</div>
