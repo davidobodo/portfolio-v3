@@ -1,7 +1,6 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-	// width: 600px;
 	margin: auto;
 	cursor: pointer;
 	position: relative;
@@ -64,12 +63,12 @@
 }
 
 .letterWrapper {
-	margin-bottom: 6rem;
 	padding-bottom: 6rem;
 	border-bottom: 0.01px solid rgba(255, 255, 255, 0.2);
 	position: relative;
 	opacity: 0;
 	transform: translateY(100px);
+	margin-bottom: 6rem;
 
 	&:last-child {
 		margin-bottom: 0px;

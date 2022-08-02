@@ -44,11 +44,6 @@ export default function SingleLetter({
 						{date} | {time} read
 					</p>
 					<p>{summary}</p>
-					{/* <p>
-                        {tags.map((item) => {
-                            return <span key={item}>#{item}</span>;
-                        })}
-                    </p> */}
 
 					<ul>
 						{tags.map((item) => {
