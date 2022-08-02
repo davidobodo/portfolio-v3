@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { NextPage } from "next";
-import { Noise, Banners, Nav, ProjectListView, ProjectModal, Layout, Projects } from "#/components";
+import { Noise, Banners, Nav, ProjectListView, ProjectModal, Layout, Projects, BannerCurtain } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import { useSelectProjectAnimation, useProjectsLettersInit } from "#/hooks";
 const ProjectsPage: NextPage = () => {
-	const { textWrapperRef, scrollIndicatorRef } = useProjectsLettersInit();
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef } = useProjectsLettersInit();
 
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
 		useSelectProjectAnimation();
@@ -18,17 +18,16 @@ const ProjectsPage: NextPage = () => {
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
+				<BannerCurtain containerRef={blackCoverRef} />
+
 				<Banners.OtherPages
 					texts={["Projects", "Playground", "xperiments", "Replicas"]}
 					textWrapperRef={textWrapperRef}
 					scrollIndicatorRef={scrollIndicatorRef}
+					bannerRef={bannerRef}
 				/>
 				<Layout.DarkSection>
 					<div className={styles.content}>
-						{/* <section className={styles.gridWrapper}>
-                            <ProjectListView location="projects" onViewProject={onSelectProject} />
-                        </section> */}
-
 						<Projects onViewProject={onSelectProject} location="profile" />
 					</div>
 				</Layout.DarkSection>

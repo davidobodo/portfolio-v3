@@ -1,0 +1,15 @@
+@import "#/styles/globals.module.scss";
+
+.logo {
+	position: fixed;
+	z-index: 1003;
+	top: 2rem;
+	left: 2rem;
+	width: 60px;
+
+	@media (min-width: $md) {
+		top: 4rem;
+		left: 5rem;
+		width: 79px;
+	}
+}

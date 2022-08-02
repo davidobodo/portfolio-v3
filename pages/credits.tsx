@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, About } from "#/components";
+import { Noise, Nav, Layout, Banners, About, BannerCurtain } from "#/components";
 import { useCreditsInit, useProjectsLettersInit, HomePageHooks } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { fadeIn } from "#/utils/animations/atoms";
@@ -81,7 +81,7 @@ export default function Credit() {
 		},
 	];
 
-	const { textWrapperRef, scrollIndicatorRef } = useProjectsLettersInit();
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef } = useProjectsLettersInit();
 	const { aboutListRef } = useHomeAboutAnim();
 
 	const note = [
@@ -104,41 +104,43 @@ export default function Credit() {
 			</Head>
 			<Nav />
 
-			<div className={styles.main}>
-				<Banners.OtherPages
-					texts={["Design", "_____________", "Credits", "_____________"]}
-					textWrapperRef={textWrapperRef}
-					scrollIndicatorRef={scrollIndicatorRef}
-				/>
+			<BannerCurtain containerRef={blackCoverRef} />
 
-				<Layout.DarkSection>
-					<div className={styles.container}>
-						{/* <h1>Design Credits</h1> */}
-						<div className={styles.summary}>
-							<About aboutListRef={aboutListRef} textsList={note} />
-						</div>
+			{/* <div className={styles.main}> */}
+			<Banners.OtherPages
+				texts={["Design", "_____________", "Credits", "_____________"]}
+				textWrapperRef={textWrapperRef}
+				scrollIndicatorRef={scrollIndicatorRef}
+				bannerRef={bannerRef}
+			/>
 
-						<section>
-							<h3>Sites/Resources</h3>
-							<ul className={styles.list}>
-								{SITES.map((item, i) => {
-									const { link, description } = item;
-									return <ListItem key={i} link={link} description={description} />;
-								})}
-							</ul>
-						</section>
-						<section>
-							<h3>People</h3>
-							<ul className={styles.list}>
-								{PEOPLE.map((item, i) => {
-									const { link, description } = item;
-									return <ListItem key={i} link={link} description={description} />;
-								})}
-							</ul>
-						</section>
+			<Layout.DarkSection>
+				<div className={styles.container}>
+					{/* <h1>Design Credits</h1> */}
+					<div className={styles.summary}>
+						<About aboutListRef={aboutListRef} textsList={note} />
 					</div>
-				</Layout.DarkSection>
-			</div>
+
+					<section>
+						<h3>Sites/Resources</h3>
+						<ul className={styles.list}>
+							{SITES.map((item, i) => {
+								const { link, description } = item;
+								return <ListItem key={i} link={link} description={description} />;
+							})}
+						</ul>
+					</section>
+					<section>
+						<h3>People</h3>
+						<ul className={styles.list}>
+							{PEOPLE.map((item, i) => {
+								const { link, description } = item;
+								return <ListItem key={i} link={link} description={description} />;
+							})}
+						</ul>
+					</section>
+				</div>
+			</Layout.DarkSection>
 
 			<Noise />
 		</>
