@@ -3,10 +3,14 @@ import styles from "#/styles/_pages/letters.module.scss";
 import { NextPage } from "next";
 import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain } from "#/components";
 import { LETTERS } from "#/constants/letters";
-import { useProjectsLettersInit } from "#/hooks";
+import { useProjectsLettersInit, useWindowSize } from "#/hooks";
 
 const Letters: NextPage = () => {
-	const { textWrapperRef, scrollIndicatorRef, bannerRef, blackCoverRef } = useProjectsLettersInit();
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { textWrapperRef, scrollIndicatorRef, bannerRef, blackCoverRef, bannerHeight } = useProjectsLettersInit({
+		windowInnerHeight,
+		windowInnerWidth,
+	});
 
 	return (
 		<>
@@ -22,6 +26,7 @@ const Letters: NextPage = () => {
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}
 				bannerRef={bannerRef}
+				bannerHeight={bannerHeight}
 			/>
 			<Layout.DarkSection>
 				<div className={styles.container}>

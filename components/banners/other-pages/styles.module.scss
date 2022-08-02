@@ -2,14 +2,16 @@
 
 .container {
 	background-color: var(--light-brown);
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	padding: 15rem 5rem 5rem;
 	justify-content: space-between;
-	// position: fixed;
 	width: 100%;
 	z-index: var(--z-index-banner);
+	padding: 10rem 2rem 2rem;
+
+	@media (min-width: $md) {
+		padding: 15rem 5rem 5rem;
+	}
 
 	.logo {
 		position: absolute;
@@ -24,63 +26,92 @@
 		}
 	}
 
-	h1 {
-		font-size: 12.5vw;
-		letter-spacing: -2px;
-		text-transform: uppercase;
-		line-height: 0.8em;
-		font-family: "sf-pro-medium";
-		font-weight: 500;
+	.textWrapper {
+		flex: 1;
 		display: flex;
-		position: relative;
+		flex-direction: column;
+		justify-content: space-between;
 
-		.lineWrapper {
+		@media (min-width: $md) {
+			display: block;
+		}
+
+		h1 {
+			font-size: 12.5vw;
+			letter-spacing: -2px;
+			text-transform: uppercase;
+			line-height: 0.8em;
+			font-family: "sf-pro-medium";
+			font-weight: 500;
+			display: flex;
 			position: relative;
 
-			.letterWrapper {
-				overflow: hidden;
-				display: inline-flex;
+			.lineWrapper {
 				position: relative;
-				z-index: 1;
 
-				.letter {
-					transform: translateX(-100%);
+				.letterWrapper {
+					overflow: hidden;
+					display: inline-flex;
+					position: relative;
+					z-index: 1;
+
+					.letter {
+						transform: translateX(-100%);
+					}
+				}
+
+				.bg {
+					background: linear-gradient(to right, black, var(--brown));
+					position: absolute;
+					width: 0%;
+					height: 100%;
+					left: 0px;
 				}
 			}
+		}
 
-			.bg {
-				background: linear-gradient(to right, black, var(--brown));
-				position: absolute;
-				width: 0%;
-				height: 100%;
-				left: 0px;
+		.firstPair {
+			h1 {
+				&:last-child {
+					color: var(--light-brown);
+
+					@media (min-width: $md) {
+						margin-left: 10vw;
+					}
+				}
 			}
 		}
 
-		//COLOR CHANGE
-		&:nth-child(2),
-		&:nth-child(4) {
-			.letter {
-				color: var(--light-brown);
-			}
-		}
+		.secondPair {
+			h1 {
+				&:first-child {
+					@media (min-width: $md) {
+						margin-left: 20vw;
+					}
+				}
+				&:last-child {
+					color: var(--light-brown);
 
-		//INITIAL DISPLACEMENT
-		&:nth-child(2) {
-			margin-left: 10vw;
-		}
-		&:nth-child(3) {
-			margin-left: 20vw;
-		}
-		&:nth-child(4) {
-			display: flex;
-			justify-content: flex-end;
+					@media (min-width: $md) {
+						display: flex;
+						justify-content: flex-end;
+					}
+				}
+			}
 		}
 	}
 
 	.bottom {
 		display: flex;
 		justify-content: space-between;
+
+		position: absolute;
+		right: 2rem;
+		bottom: 2rem;
+
+		@media (min-width: $md) {
+			position: static;
+		}
 	}
 }
 

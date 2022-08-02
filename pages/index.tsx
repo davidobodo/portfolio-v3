@@ -33,11 +33,7 @@ const { useHomeAboutAnim, useWorkAnimation, useSkillsAnimation } = HomePageHooks
 const Home: NextPage = () => {
 	useScrollToTop();
 	useRegisterGsapScrollTrigger();
-	const {
-		innerHeight: windowInnerHeight,
-		innerWidth: windowInnerWidth,
-		outerHeight: windowOuterHeight,
-	} = useWindowSize();
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
 	const { bannerRef, blackCoverRef, bannerHeight } = useHomeInit({ windowInnerHeight, windowInnerWidth });
 	const { aboutListRef } = useHomeAboutAnim();
 	const {

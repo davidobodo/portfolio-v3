@@ -2,22 +2,24 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { usePageLeaveAnimationContext } from "#/state";
 import { animPageLoaders } from "#/utils/animations/atoms";
-import { useIsomorphicLayoutEffect } from "#/hooks";
+import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
 
 // Used in boths projects and letters page
-export default function useProjectsLettersInit() {
+export default function useProjectsLettersInit({ windowInnerHeight, windowInnerWidth }) {
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
 
-	useEffect(() => {
+	const textRefSelector = gsap.utils.selector(textWrapperRef);
+
+	useIsomorphicLayoutEffect(() => {
 		if (textWrapperRef.current && scrollIndicatorRef.current) {
 			if (pageLeaveAnimation) {
 				const layers = document.querySelectorAll("[data-key='layer']");
 				// Navigating from another page to this page
 				const master = gsap.timeline();
-				master.add(openNoiseLayers(layers)).add(bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current));
+				master.add(openNoiseLayers(layers)).add(bannerAnimation(textRefSelector("h1"), scrollIndicatorRef.current));
 
 				return () => {
 					master.kill();
@@ -32,7 +34,7 @@ export default function useProjectsLettersInit() {
 				master
 					.add(drawSvgLogo(logo, logoChildren))
 					.add(openNoiseLayers(layers))
-					.add(bannerAnimation(textWrapperRef.current, scrollIndicatorRef.current));
+					.add(bannerAnimation(textRefSelector("h1"), scrollIndicatorRef.current));
 
 				return () => {
 					master.kill();
@@ -41,6 +43,7 @@ export default function useProjectsLettersInit() {
 		}
 	}, []);
 
+	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 	//-----------------------------------------
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
@@ -82,11 +85,12 @@ export default function useProjectsLettersInit() {
 		scrollIndicatorRef,
 		blackCoverRef,
 		bannerRef,
+		bannerHeight,
 	};
 }
 
-function bannerAnimation(node: HTMLDivElement, scrollIndicatorNode: HTMLDivElement) {
-	const { children } = node;
+function bannerAnimation(children, scrollIndicatorNode: HTMLDivElement) {
+	// const { children } = node;
 	const tl = gsap.timeline({});
 
 	//CREATE TIMELINE ACTIONS

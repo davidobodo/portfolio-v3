@@ -2,9 +2,14 @@ import Head from "next/head";
 import { NextPage } from "next";
 import { Noise, Banners, Nav, ProjectListView, ProjectModal, Layout, Projects, BannerCurtain } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useSelectProjectAnimation, useProjectsLettersInit } from "#/hooks";
+import { useSelectProjectAnimation, useProjectsLettersInit, useWindowSize } from "#/hooks";
+
 const ProjectsPage: NextPage = () => {
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef } = useProjectsLettersInit();
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
+		windowInnerHeight,
+		windowInnerWidth,
+	});
 
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
 		useSelectProjectAnimation();
@@ -25,6 +30,7 @@ const ProjectsPage: NextPage = () => {
 					textWrapperRef={textWrapperRef}
 					scrollIndicatorRef={scrollIndicatorRef}
 					bannerRef={bannerRef}
+					bannerHeight={bannerHeight}
 				/>
 				<Layout.DarkSection>
 					<div className={styles.content}>

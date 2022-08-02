@@ -10,11 +10,12 @@ import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useScrollToTop from "./useScollToTop";
 import useRevealHeading from "./useRevealHeading";
 import useSelectProjectAnimation, {
-    applyFlipAnim,
-    removeCurrentProject,
-    displayNextProject
+	applyFlipAnim,
+	removeCurrentProject,
+	displayNextProject,
 } from "./useSelectProjectAnimation";
 import usePageTransition from "./usePageTransition";
+import useSetBannerHeight from "./useSetBannerHeight";
 
 import initPageLoads from "./initialPagesLoad";
 
@@ -22,28 +23,29 @@ const { useHomeInit, useCreditsInit, useProjectsLettersInit, useSingleProjectIni
 const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export {
-    HomePageHooks,
-    useWindowSize,
-    useRegisterGsapScrollTrigger,
-    usePinRadialGradient,
-    useRevealParagraph,
-    useCalculateFooterHeight,
-    useScrollToTop,
-    useRevealHeading,
-    useSelectProjectAnimation,
-    usePageTransition,
-    applyFlipAnim,
-    removeCurrentProject,
-    displayNextProject,
-    //---------------------------
-    // PAGES INIT
-    //---------------------------
-    useHomeInit,
-    useCreditsInit,
-    useProjectsLettersInit,
-    useSingleProjectInit,
-    //---------------------------
-    // UTILS
-    //---------------------------
-    useIsomorphicLayoutEffect
+	HomePageHooks,
+	useWindowSize,
+	useRegisterGsapScrollTrigger,
+	usePinRadialGradient,
+	useRevealParagraph,
+	useCalculateFooterHeight,
+	useScrollToTop,
+	useRevealHeading,
+	useSelectProjectAnimation,
+	usePageTransition,
+	applyFlipAnim,
+	removeCurrentProject,
+	displayNextProject,
+	useSetBannerHeight,
+	//---------------------------
+	// PAGES INIT
+	//---------------------------
+	useHomeInit,
+	useCreditsInit,
+	useProjectsLettersInit,
+	useSingleProjectInit,
+	//---------------------------
+	// UTILS
+	//---------------------------
+	useIsomorphicLayoutEffect,
 };

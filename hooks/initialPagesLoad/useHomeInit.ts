@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
 import { animPageLoaders, homePageAnims } from "#/utils/animations/atoms";
 import { usePageLeaveAnimationContext } from "#/state";
-import { useIsomorphicLayoutEffect } from "#/hooks";
+import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
 const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
 const { bannerAnimation } = homePageAnims;
@@ -83,29 +83,9 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth }) {
 	//-----------------------------------------
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
-	const [bannerHeight, setBannerHeight] = useState<number>();
-	const [device, setDevice] = useState("");
 	const blackCoverRef = useRef(null);
 
-	useIsomorphicLayoutEffect(() => {
-		// Detect users device
-		import("detect.js").then((detectModule) => {
-			const ua = detectModule.default.parse(navigator.userAgent);
-			setDevice(ua.device.type);
-		});
-
-		// Irrespective of users device we would set the banner height once
-		if (windowInnerHeight) {
-			setBannerHeight(windowInnerHeight);
-		}
-	}, []);
-
-	// If user is on a desktop, then change the banner height when the window resizes
-	useIsomorphicLayoutEffect(() => {
-		if (device === "Desktop" && windowInnerHeight) {
-			setBannerHeight(windowInnerHeight);
-		}
-	}, [device, windowInnerHeight, windowInnerWidth]);
+	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
 	useIsomorphicLayoutEffect(() => {
 		const banner = document.querySelector('[data-key="banner"]');
