@@ -21,7 +21,7 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 					toggleActions: "restart pause reverse pause",
 					endTrigger: darkSectionRef.current,
 					pin: darkSectionRadialGradientRef.current,
-					markers: true,
+					// markers: true,
 				},
 			});
 			// setTl(tl);

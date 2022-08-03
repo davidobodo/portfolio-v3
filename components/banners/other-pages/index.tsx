@@ -12,7 +12,7 @@ export default function Banner({
 	textWrapperRef: RefObject<HTMLDivElement>;
 	scrollIndicatorRef: Ref<HTMLDivElement>;
 	bannerRef: RefObject<HTMLDivElement>;
-	bannerHeight: number;
+	bannerHeight?: number;
 }) {
 	return (
 		<>

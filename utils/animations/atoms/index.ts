@@ -199,10 +199,17 @@ class AnimHomePage {
 // PROJECTS PAGE
 //--------------------------------------------
 class AnimsProjectsPage {
-	animateFilterSection({ container }) {
+	animateFilterSection({ backdrop, sidebar, listItems }) {
 		const tl = gsap.timeline({ paused: true });
 
-		tl.to(container, { x: 0 });
+		//Fade in backdrop
+		tl.to(backdrop, { opacity: 1, visibility: "visible" });
+
+		//slide filter list in
+		tl.to(sidebar, { x: 0 });
+
+		//Stagger list items
+		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01 });
 
 		return tl;
 	}

@@ -4,89 +4,69 @@ import {
 	Noise,
 	Banners,
 	Nav,
-	ProjectListView,
 	ProjectModal,
 	Layout,
 	Projects,
 	BannerCurtain,
 	Radio,
+	Filter,
+	ProjectsFilter,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import { useSelectProjectAnimation, useProjectsLettersInit, useWindowSize } from "#/hooks";
-import { TECH_STACKS } from "#/constants/tech-stacks";
-import { PROJECT_NATURE } from "#/constants";
+
 import { PROJECTS } from "#/constants/projects";
-import { useEffect, useState, useRef, Ref } from "react";
+import { useEffect, useState, useRef, Ref, useLayoutEffect, useCallback } from "react";
 import { projectsPageAnima } from "#/utils/animations/atoms";
 import { RadialGradientAnimContext, useRadialGradientAnimContent } from "#/state";
+import gsap from "gsap";
 
 const { animateFilterSection } = projectsPageAnima;
 const ProjectsPage: NextPage = () => {
+	const darkSectionRef = useRef(null);
+	const contentRef = useRef(null);
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
 	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
 		windowInnerHeight,
 		windowInnerWidth,
 	});
-
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
 		useSelectProjectAnimation();
 
-	const [filterBy, setFilterBy] = useState("tech-stack");
-	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setFilterBy(e.target.value);
-	};
-
-	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	let filterList = [];
-
-	if (filterBy === "project-nature") {
-		filterList = [
-			{
-				key: "all",
-				label: "All",
-			},
-			...PROJECT_NATURE,
-		];
-	} else {
-		filterList = [
-			{
-				key: "all",
-				label: "All",
-			},
-			...Object.values(TECH_STACKS),
-		];
-	}
-
-	const filterWrapperRef = useRef(null);
-	const [filterSectionAnim, setFilterSectionAnim] = useState<gsap.core.Timeline>();
+	//-----------------------------------------
+	// TOGGLE FILTER
+	//-----------------------------------------
+	const filterRef = useRef(null);
+	const filterRefSelector = gsap.utils.selector(filterRef);
 	const [showFilter, setshowFilter] = useState(false);
-
+	const [filterSectionAnim, setFilterSectionAnim] = useState<gsap.core.Timeline>();
 	const onToggleFilter = () => {
 		if (!filterSectionAnim) return;
 		if (!showFilter) {
 			filterSectionAnim.play();
+			document.body.style.overflow = "hidden";
 		} else {
 			filterSectionAnim.reverse();
+			document.body.style.overflow = "auto";
 		}
 		setshowFilter(!showFilter);
 	};
 
+	// Create filter section animation
 	useEffect(() => {
+		const backdrop = filterRefSelector('[data-key="backdrop"]');
+		const sidebar = filterRefSelector('[data-key="sidebar"]');
+		const listItems = filterRefSelector('[data-key="list-items"]');
 		const tl = animateFilterSection({
-			container: filterWrapperRef.current,
+			backdrop,
+			sidebar,
+			listItems,
 		});
 		setFilterSectionAnim(tl);
 	}, []);
 
-	const [filterKey, setFilterKey] = useState("all");
-
-	const { timeline, setTimeline } = useRadialGradientAnimContent();
-
-	const onSetFilterKey = (key: string) => {
-		// Save the key
-		setFilterKey(key);
-
-		// Filter the projects by the key
+	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
+	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
 		const res = PROJECTS.filter((project) => {
 			const { type, id, tech } = project;
 
@@ -96,25 +76,11 @@ const ProjectsPage: NextPage = () => {
 				return type === key;
 			}
 		});
-
 		setDisplayedProjects(res);
 		onToggleFilter();
-	};
+	}, []);
 
-	useEffect(() => {
-		console.log("THIS GUY GOT FIRED", timeline);
-		if (timeline) {
-			timeline.scrollTrigger.refresh();
-
-			const elem = document.querySelector("[data-key='projects']");
-
-			if (elem) {
-				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-			}
-		}
-	}, [filterKey, timeline]);
-
-	const darkSectionRef = useRef(null);
+	// const { timeline, setTimeline } = useRadialGradientAnimContent();
 
 	return (
 		<>
@@ -124,6 +90,8 @@ const ProjectsPage: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav />
+			<Filter onClick={onToggleFilter} displayTriggerNode={contentRef.current} />
+
 			<BannerCurtain containerRef={blackCoverRef} />
 
 			<Banners.OtherPages
@@ -135,29 +103,13 @@ const ProjectsPage: NextPage = () => {
 			/>
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content} data-key="projects">
-					<h2 className={styles.contentTitle}>
+					<h2 className={styles.contentTitle} ref={contentRef}>
 						Viewing all <span>Typescript</span> Projects
 					</h2>
 					<div className={styles.projectsWrapper}>
-						<Projects
-							onViewProject={onSelectProject}
-							displayedProjects={displayedProjects}
-							filterBy={filterBy}
-							filterKey={filterKey}
-						/>
+						<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} />
 					</div>
-					<button className={styles.btnFilter} onClick={onToggleFilter}>
-						FILTER
-					</button>
-					<FilterSection
-						isOpen={showFilter}
-						containerRef={filterWrapperRef}
-						filterBy={filterBy}
-						onSelectFilterBy={onSelectFilterBy}
-						filterKey={filterKey}
-						filterList={filterList}
-						onSetFilterKey={onSetFilterKey}
-					/>
+					<ProjectsFilter isOpen={showFilter} containerRef={filterRef} onFilterProjects={onFilterProjects} />
 				</div>
 			</Layout.DarkSection>
 			<Noise />
@@ -174,59 +126,3 @@ const ProjectsPage: NextPage = () => {
 };
 
 export default ProjectsPage;
-
-function FilterSection({
-	isOpen,
-	containerRef,
-	filterBy,
-	onSelectFilterBy,
-	filterKey,
-	filterList,
-	onSetFilterKey,
-}: {
-	isOpen: boolean;
-	containerRef: Ref<HTMLDivElement>;
-}) {
-	return (
-		<aside className={styles.aside} ref={containerRef}>
-			<div className={styles.filter}>
-				<h4>Filter by</h4>
-
-				<div className={styles.filterCheck}>
-					<label htmlFor="tech-stack">Tech Stack</label>
-					<Radio
-						id="tech-stack"
-						name="filter"
-						value="tech-stack"
-						onchange={onSelectFilterBy}
-						checked={filterBy === "tech-stack"}
-					/>
-				</div>
-				<div className={styles.filterCheck}>
-					<label htmlFor="project-nature">Project Nature</label>
-					<Radio
-						id="project-nature"
-						name="filter"
-						value="project-nature"
-						onchange={onSelectFilterBy}
-						checked={filterBy === "project-nature"}
-					/>
-				</div>
-			</div>
-			{/* <h4>Tech stack</h4> */}
-			<ul>
-				{filterList.map((item) => {
-					const { key } = item;
-					return (
-						<li key={item.key} className={filterKey === item.key ? styles.active : ""}>
-							<button onClick={() => onSetFilterKey(key)} data-key="tech-stack">
-								<span></span>
-								{item.label}
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-		</aside>
-	);
-}

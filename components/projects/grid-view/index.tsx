@@ -1,14 +1,9 @@
 import styles from "./styles.module.scss";
 import { TProject } from "#/interfaces";
 export function ProjectsGridView({
-	activeKey,
 	onViewProject,
-	location,
 	displayedProjects,
-	filterBy,
-	filterKey,
 }: {
-	activeKey: string;
 	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
@@ -19,19 +14,6 @@ export function ProjectsGridView({
 
 				let isLocked = false;
 
-				// if (activeKey !== "all") {
-				//     if (!tech.includes(activeKey)) {
-				//         isLocked = true;
-				//     }
-				// }
-
-				let hide = false;
-
-				if (filterBy === "tech-stack") {
-					hide = !!tech.includes(filterKey);
-				}
-
-				// if (isLocked) return null;
 				return (
 					<div
 						key={i}

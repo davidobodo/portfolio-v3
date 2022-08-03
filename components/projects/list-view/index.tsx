@@ -2,16 +2,14 @@ import styles from "./styles.module.scss";
 import useBoxAnimation from "../useBoxAnimation";
 
 import Box from "../floating-box";
+import { TProject } from "#/interfaces";
 
 export function ProjectListView({
 	onViewProject,
-	location,
 	displayedProjects,
-	filterBy,
-	filterKey,
 }: {
 	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
-	location: "home" | "projects";
+	displayedProjects: TProject[];
 }) {
 	const { imgRef, btnRef, textRef, onMouseEnter, onMouseLeave, isActive, onEnterElement, listRef } = useBoxAnimation();
 
@@ -27,16 +25,6 @@ export function ProjectListView({
 			<ul className={styles.projectsList} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={listRef}>
 				{displayedProjects.map((item, i) => {
 					const { title, type, id, tech } = item;
-
-					// let hide = false;
-
-					// if (filterBy === "tech-stack") {
-					// 	hide = !!tech.includes(filterKey);
-					// }
-
-					// console.log(hide, "THE HIDE");
-
-					// if (hide) return null;
 
 					return (
 						<ProjectListItem
