@@ -1,33 +1,41 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, RefObject, useState } from "react";
 import gsap from "gsap";
+import { useRadialGradientAnimContent } from "#/state";
 
-export default function usePinRadialGradient() {
-    const darkSectionRef = useRef(null);
-    const darkSectionRadialGradientRef = useRef(null);
+export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRef: RefObject<HTMLDivElement> }) {
+	const darkSectionRadialGradientRef = useRef(null);
+	const [tl, setTl] = useState<gsap.core.Timeline>();
 
-    //-------------------------------------------------
-    // PIN RADIAL GRADIENT TO BLACK SECTION CENTER
-    //-------------------------------------------------
-    useEffect(() => {
-        if (darkSectionRef.current) {
-            gsap.to(
-                {},
-                {
-                    scrollTrigger: {
-                        trigger: darkSectionRef.current,
-                        start: "top top",
-                        end: "bottom bottom",
-                        toggleActions: "restart pause reverse pause",
-                        endTrigger: darkSectionRef.current,
-                        pin: darkSectionRadialGradientRef.current
-                    }
-                }
-            );
-        }
-    }, [darkSectionRef]);
+	const { timeline, setTimeline } = useRadialGradientAnimContent();
 
-    return {
-        darkSectionRef,
-        darkSectionRadialGradientRef
-    };
+	//-------------------------------------------------
+	// PIN RADIAL GRADIENT TO BLACK SECTION CENTER
+	//-------------------------------------------------
+	useEffect(() => {
+		if (darkSectionRef.current) {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: darkSectionRef.current,
+					start: "top top",
+					end: "bottom bottom",
+					toggleActions: "restart pause reverse pause",
+					endTrigger: darkSectionRef.current,
+					pin: darkSectionRadialGradientRef.current,
+					markers: true,
+				},
+			});
+			// setTl(tl);
+			setTimeline(tl);
+		}
+	}, [darkSectionRef]);
+
+	const recalculateGradient = () => {
+		timeline.scrollTrigger.refresh();
+	};
+
+	return {
+		darkSectionRef,
+		darkSectionRadialGradientRef,
+		recalculateGradient,
+	};
 }

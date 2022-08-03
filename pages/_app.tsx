@@ -1,28 +1,39 @@
 import "#/styles/normalize.css";
 import "#/styles/globals.css";
+import smoothscroll from "smoothscroll-polyfill";
 import type { AppProps } from "next/app";
-import { useRegisterGsapScrollTrigger, useScrollToTop } from "#/hooks";
+import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
 import { Common } from "#/components";
-import { PageLeaveAnimationContext } from "#/state";
-import { useState } from "react";
+import { PageLeaveAnimationContext, RadialGradientAnimContext } from "#/state";
+import { useState, useEffect } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
-    useScrollToTop();
-    useRegisterGsapScrollTrigger();
+	useRegisterGsapScrollTrigger();
 
-    const [pageLeaveAnimation, setPageLeaveAnimation] = useState<gsap.core.Timeline | null>(null);
+	const [pageLeaveAnimation, setPageLeaveAnimation] = useState<gsap.core.Timeline | null>(null);
+	const [timeline, setTimeline] = useState();
 
-    return (
-        <PageLeaveAnimationContext.Provider
-            value={{
-                pageLeaveAnimation,
-                setPageLeaveAnimation
-            }}
-        >
-            <Component {...pageProps} />
-            <Common />
-        </PageLeaveAnimationContext.Provider>
-    );
+	useIsomorphicLayoutEffect(() => {
+		smoothscroll.polyfill();
+	}, []);
+	return (
+		<PageLeaveAnimationContext.Provider
+			value={{
+				pageLeaveAnimation,
+				setPageLeaveAnimation,
+			}}
+		>
+			<RadialGradientAnimContext.Provider
+				value={{
+					timeline,
+					setTimeline,
+				}}
+			>
+				<Component {...pageProps} />
+				<Common />
+			</RadialGradientAnimContext.Provider>
+		</PageLeaveAnimationContext.Provider>
+	);
 }
 
 export default MyApp;

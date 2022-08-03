@@ -6,7 +6,7 @@ import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
 const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
 const { bannerAnimation } = homePageAnims;
-export default function useHomeInit({ windowInnerHeight, windowInnerWidth }) {
+export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef }) {
 	const bannerRef = useRef<HTMLDivElement>(null);
 
 	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
@@ -93,19 +93,19 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth }) {
 		if (blackCoverRef.current) {
 			const tl = gsap.timeline({
 				scrollTrigger: {
-					trigger: bannerRef.current,
-					toggleActions: "restart pause reverse pause",
-					start: "top top",
-					end: "bottom top",
+					trigger: darkSectionRef.current,
+					toggleActions: "restart complete reverse reset",
+					start: "top bottom",
+					end: "top top",
 					scrub: true,
-					// pin: true,
-					pinSpacing: false,
 					onEnterBack: () => {
 						banner.style.zIndex = 1;
+						banner.style.opacity = 1;
 						blackCoverRef.current.style.zIndex = 2;
 					},
 					onLeave: () => {
 						banner.style.zIndex = -1;
+						banner.style.opacity = 0;
 						blackCoverRef.current.style.zIndex = -1;
 					},
 				},

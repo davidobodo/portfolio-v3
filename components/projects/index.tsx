@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { Ref } from "react";
 import { ProjectListView } from "./list-view";
 import { ProjectsGridView } from "./grid-view";
-import { PROJECTS } from "#/constants/projects";
+import { TProject } from "#/interfaces";
 
 export default function Project({
 	projectTitleRef,
@@ -15,6 +15,7 @@ export default function Project({
 	projectTitleRef: Ref<HTMLHeadingElement>;
 	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 	location: "home" | "projects";
+	displayedProjects: TProject[];
 }) {
 	return (
 		<>

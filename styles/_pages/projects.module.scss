@@ -5,7 +5,7 @@
 	border: 0px;
 	border-radius: 50%;
 	position: fixed;
-	top: 40px;
+	top: 10rem;
 	right: 3rem;
 	z-index: 5;
 	cursor: pointer;
@@ -14,12 +14,19 @@
 .content {
 	padding-top: 20vh;
 	padding-bottom: 20vh;
-	display: flex;
 	overflow: hidden;
 	min-height: 100vh;
 
-	.projectsWrapper {
-		flex: 1;
+	.contentTitle {
+		font-size: 1.6rem;
+		color: var(--ash);
+		text-align: center;
+		margin-bottom: 4rem;
+		font-family: sf-pro-regular;
+
+		span {
+			color: var(--white);
+		}
 	}
 }
 

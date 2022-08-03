@@ -1,78 +1,78 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-    width: 100%;
-    position: relative;
-    padding-bottom: 10rem;
+	width: 100%;
+	position: relative;
+	padding-bottom: 10rem;
 
-    @media (min-width: $md) {
-        margin: auto;
-        max-width: var(--mini-desktop-max-width);
-    }
+	@media (min-width: $md) {
+		margin: auto;
+		max-width: var(--mini-desktop-max-width);
+	}
 
-    @media (min-width: $xxl) {
-        max-width: var(--max-width);
-    }
+	@media (min-width: $xxl) {
+		max-width: var(--max-width);
+	}
 
-    .projectsList {
-        li {
-            transition: var(--animation-smooth);
-            list-style: none;
-            border-bottom: 1px solid var(--ash);
-            cursor: pointer;
-            position: relative;
+	.projectsList {
+		li {
+			transition: var(--animation-smooth);
+			list-style: none;
+			border-bottom: 1px solid var(--ash);
+			cursor: pointer;
+			position: relative;
 
-            &:first-child {
-                border-top: 1px solid var(--ash);
-            }
+			&:first-child {
+				border-top: 1px solid var(--ash);
+			}
 
-            .row {
-                transition: var(--animation-fast);
-                padding: calc(var(--section-padding) / 3.5) 8rem calc(var(--section-padding) / 3) 8rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                color: var(--ash);
-                text-decoration: none;
+			.row {
+				transition: var(--animation-fast);
+				padding: calc(var(--section-padding) / 3.5) 8rem calc(var(--section-padding) / 3) 8rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				color: var(--ash);
+				text-decoration: none;
 
-                h4 {
-                    position: relative;
-                    display: block;
-                    line-height: 1;
-                    transition: var(--animation-fast);
-                    transform: translateX(0);
-                    font-size: clamp(5rem, 5.5vw, 10rem);
-                }
+				h4 {
+					position: relative;
+					display: block;
+					line-height: 1;
+					transition: var(--animation-fast);
+					transform: translateX(0);
+					font-size: clamp(5rem, 5.5vw, 10rem);
+				}
 
-                p {
-                    font-size: 1.6rem;
-                    transition: var(--animation-fast);
-                    transform: translateX(0);
-                }
-            }
+				p {
+					font-size: 1.6rem;
+					transition: var(--animation-fast);
+					transform: translateX(0);
+				}
+			}
 
-            &:hover {
-                opacity: 0.33;
+			&:hover {
+				opacity: 0.33;
 
-                h4 {
-                    transform: translateX(calc(var(--container-padding) * -0.1));
-                }
+				h4 {
+					transform: translateX(calc(var(--container-padding) * -0.1));
+				}
 
-                p {
-                    transform: translateX(calc(var(--container-padding) * 0.1));
-                }
-            }
+				p {
+					transform: translateX(calc(var(--container-padding) * 0.1));
+				}
+			}
 
-            .number {
-                position: absolute;
-                font-size: 300px;
-                font-family: "sf-pro-bold";
-                bottom: 0px;
-                right: 0px;
-                color: var(--white);
-                opacity: 0.02;
-                line-height: 0.8em;
-            }
-        }
-    }
+			.number {
+				position: absolute;
+				font-size: clamp(5rem, 18vw, 27rem);
+				font-family: "sf-pro-bold";
+				bottom: 0px;
+				right: 0px;
+				color: var(--white);
+				opacity: 0.02;
+				line-height: 0.8em;
+			}
+		}
+	}
 }

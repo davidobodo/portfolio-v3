@@ -20,7 +20,6 @@ import {
 	useRevealParagraph,
 	useWindowSize,
 	useRegisterGsapScrollTrigger,
-	useScrollToTop,
 	useRevealHeading,
 	HomePageHooks,
 	useSelectProjectAnimation,
@@ -28,14 +27,19 @@ import {
 } from "#/hooks";
 import { PROJECTS } from "#/constants/projects";
 import Router from "next/router";
+import { useRef } from "react";
 
 const { useHomeAboutAnim, useWorkAnimation, useSkillsAnimation } = HomePageHooks;
 
 const Home: NextPage = () => {
-	useScrollToTop();
 	useRegisterGsapScrollTrigger();
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { bannerRef, blackCoverRef, bannerHeight } = useHomeInit({ windowInnerHeight, windowInnerWidth });
+	const darkSectionRef = useRef(null);
+	const { bannerRef, blackCoverRef, bannerHeight } = useHomeInit({
+		windowInnerHeight,
+		windowInnerWidth,
+		darkSectionRef,
+	});
 	const { aboutListRef } = useHomeAboutAnim();
 	const {
 		workContainerRef,
@@ -57,14 +61,9 @@ const Home: NextPage = () => {
 		windowInnerWidth,
 	});
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
-	// const { projectsListWrapperRef } = useProjectAnimation();
 
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation();
-
-	const onRedirectToProjects = () => {
-		Router.push("/projects");
-	};
 
 	return (
 		<>
@@ -76,7 +75,7 @@ const Home: NextPage = () => {
 			<Nav />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
-			<Layout.DarkSection>
+			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content}>
 					<About aboutListRef={aboutListRef} />
 					<Work

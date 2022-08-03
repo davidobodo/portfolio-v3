@@ -22,11 +22,18 @@ export default function useSelectProjectAnimation() {
 
 	// Next or previous arrow button was pressed
 	const onGoToProject = (id: string) => {
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: "smooth",
-		});
+		// window.scrollTo({
+		// 	top: 0,
+		// 	left: 0,
+		// 	behavior: "smooth",
+		// });
+
+		const elem = document.querySelector("[data-key='project-info']");
+
+		if (elem) {
+			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+		}
+
 		const modal = modalRef.current;
 		const modalImage = modalImgRef.current;
 

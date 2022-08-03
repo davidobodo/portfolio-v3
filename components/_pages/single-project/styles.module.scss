@@ -156,13 +156,16 @@
 	position: relative;
 	padding-left: 10px;
 	position: fixed;
-	z-index: 10;
+	z-index: 2000;
 	top: 2rem;
 	right: 2rem;
+	top: 10rem;
 
 	@media (min-width: $lg) {
 		top: 4rem;
 		right: 5rem;
+
+		top: 10rem;
 	}
 
 	span {

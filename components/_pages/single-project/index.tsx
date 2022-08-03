@@ -20,7 +20,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 	const { title, bgImage } = currProject;
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-key="project-info">
 			{prevProject && (
 				<button
 					value="previous"

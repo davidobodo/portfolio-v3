@@ -7,7 +7,6 @@ import useRegisterGsapScrollTrigger from "./useRegisterGsapScrollTrigger";
 import usePinRadialGradient from "./usePinRadialGradient";
 import useRevealParagraph from "./useRevealParagraph";
 import useCalculateFooterHeight from "./useCalculateFooterHeight";
-import useScrollToTop from "./useScollToTop";
 import useRevealHeading from "./useRevealHeading";
 import useSelectProjectAnimation, {
 	applyFlipAnim,
@@ -29,7 +28,6 @@ export {
 	usePinRadialGradient,
 	useRevealParagraph,
 	useCalculateFooterHeight,
-	useScrollToTop,
 	useRevealHeading,
 	useSelectProjectAnimation,
 	usePageTransition,

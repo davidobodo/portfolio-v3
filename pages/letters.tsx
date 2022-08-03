@@ -4,13 +4,15 @@ import { NextPage } from "next";
 import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain } from "#/components";
 import { LETTERS } from "#/constants/letters";
 import { useProjectsLettersInit, useWindowSize } from "#/hooks";
-
+import { useRef } from "react";
 const Letters: NextPage = () => {
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
 	const { textWrapperRef, scrollIndicatorRef, bannerRef, blackCoverRef, bannerHeight } = useProjectsLettersInit({
 		windowInnerHeight,
 		windowInnerWidth,
 	});
+
+	const darkSectionRef = useRef(null);
 
 	return (
 		<>
@@ -28,7 +30,7 @@ const Letters: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
-			<Layout.DarkSection>
+			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
 						{LETTERS.map((item, i) => {

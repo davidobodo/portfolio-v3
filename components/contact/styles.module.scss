@@ -2,11 +2,11 @@
 
 .container {
 	background-color: var(--light-brown);
-	position: relative;
 	width: 100%;
 	bottom: 0px;
 	z-index: var(--z-index-contact);
 	padding-top: 10vh;
+	position: relative;
 
 	@media (min-width: $md) {
 		position: fixed;

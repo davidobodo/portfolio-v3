@@ -100,6 +100,9 @@ export default function Credit() {
 		"works and people",
 		"who contributed to the design of this portfolio",
 	];
+
+	const darkSectionRef = useRef(null);
+
 	return (
 		<>
 			<Head>
@@ -119,7 +122,7 @@ export default function Credit() {
 				bannerHeight={bannerHeight}
 			/>
 
-			<Layout.DarkSection>
+			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.container}>
 					<div className={styles.summary}>
 						<About aboutListRef={aboutListRef} textsList={note} />

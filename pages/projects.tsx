@@ -18,6 +18,7 @@ import { PROJECT_NATURE } from "#/constants";
 import { PROJECTS } from "#/constants/projects";
 import { useEffect, useState, useRef, Ref } from "react";
 import { projectsPageAnima } from "#/utils/animations/atoms";
+import { RadialGradientAnimContext, useRadialGradientAnimContent } from "#/state";
 
 const { animateFilterSection } = projectsPageAnima;
 const ProjectsPage: NextPage = () => {
@@ -79,6 +80,8 @@ const ProjectsPage: NextPage = () => {
 
 	const [filterKey, setFilterKey] = useState("all");
 
+	const { timeline, setTimeline } = useRadialGradientAnimContent();
+
 	const onSetFilterKey = (key: string) => {
 		// Save the key
 		setFilterKey(key);
@@ -98,6 +101,21 @@ const ProjectsPage: NextPage = () => {
 		onToggleFilter();
 	};
 
+	useEffect(() => {
+		console.log("THIS GUY GOT FIRED", timeline);
+		if (timeline) {
+			timeline.scrollTrigger.refresh();
+
+			const elem = document.querySelector("[data-key='projects']");
+
+			if (elem) {
+				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+			}
+		}
+	}, [filterKey, timeline]);
+
+	const darkSectionRef = useRef(null);
+
 	return (
 		<>
 			<Head>
@@ -115,8 +133,11 @@ const ProjectsPage: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
-			<Layout.DarkSection>
-				<div className={styles.content}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+				<div className={styles.content} data-key="projects">
+					<h2 className={styles.contentTitle}>
+						Viewing all <span>Typescript</span> Projects
+					</h2>
 					<div className={styles.projectsWrapper}>
 						<Projects
 							onViewProject={onSelectProject}

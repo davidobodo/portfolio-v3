@@ -2,7 +2,9 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 import { useRef, useEffect, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
+import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [footerHeight, setFooterHeight] = useState(10);
 	const calculateFooterHeight = (node: HTMLDivElement) => {
@@ -14,14 +16,32 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 		}
 	}, []);
 
+	const [isFooterFixed, setIsFooterFixed] = useState(true);
+	useIsomorphicLayoutEffect(() => {
+		//On destop devices toggle between fixed and relative cause footer height might be greater than viewport height
+		if (containerRef.current && innerWidth >= 768 && footerHeight > innerHeight) {
+			setIsFooterFixed(false);
+		} else {
+			setIsFooterFixed(true);
+		}
+	}, [innerHeight, innerWidth, footerHeight]);
+
 	const onSubmitForm = () => {};
 
 	return (
 		<>
-			<Details2 containerRef={containerRef} onSubmitForm={onSubmitForm} onRouteChange={onRouteChange} />
-			<div className={styles.placeholderWrapper}>
-				<SectionPlaceholder styles={{ height: footerHeight + "px" }} />
-			</div>
+			<Details2
+				containerRef={containerRef}
+				onSubmitForm={onSubmitForm}
+				onRouteChange={onRouteChange}
+				isFooterFixed={isFooterFixed}
+			/>
+
+			{isFooterFixed && (
+				<div className={styles.placeholderWrapper}>
+					<SectionPlaceholder styles={{ height: footerHeight + "px" }} />
+				</div>
+			)}
 		</>
 	);
 }
@@ -30,13 +50,15 @@ function Details2({
 	containerRef,
 	onSubmitForm,
 	onRouteChange,
+	isFooterFixed,
 }: {
 	containerRef: Ref<HTMLDivElement>;
 	onSubmitForm: () => void;
 	onRouteChange: (path: string) => void;
+	isFooterFixed: boolean;
 }) {
 	return (
-		<div className={styles.container} ref={containerRef}>
+		<div className={styles.container} ref={containerRef} style={{ position: isFooterFixed ? "fixed" : "relative" }}>
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>

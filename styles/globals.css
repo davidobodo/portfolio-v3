@@ -49,12 +49,15 @@
 	/* Z-INDECES*/
 	/* Pages are divided into various sections*/
 	/* ---------------------------------------------------- */
+	--z-index-nav: 900;
 	--z-index-loader: 1000;
 	--z-index-noise: 1;
 	--z-index-banner: 1;
 	--z-index-banner-curtain: 2;
 	--z-index-content: 3;
 	--z-index-contact: 0;
+	--z-index-scroll-to-top: 500;
+	--z-index-modal: 600;
 
 	/* ---------------------------------------------------- */
 	/* ANIMATIONS*/
