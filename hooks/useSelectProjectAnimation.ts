@@ -1,6 +1,8 @@
-import gsap from "gsap";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import { singleProjectAnimations } from "#/utils/animations/atoms";
+
+const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjectAnimations;
 export default function useSelectProjectAnimation() {
 	const router = useRouter();
 	const [selectedProjectId, setSelectedProjectId] = useState<string>("");
@@ -64,7 +66,7 @@ export default function useSelectProjectAnimation() {
 	useEffect(() => {
 		if (isOpen) {
 			if (sourceElem.current && modalImgRef.current && modalRef.current) {
-				const tl = applyFlipAnim({
+				const tl = flipProjectIn({
 					modal: modalRef.current,
 					source: sourceElem.current,
 					destination: modalImgRef.current,
@@ -86,141 +88,3 @@ export default function useSelectProjectAnimation() {
 		setSelectedProjectId,
 	};
 }
-
-function applyFlipAnim({
-	modal,
-	source,
-	destination,
-}: {
-	modal: HTMLDivElement;
-	source: HTMLDivElement;
-	destination: HTMLDivElement;
-}) {
-	const sourceRect = source.getBoundingClientRect();
-	const destinationRect = destination.getBoundingClientRect();
-
-	const tl = gsap.timeline();
-
-	tl.from(modal, {
-		opacity: 0,
-	})
-		.fromTo(
-			destination,
-			{
-				// x: sourceRect.left - destinationRect.left - 200,
-				x: sourceRect.left - destinationRect.left,
-				y: sourceRect.top - destinationRect.top,
-				scale: sourceRect.width / destinationRect.width,
-				duration: 0.2,
-				ease: "cubic-bezier(0.2, 0, 0.2, 1)",
-			},
-			{
-				x: 0,
-				y: 0,
-				scale: 1,
-				duration: 0.2,
-				ease: "cubic-bezier(0.2, 0, 0.2, 1)",
-			}
-		)
-		.from(modal.querySelector("[data-key=title]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.from(modal.querySelector("[data-key=about]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.from(modal.querySelector("[data-key=tech]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.from(modal.querySelector("[data-key=buttons]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.from(modal.querySelector("[data-key=close-button]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		});
-
-	return tl;
-}
-
-function removeCurrentProject({
-	modalContainer,
-	modalImage,
-}: {
-	modalContainer: HTMLDivElement;
-	modalImage: HTMLDivElement;
-}) {
-	const removeCurrentProjectTl = gsap.timeline();
-	removeCurrentProjectTl
-		.to(modalContainer.querySelector("[data-key=title]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.to(modalContainer.querySelector("[data-key=about]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.to(modalContainer.querySelector("[data-key=tech]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.to(modalContainer.querySelector("[data-key=buttons]"), {
-			opacity: 0,
-			y: 20,
-			duration: 0.2,
-		})
-		.to(modalImage, {
-			width: "0px",
-		});
-
-	return removeCurrentProjectTl;
-}
-
-function displayNextProject({
-	modalContainer,
-	modalImage,
-}: {
-	modalContainer: HTMLDivElement;
-	modalImage: HTMLDivElement;
-}) {
-	const displayNextProjectTl = gsap.timeline();
-	displayNextProjectTl
-		.to(modalImage, {
-			width: "100%",
-		})
-		.to(modalContainer.querySelector("[data-key=title]"), {
-			opacity: 1,
-			y: 0,
-			duration: 0.2,
-		})
-		.to(modalContainer.querySelector("[data-key=about]"), {
-			opacity: 1,
-			y: 0,
-			duration: 0.2,
-		})
-		.to(modalContainer.querySelector("[data-key=tech]"), {
-			opacity: 1,
-			y: 0,
-			duration: 0.2,
-		})
-		.to(modalContainer.querySelector("[data-key=buttons]"), {
-			opacity: 1,
-			y: 0,
-			duration: 0.2,
-		});
-
-	return displayNextProjectTl;
-}
-
-export { applyFlipAnim, removeCurrentProject, displayNextProject };

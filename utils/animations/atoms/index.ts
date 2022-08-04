@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { DATA_VALUES } from "#/constants";
 import { TTimelineAction } from "#/interfaces";
 import { animateFaintSvg } from "#/utils";
 
@@ -299,6 +298,22 @@ class SharedAnimations {
 				}
 			}
 		}
+	}
+
+	fadeIn({ node }: { node: Element }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: node,
+				start: "top 80%",
+				end: "bottom center",
+				toggleActions: "restart pause reverse pause",
+				scrub: true,
+			},
+		});
+
+		tl.to(node, { opacity: 1, y: 0 });
+
+		return tl;
 	}
 }
 
@@ -659,48 +674,147 @@ class SkillsSectionAnimations {
 	}
 }
 
-function expandImage(imageNode: HTMLImageElement) {
-	gsap.to(imageNode, {
-		scrollTrigger: {
-			trigger: imageNode,
-			start: "top 80%",
-			end: "top 75%",
-			toggleActions: "restart complete pause reverse",
-		},
-		width: "100%",
-	});
+class SingleProjectAnimations {
+	flipProjectIn({
+		modal,
+		source,
+		destination,
+	}: {
+		modal: HTMLDivElement;
+		source: HTMLDivElement;
+		destination: HTMLDivElement;
+	}) {
+		const sourceRect = source.getBoundingClientRect();
+		const destinationRect = destination.getBoundingClientRect();
+
+		const tl = gsap.timeline();
+
+		tl.from(modal, {
+			opacity: 0,
+		})
+			.fromTo(
+				destination,
+				{
+					// x: sourceRect.left - destinationRect.left - 200,
+					x: sourceRect.left - destinationRect.left,
+					y: sourceRect.top - destinationRect.top,
+					scale: sourceRect.width / destinationRect.width,
+					duration: 0.2,
+					ease: "cubic-bezier(0.2, 0, 0.2, 1)",
+				},
+				{
+					x: 0,
+					y: 0,
+					scale: 1,
+					duration: 0.2,
+					ease: "cubic-bezier(0.2, 0, 0.2, 1)",
+				}
+			)
+			.from(modal.querySelector("[data-key=title]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.from(modal.querySelector("[data-key=about]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.from(modal.querySelector("[data-key=tech]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.from(modal.querySelector("[data-key=buttons]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.from(modal.querySelector("[data-key=close-button]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			});
+
+		return tl;
+	}
+
+	removeCurrentProject({ modalContainer, modalImage }: { modalContainer: HTMLDivElement; modalImage: HTMLDivElement }) {
+		const removeCurrentProjectTl = gsap.timeline();
+		removeCurrentProjectTl
+			.to(modalContainer.querySelector("[data-key=title]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.to(modalContainer.querySelector("[data-key=about]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.to(modalContainer.querySelector("[data-key=tech]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.to(modalContainer.querySelector("[data-key=buttons]"), {
+				opacity: 0,
+				y: 20,
+				duration: 0.2,
+			})
+			.to(modalImage, {
+				width: "0px",
+			});
+
+		return removeCurrentProjectTl;
+	}
+
+	displayNextProject({ modalContainer, modalImage }: { modalContainer: HTMLDivElement; modalImage: HTMLDivElement }) {
+		const displayNextProjectTl = gsap.timeline();
+		displayNextProjectTl
+			.to(modalImage, {
+				width: "100%",
+			})
+			.to(modalContainer.querySelector("[data-key=title]"), {
+				opacity: 1,
+				y: 0,
+				duration: 0.2,
+			})
+			.to(modalContainer.querySelector("[data-key=about]"), {
+				opacity: 1,
+				y: 0,
+				duration: 0.2,
+			})
+			.to(modalContainer.querySelector("[data-key=tech]"), {
+				opacity: 1,
+				y: 0,
+				duration: 0.2,
+			})
+			.to(modalContainer.querySelector("[data-key=buttons]"), {
+				opacity: 1,
+				y: 0,
+				duration: 0.2,
+			});
+
+		return displayNextProjectTl;
+	}
 }
 
-function fadeIn({ node }: { node: Element }) {
-	const tl = gsap.timeline({
-		scrollTrigger: {
-			trigger: node,
-			start: "top 80%",
-			end: "bottom center",
-			toggleActions: "restart pause reverse pause",
-			scrub: true,
-		},
-	});
-
-	tl.to(node, { opacity: 1, y: 0 });
-
-	return tl;
-}
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
 const projectsPageAnima = new AnimsProjectsPage();
 const sharedAnimations = new SharedAnimations();
 const workPageAnimations = new WorkSectionAnimations();
 const skillsSectionAnimations = new SkillsSectionAnimations();
+const singleProjectAnimations = new SingleProjectAnimations();
 
 export {
-	expandImage,
 	animPageLoaders,
 	homePageAnimations,
 	AnimPageLoaders,
-	fadeIn,
 	projectsPageAnima,
 	sharedAnimations,
 	workPageAnimations,
 	skillsSectionAnimations,
+	singleProjectAnimations,
 };

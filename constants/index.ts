@@ -1,7 +1,5 @@
 const DEFAULT_MOBILE_HEIGHT = 812;
 
-const DATA_VALUES = {};
-
 const ABOUT_NOTE = [
 	"4 years dedicating my time into converting designs into",
 	"pixel-perfect,",
@@ -87,4 +85,4 @@ const PROJECT_NATURE = [
 	},
 ];
 
-export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, DATA_VALUES, IMAGES, PROJECT_NATURE };
+export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, IMAGES, PROJECT_NATURE };
