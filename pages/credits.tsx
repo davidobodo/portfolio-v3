@@ -81,7 +81,6 @@ export default function Credit() {
 		},
 	];
 
-	useWindowSize();
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
 	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
 		windowInnerHeight,
@@ -115,7 +114,7 @@ export default function Credit() {
 			<BannerCurtain containerRef={blackCoverRef} />
 
 			<Banners.OtherPages
-				texts={["Design", "_____________", "Credits", "_____________"]}
+				texts={["Design", "_________", "Credits", "_________"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}
 				bannerRef={bannerRef}

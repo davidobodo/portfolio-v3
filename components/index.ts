@@ -18,6 +18,7 @@ import BannerCurtain from "./banner-curtain";
 import Projects from "./projects";
 import Filter from "./filter";
 import ProjectsFilter from "./projects-filter";
+import Spinner from "./spinner";
 
 const { Button, Radio } = Atoms;
 const { Preloader, About, Work, Thoughts, Skills, FaintBgText, ProjectsHeading } = HomePage;
@@ -53,4 +54,5 @@ export {
 	ProjectsHeading,
 	Filter,
 	ProjectsFilter,
+	Spinner,
 };

@@ -1,6 +1,7 @@
-import { useRef, useEffect, RefObject, useState } from "react";
+import { useRef, RefObject, useState } from "react";
 import gsap from "gsap";
 import { useRadialGradientAnimContent } from "#/state";
+import { useIsomorphicLayoutEffect } from ".";
 
 export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRef: RefObject<HTMLDivElement> }) {
 	const darkSectionRadialGradientRef = useRef(null);
@@ -11,7 +12,8 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 	//-------------------------------------------------
 	// PIN RADIAL GRADIENT TO BLACK SECTION CENTER
 	//-------------------------------------------------
-	useEffect(() => {
+
+	useIsomorphicLayoutEffect(() => {
 		if (darkSectionRef.current) {
 			const tl = gsap.timeline({
 				scrollTrigger: {
