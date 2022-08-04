@@ -3,8 +3,8 @@ import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
 import { useEffect, useRef } from "react";
-import { fadeIn } from "#/utils/animations/atoms";
-
+import { sharedAnimations } from "#/utils/animations/atoms";
+const { fadeIn } = sharedAnimations;
 type TCredit = {
 	link: string;
 	description?: string;
