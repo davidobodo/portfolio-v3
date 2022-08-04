@@ -1,12 +1,13 @@
 import "#/styles/normalize.css";
 import "#/styles/globals.css";
+import Script from "next/script";
 import smoothscroll from "smoothscroll-polyfill";
 import type { AppProps } from "next/app";
 import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
 import { Common } from "#/components";
 import { PageLeaveAnimationContext, RadialGradientAnimContext } from "#/state";
 import { useState, useEffect } from "react";
-
+import Head from "next/head";
 function MyApp({ Component, pageProps }: AppProps) {
 	useRegisterGsapScrollTrigger();
 
@@ -16,23 +17,42 @@ function MyApp({ Component, pageProps }: AppProps) {
 	useIsomorphicLayoutEffect(() => {
 		smoothscroll.polyfill();
 	}, []);
+
 	return (
-		<PageLeaveAnimationContext.Provider
-			value={{
-				pageLeaveAnimation,
-				setPageLeaveAnimation,
-			}}
-		>
-			<RadialGradientAnimContext.Provider
+		<>
+			<Script
+				async
+				strategy="lazyOnload"
+				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+			></Script>
+			<Script strategy="lazyOnload">
+				{`
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+			page_path: window.location.pathname,
+			});
+		`}
+			</Script>
+
+			<PageLeaveAnimationContext.Provider
 				value={{
-					timeline,
-					setTimeline,
+					pageLeaveAnimation,
+					setPageLeaveAnimation,
 				}}
 			>
-				<Component {...pageProps} />
-				<Common />
-			</RadialGradientAnimContext.Provider>
-		</PageLeaveAnimationContext.Provider>
+				<RadialGradientAnimContext.Provider
+					value={{
+						timeline,
+						setTimeline,
+					}}
+				>
+					<Component {...pageProps} />
+					<Common />
+				</RadialGradientAnimContext.Provider>
+			</PageLeaveAnimationContext.Provider>
+		</>
 	);
 }
 
