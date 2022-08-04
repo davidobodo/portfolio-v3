@@ -206,6 +206,7 @@
 	.formField {
 		margin-bottom: 4rem;
 		width: 100%;
+		position: relative;
 
 		label {
 			display: none;
@@ -225,8 +226,11 @@
 
 	.twoColumns {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 4rem;
+
+		@media (min-width: $md) {
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 
 	input {
@@ -296,6 +300,7 @@
 			justify-content: space-between;
 			width: 100%;
 			font-size: 3rem;
+			transition: opacity 200ms ease-in-out;
 
 			@media (min-width: $md) {
 				font-size: 3.6rem;
@@ -311,7 +316,19 @@
 			svg {
 				width: max(24px, 1.8vw);
 			}
+
+			&:disabled {
+				opacity: 0.2;
+			}
 		}
+	}
+
+	.error {
+		color: var(--red);
+		position: absolute;
+		left: 0px;
+		bottom: -20px;
+		font-size: 1.4rem;
 	}
 }
 

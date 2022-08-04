@@ -3,9 +3,11 @@ import styles from "./styles.module.scss";
 import { useRef, useEffect, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
+import { Form } from "./form";
 export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
+	const placeholderRef = useRef<HTMLDivElement>(null);
 	const [footerHeight, setFooterHeight] = useState(10);
 	const calculateFooterHeight = (node: HTMLDivElement) => {
 		setFooterHeight(node.clientHeight);
@@ -16,113 +18,62 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 		}
 	}, []);
 
-	const [isFooterFixed, setIsFooterFixed] = useState(true);
 	useIsomorphicLayoutEffect(() => {
 		//On destop devices toggle between fixed and relative cause footer height might be greater than viewport height
-		if (containerRef.current && innerWidth >= 768 && footerHeight > innerHeight) {
-			setIsFooterFixed(false);
+		if (innerWidth >= 768) {
+			if (containerRef.current) {
+				if (footerHeight > innerHeight) {
+					containerRef.current.style.position = "relative";
+					placeholderRef.current.style.display = "none";
+				} else {
+					containerRef.current.style.position = "fixed";
+					placeholderRef.current.style.display = "block";
+				}
+			}
 		} else {
-			setIsFooterFixed(true);
+			console.log("FIRING");
+			containerRef.current.style.position = "relative";
+			placeholderRef.current.style.display = "none";
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
-	const onSubmitForm = () => {};
-
 	return (
 		<>
-			<Details2
+			<Details
 				containerRef={containerRef}
-				onSubmitForm={onSubmitForm}
 				onRouteChange={onRouteChange}
-				isFooterFixed={isFooterFixed}
+				// isFooterFixed={isFooterFixed}
 			/>
 
-			{isFooterFixed && (
-				<div className={styles.placeholderWrapper}>
-					<SectionPlaceholder styles={{ height: footerHeight + "px" }} />
-				</div>
-			)}
+			<div className={styles.placeholderWrapper}>
+				<SectionPlaceholder styles={{ height: footerHeight + "px" }} containerRef={placeholderRef} />
+			</div>
 		</>
 	);
 }
 
-function Details2({
+function Details({
 	containerRef,
-	onSubmitForm,
 	onRouteChange,
 	isFooterFixed,
 }: {
 	containerRef: Ref<HTMLDivElement>;
-	onSubmitForm: () => void;
 	onRouteChange: (path: string) => void;
 	isFooterFixed: boolean;
 }) {
 	return (
-		<div className={styles.container} ref={containerRef} style={{ position: isFooterFixed ? "fixed" : "relative" }}>
+		<div className={styles.container} ref={containerRef}>
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>
 					<HelpfulLinks onRouteChange={onRouteChange} />
 				</div>
 				<div className={styles.formSection}>
-					<Form onSubmit={onSubmitForm} />
+					<Form />
 				</div>
 			</div>
 			<Social />
 		</div>
-	);
-}
-
-function Form({ onSubmit }: { onSubmit: () => void }) {
-	return (
-		<>
-			<div className={styles.title}>
-				<h1>
-					Would love to hear from <br /> you &#8595;.
-				</h1>
-				<p>
-					I’m currently interested in a&nbsp;<span>Full-time Front-end developer role </span> with a major on &nbsp;
-					<span>React.js Framework</span>, but still open to other opportunities. However, if you have other requests or
-					questions, don’t hesitate to use the form.
-				</p>
-				{/* <span>Currently open to Full time front-end developer role (React.js Major)</span> */}
-			</div>
-			<form action="" className={styles.form} onSubmit={onSubmit}>
-				{/* <h3>Contact</h3> */}
-				<div className={styles.twoColumns}>
-					<div className={styles.formField}>
-						<label htmlFor="">Name</label>
-						<input type="text" placeholder="Name" />
-					</div>
-					<div className={styles.formField}>
-						<label htmlFor="">Email</label>
-						<input type="Email" placeholder="Email" />
-					</div>
-				</div>
-				<div className={styles.formField}>
-					<label htmlFor="">Subject</label>
-					<input type="text" placeholder="Subject" />
-				</div>
-				<div className={styles.formField}>
-					<label htmlFor="">Message</label>
-					<textarea name="" id="" cols={30} rows={10} placeholder="Message"></textarea>
-				</div>
-
-				<div className={styles.btnWrapper}>
-					<button>
-						<span>Submit</span>
-						<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								fillRule="evenodd"
-								clipRule="evenodd"
-								d="m.819 50.513 8.307 8.238 38.423-38.454-.059 28.89h11.638V.424H10.47l-.14 11.564h28.983L.819 50.513Zm55.31-47.09v42.764V3.424Z"
-								fill="currentColor"
-							></path>
-						</svg>
-					</button>
-				</div>
-			</form>
-		</>
 	);
 }
 

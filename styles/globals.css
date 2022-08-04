@@ -29,6 +29,7 @@
 	--color-blue: #455ce9;
 	--color-white: #ffffff;
 	--dark-blue: #2437a7;
+	--red: #ff0000;
 	/* --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent); */
 	--dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent);
 	--work-linear-gradient: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
