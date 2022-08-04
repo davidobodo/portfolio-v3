@@ -46,7 +46,7 @@ export default function useWorkAnimation({
 			) {
 				const svgElement = workTabsRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
 
-				const radialGradient = document.querySelector('[data-key="radial-gradient"]');
+				const radialGradient = document.querySelector<HTMLDivElement>('[data-key="radial-gradient"]');
 				const tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: workContainerRef.current,
@@ -67,7 +67,9 @@ export default function useWorkAnimation({
 
 							const gradientOpacity = 1 - self.progress;
 
-							radialGradient.style.opacity = gradientOpacity;
+							if (radialGradient) {
+								radialGradient.style.opacity = gradientOpacity.toString();
+							}
 						},
 					},
 				});
@@ -169,7 +171,7 @@ export default function useWorkAnimation({
 			) {
 				const svgElement = mobileWorkContentWrapperRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
 
-				const radialGradient = document.querySelector('[data-key="radial-gradient"]');
+				const radialGradient = document.querySelector<HTMLDivElement>('[data-key="radial-gradient"]');
 				const tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: mobileWorkContainerRef.current,
@@ -190,7 +192,9 @@ export default function useWorkAnimation({
 
 							const gradientOpacity = 1 - self.progress;
 
-							radialGradient.style.opacity = gradientOpacity;
+							if (radialGradient) {
+								radialGradient.style.opacity = gradientOpacity.toString();
+							}
 						},
 					},
 				});

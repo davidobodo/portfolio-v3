@@ -19,9 +19,10 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 	}, []);
 
 	useIsomorphicLayoutEffect(() => {
-		//On destop devices toggle between fixed and relative cause footer height might be greater than viewport height
-		if (innerWidth >= 768) {
-			if (containerRef.current) {
+		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
+
+		if (containerRef.current && placeholderRef.current) {
+			if (innerWidth >= 768) {
 				if (footerHeight > innerHeight) {
 					containerRef.current.style.position = "relative";
 					placeholderRef.current.style.display = "none";
@@ -29,11 +30,10 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 					containerRef.current.style.position = "fixed";
 					placeholderRef.current.style.display = "block";
 				}
+			} else {
+				containerRef.current.style.position = "relative";
+				placeholderRef.current.style.display = "none";
 			}
-		} else {
-			console.log("FIRING");
-			containerRef.current.style.position = "relative";
-			placeholderRef.current.style.display = "none";
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
@@ -55,11 +55,11 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 function Details({
 	containerRef,
 	onRouteChange,
-	isFooterFixed,
-}: {
+}: // isFooterFixed,
+{
 	containerRef: Ref<HTMLDivElement>;
 	onRouteChange: (path: string) => void;
-	isFooterFixed: boolean;
+	// isFooterFixed: boolean;
 }) {
 	return (
 		<div className={styles.container} ref={containerRef}>

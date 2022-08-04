@@ -24,7 +24,7 @@ export function ProjectListView({
 			/>
 			<ul className={styles.projectsList} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={listRef}>
 				{displayedProjects.map((item, i) => {
-					const { title, type, id, tech } = item;
+					const { title, type, id } = item;
 
 					return (
 						<ProjectListItem

@@ -1,9 +1,7 @@
-import gsap from "gsap";
 import styles from "./styles.module.scss";
 import Heading from "../heading";
-import { useState, useRef, RefObject, useEffect } from "react";
+import { RefObject } from "react";
 import { ScrollAlert, SectionPlaceholder } from "../../index";
-import { useIsomorphicLayoutEffect } from "#/hooks";
 
 type Props = {
 	bannerRef: RefObject<HTMLDivElement>;

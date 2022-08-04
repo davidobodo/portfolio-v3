@@ -1,15 +1,17 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, About, BannerCurtain } from "#/components";
-import { useCreditsInit, useProjectsLettersInit, HomePageHooks, useWindowSize } from "#/hooks";
+import { useProjectsLettersInit, HomePageHooks, useWindowSize } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { fadeIn } from "#/utils/animations/atoms";
 const { useHomeAboutAnim } = HomePageHooks;
 
+type TCredit = {
+	link: string;
+	description?: string;
+};
 export default function Credit() {
-	// useCreditsInit();
-
-	const SITES = [
+	const SITES: TCredit[] = [
 		{
 			link: "https://www.apple.com/ng/iphone-13-pro/",
 		},
@@ -41,7 +43,7 @@ export default function Credit() {
 		},
 	];
 
-	const PEOPLE = [
+	const PEOPLE: TCredit[] = [
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
 			description: "Reviewer",
@@ -131,8 +133,8 @@ export default function Credit() {
 						<h3>Sites/Resources</h3>
 						<ul className={styles.list}>
 							{SITES.map((item, i) => {
-								const { link, description } = item;
-								return <ListItem key={i} link={link} description={description} />;
+								const { link } = item;
+								return <ListItem key={i} link={link} description={item?.description || ""} />;
 							})}
 						</ul>
 					</section>
@@ -140,8 +142,8 @@ export default function Credit() {
 						<h3>People</h3>
 						<ul className={styles.list}>
 							{PEOPLE.map((item, i) => {
-								const { link, description } = item;
-								return <ListItem key={i} link={link} description={description} />;
+								const { link } = item;
+								return <ListItem key={i} link={link} description={item?.description || ""} />;
 							})}
 						</ul>
 					</section>

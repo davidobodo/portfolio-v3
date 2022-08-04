@@ -1,12 +1,20 @@
 import gsap from "gsap";
-import { useRef, useEffect, useState } from "react";
+import { useRef, RefObject } from "react";
 import { animPageLoaders, homePageAnims } from "#/utils/animations/atoms";
 import { usePageLeaveAnimationContext } from "#/state";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
 const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
 const { bannerAnimation } = homePageAnims;
-export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef }) {
+export default function useHomeInit({
+	windowInnerHeight,
+	windowInnerWidth,
+	darkSectionRef,
+}: {
+	windowInnerHeight: number;
+	windowInnerWidth: number;
+	darkSectionRef: RefObject<HTMLDivElement>;
+}) {
 	const bannerRef = useRef<HTMLDivElement>(null);
 
 	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
@@ -18,7 +26,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 		const fieldLetters = bannerRefSelector<HTMLSpanElement>('[data-key="field"] [data-key="letter"]');
 		const subFields = bannerRefSelector<HTMLDivElement>('[data-key="sub-field"]');
 		const picMobile = bannerRefSelector<HTMLDivElement>('[data-key="mobile-image"]');
-		const picDesktopblind = bannerRefSelector<HTMLDivElement>('[data-key="desktop-image"] span');
+		const picDesktopblind = bannerRefSelector<HTMLSpanElement>('[data-key="desktop-image"] span');
 		const scrollIndicator = bannerRefSelector<HTMLDivElement>('[data-key="scroll-alert"]');
 
 		return {
@@ -43,9 +51,9 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 					fieldLetters,
 					subFieldOne: subFields[0],
 					subFieldTwo: subFields[1],
-					picMobile: picMobile,
-					picDesktop: picDesktopblind,
-					scrollIndicator,
+					picMobile: picMobile[0],
+					picDesktopBlind: picDesktopblind[0],
+					scrollIndicator: scrollIndicator[0],
 				})
 			);
 
@@ -69,9 +77,9 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 						fieldLetters,
 						subFieldOne: subFields[0],
 						subFieldTwo: subFields[1],
-						picMobile: picMobile,
-						picDesktop: picDesktopblind,
-						scrollIndicator,
+						picMobile: picMobile[0],
+						picDesktopBlind: picDesktopblind[0],
+						scrollIndicator: scrollIndicator[0],
 					})
 				);
 			return () => {
@@ -83,38 +91,39 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 	//-----------------------------------------
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
-	const blackCoverRef = useRef(null);
+	const blackCoverRef = useRef<HTMLDivElement>(null);
 
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
 	useIsomorphicLayoutEffect(() => {
-		const banner = document.querySelector('[data-key="banner"]');
 		// Only create this timeline when the correct banner height has been set
-		if (blackCoverRef.current) {
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: darkSectionRef.current,
-					toggleActions: "restart complete reverse reset",
-					start: "top bottom",
-					end: "top top",
-					scrub: true,
-					onEnterBack: () => {
-						banner.style.zIndex = 1;
-						banner.style.opacity = 1;
-						blackCoverRef.current.style.zIndex = 2;
-					},
-					onLeave: () => {
-						banner.style.zIndex = -1;
-						banner.style.opacity = 0;
-						blackCoverRef.current.style.zIndex = -1;
-					},
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: darkSectionRef.current,
+				toggleActions: "restart complete reverse reset",
+				start: "top bottom",
+				end: "top top",
+				scrub: true,
+				onEnterBack: () => {
+					if (bannerRef.current && blackCoverRef.current) {
+						bannerRef.current.style.zIndex = "1";
+						bannerRef.current.style.opacity = "1";
+						blackCoverRef.current.style.zIndex = "2";
+					}
 				},
-			});
-			tl.to(blackCoverRef.current, {
-				scaleY: 1,
-				transformOrigin: "top",
-			});
-		}
+				onLeave: () => {
+					if (bannerRef.current && blackCoverRef.current) {
+						bannerRef.current.style.zIndex = "-1";
+						bannerRef.current.style.opacity = "0";
+						blackCoverRef.current.style.zIndex = "-1";
+					}
+				},
+			},
+		});
+		tl.to(blackCoverRef.current, {
+			scaleY: 1,
+			transformOrigin: "top",
+		});
 	}, []);
 
 	return {

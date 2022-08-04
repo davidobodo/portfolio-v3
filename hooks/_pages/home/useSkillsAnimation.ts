@@ -14,7 +14,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
 	useIsomorphicLayoutEffect(() => {
 		if (skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
 			const svgElement = skillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
-			const radialGradient = document.querySelector('[data-key="radial-gradient"]');
+			const radialGradient = document.querySelector<HTMLDivElement>('[data-key="radial-gradient"]');
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: skillsContainerRef.current,
@@ -33,7 +33,9 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
 								windowInnerWidth
 							) + "px";
 
-						radialGradient.style.opacity = self.progress;
+						if (radialGradient) {
+							radialGradient.style.opacity = self.progress.toString();
+						}
 					},
 				},
 			});

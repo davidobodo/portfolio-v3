@@ -6,7 +6,13 @@ import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
 
 // Used in boths projects and letters page
-export default function useProjectsLettersInit({ windowInnerHeight, windowInnerWidth }) {
+export default function useProjectsLettersInit({
+	windowInnerHeight,
+	windowInnerWidth,
+}: {
+	windowInnerHeight: number;
+	windowInnerWidth: number;
+}) {
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
@@ -19,7 +25,9 @@ export default function useProjectsLettersInit({ windowInnerHeight, windowInnerW
 				const layers = document.querySelectorAll("[data-key='layer']");
 				// Navigating from another page to this page
 				const master = gsap.timeline();
-				master.add(openNoiseLayers(layers)).add(bannerAnimation(textRefSelector("h1"), scrollIndicatorRef.current));
+				master
+					.add(openNoiseLayers(layers))
+					.add(bannerAnimation(textRefSelector("h1") as HTMLHeadingElement[], scrollIndicatorRef.current));
 
 				return () => {
 					master.kill();
@@ -34,7 +42,7 @@ export default function useProjectsLettersInit({ windowInnerHeight, windowInnerW
 				master
 					.add(drawSvgLogo(logo, logoChildren))
 					.add(openNoiseLayers(layers))
-					.add(bannerAnimation(textRefSelector("h1"), scrollIndicatorRef.current));
+					.add(bannerAnimation(textRefSelector("h1") as HTMLHeadingElement[], scrollIndicatorRef.current));
 
 				return () => {
 					master.kill();
@@ -47,37 +55,39 @@ export default function useProjectsLettersInit({ windowInnerHeight, windowInnerW
 	//-----------------------------------------
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
-	const blackCoverRef = useRef(null);
-	const bannerRef = useRef(null);
+	const blackCoverRef = useRef<HTMLDivElement>(null);
+	const bannerRef = useRef<HTMLDivElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
-		if (bannerRef.current && blackCoverRef.current && textWrapperRef.current) {
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: bannerRef.current,
-					toggleActions: "restart pause reverse pause",
-					start: "top top",
-					end: "bottom top",
-					scrub: true,
-					pin: true,
-					pinSpacing: false,
-					onEnterBack: () => {
-						bannerRef.current.style.zIndex = 1;
-						blackCoverRef.current.style.zIndex = 2;
-					},
-					onLeave: () => {
-						bannerRef.current.style.zIndex = -1;
-						blackCoverRef.current.style.zIndex = -1;
-					},
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: bannerRef.current,
+				toggleActions: "restart pause reverse pause",
+				start: "top top",
+				end: "bottom top",
+				scrub: true,
+				pin: true,
+				pinSpacing: false,
+				onEnterBack: () => {
+					if (bannerRef.current && blackCoverRef.current) {
+						bannerRef.current.style.zIndex = "1";
+						blackCoverRef.current.style.zIndex = "2";
+					}
 				},
-			});
+				onLeave: () => {
+					if (bannerRef.current && blackCoverRef.current) {
+						bannerRef.current.style.zIndex = "-1";
+						blackCoverRef.current.style.zIndex = "-1";
+					}
+				},
+			},
+		});
 
-			tl.to(blackCoverRef.current, {
-				scaleY: 1,
-				transformOrigin: "top",
-			});
-			tl.to(textWrapperRef.current, { opacity: 0 }, "<");
-		}
+		tl.to(blackCoverRef.current, {
+			scaleY: 1,
+			transformOrigin: "top",
+		});
+		tl.to(textWrapperRef.current, { opacity: 0 }, "<");
 	}, [bannerRef.current, blackCoverRef.current]);
 
 	return {
@@ -89,7 +99,7 @@ export default function useProjectsLettersInit({ windowInnerHeight, windowInnerW
 	};
 }
 
-function bannerAnimation(children, scrollIndicatorNode: HTMLDivElement) {
+function bannerAnimation(children: HTMLHeadingElement[], scrollIndicatorNode: HTMLDivElement) {
 	// const { children } = node;
 	const tl = gsap.timeline({});
 

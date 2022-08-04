@@ -101,15 +101,15 @@ class AnimHomePage {
 		subFieldOne,
 		subFieldTwo,
 		picMobile,
-		picDesktop,
+		picDesktopBlind,
 		scrollIndicator,
 	}: {
-		nameLetters: NodeListOf<Element>;
-		fieldLetters: NodeListOf<Element>;
+		nameLetters: HTMLSpanElement[];
+		fieldLetters: HTMLSpanElement[];
 		subFieldOne: HTMLDivElement;
 		subFieldTwo: HTMLDivElement;
 		picMobile: HTMLDivElement;
-		picDesktop: HTMLSpanElement;
+		picDesktopBlind: HTMLSpanElement;
 		scrollIndicator: HTMLDivElement;
 	}) {
 		const tl = gsap.timeline();
@@ -120,7 +120,7 @@ class AnimHomePage {
 		if (window.innerWidth < 768) {
 			tl.to(picMobile, { width: "100%" });
 		} else {
-			tl.to(picDesktop, { width: 0 });
+			tl.to(picDesktopBlind, { width: 0 });
 		}
 
 		tl.to(scrollIndicator, { opacity: 1 });
@@ -199,7 +199,15 @@ class AnimHomePage {
 // PROJECTS PAGE
 //--------------------------------------------
 class AnimsProjectsPage {
-	animateFilterSection({ backdrop, sidebar, listItems }) {
+	animateFilterSection({
+		backdrop,
+		sidebar,
+		listItems,
+	}: {
+		backdrop: HTMLDivElement;
+		sidebar: HTMLElement;
+		listItems: HTMLElement[];
+	}) {
 		const tl = gsap.timeline({ paused: true });
 
 		//Fade in backdrop

@@ -1,13 +1,12 @@
-import { useRef, RefObject, useState } from "react";
 import gsap from "gsap";
+import { useRef, RefObject } from "react";
 import { useRadialGradientAnimContent } from "#/state";
 import { useIsomorphicLayoutEffect } from ".";
 
 export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRef: RefObject<HTMLDivElement> }) {
 	const darkSectionRadialGradientRef = useRef(null);
-	const [tl, setTl] = useState<gsap.core.Timeline>();
 
-	const { timeline, setTimeline } = useRadialGradientAnimContent();
+	const { setTimeline } = useRadialGradientAnimContent();
 
 	//-------------------------------------------------
 	// PIN RADIAL GRADIENT TO BLACK SECTION CENTER
@@ -32,7 +31,7 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 	}, [darkSectionRef]);
 
 	const recalculateGradient = () => {
-		timeline.scrollTrigger.refresh();
+		// timeline.scrollTrigger.refresh();
 	};
 
 	return {

@@ -6,13 +6,13 @@ import type { AppProps } from "next/app";
 import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
 import { Common } from "#/components";
 import { PageLeaveAnimationContext, RadialGradientAnimContext } from "#/state";
-import { useState, useEffect } from "react";
-import Head from "next/head";
+import { useState } from "react";
+
 function MyApp({ Component, pageProps }: AppProps) {
 	useRegisterGsapScrollTrigger();
 
 	const [pageLeaveAnimation, setPageLeaveAnimation] = useState<gsap.core.Timeline | null>(null);
-	const [timeline, setTimeline] = useState();
+	const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
 
 	useIsomorphicLayoutEffect(() => {
 		smoothscroll.polyfill();
@@ -25,15 +25,15 @@ function MyApp({ Component, pageProps }: AppProps) {
 				strategy="lazyOnload"
 				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
 			></Script>
-			<Script strategy="lazyOnload">
+			<Script strategy="lazyOnload" id="analytics">
 				{`
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-			page_path: window.location.pathname,
-			});
-		`}
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+						page_path: window.location.pathname,
+					});
+				`}
 			</Script>
 
 			<PageLeaveAnimationContext.Provider
