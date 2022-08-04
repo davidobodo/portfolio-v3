@@ -1,13 +1,14 @@
 @import "#/styles/globals.module.scss";
 
-.container {
-	background-color: var(--light-brown);
+.banner {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	background-color: var(--light-brown);
+	padding: 8rem 2rem 2rem;
+	position: fixed;
 	width: 100%;
 	z-index: var(--z-index-banner);
-	padding: 8rem 2rem 2rem;
 
 	@media (min-width: $xl) {
 		padding: 5rem 5rem;
@@ -107,11 +108,10 @@
 	}
 
 	.bottom {
-		display: flex;
-		justify-content: space-between;
 		position: absolute;
 		left: 2rem;
 		bottom: 1.5rem;
+		opacity: 0;
 
 		@media (min-width: $xl) {
 			left: 5rem;

@@ -1,18 +1,21 @@
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef, RefObject } from "react";
 import { usePageLeaveAnimationContext } from "#/state";
-import { animPageLoaders } from "#/utils/animations/atoms";
+import { animPageLoaders, sharedAnimations } from "#/utils/animations/atoms";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
+const { transitionToDarkSection } = sharedAnimations;
 
-// Used in boths projects and letters page
-export default function useProjectsLettersInit({
+export default function useGenericPageInit({
 	windowInnerHeight,
 	windowInnerWidth,
+	darkSectionRef,
 }: {
 	windowInnerHeight: number;
 	windowInnerWidth: number;
+	darkSectionRef: RefObject<HTMLDivElement>;
 }) {
+	const bannerRef = useRef<HTMLDivElement>(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
@@ -56,39 +59,18 @@ export default function useProjectsLettersInit({
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
 	const blackCoverRef = useRef<HTMLDivElement>(null);
-	const bannerRef = useRef<HTMLDivElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: bannerRef.current,
-				toggleActions: "restart pause reverse pause",
-				start: "top top",
-				end: "bottom top",
-				scrub: true,
-				pin: true,
-				pinSpacing: false,
-				onEnterBack: () => {
-					if (bannerRef.current && blackCoverRef.current) {
-						bannerRef.current.style.zIndex = "1";
-						blackCoverRef.current.style.zIndex = "2";
-					}
-				},
-				onLeave: () => {
-					if (bannerRef.current && blackCoverRef.current) {
-						bannerRef.current.style.zIndex = "-1";
-						blackCoverRef.current.style.zIndex = "-1";
-					}
-				},
-			},
+		const tl = transitionToDarkSection({
+			darkSection: darkSectionRef.current,
+			banner: bannerRef.current,
+			blackCurtain: blackCoverRef.current,
 		});
 
-		tl.to(blackCoverRef.current, {
-			scaleY: 1,
-			transformOrigin: "top",
-		});
-		tl.to(textWrapperRef.current, { opacity: 0 }, "<");
-	}, [bannerRef.current, blackCoverRef.current]);
+		return () => {
+			tl.scrollTrigger?.kill();
+		};
+	}, []);
 
 	return {
 		textWrapperRef,

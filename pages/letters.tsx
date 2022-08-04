@@ -1,18 +1,19 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/letters.module.scss";
 import { NextPage } from "next";
+import { useRef } from "react";
 import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain } from "#/components";
 import { LETTERS } from "#/constants/letters";
-import { useProjectsLettersInit, useWindowSize } from "#/hooks";
-import { useRef } from "react";
+import { useGenericPageInit, useWindowSize } from "#/hooks";
 const Letters: NextPage = () => {
+	const darkSectionRef = useRef(null);
+
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { textWrapperRef, scrollIndicatorRef, bannerRef, blackCoverRef, bannerHeight } = useProjectsLettersInit({
+	const { textWrapperRef, scrollIndicatorRef, bannerRef, blackCoverRef, bannerHeight } = useGenericPageInit({
 		windowInnerHeight,
 		windowInnerWidth,
+		darkSectionRef,
 	});
-
-	const darkSectionRef = useRef(null);
 
 	return (
 		<>

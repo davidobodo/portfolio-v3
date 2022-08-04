@@ -1,4 +1,7 @@
 import gsap from "gsap";
+import { DATA_VALUES } from "#/constants";
+import { TTimelineAction } from "#/interfaces";
+import { animateFaintSvg } from "#/utils";
 
 //--------------------------------------------
 // SITE LOADER
@@ -93,7 +96,7 @@ class AnimPageLoaders {
 //--------------------------------------------
 // HOME PAGE
 //--------------------------------------------
-class AnimHomePage {
+class HomePageAnimations {
 	//----
 	bannerAnimation({
 		nameLetters,
@@ -130,8 +133,118 @@ class AnimHomePage {
 
 		return tl;
 	}
+
 	//-----
-	changeFocusedAboutText(texts: HTMLCollection) {
+	revealParagraph({
+		trigger,
+		words,
+		start = "top 60%",
+		end = "bottom 40%",
+	}: {
+		trigger: Element;
+		words: NodeListOf<Element>;
+		start?: string;
+		end?: string;
+	}) {
+		return gsap.to(words, {
+			scrollTrigger: {
+				trigger,
+				start,
+				end,
+				toggleActions: "restart pause pause reverse",
+				scrub: true,
+			},
+			y: 0,
+		});
+	}
+
+	//-----
+	revealHeading({ container, texts, windowInnerWidth }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: container,
+				start: "top 80%",
+				end: "top center",
+				toggleActions: "restart complete pause reverse",
+				scrub: true,
+			},
+		});
+		tl.to(texts, {
+			y: 0,
+		})
+			.to(texts[0], { x: windowInnerWidth > 768 ? 160 : 0 })
+			.to(texts[1], { x: 0 }, "<")
+			.to(texts[2], { x: windowInnerWidth > 768 ? 160 : 0 }, "<");
+
+		return tl;
+	}
+}
+
+//--------------------------------------------
+// PROJECTS PAGE
+//--------------------------------------------
+class AnimsProjectsPage {
+	animateFilterSection({
+		backdrop,
+		sidebar,
+		listItems,
+	}: {
+		backdrop: HTMLDivElement;
+		sidebar: HTMLElement;
+		listItems: HTMLElement[];
+	}) {
+		const tl = gsap.timeline({ paused: true });
+
+		//Fade in backdrop
+		tl.to(backdrop, { opacity: 1, visibility: "visible" });
+
+		//slide filter list in
+		tl.to(sidebar, { x: 0 });
+
+		//Stagger list items
+		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01 });
+
+		return tl;
+	}
+}
+
+class SharedAnimations {
+	transitionToDarkSection({ darkSection, banner, blackCurtain }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: darkSection,
+				toggleActions: "restart complete reverse reset",
+				start: "top bottom",
+				end: "top top",
+				scrub: true,
+				// markers: true,
+				onEnterBack: () => {
+					if (banner && blackCurtain) {
+						banner.style.zIndex = "1";
+						banner.style.opacity = "1";
+						blackCurtain.style.zIndex = "2";
+					}
+				},
+				onLeave: () => {
+					if (banner && blackCurtain) {
+						banner.style.zIndex = "-1";
+						banner.style.opacity = "0";
+						blackCurtain.style.zIndex = "-1";
+					}
+				},
+			},
+		});
+		tl.to(blackCurtain, {
+			scaleY: 1,
+			transformOrigin: "top",
+		});
+		tl.to(banner?.children, { opacity: 0 }, "<");
+
+		return tl;
+	}
+
+	//-----
+	changeFocusedOpaqueText(texts: HTMLCollection) {
 		const firstElement = texts[0];
 		const lastElement = texts[texts.length - 1];
 
@@ -170,54 +283,229 @@ class AnimHomePage {
 		return tl;
 	}
 
-	//-----
-	revealParagraph({
-		trigger,
-		words,
-		start = "top 60%",
-		end = "bottom 40%",
-	}: {
-		trigger: Element;
-		words: NodeListOf<Element>;
-		start?: string;
-		end?: string;
-	}) {
-		return gsap.to(words, {
-			scrollTrigger: {
-				trigger,
-				start,
-				end,
-				toggleActions: "restart pause pause reverse",
-				scrub: true,
-			},
-			y: 0,
-		});
+	executeTimelineActions({ tl, tlActions }: { tl: gsap.core.Timeline; tlActions: TTimelineAction[] }) {
+		for (let j = 0; j < tlActions.length; j++) {
+			const { target, vars, options, isLabel, label } = tlActions[j];
+
+			if (isLabel && label) {
+				tl.add(label);
+			} else {
+				if (target && vars) {
+					if (options) {
+						tl.to(target, vars, options);
+					} else {
+						tl.to(target, vars);
+					}
+				}
+			}
+		}
 	}
 }
 
-//--------------------------------------------
-// PROJECTS PAGE
-//--------------------------------------------
-class AnimsProjectsPage {
-	animateFilterSection({
-		backdrop,
-		sidebar,
-		listItems,
-	}: {
-		backdrop: HTMLDivElement;
-		sidebar: HTMLElement;
-		listItems: HTMLElement[];
+class WorkPageAnimations {
+	constructor() {
+		this.desktopAnimation = this.desktopAnimation.bind(this);
+		this.mobileAnimation = this.mobileAnimation.bind(this);
+	}
+
+	private createDesktopAnimationTimeline({ titles, details, titleBg }) {
+		const DESKTOP_TITLE_HEIGHT = 72;
+		let timelineActions: TTimelineAction[] = [];
+
+		// CREATE TIMELINE ACTIONS
+		for (let i = 0; i < details.length; i++) {
+			const target = details[i];
+
+			// Move the background gradient
+			timelineActions.push({
+				target: titleBg as Element,
+				vars: { y: i * DESKTOP_TITLE_HEIGHT },
+				options: i === 0 ? " " : "<",
+			});
+
+			if (i !== 0) {
+				// Decrease details opacity
+				timelineActions.push({
+					target,
+					vars: { opacity: 0 },
+					options: ">-25%", // start at 25% towards the end of the previous animation
+					action: "decrease opac",
+				});
+			}
+
+			//Increase title opacity
+			timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } });
+
+			// Increase details opacity
+			timelineActions.push({
+				target,
+				vars: { opacity: 1, visibility: "visible" },
+				options: "<",
+				action: "increase opac",
+			});
+
+			// Add a label at this point to the timeline (Might be useful for click events)
+			timelineActions.push({ isLabel: true, label: `active-${i}` });
+
+			// Translate details to their normal position
+			timelineActions.push({ target, vars: { y: 0 }, options: "<", action: "move up" });
+
+			// Dont decrease opacity for the last item
+			if (i !== details.length - 1) {
+				// Decrease title opacity
+				timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } });
+
+				// Decrease details opacity
+				timelineActions.push({
+					target,
+					vars: { opacity: 0, visibility: "hidden" },
+					options: ">-25%", // start at 25% towards the end of the previous animation
+					action: "decrease opac",
+				});
+			}
+		}
+
+		return timelineActions;
+	}
+
+	private createMobileAnimationTimeline({ titles, details, titlesContainer }) {
+		const posDic: Record<string, string | number> = {};
+
+		for (let k = 0; k < titles.length; k++) {
+			posDic[k] = titles[k].offsetLeft;
+		}
+
+		let timelineActions: TTimelineAction[] = [];
+
+		//Create the animation for the timeline
+		for (let i = 0; i < details.length; i++) {
+			const target = details[i];
+			const topTarget = titles[i];
+
+			//Increase bottom opacity
+			timelineActions.push({ target: topTarget, vars: { opacity: 1 } });
+			if (i !== 0) {
+				timelineActions.push({
+					target: titlesContainer,
+					vars: { left: -posDic[i] + 20 },
+				});
+				// Dont need to increase the first items opacity since its already visible
+			}
+			timelineActions.push({ target, vars: { opacity: 1 } });
+
+			//Decrease bottom opacity
+			if (i !== details.length - 1) {
+				timelineActions.push({ target: topTarget, vars: { opacity: 0.2 } });
+				//Dont need to decrease the last items opacity so its still visible in the DOM when we scroll out
+				timelineActions.push({ target, vars: { opacity: 0 } });
+			}
+		}
+
+		return timelineActions;
+	}
+
+	desktopAnimation({
+		faintBgTitle,
+		radialGradient,
+		container,
+		tabsWrapper,
+		titleBg,
+		titles,
+		details,
+		windowInnerWidth,
 	}) {
-		const tl = gsap.timeline({ paused: true });
+		// CREATE TIMELINE
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: container,
+				start: "top top",
+				end: "bottom bottom",
+				toggleActions: "restart pause reverse pause",
+				scrub: true,
+				pin: tabsWrapper,
+				pinSpacing: false,
+				onUpdate: (self) => {
+					// Displace the faintbg text
+					const yDisplacement = animateFaintSvg({
+						progress: self.progress,
+						parentElement: tabsWrapper,
+						svgViewportHeightRatio: 0.13, //Did some calculation to arrive at this value
+						windowWidth: windowInnerWidth,
+					});
+					faintBgTitle.style.bottom = yDisplacement + "px";
 
-		//Fade in backdrop
-		tl.to(backdrop, { opacity: 1, visibility: "visible" });
+					// Reduce the radial gradient opacity
+					const gradientOpacity = 1 - self.progress;
+					if (radialGradient) {
+						radialGradient.style.opacity = gradientOpacity.toString();
+					}
+				},
+			},
+		});
 
-		//slide filter list in
-		tl.to(sidebar, { x: 0 });
+		// CREATE TIMELINE ACTIONS
+		const timelineActions = this.createDesktopAnimationTimeline({
+			titles,
+			details,
+			titleBg,
+		});
 
-		//Stagger list items
-		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01 });
+		// EXECUTE TIMELINE ACTIONS
+		sharedAnimations.executeTimelineActions({
+			tl,
+			tlActions: timelineActions,
+		});
+
+		return tl;
+	}
+
+	mobileAnimation({
+		radialGradient,
+		faintBgTitle,
+		container,
+		tabsWrapper,
+		titles,
+		details,
+		titlesContainer,
+		windowInnerWidth,
+	}) {
+		// CREATE TIMLINE
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: container,
+				start: "top top",
+				end: "bottom bottom",
+				toggleActions: "restart pause reverse pause",
+				scrub: true,
+				pin: tabsWrapper,
+				pinSpacing: false,
+				onUpdate: (self) => {
+					// Displace the faintbg text
+					const yDisplacement = animateFaintSvg({
+						progress: self.progress,
+						parentElement: tabsWrapper,
+						svgViewportHeightRatio: 0.3, //Did some calculation to arrive at this value
+						windowWidth: windowInnerWidth,
+					});
+					faintBgTitle.style.bottom = yDisplacement + "px";
+
+					// Reduce the radial gradient opacity
+					const gradientOpacity = 1 - self.progress;
+					if (radialGradient) {
+						radialGradient.style.opacity = gradientOpacity.toString();
+					}
+				},
+			},
+		});
+
+		// CREATE TIMELINE ACTIONS
+		const timelineActions = this.createMobileAnimationTimeline({ titles, details, titlesContainer });
+
+		// EXECUTE TIMELINE ACTIONS
+		sharedAnimations.executeTimelineActions({
+			tl,
+			tlActions: timelineActions,
+		});
 
 		return tl;
 	}
@@ -251,7 +539,18 @@ function fadeIn({ node }: { node: Element }) {
 	return tl;
 }
 const animPageLoaders = new AnimPageLoaders();
-const homePageAnims = new AnimHomePage();
+const homePageAnimations = new HomePageAnimations();
 const projectsPageAnima = new AnimsProjectsPage();
+const sharedAnimations = new SharedAnimations();
+const workPageAnimations = new WorkPageAnimations();
 
-export { expandImage, animPageLoaders, homePageAnims, AnimPageLoaders, fadeIn, projectsPageAnima };
+export {
+	expandImage,
+	animPageLoaders,
+	homePageAnimations,
+	AnimPageLoaders,
+	fadeIn,
+	projectsPageAnima,
+	sharedAnimations,
+	workPageAnimations,
+};

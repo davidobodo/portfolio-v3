@@ -1,13 +1,11 @@
-import useHomeInit from "./useHomeInit";
-import useCreditsInit from "./useCreditsInit";
-import useProjectsLettersInit from "./useProjectsLettersInit";
-import useSingleProjectInit from "./useSingleProjectInit";
+import useHomePageInit from "./useHomePageInit";
+import useGenericPageInit from "./useGenericPageInit";
+import useSingleProjectPageInit from "./useSingleProjectPageInit";
 
 const initPageLoads = {
-    useHomeInit,
-    useCreditsInit,
-    useProjectsLettersInit,
-    useSingleProjectInit
+	useHomePageInit,
+	useGenericPageInit,
+	useSingleProjectPageInit,
 };
 
 export default initPageLoads;

@@ -1,32 +1,28 @@
-import gsap from "gsap";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
+import { homePageAnimations } from "#/utils/animations/atoms";
+
+const { revealHeading } = homePageAnimations;
 export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidth: number }) {
-    const headingRef = useRef<HTMLHeadingElement>(null);
+	const headingRef = useRef<HTMLHeadingElement>(null);
 
-    useIsomorphicLayoutEffect(() => {
-        if (headingRef.current) {
-            const titleTexts = headingRef.current.querySelectorAll("span>span");
+	useIsomorphicLayoutEffect(() => {
+		if (headingRef.current) {
+			const titleTexts = headingRef.current.querySelectorAll("span>span");
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: headingRef.current,
-                    start: "top 80%",
-                    end: "top center",
-                    toggleActions: "restart complete pause reverse",
-                    scrub: true
-                }
-            });
-            tl.to(titleTexts, {
-                y: 0
-            })
-                .to(titleTexts[0], { x: windowInnerWidth > 768 ? 160 : 0 })
-                .to(titleTexts[1], { x: 0 }, "<")
-                .to(titleTexts[2], { x: windowInnerWidth > 768 ? 160 : 0 }, "<");
-        }
-    }, [headingRef, windowInnerWidth]);
+			const tl = revealHeading({
+				container: headingRef.current,
+				texts: titleTexts,
+				windowInnerWidth,
+			});
 
-    return {
-        headingRef
-    };
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
+	}, [headingRef, windowInnerWidth]);
+
+	return {
+		headingRef,
+	};
 }

@@ -12,7 +12,7 @@ import {
 	ProjectsFilter,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useSelectProjectAnimation, useProjectsLettersInit, useWindowSize } from "#/hooks";
+import { useSelectProjectAnimation, useGenericPageInit, useWindowSize } from "#/hooks";
 
 import { PROJECTS } from "#/constants/projects";
 import { useEffect, useState, useRef } from "react";
@@ -24,9 +24,10 @@ const ProjectsPage: NextPage = () => {
 	const darkSectionRef = useRef(null);
 	const contentRef = useRef(null);
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
 		windowInnerHeight,
 		windowInnerWidth,
+		darkSectionRef,
 	});
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
 		useSelectProjectAnimation();
