@@ -315,6 +315,43 @@ class SharedAnimations {
 
 		return tl;
 	}
+
+	genericPageBannerAnimation(children: HTMLHeadingElement[], scrollIndicatorNode: HTMLDivElement) {
+		// const { children } = node;
+		const tl = gsap.timeline({});
+
+		//CREATE TIMELINE ACTIONS
+
+		tl.add(() => {
+			document.querySelector("body")?.classList.add("hide");
+		});
+
+		// 1. Slide in first element
+		tl.to(children[0].querySelectorAll("[data-key='letter']"), { x: 0 });
+
+		// 2. draw second elements backgorund
+		tl.to(children[1].querySelectorAll("[data-key='bg']"), { width: "100%" });
+
+		// 3. slide in second element
+		tl.to(children[1].querySelectorAll("[data-key='letter']"), { x: 0 });
+
+		// 4. slide in third element
+		tl.to(children[2].querySelectorAll("[data-key='letter']"), { x: 0 });
+
+		// 5. draw fourth elements background
+		tl.to(children[3].querySelectorAll("[data-key='bg']"), { width: "100%" });
+
+		// 6. slide in fourth element;
+		tl.to(children[3].querySelectorAll("[data-key='letter']"), { x: 0 });
+
+		tl.to(scrollIndicatorNode, { opacity: 1 });
+
+		tl.add(() => {
+			document.querySelector("body")?.classList.remove("hide");
+		});
+
+		return tl;
+	}
 }
 
 class WorkSectionAnimations {
@@ -800,6 +837,28 @@ class SingleProjectAnimations {
 	}
 }
 
+class NotFoundPageAnimations {
+	bannerAnimation({ sections }) {
+		const tl = gsap.timeline();
+		tl.to(sections, { opacity: 1, y: 0, stagger: 0.2 });
+		return tl;
+	}
+
+	stopRedirectAnimation({ textsToRemove, container, gradient, scroll }) {
+		const tl = gsap.timeline();
+
+		tl.to(textsToRemove, { opacity: 0, y: 100 });
+		tl.to(container, { backgroundColor: "#000", color: "#86868b" });
+		tl.to(gradient, { opacity: 1 }, "<");
+		tl.add(() => {
+			document.querySelector("body")?.classList.remove("hide");
+		});
+		tl.to(scroll, { opacity: 1 });
+
+		return tl;
+	}
+}
+
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
 const projectsPageAnima = new AnimsProjectsPage();
@@ -807,6 +866,7 @@ const sharedAnimations = new SharedAnimations();
 const workPageAnimations = new WorkSectionAnimations();
 const skillsSectionAnimations = new SkillsSectionAnimations();
 const singleProjectAnimations = new SingleProjectAnimations();
+const notFoundPageAnimations = new NotFoundPageAnimations();
 
 export {
 	animPageLoaders,
@@ -817,4 +877,5 @@ export {
 	workPageAnimations,
 	skillsSectionAnimations,
 	singleProjectAnimations,
+	notFoundPageAnimations,
 };

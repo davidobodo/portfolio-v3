@@ -23,6 +23,7 @@ const { animateFilterSection } = projectsPageAnima;
 const ProjectsPage: NextPage = () => {
 	const darkSectionRef = useRef(null);
 	const contentRef = useRef(null);
+
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
 	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
 		windowInnerHeight,
@@ -53,12 +54,12 @@ const ProjectsPage: NextPage = () => {
 
 	// Create filter section animation
 	useEffect(() => {
-		const backdrop = filterRefSelector('[data-key="backdrop"]') as unknown as HTMLDivElement;
-		const sidebar = filterRefSelector('[data-key="sidebar"]') as unknown as HTMLDivElement;
+		const backdrop = filterRefSelector<HTMLDivElement>('[data-key="backdrop"]');
+		const sidebar = filterRefSelector('[data-key="sidebar"]');
 		const listItems = filterRefSelector('[data-key="list-items"]');
 		const tl = animateFilterSection({
-			backdrop,
-			sidebar,
+			backdrop: backdrop[0],
+			sidebar: sidebar[0],
 			listItems,
 		});
 		setFilterSectionAnim(tl);
@@ -79,8 +80,6 @@ const ProjectsPage: NextPage = () => {
 		setDisplayedProjects(res);
 		onToggleFilter();
 	};
-
-	// const { timeline, setTimeline } = useRadialGradientAnimContent();
 
 	return (
 		<>

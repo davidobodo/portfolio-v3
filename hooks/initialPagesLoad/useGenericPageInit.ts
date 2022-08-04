@@ -4,7 +4,14 @@ import { usePageLeaveAnimationContext } from "#/state";
 import { animPageLoaders, sharedAnimations } from "#/utils/animations/atoms";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
-const { transitionToDarkSection } = sharedAnimations;
+const { transitionToDarkSection, genericPageBannerAnimation } = sharedAnimations;
+/**
+ *
+ * Generic pages include
+ * 1. Projects Page
+ * 2. Letters Page
+ * 3. Site Credits Page
+ */
 
 export default function useGenericPageInit({
 	windowInnerHeight,
@@ -30,7 +37,7 @@ export default function useGenericPageInit({
 				const master = gsap.timeline();
 				master
 					.add(openNoiseLayers(layers))
-					.add(bannerAnimation(textRefSelector("h1") as HTMLHeadingElement[], scrollIndicatorRef.current));
+					.add(genericPageBannerAnimation(textRefSelector("h1") as HTMLHeadingElement[], scrollIndicatorRef.current));
 
 				return () => {
 					master.kill();
@@ -45,7 +52,7 @@ export default function useGenericPageInit({
 				master
 					.add(drawSvgLogo(logo, logoChildren))
 					.add(openNoiseLayers(layers))
-					.add(bannerAnimation(textRefSelector("h1") as HTMLHeadingElement[], scrollIndicatorRef.current));
+					.add(genericPageBannerAnimation(textRefSelector("h1") as HTMLHeadingElement[], scrollIndicatorRef.current));
 
 				return () => {
 					master.kill();
@@ -79,41 +86,4 @@ export default function useGenericPageInit({
 		bannerRef,
 		bannerHeight,
 	};
-}
-
-function bannerAnimation(children: HTMLHeadingElement[], scrollIndicatorNode: HTMLDivElement) {
-	// const { children } = node;
-	const tl = gsap.timeline({});
-
-	//CREATE TIMELINE ACTIONS
-
-	tl.add(() => {
-		document.querySelector("body")?.classList.add("hide");
-	});
-
-	// 1. Slide in first element
-	tl.to(children[0].querySelectorAll("[data-key='letter']"), { x: 0 });
-
-	// 2. draw second elements backgorund
-	tl.to(children[1].querySelectorAll("[data-key='bg']"), { width: "100%" });
-
-	// 3. slide in second element
-	tl.to(children[1].querySelectorAll("[data-key='letter']"), { x: 0 });
-
-	// 4. slide in third element
-	tl.to(children[2].querySelectorAll("[data-key='letter']"), { x: 0 });
-
-	// 5. draw fourth elements background
-	tl.to(children[3].querySelectorAll("[data-key='bg']"), { width: "100%" });
-
-	// 6. slide in fourth element;
-	tl.to(children[3].querySelectorAll("[data-key='letter']"), { x: 0 });
-
-	tl.to(scrollIndicatorNode, { opacity: 1 });
-
-	tl.add(() => {
-		document.querySelector("body")?.classList.remove("hide");
-	});
-
-	return tl;
 }
