@@ -54,7 +54,7 @@ const Home: NextPage = () => {
 	const { textWrapperRef: thoughtTwoText } = useRevealParagraph();
 	const { headingRef: skillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
 	const { headingRef: mobileSkillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
-	const { skillsListRef, skillsContainerRef, skillsContentWrapperRef, mobileSkillsContainerRef } = useSkillsAnimation({
+	const { skillsContainerRef, mobileSkillsContainerRef } = useSkillsAnimation({
 		windowInnerWidth,
 	});
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
@@ -79,9 +79,7 @@ const Home: NextPage = () => {
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 					<Skills
-						skillsListRef={skillsListRef}
 						skillsContainerRef={skillsContainerRef}
-						skillsContentWrapperRef={skillsContentWrapperRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}
 						mobileSkillsContainerRef={mobileSkillsContainerRef}
 						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}

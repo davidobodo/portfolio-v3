@@ -302,7 +302,7 @@ class SharedAnimations {
 	}
 }
 
-class WorkPageAnimations {
+class WorkSectionAnimations {
 	constructor() {
 		this.desktopAnimation = this.desktopAnimation.bind(this);
 		this.mobileAnimation = this.mobileAnimation.bind(this);
@@ -511,6 +511,154 @@ class WorkPageAnimations {
 	}
 }
 
+class SkillsSectionAnimations {
+	constructor() {
+		this.desktopAnimation = this.desktopAnimation.bind(this);
+		this.mobileAnimation = this.mobileAnimation.bind(this);
+	}
+
+	private createDesktopAnimationTimeline({ lists, image }) {
+		let timelineActions: TTimelineAction[] = [];
+
+		timelineActions.push({ target: image, vars: { width: "29vw", duration: 2 } });
+
+		for (let i = 0; i < lists.length; i++) {
+			const header = lists[i].firstElementChild as HTMLElement;
+			const list = header?.nextElementSibling; // The "UL tag"
+			const listItems = list?.querySelectorAll("li>span") as unknown as HTMLElement;
+			const info = list?.nextElementSibling;
+
+			//show heading
+			timelineActions.push({ target: header, vars: { opacity: 1 } });
+			//show list
+			timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
+
+			if (info) {
+				timelineActions.push({ target: info, vars: { opacity: 1 } });
+			}
+		}
+
+		return timelineActions;
+	}
+
+	private createMobileAnimationTimeline({ listsWrapper, lists }) {
+		let timelineActions: TTimelineAction[] = [];
+
+		// CREATE TIMELINE ACTIONS
+		timelineActions.push({ target: listsWrapper.children[0], vars: { opacity: 1 } });
+
+		const { header, listItems } = this.getListHeaderAndItems(lists[0]);
+		timelineActions.push({ target: header, vars: { opacity: 1 } });
+		timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
+
+		const { header: headerTwo, listItems: listItemsTwo } = this.getListHeaderAndItems(lists[1]);
+		timelineActions.push({ target: headerTwo, vars: { opacity: 1 } });
+		timelineActions.push({ target: listItemsTwo, vars: { stagger: 0.2, y: 0 } });
+
+		timelineActions.push({ target: listsWrapper.children[0], vars: { opacity: 0 } });
+		timelineActions.push({ target: listsWrapper.children[1], vars: { opacity: 1 } });
+
+		const { header: headerThree, listItems: listItemsThree } = this.getListHeaderAndItems(lists[2]);
+		timelineActions.push({ target: headerThree, vars: { opacity: 1 } });
+		timelineActions.push({ target: listItemsThree, vars: { stagger: 0.2, y: 0 } });
+
+		return timelineActions;
+	}
+
+	private getListHeaderAndItems(element: HTMLElement | Element) {
+		const header = element.firstElementChild as HTMLElement;
+		const listItems = header?.nextElementSibling?.querySelectorAll("li>span") as unknown as HTMLElement;
+		return {
+			header,
+			listItems,
+		};
+	}
+
+	mobileAnimation({ faintBgTitle, radialGradient, contentWrapper, listsWrapper, lists, container, windowInnerWidth }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: container,
+				start: "top top",
+				end: "bottom bottom",
+				toggleActions: "restart pause reverse pause",
+				scrub: true,
+				pin: contentWrapper,
+				pinSpacing: false,
+				onUpdate: (self) => {
+					// Displace the faintbg text
+					const yDisplacement = animateFaintSvg({
+						progress: self.progress,
+						parentElement: contentWrapper,
+						svgViewportHeightRatio: 0.15, //Did some calculation to arrive at this value
+						windowWidth: windowInnerWidth,
+					});
+
+					faintBgTitle.style.bottom = yDisplacement + "px";
+
+					if (radialGradient) {
+						radialGradient.style.opacity = self.progress.toString();
+					}
+				},
+			},
+		});
+
+		const timelineActions = this.createMobileAnimationTimeline({
+			lists,
+			listsWrapper,
+		});
+
+		// EXECUTE TIMELINE ACTIONS
+		sharedAnimations.executeTimelineActions({
+			tl,
+			tlActions: timelineActions,
+		});
+
+		return tl;
+	}
+
+	desktopAnimation({ faintBgTitle, radialGradient, image, lists, contentWrapper, container, windowInnerWidth }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: container,
+				start: "top top",
+				end: "bottom bottom",
+				toggleActions: "restart pause reverse pause",
+				scrub: true,
+				pin: contentWrapper,
+				pinSpacing: false,
+				onUpdate: (self) => {
+					// Displace the faintbg text
+					const yDisplacement = animateFaintSvg({
+						progress: self.progress,
+						parentElement: contentWrapper,
+						svgViewportHeightRatio: 0.15, //Did some calculation to arrive at this value
+						windowWidth: windowInnerWidth,
+					});
+
+					faintBgTitle.style.bottom = yDisplacement + "px";
+
+					if (radialGradient) {
+						radialGradient.style.opacity = self.progress.toString();
+					}
+				},
+			},
+		});
+
+		const timelineActions = this.createDesktopAnimationTimeline({
+			lists,
+			image,
+		});
+
+		// EXECUTE TIMELINE ACTIONS
+		sharedAnimations.executeTimelineActions({
+			tl,
+			tlActions: timelineActions,
+		});
+
+		return tl;
+	}
+}
+
 function expandImage(imageNode: HTMLImageElement) {
 	gsap.to(imageNode, {
 		scrollTrigger: {
@@ -542,7 +690,8 @@ const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
 const projectsPageAnima = new AnimsProjectsPage();
 const sharedAnimations = new SharedAnimations();
-const workPageAnimations = new WorkPageAnimations();
+const workPageAnimations = new WorkSectionAnimations();
+const skillsSectionAnimations = new SkillsSectionAnimations();
 
 export {
 	expandImage,
@@ -553,4 +702,5 @@ export {
 	projectsPageAnima,
 	sharedAnimations,
 	workPageAnimations,
+	skillsSectionAnimations,
 };

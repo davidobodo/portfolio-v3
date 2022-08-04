@@ -4,20 +4,13 @@ import { Ref } from "react";
 import { FaintBgText } from "../../../../index";
 
 export type SkillsDesktopProps = {
-	skillsListRef: Ref<HTMLDivElement>;
 	skillsContainerRef: Ref<HTMLDivElement>;
-	skillsContentWrapperRef: Ref<HTMLDivElement>;
 	skillsSectionTitlteRef: Ref<HTMLHeadingElement>;
 };
-export default function SkillsDesktop({
-	skillsListRef,
-	skillsContainerRef,
-	skillsContentWrapperRef,
-	skillsSectionTitlteRef,
-}: SkillsDesktopProps) {
+export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteRef }: SkillsDesktopProps) {
 	return (
 		<div className={styles.container} ref={skillsContainerRef} id="skills-section">
-			<div className={styles.contentWrapper} ref={skillsContentWrapperRef}>
+			<div className={styles.contentWrapper} data-key="skills-content">
 				<div className={styles.wrapper}>
 					<div className={styles.heading}>
 						<h2 className={styles.subTitle} ref={skillsSectionTitlteRef}>
@@ -42,7 +35,7 @@ export default function SkillsDesktop({
 							data-id="hand-image"
 						></div>
 					</div>
-					<div className={styles.skillsList} ref={skillsListRef}>
+					<div className={styles.skillsList} data-key="skills-list">
 						<div></div>
 						<div>
 							<section className={styles.skills} data-id="skill">
