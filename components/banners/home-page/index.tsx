@@ -39,7 +39,7 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 				</div>
 
 				<div className={styles.bottomSection}>
-					<ScrollAlert containerStyles={{ opacity: 0 }} />
+					<ScrollAlert propStyles={styles.scrollAlert} />
 
 					<div className={styles.bottomSectionText}>
 						<div className={styles.subfieldwrapper}>

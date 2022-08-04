@@ -19,14 +19,14 @@ import Projects from "./projects";
 import Filter from "./filter";
 import ProjectsFilter from "./projects-filter";
 import Spinner from "./spinner";
+import AlternatingOpacity from "./alternating-opacity";
 
 const { Button, Radio } = Atoms;
-const { Preloader, About, Work, Thoughts, Skills, FaintBgText, ProjectsHeading } = HomePage;
+const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading } = HomePage;
 const { SingleLetter } = LettersPage;
 
 export {
 	Preloader,
-	About,
 	Work,
 	Thoughts,
 	Skills,
@@ -55,4 +55,5 @@ export {
 	Filter,
 	ProjectsFilter,
 	Spinner,
+	AlternatingOpacity,
 };

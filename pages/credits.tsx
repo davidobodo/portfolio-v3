@@ -1,10 +1,9 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, About, BannerCurtain } from "#/components";
-import { useProjectsLettersInit, HomePageHooks, useWindowSize } from "#/hooks";
+import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity } from "#/components";
+import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { fadeIn } from "#/utils/animations/atoms";
-const { useHomeAboutAnim } = HomePageHooks;
 
 type TCredit = {
 	link: string;
@@ -82,13 +81,15 @@ export default function Credit() {
 			description: "Emma ui/ux",
 		},
 	];
+	const darkSectionRef = useRef(null);
 
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
 		windowInnerHeight,
 		windowInnerWidth,
+		darkSectionRef,
 	});
-	const { aboutListRef } = useHomeAboutAnim();
+	const { textsListRef } = useAlternateTextOpacity();
 
 	const note = [
 		`I am not a "professional designer" by skill`,
@@ -101,8 +102,6 @@ export default function Credit() {
 		"works and people",
 		"who contributed to the design of this portfolio",
 	];
-
-	const darkSectionRef = useRef(null);
 
 	return (
 		<>
@@ -126,7 +125,7 @@ export default function Credit() {
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.container}>
 					<div className={styles.summary}>
-						<About aboutListRef={aboutListRef} textsList={note} />
+						<AlternatingOpacity textsListRef={textsListRef} textsList={note} />
 					</div>
 
 					<section>

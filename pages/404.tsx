@@ -138,19 +138,9 @@ export default function NotFound() {
 						</div>
 					</div>
 				</div>
-				<ScrollAlert
-					containerStyles={{
-						opacity: 0,
-						color: "#86868b",
-						position: "absolute",
-						left: "5rem",
-						bottom: "5rem",
-					}}
-					containerRef={scrollRef}
-				/>
+				<ScrollAlert propStyles={styles.scrollAlert} containerRef={scrollRef} />
 				<DarkRadialGradient containerRef={gradientRef} containerStyles={{ opacity: 0 }} />
 			</div>
-
 			<Noise />
 		</>
 	);
