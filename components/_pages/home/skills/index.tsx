@@ -3,26 +3,19 @@ import SkillsMobile, { SkillsMobileProps } from "./mobile";
 
 type Props = SkillsDesktopProps & SkillsMobileProps;
 export default function Skills({
-    skillsListRef,
-    skillsContainerRef,
-    skillsContentWrapperRef,
-    skillsSectionTitlteRef,
-    mobileSkillsContainerRef,
-    mobileSkillsSectionTitlteRef
+	skillsContainerRef,
+	skillsSectionTitlteRef,
+	mobileSkillsContainerRef,
+	mobileSkillsSectionTitlteRef,
 }: Props) {
-    return (
-        <div>
-            <SkillsDesktop
-                skillsListRef={skillsListRef}
-                skillsContainerRef={skillsContainerRef}
-                skillsContentWrapperRef={skillsContentWrapperRef}
-                skillsSectionTitlteRef={skillsSectionTitlteRef}
-            />
+	return (
+		<div>
+			<SkillsDesktop skillsContainerRef={skillsContainerRef} skillsSectionTitlteRef={skillsSectionTitlteRef} />
 
-            <SkillsMobile
-                mobileSkillsContainerRef={mobileSkillsContainerRef}
-                mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
-            />
-        </div>
-    );
+			<SkillsMobile
+				mobileSkillsContainerRef={mobileSkillsContainerRef}
+				mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
+			/>
+		</div>
+	);
 }

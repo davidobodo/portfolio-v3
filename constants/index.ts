@@ -1,9 +1,6 @@
 const DEFAULT_MOBILE_HEIGHT = 812;
 
-const DATA_VALUES = {
-	workTitleHeightDesktop: 72,
-	skillsSvgViewportHeight: 0.15,
-};
+const DATA_VALUES = {};
 
 const ABOUT_NOTE = [
 	"4 years dedicating my time into converting designs into",

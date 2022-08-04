@@ -1,159 +1,74 @@
 import gsap from "gsap";
-import { useRef, useEffect, useState } from "react";
-import { animateFaintSvg } from "#/utils";
-import { DATA_VALUES } from "#/constants";
-import { TTimelineAction } from "#/interfaces";
+import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
+import { skillsSectionAnimations } from "#/utils/animations/atoms";
+
+const { desktopAnimation, mobileAnimation } = skillsSectionAnimations;
 
 export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
-	const skillsListRef = useRef<HTMLDivElement>(null);
+	//------------------------------------------
+	//DESKTOP ANIMATION
+	//------------------------------------------
 	const skillsContainerRef = useRef<HTMLDivElement>(null);
-	const skillsContentWrapperRef = useRef<HTMLDivElement>(null);
+	const skillsContainerSelector = gsap.utils.selector(skillsContainerRef);
 
-	const [tl, setTl] = useState<gsap.core.Timeline>();
 	useIsomorphicLayoutEffect(() => {
-		if (skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
-			const svgElement = skillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
+		if (skillsContainerRef.current) {
 			const radialGradient = document.querySelector<HTMLDivElement>('[data-key="radial-gradient"]');
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: skillsContainerRef.current,
-					start: "top top",
-					end: "bottom bottom",
-					toggleActions: "restart pause reverse pause",
-					scrub: true,
-					pin: skillsContentWrapperRef.current,
-					pinSpacing: false,
-					onUpdate: (self) => {
-						svgElement.style.bottom =
-							animateFaintSvg(
-								self.progress,
-								skillsContentWrapperRef.current as HTMLElement,
-								DATA_VALUES.skillsSvgViewportHeight,
-								windowInnerWidth
-							) + "px";
+			const faintBgTitle = skillsContainerSelector('[data-id="faint-svg"]');
+			const image = skillsContainerSelector('[data-id="hand-image"]');
+			const skillLists = skillsContainerSelector('[data-id="skill"]');
+			const contentWrapper = skillsContainerSelector('[data-key="skills-content"]');
 
-						if (radialGradient) {
-							radialGradient.style.opacity = self.progress.toString();
-						}
-					},
-				},
+			const tl = desktopAnimation({
+				radialGradient,
+				faintBgTitle: faintBgTitle[0],
+				image,
+				lists: skillLists,
+				contentWrapper: contentWrapper[0],
+				container: skillsContainerRef.current,
+				windowInnerWidth,
 			});
 
-			setTl(tl);
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
 		}
-	}, [skillsListRef.current, skillsContainerRef.current, skillsContentWrapperRef.current]);
-	useIsomorphicLayoutEffect(() => {
-		if (tl && skillsContainerRef.current && skillsListRef.current && skillsContentWrapperRef.current) {
-			let timelineActions: TTimelineAction[] = [];
-
-			const image = skillsContainerRef.current.querySelector('[data-id="hand-image"]') as HTMLElement;
-			const skillLists = skillsListRef.current.querySelectorAll('[data-id="skill"]');
-
-			// CREATE TIMELINE ACTIONS
-			timelineActions.push({ target: image, vars: { width: "29vw", duration: 2 } });
-
-			for (let i = 0; i < skillLists.length; i++) {
-				const header = skillLists[i].firstElementChild as HTMLElement;
-				const list = header?.nextElementSibling; // The "UL tag"
-				const listItems = list?.querySelectorAll("li>span") as unknown as HTMLElement;
-				const info = list?.nextElementSibling;
-
-				//show heading
-				timelineActions.push({ target: header, vars: { opacity: 1 } });
-				//show list
-				timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
-
-				if (info) {
-					timelineActions.push({ target: info, vars: { opacity: 1 } });
-				}
-			}
-
-			// EXECUTE TIMELINE ACTIONS
-			for (let j = 0; j < timelineActions.length; j++) {
-				const { target, vars, options } = timelineActions[j];
-
-				if (target && vars) {
-					tl.to(target, vars, options);
-				}
-			}
-		}
-	}, [tl, skillsListRef.current, skillsContainerRef.current, skillsContentWrapperRef.current]);
+	}, [skillsContainerRef.current, windowInnerWidth]);
 
 	//------------------------------------------
 	//MOBILE ANIMATION
 	//------------------------------------------
 	const mobileSkillsContainerRef = useRef<HTMLDivElement>(null);
+	const mobileSkillsContainerSelector = gsap.utils.selector(mobileSkillsContainerRef);
 
 	useIsomorphicLayoutEffect(() => {
+		//TODO: CONDITIONAL TO STOP DESKTOP VERSION FROM RUNNING WHEN MOBILE IS DOING SO
 		if (mobileSkillsContainerRef.current) {
-			const svgElement = mobileSkillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
-			const contentWrapper = mobileSkillsContainerRef.current.querySelector(
-				'[data-id="content-wrapper"]'
-			) as HTMLElement;
-			const listWrapper = mobileSkillsContainerRef.current.querySelector('[data-id="lists-wrapper"]') as HTMLElement;
-			const skillLists = mobileSkillsContainerRef.current.querySelectorAll('[data-id="skill"]');
+			const faintBgTitle = mobileSkillsContainerRef.current.querySelector('[data-id="faint-svg"]') as HTMLElement;
+			const radialGradient = document.querySelector<HTMLDivElement>('[data-key="radial-gradient"]');
 
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: mobileSkillsContainerRef.current,
-					start: "top top",
-					end: "bottom bottom",
-					toggleActions: "restart pause reverse pause",
-					scrub: true,
-					pin: contentWrapper,
-					pinSpacing: false,
-					onUpdate: (self) => {
-						svgElement.style.bottom =
-							animateFaintSvg(self.progress, contentWrapper, DATA_VALUES.skillsSvgViewportHeight, windowInnerWidth) +
-							"px";
-					},
-				},
+			const contentWrapper = mobileSkillsContainerSelector('[data-id="skills-content"]');
+			const listsWrapper = mobileSkillsContainerSelector('[data-id="lists-wrapper"]');
+			const lists = mobileSkillsContainerSelector('[data-id="skill"]');
+
+			const tl = mobileAnimation({
+				faintBgTitle,
+				radialGradient,
+				contentWrapper: contentWrapper[0],
+				listsWrapper: listsWrapper[0],
+				lists,
+				container: mobileSkillsContainerRef.current,
+				windowInnerWidth,
 			});
 
-			let timelineActions = [];
-
-			// CREATE TIMELINE ACTIONS
-			timelineActions.push({ target: listWrapper.children[0], vars: { opacity: 1 } });
-
-			const { header, listItems } = getListHeaderAndItems(skillLists[0]);
-			timelineActions.push({ target: header, vars: { opacity: 1 } });
-			timelineActions.push({ target: listItems, vars: { stagger: 0.2, y: 0 } });
-
-			const { header: headerTwo, listItems: listItemsTwo } = getListHeaderAndItems(skillLists[1]);
-			timelineActions.push({ target: headerTwo, vars: { opacity: 1 } });
-			timelineActions.push({ target: listItemsTwo, vars: { stagger: 0.2, y: 0 } });
-
-			timelineActions.push({ target: listWrapper.children[0], vars: { opacity: 0 } });
-			timelineActions.push({ target: listWrapper.children[1], vars: { opacity: 1 } });
-
-			const { header: headerThree, listItems: listItemsThree } = getListHeaderAndItems(skillLists[2]);
-			timelineActions.push({ target: headerThree, vars: { opacity: 1 } });
-			timelineActions.push({ target: listItemsThree, vars: { stagger: 0.2, y: 0 } });
-
-			// EXECUTE TIMELINE ACTIONS
-			for (let j = 0; j < timelineActions.length; j++) {
-				const { target, vars } = timelineActions[j];
-
-				if (target && vars) {
-					tl.to(target, vars);
-				}
-			}
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
 		}
 	}, [mobileSkillsContainerRef.current, windowInnerWidth]);
 	return {
-		skillsListRef,
 		skillsContainerRef,
-		skillsContentWrapperRef,
 		mobileSkillsContainerRef,
-	};
-}
-
-function getListHeaderAndItems(element: HTMLElement | Element) {
-	const header = element.firstElementChild as HTMLElement;
-	const listItems = header?.nextElementSibling?.querySelectorAll("li>span") as unknown as HTMLElement;
-	return {
-		header,
-		listItems,
 	};
 }
