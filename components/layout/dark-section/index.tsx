@@ -1,13 +1,29 @@
 import styles from "./styles.module.scss";
-import { DarkRadialGradient } from "../../index";
+import { DarkRadialGradient, Noise } from "../../index";
 import { usePinRadialGradient } from "#/hooks";
-export default function Layout({ children }: { children: JSX.Element }) {
-    const { darkSectionRef, darkSectionRadialGradientRef } = usePinRadialGradient();
-    return (
-        <div className={styles.container} ref={darkSectionRef}>
-            <div className={styles.content}>{children}</div>
+import { RefObject } from "react";
+export default function Layout({
+	children,
+	darkSectionRef,
+}: {
+	children: JSX.Element;
+	darkSectionRef: RefObject<HTMLDivElement>;
+}) {
+	const { darkSectionRadialGradientRef } = usePinRadialGradient({
+		darkSectionRef,
+	});
 
-            <DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
-        </div>
-    );
+	// useIsomorphicLayoutEffect(() => {
+	// 	darkSectionRef.current.height
+	// }, []);
+	return (
+		<div className={styles.container} ref={darkSectionRef} data-key="dark-section-ref">
+			<div className={styles.content}>
+				{children}
+				<Noise />
+			</div>
+
+			<DarkRadialGradient containerRef={darkSectionRadialGradientRef} />
+		</div>
+	);
 }

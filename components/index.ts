@@ -1,4 +1,4 @@
-import { HomePage, ProjectsPage, LettersPage, SingleProject } from "./_pages";
+import { HomePage, LettersPage, SingleProject } from "./_pages";
 
 import Atoms from "./_atoms";
 import Layout from "./layout";
@@ -13,37 +13,46 @@ import Logo from "./logo";
 import RouteTransitionOverlay from "./route-transition-overlay";
 import Common from "./common";
 import ScrollToTop from "./scroll-to-top";
+import SectionPlaceholder from "./section-placeholder";
+import BannerCurtain from "./banner-curtain";
+import Projects from "./projects";
+import Filter from "./filter";
+import ProjectsFilter from "./projects-filter";
+import Spinner from "./spinner";
 
 const { Button, Radio } = Atoms;
-const { Preloader, About, Work, Thoughts, Skills, FaintBgText, Projects, ProjectListView } = HomePage;
-const { Grid } = ProjectsPage;
+const { Preloader, About, Work, Thoughts, Skills, FaintBgText, ProjectsHeading } = HomePage;
 const { SingleLetter } = LettersPage;
 
 export {
-    Preloader,
-    About,
-    Work,
-    Thoughts,
-    Skills,
-    FaintBgText,
-    Projects,
-    Button,
-    Contact,
-    ScrollAlert,
-    Banners,
-    Grid,
-    Nav,
-    Radio,
-    SingleLetter,
-    DarkRadialGradient,
-    Modal,
-    Layout,
-    Noise,
-    SingleProject,
-    ProjectListView,
-    ProjectModal,
-    Logo,
-    RouteTransitionOverlay,
-    Common,
-    ScrollToTop
+	Preloader,
+	About,
+	Work,
+	Thoughts,
+	Skills,
+	FaintBgText,
+	Projects,
+	Button,
+	Contact,
+	ScrollAlert,
+	Banners,
+	Nav,
+	Radio,
+	SingleLetter,
+	DarkRadialGradient,
+	Modal,
+	Layout,
+	Noise,
+	SingleProject,
+	ProjectModal,
+	Logo,
+	RouteTransitionOverlay,
+	Common,
+	ScrollToTop,
+	SectionPlaceholder,
+	BannerCurtain,
+	ProjectsHeading,
+	Filter,
+	ProjectsFilter,
+	Spinner,
 };

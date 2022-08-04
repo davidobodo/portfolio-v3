@@ -1,0 +1,30 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	// backdrop-filter: blur(1.5rem) saturate(1.1);
+	width: 100%;
+	top: 0px;
+	position: fixed;
+	z-index: var(--z-index-nav);
+	height: 70px;
+
+	background: linear-gradient(#000 0%, transparent 100%);
+
+	@media (min-width: $md) {
+		height: 100px;
+	}
+}
+
+.logo {
+	position: fixed;
+	z-index: 1003;
+	top: 2rem;
+	left: 2rem;
+	width: 60px;
+
+	@media (min-width: $md) {
+		top: 4rem;
+		left: 5.8rem;
+		width: 79px;
+	}
+}

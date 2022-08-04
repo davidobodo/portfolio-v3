@@ -1,47 +1,47 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-    position: relative;
-    padding: 10rem 2rem 10rem;
+	position: relative;
+	padding: 10rem 0rem 10rem;
 
-    @media (min-width: $md) {
-        width: 50%;
-        padding-top: 20rem;
-        margin: auto;
-    }
-    @media (min-width: $lg) {
-        width: 700px;
-    }
+	@media (min-width: $md) {
+		width: 50%;
+		padding-top: 20rem;
+		margin: auto;
+	}
+	@media (min-width: $lg) {
+		width: 700px;
+	}
 
-    @media (min-width: $xxl) {
-        width: 900px;
-    }
+	@media (min-width: $xxl) {
+		width: 900px;
+	}
 
-    ul {
-        list-style: none;
-        margin: auto;
-        width: 100%;
+	ul {
+		list-style: none;
+		margin: auto;
+		width: 100%;
 
-        li {
-            font-family: sf-pro-bold;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            color: var(--ash);
-            font-size: 32px;
-            line-height: 1.4;
-            opacity: 0.2;
+		li {
+			font-family: sf-pro-bold;
+			font-weight: 400;
+			letter-spacing: -0.015em;
+			color: var(--ash);
+			font-size: 32px;
+			line-height: 1.4;
+			opacity: 0.2;
 
-            @media (min-width: $lg) {
-                line-height: 1.05;
-                font-size: 68px;
-            }
-            @media (min-width: $xxl) {
-                font-size: 80px;
-            }
+			@media (min-width: $lg) {
+				line-height: 1.05;
+				font-size: 68px;
+			}
+			@media (min-width: $xxl) {
+				font-size: 80px;
+			}
 
-            &:not(:first-child) {
-                margin-left: 0.08em;
-            }
-        }
-    }
+			&:not(:first-child) {
+				margin-left: 0.08em;
+			}
+		}
+	}
 }

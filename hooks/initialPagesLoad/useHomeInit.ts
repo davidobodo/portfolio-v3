@@ -1,108 +1,134 @@
 import gsap from "gsap";
-import { useRef, useEffect } from "react";
-import { animPageLoaders } from "#/utils/animations/atoms";
+import { useRef, RefObject } from "react";
+import { animPageLoaders, homePageAnims } from "#/utils/animations/atoms";
 import { usePageLeaveAnimationContext } from "#/state";
+import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
-export default function useHomeInit() {
-    const bannerRef = useRef<HTMLDivElement>(null);
-
-    const { pageLeaveAnimation } = usePageLeaveAnimationContext();
-
-    const bannerRefSelector = gsap.utils.selector(bannerRef);
-    useEffect(() => {
-        const nameLetters = (bannerRefSelector(
-            '[data-key="name"] [data-key="letter"]'
-        ) as unknown) as NodeListOf<HTMLSpanElement>;
-        const fieldLetters = (bannerRefSelector(
-            '[data-key="field"] [data-key="letter"]'
-        ) as unknown) as NodeListOf<HTMLSpanElement>;
-        const subFields = (bannerRefSelector('[data-key="sub-field"]') as unknown) as NodeListOf<HTMLDivElement>;
-        const picMobile = (bannerRefSelector('[data-key="mobile-image"]') as unknown) as HTMLDivElement;
-        const picDesktopblind = (bannerRefSelector('[data-key="desktop-image"] span') as unknown) as HTMLDivElement;
-        const scrollIndicator = (bannerRefSelector('[data-key="scroll-alert"]') as unknown) as HTMLDivElement;
-
-        if (pageLeaveAnimation) {
-            // Navigating from another page to this page
-
-            const master = gsap.timeline();
-            master.add(pageLeaveAnimation.reverse()).add(
-                bannerAnimation({
-                    nameLetters,
-                    fieldLetters,
-                    subFieldOne: subFields[0],
-                    subFieldTwo: subFields[1],
-                    picMobile: picMobile,
-                    picDesktop: picDesktopblind,
-                    scrollIndicator
-                })
-            );
-
-            return () => {
-                master.kill();
-            };
-        } else {
-            // Navigating to this page directly from the browser url input
-            const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
-
-            const logo = document.querySelector("[data-key='logo']") as Element;
-            const logoChildren = document.querySelectorAll("[data-key='logo'] path");
-            const layers = document.querySelectorAll("[data-key='layer']");
-
-            const master = gsap.timeline();
-            master
-                .add(drawSvgLogo(logo, logoChildren))
-                .add(openNoiseLayers(layers))
-                .add(
-                    bannerAnimation({
-                        nameLetters,
-                        fieldLetters,
-                        subFieldOne: subFields[0],
-                        subFieldTwo: subFields[1],
-                        picMobile: picMobile,
-                        picDesktop: picDesktopblind,
-                        scrollIndicator
-                    })
-                );
-        }
-    }, []);
-
-    return {
-        bannerRef
-    };
-}
-
-function bannerAnimation({
-    nameLetters,
-    fieldLetters,
-    subFieldOne,
-    subFieldTwo,
-    picMobile,
-    picDesktop,
-    scrollIndicator
+const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
+const { bannerAnimation } = homePageAnims;
+export default function useHomeInit({
+	windowInnerHeight,
+	windowInnerWidth,
+	darkSectionRef,
 }: {
-    nameLetters: NodeListOf<Element>;
-    fieldLetters: NodeListOf<Element>;
-    subFieldOne: HTMLDivElement;
-    subFieldTwo: HTMLDivElement;
-    picMobile: HTMLDivElement;
-    picDesktop: HTMLSpanElement;
-    scrollIndicator: HTMLDivElement;
+	windowInnerHeight: number;
+	windowInnerWidth: number;
+	darkSectionRef: RefObject<HTMLDivElement>;
 }) {
-    const tl = gsap.timeline();
+	const bannerRef = useRef<HTMLDivElement>(null);
 
-    tl.to(nameLetters, { x: 0 }).to(fieldLetters, { x: 0 }).to(subFieldOne, { y: 0 }).to(subFieldTwo, { y: 0 });
+	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
 
-    // Because the animation for mobile image is different from the animation for desktop image
-    if (window.innerWidth < 768) {
-        tl.to(picMobile, { width: "100%" });
-    } else {
-        tl.to(picDesktop, { width: 0 });
-    }
+	const bannerRefSelector = gsap.utils.selector(bannerRef);
 
-    tl.to(scrollIndicator, { opacity: 1 });
-    tl.add(() => {
-        document.querySelector("body")?.classList.remove("hide");
-    });
+	const getElements = () => {
+		const nameLetters = bannerRefSelector<HTMLSpanElement>('[data-key="name"] [data-key="letter"]');
+		const fieldLetters = bannerRefSelector<HTMLSpanElement>('[data-key="field"] [data-key="letter"]');
+		const subFields = bannerRefSelector<HTMLDivElement>('[data-key="sub-field"]');
+		const picMobile = bannerRefSelector<HTMLDivElement>('[data-key="mobile-image"]');
+		const picDesktopblind = bannerRefSelector<HTMLSpanElement>('[data-key="desktop-image"] span');
+		const scrollIndicator = bannerRefSelector<HTMLDivElement>('[data-key="scroll-alert"]');
 
-    return tl;
+		return {
+			nameLetters,
+			fieldLetters,
+			subFields,
+			picMobile,
+			picDesktopblind,
+			scrollIndicator,
+		};
+	};
+	useIsomorphicLayoutEffect(() => {
+		const { nameLetters, fieldLetters, subFields, picMobile, picDesktopblind, scrollIndicator } = getElements();
+
+		if (pageLeaveAnimation) {
+			// Navigating from another page to this page
+			const layers = document.querySelectorAll("[data-key='layer']");
+			const master = gsap.timeline();
+			master.add(openNoiseLayers(layers)).add(
+				bannerAnimation({
+					nameLetters,
+					fieldLetters,
+					subFieldOne: subFields[0],
+					subFieldTwo: subFields[1],
+					picMobile: picMobile[0],
+					picDesktopBlind: picDesktopblind[0],
+					scrollIndicator: scrollIndicator[0],
+				})
+			);
+
+			return () => {
+				master.kill();
+			};
+		} else {
+			// Navigating to this page directly from the browser url input
+
+			const logo = document.querySelector("[data-key='logo']") as Element;
+			const logoChildren = document.querySelectorAll("[data-key='logo'] path");
+			const layers = document.querySelectorAll("[data-key='layer']");
+
+			const master = gsap.timeline();
+			master
+				.add(drawSvgLogo(logo, logoChildren))
+				.add(openNoiseLayers(layers))
+				.add(
+					bannerAnimation({
+						nameLetters,
+						fieldLetters,
+						subFieldOne: subFields[0],
+						subFieldTwo: subFields[1],
+						picMobile: picMobile[0],
+						picDesktopBlind: picDesktopblind[0],
+						scrollIndicator: scrollIndicator[0],
+					})
+				);
+			return () => {
+				master.kill();
+			};
+		}
+	}, []);
+
+	//-----------------------------------------
+	// BLACK COVER ANIMATION
+	//-----------------------------------------
+	const blackCoverRef = useRef<HTMLDivElement>(null);
+
+	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
+
+	useIsomorphicLayoutEffect(() => {
+		// Only create this timeline when the correct banner height has been set
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: darkSectionRef.current,
+				toggleActions: "restart complete reverse reset",
+				start: "top bottom",
+				end: "top top",
+				scrub: true,
+				onEnterBack: () => {
+					if (bannerRef.current && blackCoverRef.current) {
+						bannerRef.current.style.zIndex = "1";
+						bannerRef.current.style.opacity = "1";
+						blackCoverRef.current.style.zIndex = "2";
+					}
+				},
+				onLeave: () => {
+					if (bannerRef.current && blackCoverRef.current) {
+						bannerRef.current.style.zIndex = "-1";
+						bannerRef.current.style.opacity = "0";
+						blackCoverRef.current.style.zIndex = "-1";
+					}
+				},
+			},
+		});
+		tl.to(blackCoverRef.current, {
+			scaleY: 1,
+			transformOrigin: "top",
+		});
+	}, []);
+
+	return {
+		bannerRef,
+		blackCoverRef,
+		bannerHeight,
+	};
 }

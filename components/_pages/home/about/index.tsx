@@ -1,11 +1,17 @@
 import { Ref } from "react";
 import styles from "./styles.module.scss";
 import { ABOUT_NOTE } from "#/constants";
-export default function About({ aboutListRef }: { aboutListRef: Ref<HTMLUListElement> }) {
+export default function About({
+    aboutListRef,
+    textsList = ABOUT_NOTE
+}: {
+    aboutListRef: Ref<HTMLUListElement>;
+    textsList?: string[];
+}) {
     return (
-        <div className={styles.container} id="about-section">
+        <div className={styles.container}>
             <ul ref={aboutListRef}>
-                {ABOUT_NOTE.map((text, i) => {
+                {textsList.map((text, i) => {
                     return <li key={i}>{text}</li>;
                 })}
             </ul>

@@ -36,10 +36,11 @@
 
             .tabHeaders {
                 position: relative;
+                z-index: 1;
                 overflow: hidden;
 
                 .bgGradient {
-                    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
+                    background-image: var(--work-linear-gradient);
                     height: 72px;
                     width: 100vw;
                     position: absolute;
@@ -60,18 +61,6 @@
                     font-size: 50px;
                 }
             }
-
-            // .btnWrapper {
-            //     margin-top: 10rem;
-            //     padding-left: 2.2rem;
-
-            //     a {
-            //         font-size: 18px;
-            //         color: var(--white);
-            //         font-family: "sf-pro-bold";
-            //         letter-spacing: 0.05em;
-            //     }
-            // }
         }
 
         .tabDetails {

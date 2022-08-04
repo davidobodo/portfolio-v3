@@ -1,53 +1,59 @@
-import { NextPage } from "next";
 import Head from "next/head";
-import { SingleLetter, Nav, Layout, Noise, Banners } from "#/components";
 import styles from "#/styles/_pages/letters.module.scss";
+import { NextPage } from "next";
+import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain } from "#/components";
 import { LETTERS } from "#/constants/letters";
-import { useProjectsLettersInit } from "#/hooks";
-
+import { useProjectsLettersInit, useWindowSize } from "#/hooks";
+import { useRef } from "react";
 const Letters: NextPage = () => {
-    const { textWrapperRef, scrollIndicatorRef } = useProjectsLettersInit();
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { textWrapperRef, scrollIndicatorRef, bannerRef, blackCoverRef, bannerHeight } = useProjectsLettersInit({
+		windowInnerHeight,
+		windowInnerWidth,
+	});
 
-    return (
-        <div className={styles.main}>
-            <Head>
-                <title>David Obodo - Letters</title>
-                <meta name="description" content="David Obodo's portfolio website" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Nav />
-            <Banners.OtherPages
-                texts={["Letters", "Thoughts", "Stories", "Ideas"]}
-                textWrapperRef={textWrapperRef}
-                scrollIndicatorRef={scrollIndicatorRef}
-            />
+	const darkSectionRef = useRef(null);
 
-            <Layout.DarkSection>
-                <div className={styles.container}>
-                    <div className={styles.wrapper}>
-                        {LETTERS.map((item, i) => {
-                            const { url, title, date, time, summary, tags } = item;
-                            return (
-                                <div key={url} className={styles.letterWrapper}>
-                                    <SingleLetter
-                                        url={url}
-                                        title={title}
-                                        date={date}
-                                        time={time}
-                                        summary={summary}
-                                        tags={tags}
-                                    />
-                                    <span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </Layout.DarkSection>
-
-            <Noise />
-        </div>
-    );
+	return (
+		<>
+			<Head>
+				<title>David Obodo - Letters</title>
+				<meta name="description" content="David Obodo's portfolio website" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<Nav />
+			<BannerCurtain containerRef={blackCoverRef} />
+			<Banners.OtherPages
+				texts={["Letters", "Thoughts", "Stories", "Ideas"]}
+				textWrapperRef={textWrapperRef}
+				scrollIndicatorRef={scrollIndicatorRef}
+				bannerRef={bannerRef}
+				bannerHeight={bannerHeight}
+			/>
+			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+				<div className={styles.container}>
+					<div className={styles.wrapper}>
+						{LETTERS.map((item, i) => {
+							const { url, title, date, time, summary, tags } = item;
+							return (
+								<SingleLetter
+									url={url}
+									title={title}
+									date={date}
+									time={time}
+									summary={summary}
+									tags={tags}
+									key={url}
+									i={i}
+								/>
+							);
+						})}
+					</div>
+				</div>
+			</Layout.DarkSection>
+			<Noise />
+		</>
+	);
 };
 
 export default Letters;

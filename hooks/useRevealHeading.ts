@@ -1,10 +1,10 @@
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
-
+import { useIsomorphicLayoutEffect } from "#/hooks";
 export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidth: number }) {
     const headingRef = useRef<HTMLHeadingElement>(null);
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (headingRef.current) {
             const titleTexts = headingRef.current.querySelectorAll("span>span");
 

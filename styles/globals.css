@@ -1,93 +1,108 @@
 @font-face {
-    font-family: "sf-pro-bold";
-    src: url("/fonts/sf-pro/SFPRODISPLAYBOLD.OTF");
-    font-display: swap;
+	font-family: "sf-pro-bold";
+	src: url("/fonts/sf-pro/SFPRODISPLAYBOLD.OTF");
+	font-display: swap;
 }
 @font-face {
-    font-family: "sf-pro-medium";
-    src: url("/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF");
-    font-display: swap;
+	font-family: "sf-pro-medium";
+	src: url("/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF");
+	font-display: swap;
 }
 @font-face {
-    font-family: "sf-pro-regular";
-    src: url("/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF");
-    font-display: swap;
+	font-family: "sf-pro-regular";
+	src: url("/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF");
+	font-display: swap;
 }
 
 :root {
-    /* ---------------------------------------------------- */
-    /* COLORS */
-    /* ---------------------------------------------------- */
-    --black: #000;
-    --white: #fff;
-    --light-brown: #e1dfdd;
-    --ash: #86868b;
-    --ash2: #767676;
-    --ash3: #6e6e73;
-    --brown: #29231c;
+	/* ---------------------------------------------------- */
+	/* COLORS */
+	/* ---------------------------------------------------- */
+	--black: #000;
+	--white: #fff;
+	--light-brown: #e1dfdd;
+	--ash: #86868b;
+	--ash2: #767676;
+	--ash3: #6e6e73;
+	--brown: #29231c;
 
-    --color-blue: #455ce9;
-    --color-white: #ffffff;
-    --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent);
+	--color-blue: #455ce9;
+	--color-white: #ffffff;
+	--dark-blue: #2437a7;
+	--red: #ff0000;
+	--green: rgb(16, 133, 16);
+	/* --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent); */
+	--dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent);
+	--work-linear-gradient: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
 
-    /* // background: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent); */
-    /* ---------------------------------------------------- */
-    /* SPACING */
-    /* ---------------------------------------------------- */
-    --spacing-x: 2vw;
-    --section-padding: clamp(5em, 21vh, 24em);
-    --container-padding: clamp(2.5em, 8vw, 8em);
+	/* ---------------------------------------------------- */
+	/* SPACING */
+	/* ---------------------------------------------------- */
+	--spacing-x: 2vw;
+	--section-padding: clamp(5em, 21vh, 24em);
+	--container-padding: clamp(2.5em, 8vw, 8em);
 
-    /* ---------------------------------------------------- */
-    /* SIZES*/
-    /* ---------------------------------------------------- */
-    --max-width: 1280px;
-    --mini-desktop-max-width: 1024px;
+	/* ---------------------------------------------------- */
+	/* SIZES*/
+	/* ---------------------------------------------------- */
+	--max-width: 1280px;
+	--mini-desktop-max-width: 1024px;
 
-    /* ---------------------------------------------------- */
-    /* Z-INDECES*/
-    /* ---------------------------------------------------- */
-    --z-index-loader: 1000;
+	/* ---------------------------------------------------- */
+	/* Z-INDECES*/
+	/* Pages are divided into various sections*/
+	/* ---------------------------------------------------- */
+	--z-index-nav: 800;
+	--z-index-navbtn: 900;
+	--z-index-loader: 1000;
+	--z-index-noise: 1;
+	--z-index-banner: 1;
+	--z-index-banner-curtain: 2;
+	--z-index-content: 3;
+	--z-index-contact: 0;
+	--z-index-scroll-to-top: 500;
+	--z-index-modal: 600;
+	--z-index-backdrop: 10;
 
-    /* ---------------------------------------------------- */
-    /* ANIMATIONS*/
-    /* ---------------------------------------------------- */
-    --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
-    --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+	/* ---------------------------------------------------- */
+	/* ANIMATIONS*/
+	/* ---------------------------------------------------- */
+	--animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+	--animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 html {
-    font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 *::selection {
-    background: var(--light-brown);
-    color: var(--black);
+	background: var(--light-brown);
+	color: var(--black);
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-family: "sf-pro-regular";
-    background: var(--light-brown);
-    scroll-behavior: smooth;
+	padding: 0;
+	margin: 0;
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-family: "sf-pro-regular";
+	background: var(--light-brown);
+	scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
-    width: 0px;
+	width: 0px;
 }
 
 body::-webkit-scrollbar-track {
-    background: var(--light-brown);
+	background: var(--light-brown);
 }
 
 body::-webkit-scrollbar-thumb {
-    background: var(--black);
+	background: var(--black);
 }
 
 .hide {
-    overflow: hidden !important;
+	/* overflow: hidden !important; */
 }
 
 h1,
@@ -96,12 +111,12 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "sf-pro-bold";
+	font-family: "sf-pro-bold";
 }
 
 .fixed-footer {
-    position: fixed;
-    z-index: 0;
-    width: 100%;
-    bottom: 0px;
+	position: fixed;
+	z-index: 0;
+	width: 100%;
+	bottom: 0px;
 }

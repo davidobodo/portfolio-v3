@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-
+import { useState } from "react";
+import { useIsomorphicLayoutEffect } from "#/hooks";
 const nullDimensions = {
     innerHeight: 0,
     innerWidth: 0,
@@ -24,15 +24,11 @@ export default function useWindowSize() {
     }
 
     // set resize handler once on mount and clean before unmount
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            window.addEventListener("resize", onResize);
-        }
+    useIsomorphicLayoutEffect(() => {
+        window.addEventListener("resize", onResize);
 
         return () => {
-            if (typeof window !== "undefined") {
-                window.removeEventListener("resize", onResize);
-            }
+            window.removeEventListener("resize", onResize);
         };
     }, []);
 

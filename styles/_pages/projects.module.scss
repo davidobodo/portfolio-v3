@@ -1,21 +1,18 @@
-.main {
-    position: relative;
-    z-index: 1;
-}
+.content {
+	padding-top: 20vh;
+	padding-bottom: 20vh;
+	overflow: hidden;
+	min-height: 100vh;
 
-.gridWrapper {
-    padding-top: 10vh;
-}
+	.contentTitle {
+		font-size: 1.6rem;
+		color: var(--ash);
+		text-align: center;
+		margin-bottom: 4rem;
+		font-family: sf-pro-regular;
 
-.btnFilter {
-    background-color: red;
-    width: 10rem;
-    height: 10rem;
-    border: 0px;
-    border-radius: 50%;
-    position: fixed;
-    bottom: 50px;
-    left: 50px;
-    z-index: 5;
-    cursor: pointer;
+		span {
+			color: var(--white);
+		}
+	}
 }

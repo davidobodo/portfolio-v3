@@ -1,17 +1,21 @@
 import { useEffect } from "react";
 import gsap from "gsap";
+import { animPageLoaders } from "#/utils/animations/atoms";
+const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
 
 export default function useSingleProjectInit() {
     function removeLoader() {
-        const tl = gsap.timeline({});
-        tl.to(document.querySelectorAll("[data-key='layer']"), {
-            scaleY: 0,
-            delay: 1
-        });
-        tl.add(() => {
-            document.querySelector("body")?.classList.remove("hide");
-        });
-        return tl;
+        const layers = document.querySelectorAll("[data-key='layer']");
+        const logo = document.querySelector("[data-key='logo']") as Element;
+        const logoChildren = document.querySelectorAll("[data-key='logo'] path");
+
+        const master = gsap.timeline();
+        master
+            .add(drawSvgLogo(logo, logoChildren))
+            .add(openNoiseLayers(layers))
+            .add(() => {
+                document.querySelector("body")?.classList.remove("hide");
+            });
     }
 
     useEffect(() => {
