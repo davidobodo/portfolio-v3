@@ -8,12 +8,10 @@ import {
 	Thoughts,
 	Skills,
 	Projects,
-	Noise,
 	Layout,
 	ProjectModal,
 	Nav,
 	BannerCurtain,
-	ProjectListView,
 	ProjectsHeading,
 } from "#/components";
 import {
@@ -26,7 +24,6 @@ import {
 	useHomeInit,
 } from "#/hooks";
 import { PROJECTS } from "#/constants/projects";
-import Router from "next/router";
 import { useRef } from "react";
 
 const { useHomeAboutAnim, useWorkAnimation, useSkillsAnimation } = HomePageHooks;
@@ -77,7 +74,9 @@ const Home: NextPage = () => {
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content}>
-					<About aboutListRef={aboutListRef} />
+					<div className={styles.aboutWrapper}>
+						<About aboutListRef={aboutListRef} />
+					</div>
 					<Work
 						workContainerRef={workContainerRef}
 						workTabsRef={workTabsRef}
@@ -101,7 +100,7 @@ const Home: NextPage = () => {
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<ProjectsHeading projectTitleRef={projectTitleRef} />
-					<Projects onViewProject={onSelectProject} location="home" displayedProjects={PROJECTS.slice(0, 5)} />
+					<Projects onViewProject={onSelectProject} displayedProjects={PROJECTS.slice(0, 5)} />
 				</div>
 			</Layout.DarkSection>
 			<ProjectModal

@@ -7,7 +7,7 @@ export default function Project({
 	onViewProject,
 	displayedProjects,
 }: {
-	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
+	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
 	return (

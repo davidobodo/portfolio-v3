@@ -43,10 +43,6 @@ function BaseForm() {
 		});
 	};
 
-	const handleBlur = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { name } = e.target;
-	};
-
 	const isEmailValid = (value: string) => {
 		return new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(value);
 	};
@@ -65,15 +61,14 @@ function BaseForm() {
 	//VALIDATIONS
 	//--------------------------------------
 	useEffect(() => {
-		const { name, email, subject, message } = touched;
-		if (name) {
+		if (touched.name) {
 			if (values.name.trim().length === 0) {
 				updateErrorState("name", "Name is required");
 			} else {
 				updateErrorState("name", "");
 			}
 		}
-		if (email) {
+		if (touched.email) {
 			if (values.email.trim().length === 0) {
 				updateErrorState("email", "Email is required");
 			} else if (!isEmailValid(values.email)) {
@@ -82,14 +77,14 @@ function BaseForm() {
 				updateErrorState("email", "");
 			}
 		}
-		if (subject) {
+		if (touched.subject) {
 			if (values.subject.trim().length === 0) {
 				updateErrorState("subject", "Subject is required");
 			} else {
 				updateErrorState("subject", "");
 			}
 		}
-		if (message) {
+		if (touched.message) {
 			if (values.message.trim().length === 0) {
 				updateErrorState("message", "Message is required");
 			} else {
@@ -97,7 +92,7 @@ function BaseForm() {
 			}
 		}
 
-		if (name && email && subject && message) {
+		if (touched.name && touched.email && touched.subject && touched.message) {
 			setHasTouchedAll(true);
 		} else {
 			setHasTouchedAll(false);
@@ -125,12 +120,12 @@ function BaseForm() {
 			isDisabled = false;
 		}
 	}
-	console.log(hasTouchedAll, errorExists);
-	console.log(isDisabled, "DISABLED");
+	// console.log(hasTouchedAll, errorExists);
+	// console.log(isDisabled, "DISABLED");
 
-	const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
+	// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
 
-	console.log(URL, process.env, "te url ");
+	// console.log(URL, process.env, "te url ");
 
 	//--------------------------------------
 	//ON SUBMIT
@@ -156,10 +151,8 @@ function BaseForm() {
 		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/send_mail`;
 		const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
 
-		console.log(process.env);
-		console.log(URL, "THE URL");
-
-		console.log(body, "THE BODY TO BE SENE");
+		// console.log(process.env);
+		// console.log(URL, "THE URL");
 
 		try {
 			const res = await fetch(URL, {
@@ -176,8 +169,8 @@ function BaseForm() {
 			console.log(res, "THE RESPONSE");
 
 			if (res.ok) {
-				const res2 = await res.json();
-
+				const data = await res.json();
+				console.log(data);
 				setServerRes({
 					error: false,
 					message: `🎉🥳 Yipee!!! Thanks ${name}, Got your message. Would respond as soon as I can.`,
@@ -186,11 +179,12 @@ function BaseForm() {
 				throw res;
 			}
 		} catch (err) {
+			console.log(err);
 			// "That email doesnt exist 😅. Please Check it again"
-			setServerRes({
-				error: true,
-				message: err.message,
-			});
+			// setServerRes({
+			// 	error: true,
+			// 	message: err.message,
+			// });
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -212,15 +206,7 @@ function BaseForm() {
 				<div className={styles.twoColumns}>
 					<div className={styles.formField}>
 						<label htmlFor="name">Name</label>
-						<input
-							type="text"
-							id="name"
-							name="name"
-							placeholder="Name"
-							value={values.name}
-							onChange={handleChange}
-							onBlur={handleBlur}
-						/>
+						<input type="text" id="name" name="name" placeholder="Name" value={values.name} onChange={handleChange} />
 						<Message touched={touched.name} message={errors.name} />
 					</div>
 					<div className={styles.formField}>
@@ -232,7 +218,6 @@ function BaseForm() {
 							name="email"
 							value={values.email}
 							onChange={handleChange}
-							onBlur={handleBlur}
 						/>
 						<Message touched={touched.email} message={errors.email} />
 					</div>
@@ -246,7 +231,6 @@ function BaseForm() {
 						name="subject"
 						value={values.subject}
 						onChange={handleChange}
-						onBlur={handleBlur}
 					/>
 					<Message touched={touched.subject} message={errors.subject} />
 				</div>
@@ -259,7 +243,6 @@ function BaseForm() {
 						rows={10}
 						placeholder="Message"
 						onChange={handleChange}
-						onBlur={handleBlur}
 						value={values.message}
 					></textarea>
 					<Message touched={touched.message} message={errors.message} />

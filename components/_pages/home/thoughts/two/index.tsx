@@ -6,18 +6,22 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 		{
 			sentence: "Truth is the life of a programmer requires one to",
 			color: "ash",
+			key: 0,
 		},
 		{
 			sentence: "learn new things",
 			color: "white",
+			key: 1,
 		},
 		{
 			sentence: "everyday, cause technology keeps changing at a",
 			color: "ash",
+			key: 2,
 		},
 		{
 			sentence: "very fast pace.",
 			color: "white",
+			key: 3,
 		},
 	];
 
@@ -25,18 +29,22 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 		{
 			sentence: "I have therefore embraced the concept of being a ",
 			color: "ash",
+			key: 1,
 		},
 		{
 			sentence: "life long learner.",
 			color: "white",
+			key: 2,
 		},
 		{
 			sentence: "Learn to solve what ever problem is encountered, ain'tthat why",
 			color: "ash",
+			key: 3,
 		},
 		{
 			sentence: "Googling is almost our best friend 😅",
 			color: "white",
+			key: 4,
 		},
 	];
 
@@ -46,74 +54,62 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			<div className={styles.rightSection}>
 				<div className={styles.paragraphWrapper} ref={textWrapperRef}>
 					<p className={styles.paragraph}>
-						{firstParagraph.map((item, i) => {
-							const { color, sentence } = item;
+						{firstParagraph.map((item) => {
+							const { color, sentence, key } = item;
 							if (color === "white") {
 								return (
-									<>
-										<strong key={i}>
-											{sentence.split(" ").map((item, i) => {
-												return (
-													<span className={styles.wordWrapper} key={i}>
-														<span className={styles.word} data-key="word">
-															{item}&nbsp;
-														</span>
-													</span>
-												);
-											})}
-										</strong>
-									</>
-								);
-							} else {
-								return (
-									<>
+									<strong key={key}>
 										{sentence.split(" ").map((item, i) => {
 											return (
-												<span className={styles.wordWrapper} key={i}>
+												<span className={styles.wordWrapper} key={item + i}>
 													<span className={styles.word} data-key="word">
 														{item}&nbsp;
 													</span>
 												</span>
 											);
 										})}
-									</>
+									</strong>
 								);
+							} else {
+								return sentence.split(" ").map((item) => {
+									return (
+										<span className={styles.wordWrapper} key={key + item}>
+											<span className={styles.word} data-key="word">
+												{item}&nbsp;
+											</span>
+										</span>
+									);
+								});
 							}
 						})}
 					</p>
 					<p className={styles.paragraph}>
-						{secondParagraph.map((item, i) => {
-							const { color, sentence } = item;
+						{secondParagraph.map((item) => {
+							const { color, sentence, key } = item;
 							if (color === "white") {
 								return (
-									<>
-										<strong>
-											{sentence.split(" ").map((item, i) => {
-												return (
-													<span className={styles.wordWrapper}>
-														<span className={styles.word} data-key="word">
-															{item}&nbsp;
-														</span>
-													</span>
-												);
-											})}
-										</strong>
-									</>
-								);
-							} else {
-								return (
-									<>
+									<strong key={key}>
 										{sentence.split(" ").map((item, i) => {
 											return (
-												<span className={styles.wordWrapper}>
+												<span className={styles.wordWrapper} key={item + i}>
 													<span className={styles.word} data-key="word">
 														{item}&nbsp;
 													</span>
 												</span>
 											);
 										})}
-									</>
+									</strong>
 								);
+							} else {
+								return sentence.split(" ").map((item) => {
+									return (
+										<span className={styles.wordWrapper} key={key + item}>
+											<span className={styles.word} data-key="word">
+												{item}&nbsp;
+											</span>
+										</span>
+									);
+								});
 							}
 						})}
 					</p>

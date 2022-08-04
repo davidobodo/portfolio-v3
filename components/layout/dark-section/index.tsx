@@ -1,15 +1,15 @@
 import styles from "./styles.module.scss";
 import { DarkRadialGradient, Noise } from "../../index";
-import { useIsomorphicLayoutEffect, usePinRadialGradient } from "#/hooks";
-import { Ref } from "react";
+import { usePinRadialGradient } from "#/hooks";
+import { RefObject } from "react";
 export default function Layout({
 	children,
 	darkSectionRef,
 }: {
 	children: JSX.Element;
-	darkSectionRef: Ref<HTMLDivElement>;
+	darkSectionRef: RefObject<HTMLDivElement>;
 }) {
-	const { darkSectionRadialGradientRef, recalculateGradient } = usePinRadialGradient({
+	const { darkSectionRadialGradientRef } = usePinRadialGradient({
 		darkSectionRef,
 	});
 

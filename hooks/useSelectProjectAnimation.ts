@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 export default function useSelectProjectAnimation() {
 	const router = useRouter();
@@ -9,30 +9,26 @@ export default function useSelectProjectAnimation() {
 	const modalRef = useRef<HTMLDivElement>(null);
 	const [isOpen, setIsOpen] = useState(false);
 
-	// Project was clicked on
-	const onSelectProject = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+	//-------------------------------
+	// User clicked on a project
+	//-------------------------------
+	const onSelectProject = (e: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => {
 		const { id, type } = e.currentTarget.dataset;
-		sourceElem.current = type === "list-item" ? document.querySelector("[data-key='project-box']") : e.currentTarget;
-		// const id = e.currentTarget.dataset.id as string;
-		setSelectedProjectId(id);
-		setIsOpen(true);
-
+		const floatingBox = document.querySelector("[data-key='project-box']") as HTMLDivElement;
+		const selectedGridBox = e.currentTarget as HTMLDivElement;
+		sourceElem.current = type === "list-item" ? floatingBox : selectedGridBox;
 		window.history.pushState(null, "New Page Title", `/projects/${id}`);
+		setSelectedProjectId(id as string);
+		setIsOpen(true);
 	};
 
-	// Next or previous arrow button was pressed
+	//-------------------------------
+	// User click on arrow buttons
+	//-------------------------------
 	const onGoToProject = (id: string) => {
-		// window.scrollTo({
-		// 	top: 0,
-		// 	left: 0,
-		// 	behavior: "smooth",
-		// });
-
-		const elem = document.querySelector("[data-key='project-info']");
-
-		if (elem) {
-			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-		}
+		//Scroll to top
+		const elem = document.querySelector("[data-key='project-info']") as HTMLDivElement;
+		elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 
 		const modal = modalRef.current;
 		const modalImage = modalImgRef.current;

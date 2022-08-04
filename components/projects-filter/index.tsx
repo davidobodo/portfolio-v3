@@ -1,9 +1,8 @@
-import { Ref, useState, useLayoutEffect, useEffect } from "react";
+import { Ref, useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { Radio } from "../index";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
-import { PROJECTS } from "#/constants/projects";
 import { createPortal } from "react-dom";
 
 type TFilterBy = "tech-stack" | "project-nature";

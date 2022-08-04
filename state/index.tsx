@@ -14,7 +14,12 @@ const usePageLeaveAnimationContext = () => {
 	return useContext(PageLeaveAnimationContext);
 };
 
-const RadialGradientAnimContext = createContext({
+type TRadGradTimeline = {
+	timeline: gsap.core.Timeline | null;
+	setTimeline: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
+};
+
+const RadialGradientAnimContext = createContext<TRadGradTimeline>({
 	timeline: null,
 	setTimeline: () => {},
 });

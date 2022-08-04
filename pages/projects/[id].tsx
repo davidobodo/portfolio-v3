@@ -3,9 +3,11 @@ import { Nav, Layout, Noise, SingleProject } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styles from "#/styles/_pages/single-project.module.scss";
+import { useRef } from "react";
 import { useSelectProjectAnimation, removeCurrentProject, usePageTransition, useSingleProjectInit } from "#/hooks";
 export default function Project() {
 	useSingleProjectInit();
+	const darkSectionRef = useRef(null);
 	const router = useRouter();
 	const { id } = router.query;
 	const { onRouteChange } = usePageTransition();
@@ -37,6 +39,7 @@ export default function Project() {
 		if (id) {
 			setSelectedProjectId(id as string);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
 	if (!id) {
@@ -51,7 +54,7 @@ export default function Project() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav alwaysVisible={true} />
-			<Layout.DarkSection>
+			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div ref={modalRef} className={styles.container}>
 					<SingleProject
 						currProjectId={selectedProjectId as string}

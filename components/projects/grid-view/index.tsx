@@ -4,13 +4,13 @@ export function ProjectsGridView({
 	onViewProject,
 	displayedProjects,
 }: {
-	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
+	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
 	return (
 		<div className={styles.container}>
 			{displayedProjects.map((item, i) => {
-				const { tech, bgImage, id } = item;
+				const { bgImage, id } = item;
 
 				let isLocked = false;
 

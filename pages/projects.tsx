@@ -8,7 +8,6 @@ import {
 	Layout,
 	Projects,
 	BannerCurtain,
-	Radio,
 	Filter,
 	ProjectsFilter,
 } from "#/components";
@@ -16,9 +15,8 @@ import styles from "#/styles/_pages/projects.module.scss";
 import { useSelectProjectAnimation, useProjectsLettersInit, useWindowSize } from "#/hooks";
 
 import { PROJECTS } from "#/constants/projects";
-import { useEffect, useState, useRef, Ref, useLayoutEffect, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import { projectsPageAnima } from "#/utils/animations/atoms";
-import { RadialGradientAnimContext, useRadialGradientAnimContent } from "#/state";
 import gsap from "gsap";
 
 const { animateFilterSection } = projectsPageAnima;
@@ -54,8 +52,8 @@ const ProjectsPage: NextPage = () => {
 
 	// Create filter section animation
 	useEffect(() => {
-		const backdrop = filterRefSelector('[data-key="backdrop"]');
-		const sidebar = filterRefSelector('[data-key="sidebar"]');
+		const backdrop = filterRefSelector('[data-key="backdrop"]') as unknown as HTMLDivElement;
+		const sidebar = filterRefSelector('[data-key="sidebar"]') as unknown as HTMLDivElement;
 		const listItems = filterRefSelector('[data-key="list-items"]');
 		const tl = animateFilterSection({
 			backdrop,
@@ -63,12 +61,13 @@ const ProjectsPage: NextPage = () => {
 			listItems,
 		});
 		setFilterSectionAnim(tl);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
+	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: string }) => {
 		const res = PROJECTS.filter((project) => {
-			const { type, id, tech } = project;
+			const { type, tech } = project;
 
 			if (filterBy === "tech-stack") {
 				return tech.includes(key);
@@ -78,7 +77,7 @@ const ProjectsPage: NextPage = () => {
 		});
 		setDisplayedProjects(res);
 		onToggleFilter();
-	}, []);
+	};
 
 	// const { timeline, setTimeline } = useRadialGradientAnimContent();
 
@@ -90,7 +89,7 @@ const ProjectsPage: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav />
-			<Filter onClick={onToggleFilter} displayTriggerNode={contentRef.current} />
+			<Filter onClick={onToggleFilter} displayTriggerNode={contentRef} />
 
 			<BannerCurtain containerRef={blackCoverRef} />
 
