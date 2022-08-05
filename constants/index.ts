@@ -85,4 +85,16 @@ const PROJECT_NATURE = [
 	},
 ];
 
-export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, IMAGES, PROJECT_NATURE };
+const FOCUSABLE_ELEMENT_STRING =
+	'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+
+const KEYBOARD_KEYS = {
+	UP_KEY: 38,
+	DOWN_KEY: 40,
+	ENTER_KEY: 13,
+	SPACE_KEY: 32,
+	TAB_KEY: 9,
+	ESC_KEY: 27,
+};
+
+export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, IMAGES, PROJECT_NATURE, FOCUSABLE_ELEMENT_STRING, KEYBOARD_KEYS };

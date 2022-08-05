@@ -8,10 +8,10 @@ import { useSelectProjectAnimation, usePageTransition, useSingleProjectPageInit 
 import { singleProjectAnimations } from "#/utils/animations/atoms";
 const { removeCurrentProject } = singleProjectAnimations;
 export default function Project() {
-	useSingleProjectPageInit();
 	const darkSectionRef = useRef(null);
 	const router = useRouter();
 	const { id } = router.query;
+	useSingleProjectPageInit();
 	const { onRouteChange } = usePageTransition();
 	const {
 		selectedProjectId,

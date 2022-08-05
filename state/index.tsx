@@ -24,7 +24,7 @@ const RadialGradientAnimContext = createContext<TRadGradTimeline>({
 	setTimeline: () => {},
 });
 
-const useRadialGradientAnimContent = () => {
+const useRadialGradientAnimContext = () => {
 	return useContext(RadialGradientAnimContext);
 };
 
@@ -32,5 +32,5 @@ export {
 	PageLeaveAnimationContext,
 	usePageLeaveAnimationContext,
 	RadialGradientAnimContext,
-	useRadialGradientAnimContent,
+	useRadialGradientAnimContext,
 };

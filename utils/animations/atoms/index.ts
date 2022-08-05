@@ -184,23 +184,24 @@ class HomePageAnimations {
 //--------------------------------------------
 class AnimsProjectsPage {
 	animateFilterSection({
-		backdrop,
-		sidebar,
 		listItems,
+		filterOptions,
+		container,
+		openFilterBtn,
+		closeFilterBtn,
 	}: {
 		backdrop: HTMLDivElement;
 		sidebar: HTMLElement;
 		listItems: HTMLElement[];
+		filterOptions: HTMLDivElement;
 	}) {
-		const tl = gsap.timeline({ paused: true });
+		const tl = gsap.timeline();
 
-		//Fade in backdrop
-		tl.to(backdrop, { opacity: 1, visibility: "visible" });
+		tl.to(container, { opacity: 1 });
+		tl.to(openFilterBtn, { rotate: 180, x: 200 });
 
-		//slide filter list in
-		tl.to(sidebar, { x: 0 });
-
-		//Stagger list items
+		tl.to(closeFilterBtn, { rotate: 0, right: "3rem", opacity: 1 });
+		tl.to(filterOptions, { opacity: 1 });
 		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01 });
 
 		return tl;
