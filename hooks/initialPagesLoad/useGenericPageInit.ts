@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { usePageLeaveAnimationContext } from "#/state";
+import { useInitialAppLoadContext } from "#/state";
 import { animPageLoaders, sharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;
@@ -25,7 +25,7 @@ export default function useGenericPageInit({
 	const bannerRef = useRef<HTMLDivElement>(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
+	const { initialAppLoad } = useInitialAppLoadContext();
 
 	const textRefSelector = gsap.utils.selector(textWrapperRef);
 
@@ -36,7 +36,7 @@ export default function useGenericPageInit({
 
 		const master = gsap.timeline();
 
-		if (!pageLeaveAnimation) {
+		if (initialAppLoad) {
 			master.add(drawSvgLogo(logo, logoChildren));
 		}
 

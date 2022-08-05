@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const withPWA = require("next-pwa");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+	enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -22,4 +25,6 @@ const nextConfig = {
 };
 
 // module.exports = withPWA(nextConfig);
-module.exports = nextConfig;
+// module.exports = nextConfig;
+
+module.exports = withBundleAnalyzer(nextConfig);
