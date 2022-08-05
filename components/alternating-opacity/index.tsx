@@ -16,5 +16,12 @@ export default function About({
 				})}
 			</ul>
 		</div>
+		// <div className={styles.container}>
+		// 	<ul ref={textsListRef}>
+		// 		{textsList.map((text, i) => {
+		// 			return <li key={i}>{text}</li>;
+		// 		})}
+		// 	</ul>
+		// </div>
 	);
 }

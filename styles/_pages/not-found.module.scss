@@ -25,6 +25,11 @@
 			@media (min-width: $xl) {
 				font-size: 5.6rem;
 			}
+
+			&::selection {
+				background: var(--black);
+				color: var(--light-brown);
+			}
 		}
 
 		.top {
@@ -38,6 +43,11 @@
 					display: inline-block;
 					padding-left: 2rem;
 					padding-right: 2rem;
+
+					&::selection {
+						background: var(--black);
+						color: var(--light-brown);
+					}
 				}
 			}
 		}

@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
-import useBoxAnimation from "../useBoxAnimation";
-
+import { useFloatingBoxAnimation } from "#/hooks";
 import Box from "../floating-box";
 import { TProject } from "#/interfaces";
 
@@ -11,7 +10,8 @@ export function ProjectListView({
 	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
-	const { imgRef, btnRef, textRef, onMouseEnter, onMouseLeave, isActive, onEnterElement, listRef } = useBoxAnimation();
+	const { imgRef, btnRef, textRef, onMouseEnter, onMouseLeave, isActive, onEnterElement, listRef } =
+		useFloatingBoxAnimation();
 
 	return (
 		<div className={styles.container}>
@@ -59,7 +59,7 @@ function ProjectListItem({
 	i: number;
 }) {
 	return (
-		<li onMouseEnter={onMouseEnter} onClick={onClick} data-id={id} data-type="list-item">
+		<li onMouseEnter={onMouseEnter} onClick={onClick} data-key={id} data-type="list-item">
 			<div className={styles.row}>
 				<h4>{title}</h4>
 				<p>{type}</p>

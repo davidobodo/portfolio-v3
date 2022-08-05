@@ -59,7 +59,7 @@ export default function Project() {
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div ref={modalRef} className={styles.container}>
 					<SingleProject
-						currProjectId={selectedProjectId as string}
+						currProjectId={selectedProjectId}
 						// onClose={onClose}
 						onClose={onDeselectProject}
 						modalImgRef={modalImgRef}

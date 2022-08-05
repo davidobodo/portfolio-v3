@@ -23,11 +23,11 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 							<Heading text={fieldA} revealOrigin="left" />
 							<Heading text={fieldB} revealOrigin="left" />
 						</div>
-						<div className={styles.subfieldwrapper}>
+						<h2 className={styles.subfieldwrapper}>
 							<div className={styles.subfieldtext} data-key="sub-field">
 								<span></span> Front end addicted
 							</div>
-						</div>
+						</h2>
 					</div>
 
 					<div>
@@ -42,11 +42,11 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 					<ScrollAlert propStyles={styles.scrollAlert} />
 
 					<div className={styles.bottomSectionText}>
-						<div className={styles.subfieldwrapper}>
+						<h2 className={styles.subfieldwrapper}>
 							<div className={styles.subfieldtext} data-key="sub-field">
 								<span></span> Full stack capable
 							</div>
-						</div>
+						</h2>
 
 						<div data-key="name">
 							<Heading text={nameA} revealOrigin="right" />

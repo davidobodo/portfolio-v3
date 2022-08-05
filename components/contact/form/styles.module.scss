@@ -23,37 +23,24 @@
 	}
 
 	p {
-		// width: 80%;
 		font-family: "sf-pro-regular";
 		line-height: 1.5em;
-		// max-width: 490px;
 		position: relative;
 		margin-bottom: 2rem;
 
 		font-size: 1.6rem;
 
 		@media (min-width: $md) {
-			// width: 80%;
 			font-size: 1.8rem;
 		}
 
 		span {
 			text-decoration: underline;
-			// position: relative;
-			// display: inline-block;
-			// color: var(--light-brown);
 
-			// &:after {
-			// 	content: "";
-			// 	width: 100%;
-			// 	height: 100%;
-			// 	background-color: red;
-			// 	background: linear-gradient(to right, black, var(--brown));
-			// 	position: absolute;
-			// 	left: 0px;
-			// 	top: 0px;
-			// 	z-index: -1;
-			// }
+			&::selection {
+				background: var(--black);
+				color: var(--light-brown);
+			}
 		}
 
 		&::selection {
@@ -113,6 +100,10 @@
 			opacity: 0.4;
 			font-size: 1.8rem;
 		}
+
+		&:focus {
+			border-color: var(--black);
+		}
 	}
 
 	textarea {
@@ -134,6 +125,9 @@
 			color: var(--black);
 			opacity: 0.4;
 			font-size: 1.8rem;
+		}
+		&:focus {
+			border-color: var(--black);
 		}
 	}
 
