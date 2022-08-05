@@ -27,11 +27,11 @@ export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwa
 		}
 	}, [alwaysVisible]);
 	return (
-		<div
-			className={styles.container}
-			style={{ opacity: isVisible ? 1 : 0, visibility: isVisible ? "visible" : "hidden" }}
-		>
-			<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
-		</div>
+		// <div
+		// 	className={styles.container}
+		// 	style={{ opacity: isVisible ? 1 : 0, visibility: isVisible ? "visible" : "hidden" }}
+		// >
+		<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
+		// </div>
 	);
 }

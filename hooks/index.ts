@@ -12,6 +12,7 @@ import useSelectProjectAnimation from "./useSelectProjectAnimation";
 import usePageTransition from "./usePageTransition";
 import useSetBannerHeight from "./useSetBannerHeight";
 import useAlternateTextOpacity from "./useAlternateTextOpacity";
+import useTrapFocus from "./useTrapFocus";
 
 import initPageLoads from "./initialPagesLoad";
 
@@ -25,6 +26,7 @@ export {
 	useCalculateFooterHeight,
 	useSetBannerHeight,
 	useIsomorphicLayoutEffect,
+	useTrapFocus,
 	//---------------------------
 	// ANIMATIONS
 	//---------------------------

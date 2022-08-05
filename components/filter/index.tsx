@@ -13,12 +13,13 @@ export default function Filter({ onClick }: { onClick: () => void; displayTrigge
 				start: "top top",
 				end: "bottom bottom",
 				toggleActions: "restart reverse complete reverse",
+				// markers: true,
 				// endTrigger: darkSectionRef.current,
 				// markers: true,
-				onEnter: () => console.log("enter"),
-				onEnterBack: () => console.log("enter back"),
-				onLeave: () => console.log("leave"),
-				onLeaveBack: () => console.log("leave back"),
+				// onEnter: () => console.log("enter"),
+				// onEnterBack: () => console.log("enter back"),
+				// onLeave: () => console.log("leave"),
+				// onLeaveBack: () => console.log("leave back"),
 			},
 		});
 
@@ -31,7 +32,7 @@ export default function Filter({ onClick }: { onClick: () => void; displayTrigge
 	}, []);
 	return (
 		<div className={styles.container}>
-			<button className={styles.btnFilter} onClick={onClick} ref={btnRef}>
+			<button className={styles.btnFilter} onClick={onClick} ref={btnRef} data-key="open-filter-btn">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"

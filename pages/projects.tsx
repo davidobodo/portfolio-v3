@@ -12,14 +12,18 @@ import {
 	ProjectsFilter,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useSelectProjectAnimation, useGenericPageInit, useWindowSize } from "#/hooks";
+import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomorphicLayoutEffect } from "#/hooks";
 
 import { PROJECTS } from "#/constants/projects";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback, useLayoutEffect } from "react";
 import { projectsPageAnima } from "#/utils/animations/atoms";
 import gsap from "gsap";
+import { useRadialGradientAnimContext } from "#/state";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { TECH_STACKS } from "#/constants/tech-stacks";
+import { PROJECT_NATURE } from "#/constants";
+type TFilterBy = "tech-stack" | "project-nature";
 
-const { animateFilterSection } = projectsPageAnima;
 const ProjectsPage: NextPage = () => {
 	const darkSectionRef = useRef(null);
 	const contentRef = useRef(null);
@@ -36,38 +40,20 @@ const ProjectsPage: NextPage = () => {
 	//-----------------------------------------
 	// TOGGLE FILTER
 	//-----------------------------------------
-	const filterRef = useRef(null);
-	const filterRefSelector = gsap.utils.selector(filterRef);
-	const [showFilter, setshowFilter] = useState(false);
-	const [filterSectionAnim, setFilterSectionAnim] = useState<gsap.core.Timeline>();
-	const onToggleFilter = () => {
-		if (!filterSectionAnim) return;
-		if (!showFilter) {
-			filterSectionAnim.play();
-			document.body.style.overflow = "hidden";
-		} else {
-			filterSectionAnim.reverse();
-			document.body.style.overflow = "auto";
-		}
-		setshowFilter(!showFilter);
+	const [showFilter, setShowFilter] = useState(false);
+
+	const onOpenFilter = () => {
+		if (showFilter) return;
+		setShowFilter(true);
 	};
 
-	// Create filter section animation
-	useEffect(() => {
-		const backdrop = filterRefSelector<HTMLDivElement>('[data-key="backdrop"]');
-		const sidebar = filterRefSelector('[data-key="sidebar"]');
-		const listItems = filterRefSelector('[data-key="list-items"]');
-		const tl = animateFilterSection({
-			backdrop: backdrop[0],
-			sidebar: sidebar[0],
-			listItems,
-		});
-		setFilterSectionAnim(tl);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	const onCloseFilter = () => {
+		setShowFilter(false);
+	};
+	const [filterKey, setFilterKey] = useState("all");
 
 	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: string }) => {
+	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
 		const res = PROJECTS.filter((project) => {
 			const { type, tech } = project;
 
@@ -78,8 +64,64 @@ const ProjectsPage: NextPage = () => {
 			}
 		});
 		setDisplayedProjects(res);
-		onToggleFilter();
+		setFilterKey(key);
+	}, []);
+
+	const [initialPageLoad, setInitialPageLoad] = useState(true);
+
+	const onRefreshScrollTrigger = () => {
+		if (!initialPageLoad) {
+			const elem = document.querySelector("[data-key='projects']");
+
+			if (elem) {
+				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+			}
+		} else {
+			setInitialPageLoad(false);
+		}
 	};
+	const { timeline } = useRadialGradientAnimContext();
+
+	useLayoutEffect(() => {
+		if (timeline) {
+			ScrollTrigger.refresh();
+		}
+	}, [displayedProjects.length]);
+
+	useIsomorphicLayoutEffect(() => {
+		ScrollTrigger.addEventListener("refresh", onRefreshScrollTrigger);
+
+		return () => {
+			ScrollTrigger.removeEventListener("refresh", onRefreshScrollTrigger);
+		};
+	}, [initialPageLoad]);
+
+	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
+	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setFilterBy(e.target.value as TFilterBy);
+	};
+
+	let filterList = [];
+	let currProjects = "All";
+	if (filterBy === "project-nature") {
+		filterList = [
+			{
+				key: "all",
+				label: "All",
+			},
+			...PROJECT_NATURE,
+		];
+		currProjects = PROJECT_NATURE.find((item) => item.key === filterKey)?.label || "All";
+	} else {
+		filterList = [
+			{
+				key: "all",
+				label: "All",
+			},
+			...Object.values(TECH_STACKS),
+		];
+		currProjects = TECH_STACKS[filterKey]?.label || "All";
+	}
 
 	return (
 		<>
@@ -89,7 +131,7 @@ const ProjectsPage: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav />
-			<Filter onClick={onToggleFilter} displayTriggerNode={contentRef} />
+			<Filter onClick={onOpenFilter} displayTriggerNode={contentRef} />
 
 			<BannerCurtain containerRef={blackCoverRef} />
 
@@ -103,12 +145,21 @@ const ProjectsPage: NextPage = () => {
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content} data-key="projects">
 					<h2 className={styles.contentTitle} ref={contentRef}>
-						Viewing all <span>Typescript</span> Projects
+						Viewing <span>{currProjects}</span> projects
 					</h2>
 					<div className={styles.projectsWrapper}>
 						<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} />
 					</div>
-					<ProjectsFilter isOpen={showFilter} containerRef={filterRef} onFilterProjects={onFilterProjects} />
+					{showFilter && (
+						<ProjectsFilter
+							onFilterProjects={onFilterProjects}
+							onCloseFilter={onCloseFilter}
+							filterKey={filterKey}
+							filterList={filterList}
+							filterBy={filterBy}
+							onSelectFilterBy={onSelectFilterBy}
+						/>
+					)}
 				</div>
 			</Layout.DarkSection>
 			<Noise />
