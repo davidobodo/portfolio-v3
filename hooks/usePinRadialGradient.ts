@@ -27,6 +27,10 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 			});
 			// setTl(tl);
 			setTimeline(tl);
+
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
 		}
 	}, [darkSectionRef]);
 

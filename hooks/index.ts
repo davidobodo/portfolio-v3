@@ -1,35 +1,38 @@
-import { useLayoutEffect, useEffect } from "react";
-
-import { HomePageHooks } from "./_pages";
-
+//---------------------------
+// UTILS
+//---------------------------
 import useWindowSize from "./useWindowSize";
+import useCalculateFooterHeight from "./useCalculateFooterHeight";
+import useSetBannerHeight from "./useSetBannerHeight";
+import useTrapFocus from "./useTrapFocus";
+import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
+
+//---------------------------
+// ANIMATIONS
+//---------------------------
 import useRegisterGsapScrollTrigger from "./useRegisterGsapScrollTrigger";
 import usePinRadialGradient from "./usePinRadialGradient";
 import useRevealParagraph from "./useRevealParagraph";
-import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useRevealHeading from "./useRevealHeading";
 import useSelectProjectAnimation from "./useSelectProjectAnimation";
 import usePageTransition from "./usePageTransition";
-import useSetBannerHeight from "./useSetBannerHeight";
 import useAlternateTextOpacity from "./useAlternateTextOpacity";
-import useTrapFocus from "./useTrapFocus";
+import useSkillsAnimation from "./useSkillsAnimation";
+import useWorkAnimation from "./useWorkAnimation";
+import useFloatingBoxAnimation from "./useFloatingBoxAnimation";
 
+//---------------------------
+// PAGE LOADS
+//---------------------------
 import initPageLoads from "./initialPagesLoad";
-
 const { useHomePageInit, useGenericPageInit, useSingleProjectPageInit, use404PageInit } = initPageLoads;
 
-const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
-
 export {
-	HomePageHooks,
 	useWindowSize,
 	useCalculateFooterHeight,
 	useSetBannerHeight,
 	useIsomorphicLayoutEffect,
 	useTrapFocus,
-	//---------------------------
-	// ANIMATIONS
-	//---------------------------
 	useAlternateTextOpacity,
 	useRegisterGsapScrollTrigger,
 	usePinRadialGradient,
@@ -37,11 +40,11 @@ export {
 	useRevealHeading,
 	useSelectProjectAnimation,
 	usePageTransition,
-	//---------------------------
-	// PAGES INIT
-	//---------------------------
+	useSkillsAnimation,
+	useWorkAnimation,
 	useHomePageInit,
 	useGenericPageInit,
 	useSingleProjectPageInit,
 	use404PageInit,
+	useFloatingBoxAnimation,
 };

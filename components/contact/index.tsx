@@ -88,21 +88,27 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 					<h3>Quick Links</h3>
 					<ul>
 						<li onClick={() => onRouteChange("/")}>
-							<a>
-								<span>Home</span>
-							</a>
+							<Link href="/">
+								<a>
+									<span>Home</span>
+								</a>
+							</Link>
 						</li>
 						<li className={styles.line}></li>
 						<li onClick={() => onRouteChange("/projects")}>
-							<a>
-								<span>Projects</span>
-							</a>
+							<Link href="/projects">
+								<a>
+									<span>Projects</span>
+								</a>
+							</Link>
 						</li>
 						<li className={styles.line}></li>
 						<li onClick={() => onRouteChange("/letters")}>
-							<a>
-								<span>Letters </span>
-							</a>
+							<Link href="/letters">
+								<a>
+									<span>Letters </span>
+								</a>
+							</Link>
 						</li>
 					</ul>
 				</div>
@@ -118,19 +124,13 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 							</Link>
 						</li>
 						<li className={styles.line}></li>
-						{/* <li>
-							<Link href="/">
-								<a href="">
-									{" "}
-									<span>14 rAndom stuffzzzz</span>
+
+						<li onClick={() => onRouteChange("/credits")}>
+							<Link href="/credits">
+								<a>
+									<span>Site credits</span>
 								</a>
 							</Link>
-						</li> */}
-						{/* <li className={styles.line}></li> */}
-						<li onClick={() => onRouteChange("/credits")}>
-							<a>
-								<span>Site credits</span>
-							</a>
 						</li>
 					</ul>
 				</div>

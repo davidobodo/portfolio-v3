@@ -4,8 +4,8 @@ import styles from "./styles.module.scss";
 import { Radio } from "../index";
 import { createPortal } from "react-dom";
 import { useTrapFocus } from "#/hooks";
-import { projectsPageAnima } from "#/utils/animations";
-const { animateFilterSection } = projectsPageAnima;
+import { projectAnimations } from "#/utils/animations";
+const { animateFilterSection } = projectAnimations;
 
 function BaseProjectsFilter({
 	onFilterProjects,

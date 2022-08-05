@@ -7,10 +7,11 @@ import {
 	useRevealParagraph,
 	useWindowSize,
 	useRevealHeading,
-	HomePageHooks,
 	useSelectProjectAnimation,
 	useHomePageInit,
 	useAlternateTextOpacity,
+	useWorkAnimation,
+	useSkillsAnimation,
 } from "#/hooks";
 import {
 	Banners,
@@ -26,8 +27,6 @@ import {
 	ProjectsHeading,
 	Noise,
 } from "#/components";
-
-const { useWorkAnimation, useSkillsAnimation } = HomePageHooks;
 
 const Home: NextPage = () => {
 	//-----------------------------------------

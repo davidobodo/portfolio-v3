@@ -1,8 +1,9 @@
 import gsap from "gsap";
 import { TTimelineAction } from "#/interfaces";
 import { animateFaintSvg } from "#/utils";
-import workSectionAnimations from "./work-section";
+import workSectionAnimations from "./work";
 import sharedAnimations from "./shared";
+import projectAnimations from "./projects";
 //--------------------------------------------
 // SITE LOADER
 //--------------------------------------------
@@ -183,37 +184,6 @@ class HomePageAnimations {
 			.to(texts[0], { x: windowInnerWidth > 768 ? 160 : 0 })
 			.to(texts[1], { x: 0 }, "<")
 			.to(texts[2], { x: windowInnerWidth > 768 ? 160 : 0 }, "<");
-
-		return tl;
-	}
-}
-
-//--------------------------------------------
-// PROJECTS PAGE
-//--------------------------------------------
-class AnimsProjectsPage {
-	animateFilterSection({
-		listItems,
-		filterOptions,
-		container,
-		openFilterBtn,
-		closeFilterBtn,
-	}: {
-		listItems: HTMLElement[];
-		filterOptions: HTMLDivElement;
-		container: HTMLDivElement;
-		openFilterBtn: HTMLButtonElement;
-		closeFilterBtn: HTMLButtonElement;
-	}) {
-		const ease = "Back.easeInOut";
-		const tl = gsap.timeline();
-
-		tl.to(container, { opacity: 1 });
-		tl.to(openFilterBtn, { rotate: 180, x: 200 });
-
-		tl.to(closeFilterBtn, { rotate: 0, right: "3rem", opacity: 1 });
-		tl.to(filterOptions, { opacity: 1 });
-		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01 });
 
 		return tl;
 	}
@@ -565,7 +535,6 @@ class NotFoundPageAnimations {
 
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
-const projectsPageAnima = new AnimsProjectsPage();
 const skillsSectionAnimations = new SkillsSectionAnimations();
 const singleProjectAnimations = new SingleProjectAnimations();
 const notFoundPageAnimations = new NotFoundPageAnimations();
@@ -574,8 +543,8 @@ export {
 	animPageLoaders,
 	homePageAnimations,
 	AnimPageLoaders,
-	projectsPageAnima,
 	sharedAnimations,
+	projectAnimations,
 	skillsSectionAnimations,
 	singleProjectAnimations,
 	notFoundPageAnimations,
