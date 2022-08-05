@@ -22,20 +22,16 @@ export default function Credit() {
 		},
 		{
 			link: "https://www.richardekwonye.com/",
-			// description: "Richard Ekwonye site"
 		},
 		{
 			link: "https://css-tricks.com/animating-layouts-with-the-flip-technique/",
-			// description: "Flip technique"
 		},
 		{
 			link: "https://www.youtube.com/watch?v=vJNVramny9k&feature=youtu.be",
-			// description: "You can easily learn how to perform the preloader in the portfolio with this turorial"
 		},
 
 		{
 			link: "https://javascript.plainenglish.io/advanced-page-transitions-in-next-js-with-router-events-and-gsap-e8435d2410bb ",
-			// description: "Next js Route transition"
 		},
 		{
 			link: "https://basement.studio/contact",
@@ -133,16 +129,17 @@ export default function Credit() {
 						<ul className={styles.list}>
 							{SITES.map((item, i) => {
 								const { link } = item;
-								return <ListItem key={i} link={link} description={item?.description || ""} />;
+								return <ListItem key={i} link={link} />;
 							})}
 						</ul>
 					</section>
 					<section>
 						<h3>People</h3>
-						<ul className={styles.list}>
+
+						<ul className={styles.people}>
 							{PEOPLE.map((item, i) => {
 								const { link } = item;
-								return <ListItem key={i} link={link} description={item?.description || ""} />;
+								return <ListItem key={i} role="Chief Reviewer" name="Oluwaseun Adedire" link={link} />;
 							})}
 						</ul>
 					</section>
@@ -154,7 +151,7 @@ export default function Credit() {
 	);
 }
 
-function ListItem({ link, description }: { link: string; description: string }) {
+function ListItem({ link, role, name }: { link: string; role?: string; name?: string }) {
 	const ref = useRef<HTMLLIElement>(null);
 	useEffect(() => {
 		if (ref.current) {
@@ -167,12 +164,23 @@ function ListItem({ link, description }: { link: string; description: string }) 
 			};
 		}
 	}, []);
+
+	if (role && name) {
+		return (
+			<li ref={ref}>
+				<span>Chief Reviewer</span>
+				<span className={styles.lines}></span>
+				<a href="">
+					<span>Oluwaseun Adedire</span>
+				</a>
+			</li>
+		);
+	}
 	return (
 		<li ref={ref}>
 			<a href="">
 				<span>{link}</span>
 			</a>
-			{description && <p>{description}</p>}
 		</li>
 	);
 }

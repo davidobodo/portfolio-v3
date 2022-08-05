@@ -18,6 +18,10 @@
 	margin: auto;
 	padding: 20vh 2rem;
 
+	@media (min-width: $md) {
+		padding: 20vh 8rem;
+	}
+
 	h1 {
 		font-size: 8rem;
 		margin-bottom: 4rem;
@@ -40,13 +44,58 @@
 		}
 
 		h3 {
-			font-size: 3rem;
+			font-size: 2.4rem;
 			margin-bottom: 4rem;
 			text-transform: uppercase;
 			text-align: center;
 
-			@media (min-width: $md) {
+			@media (min-width: $lg) {
 				font-size: 4rem;
+			}
+		}
+
+		a {
+			color: var(--ash);
+			position: relative;
+			display: inline;
+			transition: transform 200ms ease-in-out;
+			font-size: 1.6rem;
+
+			@media (min-width: $lg) {
+				font-size: 3.6rem;
+			}
+
+			span {
+				position: relative;
+			}
+
+			&::selection {
+				background: var(--black);
+				color: var(--light-brown);
+			}
+
+			&::before {
+				// content: "";
+				// display: block;
+				width: 0%;
+				height: 100%;
+				position: absolute;
+				z-index: 0;
+				background: var(--ash);
+				transition: width 200ms ease-in-out;
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				color: var(--light-brown);
+				// text-decoration: none;
+				outline: none;
+				transform: translateX(20px);
+
+				&:before {
+					width: 100%;
+				}
 			}
 		}
 
@@ -80,56 +129,51 @@
 					top: 5px;
 				}
 
-				a {
-					color: var(--ash);
-					position: relative;
-					display: inline;
-					transition: transform 200ms ease-in-out;
-					font-size: 1.6rem;
-
-					@media (min-width: $md) {
-						font-size: 3.6rem;
-					}
-
-					span {
-						position: relative;
-					}
-
-					&::selection {
-						background: var(--black);
-						color: var(--light-brown);
-					}
-
-					&::before {
-						// content: "";
-						// display: block;
-						width: 0%;
-						height: 100%;
-						position: absolute;
-						z-index: 0;
-						background: var(--ash);
-						transition: width 200ms ease-in-out;
-					}
-
-					&:hover,
-					&:active,
-					&:focus {
-						color: var(--light-brown);
-						// text-decoration: none;
-						outline: none;
-						transform: translateX(20px);
-
-						&:before {
-							width: 100%;
-						}
-					}
-				}
-
 				p {
 					opacity: 0.5;
 					font-size: 2rem;
 					margin-top: 2rem;
 					font-family: "sf-pro-regular";
+				}
+			}
+		}
+
+		.people {
+			list-style: none;
+
+			li {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 4rem;
+				transform: translateY(100px);
+				opacity: 0;
+				font-size: 1.6rem;
+
+				@media (min-width: $lg) {
+					font-size: 3.6rem;
+				}
+
+				a {
+					font-size: 1.6rem;
+
+					@media (min-width: $lg) {
+						font-size: 3.6rem;
+					}
+				}
+
+				.lines {
+					flex: 1;
+					margin-left: 1rem;
+					margin-right: 1rem;
+
+					border-bottom: 1px dotted;
+					// transform: translateY(-30%);
+
+					@media (min-width: $lg) {
+						border-bottom: 3px dotted;
+						transform: translateY(-45%);
+					}
 				}
 			}
 		}
