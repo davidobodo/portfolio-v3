@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { homePageAnimations } from "#/utils/animations/atoms";
+import { homePageAnimations } from "#/utils/animations";
 
 const { revealParagraph } = homePageAnimations;
 export default function useRevealText() {

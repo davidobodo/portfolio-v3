@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { workPageAnimations } from "#/utils/animations/atoms";
+import { workSectionAnimations } from "#/utils/animations";
 
-const { desktopAnimation, mobileAnimation } = workPageAnimations;
+const { desktopAnimation, mobileAnimation } = workSectionAnimations;
 
 export default function useWorkAnimation({
 	windowInnerHeight,

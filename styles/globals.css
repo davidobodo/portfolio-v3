@@ -73,6 +73,11 @@
 
 html {
 	font-size: 62.5%;
+	scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+	width: 0px;
 }
 
 *::selection {
@@ -87,22 +92,23 @@ body {
 	font-family: "sf-pro-regular";
 	background: var(--light-brown);
 	scroll-behavior: smooth;
+	scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
 	width: 0px;
 }
 
-body::-webkit-scrollbar-track {
+/* body::-webkit-scrollbar-track {
 	background: var(--light-brown);
 }
 
 body::-webkit-scrollbar-thumb {
 	background: var(--black);
-}
+} */
 
 .hide {
-	overflow: hidden !important;
+	/* overflow: hidden !important; */
 }
 
 h1,

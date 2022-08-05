@@ -21,6 +21,8 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
 
+		console.log(innerWidth);
+		// console.log(containerRef.current, placeholderRef.current);
 		if (containerRef.current && placeholderRef.current) {
 			if (innerWidth >= 768) {
 				if (footerHeight > innerHeight) {
@@ -31,6 +33,7 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 					placeholderRef.current.style.display = "block";
 				}
 			} else {
+				console.log("THIS GUY GOT CALLED");
 				containerRef.current.style.position = "relative";
 				placeholderRef.current.style.display = "none";
 			}
@@ -62,7 +65,7 @@ function Details({
 	// isFooterFixed: boolean;
 }) {
 	return (
-		<div className={styles.container} ref={containerRef}>
+		<div className={styles.container} ref={containerRef} data-key="dhfjshjfjshkjshkfsjhk">
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>

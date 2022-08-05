@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import styles from "#/styles/_pages/single-project.module.scss";
 import { useRef } from "react";
 import { useSelectProjectAnimation, usePageTransition, useSingleProjectPageInit } from "#/hooks";
-import { singleProjectAnimations } from "#/utils/animations/atoms";
+import { singleProjectAnimations } from "#/utils/animations";
 const { removeCurrentProject } = singleProjectAnimations;
 export default function Project() {
 	const darkSectionRef = useRef(null);
