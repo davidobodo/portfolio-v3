@@ -6,100 +6,131 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	scrollbar-width: none;
+	// opacity: 0;
+
+	&::-webkit-scrollbar {
+		width: 0px;
+	}
 }
 
-.backdrop {
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	backdrop-filter: blur(1.5rem) saturate(1.1);
-	top: 0px;
-	opacity: 0;
-	visibility: hidden;
-	z-index: 1;
-}
-
-.aside {
-	width: 300px;
-	// position: fixed;
-	// top: 0px;
-	// right: 0px;
-	position: relative;
+.filterModal {
 	padding: 3rem;
 	padding-top: 10rem;
-	margin-left: auto;
-	// height: 100vh;
-	// min-height: 100vh;
-	// backdrop-filter: blur(1.5rem) saturate(1.1);
-	color: var(--white);
-	overflow: auto;
-	z-index: 2;
-	transform: translateX(100vw);
+	display: flex;
+	backdrop-filter: blur(1.5rem) saturate(1.1);
+	background-color: rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	width: 100%;
+	min-height: 100vh;
+	opacity: 0;
 
-	.filter {
-		margin-bottom: 4rem;
-		color: var(--white);
-
-		h4 {
-			margin-bottom: 2rem;
-			font-size: 1.4rem;
-			text-transform: uppercase;
-			font-size: 600;
-			text-align: right;
-		}
-
-		.filterCheck {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			margin-bottom: 1rem;
-			font-size: 1.4rem;
-			cursor: pointer;
-
-			label {
-				margin-right: 1rem;
-				cursor: pointer;
-			}
-		}
+	.empty {
+		flex: 1;
+		width: calc(100vw - 250px);
+		flex-shrink: 0;
+		cursor: url("https://dennissnellenberg.com/assets/img/DSC07312-2.jpg"), pointer;
 	}
 
-	ul {
-		list-style: none;
+	.aside {
+		width: 250px;
+		flex-shrink: 0;
+	}
+}
 
-		li {
-			border-top: 1px dotted transparent;
-			border-bottom: 1px dotted transparent;
+.filterBy {
+	margin-bottom: 4rem;
+	color: var(--white);
+	opacity: 0;
+
+	h4 {
+		margin-bottom: 2rem;
+		font-size: 1.4rem;
+		text-transform: uppercase;
+		font-size: 600;
+		text-align: right;
+	}
+
+	.filterCheck {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-bottom: 1rem;
+		font-size: 1.4rem;
+		cursor: pointer;
+
+		label {
+			margin-right: 1rem;
 			cursor: pointer;
-			margin-bottom: 5px;
-			opacity: 0;
-			transform: translateX(100%);
+		}
+	}
+}
 
+.closeBtn {
+	position: fixed;
+	top: 3rem;
+	right: -3rem;
+	opacity: 0;
+	background: var(--color-blue);
+	width: 4rem;
+	height: 4rem;
+	border: 0px;
+	border-radius: 50%;
+
+	cursor: pointer;
+	transform: rotate(180deg);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 200ms ease-in-out;
+	will-change: background-color;
+
+	&:hover {
+		background-color: var(--dark-blue);
+	}
+
+	&:focus {
+		background-color: var(--dark-blue);
+		box-shadow: 1px 2px 5px 1px rgba(255, 255, 255, 0.5);
+	}
+}
+
+.listWrapper {
+	list-style: none;
+
+	li {
+		border-top: 1px dotted transparent;
+		border-bottom: 1px dotted transparent;
+		cursor: pointer;
+		margin-bottom: 5px;
+		opacity: 1;
+		transform: translateX(150%);
+
+		button {
+			cursor: pointer;
+			background-color: transparent;
+			border: 0px;
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			color: #fff;
+			font-size: 1.6rem;
+			font-weight: 600;
+			padding: 5px;
+			outline: none;
+		}
+
+		&.active {
 			button {
-				cursor: pointer;
-				background-color: transparent;
-				border: 0px;
-				width: 100%;
-				display: flex;
-				justify-content: flex-end;
+				background-color: rgba(255, 255, 255, 0.1);
 				color: #fff;
-				font-size: 1.6rem;
-				font-weight: 600;
-				padding: 5px;
-				outline: none;
 			}
+		}
 
-			&.active {
-				button {
-					background-color: #fff;
-					color: #000;
-				}
-			}
-
-			&:hover,
-			&:focus-within {
-				border-color: #fff;
-			}
+		&:hover,
+		&:focus-within {
+			border-color: rgba(255, 255, 255, 0.5);
 		}
 	}
 }

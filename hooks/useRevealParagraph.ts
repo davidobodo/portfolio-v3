@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { homePageAnims } from "#/utils/animations/atoms";
+import { homePageAnimations } from "#/utils/animations/atoms";
 
-const { revealParagraph } = homePageAnims;
+const { revealParagraph } = homePageAnimations;
 export default function useRevealText() {
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const textSelector = gsap.utils.selector(textWrapperRef);

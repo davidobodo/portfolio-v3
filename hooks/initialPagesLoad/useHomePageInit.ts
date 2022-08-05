@@ -1,11 +1,12 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { animPageLoaders, homePageAnims } from "#/utils/animations/atoms";
+import { animPageLoaders, homePageAnimations, sharedAnimations } from "#/utils/animations/atoms";
 import { usePageLeaveAnimationContext } from "#/state";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
 const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
-const { bannerAnimation } = homePageAnims;
+const { bannerAnimation } = homePageAnimations;
+const { transitionToDarkSection } = sharedAnimations;
 export default function useHomeInit({
 	windowInnerHeight,
 	windowInnerWidth,
@@ -88,42 +89,23 @@ export default function useHomeInit({
 		}
 	}, []);
 
+	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 	//-----------------------------------------
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
 	const blackCoverRef = useRef<HTMLDivElement>(null);
-
-	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
-
 	useIsomorphicLayoutEffect(() => {
-		// Only create this timeline when the correct banner height has been set
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: darkSectionRef.current,
-				toggleActions: "restart complete reverse reset",
-				start: "top bottom",
-				end: "top top",
-				scrub: true,
-				onEnterBack: () => {
-					if (bannerRef.current && blackCoverRef.current) {
-						bannerRef.current.style.zIndex = "1";
-						bannerRef.current.style.opacity = "1";
-						blackCoverRef.current.style.zIndex = "2";
-					}
-				},
-				onLeave: () => {
-					if (bannerRef.current && blackCoverRef.current) {
-						bannerRef.current.style.zIndex = "-1";
-						bannerRef.current.style.opacity = "0";
-						blackCoverRef.current.style.zIndex = "-1";
-					}
-				},
-			},
-		});
-		tl.to(blackCoverRef.current, {
-			scaleY: 1,
-			transformOrigin: "top",
-		});
+		if (darkSectionRef.current && bannerRef.current && blackCoverRef.current) {
+			const tl = transitionToDarkSection({
+				darkSection: darkSectionRef.current,
+				banner: bannerRef.current,
+				blackCurtain: blackCoverRef.current,
+			});
+
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
 	}, []);
 
 	return {

@@ -1,11 +1,10 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, About, BannerCurtain } from "#/components";
-import { useProjectsLettersInit, HomePageHooks, useWindowSize } from "#/hooks";
+import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity } from "#/components";
+import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
 import { useEffect, useRef } from "react";
-import { fadeIn } from "#/utils/animations/atoms";
-const { useHomeAboutAnim } = HomePageHooks;
-
+import { sharedAnimations } from "#/utils/animations/atoms";
+const { fadeIn } = sharedAnimations;
 type TCredit = {
 	link: string;
 	description?: string;
@@ -23,20 +22,16 @@ export default function Credit() {
 		},
 		{
 			link: "https://www.richardekwonye.com/",
-			// description: "Richard Ekwonye site"
 		},
 		{
 			link: "https://css-tricks.com/animating-layouts-with-the-flip-technique/",
-			// description: "Flip technique"
 		},
 		{
 			link: "https://www.youtube.com/watch?v=vJNVramny9k&feature=youtu.be",
-			// description: "You can easily learn how to perform the preloader in the portfolio with this turorial"
 		},
 
 		{
 			link: "https://javascript.plainenglish.io/advanced-page-transitions-in-next-js-with-router-events-and-gsap-e8435d2410bb ",
-			// description: "Next js Route transition"
 		},
 		{
 			link: "https://basement.studio/contact",
@@ -82,13 +77,15 @@ export default function Credit() {
 			description: "Emma ui/ux",
 		},
 	];
+	const darkSectionRef = useRef(null);
 
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsLettersInit({
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
 		windowInnerHeight,
 		windowInnerWidth,
+		darkSectionRef,
 	});
-	const { aboutListRef } = useHomeAboutAnim();
+	const { textsListRef } = useAlternateTextOpacity();
 
 	const note = [
 		`I am not a "professional designer" by skill`,
@@ -101,8 +98,6 @@ export default function Credit() {
 		"works and people",
 		"who contributed to the design of this portfolio",
 	];
-
-	const darkSectionRef = useRef(null);
 
 	return (
 		<>
@@ -126,7 +121,7 @@ export default function Credit() {
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.container}>
 					<div className={styles.summary}>
-						<About aboutListRef={aboutListRef} textsList={note} />
+						<AlternatingOpacity textsListRef={textsListRef} textsList={note} />
 					</div>
 
 					<section>
@@ -134,16 +129,17 @@ export default function Credit() {
 						<ul className={styles.list}>
 							{SITES.map((item, i) => {
 								const { link } = item;
-								return <ListItem key={i} link={link} description={item?.description || ""} />;
+								return <ListItem key={i} link={link} />;
 							})}
 						</ul>
 					</section>
 					<section>
 						<h3>People</h3>
-						<ul className={styles.list}>
+
+						<ul className={styles.people}>
 							{PEOPLE.map((item, i) => {
 								const { link } = item;
-								return <ListItem key={i} link={link} description={item?.description || ""} />;
+								return <ListItem key={i} role="Chief Reviewer" name="Oluwaseun Adedire" link={link} />;
 							})}
 						</ul>
 					</section>
@@ -155,7 +151,7 @@ export default function Credit() {
 	);
 }
 
-function ListItem({ link, description }: { link: string; description: string }) {
+function ListItem({ link, role, name }: { link: string; role?: string; name?: string }) {
 	const ref = useRef<HTMLLIElement>(null);
 	useEffect(() => {
 		if (ref.current) {
@@ -168,12 +164,23 @@ function ListItem({ link, description }: { link: string; description: string }) 
 			};
 		}
 	}, []);
+
+	if (role && name) {
+		return (
+			<li ref={ref}>
+				<span>Chief Reviewer</span>
+				<span className={styles.lines}></span>
+				<a href="">
+					<span>Oluwaseun Adedire</span>
+				</a>
+			</li>
+		);
+	}
 	return (
 		<li ref={ref}>
 			<a href="">
 				<span>{link}</span>
 			</a>
-			{description && <p>{description}</p>}
 		</li>
 	);
 }

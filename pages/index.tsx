@@ -1,9 +1,20 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
+import { useRef } from "react";
+import { PROJECTS } from "#/constants/projects";
+import {
+	useRevealParagraph,
+	useWindowSize,
+	useRevealHeading,
+	HomePageHooks,
+	useSelectProjectAnimation,
+	useHomePageInit,
+	useAlternateTextOpacity,
+} from "#/hooks";
 import {
 	Banners,
-	About,
+	AlternatingOpacity,
 	Work,
 	Thoughts,
 	Skills,
@@ -13,52 +24,40 @@ import {
 	Nav,
 	BannerCurtain,
 	ProjectsHeading,
+	Noise,
 } from "#/components";
-import {
-	useRevealParagraph,
-	useWindowSize,
-	useRegisterGsapScrollTrigger,
-	useRevealHeading,
-	HomePageHooks,
-	useSelectProjectAnimation,
-	useHomeInit,
-} from "#/hooks";
-import { PROJECTS } from "#/constants/projects";
-import { useRef } from "react";
 
-const { useHomeAboutAnim, useWorkAnimation, useSkillsAnimation } = HomePageHooks;
+const { useWorkAnimation, useSkillsAnimation } = HomePageHooks;
 
 const Home: NextPage = () => {
-	useRegisterGsapScrollTrigger();
+	//-----------------------------------------
+	// HELPERS
+	//-----------------------------------------
+	const darkSectionRef = useRef<HTMLDivElement>(null);
+
+	//-----------------------------------------
+	// HOOKS
+	//-----------------------------------------
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const darkSectionRef = useRef(null);
-	const { bannerRef, blackCoverRef, bannerHeight } = useHomeInit({
+	const { bannerRef, blackCoverRef, bannerHeight } = useHomePageInit({
 		windowInnerHeight,
 		windowInnerWidth,
 		darkSectionRef,
 	});
-	const { aboutListRef } = useHomeAboutAnim();
+	const { textsListRef } = useAlternateTextOpacity();
 	const {
 		workContainerRef,
-		workTabsRef,
-		activeWorkBgGradient,
-		workTitlesContainerRef,
-		workDetailsContainerRef,
-		mobileWorkDetailsContainerRef,
-		mobileWorkTitlesContainerRef,
+
 		mobileWorkContainerRef,
-		mobileWorkContentWrapperRef,
 	} = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 	const { textWrapperRef: thoughtOneText } = useRevealParagraph();
 	const { textWrapperRef: thoughtTwoText } = useRevealParagraph();
-
 	const { headingRef: skillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
 	const { headingRef: mobileSkillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
-	const { skillsListRef, skillsContainerRef, skillsContentWrapperRef, mobileSkillsContainerRef } = useSkillsAnimation({
+	const { skillsContainerRef, mobileSkillsContainerRef } = useSkillsAnimation({
 		windowInnerWidth,
 	});
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
-
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation();
 
@@ -75,24 +74,12 @@ const Home: NextPage = () => {
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content}>
 					<div className={styles.aboutWrapper}>
-						<About aboutListRef={aboutListRef} />
+						<AlternatingOpacity textsListRef={textsListRef} />
 					</div>
-					<Work
-						workContainerRef={workContainerRef}
-						workTabsRef={workTabsRef}
-						activeWorkBgGradient={activeWorkBgGradient}
-						workTitlesContainerRef={workTitlesContainerRef}
-						workDetailsContainerRef={workDetailsContainerRef}
-						mobileWorkDetailsContainerRef={mobileWorkDetailsContainerRef}
-						mobileWorkTitlesContainerRef={mobileWorkTitlesContainerRef}
-						mobileWorkContainerRef={mobileWorkContainerRef}
-						mobileWorkContentWrapperRef={mobileWorkContentWrapperRef}
-					/>
+					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 					<Skills
-						skillsListRef={skillsListRef}
 						skillsContainerRef={skillsContainerRef}
-						skillsContentWrapperRef={skillsContentWrapperRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}
 						mobileSkillsContainerRef={mobileSkillsContainerRef}
 						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
@@ -103,6 +90,7 @@ const Home: NextPage = () => {
 					<Projects onViewProject={onSelectProject} displayedProjects={PROJECTS.slice(0, 5)} />
 				</div>
 			</Layout.DarkSection>
+			<Noise />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

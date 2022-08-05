@@ -4,12 +4,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styles from "#/styles/_pages/single-project.module.scss";
 import { useRef } from "react";
-import { useSelectProjectAnimation, removeCurrentProject, usePageTransition, useSingleProjectInit } from "#/hooks";
+import { useSelectProjectAnimation, usePageTransition, useSingleProjectPageInit } from "#/hooks";
+import { singleProjectAnimations } from "#/utils/animations/atoms";
+const { removeCurrentProject } = singleProjectAnimations;
 export default function Project() {
-	useSingleProjectInit();
 	const darkSectionRef = useRef(null);
 	const router = useRouter();
 	const { id } = router.query;
+	useSingleProjectPageInit();
 	const { onRouteChange } = usePageTransition();
 	const {
 		selectedProjectId,

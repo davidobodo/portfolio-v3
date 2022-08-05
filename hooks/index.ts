@@ -8,42 +8,40 @@ import usePinRadialGradient from "./usePinRadialGradient";
 import useRevealParagraph from "./useRevealParagraph";
 import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useRevealHeading from "./useRevealHeading";
-import useSelectProjectAnimation, {
-	applyFlipAnim,
-	removeCurrentProject,
-	displayNextProject,
-} from "./useSelectProjectAnimation";
+import useSelectProjectAnimation from "./useSelectProjectAnimation";
 import usePageTransition from "./usePageTransition";
 import useSetBannerHeight from "./useSetBannerHeight";
+import useAlternateTextOpacity from "./useAlternateTextOpacity";
+import useTrapFocus from "./useTrapFocus";
 
 import initPageLoads from "./initialPagesLoad";
 
-const { useHomeInit, useCreditsInit, useProjectsLettersInit, useSingleProjectInit } = initPageLoads;
+const { useHomePageInit, useGenericPageInit, useSingleProjectPageInit, use404PageInit } = initPageLoads;
+
 const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export {
 	HomePageHooks,
 	useWindowSize,
+	useCalculateFooterHeight,
+	useSetBannerHeight,
+	useIsomorphicLayoutEffect,
+	useTrapFocus,
+	//---------------------------
+	// ANIMATIONS
+	//---------------------------
+	useAlternateTextOpacity,
 	useRegisterGsapScrollTrigger,
 	usePinRadialGradient,
 	useRevealParagraph,
-	useCalculateFooterHeight,
 	useRevealHeading,
 	useSelectProjectAnimation,
 	usePageTransition,
-	applyFlipAnim,
-	removeCurrentProject,
-	displayNextProject,
-	useSetBannerHeight,
 	//---------------------------
 	// PAGES INIT
 	//---------------------------
-	useHomeInit,
-	useCreditsInit,
-	useProjectsLettersInit,
-	useSingleProjectInit,
-	//---------------------------
-	// UTILS
-	//---------------------------
-	useIsomorphicLayoutEffect,
+	useHomePageInit,
+	useGenericPageInit,
+	useSingleProjectPageInit,
+	use404PageInit,
 };
