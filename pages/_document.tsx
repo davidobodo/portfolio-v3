@@ -25,6 +25,9 @@ export default function Document() {
 					type="font/otf"
 					crossOrigin="anonymous"
 				/>
+				<link rel="manifest" href="/manifest.json" />
+				<link rel="apple-touch-icon" href="/icon.png"></link>
+				<meta name="theme-color" content="#e1dfdd" />
 			</Head>
 			<body className="hide">
 				<Main />

@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { skillsSectionAnimations } from "#/utils/animations/atoms";
+import { skillsSectionAnimations } from "#/utils/animations";
 
 const { desktopAnimation, mobileAnimation } = skillsSectionAnimations;
 

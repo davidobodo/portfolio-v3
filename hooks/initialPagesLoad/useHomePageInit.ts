@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { animPageLoaders, homePageAnimations, sharedAnimations } from "#/utils/animations/atoms";
+import { animPageLoaders, homePageAnimations, sharedAnimations } from "#/utils/animations";
 import { usePageLeaveAnimationContext } from "#/state";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { sharedAnimations } from "#/utils/animations/atoms";
+import { sharedAnimations } from "#/utils/animations";
 
 const { changeFocusedOpaqueText } = sharedAnimations;
 

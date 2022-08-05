@@ -149,7 +149,8 @@ function BaseForm() {
 		};
 
 		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/send_mail`;
-		const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
+		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
+		const URL = `/api/mail`;
 
 		// console.log(process.env);
 		// console.log(URL, "THE URL");

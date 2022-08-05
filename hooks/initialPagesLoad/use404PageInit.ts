@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
 import { usePageLeaveAnimationContext } from "#/state";
-import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations/atoms";
+import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 

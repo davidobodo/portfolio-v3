@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
 import { usePageLeaveAnimationContext } from "../state";
 import { useRouter } from "next/router";
-import { animPageLoaders } from "#/utils/animations/atoms";
+import { animPageLoaders } from "#/utils/animations";
 const { showLoadingTexts, closeNoiseLayers, hideLoadingTexts } = animPageLoaders;
 
 // const newPageLoader = new AnimPageLoaders();

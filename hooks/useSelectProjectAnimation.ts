@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import { singleProjectAnimations } from "#/utils/animations/atoms";
+import { singleProjectAnimations } from "#/utils/animations";
 
 const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjectAnimations;
 export default function useSelectProjectAnimation() {
