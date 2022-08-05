@@ -158,7 +158,15 @@ class HomePageAnimations {
 	}
 
 	//-----
-	revealHeading({ container, texts, windowInnerWidth }) {
+	revealHeading({
+		container,
+		texts,
+		windowInnerWidth,
+	}: {
+		container: HTMLHeadingElement;
+		texts: NodeListOf<Element>;
+		windowInnerWidth: number;
+	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: container,
@@ -190,10 +198,11 @@ class AnimsProjectsPage {
 		openFilterBtn,
 		closeFilterBtn,
 	}: {
-		backdrop: HTMLDivElement;
-		sidebar: HTMLElement;
 		listItems: HTMLElement[];
 		filterOptions: HTMLDivElement;
+		container: HTMLDivElement;
+		openFilterBtn: HTMLButtonElement;
+		closeFilterBtn: HTMLButtonElement;
 	}) {
 		const tl = gsap.timeline();
 
@@ -209,7 +218,15 @@ class AnimsProjectsPage {
 }
 
 class SharedAnimations {
-	transitionToDarkSection({ darkSection, banner, blackCurtain }) {
+	transitionToDarkSection({
+		darkSection,
+		banner,
+		blackCurtain,
+	}: {
+		darkSection: HTMLDivElement;
+		banner: HTMLDivElement;
+		blackCurtain: HTMLDivElement;
+	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: darkSection,
@@ -361,7 +378,15 @@ class WorkSectionAnimations {
 		this.mobileAnimation = this.mobileAnimation.bind(this);
 	}
 
-	private createDesktopAnimationTimeline({ titles, details, titleBg }) {
+	private createDesktopAnimationTimeline({
+		titles,
+		details,
+		titleBg,
+	}: {
+		titleBg: HTMLLIElement;
+		titles: HTMLCollection;
+		details: HTMLCollection;
+	}) {
 		const DESKTOP_TITLE_HEIGHT = 72;
 		let timelineActions: TTimelineAction[] = [];
 
@@ -421,7 +446,15 @@ class WorkSectionAnimations {
 		return timelineActions;
 	}
 
-	private createMobileAnimationTimeline({ titles, details, titlesContainer }) {
+	private createMobileAnimationTimeline({
+		titles,
+		details,
+		titlesContainer,
+	}: {
+		titles: HTMLLIElement[];
+		details: HTMLCollection;
+		titlesContainer: HTMLUListElement;
+	}) {
 		const posDic: Record<string, string | number> = {};
 
 		for (let k = 0; k < titles.length; k++) {
@@ -466,6 +499,15 @@ class WorkSectionAnimations {
 		titles,
 		details,
 		windowInnerWidth,
+	}: {
+		faintBgTitle: HTMLDivElement;
+		radialGradient: HTMLDivElement;
+		container: HTMLDivElement;
+		tabsWrapper: HTMLDivElement;
+		titleBg: HTMLLIElement;
+		titles: HTMLCollection;
+		details: HTMLCollection;
+		windowInnerWidth: number;
 	}) {
 		// CREATE TIMELINE
 		const tl = gsap.timeline({
@@ -521,6 +563,15 @@ class WorkSectionAnimations {
 		details,
 		titlesContainer,
 		windowInnerWidth,
+	}: {
+		radialGradient: HTMLDivElement;
+		faintBgTitle: HTMLDivElement;
+		container: HTMLDivElement;
+		tabsWrapper: HTMLDivElement;
+		titles: HTMLLIElement[];
+		details: HTMLCollection;
+		titlesContainer: HTMLUListElement;
+		windowInnerWidth: number;
 	}) {
 		// CREATE TIMLINE
 		const tl = gsap.timeline({
@@ -570,7 +621,7 @@ class SkillsSectionAnimations {
 		this.mobileAnimation = this.mobileAnimation.bind(this);
 	}
 
-	private createDesktopAnimationTimeline({ lists, image }) {
+	private createDesktopAnimationTimeline({ lists, image }: { image: HTMLDivElement; lists: HTMLDivElement[] }) {
 		let timelineActions: TTimelineAction[] = [];
 
 		timelineActions.push({ target: image, vars: { width: "29vw", duration: 2 } });
@@ -594,7 +645,13 @@ class SkillsSectionAnimations {
 		return timelineActions;
 	}
 
-	private createMobileAnimationTimeline({ listsWrapper, lists }) {
+	private createMobileAnimationTimeline({
+		listsWrapper,
+		lists,
+	}: {
+		listsWrapper: HTMLDivElement;
+		lists: HTMLDivElement[];
+	}) {
 		let timelineActions: TTimelineAction[] = [];
 
 		// CREATE TIMELINE ACTIONS
@@ -627,7 +684,23 @@ class SkillsSectionAnimations {
 		};
 	}
 
-	mobileAnimation({ faintBgTitle, radialGradient, contentWrapper, listsWrapper, lists, container, windowInnerWidth }) {
+	mobileAnimation({
+		faintBgTitle,
+		radialGradient,
+		contentWrapper,
+		listsWrapper,
+		lists,
+		container,
+		windowInnerWidth,
+	}: {
+		faintBgTitle: HTMLDivElement;
+		radialGradient: HTMLDivElement;
+		contentWrapper: HTMLDivElement;
+		listsWrapper: HTMLDivElement;
+		lists: HTMLDivElement[];
+		container: HTMLDivElement;
+		windowInnerWidth: number;
+	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: container,
@@ -669,7 +742,23 @@ class SkillsSectionAnimations {
 		return tl;
 	}
 
-	desktopAnimation({ faintBgTitle, radialGradient, image, lists, contentWrapper, container, windowInnerWidth }) {
+	desktopAnimation({
+		faintBgTitle,
+		radialGradient,
+		image,
+		lists,
+		contentWrapper,
+		container,
+		windowInnerWidth,
+	}: {
+		faintBgTitle: HTMLDivElement;
+		radialGradient: HTMLDivElement;
+		image: HTMLDivElement;
+		lists: HTMLDivElement[];
+		contentWrapper: HTMLDivElement;
+		container: HTMLDivElement;
+		windowInnerWidth: number;
+	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: container,
@@ -839,13 +928,23 @@ class SingleProjectAnimations {
 }
 
 class NotFoundPageAnimations {
-	bannerAnimation({ sections }) {
+	bannerAnimation({ sections }: { sections: HTMLDivElement[] }) {
 		const tl = gsap.timeline();
 		tl.to(sections, { opacity: 1, y: 0, stagger: 0.2 });
 		return tl;
 	}
 
-	stopRedirectAnimation({ textsToRemove, container, gradient, scroll }) {
+	stopRedirectAnimation({
+		textsToRemove,
+		container,
+		gradient,
+		scroll,
+	}: {
+		textsToRemove: HTMLDivElement[];
+		container: HTMLDivElement;
+		gradient: HTMLDivElement;
+		scroll: HTMLDivElement;
+	}) {
 		const tl = gsap.timeline();
 
 		tl.to(textsToRemove, { opacity: 0, y: 100 });

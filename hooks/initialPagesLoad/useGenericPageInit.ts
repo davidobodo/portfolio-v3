@@ -68,15 +68,17 @@ export default function useGenericPageInit({
 	const blackCoverRef = useRef<HTMLDivElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
-		const tl = transitionToDarkSection({
-			darkSection: darkSectionRef.current,
-			banner: bannerRef.current,
-			blackCurtain: blackCoverRef.current,
-		});
+		if (darkSectionRef.current && bannerRef.current && blackCoverRef.current) {
+			const tl = transitionToDarkSection({
+				darkSection: darkSectionRef.current,
+				banner: bannerRef.current,
+				blackCurtain: blackCoverRef.current,
+			});
 
-		return () => {
-			tl.scrollTrigger?.kill();
-		};
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
 	}, []);
 
 	return {

@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useIsomorphicLayoutEffect } from "..";
+import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
 import { usePageLeaveAnimationContext } from "#/state";
 import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations/atoms";
 import { useRef, useState, useEffect } from "react";
@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
 const { bannerAnimation, stopRedirectAnimation } = notFoundPageAnimations;
 export default function use404PageInit() {
+	const { innerHeight, innerWidth } = useWindowSize();
 	//-------------------------------------------
 	// GENERAL HELPERS
 	//-------------------------------------------
@@ -36,16 +37,19 @@ export default function use404PageInit() {
 
 	const onStopRedirect = () => {
 		clearTimeout(timerId);
-		const tl = stopRedirectAnimation({
-			textsToRemove: containerSelector('[data-key="mortal-text"]'),
-			container: containerRef.current,
-			gradient: gradientRef.current,
-			scroll: scrollRef.current,
-		});
 
-		tl.then(() => {
-			setLogoVisibility(false);
-		});
+		if (containerRef.current && gradientRef.current && scrollRef.current) {
+			const tl = stopRedirectAnimation({
+				textsToRemove: containerSelector<HTMLDivElement>('[data-key="mortal-text"]'),
+				container: containerRef.current,
+				gradient: gradientRef.current,
+				scroll: scrollRef.current,
+			});
+
+			tl.then(() => {
+				setLogoVisibility(false);
+			});
+		}
 	};
 
 	const redirectToHome = () => {
@@ -94,7 +98,7 @@ export default function use404PageInit() {
 				.add(openNoiseLayers(layers))
 				.add(
 					bannerAnimation({
-						sections: containerSelector('[data-key="section"]'),
+						sections: containerSelector<HTMLDivElement>('[data-key="section"]'),
 					})
 				)
 				.add(onInitRedirect);
@@ -106,6 +110,8 @@ export default function use404PageInit() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight: innerHeight, windowInnerWidth: innerWidth });
+
 	return {
 		onStopRedirect,
 		countdown,
@@ -113,5 +119,6 @@ export default function use404PageInit() {
 		containerRef,
 		scrollRef,
 		gradientRef,
+		bannerHeight,
 	};
 }

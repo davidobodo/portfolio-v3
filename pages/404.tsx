@@ -1,14 +1,11 @@
 import Head from "next/head";
-import gsap from "gsap";
 import styles from "#/styles/_pages/not-found.module.scss";
 import { Nav, Noise, DarkRadialGradient, ScrollAlert } from "#/components";
-import { useEffect, useRef, useState } from "react";
 import { use404PageInit } from "#/hooks";
-import { animPageLoaders } from "#/utils/animations/atoms";
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
 
 export default function NotFound() {
-	const { onStopRedirect, countdown, logoVisibility, containerRef, scrollRef, gradientRef } = use404PageInit();
+	const { onStopRedirect, countdown, logoVisibility, containerRef, scrollRef, gradientRef, bannerHeight } =
+		use404PageInit();
 
 	return (
 		<>
@@ -20,7 +17,7 @@ export default function NotFound() {
 			{logoVisibility && <Nav alwaysVisible={true} color="#000" />}
 
 			<div className={styles.main} ref={containerRef}>
-				<div className={styles.content}>
+				<div className={styles.content} style={{ minHeight: bannerHeight + "px" }}>
 					<div className={styles.top} data-key="section">
 						<div>
 							<h1>

@@ -1,9 +1,7 @@
 import gsap from "gsap";
-import { Ref, useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import styles from "./styles.module.scss";
 import { Radio } from "../index";
-import { TECH_STACKS } from "#/constants/tech-stacks";
-import { PROJECT_NATURE } from "#/constants";
 import { createPortal } from "react-dom";
 import { useTrapFocus } from "#/hooks";
 import { projectsPageAnima } from "#/utils/animations/atoms";
@@ -19,6 +17,10 @@ function BaseProjectsFilter({
 }: {
 	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: string }) => void;
 	onCloseFilter: () => void;
+	filterKey: string;
+	filterList: { key: string; label: string }[];
+	filterBy: string;
+	onSelectFilterBy: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
@@ -26,29 +28,26 @@ function BaseProjectsFilter({
 
 	const containerRefSelector = gsap.utils.selector(containerRef);
 	useEffect(() => {
-		const backdrop = containerRefSelector<HTMLDivElement>('[data-key="backdrop"]');
-		const sidebar = containerRefSelector('[data-key="sidebar"]');
 		const listItems = containerRefSelector('[data-key="list-items"]');
 		const filterOptions = containerRefSelector<HTMLDivElement>('[data-key="filter-options"]');
-		const container = containerRefSelector('[data-key="container"]');
+		const container = containerRefSelector<HTMLDivElement>('[data-key="container"]');
 		const tl = animateFilterSection({
-			backdrop: backdrop[0],
-			sidebar: sidebar[0],
 			listItems,
 			filterOptions: filterOptions[0],
-			container: container,
-			openFilterBtn: document.querySelector('[data-key="open-filter-btn"]'),
-			closeFilterBtn: document.querySelector('[data-key="close-filter-btn"]'),
+			container: container[0],
+			openFilterBtn: document.querySelector('[data-key="open-filter-btn"]') as HTMLButtonElement,
+			closeFilterBtn: document.querySelector('[data-key="close-filter-btn"]') as HTMLButtonElement,
 		});
 		tl.add(() => {
 			document.body.style.overflow = "hidden";
 		});
 		setTl(tl);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const onClose = () => {
 		if (tl?.isActive()) return;
-		tl.reverse().then(() => {
+		tl?.reverse().then(() => {
 			onCloseFilter();
 		});
 	};
@@ -76,11 +75,11 @@ function BaseProjectsFilter({
 						width="24"
 						height="24"
 						viewBox="0 0 24 24"
-						stroke-width="1.5"
+						strokeWidth="1.5"
 						stroke="#fff"
 						fill="none"
-						stroke-linecap="round"
-						stroke-linejoin="round"
+						strokeLinecap="round"
+						strokeLinejoin="round"
 					>
 						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 						<line x1="3" y1="3" x2="21" y2="21" />
@@ -137,23 +136,3 @@ function BaseProjectsFilter({
 const ProjectsFilter = memo(BaseProjectsFilter);
 
 export default ProjectsFilter;
-
-//-----------------------------------------
-// FILTER KEY
-//-----------------------------------------
-
-// useLayoutEffect(() => {
-// 	console.log("THIS GUY GOT FIRED", timeline);
-// 	if (timeline) {
-// 		if (filterKey) {
-// 			timeline.scrollTrigger.refresh();
-// 		}
-
-// 		const elem = document.querySelector("[data-key='projects']");
-
-// 		if (elem) {
-// 			console.log("LETS FIRE");
-// 			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-// 		}
-// 	}
-// }, []);
