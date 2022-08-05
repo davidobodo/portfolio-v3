@@ -5,13 +5,13 @@ import smoothscroll from "smoothscroll-polyfill";
 import type { AppProps } from "next/app";
 import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
 import { Common } from "#/components";
-import { PageLeaveAnimationContext, RadialGradientAnimContext } from "#/state";
+import { InitialAppLoadContext, RadialGradientAnimContext } from "#/state";
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	useRegisterGsapScrollTrigger();
 
-	const [pageLeaveAnimation, setPageLeaveAnimation] = useState<gsap.core.Timeline | null>(null);
+	const [initialAppLoad, setInitialAppLoad] = useState<boolean>(true);
 	const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
 
 	useIsomorphicLayoutEffect(() => {
@@ -36,10 +36,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 				`}
 			</Script>
 
-			<PageLeaveAnimationContext.Provider
+			<InitialAppLoadContext.Provider
 				value={{
-					pageLeaveAnimation,
-					setPageLeaveAnimation,
+					initialAppLoad,
+					setInitialAppLoad,
 				}}
 			>
 				<RadialGradientAnimContext.Provider
@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<Component {...pageProps} />
 					<Common />
 				</RadialGradientAnimContext.Provider>
-			</PageLeaveAnimationContext.Provider>
+			</InitialAppLoadContext.Provider>
 		</>
 	);
 }

@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
 import { animPageLoaders, homePageAnimations, sharedAnimations } from "#/utils/animations";
-import { usePageLeaveAnimationContext } from "#/state";
+import { useInitialAppLoadContext } from "#/state";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
 const { drawSvgLogo, openNoiseLayers } = animPageLoaders;
@@ -18,7 +18,7 @@ export default function useHomeInit({
 }) {
 	const bannerRef = useRef<HTMLDivElement>(null);
 
-	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
+	const { initialAppLoad } = useInitialAppLoadContext();
 
 	const bannerRefSelector = gsap.utils.selector(bannerRef);
 
@@ -42,7 +42,7 @@ export default function useHomeInit({
 	useIsomorphicLayoutEffect(() => {
 		const { nameLetters, fieldLetters, subFields, picMobile, picDesktopblind, scrollIndicator } = getElements();
 
-		if (pageLeaveAnimation) {
+		if (!initialAppLoad) {
 			// Navigating from another page to this page
 			const layers = document.querySelectorAll("[data-key='layer']");
 			const master = gsap.timeline();
