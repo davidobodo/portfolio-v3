@@ -13,9 +13,6 @@ export default function Layout({
 		darkSectionRef,
 	});
 
-	// useIsomorphicLayoutEffect(() => {
-	// 	darkSectionRef.current.height
-	// }, []);
 	return (
 		<div className={styles.container} ref={darkSectionRef} data-key="dark-section-ref">
 			<div className={styles.content}>

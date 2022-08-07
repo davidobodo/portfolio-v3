@@ -148,6 +148,9 @@ class WorkSectionAnimations {
 		details: HTMLCollection;
 		windowInnerWidth: number;
 	}) {
+		// Value 0.13 is gotten from the fact that the height of the svg is 13vw (YES THE HEIGHT IS RELATIVE TO THE WIDTH OF THE VIEWPORT AND NOT THE HEIGHT OF THE VIEWPORT)
+		const SVG_HEIGHT_VIEWPORT_RATIO = 0.13;
+
 		// CREATE TIMELINE
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -163,7 +166,7 @@ class WorkSectionAnimations {
 					const yDisplacement = animateFaintSvg({
 						progress: self.progress,
 						parentElement: tabsWrapper,
-						svgViewportHeightRatio: 0.13, //Did some calculation to arrive at this value
+						svgViewportHeightRatio: SVG_HEIGHT_VIEWPORT_RATIO, //Did some calculation to arrive at this value
 						windowWidth: windowInnerWidth,
 					});
 					faintBgTitle.style.bottom = yDisplacement + "px";
@@ -215,6 +218,8 @@ class WorkSectionAnimations {
 		titlesContainer: HTMLUListElement;
 		windowInnerWidth: number;
 	}) {
+		// Value 0.3 is gotten from the fact that the height of the svg is 30vw (YES THE HEIGHT IS RELATIVE TO THE WIDTH OF THE VIEWPORT AND NOT THE HEIGHT OF THE VIEWPORT)
+		const SVG_HEIGHT_VIEWPORT_RATIO = 0.3;
 		// CREATE TIMLINE
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -230,7 +235,7 @@ class WorkSectionAnimations {
 					const yDisplacement = animateFaintSvg({
 						progress: self.progress,
 						parentElement: tabsWrapper,
-						svgViewportHeightRatio: 0.3, //Did some calculation to arrive at this value
+						svgViewportHeightRatio: SVG_HEIGHT_VIEWPORT_RATIO, //Did some calculation to arrive at this value
 						windowWidth: windowInnerWidth,
 					});
 					faintBgTitle.style.bottom = yDisplacement + "px";

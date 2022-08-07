@@ -1,6 +1,6 @@
 type TTimelineAction = {
-	target?: Element;
-	vars?: Record<string, string | number>;
+	target: Element | NodeListOf<Element>;
+	vars: Record<string, string | number>;
 	action?: string;
 	options?: string;
 	isLabel?: boolean;

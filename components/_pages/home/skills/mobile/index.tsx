@@ -54,7 +54,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 								</ul>
 							</section>
 							<section className={styles.skills} data-key="skill">
-								<h4>Special</h4>
+								<h3>Special</h3>
 								<ul>
 									<li>
 										<span>
@@ -68,7 +68,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 
 						<div className={styles.skillsListInner}>
 							<section className={styles.skills + " " + styles.others} data-key="skill">
-								<h4>Frameworks/ Libraries/ Others</h4>
+								<h3>Frameworks/ Libraries/ Others</h3>
 								<ul>
 									{[
 										"react",

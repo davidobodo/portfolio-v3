@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 class ProjectsAnimations {
 	animateFilterSection({
 		listItems,
