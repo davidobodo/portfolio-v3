@@ -13,16 +13,7 @@ export default function Routetransition({
 
 	return (
 		<div className={styles.container}>
-			<Logo
-				variant="initials"
-				style={{
-					position: "fixed",
-					top: "50%",
-					left: "50%",
-					transform: "translate(-50%, -50%)",
-					zIndex: "1001",
-				}}
-			/>
+			<Logo variant="initials" propStyles={styles.logo} />
 			<div className={styles.textWrapper} ref={loadingTextsRef}>
 				{texts.map((item, i) => {
 					return (

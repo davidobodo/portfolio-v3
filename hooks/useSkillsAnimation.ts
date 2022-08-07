@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { skillsSectionAnimations } from "#/utils/animations";
+import { skillsAnimations } from "#/utils/animations";
 
-const { desktopAnimation, mobileAnimation } = skillsSectionAnimations;
+const { desktopAnimation, mobileAnimation } = skillsAnimations;
 
 export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
 	//------------------------------------------
