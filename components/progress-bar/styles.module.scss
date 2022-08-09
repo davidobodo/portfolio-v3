@@ -1,0 +1,17 @@
+.barWrapper {
+	width: 5px;
+	height: 100vh;
+	background-color: var(--light-brown);
+	background-color: var(--black);
+	right: 0px;
+	top: 0px;
+	z-index: 100;
+	position: fixed;
+
+	.bar {
+		width: 100%;
+		background-color: var(--black);
+		background-color: var(--light-brown);
+		border-radius: 0px 0px 20px 20px;
+	}
+}

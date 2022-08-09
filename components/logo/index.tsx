@@ -2,14 +2,12 @@ import styles from "./styles.module.scss";
 import { Ref } from "react";
 export default function Logo({
 	color = "#e1dfdd",
-	style,
 	variant = "fullname",
 	containerRef,
 	propStyles,
 	opacity = 1,
 }: {
 	color?: string;
-	style?: Record<string, string | number>;
 	variant?: "initials" | "fullname";
 	containerRef?: Ref<SVGSVGElement>;
 	propStyles?: string;
@@ -24,10 +22,7 @@ export default function Logo({
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 				ref={containerRef}
-				className={styles.initials}
-				style={{
-					...style,
-				}}
+				className={styles.initials + " " + propStyles}
 				data-key="logo"
 			>
 				<path

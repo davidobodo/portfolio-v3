@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
-import { useRef, useEffect, useState, Ref } from "react";
+import { useRef, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
@@ -12,41 +12,53 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 	const calculateFooterHeight = (node: HTMLDivElement) => {
 		setFooterHeight(node.clientHeight);
 	};
-	useEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		if (containerRef.current) {
 			calculateFooterHeight(containerRef.current);
 		}
-	}, []);
+	}, [innerWidth, innerHeight]);
+
+	const [isFooterFixed, setIsFooterFixed] = useState(true);
 
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
 
+		console.log(innerWidth, placeholderRef.current, containerRef.current);
+		// console.log(containerRef.current, placeholderRef.current);
 		if (containerRef.current && placeholderRef.current) {
+			console.log("ELEMENTS EXIST");
 			if (innerWidth >= 768) {
+				console.log("WINDOW IS IN LARGE SCREE");
 				if (footerHeight > innerHeight) {
-					containerRef.current.style.position = "relative";
-					placeholderRef.current.style.display = "none";
+					// containerRef.current.style.position = "relative";
+					// placeholderRef.current.style.display = "none";
+					console.log("FOOTER ISNT FIXED", footerHeight, innerHeight);
+					setIsFooterFixed(false);
 				} else {
-					containerRef.current.style.position = "fixed";
-					placeholderRef.current.style.display = "block";
+					console.log("FOOTER SHOULD BE FIXED");
+					setIsFooterFixed(true);
+					// containerRef.current.style.position = "fixed";
+					// placeholderRef.current.style.display = "block";
 				}
 			} else {
-				containerRef.current.style.position = "relative";
-				placeholderRef.current.style.display = "none";
+				// containerRef.current.style.position = "relative";
+				// placeholderRef.current.style.display = "none";
+				setIsFooterFixed(false);
 			}
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
+	console.log(isFooterFixed, "IS THE FOOTER FIXED");
+
 	return (
 		<>
-			<Details
-				containerRef={containerRef}
-				onRouteChange={onRouteChange}
-				// isFooterFixed={isFooterFixed}
-			/>
+			<Details containerRef={containerRef} onRouteChange={onRouteChange} isFooterFixed={isFooterFixed} />
 
 			<div className={styles.placeholderWrapper}>
-				<SectionPlaceholder styles={{ height: footerHeight + "px" }} containerRef={placeholderRef} />
+				<SectionPlaceholder
+					styles={{ height: footerHeight + "px", display: isFooterFixed ? "block" : "none" }}
+					containerRef={placeholderRef}
+				/>
 			</div>
 		</>
 	);
@@ -55,14 +67,20 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 function Details({
 	containerRef,
 	onRouteChange,
+	isFooterFixed,
 }: // isFooterFixed,
 {
 	containerRef: Ref<HTMLDivElement>;
 	onRouteChange: (path: string) => void;
-	// isFooterFixed: boolean;
+	isFooterFixed: boolean;
 }) {
 	return (
-		<div className={styles.container} ref={containerRef}>
+		<div
+			className={styles.container}
+			ref={containerRef}
+			data-key="contact-form"
+			style={{ position: isFooterFixed ? "fixed" : "relative" }}
+		>
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>
@@ -85,21 +103,27 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 					<h3>Quick Links</h3>
 					<ul>
 						<li onClick={() => onRouteChange("/")}>
-							<a>
-								<span>Home</span>
-							</a>
+							<Link href="/">
+								<a>
+									<span>Home</span>
+								</a>
+							</Link>
 						</li>
 						<li className={styles.line}></li>
 						<li onClick={() => onRouteChange("/projects")}>
-							<a>
-								<span>Projects</span>
-							</a>
+							<Link href="/projects">
+								<a>
+									<span>Projects</span>
+								</a>
+							</Link>
 						</li>
 						<li className={styles.line}></li>
 						<li onClick={() => onRouteChange("/letters")}>
-							<a>
-								<span>Letters </span>
-							</a>
+							<Link href="/letters">
+								<a>
+									<span>Letters </span>
+								</a>
+							</Link>
 						</li>
 					</ul>
 				</div>
@@ -115,19 +139,13 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 							</Link>
 						</li>
 						<li className={styles.line}></li>
-						{/* <li>
-							<Link href="/">
-								<a href="">
-									{" "}
-									<span>14 rAndom stuffzzzz</span>
+
+						<li onClick={() => onRouteChange("/credits")}>
+							<Link href="/credits">
+								<a>
+									<span>Site credits</span>
 								</a>
 							</Link>
-						</li> */}
-						{/* <li className={styles.line}></li> */}
-						<li onClick={() => onRouteChange("/credits")}>
-							<a>
-								<span>Site credits</span>
-							</a>
 						</li>
 					</ul>
 				</div>

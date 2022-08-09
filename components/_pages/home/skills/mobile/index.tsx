@@ -10,7 +10,7 @@ export type SkillsMobileProps = {
 export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSectionTitlteRef }: SkillsMobileProps) {
 	return (
 		<div className={styles.container} ref={mobileSkillsContainerRef} id="skills-section">
-			<div className={styles.contentWrapper} data-id="skills-content">
+			<div className={styles.contentWrapper} data-key="skills-content">
 				<div className={styles.wrapper}>
 					<div className={styles.heading}>
 						<h2 className={styles.subTitle} ref={mobileSkillsSectionTitlteRef}>
@@ -32,13 +32,13 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
                             style={{
                                 backgroundImage: `url('https://images.unsplash.com/photo-1499914485622-a88fac536970?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGFuZHMlMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800')`
                             }}
-                            data-id="hand-image"
+                            data-key="hand-image"
                         ></div> */}
 					</div>
-					<div className={styles.skillsList} data-id="lists-wrapper">
+					<div className={styles.skillsList} data-key="lists-wrapper">
 						<div className={styles.skillsListInner}>
-							<section className={styles.skills} data-id="skill">
-								<h4>Languages</h4>
+							<section className={styles.skills} data-key="skill">
+								<h3>Languages</h3>
 								<ul>
 									{["html", "css", "sass", "javascript", "typescript", "solidity"].map((key, i) => {
 										const skill = TECH_STACKS[key];
@@ -53,8 +53,8 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 									})}
 								</ul>
 							</section>
-							<section className={styles.skills} data-id="skill">
-								<h4>Special</h4>
+							<section className={styles.skills} data-key="skill">
+								<h3>Special</h3>
 								<ul>
 									<li>
 										<span>
@@ -67,8 +67,8 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 						</div>
 
 						<div className={styles.skillsListInner}>
-							<section className={styles.skills + " " + styles.others} data-id="skill">
-								<h4>Frameworks/ Libraries/ Others</h4>
+							<section className={styles.skills + " " + styles.others} data-key="skill">
+								<h3>Frameworks/ Libraries/ Others</h3>
 								<ul>
 									{[
 										"react",

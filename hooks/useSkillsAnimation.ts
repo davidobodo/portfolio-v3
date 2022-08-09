@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { skillsSectionAnimations } from "#/utils/animations/atoms";
+import { skillsAnimations } from "#/utils/animations";
 
-const { desktopAnimation, mobileAnimation } = skillsSectionAnimations;
+const { desktopAnimation, mobileAnimation } = skillsAnimations;
 
 export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
 	//------------------------------------------
@@ -15,9 +15,9 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
 	useIsomorphicLayoutEffect(() => {
 		if (skillsContainerRef.current) {
 			const radialGradient = document.querySelector<HTMLDivElement>('[data-key="radial-gradient"]') as HTMLDivElement;
-			const faintBgTitle = skillsContainerSelector<HTMLDivElement>('[data-id="faint-svg"]');
-			const image = skillsContainerSelector<HTMLDivElement>('[data-id="hand-image"]');
-			const skillLists = skillsContainerSelector<HTMLDivElement>('[data-id="skill"]');
+			const faintBgTitle = skillsContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
+			const image = skillsContainerSelector<HTMLDivElement>('[data-key="hand-image"]');
+			const skillLists = skillsContainerSelector<HTMLDivElement>('[data-key="skill"]');
 			const contentWrapper = skillsContainerSelector<HTMLDivElement>('[data-key="skills-content"]');
 
 			const tl = desktopAnimation({
@@ -45,12 +45,12 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
 	useIsomorphicLayoutEffect(() => {
 		//TODO: CONDITIONAL TO STOP DESKTOP VERSION FROM RUNNING WHEN MOBILE IS DOING SO
 		if (mobileSkillsContainerRef.current) {
-			const faintBgTitle = mobileSkillsContainerSelector<HTMLDivElement>('[data-id="faint-svg"]');
+			const faintBgTitle = mobileSkillsContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
 			const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
 
-			const contentWrapper = mobileSkillsContainerSelector<HTMLDivElement>('[data-id="skills-content"]');
-			const listsWrapper = mobileSkillsContainerSelector<HTMLDivElement>('[data-id="lists-wrapper"]');
-			const lists = mobileSkillsContainerSelector<HTMLDivElement>('[data-id="skill"]');
+			const contentWrapper = mobileSkillsContainerSelector<HTMLDivElement>('[data-key="skills-content"]');
+			const listsWrapper = mobileSkillsContainerSelector<HTMLDivElement>('[data-key="lists-wrapper"]');
+			const lists = mobileSkillsContainerSelector<HTMLDivElement>('[data-key="skill"]');
 
 			const tl = mobileAnimation({
 				faintBgTitle: faintBgTitle[0],

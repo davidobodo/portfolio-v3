@@ -4,6 +4,7 @@ import Thoughts from "./thoughts";
 import Skills from "./skills";
 import FaintBgText from "./faint-bg-text";
 import ProjectsHeading from "./projects-heading";
+import Excellence from "./excellence";
 
 const Home = {
 	Preloader,
@@ -12,6 +13,7 @@ const Home = {
 	Skills,
 	FaintBgText,
 	ProjectsHeading,
+	Excellence,
 };
 
 export default Home;

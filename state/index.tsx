@@ -1,17 +1,17 @@
 import { createContext, useContext, Dispatch, SetStateAction } from "react";
 
 type TContext = {
-	pageLeaveAnimation: gsap.core.Timeline | null;
-	setPageLeaveAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
+	initialAppLoad: boolean;
+	setInitialAppLoad: (val: boolean) => void | Dispatch<SetStateAction<null>>;
 };
 
-const PageLeaveAnimationContext = createContext<TContext>({
-	pageLeaveAnimation: null,
-	setPageLeaveAnimation: () => {},
+const InitialAppLoadContext = createContext<TContext>({
+	initialAppLoad: true,
+	setInitialAppLoad: () => {},
 });
 
-const usePageLeaveAnimationContext = () => {
-	return useContext(PageLeaveAnimationContext);
+const useInitialAppLoadContext = () => {
+	return useContext(InitialAppLoadContext);
 };
 
 type TRadGradTimeline = {
@@ -28,9 +28,4 @@ const useRadialGradientAnimContext = () => {
 	return useContext(RadialGradientAnimContext);
 };
 
-export {
-	PageLeaveAnimationContext,
-	usePageLeaveAnimationContext,
-	RadialGradientAnimContext,
-	useRadialGradientAnimContext,
-};
+export { InitialAppLoadContext, useInitialAppLoadContext, RadialGradientAnimContext, useRadialGradientAnimContext };

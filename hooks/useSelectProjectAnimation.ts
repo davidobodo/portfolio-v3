@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import { singleProjectAnimations } from "#/utils/animations/atoms";
+import { singleProjectAnimations } from "#/utils/animations";
 
 const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjectAnimations;
 export default function useSelectProjectAnimation() {
@@ -17,6 +17,7 @@ export default function useSelectProjectAnimation() {
 	const onSelectProject = (e: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => {
 		const { id, type } = e.currentTarget.dataset;
 		const floatingBox = document.querySelector("[data-key='project-box']") as HTMLDivElement;
+
 		const selectedGridBox = e.currentTarget as HTMLDivElement;
 		sourceElem.current = type === "list-item" ? floatingBox : selectedGridBox;
 		window.history.pushState(null, "New Page Title", `/projects/${id}`);

@@ -7,10 +7,11 @@ import {
 	useRevealParagraph,
 	useWindowSize,
 	useRevealHeading,
-	HomePageHooks,
 	useSelectProjectAnimation,
 	useHomePageInit,
 	useAlternateTextOpacity,
+	useWorkAnimation,
+	useSkillsAnimation,
 } from "#/hooks";
 import {
 	Banners,
@@ -25,9 +26,9 @@ import {
 	BannerCurtain,
 	ProjectsHeading,
 	Noise,
+	ProgressBar,
+	// Excellence,
 } from "#/components";
-
-const { useWorkAnimation, useSkillsAnimation } = HomePageHooks;
 
 const Home: NextPage = () => {
 	//-----------------------------------------
@@ -78,6 +79,7 @@ const Home: NextPage = () => {
 					</div>
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
+					{/* <Excellence /> */}
 					<Skills
 						skillsContainerRef={skillsContainerRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}
@@ -91,6 +93,7 @@ const Home: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
+			<ProgressBar />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

@@ -33,6 +33,10 @@ export default function SingleLetter({
 		});
 
 		tl.to(articleRef.current, { opacity: 1, y: 0 });
+
+		return () => {
+			tl.scrollTrigger?.kill();
+		};
 	}, []);
 
 	return (

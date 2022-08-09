@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
-import { usePageLeaveAnimationContext } from "#/state";
-import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations/atoms";
+import { useInitialAppLoadContext } from "#/state";
+import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -76,7 +76,7 @@ export default function use404PageInit() {
 	//-------------------------------------------
 	// PAGE ANIMATION
 	//-------------------------------------------
-	const { pageLeaveAnimation } = usePageLeaveAnimationContext();
+	const { initialAppLoad } = useInitialAppLoadContext();
 
 	useIsomorphicLayoutEffect(() => {
 		// Navigating to this page directly from the browser url input
@@ -84,7 +84,7 @@ export default function use404PageInit() {
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 		const layers = document.querySelectorAll("[data-key='layer']");
 
-		if (pageLeaveAnimation) {
+		if (!initialAppLoad) {
 			const master = gsap.timeline();
 			master.add(openNoiseLayers(layers));
 

@@ -10,6 +10,7 @@ import {
 	BannerCurtain,
 	Filter,
 	ProjectsFilter,
+	ProgressBar,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomorphicLayoutEffect } from "#/hooks";
@@ -61,38 +62,22 @@ const ProjectsPage: NextPage = () => {
 				return type === key;
 			}
 		});
+
 		setDisplayedProjects(res);
 		setFilterKey(key);
 	}, []);
 
-	const [initialPageLoad, setInitialPageLoad] = useState(true);
-
-	const onRefreshScrollTrigger = () => {
-		if (!initialPageLoad) {
-			const elem = document.querySelector("[data-key='projects']");
-
-			if (elem) {
-				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-			}
-		} else {
-			setInitialPageLoad(false);
-		}
-	};
 	const { timeline } = useRadialGradientAnimContext();
 
 	useIsomorphicLayoutEffect(() => {
 		if (timeline) {
 			ScrollTrigger.refresh();
+			const elem = document.querySelector("[data-key='projects']");
+			if (elem) {
+				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+			}
 		}
 	}, [displayedProjects.length]);
-
-	useIsomorphicLayoutEffect(() => {
-		ScrollTrigger.addEventListener("refresh", onRefreshScrollTrigger);
-
-		return () => {
-			ScrollTrigger.removeEventListener("refresh", onRefreshScrollTrigger);
-		};
-	}, [initialPageLoad]);
 
 	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -161,6 +146,7 @@ const ProjectsPage: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
+			<ProgressBar />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

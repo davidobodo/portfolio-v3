@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { workPageAnimations } from "#/utils/animations/atoms";
+import { workSectionAnimations } from "#/utils/animations";
 
-const { desktopAnimation, mobileAnimation } = workPageAnimations;
+const { desktopAnimation, mobileAnimation } = workSectionAnimations;
 
 export default function useWorkAnimation({
 	windowInnerHeight,
@@ -22,7 +22,7 @@ export default function useWorkAnimation({
 		if (windowInnerWidth >= 992) {
 			if (workContainerRef.current) {
 				const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
-				const faintBgTitle = workContainerSelector<HTMLDivElement>('[data-id="faint-svg"]');
+				const faintBgTitle = workContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
 				const workTabs = workContainerSelector<HTMLDivElement>('[data-key="work-tabs"]');
 				const workTabsTitles = workContainerSelector<HTMLDivElement>('[data-key="work-companies"]');
 				const workTabsDetails = workContainerSelector<HTMLDivElement>('[data-key="work-details"]');
@@ -56,7 +56,7 @@ export default function useWorkAnimation({
 		if (windowInnerWidth < 992) {
 			if (mobileWorkContainerRef.current) {
 				const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
-				const faintBgTitle = mobileWorkContainerSelector<HTMLDivElement>('[data-id="faint-svg"]');
+				const faintBgTitle = mobileWorkContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
 				const workTabs = mobileWorkContainerSelector<HTMLDivElement>('[data-key="work-tabs"]');
 				const workTabsTitles = mobileWorkContainerSelector<HTMLUListElement>('[data-key="work-companies"]');
 				const workTabsDetails = mobileWorkContainerSelector<HTMLDivElement>('[data-key="work-details"]');

@@ -1,8 +1,8 @@
 import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
-import { usePageLeaveAnimationContext } from "../state";
+import { useInitialAppLoadContext } from "../state";
 import { useRouter } from "next/router";
-import { animPageLoaders } from "#/utils/animations/atoms";
+import { animPageLoaders } from "#/utils/animations";
 const { showLoadingTexts, closeNoiseLayers, hideLoadingTexts } = animPageLoaders;
 
 // const newPageLoader = new AnimPageLoaders();
@@ -12,7 +12,7 @@ export default function usePageTransition() {
 	// GLOBAL HELPERS
 	//------------------------------------------
 	const router = useRouter();
-	const { setPageLeaveAnimation, pageLeaveAnimation } = usePageLeaveAnimationContext();
+	const { setInitialAppLoad, initialAppLoad } = useInitialAppLoadContext();
 
 	//------------------------------------------
 	// LOCAL STATE
@@ -42,7 +42,7 @@ export default function usePageTransition() {
 			});
 			return;
 		}
-		if (pageLeaveAnimation) {
+		if (!initialAppLoad) {
 			const layers = layersWrapperRef.current
 				? layersWrapperRef.current
 				: document.querySelector('[data-key="layers"]');
@@ -101,18 +101,18 @@ export default function usePageTransition() {
 
 	// Register the page leave animation
 	useEffect(() => {
-		if (!pageLeaveAnimation && layersWrapperRef.current) {
-			const tl = closeNoiseLayers({
+		if (initialAppLoad && layersWrapperRef.current) {
+			closeNoiseLayers({
 				node: layersWrapperRef.current?.children,
 			});
-			setPageLeaveAnimation(tl);
+			setInitialAppLoad(false);
 		}
-	}, [pageLeaveAnimation]);
+	}, [initialAppLoad]);
 
 	return {
 		layersWrapperRef,
 		onRouteChange,
-		pageLeaveAnimation,
+		initialAppLoad,
 		loadingTextsRef,
 	};
 }

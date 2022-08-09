@@ -4,8 +4,9 @@ import styles from "./styles.module.scss";
 import { Radio } from "../index";
 import { createPortal } from "react-dom";
 import { useTrapFocus } from "#/hooks";
-import { projectsPageAnima } from "#/utils/animations/atoms";
-const { animateFilterSection } = projectsPageAnima;
+import { projectAnimations } from "#/utils/animations";
+import { FilterCancelIcon } from "#/components/icons";
+const { animateFilterSection } = projectAnimations;
 
 function BaseProjectsFilter({
 	onFilterProjects,
@@ -46,6 +47,7 @@ function BaseProjectsFilter({
 	}, []);
 
 	const onClose = () => {
+		document.body.style.overflow = "auto";
 		if (tl?.isActive()) return;
 		tl?.reverse().then(() => {
 			onCloseFilter();
@@ -70,21 +72,7 @@ function BaseProjectsFilter({
 		<div className={styles.container} ref={containerRef} onKeyDown={onKeyDown}>
 			<div className={styles.filterModal} data-key="container">
 				<button className={styles.closeBtn} onClick={onClose} data-key="close-filter-btn" aria-label="close filter">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						strokeWidth="1.5"
-						stroke="#fff"
-						fill="none"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-					>
-						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-						<line x1="3" y1="3" x2="21" y2="21" />
-						<path d="M9 5h9.5a1 1 0 0 1 .5 1.5l-4.049 4.454m-.951 3.046v5l-4 -3v-4l-5 -5.5a1 1 0 0 1 .18 -1.316" />
-					</svg>
+					<FilterCancelIcon />
 				</button>
 				<div className={styles.empty} onClick={onClose}></div>
 				<aside className={styles.aside}>
@@ -118,7 +106,6 @@ function BaseProjectsFilter({
 							return (
 								<li key={item.key} className={filterKey === item.key ? styles.active : ""} data-key="list-items">
 									<button onClick={() => onSetFilterKey(key)} data-key="tech-stack">
-										<span></span>
 										{item.label}
 									</button>
 								</li>

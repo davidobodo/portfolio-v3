@@ -15,7 +15,7 @@ export default function FaintBgText({
 	textStyles,
 }: Props) {
 	return (
-		<div data-id="faint-svg" className={styles.svgContainer} style={{ ...containerStyles }}>
+		<div data-key="faint-svg" className={styles.svgContainer} style={{ ...containerStyles }}>
 			<svg className={styles.svgAnimation} style={{ ...svgStyles }}>
 				<text x="0" y="95%" stroke={color} fill={color} style={{ ...textStyles }}>
 					{text}
