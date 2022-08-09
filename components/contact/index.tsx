@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
-import { useRef, useEffect, useState, Ref } from "react";
+import { useRef, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
@@ -12,44 +12,53 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 	const calculateFooterHeight = (node: HTMLDivElement) => {
 		setFooterHeight(node.clientHeight);
 	};
-	useEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		if (containerRef.current) {
 			calculateFooterHeight(containerRef.current);
 		}
-	}, []);
+	}, [innerWidth, innerHeight]);
+
+	const [isFooterFixed, setIsFooterFixed] = useState(true);
 
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
 
-		console.log(innerWidth);
+		console.log(innerWidth, placeholderRef.current, containerRef.current);
 		// console.log(containerRef.current, placeholderRef.current);
 		if (containerRef.current && placeholderRef.current) {
+			console.log("ELEMENTS EXIST");
 			if (innerWidth >= 768) {
+				console.log("WINDOW IS IN LARGE SCREE");
 				if (footerHeight > innerHeight) {
-					containerRef.current.style.position = "relative";
-					placeholderRef.current.style.display = "none";
+					// containerRef.current.style.position = "relative";
+					// placeholderRef.current.style.display = "none";
+					console.log("FOOTER ISNT FIXED", footerHeight, innerHeight);
+					setIsFooterFixed(false);
 				} else {
-					containerRef.current.style.position = "fixed";
-					placeholderRef.current.style.display = "block";
+					console.log("FOOTER SHOULD BE FIXED");
+					setIsFooterFixed(true);
+					// containerRef.current.style.position = "fixed";
+					// placeholderRef.current.style.display = "block";
 				}
 			} else {
-				console.log("THIS GUY GOT CALLED");
-				containerRef.current.style.position = "relative";
-				placeholderRef.current.style.display = "none";
+				// containerRef.current.style.position = "relative";
+				// placeholderRef.current.style.display = "none";
+				setIsFooterFixed(false);
 			}
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
+	console.log(isFooterFixed, "IS THE FOOTER FIXED");
+
 	return (
 		<>
-			<Details
-				containerRef={containerRef}
-				onRouteChange={onRouteChange}
-				// isFooterFixed={isFooterFixed}
-			/>
+			<Details containerRef={containerRef} onRouteChange={onRouteChange} isFooterFixed={isFooterFixed} />
 
 			<div className={styles.placeholderWrapper}>
-				<SectionPlaceholder styles={{ height: footerHeight + "px" }} containerRef={placeholderRef} />
+				<SectionPlaceholder
+					styles={{ height: footerHeight + "px", display: isFooterFixed ? "block" : "none" }}
+					containerRef={placeholderRef}
+				/>
 			</div>
 		</>
 	);
@@ -58,14 +67,20 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 function Details({
 	containerRef,
 	onRouteChange,
+	isFooterFixed,
 }: // isFooterFixed,
 {
 	containerRef: Ref<HTMLDivElement>;
 	onRouteChange: (path: string) => void;
-	// isFooterFixed: boolean;
+	isFooterFixed: boolean;
 }) {
 	return (
-		<div className={styles.container} ref={containerRef} data-key="contact-form">
+		<div
+			className={styles.container}
+			ref={containerRef}
+			data-key="contact-form"
+			style={{ position: isFooterFixed ? "fixed" : "relative" }}
+		>
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>

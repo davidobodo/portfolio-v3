@@ -55,7 +55,7 @@ class WorkSectionAnimations {
 			});
 
 			// Add a label at this point to the timeline (Might be useful for click events)
-			timelineActions.push({ isLabel: true, label: `active-${i}` });
+			// timelineActions.push({ isLabel: true, label: `active-${i}` });
 
 			// Translate details to their normal position
 			timelineActions.push({ target, vars: { y: 0 }, options: "<", action: "move up" });

@@ -23,7 +23,7 @@ import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
 
 const { Button, Radio } = Atoms;
-const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading } = HomePage;
+const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
 const { SingleLetter } = LettersPage;
 
 export {
@@ -58,4 +58,5 @@ export {
 	Spinner,
 	AlternatingOpacity,
 	ProgressBar,
+	Excellence,
 };

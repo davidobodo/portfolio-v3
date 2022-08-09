@@ -1,34 +1,20 @@
 import styles from "./styles.module.scss";
-import gsap from "gsap";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { RefObject, useRef } from "react";
 import { FilterIcon } from "#/components/icons";
+import { projectAnimations } from "#/utils/animations";
+const { animateFilterButton } = projectAnimations;
 export default function Filter({ onClick }: { onClick: () => void; displayTriggerNode?: RefObject<HTMLDivElement> }) {
-	const btnRef = useRef(null);
+	const btnRef = useRef<HTMLButtonElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: document.querySelector("[data-key='projects']"),
-				start: "top top",
-				end: "bottom bottom",
-				toggleActions: "restart reverse complete reverse",
-				// markers: true,
-				// endTrigger: darkSectionRef.current,
-				// markers: true,
-				// onEnter: () => console.log("enter"),
-				// onEnterBack: () => console.log("enter back"),
-				// onLeave: () => console.log("leave"),
-				// onLeaveBack: () => console.log("leave back"),
-			},
+		const tl = animateFilterButton({
+			button: btnRef.current as HTMLButtonElement,
+			trigger: document.querySelector("[data-key='projects']") as HTMLDivElement,
 		});
-
-		tl.to(btnRef.current, {
-			opacity: 1,
-			visibility: "visible",
-			x: 0,
-			rotate: 0,
-		});
+		return () => {
+			tl.scrollTrigger?.kill();
+		};
 	}, []);
 	return (
 		<div className={styles.container}>
