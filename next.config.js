@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const withPWA = require("next-pwa");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-	enabled: process.env.ANALYZE === "true",
-});
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+// 	enabled: process.env.ANALYZE === "true",
+// });
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -17,14 +17,14 @@ const nextConfig = {
 
 		return config;
 	},
-	// pwa: {
-	// 	dest: "public",
-	// 	register: true,
-	// 	skipWaiting: true,
-	// },
+	pwa: {
+		dest: "public",
+		register: true,
+		skipWaiting: true,
+	},
 };
 
 // module.exports = withPWA(nextConfig);
 // module.exports = nextConfig;
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withPWA(nextConfig);

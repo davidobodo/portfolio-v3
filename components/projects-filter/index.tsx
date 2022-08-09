@@ -47,6 +47,7 @@ function BaseProjectsFilter({
 	}, []);
 
 	const onClose = () => {
+		document.body.style.overflow = "auto";
 		if (tl?.isActive()) return;
 		tl?.reverse().then(() => {
 			onCloseFilter();
@@ -105,7 +106,6 @@ function BaseProjectsFilter({
 							return (
 								<li key={item.key} className={filterKey === item.key ? styles.active : ""} data-key="list-items">
 									<button onClick={() => onSetFilterKey(key)} data-key="tech-stack">
-										<span></span>
 										{item.label}
 									</button>
 								</li>
