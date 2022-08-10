@@ -5,4 +5,37 @@
 		padding-left: 2rem;
 		padding-right: 2rem;
 	}
+
+	.excellenceWrapper {
+		width: 100vw;
+		overflow-x: hidden;
+		margin-bottom: 15rem;
+	}
+
+	.projectsBtnWrapper {
+		display: flex;
+		justify-content: center;
+
+		a {
+			border: 1px solid var(--ash);
+			font-size: 1.6rem;
+			color: var(--ash);
+			text-decoration: none;
+			padding: 7px 30px;
+			background-color: transparent;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+
+			&:hover {
+				background-color: var(--white-alpha);
+			}
+
+			svg {
+				margin-left: 1rem;
+			}
+		}
+	}
 }

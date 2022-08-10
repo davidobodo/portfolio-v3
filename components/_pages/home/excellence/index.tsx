@@ -12,15 +12,12 @@ export default function Excellence() {
 
 	const { innerWidth } = useWindowSize();
 
-	const [containerWidth, setContainerWidth] = useState<number>(3436);
-	// useIsomorphicLayoutEffect(() => {
-	// 	console.log(innerWidth, "the innter");
-	// 	setContainerWidth(innerWidth * 2);
-	// }, []);
+	const [containerWidth, setContainerWidth] = useState<number>();
+	useIsomorphicLayoutEffect(() => {
+		setContainerWidth(innerWidth * 2);
+	}, []);
 
 	const { animation } = useRadialGradientAnimContext();
-
-	console.log(containerWidth, "TEH CONTAINER");
 
 	useIsomorphicLayoutEffect(() => {
 		if (textWrapperRef.current && containerWidth) {

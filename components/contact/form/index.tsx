@@ -26,19 +26,19 @@ function BaseForm() {
 	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { value, name } = e.target;
+		const { value, id } = e.target;
 
 		setValues((prevState) => {
 			return {
 				...prevState,
-				[name]: value,
+				[id]: value,
 			};
 		});
 
 		setTouched((prevState) => {
 			return {
 				...prevState,
-				[name]: true,
+				[id]: true,
 			};
 		});
 	};
@@ -141,24 +141,36 @@ function BaseForm() {
 		setIsSubmitting(true);
 
 		const { name, email, subject, message } = values;
-		const data = {
-			name,
-			email,
-			subject,
-			message,
-		};
+		// const data = {
+		// 	name,
+		// 	email,
+		// 	subject,
+		// 	message,
+		// };
 
+		const URL = process.env.NEXT_PUBLIC_MAILCHIMP_CONTACT_FORM as string;
 		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/send_mail`;
 		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
-		const URL = `/api/mail`;
+		// const URL = `/api/mail`;
 
-		// console.log(process.env);
-		// console.log(URL, "THE URL");
+		// // console.log(process.env);
+		// // console.log(URL, "THE URL");
+
+		const data = {
+			fields: {
+				1159: email,
+				1163: subject,
+				1167: message,
+				1171: name,
+			},
+			subscribe: false,
+		};
+
+		console.log(data, "TEH DATA");
 
 		try {
 			const res = await fetch(URL, {
 				method: "POST",
-
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -204,7 +216,13 @@ function BaseForm() {
 					questions, don’t hesitate to use the form.
 				</p>
 			</div>
-			<form noValidate className={styles.form} onSubmit={onSubmit}>
+			<form
+				noValidate
+				className={styles.form}
+				// onSubmit={onSubmit}
+				action="https://getform.io/f/1569490c-3029-4851-a626-1d7a64f08b40"
+				method="POST"
+			>
 				<div className={styles.twoColumns}>
 					<div className={styles.formField}>
 						<label htmlFor="name">Name</label>

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { PROJECTS } from "#/constants/projects";
 import {
 	useRevealParagraph,
@@ -12,6 +12,7 @@ import {
 	useAlternateTextOpacity,
 	useWorkAnimation,
 	useSkillsAnimation,
+	useIsomorphicLayoutEffect,
 } from "#/hooks";
 import {
 	Banners,
@@ -28,6 +29,8 @@ import {
 	Noise,
 	Excellence,
 } from "#/components";
+import { ExternalLink } from "#/components/icons";
+import Link from "next/link";
 
 const Home: NextPage = () => {
 	//-----------------------------------------
@@ -61,13 +64,21 @@ const Home: NextPage = () => {
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation();
 
+	const [projectView, setProjectView] = useState<"list" | "grid">("list");
+	useIsomorphicLayoutEffect(() => {
+		if (windowInnerWidth < 768) {
+			setProjectView("grid");
+		} else {
+			setProjectView("list");
+		}
+	}, []);
 	return (
 		<>
 			<Head>
-				<title>David Obodo</title>
+				<title>David Obodo | Software Developer</title>
 				<meta
 					name="description"
-					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+					content="David Obodo is a Software Developer that majors on Frontend Development, yet from time to time is no stranger to the entire full stack development."
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
@@ -82,22 +93,33 @@ const Home: NextPage = () => {
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
-					<div style={{ width: "100vw", overflowX: "hidden", backgroundColor: "purple" }}>
+					<div className={styles.excellenceWrapper}>
 						<Excellence />
 					</div>
-					<div style={{ backgroundColor: "red" }}>
-						<Skills
-							skillsContainerRef={skillsContainerRef}
-							skillsSectionTitlteRef={skillsSectionTitlteRef}
-							mobileSkillsContainerRef={mobileSkillsContainerRef}
-							mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
-						/>
-					</div>
+					<Skills
+						skillsContainerRef={skillsContainerRef}
+						skillsSectionTitlteRef={skillsSectionTitlteRef}
+						mobileSkillsContainerRef={mobileSkillsContainerRef}
+						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
+					/>
 
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<ProjectsHeading projectTitleRef={projectTitleRef} />
-					<Projects onViewProject={onSelectProject} displayedProjects={PROJECTS.slice(0, 5)} />
+					<Projects
+						onViewProject={onSelectProject}
+						displayedProjects={PROJECTS.slice(0, 5)}
+						currentView={projectView}
+					/>
+
+					<div className={styles.projectsBtnWrapper}>
+						<Link href="/projects">
+							<a>
+								More Projects
+								<ExternalLink />
+							</a>
+						</Link>
+					</div>
 				</div>
 			</Layout.DarkSection>
 			<Noise />

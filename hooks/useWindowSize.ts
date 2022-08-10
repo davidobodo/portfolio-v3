@@ -20,8 +20,6 @@ export default function useWindowSize() {
 	}
 
 	function onResize() {
-		console.log("RESIZE FIRED");
-		console.log(window.innerWidth);
 		setWindowSize(getDimensions());
 	}
 

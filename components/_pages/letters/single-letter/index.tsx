@@ -42,8 +42,8 @@ export default function SingleLetter({
 	return (
 		<div className={styles.letterWrapper} ref={articleRef}>
 			<article className={styles.container}>
-				<a href={url} target="_blank" rel="noreferrer">
-					<h1>{title}</h1>
+				<a href={url} target="_blank">
+					<h3>{title}</h3>
 					<p>
 						{date} | {time} read
 					</p>

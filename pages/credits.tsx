@@ -102,8 +102,12 @@ export default function Credit() {
 	return (
 		<>
 			<Head>
-				<title>David Obodo - Credits</title>
-				<meta name="description" content="David Obodo's portfolio website" />
+				<title>David Obodo | Credits</title>
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
+
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
@@ -125,7 +129,7 @@ export default function Credit() {
 					</div>
 
 					<section>
-						<h3>Sites/Resources</h3>
+						<h2>Sites/Resources</h2>
 						<ul className={styles.list}>
 							{SITES.map((item, i) => {
 								const { link } = item;
@@ -134,7 +138,7 @@ export default function Credit() {
 						</ul>
 					</section>
 					<section>
-						<h3>People</h3>
+						<h2>People</h2>
 
 						<ul className={styles.people}>
 							{PEOPLE.map((item, i) => {

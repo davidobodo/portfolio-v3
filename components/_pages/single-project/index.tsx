@@ -45,7 +45,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					onClick={() => onGoToProject(prevProject.id)}
 				>
 					<ChevronLeft />
-					<span>{prevProject.title}</span>
 				</button>
 			)}
 			<div className={styles.content}>
@@ -89,7 +88,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 
 				<section className={styles.tech} data-key="tech">
 					<h2>Technical Sheet</h2>
-					<p>Code technologies I got involved with while working on this project.</p>
+					<p>Some noteworthy technologies I got involved with while working on this project.</p>
 
 					<ul>
 						{tech.map((item) => {
@@ -107,13 +106,18 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				</section>
 
 				<div className={styles.links + " " + styles.desktop} data-key="buttons">
-					<a href={sitelink} target="_blank" rel="noreferrer">
-						Visit site
-						<ExternalLink />{" "}
-					</a>
-					<a href={githublink} target="_blank" rel="noreferrer">
-						Github repo <Github />{" "}
-					</a>
+					{sitelink && (
+						<a href={sitelink} target="_blank">
+							Visit site
+							<ExternalLink />{" "}
+						</a>
+					)}
+
+					{githublink && (
+						<a href={githublink} target="_blank">
+							Github repo <Github />{" "}
+						</a>
+					)}
 				</div>
 			</div>
 			{nextProject && (
@@ -124,7 +128,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					onClick={() => onGoToProject(nextProject.id)}
 				>
 					<ChevronRight />
-					<span>{nextProject.title}</span>
 				</button>
 			)}
 
@@ -132,7 +135,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{prevProject ? (
 					<button value="previous" aria-label="previous" onClick={() => onGoToProject(prevProject.id)}>
 						<ChevronLeft />
-						<span>{prevProject.title}</span>
 					</button>
 				) : (
 					<div></div>
@@ -141,7 +143,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{nextProject ? (
 					<button value="next" aria-label="previous" onClick={() => onGoToProject(nextProject.id)}>
 						<ChevronRight />
-						<span>{nextProject.title}</span>
 					</button>
 				) : (
 					<div></div>
