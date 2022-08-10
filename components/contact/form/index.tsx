@@ -174,7 +174,7 @@ function BaseForm() {
 				console.log(data);
 				setServerRes({
 					error: false,
-					message: `🎉🥳 Yipee!!! Thanks ${name}, Got your message. Would respond as soon as I can.`,
+					message: `🎉🥳 Yipee!!! Thanks ${name}, got your message. Would respond as soon as I can.`,
 				});
 			} else {
 				throw res;
@@ -198,7 +198,8 @@ function BaseForm() {
 					Would love to hear from <br /> you &#8595;.
 				</h1>
 				<p>
-					I’m currently interested in a&nbsp;<span>Full-time Front-end developer role </span> with a major on &nbsp;
+					I’m currently interested in a&nbsp;<span>Full-time Front-end developer role (remote)</span> with a major on
+					&nbsp;
 					<span>React.js Framework</span>, but still open to other opportunities. However, if you have other requests or
 					questions, don’t hesitate to use the form.
 				</p>

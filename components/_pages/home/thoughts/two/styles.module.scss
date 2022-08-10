@@ -1,62 +1,63 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-    margin: auto;
-    padding-top: 15vh;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    height: 100vh;
+	margin: auto;
+	padding-top: 15vh;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	height: 100vh;
 
-    @media (min-width: $lg) {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr;
-        max-width: var(--mini-desktop-max-width);
-    }
+	@media (min-width: $lg) {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		max-width: var(--mini-desktop-max-width);
+	}
 
-    @media (min-width: $xxl) {
-        max-width: var(--max-width);
-    }
+	@media (min-width: $xxl) {
+		max-width: var(--max-width);
+	}
 
-    .rightSection {
-        display: flex;
-        align-items: center;
-    }
+	.rightSection {
+		display: flex;
+		align-items: center;
+	}
 
-    .paragraphWrapper {
-        margin-bottom: 8.4rem;
+	.paragraphWrapper {
+		margin-bottom: 8.4rem;
 
-        // @media (min-width: $lg) {
-        //     // width: 50%;
-        // }
+		// @media (min-width: $lg) {
+		//     // width: 50%;
+		// }
 
-        .paragraph {
-            margin-bottom: 2.4rem;
-            display: flex;
-            flex-wrap: wrap;
+		.paragraph {
+			margin-bottom: 2.4rem;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
 
-            .wordWrapper {
-                font-size: 1.8rem;
-                font-family: "sf-pro-bold";
-                color: var(--ash3);
-                letter-spacing: -0.015em;
-                line-height: 2;
-                overflow: hidden;
+			.wordWrapper {
+				font-size: 1.8rem;
+				font-family: "sf-pro-bold";
+				color: var(--ash3);
+				letter-spacing: -0.015em;
+				line-height: 2;
+				overflow: hidden;
 
-                @media (min-width: $md) {
-                    font-size: 2.4rem;
-                }
+				@media (min-width: $md) {
+					font-size: 2.4rem;
+				}
 
-                .word {
-                    display: inline-block;
-                    transform: translateY(100%);
-                }
-            }
+				.word {
+					display: inline-block;
+					transform: translateY(100%);
+				}
+			}
 
-            strong {
-                .wordWrapper {
-                    color: var(--white);
-                }
-            }
-        }
-    }
+			strong {
+				.wordWrapper {
+					color: var(--white);
+				}
+			}
+		}
+	}
 }

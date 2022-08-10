@@ -1,12 +1,29 @@
+@import "#/styles/globals.module.scss";
+
 .barWrapper {
-	width: 5px;
+	width: 2px;
 	height: 100vh;
 	background-color: var(--light-brown);
 	background-color: var(--black);
-	right: 0px;
 	top: 0px;
 	z-index: 100;
 	position: fixed;
+	right: -2px;
+	opacity: 0;
+	will-change: right, opacity;
+	transition-property: right, opacity;
+	transition-duration: 200ms;
+	transition-timing-function: ease-out;
+	display: none;
+
+	@media (min-width: $md) {
+		display: block;
+	}
+
+	&.show {
+		right: 0px;
+		opacity: 1;
+	}
 
 	.bar {
 		width: 100%;

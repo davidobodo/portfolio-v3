@@ -22,6 +22,12 @@
 			cursor: pointer;
 			position: relative;
 
+			&:focus {
+				outline: none;
+				background-color: var(--white-alpha);
+				color: var(--white);
+			}
+
 			&:first-child {
 				border-top: 1px solid var(--ash);
 			}

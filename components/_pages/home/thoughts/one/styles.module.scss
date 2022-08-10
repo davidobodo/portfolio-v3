@@ -1,13 +1,17 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-	margin: auto;
-	margin-bottom: 20vh;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+.containerInner {
 	padding-left: 2rem;
 	padding-right: 2rem;
+	margin-left: auto;
+	margin-right: auto;
 
 	@media (min-width: $md) {
-		padding-top: 15vh;
 		max-width: var(--mini-desktop-max-width);
 	}
 
@@ -16,8 +20,6 @@
 	}
 
 	.paragraphWrapper {
-		margin-bottom: 8.4rem;
-
 		@media (min-width: $lg) {
 			width: 50%;
 		}

@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 	useRegisterGsapScrollTrigger();
 
 	const [initialAppLoad, setInitialAppLoad] = useState<boolean>(true);
-	const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
+	const [animation, setAnimation] = useState<gsap.core.Timeline | null>(null);
 
 	useIsomorphicLayoutEffect(() => {
 		smoothscroll.polyfill();
@@ -44,8 +44,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 			>
 				<RadialGradientAnimContext.Provider
 					value={{
-						timeline,
-						setTimeline,
+						animation,
+						setAnimation,
 					}}
 				>
 					<Component {...pageProps} />

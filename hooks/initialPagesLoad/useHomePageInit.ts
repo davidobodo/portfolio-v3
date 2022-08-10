@@ -100,6 +100,7 @@ export default function useHomeInit({
 				darkSection: darkSectionRef.current,
 				banner: bannerRef.current,
 				blackCurtain: blackCoverRef.current,
+				contactBlackCurtain: document.querySelector("[data-key='contact-curtain']") as HTMLDivElement,
 			});
 
 			return () => {

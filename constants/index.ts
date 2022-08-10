@@ -88,6 +88,24 @@ const PROJECT_NATURE = [
 const FOCUSABLE_ELEMENT_STRING =
 	'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
 
+const ROLES = {
+	design: {
+		label: "UI/UX Designer",
+		key: "design",
+	},
+	fe: {
+		label: "Front End Developer",
+		key: "fe",
+	},
+	be: {
+		label: "Back End Developer",
+		key: "fe",
+	},
+	teamlead: {
+		label: "Team Lead",
+		key: "teamlead",
+	},
+};
 const KEYBOARD_KEYS = {
 	UP_KEY: 38,
 	DOWN_KEY: 40,
@@ -97,4 +115,13 @@ const KEYBOARD_KEYS = {
 	ESC_KEY: 27,
 };
 
-export { WORK, ABOUT_NOTE, DEFAULT_MOBILE_HEIGHT, IMAGES, PROJECT_NATURE, FOCUSABLE_ELEMENT_STRING, KEYBOARD_KEYS };
+export {
+	WORK,
+	ABOUT_NOTE,
+	DEFAULT_MOBILE_HEIGHT,
+	IMAGES,
+	PROJECT_NATURE,
+	FOCUSABLE_ELEMENT_STRING,
+	KEYBOARD_KEYS,
+	ROLES,
+};

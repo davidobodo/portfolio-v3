@@ -104,7 +104,7 @@ export default function Credit() {
 			<Head>
 				<title>David Obodo - Credits</title>
 				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 

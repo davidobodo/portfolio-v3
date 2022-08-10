@@ -1,15 +1,29 @@
 import styles from "./styles.module.scss";
 import gsap from "gsap";
-import { useIsomorphicLayoutEffect } from "#/hooks";
-import { useRef, Ref } from "react";
+import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
+import { useRef, Ref, useState } from "react";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useRadialGradientAnimContext } from "#/state";
 
 export default function Excellence() {
 	const containerRef = useRef(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const imageRef = useRef(null);
 
+	const { innerWidth } = useWindowSize();
+
+	const [containerWidth, setContainerWidth] = useState<number>(3436);
+	// useIsomorphicLayoutEffect(() => {
+	// 	console.log(innerWidth, "the innter");
+	// 	setContainerWidth(innerWidth * 2);
+	// }, []);
+
+	const { animation } = useRadialGradientAnimContext();
+
+	console.log(containerWidth, "TEH CONTAINER");
+
 	useIsomorphicLayoutEffect(() => {
-		if (textWrapperRef.current) {
+		if (textWrapperRef.current && containerWidth) {
 			const textWidth = textWrapperRef.current?.scrollWidth;
 			const tl = gsap.timeline({
 				scrollTrigger: {
@@ -20,7 +34,7 @@ export default function Excellence() {
 					pin: true,
 					scrub: 1,
 					pinSpacing: true,
-					markers: true,
+					// markers: true,
 					end: () => "+=" + textWrapperRef.current?.offsetWidth,
 				},
 			});
@@ -33,23 +47,30 @@ export default function Excellence() {
 				scale: 60,
 				// x: -6300,
 			});
+			tl.to(imageRef.current, {
+				border: "10rem solid black",
+			});
+
+			animation?.scrollTrigger?.update();
 
 			return () => {
 				tl.scrollTrigger?.kill();
 			};
 		}
-	}, []);
+	}, [containerWidth]);
+
 	return (
-		<div className={styles.container} ref={containerRef}>
-			<Text containerRef={textWrapperRef} />
+		<div className={styles.container} ref={containerRef} style={{ width: containerWidth + "px" }}>
+			<Text containerRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
+
 			<Image containerRef={imageRef} />
 		</div>
 	);
 }
 
-function Text({ containerRef }: { containerRef: Ref<HTMLDivElement> }) {
+function Text({ containerRef, style }: { containerRef: Ref<HTMLDivElement>; style: Record<string, string | number> }) {
 	return (
-		<div className={styles.textWrapper} ref={containerRef}>
+		<div className={styles.textWrapper} ref={containerRef} style={{ ...style }}>
 			<div className={styles.textInner}>
 				<svg viewBox="0 0 1225.0208 437.09163">
 					<defs id="defs842" />

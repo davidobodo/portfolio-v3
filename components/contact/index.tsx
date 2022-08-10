@@ -4,6 +4,7 @@ import { useRef, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
+import gsap from "gsap";
 export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -23,35 +24,47 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
 
-		console.log(innerWidth, placeholderRef.current, containerRef.current);
-		// console.log(containerRef.current, placeholderRef.current);
 		if (containerRef.current && placeholderRef.current) {
-			console.log("ELEMENTS EXIST");
 			if (innerWidth >= 768) {
-				console.log("WINDOW IS IN LARGE SCREE");
 				if (footerHeight > innerHeight) {
-					// containerRef.current.style.position = "relative";
-					// placeholderRef.current.style.display = "none";
-					console.log("FOOTER ISNT FIXED", footerHeight, innerHeight);
 					setIsFooterFixed(false);
 				} else {
-					console.log("FOOTER SHOULD BE FIXED");
 					setIsFooterFixed(true);
-					// containerRef.current.style.position = "fixed";
-					// placeholderRef.current.style.display = "block";
 				}
 			} else {
-				// containerRef.current.style.position = "relative";
-				// placeholderRef.current.style.display = "none";
 				setIsFooterFixed(false);
 			}
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
-	console.log(isFooterFixed, "IS THE FOOTER FIXED");
+	// Contact form would not be seen if an element inside it is focused and the contact form is still fixed, so we remove the fixed position immediately we detect user using keyboard
+	useIsomorphicLayoutEffect(() => {
+		document.body.addEventListener("keydown", function (event) {
+			if (event.key === "Tab" || event.keyCode === 9) {
+				setIsFooterFixed(false);
+			}
+		});
+	}, []);
+
+	const wrapperRef = useRef(null);
+	useIsomorphicLayoutEffect(() => {
+		const anim = gsap.timeline({
+			scrollTrigger: {
+				trigger: wrapperRef.current,
+				// markers: true,
+				start: "top center",
+				end: "bottom bottom",
+				scrub: true,
+			},
+		});
+
+		anim.to(wrapperRef.current.querySelector("[data-key='contact-curtain']"), {
+			scaleY: 0,
+		});
+	}, []);
 
 	return (
-		<>
+		<div ref={wrapperRef} className={styles.wrapper}>
 			<Details containerRef={containerRef} onRouteChange={onRouteChange} isFooterFixed={isFooterFixed} />
 
 			<div className={styles.placeholderWrapper}>
@@ -60,7 +73,9 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 					containerRef={placeholderRef}
 				/>
 			</div>
-		</>
+
+			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
+		</div>
 	);
 }
 
@@ -68,8 +83,7 @@ function Details({
 	containerRef,
 	onRouteChange,
 	isFooterFixed,
-}: // isFooterFixed,
-{
+}: {
 	containerRef: Ref<HTMLDivElement>;
 	onRouteChange: (path: string) => void;
 	isFooterFixed: boolean;
