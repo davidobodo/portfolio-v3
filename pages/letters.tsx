@@ -18,8 +18,11 @@ const Letters: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>David Obodo - Letters</title>
-				<meta name="description" content="David Obodo's portfolio website" />
+				<title>David Obodo | Letters</title>
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
@@ -31,7 +34,6 @@ const Letters: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
-			{/* <div ref={bannerRef} style={{ height: "100vh" }}></div> */}
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>

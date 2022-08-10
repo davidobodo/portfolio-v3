@@ -18,7 +18,8 @@
 			padding: 10rem 5rem 5rem;
 		}
 
-		h1 {
+		h1,
+		h2 {
 			font-weight: 500;
 			font-size: 3rem;
 
@@ -35,7 +36,7 @@
 		.top {
 			opacity: 0;
 			transform: translateY(100px);
-			h1 {
+			h2 {
 				span {
 					background: linear-gradient(to right, black, var(--brown));
 					line-height: 0.8em;

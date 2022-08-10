@@ -23,9 +23,22 @@ export const PROJECTS = [
 	{
 		id: "prodeus",
 		title: "Prodeus",
-		details: "Prodeus web app",
-		live_link: "https://www.prodeus.co/",
-		tech: ["react", "typescript", "styledcomponents", "html", "sass", "reactquery"],
+		details: `
+		<p>Web application equivalane tof the Prodeus ChromE Extension, but with more features.</p>
+		<p>Responsible for about 98% of the entire frontend architecture.</p>
+		<p>This has to be one of my proudest projects, because the feature list cut across some very challenging and exciting front sectors. </p>
+		<p>From <span>cache invalidation </span> (which everyone knows is one of the most tricky thing in development😅), 
+		to <span>loading Infinite data</span> on both <span>single column layouts (like instagram, facebook and twitter)</span> as well as <span>multi column layouts (like pinterest)</span>. Nevertheless, the need for 
+		<span>pixel perfect delivery</span> was also quite challenging and exciting, since the CEO was indeed the Designer.
+		</p>
+		<p>
+		Also due to the enormous size of this application, there was need to structure the codebase in such a way that its easily scalable and yet performant. Handling such 
+		enterprise grade application was quite a proud moment for me, cause I can say that I "owned" the codebase. Awesome stuff.
+		</p>
+		`,
+		roles: ["fe"],
+		sitelink: "https://www.prodeus.co/",
+		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "sass", "storybook", "rtl"],
 		bgImage: "/images/projects/dashboard.png",
 		type: "Web Application",
 		bgColor: "#dcd0c2",
@@ -33,9 +46,15 @@ export const PROJECTS = [
 	{
 		id: "cadmils",
 		title: "Cadmils Consulting",
-		details: "Official website of cadmils consulting agency",
-		live_link: "https://www.cadmils.com/",
-		tech: ["html", "css", "sass", "javascript", "nodeJs", "expressJs", "heroku"],
+		details: `
+		<p>Freelance contract to setup the entire web presence for cadmils consulting agency.</p>
+		<p>From collaborating in the design with <a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a>, to coding the frontend as well as the little backend server to integrate the mailing service with sendgrid. In addition to that, I also set up
+		the company's staff emails as requested.
+		</p>
+		`,
+		roles: ["design", "fe", "be"],
+		sitelink: "https://www.cadmils.com/",
+		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku", "sendgrid"],
 		bgImage: "/images/projects/cadmils.png",
 		type: "Website",
 		bgColor: "#e2d1d9",
@@ -52,7 +71,6 @@ export const PROJECTS = [
 		<p>HOW TO USE: Type in a specific address, select the radius that search ought to cover, and finally select the type of medial facility you are looking for. Click on the SEARCH button and get the results of your search immediately.</p>
 		<p>It's also notworthy to say I was responsible for the Entire Design of this application 😊</p>
 		`,
-		live_link: "https://medic-finder.netlify.app/",
 		tech: [
 			"figma",
 			"react",
@@ -77,9 +95,13 @@ export const PROJECTS = [
 	{
 		id: "d-productivity",
 		title: "d-productivity",
-		details: "Web-based Kanban-style list-making application",
-		live_link: "https://d-productivity.now.sh/",
-		tech: ["react", "typescript", "redux", "styledComponents"],
+		details: `<p>Web-based Kanban-style list-making application. Just like Trello or any other drag and drop productivity app</p>
+			<p>The main purpose of embarking on this project was to have a deeper understanding of the HTML5 drag and drop API</p>
+			<p>I eventually made two copies, of which one of them used the easy and wonderful <a href="https://www.npmjs.com/package/react-beautiful-dnd" target="_blank">react-beautiful-dnd</a> and the other used the plain <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">html5 dnd api</a>. 
+			Wonderful learning experience I say
+			`,
+		sitelink: "https://d-productivity.now.sh/",
+		tech: ["react", "typescript", "redux", "styledcomponents"],
 		bgImage: "/images/projects/d-productivity.png",
 		type: "Web Application",
 		bgColor: "#373737",

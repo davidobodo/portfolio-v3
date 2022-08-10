@@ -11,7 +11,6 @@ export default function Skills({
 	return (
 		<>
 			<SkillsDesktop skillsContainerRef={skillsContainerRef} skillsSectionTitlteRef={skillsSectionTitlteRef} />
-
 			<SkillsMobile
 				mobileSkillsContainerRef={mobileSkillsContainerRef}
 				mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}

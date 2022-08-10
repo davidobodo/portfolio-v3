@@ -122,12 +122,10 @@ class HomePageAnimations {
 
 		tl.to(nameLetters, { x: 0 }).to(fieldLetters, { x: 0 }).to(subFieldOne, { y: 0 }).to(subFieldTwo, { y: 0 });
 
-		// Because the animation for mobile image is different from the animation for desktop image
-		if (window.innerWidth < 768) {
-			tl.to(picMobile, { width: "100%" });
-		} else {
-			tl.to(picDesktopBlind, { width: 0 });
-		}
+		//Mobile image
+		tl.to(picMobile, { width: "100%" });
+		//Desktop image
+		tl.to(picDesktopBlind, { width: 0 }, "<");
 
 		tl.to(scrollIndicator, { opacity: 1 });
 		tl.add(() => {

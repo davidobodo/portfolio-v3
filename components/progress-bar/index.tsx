@@ -15,7 +15,7 @@ export default function ProgressBar() {
 
 		setScrollProgress(percent);
 
-		if (scrolled >= viewportHeight) {
+		if (scrolled >= viewportHeight && scrolled < totalDocHeight) {
 			setIsVisible(true);
 		} else {
 			setIsVisible(false);

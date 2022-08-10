@@ -5,8 +5,10 @@ import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
 import gsap from "gsap";
+import { useRouter } from "next/router";
 export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
 	const { innerHeight, innerWidth } = useWindowSize();
+	const router = useRouter();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
 	const [footerHeight, setFooterHeight] = useState(10);
@@ -23,7 +25,6 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
-
 		if (containerRef.current && placeholderRef.current) {
 			if (innerWidth >= 768) {
 				if (footerHeight > innerHeight) {
@@ -48,20 +49,26 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 
 	const wrapperRef = useRef(null);
 	useIsomorphicLayoutEffect(() => {
-		const anim = gsap.timeline({
+		console.log("THIS EFFECT FIRED AGAIN");
+		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: wrapperRef.current,
-				// markers: true,
-				start: "top center",
+				markers: true,
+				start: "top bottom",
 				end: "bottom bottom",
 				scrub: true,
 			},
 		});
-
-		anim.to(wrapperRef.current.querySelector("[data-key='contact-curtain']"), {
+		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+		tl.to(curtain, { zIndex: 2, duration: 0 });
+		tl.to(curtain, {
 			scaleY: 0,
 		});
-	}, []);
+
+		return () => {
+			tl.scrollTrigger.kill();
+		};
+	}, [router.asPath]);
 
 	return (
 		<div ref={wrapperRef} className={styles.wrapper}>
@@ -146,7 +153,7 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 					<ul>
 						<li>
 							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing" passHref>
-								<a target="_blank" rel="noreferrer noopener">
+								<a target="_blank">
 									{" "}
 									<span>Resume</span>
 								</a>
@@ -174,21 +181,21 @@ function Social() {
 			<ul>
 				<li>
 					<Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
-						<a target="_blank" rel="noreferrer noopener">
+						<a target="_blank">
 							<span>Linkedin</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="https://github.com/obododavid" passHref>
-						<a target="_blank" rel="noreferrer noopener">
+						<a target="_blank">
 							<span>Github</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="https://twitter.com/phitGeek" passHref>
-						<a target="_blank" rel="noreferrer noopener">
+						<a target="_blank">
 							<span>Twitter</span>
 						</a>
 					</Link>

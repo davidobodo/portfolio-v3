@@ -93,10 +93,6 @@
 			font-size: 1.6rem;
 			margin-bottom: 1rem;
 
-			&:last-of-type {
-				margin-bottom: 0px;
-			}
-
 			@media (min-width: $lg) {
 				font-size: 1.8rem;
 			}
@@ -144,6 +140,10 @@
 			a {
 				color: var(--white);
 			}
+
+			span {
+				color: var(--white);
+			}
 		}
 
 		h3 {
@@ -156,6 +156,10 @@
 
 	.tech {
 		margin-bottom: 6rem;
+
+		p {
+			margin-bottom: 2rem;
+		}
 		ul {
 			list-style: none;
 		}
@@ -303,17 +307,6 @@
 		will-change: transform;
 		transition: transform 500ms ease-in-out;
 	}
-
-	span {
-		color: var(--ash3);
-		font-size: 1.6rem;
-		opacity: 0;
-		display: block;
-		font-family: "sf-pro-bold";
-
-		will-change: opacity, transform;
-		transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
-	}
 }
 
 .btnPrevious {
@@ -323,11 +316,6 @@
 		opacity: 1;
 
 		svg {
-			transform: translateX(-10px);
-		}
-
-		span {
-			opacity: 1;
 			transform: translateX(-10px);
 		}
 	}
@@ -340,11 +328,6 @@
 		opacity: 1;
 
 		svg {
-			transform: translateX(10px);
-		}
-
-		span {
-			opacity: 1;
 			transform: translateX(10px);
 		}
 	}
@@ -371,12 +354,5 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
-		span {
-			color: var(--ash3);
-			font-size: 1.6rem;
-			font-family: "sf-pro-bold";
-			font-weight: 500;
-		}
 	}
 }

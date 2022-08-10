@@ -10,8 +10,11 @@ export default function NotFound() {
 	return (
 		<>
 			<Head>
-				<title>David Obodo - Lets take you home</title>
-				<meta name="description" content="David Obodo's portfolio website" />
+				<title>David Obodo | Lets take you home</title>
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			{logoVisibility && <Nav alwaysVisible={true} color="#000" />}
@@ -24,10 +27,10 @@ export default function NotFound() {
 								404 <br /> Page not found.
 							</h1>
 							<div data-key="mortal-text">
-								<h1>Mortals are not allowed here</h1>
-								<h1>
+								<h2>Mortals are not allowed here</h2>
+								<h2>
 									sending you home in <span> {countdown} </span>
-								</h1>
+								</h2>
 							</div>
 						</div>
 					</div>
@@ -35,7 +38,7 @@ export default function NotFound() {
 					<div className={styles.bottom} data-key="section">
 						<div></div>
 						<div className={styles.bottomRight} data-key="mortal-text">
-							<h1>Wait, I choose to be immortal</h1>
+							<h2>Wait, I choose to be immortal</h2>
 							<button onClick={onStopRedirect}>Remain here</button>
 						</div>
 					</div>

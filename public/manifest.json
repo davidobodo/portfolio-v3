@@ -4,8 +4,8 @@
 	"display": "standalone",
 	"scope": "/",
 	"start_url": "/",
-	"short_name": "David Obodo (PV3)",
-	"name": "David Obodo - Portfolio Version 3 ",
+	"short_name": "David Obodo",
+	"name": "David Obodo | Software Developer ",
 	"description": "Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development",
 	"icons": [
 		{

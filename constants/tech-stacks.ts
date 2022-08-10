@@ -237,4 +237,14 @@ export const TECH_STACKS: Record<string, TTech> = {
 		label: "Google Maps",
 		link: "",
 	},
+	storybook: {
+		key: "storybook",
+		label: "Storybook",
+		link: "",
+	},
+	sendgrid: {
+		key: "sendgrid",
+		label: "Sendgrid",
+		link: "",
+	},
 };
