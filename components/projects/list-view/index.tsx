@@ -59,7 +59,7 @@ function ProjectListItem({
 	i: number;
 }) {
 	return (
-		<li onMouseEnter={onMouseEnter} onClick={onClick} data-id={id} data-type="list-item">
+		<li onMouseEnter={onMouseEnter} onClick={onClick} data-id={id} data-type="list-item" tabIndex={0}>
 			<div className={styles.row}>
 				<h4>{title}</h4>
 				<p>{type}</p>

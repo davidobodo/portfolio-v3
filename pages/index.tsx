@@ -26,8 +26,7 @@ import {
 	BannerCurtain,
 	ProjectsHeading,
 	Noise,
-	ProgressBar,
-	// Excellence,
+	Excellence,
 } from "#/components";
 
 const Home: NextPage = () => {
@@ -66,8 +65,11 @@ const Home: NextPage = () => {
 		<>
 			<Head>
 				<title>David Obodo</title>
-				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 			<BannerCurtain containerRef={blackCoverRef} />
@@ -79,13 +81,19 @@ const Home: NextPage = () => {
 					</div>
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
-					{/* <Excellence /> */}
-					<Skills
-						skillsContainerRef={skillsContainerRef}
-						skillsSectionTitlteRef={skillsSectionTitlteRef}
-						mobileSkillsContainerRef={mobileSkillsContainerRef}
-						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
-					/>
+
+					<div style={{ width: "100vw", overflowX: "hidden", backgroundColor: "purple" }}>
+						<Excellence />
+					</div>
+					<div style={{ backgroundColor: "red" }}>
+						<Skills
+							skillsContainerRef={skillsContainerRef}
+							skillsSectionTitlteRef={skillsSectionTitlteRef}
+							mobileSkillsContainerRef={mobileSkillsContainerRef}
+							mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
+						/>
+					</div>
+
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<ProjectsHeading projectTitleRef={projectTitleRef} />
@@ -93,7 +101,6 @@ const Home: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<ProgressBar />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

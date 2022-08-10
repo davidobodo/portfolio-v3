@@ -18,7 +18,7 @@ export function ProjectsGridView({
 					<div
 						key={i}
 						className={isLocked ? styles.box + " " + styles.locked : styles.box + " " + styles.free}
-						data-key={id}
+						data-id={id}
 						data-type="box-item"
 						onClick={onViewProject}
 					>

@@ -53,7 +53,7 @@ export default function Project() {
 			<Head>
 				<title>David Obodo</title>
 				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav alwaysVisible={true} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>

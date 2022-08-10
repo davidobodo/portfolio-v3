@@ -41,14 +41,38 @@ export const PROJECTS = [
 		bgColor: "#e2d1d9",
 	},
 	{
-		id: "hospital-finder",
-		title: "Hospital finder",
-		details: "Find Hospitals, Clinics, Pharmacies and Health care centers close to you",
+		id: "medic-finder",
+		title: "Medic finder",
+		details: `
+		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place.</p>
+		<p>This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, however its of no news
+		that its important is far beyond just as a requirement to get into an internship.
+		</p>
+		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store users credentials and users history. However for easy accessibility for everyone these have been removed in the current iteration. Now YOU can access the full functionality of the application without having to give out any of your credentials.</p>
+		<p>HOW TO USE: Type in a specific address, select the radius that search ought to cover, and finally select the type of medial facility you are looking for. Click on the SEARCH button and get the results of your search immediately.</p>
+		<p>It's also notworthy to say I was responsible for the Entire Design of this application 😊</p>
+		`,
 		live_link: "https://medic-finder.netlify.app/",
-		tech: ["react", "typescript", "redux", "materialUi", "firebase", "graphql", "nodeJs", "expressJs"],
+		tech: [
+			"figma",
+			"react",
+			"typescript",
+			"redux",
+			"materialui",
+			"firebase",
+			"graphql",
+			"nodejs",
+			"expressjs",
+			"rtl",
+			"googlemaps",
+			"netlify",
+		],
+		roles: ["design", "fe", "be"],
 		bgImage: "/images/projects/hospital-findr.png",
 		type: "Web Application",
 		bgColor: "#b1a994",
+		githublink: "https://github.com/obododavid/Medic-Finder",
+		sitelink: "https://medic-finder.netlify.app/",
 	},
 	{
 		id: "d-productivity",

@@ -1,8 +1,10 @@
 .container {
 	// The Text and Image are positioned relative to this
 	position: relative;
+	overflow: hidden;
+	// width: 100vw;
 	height: 100vh; // Since it doesnt take the height of its children(i.e the children dont have position static)
-	border: 2px solid red;
+	// border: 2px solid red;
 }
 
 .textWrapper {
@@ -14,6 +16,7 @@
 	top: 50%;
 	transform: translate(-50%, -50%);
 	overflow: hidden;
+	width: 100%;
 
 	.textInner {
 		// To control the svg dimensions
@@ -21,7 +24,8 @@
 		position: relative;
 		transform: translateY(-50%);
 		z-index: 1;
-		min-width: 3290px;
+		width: 100%;
+		// min-width: 3290px;
 
 		svg {
 			width: 100%;

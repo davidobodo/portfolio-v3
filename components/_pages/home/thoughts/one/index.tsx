@@ -79,8 +79,8 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 	];
 
 	return (
-		<>
-			<div className={styles.container}>
+		<div className={styles.container}>
+			<div className={styles.containerInner}>
 				<div className={styles.paragraphWrapper} ref={textWrapperRef}>
 					<p className={styles.paragraph}>
 						{firstParagraph.map((item) => {
@@ -145,15 +145,6 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 					</p>
 				</div>
 			</div>
-
-			{/* <div className={styles.imageWrapper}>
-                <div
-                    className={styles.image}
-                    style={{ backgroundImage: `url(https://dennissnellenberg.com/assets/img/DSC07312-2.jpg)` }}
-                    // style={{ backgroundImage: `url(${IMAGES.one})` }}
-                    ref={imageRef}
-                ></div>
-            </div> */}
-		</>
+		</div>
 	);
 }

@@ -6,10 +6,12 @@ class SharedAnimations {
 		darkSection,
 		banner,
 		blackCurtain,
+		contactBlackCurtain,
 	}: {
 		darkSection: HTMLDivElement;
 		banner: HTMLDivElement;
 		blackCurtain: HTMLDivElement;
+		contactBlackCurtain: HTMLDivElement;
 	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -24,6 +26,7 @@ class SharedAnimations {
 						banner.style.zIndex = "1";
 						banner.style.opacity = "1";
 						blackCurtain.style.zIndex = "2";
+						contactBlackCurtain.style.zIndex = "-1";
 					}
 				},
 				onLeave: () => {
@@ -31,6 +34,7 @@ class SharedAnimations {
 						banner.style.zIndex = "-1";
 						banner.style.opacity = "0";
 						blackCurtain.style.zIndex = "-1";
+						contactBlackCurtain.style.zIndex = "2";
 					}
 				},
 			},

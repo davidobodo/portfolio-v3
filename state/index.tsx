@@ -15,13 +15,13 @@ const useInitialAppLoadContext = () => {
 };
 
 type TRadGradTimeline = {
-	timeline: gsap.core.Timeline | null;
-	setTimeline: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
+	animation: gsap.core.Timeline | null;
+	setAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
 };
 
 const RadialGradientAnimContext = createContext<TRadGradTimeline>({
-	timeline: null,
-	setTimeline: () => {},
+	animation: null,
+	setAnimation: () => {},
 });
 
 const useRadialGradientAnimContext = () => {

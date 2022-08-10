@@ -31,12 +31,9 @@ export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
 									<section>
 										<h4>{company}</h4>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
-
 										<span>{range}</span>
-
 										<ul>
 											<li> {title}</li>
-
 											{location && <li> {location}</li>}
 											<li>
 												<a href={url} target="_blank" rel="noreferrer">

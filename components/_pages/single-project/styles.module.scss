@@ -1,5 +1,58 @@
 @import "#/styles/globals.module.scss";
 
+.empty {
+	padding-bottom: 10rem;
+	padding-top: 10rem;
+	padding: 10rem 2rem;
+	max-width: 90rem;
+	color: var(--ash);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+
+	p {
+		font-family: sf-pro-bold;
+		font-weight: 500;
+		margin-bottom: 4rem;
+		text-align: center;
+		font-size: 1.8rem;
+
+		@media (min-width: $md) {
+			font-size: 2.4rem;
+		}
+
+		@media (min-width: $lg) {
+			font-size: 4rem;
+		}
+	}
+
+	span {
+		color: var(--white);
+	}
+
+	a {
+		border: 1px solid var(--ash);
+		font-size: 1.6rem;
+		color: var(--ash);
+		text-decoration: none;
+		padding: 7px 30px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:hover {
+			background-color: var(--white-alpha);
+		}
+
+		svg {
+			margin-left: 1rem;
+		}
+	}
+}
 .container {
 	padding-bottom: 10rem;
 }
@@ -20,13 +73,13 @@
 
 		h1 {
 			font-size: 4rem;
-			font-family: "sf-pro-bold";
+			font-family: sf-pro-bold;
 			font-weight: 500;
 			margin-bottom: 2rem;
 		}
 
 		h2 {
-			font-family: "sf-pro-bold";
+			font-family: sf-pro-bold;
 			font-weight: 500;
 			font-size: 3rem;
 			border-bottom: 1px solid var(--ash);
@@ -36,9 +89,13 @@
 
 		p {
 			line-height: 1.5;
-			margin-bottom: 1rem;
-			font-family: "sf-pro-regular";
+			font-family: sf-pro-regular;
 			font-size: 1.6rem;
+			margin-bottom: 1rem;
+
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
 
 			@media (min-width: $lg) {
 				font-size: 1.8rem;
@@ -48,7 +105,7 @@
 		li {
 			line-height: 1.5;
 			margin-bottom: 1rem;
-			font-family: "sf-pro-regular";
+			font-family: sf-pro-regular;
 			display: flex;
 			align-items: center;
 			font-size: 1.6rem;
@@ -83,6 +140,18 @@
 	}
 
 	.about {
+		p {
+			a {
+				color: var(--white);
+			}
+		}
+
+		h3 {
+			font-size: 2rem;
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+			margin-top: 3rem;
+		}
 	}
 
 	.tech {
@@ -106,6 +175,10 @@
 
 			@media (min-width: $md) {
 				margin-right: 30px;
+			}
+
+			&:hover {
+				background-color: var(--white-alpha);
 			}
 
 			svg {
@@ -157,15 +230,12 @@
 	padding-left: 10px;
 	position: fixed;
 	z-index: 2000;
-	top: 2rem;
+	top: 2.5rem;
 	right: 2rem;
-	top: 10rem;
 
 	@media (min-width: $lg) {
 		top: 4rem;
-		right: 5rem;
-
-		top: 10rem;
+		right: 3rem;
 	}
 
 	span {

@@ -6,7 +6,7 @@ import { useIsomorphicLayoutEffect } from ".";
 export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRef: RefObject<HTMLDivElement> }) {
 	const darkSectionRadialGradientRef = useRef(null);
 
-	const { setTimeline } = useRadialGradientAnimContext();
+	const { setAnimation } = useRadialGradientAnimContext();
 
 	//-------------------------------------------------
 	// PIN RADIAL GRADIENT TO BLACK SECTION CENTER
@@ -26,7 +26,7 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 				},
 			});
 			// setTl(tl);
-			setTimeline(tl);
+			setAnimation(tl);
 
 			return () => {
 				tl.scrollTrigger?.kill();

@@ -26,7 +26,7 @@ export default function Document() {
 					crossOrigin="anonymous"
 				/>
 				<link rel="manifest" href="/manifest.json" />
-				<link rel="apple-touch-icon" href="/icon.png"></link>
+				<link rel="apple-touch-icon" href="/icon-192x192.png"></link>
 				<meta name="theme-color" content="#e1dfdd" />
 			</Head>
 			<body className="hide">

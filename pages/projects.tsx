@@ -10,7 +10,6 @@ import {
 	BannerCurtain,
 	Filter,
 	ProjectsFilter,
-	ProgressBar,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomorphicLayoutEffect } from "#/hooks";
@@ -67,10 +66,10 @@ const ProjectsPage: NextPage = () => {
 		setFilterKey(key);
 	}, []);
 
-	const { timeline } = useRadialGradientAnimContext();
+	const { animation } = useRadialGradientAnimContext();
 
 	useIsomorphicLayoutEffect(() => {
-		if (timeline) {
+		if (animation) {
 			ScrollTrigger.refresh();
 			const elem = document.querySelector("[data-key='projects']");
 			if (elem) {
@@ -111,7 +110,7 @@ const ProjectsPage: NextPage = () => {
 			<Head>
 				<title>David Obodo - Projects</title>
 				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 			<Filter onClick={onOpenFilter} displayTriggerNode={contentRef} />
@@ -146,7 +145,6 @@ const ProjectsPage: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<ProgressBar />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

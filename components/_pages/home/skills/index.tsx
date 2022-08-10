@@ -9,13 +9,13 @@ export default function Skills({
 	mobileSkillsSectionTitlteRef,
 }: Props) {
 	return (
-		<div>
+		<>
 			<SkillsDesktop skillsContainerRef={skillsContainerRef} skillsSectionTitlteRef={skillsSectionTitlteRef} />
 
 			<SkillsMobile
 				mobileSkillsContainerRef={mobileSkillsContainerRef}
 				mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
 			/>
-		</div>
+		</>
 	);
 }
