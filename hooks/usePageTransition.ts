@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
-import { useInitialAppLoadContext } from "../state";
+import { useInitialAppLoadContext } from "../context";
 import { useRouter } from "next/router";
 import { animPageLoaders } from "#/utils/animations";
 const { showLoadingTexts, closeNoiseLayers, hideLoadingTexts } = animPageLoaders;

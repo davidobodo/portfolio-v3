@@ -4,7 +4,8 @@
 	margin: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	height: 100vh;
+	padding-top: 30rem;
+	padding-bottom: 30rem;
 
 	@media (min-width: $lg) {
 		display: grid;
@@ -23,6 +24,10 @@
 
 	.paragraphWrapper {
 		margin-bottom: 8.4rem;
+
+		&:last-child {
+			margin-bottom: 0px;
+		}
 
 		// @media (min-width: $lg) {
 		//     // width: 50%;

@@ -73,17 +73,21 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					<h2>About this project</h2>
 					<p dangerouslySetInnerHTML={{ __html: details }} />
 
-					<h3>Role in Project</h3>
-					<ul>
-						{roles?.map((item) => {
-							return (
-								<li>
-									<span className={styles.circle}></span>
-									{ROLES[item].label}
-								</li>
-							);
-						})}
-					</ul>
+					{roles?.length > 0 && (
+						<>
+							<h3>Role in Project</h3>
+							<ul>
+								{roles?.map((item) => {
+									return (
+										<li>
+											<span className={styles.circle}></span>
+											{ROLES[item].label}
+										</li>
+									);
+								})}
+							</ul>
+						</>
+					)}
 				</section>
 
 				<section className={styles.tech} data-key="tech">

@@ -49,7 +49,7 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 
 	const wrapperRef = useRef(null);
 	useIsomorphicLayoutEffect(() => {
-		console.log("THIS EFFECT FIRED AGAIN");
+		console.log("IN THE LAYOUT HOUSE");
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: wrapperRef.current,
@@ -57,6 +57,17 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 				start: "top bottom",
 				end: "bottom bottom",
 				scrub: true,
+				toggleActions: "restart complete restart reverse",
+				onEnter: () => console.log("ON ENTER"),
+				onLeave: () => {
+					console.log("ON LEAVE");
+					curtain.style.zIndex = "0";
+				},
+				onEnterBack: () => console.log("ON ENTER BACK"),
+				onLeaveBack: () => {
+					console.log("ON LEAVE BACK");
+					curtain.style.zIndex = "0";
+				},
 			},
 		});
 		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
@@ -64,11 +75,13 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 		tl.to(curtain, {
 			scaleY: 0,
 		});
+		tl.set(curtain, { zIndex: 0 });
 
 		return () => {
+			console.log("IN HERE");
 			tl.scrollTrigger.kill();
 		};
-	}, [router.asPath]);
+	}, []);
 
 	return (
 		<div ref={wrapperRef} className={styles.wrapper}>

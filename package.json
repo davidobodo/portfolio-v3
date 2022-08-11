@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@sendgrid/mail": "^7.7.0",
+		"@slaterjs/next": "^0.2.1",
 		"detect.js": "^2.2.3",
 		"fork-ts-checker-webpack-plugin": "^7.2.11",
 		"gsap": "^3.10.4",

@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
-import { useInitialAppLoadContext } from "#/state";
+import { useInitialAppLoadContext } from "#/context";
 import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";

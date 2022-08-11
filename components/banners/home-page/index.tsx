@@ -14,6 +14,8 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 	const nameA = "DAVID";
 	const nameB = "OBODO";
 
+	console.log(bannerHeight, "THE BANNER HEIGHT");
+
 	return (
 		<>
 			<div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }} data-key="banner">

@@ -1,3 +1,5 @@
+@import "#/styles/globals.module.scss";
+
 .container {
 	// The Text and Image are positioned relative to this
 	position: relative;
@@ -17,6 +19,10 @@
 	transform: translate(-50%, -50%);
 	overflow: hidden;
 	width: 100%;
+
+	// @media (max-width: 1100px) {
+	// 	min-width: 3270px !important;
+	// }
 
 	.textInner {
 		// To control the svg dimensions

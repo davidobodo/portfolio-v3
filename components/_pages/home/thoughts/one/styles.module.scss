@@ -1,9 +1,15 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-	height: 100vh;
 	display: flex;
 	align-items: center;
+	padding-top: 20rem;
+	padding-bottom: 20rem;
+
+	@media (min-width: $md) {
+		padding-top: 30rem;
+		padding-bottom: 25rem;
+	}
 }
 .containerInner {
 	padding-left: 2rem;

@@ -16,7 +16,7 @@ import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomor
 
 import { PROJECTS } from "#/constants/projects";
 import { useState, useRef, useCallback } from "react";
-import { useRadialGradientAnimContext } from "#/state";
+import { useRadialGradientAnimContext } from "#/context";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
