@@ -10,6 +10,7 @@ import {
 	BannerCurtain,
 	Filter,
 	ProjectsFilter,
+	Contact,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomorphicLayoutEffect } from "#/hooks";
@@ -71,10 +72,10 @@ const ProjectsPage: NextPage = () => {
 	useIsomorphicLayoutEffect(() => {
 		if (animation) {
 			ScrollTrigger.refresh();
-			const elem = document.querySelector("[data-key='projects']");
-			if (elem) {
-				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-			}
+			// const elem = document.querySelector("[data-key='projects']");
+			// if (elem) {
+			// 	elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+			// }
 		}
 	}, [displayedProjects.length]);
 
@@ -121,7 +122,7 @@ const ProjectsPage: NextPage = () => {
 	}, [windowInnerWidth]);
 
 	return (
-		<>
+		<div id="page-wrapper" className={styles.pageWrapper}>
 			<Head>
 				<title>David Obodo | Projects</title>
 				<meta
@@ -216,6 +217,7 @@ const ProjectsPage: NextPage = () => {
 					)}
 				</div>
 			</Layout.DarkSection>
+			<Contact />
 			<Noise />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
@@ -225,7 +227,7 @@ const ProjectsPage: NextPage = () => {
 				onGoToProject={onGoToProject}
 				isOpen={isOpen}
 			/>
-		</>
+		</div>
 	);
 };
 

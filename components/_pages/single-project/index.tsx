@@ -23,7 +23,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					Oops! Sorry I do not have any project by the name: <br /> <span>"{currProjectId}"</span>{" "}
 				</p>
 
-				<Link href="/projects">
+				<Link href="/projects" scroll={false}>
 					<a>
 						Go to Projects
 						<ExternalLink />

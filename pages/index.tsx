@@ -28,6 +28,7 @@ import {
 	ProjectsHeading,
 	Noise,
 	Excellence,
+	Contact,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
 import Link from "next/link";
@@ -113,7 +114,7 @@ const Home: NextPage = () => {
 					/>
 
 					<div className={styles.projectsBtnWrapper}>
-						<Link href="/projects">
+						<Link href="/projects" scroll={false}>
 							<a>
 								More Projects
 								<ExternalLink />
@@ -123,6 +124,7 @@ const Home: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
+			<Contact />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

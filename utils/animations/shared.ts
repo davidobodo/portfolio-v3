@@ -118,7 +118,13 @@ class SharedAnimations {
 		return tl;
 	}
 
-	genericPageBannerAnimation(children: HTMLHeadingElement[], scrollIndicatorNode: HTMLDivElement) {
+	genericPageBannerAnimation({
+		children,
+		scrollIndicatorNode,
+	}: {
+		children: HTMLHeadingElement[];
+		scrollIndicatorNode: HTMLDivElement;
+	}) {
 		// const { children } = node;
 		const tl = gsap.timeline({});
 

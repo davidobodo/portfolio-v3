@@ -64,12 +64,13 @@ class AnimPageLoaders {
 
 	openNoiseLayers(node: NodeListOf<Element>) {
 		const tl = gsap.timeline();
-		tl.to(node, { scaleY: 0 });
+		tl.fromTo(node, { scaleY: 1, delay: 0.3 }, { scaleY: 0, delay: 0.3 });
 		return tl;
 	}
 
 	closeNoiseLayers({ node }: { node: NodeListOf<Element> | HTMLCollection }) {
 		const tl = gsap.timeline();
+
 		tl.to(node, { scaleY: 1 });
 		return tl;
 	}

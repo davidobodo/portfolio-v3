@@ -35,7 +35,7 @@ export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwa
 		}
 	}, [alwaysVisible]);
 	return (
-		<Link href="/">
+		<Link href="/" scroll={false}>
 			<a>
 				<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
 			</a>
