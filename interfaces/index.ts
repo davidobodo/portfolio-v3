@@ -7,11 +7,15 @@ type TTimelineAction = {
 	label?: string;
 };
 
+type TRoles = "design" | "fe" | "be" | "teamlead";
+
 type TProject = {
 	id: string;
 	title: string;
 	details: string;
-	live_link: string;
+	sitelink: string;
+	githublink?: string;
+	roles?: TRoles[];
 	tech: string[];
 	bgImage: string;
 	type: string;

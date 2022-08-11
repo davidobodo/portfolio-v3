@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { useInitialAppLoadContext } from "#/state";
+import { useInitialAppLoadContext } from "#/context";
 import { animPageLoaders, sharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 const { openNoiseLayers, drawSvgLogo } = animPageLoaders;

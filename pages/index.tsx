@@ -93,9 +93,9 @@ const Home: NextPage = () => {
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
-					<div className={styles.excellenceWrapper}>
+					{/* <div className={styles.excellenceWrapper}>
 						<Excellence />
-					</div>
+					</div> */}
 					<Skills
 						skillsContainerRef={skillsContainerRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}

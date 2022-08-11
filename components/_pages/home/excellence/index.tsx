@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useRef, Ref, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRadialGradientAnimContext } from "#/state";
+import { useRadialGradientAnimContext } from "#/context";
 
 export default function Excellence() {
 	const containerRef = useRef(null);
@@ -15,7 +15,8 @@ export default function Excellence() {
 	const [containerWidth, setContainerWidth] = useState<number>();
 	useIsomorphicLayoutEffect(() => {
 		setContainerWidth(innerWidth * 2);
-	}, []);
+		ScrollTrigger.refresh();
+	}, [innerWidth]);
 
 	const { animation } = useRadialGradientAnimContext();
 
@@ -47,8 +48,6 @@ export default function Excellence() {
 			tl.to(imageRef.current, {
 				border: "10rem solid black",
 			});
-
-			animation?.scrollTrigger?.update();
 
 			return () => {
 				tl.scrollTrigger?.kill();

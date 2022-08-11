@@ -22,16 +22,45 @@ export const matchElement = (origin: Element, destinationTag: string): Element |
 	return matchElement(origin.parentElement, destinationTag);
 };
 
+let getSiblings = function (e) {
+	// for collecting siblings
+	let siblings = [];
+	// if no parent, return no sibling
+	if (!e.parentNode) {
+		return siblings;
+	}
+	// first child of the parent node
+	let sibling = e.parentNode.firstChild;
+
+	// collecting siblings
+	while (sibling) {
+		if (sibling.nodeType === 1 && sibling !== e) {
+			siblings.push(sibling);
+		}
+		sibling = sibling.nextSibling;
+	}
+	return siblings;
+};
+
 export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
 	const handleKeyboardFocus = (e) => {
 		if (e.key === "Tab" || e.keyCode === 9) {
-			console.log("teh tab was pressed", document.activeElement);
-
 			const foundElement = matchElement(document.activeElement, "[data-key='work-detail']");
 
-			console.log(foundElement, "TEH FOUND ELEMENT");
-
 			if (foundElement) {
+				//Get all elements siblings
+				const siblings = getSiblings(foundElement);
+				const currActive = siblings.find((item) => {
+					const { focus } = item.dataset;
+					return focus === "active-work";
+				});
+
+				console.log(currActive === foundElement);
+
+				console.log(siblings, currActive, "THE SIBLINGS");
+
+				//Remove data focus from the sibling
+
 				foundElement.setAttribute("data-focus", "active-work");
 			}
 		}

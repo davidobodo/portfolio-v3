@@ -5,7 +5,7 @@ import smoothscroll from "smoothscroll-polyfill";
 import type { AppProps } from "next/app";
 import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
 import { Common } from "#/components";
-import { InitialAppLoadContext, RadialGradientAnimContext } from "#/state";
+import { InitialAppLoadContext, RadialGradientAnimContext } from "#/context";
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
