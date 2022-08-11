@@ -4,15 +4,14 @@ import Script from "next/script";
 import smoothscroll from "smoothscroll-polyfill";
 import type { AppProps } from "next/app";
 import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
-import { Common } from "#/components";
-import { InitialAppLoadContext, RadialGradientAnimContext } from "#/context";
+import { Common, PageTransitionLayout } from "#/components";
+import { PageTransitionsProvider, RadialGradientAnimContext } from "#/context";
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	useRegisterGsapScrollTrigger();
 
-	const [initialAppLoad, setInitialAppLoad] = useState<boolean>(true);
-	const [animation, setAnimation] = useState<gsap.core.Timeline | null>(null);
+	// const [animation, setAnimation] = useState<gsap.core.Timeline | null>(null);
 
 	useIsomorphicLayoutEffect(() => {
 		smoothscroll.polyfill();
@@ -35,23 +34,21 @@ function MyApp({ Component, pageProps }: AppProps) {
 					});
 				`}
 			</Script>
-
-			<InitialAppLoadContext.Provider
-				value={{
-					initialAppLoad,
-					setInitialAppLoad,
-				}}
-			>
-				<RadialGradientAnimContext.Provider
+			<>
+				<PageTransitionsProvider>
+					{/* <RadialGradientAnimContext.Provider
 					value={{
 						animation,
 						setAnimation,
 					}}
-				>
-					<Component {...pageProps} />
-					<Common />
-				</RadialGradientAnimContext.Provider>
-			</InitialAppLoadContext.Provider>
+				> */}
+					<PageTransitionLayout>
+						<Component {...pageProps} />
+						<Common />
+					</PageTransitionLayout>
+					{/* </RadialGradientAnimContext.Provider> */}
+				</PageTransitionsProvider>
+			</>
 		</>
 	);
 }

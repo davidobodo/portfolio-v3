@@ -6,7 +6,7 @@ import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
 import gsap from "gsap";
 import { useRouter } from "next/router";
-export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const router = useRouter();
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -49,43 +49,42 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 
 	const wrapperRef = useRef(null);
 	useIsomorphicLayoutEffect(() => {
-		console.log("IN THE LAYOUT HOUSE");
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: wrapperRef.current,
-				markers: true,
-				start: "top bottom",
-				end: "bottom bottom",
-				scrub: true,
-				toggleActions: "restart complete restart reverse",
-				onEnter: () => console.log("ON ENTER"),
-				onLeave: () => {
-					console.log("ON LEAVE");
-					curtain.style.zIndex = "0";
-				},
-				onEnterBack: () => console.log("ON ENTER BACK"),
-				onLeaveBack: () => {
-					console.log("ON LEAVE BACK");
-					curtain.style.zIndex = "0";
-				},
-			},
-		});
-		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
-		tl.to(curtain, { zIndex: 2, duration: 0 });
-		tl.to(curtain, {
-			scaleY: 0,
-		});
-		tl.set(curtain, { zIndex: 0 });
-
-		return () => {
-			console.log("IN HERE");
-			tl.scrollTrigger.kill();
-		};
+		// const tl = gsap.timeline({
+		// 	scrollTrigger: {
+		// 		trigger: wrapperRef.current,
+		// 		markers: true,
+		// 		start: "top bottom",
+		// 		end: "bottom bottom",
+		// 		scrub: true,
+		// 		toggleActions: "restart complete restart reverse",
+		// 		// onEnter: () => console.log("ON ENTER"),
+		// 		// onLeave: () => {
+		// 		// 	console.log("ON LEAVE");
+		// 		// 	curtain.style.zIndex = "0";
+		// 		// },
+		// 		// onEnterBack: () => console.log("ON ENTER BACK"),
+		// 		// onLeaveBack: () => {
+		// 		// 	console.log("ON LEAVE BACK");
+		// 		// 	curtain.style.zIndex = "0";
+		// 		// },
+		// 	},
+		// });
+		// tl.to(wrapperRef.current, { opacity: 1, duration: 0 });
+		// const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+		// tl.to(curtain, { zIndex: 2, duration: 0 });
+		// tl.to(curtain, {
+		// 	scaleY: 0,
+		// });
+		// tl.set(curtain, { zIndex: 0 });
+		// return () => {
+		// 	console.log("IN HERE");
+		// 	tl.scrollTrigger.kill();
+		// };
 	}, []);
 
 	return (
 		<div ref={wrapperRef} className={styles.wrapper}>
-			<Details containerRef={containerRef} onRouteChange={onRouteChange} isFooterFixed={isFooterFixed} />
+			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} />
 
 			<div className={styles.placeholderWrapper}>
 				<SectionPlaceholder
@@ -94,20 +93,12 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 				/>
 			</div>
 
-			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
+			{/* <div className={styles.blackCurtain} data-key="contact-curtain"></div> */}
 		</div>
 	);
 }
 
-function Details({
-	containerRef,
-	onRouteChange,
-	isFooterFixed,
-}: {
-	containerRef: Ref<HTMLDivElement>;
-	onRouteChange: (path: string) => void;
-	isFooterFixed: boolean;
-}) {
+function Details({ containerRef, isFooterFixed }: { containerRef: Ref<HTMLDivElement>; isFooterFixed: boolean }) {
 	return (
 		<div
 			className={styles.container}
@@ -118,7 +109,7 @@ function Details({
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>
-					<HelpfulLinks onRouteChange={onRouteChange} />
+					<HelpfulLinks />
 				</div>
 				<div className={styles.formSection}>
 					<Form />
@@ -129,31 +120,31 @@ function Details({
 	);
 }
 
-function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+function HelpfulLinks() {
 	return (
 		<>
 			<div>
 				<div className={styles.helpfulLinks}>
 					<h3>Quick Links</h3>
 					<ul>
-						<li onClick={() => onRouteChange("/")}>
-							<Link href="/">
+						<li>
+							<Link href="/" scroll={false}>
 								<a>
 									<span>Home</span>
 								</a>
 							</Link>
 						</li>
 						<li className={styles.line}></li>
-						<li onClick={() => onRouteChange("/projects")}>
-							<Link href="/projects">
+						<li>
+							<Link href="/projects" scroll={false}>
 								<a>
 									<span>Projects</span>
 								</a>
 							</Link>
 						</li>
 						<li className={styles.line}></li>
-						<li onClick={() => onRouteChange("/letters")}>
-							<Link href="/letters">
+						<li>
+							<Link href="/letters" scroll={false}>
 								<a>
 									<span>Letters </span>
 								</a>
@@ -174,8 +165,8 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 						</li>
 						<li className={styles.line}></li>
 
-						<li onClick={() => onRouteChange("/credits")}>
-							<Link href="/credits">
+						<li>
+							<Link href="/credits" scroll={false}>
 								<a>
 									<span>Site credits</span>
 								</a>

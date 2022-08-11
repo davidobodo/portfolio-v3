@@ -21,6 +21,7 @@ import ProjectsFilter from "./projects-filter";
 import Spinner from "./spinner";
 import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
+import PageTransitionLayout from "./page-transition-layout";
 
 const { Button, Radio } = Atoms;
 const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
@@ -59,4 +60,5 @@ export {
 	AlternatingOpacity,
 	ProgressBar,
 	Excellence,
+	PageTransitionLayout,
 };

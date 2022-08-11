@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "#/styles/_pages/letters.module.scss";
 import { NextPage } from "next";
 import { useRef } from "react";
-import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain } from "#/components";
+import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact } from "#/components";
 import { LETTERS } from "#/constants/letters";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
 const Letters: NextPage = () => {
@@ -16,7 +16,7 @@ const Letters: NextPage = () => {
 	});
 
 	return (
-		<>
+		<div id="page-wrapper" className={styles.pageWrapper}>
 			<Head>
 				<title>David Obodo | Letters</title>
 				<meta
@@ -56,7 +56,8 @@ const Letters: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-		</>
+			<Contact />
+		</div>
 	);
 };
 
