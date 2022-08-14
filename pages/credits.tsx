@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity } from "#/components";
+import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
@@ -151,6 +151,7 @@ export default function Credit() {
 			</Layout.DarkSection>
 
 			<Noise />
+			<Contact />
 		</>
 	);
 }

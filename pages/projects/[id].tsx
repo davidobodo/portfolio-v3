@@ -1,10 +1,10 @@
 import Head from "next/head";
-import { Nav, Layout, Noise, SingleProject } from "#/components";
+import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styles from "#/styles/_pages/single-project.module.scss";
 import { useRef } from "react";
-import { useSelectProjectAnimation, usePageTransition, useSingleProjectPageInit } from "#/hooks";
+import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { singleProjectAnimations } from "#/utils/animations";
 const { removeCurrentProject } = singleProjectAnimations;
 export default function Project() {
@@ -12,7 +12,7 @@ export default function Project() {
 	const router = useRouter();
 	const { id } = router.query;
 	useSingleProjectPageInit();
-	const { onRouteChange } = usePageTransition();
+
 	const {
 		selectedProjectId,
 		// onDeselectProject,
@@ -32,7 +32,7 @@ export default function Project() {
 			tl.to(modalRef.current, { opacity: 0 });
 
 			tl.then(() => {
-				onRouteChange("/projects");
+				// onRouteChange("/projects");
 			});
 		}
 	};
@@ -49,10 +49,13 @@ export default function Project() {
 	}
 
 	return (
-		<div className={styles.main}>
+		<>
 			<Head>
-				<title>David Obodo</title>
-				<meta name="description" content="David Obodo's portfolio website" />
+				<title>David Obodo | Project</title>
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav alwaysVisible={true} />
@@ -68,6 +71,7 @@ export default function Project() {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-		</div>
+			<Contact />
+		</>
 	);
 }

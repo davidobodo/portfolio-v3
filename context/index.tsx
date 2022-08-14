@@ -9,6 +9,8 @@ type TContext = {
 	setInitialAppLoad: (val: boolean) => void | Dispatch<SetStateAction<null>>;
 	exitAnimation: gsap.core.Timeline;
 	setExitAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
+	radialGradientAnimation: gsap.core.Timeline | null;
+	setRadialGradientAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
 };
 
 const PageTransitionsContext = createContext<TContext>({
@@ -16,6 +18,8 @@ const PageTransitionsContext = createContext<TContext>({
 	setInitialAppLoad: () => {},
 	exitAnimation: gsap.timeline({ paused: true }),
 	setExitAnimation: () => {},
+	radialGradientAnimation: null,
+	setRadialGradientAnimation: () => {},
 });
 
 const usePageTransitionsContext = () => {
@@ -25,6 +29,8 @@ const usePageTransitionsContext = () => {
 const PageTransitionsProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 	const [initialAppLoad, setInitialAppLoad] = useState<boolean>(true);
 	const [exitAnimation, setExitAnimation] = useState(() => gsap.timeline({ paused: true }));
+	const [radialGradientAnimation, setRadialGradientAnimation] = useState<gsap.core.Timeline | null>(null);
+
 	return (
 		<PageTransitionsContext.Provider
 			value={{
@@ -32,6 +38,8 @@ const PageTransitionsProvider = ({ children }: { children: JSX.Element | JSX.Ele
 				setInitialAppLoad,
 				exitAnimation,
 				setExitAnimation,
+				radialGradientAnimation,
+				setRadialGradientAnimation,
 			}}
 		>
 			{children}
