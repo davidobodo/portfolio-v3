@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import { singleProjectAnimations } from "#/utils/animations";
 
 const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjectAnimations;
-export default function useSelectProjectAnimation() {
+export default function useSelectProjectAnimation({ initialId = "" }: { initialId?: string }) {
 	const router = useRouter();
-	const [selectedProjectId, setSelectedProjectId] = useState<string>("");
+	const [selectedProjectId, setSelectedProjectId] = useState<string>(initialId);
 	const sourceElem = useRef<HTMLDivElement | null>(null);
 	const modalImgRef = useRef<HTMLDivElement>(null);
 	const modalRef = useRef<HTMLDivElement>(null);

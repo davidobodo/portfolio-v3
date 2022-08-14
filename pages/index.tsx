@@ -13,6 +13,7 @@ import {
 	useWorkAnimation,
 	useSkillsAnimation,
 	useIsomorphicLayoutEffect,
+	useExcellenceAnim,
 } from "#/hooks";
 import {
 	Banners,
@@ -63,7 +64,7 @@ const Home: NextPage = () => {
 	});
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
-		useSelectProjectAnimation();
+		useSelectProjectAnimation({});
 
 	const [projectView, setProjectView] = useState<"list" | "grid">("list");
 	useIsomorphicLayoutEffect(() => {
@@ -73,6 +74,8 @@ const Home: NextPage = () => {
 			setProjectView("list");
 		}
 	}, []);
+
+	const { containerRef, containerWidth, textWrapperRef, imageRef } = useExcellenceAnim();
 	return (
 		<>
 			<Head>
@@ -94,9 +97,14 @@ const Home: NextPage = () => {
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
-					{/* <div className={styles.excellenceWrapper}>
-						<Excellence />
-					</div> */}
+					<div className={styles.excellenceWrapper}>
+						<Excellence
+							containerRef={containerRef}
+							containerWidth={containerWidth}
+							textWrapperRef={textWrapperRef}
+							imageRef={imageRef}
+						/>
+					</div>
 					<Skills
 						skillsContainerRef={skillsContainerRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}

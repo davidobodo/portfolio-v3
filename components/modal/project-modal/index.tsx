@@ -1,7 +1,9 @@
 import { Modal, SingleProject, Noise } from "#/components";
 import styles from "./styles.module.scss";
 
-import { Ref } from "react";
+import { Ref, useEffect, useState } from "react";
+import { fetchProjects } from "#/utils";
+import { TProject } from "#/interfaces";
 type Props = {
 	selectedProjectId: string;
 	modalRef: Ref<HTMLDivElement>;

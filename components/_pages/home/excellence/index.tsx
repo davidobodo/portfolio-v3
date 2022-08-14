@@ -1,60 +1,7 @@
 import styles from "./styles.module.scss";
-import gsap from "gsap";
-import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useRef, Ref, useState } from "react";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRadialGradientAnimContext } from "#/context";
 
-export default function Excellence() {
-	const containerRef = useRef(null);
-	const textWrapperRef = useRef<HTMLDivElement>(null);
-	const imageRef = useRef(null);
-
-	const { innerWidth } = useWindowSize();
-
-	const [containerWidth, setContainerWidth] = useState<number>();
-	useIsomorphicLayoutEffect(() => {
-		setContainerWidth(innerWidth * 2);
-		ScrollTrigger.refresh();
-	}, [innerWidth]);
-
-	const { animation } = useRadialGradientAnimContext();
-
-	useIsomorphicLayoutEffect(() => {
-		if (textWrapperRef.current && containerWidth) {
-			const textWidth = textWrapperRef.current?.scrollWidth;
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					start: "top top",
-					trigger: containerRef.current,
-					invalidateOnRefresh: true,
-					anticipatePin: 1,
-					pin: true,
-					scrub: 1,
-					pinSpacing: true,
-					// markers: true,
-					end: () => "+=" + textWrapperRef.current?.offsetWidth,
-				},
-			});
-
-			tl.to(textWrapperRef.current, {
-				x: () => -(textWidth - document.documentElement.clientWidth) + "px",
-				ease: "none",
-			});
-			tl.to(textWrapperRef.current.querySelector("svg"), {
-				scale: 60,
-				// x: -6300,
-			});
-			tl.to(imageRef.current, {
-				border: "10rem solid black",
-			});
-
-			return () => {
-				tl.scrollTrigger?.kill();
-			};
-		}
-	}, [containerWidth]);
-
+export default function Excellence({ containerRef, containerWidth, textWrapperRef, imageRef }) {
 	return (
 		<div className={styles.container} ref={containerRef} style={{ width: containerWidth + "px" }}>
 			<Text containerRef={textWrapperRef} style={{ width: containerWidth + "px" }} />

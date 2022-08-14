@@ -17,7 +17,6 @@ import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomor
 
 import { PROJECTS } from "#/constants/projects";
 import { useState, useRef, useCallback } from "react";
-import { usePageTransitionsContext, useRadialGradientAnimContext } from "#/context";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
@@ -33,9 +32,7 @@ const ProjectsPage: NextPage = () => {
 		darkSectionRef,
 	});
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
-		useSelectProjectAnimation();
-
-	const { radialGradientAnimation } = usePageTransitionsContext();
+		useSelectProjectAnimation({});
 
 	//---------------------------------------------------------
 	// TOGGLE BETWEEN GRID AND LIST VIEW
@@ -115,16 +112,16 @@ const ProjectsPage: NextPage = () => {
 		setFilterKey(key);
 	}, []);
 
-	console.log(radialGradientAnimation, "THE ANIMATION");
+	const [initialPageLoad, setInitialPageLoad] = useState(true);
 	useIsomorphicLayoutEffect(() => {
-		console.log(radialGradientAnimation, "TEH ANIM");
-		if (radialGradientAnimation) {
-			console.log("IN HERE");
+		if (!initialPageLoad) {
 			ScrollTrigger.refresh();
 			const elem = document.querySelector("[data-key='projects']");
 			if (elem) {
 				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 			}
+		} else {
+			setInitialPageLoad(false);
 		}
 	}, [displayedProjects.length]);
 

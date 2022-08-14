@@ -126,7 +126,11 @@ export const PROJECTS: TProject[] = [
 	{
 		id: "d-chat",
 		title: "d-chat",
-		details: "A basic chat application.",
+		details: `
+		<p>It's of no news that majority of applications these days have the "chatting" functionality embedded into them, so this project was an attempt to understand how the "open connection idea" upon which the functionality is built upon.
+		I initial executed it using only <a href="https://firebase.google.com/" target="_blank">Firebase</a> but that was when I was unaware of <a href="https://socket.io/" target="_blank">Socket.io</a>, which is actually the real deal
+		</p>
+		`,
 		githublink: "",
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
