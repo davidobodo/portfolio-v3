@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/not-found.module.scss";
-import { Nav, Noise, DarkRadialGradient, ScrollAlert } from "#/components";
+import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact } from "#/components";
 import { use404PageInit } from "#/hooks";
 
 export default function NotFound() {
@@ -20,7 +20,7 @@ export default function NotFound() {
 			{logoVisibility && <Nav alwaysVisible={true} color="#000" />}
 
 			<div className={styles.main} ref={containerRef}>
-				<div className={styles.content} style={{ minHeight: bannerHeight + "px" }}>
+				<header className={styles.content} style={{ minHeight: bannerHeight + "px" }}>
 					<div className={styles.top} data-key="section">
 						<div>
 							<h1>
@@ -42,11 +42,12 @@ export default function NotFound() {
 							<button onClick={onStopRedirect}>Remain here</button>
 						</div>
 					</div>
-				</div>
+				</header>
 				<ScrollAlert propStyles={styles.scrollAlert} containerRef={scrollRef} />
 				<DarkRadialGradient containerRef={gradientRef} containerStyles={{ opacity: 0 }} />
+				<Noise />
 			</div>
-			<Noise />
+			<Contact />
 		</>
 	);
 }

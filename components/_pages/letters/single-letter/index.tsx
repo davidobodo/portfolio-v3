@@ -40,8 +40,8 @@ export default function SingleLetter({
 	}, []);
 
 	return (
-		<div className={styles.letterWrapper} ref={articleRef}>
-			<article className={styles.container}>
+		<article className={styles.letterWrapper} ref={articleRef}>
+			<div className={styles.container}>
 				<a href={url} target="_blank">
 					<h3>{title}</h3>
 					<p>
@@ -55,8 +55,8 @@ export default function SingleLetter({
 						})}
 					</ul>
 				</a>
-			</article>
+			</div>
 			<span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
-		</div>
+		</article>
 	);
 }

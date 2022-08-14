@@ -41,7 +41,7 @@ export const PROJECTS: TProject[] = [
 		roles: ["fe"],
 		sitelink: "https://www.prodeus.co/",
 		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "sass", "storybook", "rtl"],
-		bgImage: "/images/projects/dashboard.png",
+		bgImage: "/images/projects/test.jpg",
 		type: "Web Application",
 		bgColor: "#dcd0c2",
 	},

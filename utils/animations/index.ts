@@ -250,7 +250,8 @@ class SingleProjectAnimations {
 				opacity: 0,
 				y: 20,
 				duration: 0.2,
-			});
+			})
+			.set(document.getElementById("app"), { opacity: 0 });
 
 		return tl;
 	}

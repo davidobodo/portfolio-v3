@@ -124,7 +124,6 @@ const Home: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<Contact />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}
@@ -133,6 +132,7 @@ const Home: NextPage = () => {
 				isOpen={isOpen}
 				onGoToProject={onGoToProject}
 			/>
+			<Contact />
 		</>
 	);
 };

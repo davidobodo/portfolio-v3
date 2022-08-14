@@ -14,11 +14,9 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 	const nameA = "DAVID";
 	const nameB = "OBODO";
 
-	console.log(bannerHeight, "THE BANNER HEIGHT");
-
 	return (
 		<>
-			<div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }} data-key="banner">
+			<header className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }} data-key="banner">
 				<div className={styles.topSection}>
 					<div className={styles.topSectionTexts}>
 						<div data-key="field">
@@ -56,7 +54,7 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 						</div>
 					</div>
 				</div>
-			</div>
+			</header>
 			<SectionPlaceholder styles={{ height: bannerHeight ? bannerHeight + "px" : "100vh" }} />
 		</>
 	);

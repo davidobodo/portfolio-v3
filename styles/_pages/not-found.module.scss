@@ -2,7 +2,7 @@
 
 .main {
 	position: relative;
-	z-index: 1;
+	z-index: var(--z-index-content);
 	// height: 100vh;
 	background-color: var(--light-brown);
 

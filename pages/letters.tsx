@@ -4,7 +4,7 @@ import { NextPage } from "next";
 import { useRef } from "react";
 import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact } from "#/components";
 import { LETTERS } from "#/constants/letters";
-import { useGenericPageInit, useWindowSize } from "#/hooks";
+import { useGenericPageInit, useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 const Letters: NextPage = () => {
 	const darkSectionRef = useRef(null);
 
@@ -16,7 +16,7 @@ const Letters: NextPage = () => {
 	});
 
 	return (
-		<div id="page-wrapper" className={styles.pageWrapper}>
+		<>
 			<Head>
 				<title>David Obodo | Letters</title>
 				<meta
@@ -57,7 +57,7 @@ const Letters: NextPage = () => {
 			</Layout.DarkSection>
 			<Noise />
 			<Contact />
-		</div>
+		</>
 	);
 };
 

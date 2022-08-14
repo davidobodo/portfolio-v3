@@ -69,13 +69,13 @@ function BaseProjectsFilter({
 	});
 
 	const content = (
-		<div className={styles.container} ref={containerRef} onKeyDown={onKeyDown}>
+		<aside className={styles.container} ref={containerRef} onKeyDown={onKeyDown}>
 			<div className={styles.filterModal} data-key="container">
 				<button className={styles.closeBtn} onClick={onClose} data-key="close-filter-btn" aria-label="close filter">
 					<FilterCancelIcon />
 				</button>
 				<div className={styles.empty} onClick={onClose}></div>
-				<aside className={styles.aside}>
+				<div className={styles.aside}>
 					<div className={styles.filterBy} data-key="filter-options">
 						<h4>Filter by</h4>
 
@@ -112,9 +112,9 @@ function BaseProjectsFilter({
 							);
 						})}
 					</ul>
-				</aside>
+				</div>
 			</div>
-		</div>
+		</aside>
 	);
 
 	return createPortal(content, document.getElementById("filter-root") as HTMLElement);

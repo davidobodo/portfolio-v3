@@ -30,7 +30,9 @@ export default function Document() {
 				<meta name="theme-color" content="#e1dfdd" />
 			</Head>
 			<body className="hide">
-				<Main />
+				<div id="app">
+					<Main />
+				</div>
 				<NextScript />
 				<div id="modal-root"></div>
 				<div id="filter-root"></div>

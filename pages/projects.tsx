@@ -17,7 +17,7 @@ import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomor
 
 import { PROJECTS } from "#/constants/projects";
 import { useState, useRef, useCallback } from "react";
-import { useRadialGradientAnimContext } from "#/context";
+import { usePageTransitionsContext, useRadialGradientAnimContext } from "#/context";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
@@ -26,7 +26,6 @@ type TFilterBy = "tech-stack" | "project-nature";
 const ProjectsPage: NextPage = () => {
 	const darkSectionRef = useRef(null);
 	const contentRef = useRef(null);
-
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
 	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
 		windowInnerHeight,
@@ -36,54 +35,45 @@ const ProjectsPage: NextPage = () => {
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
 		useSelectProjectAnimation();
 
-	//-----------------------------------------
-	// TOGGLE FILTER
-	//-----------------------------------------
-	const [showFilter, setShowFilter] = useState(false);
+	const { radialGradientAnimation } = usePageTransitionsContext();
 
+	//---------------------------------------------------------
+	// TOGGLE BETWEEN GRID AND LIST VIEW
+	//---------------------------------------------------------
+	const [currentView, setCurrentView] = useState<"list" | "grid">("list");
+	const handleSetCurrentView = (e) => {
+		const elem = document.querySelector("[data-key='projects']");
+		if (elem) {
+			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+		}
+		setCurrentView(e.currentTarget.value);
+	};
+	useIsomorphicLayoutEffect(() => {
+		if (windowInnerWidth < 768) {
+			setCurrentView("grid");
+		}
+	}, [windowInnerWidth]);
+
+	//---------------------------------------------------------
+	// TOGGLE FILTER DISPLAY
+	//---------------------------------------------------------
+	const [showFilter, setShowFilter] = useState(false);
 	const onOpenFilter = () => {
 		if (showFilter) return;
 		setShowFilter(true);
 	};
-
 	const onCloseFilter = () => {
 		setShowFilter(false);
 	};
+
+	//---------------------------------------------------------
+	// TOGGLE PROJECTS DISPLAYED BASED ON FILTER
+	//---------------------------------------------------------
 	const [filterKey, setFilterKey] = useState("all");
-
-	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
-		const res = PROJECTS.filter((project) => {
-			const { type, tech } = project;
-
-			if (filterBy === "tech-stack") {
-				return tech.includes(key);
-			} else {
-				return type === key;
-			}
-		});
-
-		setDisplayedProjects(res);
-		setFilterKey(key);
-	}, []);
-
-	const { animation } = useRadialGradientAnimContext();
-
-	useIsomorphicLayoutEffect(() => {
-		if (animation) {
-			ScrollTrigger.refresh();
-			// const elem = document.querySelector("[data-key='projects']");
-			// if (elem) {
-			// 	elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-			// }
-		}
-	}, [displayedProjects.length]);
-
 	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFilterBy(e.target.value as TFilterBy);
 	};
-
 	let filterList = [];
 	let currProjects = "All";
 	if (filterBy === "project-nature") {
@@ -106,23 +96,40 @@ const ProjectsPage: NextPage = () => {
 		currProjects = TECH_STACKS[filterKey]?.label || "All";
 	}
 
-	const [currentView, setCurrentView] = useState<"list" | "grid">("list");
-	const handleSetCurrentView = (e) => {
-		const elem = document.querySelector("[data-key='projects']");
-		if (elem) {
-			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-		}
-		setCurrentView(e.currentTarget.value);
-	};
-	const [canSelectView, setCanSelectView] = useState();
+	//---------------------------------------------------------
+	// DISPLAYED PROJECTS
+	//---------------------------------------------------------
+	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
+	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
+		const res = PROJECTS.filter((project) => {
+			const { type, tech } = project;
+
+			if (filterBy === "tech-stack") {
+				return tech.includes(key);
+			} else {
+				return type === key;
+			}
+		});
+
+		setDisplayedProjects(res);
+		setFilterKey(key);
+	}, []);
+
+	console.log(radialGradientAnimation, "THE ANIMATION");
 	useIsomorphicLayoutEffect(() => {
-		if (windowInnerWidth < 768) {
-			setCurrentView("grid");
+		console.log(radialGradientAnimation, "TEH ANIM");
+		if (radialGradientAnimation) {
+			console.log("IN HERE");
+			ScrollTrigger.refresh();
+			const elem = document.querySelector("[data-key='projects']");
+			if (elem) {
+				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+			}
 		}
-	}, [windowInnerWidth]);
+	}, [displayedProjects.length]);
 
 	return (
-		<div id="page-wrapper" className={styles.pageWrapper}>
+		<>
 			<Head>
 				<title>David Obodo | Projects</title>
 				<meta
@@ -227,7 +234,7 @@ const ProjectsPage: NextPage = () => {
 				onGoToProject={onGoToProject}
 				isOpen={isOpen}
 			/>
-		</div>
+		</>
 	);
 };
 

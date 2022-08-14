@@ -49,42 +49,56 @@ export default function Contact() {
 
 	const wrapperRef = useRef(null);
 	useIsomorphicLayoutEffect(() => {
-		// const tl = gsap.timeline({
-		// 	scrollTrigger: {
-		// 		trigger: wrapperRef.current,
-		// 		markers: true,
-		// 		start: "top bottom",
-		// 		end: "bottom bottom",
-		// 		scrub: true,
-		// 		toggleActions: "restart complete restart reverse",
-		// 		// onEnter: () => console.log("ON ENTER"),
-		// 		// onLeave: () => {
-		// 		// 	console.log("ON LEAVE");
-		// 		// 	curtain.style.zIndex = "0";
-		// 		// },
-		// 		// onEnterBack: () => console.log("ON ENTER BACK"),
-		// 		// onLeaveBack: () => {
-		// 		// 	console.log("ON LEAVE BACK");
-		// 		// 	curtain.style.zIndex = "0";
-		// 		// },
-		// 	},
-		// });
-		// tl.to(wrapperRef.current, { opacity: 1, duration: 0 });
-		// const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
-		// tl.to(curtain, { zIndex: 2, duration: 0 });
-		// tl.to(curtain, {
-		// 	scaleY: 0,
-		// });
-		// tl.set(curtain, { zIndex: 0 });
-		// return () => {
-		// 	console.log("IN HERE");
-		// 	tl.scrollTrigger.kill();
-		// };
+		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+
+		if (curtain) {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: wrapperRef.current,
+					markers: true,
+					start: "top bottom",
+					end: "bottom bottom",
+					scrub: true,
+					toggleActions: "restart complete restart reverse",
+					onEnter: () => console.log("ON ENTER"),
+					onLeave: () => {
+						console.log("ON LEAVE");
+					},
+					onEnterBack: () => console.log("ON ENTER BACK"),
+					onLeaveBack: () => {
+						console.log("ON LEAVE BACK");
+					},
+				},
+			});
+			tl.to(curtain, { zIndex: 2, duration: 0 });
+			tl.to(curtain, {
+				scaleY: 0,
+			});
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
 	}, []);
 
+	const handleGAEvent = (e) => {
+		console.log(e.target.dataset, "TARGET");
+		const { link } = e.currentTarget.dataset;
+		const { gtag } = window;
+
+		console.log(gtag, "TEH GTAG");
+		switch (link) {
+			case "resume":
+				console.log("HIT THIS SIDE");
+				gtag({
+					category: "Link",
+					action: "Opened My Resume",
+				});
+		}
+	};
+
 	return (
-		<div ref={wrapperRef} className={styles.wrapper}>
-			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} />
+		<footer ref={wrapperRef} className={styles.wrapper}>
+			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} handleGAEvent={handleGAEvent} />
 
 			<div className={styles.placeholderWrapper}>
 				<SectionPlaceholder
@@ -94,11 +108,18 @@ export default function Contact() {
 			</div>
 
 			{/* <div className={styles.blackCurtain} data-key="contact-curtain"></div> */}
-		</div>
+		</footer>
 	);
 }
 
-function Details({ containerRef, isFooterFixed }: { containerRef: Ref<HTMLDivElement>; isFooterFixed: boolean }) {
+function Details({
+	containerRef,
+	isFooterFixed,
+	handleGAEvent,
+}: {
+	containerRef: Ref<HTMLDivElement>;
+	isFooterFixed: boolean;
+}) {
 	return (
 		<div
 			className={styles.container}
@@ -109,7 +130,7 @@ function Details({ containerRef, isFooterFixed }: { containerRef: Ref<HTMLDivEle
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>
-					<HelpfulLinks />
+					<HelpfulLinks handleGAEvent={handleGAEvent} />
 				</div>
 				<div className={styles.formSection}>
 					<Form />
@@ -120,7 +141,7 @@ function Details({ containerRef, isFooterFixed }: { containerRef: Ref<HTMLDivEle
 	);
 }
 
-function HelpfulLinks() {
+function HelpfulLinks({ handleGAEvent }) {
 	return (
 		<>
 			<div>
@@ -157,7 +178,7 @@ function HelpfulLinks() {
 					<ul>
 						<li>
 							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing" passHref>
-								<a target="_blank">
+								<a target="_blank" onClick={handleGAEvent} data-link="resume">
 									{" "}
 									<span>Resume</span>
 								</a>
