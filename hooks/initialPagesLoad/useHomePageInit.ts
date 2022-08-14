@@ -49,6 +49,7 @@ export default function useHomeInit({
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 		const layers = document.querySelectorAll("[data-key='layer']");
 		const master = gsap.timeline();
+
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
 			master.add(drawSvgLogo(logo, logoChildren));

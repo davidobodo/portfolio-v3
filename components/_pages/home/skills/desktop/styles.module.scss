@@ -141,6 +141,14 @@
 						font-family: "sf-pro-bold";
 						margin-top: 4rem;
 						opacity: 0;
+
+						strong {
+							color: var(--white);
+						}
+
+						a {
+							color: var(--white);
+						}
 					}
 
 					&.others {

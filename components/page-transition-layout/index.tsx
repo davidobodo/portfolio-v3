@@ -2,8 +2,9 @@ import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useState } from "react";
 
-export default function PageTransitionLayout({ children }: { children: JSX.Element | JSX.Element[] }) {
+export default function PageTransitionLayout({ children, path }: { children: JSX.Element | JSX.Element[]; path }) {
 	const [displayedChildren, setDisplayedChildren] = useState(children);
+	const [currentPath, setCurrentPath] = useState(path);
 	const { exitAnimation } = usePageTransitionsContext();
 
 	useIsomorphicLayoutEffect(() => {
@@ -12,12 +13,24 @@ export default function PageTransitionLayout({ children }: { children: JSX.Eleme
 				//No outro animation
 				setDisplayedChildren(children);
 			} else {
-				exitAnimation.restart().then(() => {
+				// User is linking to the same page
+				if (currentPath === path) {
+					window.scrollTo({
+						top: 0,
+						left: 0,
+						behavior: "smooth",
+					});
 					setDisplayedChildren(children);
-				});
+				} else {
+					exitAnimation.restart().then(() => {
+						console.log("ANIMATION COMPLETED");
+						setDisplayedChildren(children);
+						setCurrentPath(path);
+					});
+				}
 			}
 		}
-	}, [children]);
+	}, [children, path]);
 
 	return <div>{displayedChildren}</div>;
 }
