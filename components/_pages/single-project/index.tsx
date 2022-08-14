@@ -1,10 +1,11 @@
 import styles from "./styles.module.scss";
 import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/icons";
 import { fetchProjects } from "#/utils";
-import { Ref } from "react";
+import { Ref, useState, useEffect } from "react";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { ROLES } from "#/constants";
 import Link from "next/link";
+import { TProject } from "#/interfaces";
 
 type Props = {
 	currProjectId: string;
@@ -98,7 +99,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 						{tech.map((item) => {
 							const tool = TECH_STACKS[item];
 
-							console.log(tool, item, "TH ETOOK");
 							return (
 								<li>
 									<span className={styles.circle}></span>

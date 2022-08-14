@@ -23,7 +23,6 @@ export default function PageTransitionLayout({ children, path }: { children: JSX
 					setDisplayedChildren(children);
 				} else {
 					exitAnimation.restart().then(() => {
-						console.log("ANIMATION COMPLETED");
 						setDisplayedChildren(children);
 						setCurrentPath(path);
 					});

@@ -57,7 +57,12 @@ export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
 
 				console.log(currActive === foundElement);
 
-				console.log(siblings, currActive, "THE SIBLINGS");
+				// console.log(siblings, currActive, "THE SIBLINGS");
+
+				if (currActive && currActive !== foundElement) {
+					console.log(currActive, "TEH CURRE");
+					currActive.removeAttribute("data-focus");
+				}
 
 				//Remove data focus from the sibling
 
@@ -82,7 +87,7 @@ export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
 							<li className={styles.bgGradient} data-key="gradient"></li>
 							{WORK.map((item, i) => {
 								return (
-									<li className={styles.tabHeader} key={i}>
+									<li className={styles.tabHeader} key={i} tabIndex={0}>
 										{item.company}
 									</li>
 								);
@@ -93,7 +98,7 @@ export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
 						{WORK.map((item, i) => {
 							const { title, company, location, range, url, note, urlLabel } = item;
 							return (
-								<div className={styles.tabDetail} key={i} data-key="work-detail" tabIndex={0}>
+								<div className={styles.tabDetail} key={i} data-key="work-detail">
 									<section>
 										<h4>{company}</h4>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />

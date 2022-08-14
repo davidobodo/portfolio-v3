@@ -1,27 +1,35 @@
 import Head from "next/head";
 import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "#/styles/_pages/single-project.module.scss";
 import { useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { singleProjectAnimations } from "#/utils/animations";
+import { fetchProjects } from "#/utils";
+import { PROJECTS } from "#/constants/projects";
+import { TProject } from "#/interfaces";
 const { removeCurrentProject } = singleProjectAnimations;
-export default function Project() {
+
+type Props = {
+	currProject: TProject;
+	nextProject: TProject;
+	prevProject: TProject;
+	currProjectId: string;
+	id: string;
+};
+
+export default function Project(props: Props) {
+	const { id } = props;
 	const darkSectionRef = useRef(null);
 	const router = useRouter();
-	const { id } = router.query;
 	useSingleProjectPageInit();
 
-	const {
-		selectedProjectId,
-		// onDeselectProject,
-		modalImgRef,
-		modalRef,
-		onGoToProject,
-		setSelectedProjectId,
-	} = useSelectProjectAnimation();
+	const { selectedProjectId, modalImgRef, modalRef, onGoToProject } = useSelectProjectAnimation({ initialId: id });
 
+	//------------------------------------------------------------
+	// Redirect out of this page
+	//------------------------------------------------------------
 	const onDeselectProject = () => {
 		if (modalRef.current && modalImgRef.current) {
 			const tl = removeCurrentProject({
@@ -32,21 +40,10 @@ export default function Project() {
 			tl.to(modalRef.current, { opacity: 0 });
 
 			tl.then(() => {
-				// onRouteChange("/projects");
+				router.push({ pathname: "/projects" });
 			});
 		}
 	};
-
-	useEffect(() => {
-		if (id) {
-			setSelectedProjectId(id as string);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [id]);
-
-	if (!id) {
-		return null;
-	}
 
 	return (
 		<>
@@ -63,7 +60,6 @@ export default function Project() {
 				<div ref={modalRef} className={styles.container}>
 					<SingleProject
 						currProjectId={selectedProjectId}
-						// onClose={onClose}
 						onClose={onDeselectProject}
 						modalImgRef={modalImgRef}
 						onGoToProject={onGoToProject}
@@ -74,4 +70,36 @@ export default function Project() {
 			<Contact />
 		</>
 	);
+}
+
+// useEffect(() => {
+// 	if (id) {
+// 		setSelectedProjectId(id as string);
+// 	}
+// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+// }, [id]);
+
+// if (!id) {
+// 	return null;
+// }
+
+export async function getStaticPaths() {
+	return {
+		paths: PROJECTS.map((item) => {
+			return {
+				params: {
+					id: item.id,
+				},
+			};
+		}),
+		fallback: true, // Dont render 404 page, render my custom Project not found page
+	};
+}
+
+export async function getStaticProps({ params }: { params: { id: string } }) {
+	const { id } = params;
+
+	return {
+		props: { id },
+	};
 }
