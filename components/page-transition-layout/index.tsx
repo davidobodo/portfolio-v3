@@ -2,7 +2,13 @@ import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useState } from "react";
 
-export default function PageTransitionLayout({ children, path }: { children: JSX.Element | JSX.Element[]; path }) {
+export default function PageTransitionLayout({
+	children,
+	path,
+}: {
+	children: JSX.Element | JSX.Element[];
+	path: string;
+}) {
 	const [displayedChildren, setDisplayedChildren] = useState(children);
 	const [currentPath, setCurrentPath] = useState(path);
 	const { exitAnimation } = usePageTransitionsContext();

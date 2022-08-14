@@ -78,9 +78,9 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 						<>
 							<h3>Role in Project</h3>
 							<ul>
-								{roles?.map((item) => {
+								{roles?.map((item, i) => {
 									return (
-										<li>
+										<li key={i}>
 											<span className={styles.circle}></span>
 											{ROLES[item].label}
 										</li>
