@@ -39,7 +39,9 @@ export default function NotFound() {
 						<div></div>
 						<div className={styles.bottomRight} data-key="mortal-text">
 							<h2>Wait, I choose to be immortal</h2>
-							<button onClick={onStopRedirect}>Remain here</button>
+							<button onClick={onStopRedirect}>
+								<span>Remain here</span>
+							</button>
 						</div>
 					</div>
 				</header>

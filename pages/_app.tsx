@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
 import { Common, PageTransitionLayout } from "#/components";
 import { PageTransitionsProvider } from "#/context";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	useRegisterGsapScrollTrigger();
@@ -13,6 +14,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 	useIsomorphicLayoutEffect(() => {
 		smoothscroll.polyfill();
 	}, []);
+
+	const router = useRouter();
 
 	return (
 		<>
@@ -33,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</Script>
 			<>
 				<PageTransitionsProvider>
-					<PageTransitionLayout>
+					<PageTransitionLayout path={router.asPath}>
 						<Component {...pageProps} />
 						<Common />
 					</PageTransitionLayout>

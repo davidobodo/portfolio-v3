@@ -198,14 +198,14 @@ export const TECH_STACKS: Record<string, TTech> = {
 	},
 	jest: {
 		key: "jest",
-		label: "jest.js",
+		label: "Jest",
 		// image: "",
 		link: "",
 		id: 25,
 	},
 	chakraui: {
 		key: "chakraui",
-		label: "jest.js",
+		label: "Chakra UI",
 		// image: "",
 		link: "",
 		id: 26,
@@ -246,5 +246,9 @@ export const TECH_STACKS: Record<string, TTech> = {
 		key: "sendgrid",
 		label: "Sendgrid",
 		link: "",
+	},
+	socketio: {
+		key: "socketio",
+		label: "Socket.io",
 	},
 };
