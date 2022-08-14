@@ -20,7 +20,7 @@ import useAlternateTextOpacity from "./useAlternateTextOpacity";
 import useSkillsAnimation from "./useSkillsAnimation";
 import useWorkAnimation from "./useWorkAnimation";
 import useFloatingBoxAnimation from "./useFloatingBoxAnimation";
-import useExcellenceAnim from "./useExcellenceAnim";
+import useExcellenceAnimation from "./useExcellenceAnimation";
 
 //---------------------------
 // PAGE LOADS
@@ -48,5 +48,5 @@ export {
 	useSingleProjectPageInit,
 	use404PageInit,
 	useFloatingBoxAnimation,
-	useExcellenceAnim,
+	useExcellenceAnimation,
 };
