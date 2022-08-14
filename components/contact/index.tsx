@@ -49,7 +49,6 @@ export default function Contact() {
 
 	const wrapperRef = useRef(null);
 
-	console.log(footerHeight, "TEH FOOTERHEIGHT");
 	useIsomorphicLayoutEffect(() => {
 		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
 

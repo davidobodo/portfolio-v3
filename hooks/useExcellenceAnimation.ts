@@ -4,7 +4,7 @@ import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 
-export default function useExcellenceAnim() {
+export default function useExcellenceAnimation() {
 	const containerRef = useRef(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const imageRef = useRef(null);
@@ -14,24 +14,27 @@ export default function useExcellenceAnim() {
 	const [containerWidth, setContainerWidth] = useState<number>();
 	useIsomorphicLayoutEffect(() => {
 		setContainerWidth(innerWidth * 2);
-		ScrollTrigger.refresh();
 	}, [innerWidth]);
 
 	const { animation } = useRadialGradientAnimContext();
 
 	useIsomorphicLayoutEffect(() => {
 		if (textWrapperRef.current && containerWidth) {
+			console.log(document.documentElement.clientWidth, "the width");
 			const textWidth = textWrapperRef.current?.scrollWidth;
+
+			console.log(textWidth, "THE WIDTH");
+
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					start: "top top",
 					trigger: containerRef.current,
-					invalidateOnRefresh: true,
+					// invalidateOnRefresh: true,
 					anticipatePin: 1,
 					pin: true,
 					scrub: 1,
 					pinSpacing: true,
-					// markers: true,
+					markers: true,
 					end: () => "+=" + textWrapperRef.current?.offsetWidth,
 				},
 			});
@@ -48,7 +51,7 @@ export default function useExcellenceAnim() {
 				border: "10rem solid black",
 			});
 
-			// ScrollTrigger.refresh();
+			ScrollTrigger.refresh();
 
 			// console.log(ScrollTrigger.getAll());
 

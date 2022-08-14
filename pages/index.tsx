@@ -13,7 +13,7 @@ import {
 	useWorkAnimation,
 	useSkillsAnimation,
 	useIsomorphicLayoutEffect,
-	useExcellenceAnim,
+	useExcellenceAnimation,
 } from "#/hooks";
 import {
 	Banners,
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
 		}
 	}, []);
 
-	const { containerRef, containerWidth, textWrapperRef, imageRef } = useExcellenceAnim();
+	const { containerRef, containerWidth, textWrapperRef, imageRef } = useExcellenceAnimation();
 	return (
 		<>
 			<Head>
@@ -97,14 +97,14 @@ const Home: NextPage = () => {
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
-					{/* <div className={styles.excellenceWrapper}>
+					<div className={styles.excellenceWrapper}>
 						<Excellence
 							containerRef={containerRef}
 							containerWidth={containerWidth}
 							textWrapperRef={textWrapperRef}
 							imageRef={imageRef}
 						/>
-					</div> */}
+					</div>
 					<Skills
 						skillsContainerRef={skillsContainerRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}
