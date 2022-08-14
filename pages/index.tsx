@@ -97,14 +97,14 @@ const Home: NextPage = () => {
 					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
-					<div className={styles.excellenceWrapper}>
+					{/* <div className={styles.excellenceWrapper}>
 						<Excellence
 							containerRef={containerRef}
 							containerWidth={containerWidth}
 							textWrapperRef={textWrapperRef}
 							imageRef={imageRef}
 						/>
-					</div>
+					</div> */}
 					<Skills
 						skillsContainerRef={skillsContainerRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}

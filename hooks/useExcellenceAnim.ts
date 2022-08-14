@@ -50,7 +50,7 @@ export default function useExcellenceAnim() {
 
 			// ScrollTrigger.refresh();
 
-			console.log(ScrollTrigger.getAll());
+			// console.log(ScrollTrigger.getAll());
 
 			return () => {
 				tl.scrollTrigger?.kill();

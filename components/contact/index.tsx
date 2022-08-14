@@ -48,26 +48,19 @@ export default function Contact() {
 	}, []);
 
 	const wrapperRef = useRef(null);
+
+	console.log(footerHeight, "TEH FOOTERHEIGHT");
 	useIsomorphicLayoutEffect(() => {
 		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
 
-		if (curtain) {
+		if (curtain && footerHeight) {
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: wrapperRef.current,
-					markers: true,
 					start: "top bottom",
 					end: "bottom bottom",
 					scrub: true,
 					toggleActions: "restart complete restart reverse",
-					onEnter: () => console.log("ON ENTER"),
-					onLeave: () => {
-						console.log("ON LEAVE");
-					},
-					onEnterBack: () => console.log("ON ENTER BACK"),
-					onLeaveBack: () => {
-						console.log("ON LEAVE BACK");
-					},
 				},
 			});
 			tl.to(curtain, { zIndex: 2, duration: 0 });
@@ -78,7 +71,7 @@ export default function Contact() {
 				tl.scrollTrigger?.kill();
 			};
 		}
-	}, []);
+	}, [footerHeight]);
 
 	const handleGAEvent = (e) => {
 		console.log(e.target.dataset, "TARGET");
@@ -107,7 +100,7 @@ export default function Contact() {
 				/>
 			</div>
 
-			{/* <div className={styles.blackCurtain} data-key="contact-curtain"></div> */}
+			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
 		</footer>
 	);
 }
