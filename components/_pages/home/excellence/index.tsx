@@ -1,19 +1,37 @@
 import styles from "./styles.module.scss";
-import { useRef, Ref, useState } from "react";
+import { Ref } from "react";
 
-export default function Excellence({ containerRef, containerWidth, textWrapperRef, imageRef }) {
+export default function Excellence({
+	containerRef,
+	containerWidth,
+	textWrapperRef,
+	imageRef,
+}: {
+	containerRef: Ref<HTMLDivElement>;
+	containerWidth: number;
+	textWrapperRef: Ref<HTMLDivElement>;
+	imageRef: Ref<HTMLDivElement>;
+}) {
 	return (
-		<div className={styles.container} ref={containerRef} style={{ width: containerWidth + "px" }}>
-			<Text containerRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
+		<div data-key="test" ref={containerRef}>
+			<div className={styles.container} style={{ width: containerWidth + "px" }}>
+				<Text textWrapperRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
 
-			<Image containerRef={imageRef} />
+				<Image imageRef={imageRef} />
+			</div>
 		</div>
 	);
 }
 
-function Text({ containerRef, style }: { containerRef: Ref<HTMLDivElement>; style: Record<string, string | number> }) {
+function Text({
+	textWrapperRef,
+	style,
+}: {
+	textWrapperRef: Ref<HTMLDivElement>;
+	style: Record<string, string | number>;
+}) {
 	return (
-		<div className={styles.textWrapper} ref={containerRef} style={{ ...style }}>
+		<div className={styles.textWrapper} ref={textWrapperRef} style={{ ...style }}>
 			<div className={styles.textInner}>
 				<svg viewBox="0 0 1225.0208 437.09163">
 					<defs id="defs842" />
@@ -30,6 +48,6 @@ function Text({ containerRef, style }: { containerRef: Ref<HTMLDivElement>; styl
 	);
 }
 
-function Image({ containerRef }: { containerRef: Ref<HTMLDivElement> }) {
-	return <div className={styles.bgImage} ref={containerRef}></div>;
+function Image({ imageRef }: { imageRef: Ref<HTMLDivElement> }) {
+	return <div className={styles.bgImage} ref={imageRef}></div>;
 }

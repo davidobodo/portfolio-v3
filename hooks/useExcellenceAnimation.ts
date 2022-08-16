@@ -1,65 +1,49 @@
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRadialGradientAnimContext } from "#/context";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useRef, useState } from "react";
-import gsap from "gsap";
+import { auxilliaryAnimations } from "#/utils/animations";
 
+const { animateExcellence } = auxilliaryAnimations;
 export default function useExcellenceAnimation() {
-	const containerRef = useRef(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const imageRef = useRef(null);
 
-	const { innerWidth } = useWindowSize();
+	const { innerWidth, innerHeight } = useWindowSize();
 
 	const [containerWidth, setContainerWidth] = useState<number>();
 	useIsomorphicLayoutEffect(() => {
 		setContainerWidth(innerWidth * 2);
 	}, [innerWidth]);
 
-	const { animation } = useRadialGradientAnimContext();
-
 	useIsomorphicLayoutEffect(() => {
-		if (textWrapperRef.current && containerWidth) {
-			console.log(document.documentElement.clientWidth, "the width");
-			const textWidth = textWrapperRef.current?.scrollWidth;
-
-			console.log(textWidth, "THE WIDTH");
-
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					start: "top top",
-					trigger: containerRef.current,
-					// invalidateOnRefresh: true,
-					anticipatePin: 1,
-					pin: true,
-					scrub: 1,
-					pinSpacing: true,
-					markers: true,
-					end: () => "+=" + textWrapperRef.current?.offsetWidth,
-				},
-			});
-
-			tl.to(textWrapperRef.current, {
-				x: () => -(textWidth - document.documentElement.clientWidth) + "px",
-				ease: "none",
-			});
-			tl.to(textWrapperRef.current.querySelector("svg"), {
-				scale: 60,
-				// x: -6300,
-			});
-			tl.to(imageRef.current, {
-				border: "10rem solid black",
+		if (textWrapperRef.current && containerWidth && containerRef.current && imageRef.current) {
+			const tl = animateExcellence({
+				sectionWrapper: containerRef.current,
+				textWrapper: textWrapperRef.current,
+				image: imageRef.current,
 			});
 
 			ScrollTrigger.refresh();
-
-			// console.log(ScrollTrigger.getAll());
 
 			return () => {
 				tl.scrollTrigger?.kill();
 			};
 		}
-	}, [containerWidth]);
+	}, [containerWidth, innerWidth]);
+
+	useIsomorphicLayoutEffect(() => {
+		if (textWrapperRef.current) {
+			const svg = textWrapperRef.current.querySelector("svg");
+			const svgHeight = svg?.clientHeight as number;
+			const viewportHieght = innerHeight;
+
+			if (svgHeight < viewportHieght) {
+				// All is well
+				setContainerWidth(3290);
+			}
+		}
+	}, [innerHeight, containerWidth]);
 	return {
 		containerRef,
 		containerWidth,

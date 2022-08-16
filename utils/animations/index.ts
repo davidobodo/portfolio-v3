@@ -349,10 +349,53 @@ class NotFoundPageAnimations {
 	}
 }
 
+class AuxilliaryAnimations {
+	animateExcellence({
+		sectionWrapper,
+		textWrapper,
+		image,
+	}: {
+		sectionWrapper: HTMLDivElement;
+		textWrapper: HTMLDivElement;
+		image: HTMLDivElement;
+	}) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				start: "top top",
+				trigger: sectionWrapper,
+				invalidateOnRefresh: true,
+				anticipatePin: 1,
+				pin: true,
+				scrub: 1,
+				pinSpacing: true,
+				refreshPriority: 1,
+				end: () => "+=" + textWrapper?.offsetWidth,
+			},
+		});
+
+		tl.to(textWrapper, {
+			x: () => -(textWrapper.scrollWidth - document.documentElement.clientWidth) + "px",
+			ease: "none",
+		});
+		tl.to(textWrapper.querySelector("svg"), {
+			scale: 60,
+		});
+		tl.to(image, {
+			borderLeftWidth: innerWidth < 768 ? "2rem" : "5.8rem",
+			borderRightWidth: innerWidth < 768 ? "2rem" : "5.8rem",
+			borderTopWidth: "10rem",
+			borderBottomWidth: "10rem",
+		});
+
+		return tl;
+	}
+}
+
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
 const singleProjectAnimations = new SingleProjectAnimations();
 const notFoundPageAnimations = new NotFoundPageAnimations();
+const auxilliaryAnimations = new AuxilliaryAnimations();
 
 export {
 	animPageLoaders,
@@ -364,4 +407,5 @@ export {
 	notFoundPageAnimations,
 	workSectionAnimations,
 	skillsAnimations,
+	auxilliaryAnimations,
 };
