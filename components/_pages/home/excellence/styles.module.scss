@@ -13,16 +13,12 @@
 	// To make sure text doesnt overflow when it is scaled
 	position: absolute;
 	z-index: 2;
-	height: 100vh; // no particular reason
+	height: 100vh;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	overflow: hidden;
 	width: 100%;
-
-	// @media (max-width: 1100px) {
-	// 	min-width: 3270px !important;
-	// }
 
 	.textInner {
 		// To control the svg dimensions
@@ -31,7 +27,6 @@
 		transform: translateY(-50%);
 		z-index: 1;
 		width: 100%;
-		// min-width: 3290px;
 
 		svg {
 			width: 100%;
@@ -47,5 +42,8 @@
 	height: 100%;
 	left: 0;
 	top: 0;
-	background-image: url(https://d2kq0urxkarztv.cloudfront.net/59ee0858278cca00855b0b53/1637784/upload-206b5fb0-86cb-400c-b8b5-e26a219aa703.jpg?e=webp);
+	background-image: url(https://images.unsplash.com/photo-1657299170237-2d4cd59b5156?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
+	border-color: var(--black);
+	border-style: solid;
+	background-position: bottom;
 }
