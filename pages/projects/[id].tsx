@@ -12,15 +12,12 @@ import { TProject } from "#/interfaces";
 const { removeCurrentProject } = singleProjectAnimations;
 
 type Props = {
-	currProject: TProject;
-	nextProject: TProject;
-	prevProject: TProject;
-	currProjectId: string;
 	id: string;
+	title: string;
 };
 
 export default function Project(props: Props) {
-	const { id } = props;
+	const { id, title } = props;
 	const darkSectionRef = useRef(null);
 	const router = useRouter();
 	useSingleProjectPageInit();
@@ -48,7 +45,7 @@ export default function Project(props: Props) {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Project</title>
+				<title>David Obodo | Projects | {title}</title>
 				<meta
 					name="description"
 					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
@@ -72,17 +69,6 @@ export default function Project(props: Props) {
 	);
 }
 
-// useEffect(() => {
-// 	if (id) {
-// 		setSelectedProjectId(id as string);
-// 	}
-// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-// }, [id]);
-
-// if (!id) {
-// 	return null;
-// }
-
 export async function getStaticPaths() {
 	return {
 		paths: PROJECTS.map((item) => {
@@ -99,7 +85,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { id: string } }) {
 	const { id } = params;
 
+	const { currProject } = fetchProjects(id);
+
 	return {
-		props: { id },
+		props: { id, title: currProject?.title },
 	};
 }

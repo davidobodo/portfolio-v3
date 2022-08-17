@@ -1,10 +1,12 @@
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { workSectionAnimations } from "#/utils/animations";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { KEYBOARD_KEYS } from "#/constants";
 
 const { desktopAnimation, mobileAnimation } = workSectionAnimations;
+const { ENTER_KEY } = KEYBOARD_KEYS;
 
 export default function useWorkAnimation({
 	windowInnerHeight,
@@ -19,6 +21,7 @@ export default function useWorkAnimation({
 	const mobileWorkContainerRef = useRef(null);
 	const mobileWorkContainerSelector = gsap.utils.selector(mobileWorkContainerRef);
 
+	const [desktopTl, setDesktopTl] = useState<gsap.core.Timeline>();
 	useIsomorphicLayoutEffect(() => {
 		ScrollTrigger.matchMedia({
 			//-----------------------------------------
@@ -43,6 +46,8 @@ export default function useWorkAnimation({
 						details: workTabsDetails[0].children,
 						windowInnerWidth,
 					});
+
+					setDesktopTl(tl);
 
 					return () => {
 						tl.scrollTrigger?.kill();
@@ -77,8 +82,58 @@ export default function useWorkAnimation({
 			},
 		});
 	}, [windowInnerWidth]);
+
+	const [activeLabel, setActiveLabel] = useState(0);
+
+	const onKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
+		const key = e.key || e.keyCode;
+
+		// const { section } = e.currentTarget.dataset;
+
+		// if (key === "Enter" && desktopTl) {
+		// 	const label = `section-${section}-visible`;
+		// 	gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(label) });
+		// }
+	};
+
+	const onWorkDetailsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		const key = e.key || e.keyCode;
+
+		console.log(activeLabel, key);
+		if (key !== "Tab" && desktopTl) {
+			e.preventDefault();
+			console.log("IN HERE ");
+			let section = 0;
+			if (key === "ArrowDown") {
+				if (activeLabel === 5) {
+					section = 1;
+				} else {
+					section = activeLabel + 1;
+				}
+			}
+
+			if (key === "ArrowUp") {
+				let section = 0;
+				if (activeLabel === 1 || activeLabel === 0) {
+					section = 5;
+				} else {
+					section = activeLabel - 1;
+				}
+			}
+
+			setActiveLabel(section);
+
+			if (section !== 0) {
+				const label = `section-${section}-visible`;
+				gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(label) });
+			}
+		}
+	};
+
 	return {
 		workContainerRef,
 		mobileWorkContainerRef,
+		onWorkTitleKeyDown: onKeyDown,
+		onWorkDetailsKeyDown,
 	};
 }

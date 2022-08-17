@@ -76,11 +76,11 @@
 				transform: translateY(40px);
 				opacity: 0;
 				color: var(--ash3);
-				// visibility: hidden;
+				visibility: hidden;
 
-				&:first-child {
-					visibility: visible;
-				}
+				// &:first-child {
+				// 	visibility: visible;
+				// }
 
 				&[data-focus="active-work"] {
 					visibility: visible !important;

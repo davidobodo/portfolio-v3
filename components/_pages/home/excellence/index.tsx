@@ -8,7 +8,7 @@ export default function Excellence({
 	imageRef,
 }: {
 	containerRef: Ref<HTMLDivElement>;
-	containerWidth: number;
+	containerWidth?: number;
 	textWrapperRef: Ref<HTMLDivElement>;
 	imageRef: Ref<HTMLDivElement>;
 }) {

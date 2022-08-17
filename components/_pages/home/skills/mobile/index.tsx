@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { FaintBgText } from "../../../../index";
 import { Ref } from "react";
+import Link from "next/link";
 
 export type SkillsMobileProps = {
 	mobileSkillsContainerRef: Ref<HTMLDivElement>;
@@ -70,25 +71,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 							<section className={styles.skills + " " + styles.others} data-key="skill">
 								<h3>Frameworks/ Libraries/ Others</h3>
 								<ul>
-									{[
-										"react",
-										"nextjs",
-										"nodejs",
-										"graphql",
-										"redux",
-										"gsap",
-										// "styledcomponents",
-										"tailwindcss",
-										"threejs",
-										"expressjs",
-										"jest",
-										"web3",
-										"pupeteer",
-										"chakraui",
-										"gcp",
-										"heroku",
-										"netlify",
-									].map((key, i) => {
+									{["react", "nextjs", "nodejs", "expressjs", "jest", "redux"].map((key, i) => {
 										const skill = TECH_STACKS[key];
 										return (
 											<li key={i}>
@@ -101,8 +84,12 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 									})}
 								</ul>
 								<p>
-									This list could get very long cause of a developers need to learn everyday depending on what provides
-									the best solution to a given problem, so would stop here
+									This list could get very long cause of a <strong> developers need to learn everyday </strong>{" "}
+									depending on what provides the best solution to a given problem, so would stop the list here. <br />
+									However you can see a comprehensive list of all "noteworthy" frameworks and Libraries{" "}
+									<Link href="/projects?open_filter=true" scroll={false}>
+										here.
+									</Link>
 								</p>
 							</section>
 						</div>

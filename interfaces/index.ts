@@ -1,7 +1,6 @@
 type TTimelineAction = {
-	target: Element | NodeListOf<Element>;
-	vars: Record<string, string | number>;
-	action?: string;
+	target?: Element | NodeListOf<Element>;
+	vars?: Record<string, string | number>;
 	options?: string;
 	isLabel?: boolean;
 	label?: string;
@@ -15,11 +14,13 @@ type TProject = {
 	details: string;
 	sitelink: string;
 	githublink?: string;
-	roles?: TRoles[];
+	roles: TRoles[];
 	tech: string[];
 	bgImage: string;
 	type: string;
 	bgColor?: string;
 };
 
-export type { TTimelineAction, TProject };
+type TProjectsView = "list" | "grid";
+
+export type { TTimelineAction, TProject, TProjectsView };

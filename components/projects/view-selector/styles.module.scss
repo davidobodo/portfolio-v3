@@ -1,0 +1,37 @@
+@import "#/styles/globals.module.scss";
+
+.view {
+	display: none;
+
+	@media (min-width: $md) {
+		display: flex;
+	}
+
+	button {
+		width: 4.4rem;
+		height: 4.4rem;
+		border-radius: 50%;
+		border: 1px solid var(--ash);
+		background-color: transparent;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:nth-child(1) {
+			margin-right: 2rem;
+		}
+
+		&.active {
+			background-color: var(--ash);
+
+			svg {
+				stroke: var(--white);
+			}
+		}
+
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
