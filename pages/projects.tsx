@@ -11,46 +11,26 @@ import {
 	Filter,
 	ProjectsFilter,
 	Contact,
+	ProjectsViewSelector,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomorphicLayoutEffect } from "#/hooks";
+import {
+	useSelectProjectAnimation,
+	useGenericPageInit,
+	useWindowSize,
+	useIsomorphicLayoutEffect,
+	useProjectsPageInit,
+	useProjectsCurrentView,
+} from "#/hooks";
 
 import { PROJECTS } from "#/constants/projects";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 type TFilterBy = "tech-stack" | "project-nature";
 
 const ProjectsPage: NextPage = () => {
-	const darkSectionRef = useRef(null);
-	const contentRef = useRef(null);
-	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
-		windowInnerHeight,
-		windowInnerWidth,
-		darkSectionRef,
-	});
-	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
-		useSelectProjectAnimation({});
-
-	//---------------------------------------------------------
-	// TOGGLE BETWEEN GRID AND LIST VIEW
-	//---------------------------------------------------------
-	const [currentView, setCurrentView] = useState<"list" | "grid">("list");
-	const handleSetCurrentView = (e) => {
-		const elem = document.querySelector("[data-key='projects']");
-		if (elem) {
-			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-		}
-		setCurrentView(e.currentTarget.value);
-	};
-	useIsomorphicLayoutEffect(() => {
-		if (windowInnerWidth < 768) {
-			setCurrentView("grid");
-		}
-	}, [windowInnerWidth]);
-
 	//---------------------------------------------------------
 	// TOGGLE FILTER DISPLAY
 	//---------------------------------------------------------
@@ -63,6 +43,29 @@ const ProjectsPage: NextPage = () => {
 		setShowFilter(false);
 	};
 
+	const darkSectionRef = useRef(null);
+	const contentRef = useRef(null);
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsPageInit({
+		windowInnerHeight,
+		windowInnerWidth,
+		darkSectionRef,
+		onOpenFilter,
+	});
+	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
+		useSelectProjectAnimation({});
+
+	//---------------------------------------------------------
+	// TOGGLE BETWEEN GRID AND LIST VIEW
+	//---------------------------------------------------------
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
+
+	useIsomorphicLayoutEffect(() => {
+		if (windowInnerWidth < 768) {
+			handleSetCurrentView("grid");
+		}
+	}, [windowInnerWidth]);
+
 	//---------------------------------------------------------
 	// TOGGLE PROJECTS DISPLAYED BASED ON FILTER
 	//---------------------------------------------------------
@@ -70,6 +73,7 @@ const ProjectsPage: NextPage = () => {
 	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFilterBy(e.target.value as TFilterBy);
+		window.gtag("event", "filter_projects_by", { value: e.target.value });
 	};
 	let filterList = [];
 	let currProjects = "All";
@@ -100,6 +104,7 @@ const ProjectsPage: NextPage = () => {
 	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
 		const res = PROJECTS.filter((project) => {
 			const { type, tech } = project;
+			window.gtag("event", "filter_projects_key", { value: key });
 
 			if (filterBy === "tech-stack") {
 				return tech.includes(key);
@@ -112,14 +117,18 @@ const ProjectsPage: NextPage = () => {
 		setFilterKey(key);
 	}, []);
 
+	const scrollToProjectsList = () => {
+		ScrollTrigger.refresh();
+		const elem = document.querySelector("[data-key='projects']");
+		if (elem) {
+			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+		}
+	};
+
 	const [initialPageLoad, setInitialPageLoad] = useState(true);
 	useIsomorphicLayoutEffect(() => {
 		if (!initialPageLoad) {
-			ScrollTrigger.refresh();
-			const elem = document.querySelector("[data-key='projects']");
-			if (elem) {
-				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-			}
+			scrollToProjectsList();
 		} else {
 			setInitialPageLoad(false);
 		}
@@ -148,63 +157,13 @@ const ProjectsPage: NextPage = () => {
 				bannerHeight={bannerHeight}
 			/>
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
-				<div className={styles.content} data-key="projects">
+				<div className={styles.content} data-key="projects" id="projects-list">
 					<div className={styles.header}>
 						<h2 className={styles.contentTitle} ref={contentRef}>
 							Viewing <span>{currProjects}</span> projects
 						</h2>
-						<div className={styles.view}>
-							<button
-								value="list"
-								className={currentView === "list" ? styles.active : ""}
-								onClick={handleSetCurrentView}
-								aria-label="list-view"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="#86868b"
-									fill="none"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								>
-									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-									<line x1="9" y1="6" x2="20" y2="6" />
-									<line x1="9" y1="12" x2="20" y2="12" />
-									<line x1="9" y1="18" x2="20" y2="18" />
-									<line x1="5" y1="6" x2="5" y2="6.01" />
-									<line x1="5" y1="12" x2="5" y2="12.01" />
-									<line x1="5" y1="18" x2="5" y2="18.01" />
-								</svg>
-							</button>
-							<button
-								value="grid"
-								className={currentView === "grid" ? styles.active : ""}
-								onClick={handleSetCurrentView}
-								aria-label="grid-view"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="#86868b"
-									fill="none"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								>
-									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-									<rect x="4" y="4" width="6" height="6" rx="1" />
-									<rect x="14" y="4" width="6" height="6" rx="1" />
-									<rect x="4" y="14" width="6" height="6" rx="1" />
-									<rect x="14" y="14" width="6" height="6" rx="1" />
-								</svg>
-							</button>
-						</div>
+
+						<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
 					</div>
 					<div className={styles.projectsWrapper}>
 						<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} currentView={currentView} />

@@ -175,7 +175,7 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 			<li ref={ref}>
 				<span>Chief Reviewer</span>
 				<span className={styles.lines}></span>
-				<a href="">
+				<a href={link} target="_blank" onClick={() => window.gtag("event", "visit_credit_link", { link })}>
 					<span>Oluwaseun Adedire</span>
 				</a>
 			</li>
@@ -183,7 +183,7 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 	}
 	return (
 		<li ref={ref}>
-			<a href="">
+			<a href={link} target="_blank" onClick={() => window.gtag("event", "visit_credit_link", { link })}>
 				<span>{link}</span>
 			</a>
 		</li>

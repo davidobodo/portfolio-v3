@@ -141,34 +141,17 @@ function BaseForm() {
 		setIsSubmitting(true);
 
 		const { name, email, subject, message } = values;
-		// const data = {
-		// 	name,
-		// 	email,
-		// 	subject,
-		// 	message,
-		// };
-
-		const URL = process.env.NEXT_PUBLIC_MAILCHIMP_CONTACT_FORM as string;
-		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/send_mail`;
-		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
-		// const URL = `/api/mail`;
-
-		// // console.log(process.env);
-		// // console.log(URL, "THE URL");
-
 		const data = {
-			fields: {
-				1159: email,
-				1163: subject,
-				1167: message,
-				1171: name,
-			},
-			subscribe: false,
+			name,
+			email,
+			subject,
+			message,
 		};
 
-		console.log(data, "TEH DATA");
+		const URL = process.env.NEXT_PUBLIC_MAILCHIMP_CONTACT_FORM as string;
 
 		try {
+			window.gtag("event", "submit_form");
 			const res = await fetch(URL, {
 				method: "POST",
 				headers: {
@@ -178,11 +161,12 @@ function BaseForm() {
 				mode: "no-cors",
 			});
 
-			console.log(res, "THE RESPONSE");
-
 			if (res.ok) {
-				const data = await res.json();
-				console.log(data);
+				const res2 = await res.json();
+				window.gtag("event", "submit_form_success", {
+					res: res2,
+					req: data,
+				});
 				setServerRes({
 					error: false,
 					message: `🎉🥳 Yipee!!! Thanks ${name}, got your message. Would respond as soon as I can.`,
@@ -192,11 +176,13 @@ function BaseForm() {
 			}
 		} catch (err) {
 			console.log(err);
-			// "That email doesnt exist 😅. Please Check it again"
-			// setServerRes({
-			// 	error: true,
-			// 	message: err.message,
-			// });
+			window.gtag("event", "submit_form_error", {
+				error: err,
+			});
+			setServerRes({
+				error: true,
+				message: err.message,
+			});
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -215,13 +201,7 @@ function BaseForm() {
 					questions, don’t hesitate to use the form.
 				</p>
 			</div>
-			<form
-				noValidate
-				className={styles.form}
-				// onSubmit={onSubmit}
-				action="https://getform.io/f/1569490c-3029-4851-a626-1d7a64f08b40"
-				method="POST"
-			>
+			<form noValidate className={styles.form} onSubmit={onSubmit}>
 				<div className={styles.twoColumns}>
 					<div className={styles.formField}>
 						<label htmlFor="name">Name</label>

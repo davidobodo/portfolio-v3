@@ -48,6 +48,9 @@ export default function use404PageInit() {
 
 			tl.then(() => {
 				setLogoVisibility(false);
+				window.gtag("event", "stay_in_404", {
+					url: router.asPath,
+				});
 			});
 		}
 	};

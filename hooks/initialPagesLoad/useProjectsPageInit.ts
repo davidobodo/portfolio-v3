@@ -1,8 +1,9 @@
 import gsap from "gsap";
-import { useRef, RefObject } from "react";
+import { useRef, RefObject, useState } from "react";
 import { usePageTransitionsContext } from "#/context";
 import { animPageLoaders, sharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
+import { useRouter } from "next/router";
 
 const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
 const { transitionToDarkSection, genericPageBannerAnimation } = sharedAnimations;
@@ -14,21 +15,30 @@ const { transitionToDarkSection, genericPageBannerAnimation } = sharedAnimations
  * 3. Site Credits Page
  */
 
-export default function useGenericPageInit({
+export default function useProjectsPageInit({
 	windowInnerHeight,
 	windowInnerWidth,
 	darkSectionRef,
+	onOpenFilter,
 }: {
 	windowInnerHeight: number;
 	windowInnerWidth: number;
 	darkSectionRef: RefObject<HTMLDivElement>;
+	onOpenFilter: () => void;
 }) {
+	const router = useRouter();
 	const bannerRef = useRef<HTMLDivElement>(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
 
 	const textRefSelector = gsap.utils.selector(textWrapperRef);
+
+	function scrollToProjectsSection() {
+		const tl = gsap.timeline();
+		tl.to(window, { scrollTo: "#projects-list" });
+		return tl;
+	}
 
 	useIsomorphicLayoutEffect(() => {
 		window.scrollTo({
@@ -58,10 +68,17 @@ export default function useGenericPageInit({
 			);
 		}
 
+		if (router.query.open_filter) {
+			master.add(scrollToProjectsSection());
+			master.add(() => {
+				onOpenFilter();
+			});
+		}
+
 		return () => {
 			master.kill();
 		};
-	}, []);
+	}, [router.query.open_filter]);
 
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 	//-----------------------------------------

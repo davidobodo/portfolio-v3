@@ -109,7 +109,7 @@ const ROLES = {
 const KEYBOARD_KEYS = {
 	UP_KEY: 38,
 	DOWN_KEY: 40,
-	ENTER_KEY: 13,
+	ENTER_KEY: 13 || "Enter",
 	SPACE_KEY: 32,
 	TAB_KEY: 9,
 	ESC_KEY: 27,

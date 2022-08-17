@@ -47,12 +47,12 @@ export default function Contact() {
 		});
 	}, []);
 
-	const wrapperRef = useRef(null);
+	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
-		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+		if (wrapperRef.current && footerHeight) {
+			const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
 
-		if (curtain && footerHeight) {
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: wrapperRef.current,
@@ -73,18 +73,22 @@ export default function Contact() {
 	}, [footerHeight]);
 
 	const handleGAEvent = (e) => {
-		console.log(e.target.dataset, "TARGET");
 		const { link } = e.currentTarget.dataset;
 		const { gtag } = window;
 
-		console.log(gtag, "TEH GTAG");
 		switch (link) {
 			case "resume":
-				console.log("HIT THIS SIDE");
-				gtag({
-					category: "Link",
-					action: "Opened My Resume",
-				});
+				gtag("event", "view_resume");
+			case "linkedin":
+				gtag("event", "visit_linkedin");
+			case "twitter":
+				gtag("event", "visit_twitter");
+			case "github":
+				gtag("event", "visit_github");
+			case "email":
+				gtag("event", "click_email");
+			default:
+				return;
 		}
 	};
 
@@ -128,7 +132,7 @@ function Details({
 					<Form />
 				</div>
 			</div>
-			<Social />
+			<Social handleGAEvent={handleGAEvent} />
 		</div>
 	);
 }
@@ -168,11 +172,16 @@ function HelpfulLinks({ handleGAEvent }) {
 				<div className={styles.helpfulLinks}>
 					<h3>Extras</h3>
 					<ul>
+						<a
+							href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing"
+							target="_blank"
+						>
+							<span id="resume">Resume</span>
+						</a>
 						<li>
-							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing" passHref>
-								<a target="_blank" onClick={handleGAEvent} data-link="resume">
-									{" "}
-									<span>Resume</span>
+							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing">
+								<a target="_blank">
+									<span id="resume">Resume</span>
 								</a>
 							</Link>
 						</li>
@@ -192,34 +201,34 @@ function HelpfulLinks({ handleGAEvent }) {
 	);
 }
 
-function Social() {
+function Social({ handleGAEvent }) {
 	return (
 		<div className={styles.social}>
 			<ul>
 				<li>
 					<Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
-						<a target="_blank">
+						<a target="_blank" onClick={handleGAEvent} data-link="linkedin">
 							<span>Linkedin</span>
 						</a>
 					</Link>
 				</li>
 				<li>
-					<Link href="https://github.com/obododavid" passHref>
-						<a target="_blank">
+					<Link href="https://github.com/davidobodo" passHref>
+						<a target="_blank" onClick={handleGAEvent} data-link="github">
 							<span>Github</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="https://twitter.com/phitGeek" passHref>
-						<a target="_blank">
+						<a target="_blank" onClick={handleGAEvent} data-link="twitter">
 							<span>Twitter</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="mailto: obododavid5@gmail.com" passHref>
-						<a>
+						<a target="_blank" onClick={handleGAEvent} data-link="email">
 							<span>Email</span>
 						</a>
 					</Link>

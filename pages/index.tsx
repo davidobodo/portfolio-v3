@@ -1,4 +1,5 @@
 import Head from "next/head";
+import gsap from "gsap";
 import type { NextPage } from "next";
 import styles from "#/styles/_pages/home.module.scss";
 import { useRef, useState } from "react";
@@ -14,6 +15,7 @@ import {
 	useSkillsAnimation,
 	useIsomorphicLayoutEffect,
 	useExcellenceAnimation,
+	useProjectsCurrentView,
 } from "#/hooks";
 import {
 	Banners,
@@ -30,6 +32,7 @@ import {
 	Noise,
 	Excellence,
 	Contact,
+	ProjectsViewSelector,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
 import Link from "next/link";
@@ -54,6 +57,8 @@ const Home: NextPage = () => {
 		workContainerRef,
 
 		mobileWorkContainerRef,
+		onWorkTitleKeyDown,
+		onWorkDetailsKeyDown,
 	} = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
 	const { textWrapperRef: thoughtOneText } = useRevealParagraph();
 	const { textWrapperRef: thoughtTwoText } = useRevealParagraph();
@@ -66,14 +71,7 @@ const Home: NextPage = () => {
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation({});
 
-	const [projectView, setProjectView] = useState<"list" | "grid">("list");
-	useIsomorphicLayoutEffect(() => {
-		if (windowInnerWidth < 768) {
-			setProjectView("grid");
-		} else {
-			setProjectView("list");
-		}
-	}, []);
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
 
 	const { containerRef, containerWidth, textWrapperRef, imageRef } = useExcellenceAnimation();
 	return (
@@ -87,14 +85,19 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
-			<BannerCurtain containerRef={blackCoverRef} />
-			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
+			{/* <BannerCurtain containerRef={blackCoverRef} />
+			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} /> */}
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content}>
-					<div className={styles.aboutWrapper}>
+					{/* <div className={styles.aboutWrapper}>
 						<AlternatingOpacity textsListRef={textsListRef} />
 					</div>
-					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
+					<Work
+						workContainerRef={workContainerRef}
+						mobileWorkContainerRef={mobileWorkContainerRef}
+						onWorkTitleKeyDown={onWorkTitleKeyDown}
+						onWorkDetailsKeyDown={onWorkDetailsKeyDown}
+					/>
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
 					<div className={styles.excellenceWrapper}>
@@ -110,15 +113,20 @@ const Home: NextPage = () => {
 						skillsSectionTitlteRef={skillsSectionTitlteRef}
 						mobileSkillsContainerRef={mobileSkillsContainerRef}
 						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
-					/>
+					/> */}
 
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<ProjectsHeading projectTitleRef={projectTitleRef} />
+
+					<div className={styles.viewSelectorWrapper}>
+						<div></div>
+						<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
+					</div>
 					<Projects
 						onViewProject={onSelectProject}
-						displayedProjects={PROJECTS.slice(0, 5)}
-						currentView={projectView}
+						displayedProjects={PROJECTS.slice(0, 8)}
+						currentView={currentView}
 					/>
 
 					<div className={styles.projectsBtnWrapper}>

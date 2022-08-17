@@ -42,7 +42,7 @@ export default function SingleLetter({
 	return (
 		<article className={styles.letterWrapper} ref={articleRef}>
 			<div className={styles.container}>
-				<a href={url} target="_blank">
+				<a href={url} target="_blank" onClick={() => window.gtag("event", "read_letter", { title })}>
 					<h3>{title}</h3>
 					<p>
 						{date} | {time} read

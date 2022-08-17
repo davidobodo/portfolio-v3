@@ -6,6 +6,7 @@ import { TECH_STACKS } from "#/constants/tech-stacks";
 import { ROLES } from "#/constants";
 import Link from "next/link";
 import { TProject } from "#/interfaces";
+import { useRouter } from "next/router";
 
 type Props = {
 	currProjectId: string;
@@ -17,6 +18,14 @@ type Props = {
 export default function SingleProject({ currProjectId, onClose, modalImgRef, onGoToProject }: Props) {
 	const { currProject, nextProject, prevProject } = fetchProjects(currProjectId);
 
+	const router = useRouter();
+
+	// useEffect(() => {
+	// 	if (currProject?.id) {
+	// 		window.gtag("event", "view_project", { title: currProject.title });
+	// 	}
+	// }, [currProject?.id]);
+
 	if (!currProject) {
 		return (
 			<div className={styles.empty}>
@@ -25,7 +34,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				</p>
 
 				<Link href="/projects" scroll={false}>
-					<a>
+					<a onClick={() => window.gtag("event", "not_found_project", { url: router.asPath })}>
 						Go to Projects
 						<ExternalLink />
 					</a>
@@ -38,10 +47,13 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 
 	return (
 		<div className={styles.container} data-key="project-info">
+			{/* ----------------------------------------------- */}
+			{/* Prev Button Desktop */}
+			{/* ----------------------------------------------- */}
 			{prevProject && (
 				<button
 					value="previous"
-					className={styles.navBtn + " " + styles.btnPrevious}
+					className={styles.desktopNavigator + " " + styles.btnPrevious}
 					aria-label="previous"
 					onClick={() => onGoToProject(prevProject.id)}
 				>
@@ -49,16 +61,25 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				</button>
 			)}
 			<div className={styles.content}>
+				{/* ----------------------------------------------- */}
+				{/* Close Button */}
+				{/* ----------------------------------------------- */}
 				<button onClick={onClose} className={styles.btnClose} data-key="close-button">
 					<span>
 						<strong>↙</strong>
 					</span>
 					<span>Close</span>
 				</button>
+				{/* ----------------------------------------------- */}
+				{/* Title */}
+				{/* ----------------------------------------------- */}
 				<section className={styles.title} data-key="title">
 					<h1>{title}</h1>
 				</section>
 
+				{/* ----------------------------------------------- */}
+				{/* Mobile Links */}
+				{/* ----------------------------------------------- */}
 				<div className={styles.links + " " + styles.mobile} data-key="buttons">
 					<a href="">
 						Visit site
@@ -68,12 +89,20 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 						Github repo <Github />{" "}
 					</a>
 				</div>
+
+				{/* ----------------------------------------------- */}
+				{/* Image */}
+				{/* ----------------------------------------------- */}
 				<div className={styles.image} style={{ backgroundImage: `url(${bgImage})` }} ref={modalImgRef}></div>
 
+				{/* ----------------------------------------------- */}
+				{/* About Project */}
+				{/* ----------------------------------------------- */}
 				<section className={styles.about} data-key="about">
 					<h2>About this project</h2>
-					<p dangerouslySetInnerHTML={{ __html: details }} />
+					<div dangerouslySetInnerHTML={{ __html: details }} />
 
+					{/* <p className={styles.lastUpdate}>Last Updated: 12th January 2012</p> */}
 					{roles?.length > 0 && (
 						<>
 							<h3>Role in Project</h3>
@@ -91,6 +120,9 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					)}
 				</section>
 
+				{/* ----------------------------------------------- */}
+				{/* Tech Sheet */}
+				{/* ----------------------------------------------- */}
 				<section className={styles.tech} data-key="tech">
 					<h2>Technical Sheet</h2>
 					<p>Some noteworthy technologies I got involved with while working on this project.</p>
@@ -109,6 +141,9 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					</ul>
 				</section>
 
+				{/* ----------------------------------------------- */}
+				{/* Desktop Links */}
+				{/* ----------------------------------------------- */}
 				<div className={styles.links + " " + styles.desktop} data-key="buttons">
 					{sitelink && (
 						<a href={sitelink} target="_blank">
@@ -124,10 +159,13 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					)}
 				</div>
 			</div>
+			{/* ----------------------------------------------- */}
+			{/* Next Button Desktop */}
+			{/* ----------------------------------------------- */}
 			{nextProject && (
 				<button
 					value="next"
-					className={styles.navBtn + " " + styles.btnNext}
+					className={styles.desktopNavigator + " " + styles.btnNext}
 					aria-label="previous"
 					onClick={() => onGoToProject(nextProject.id)}
 				>
@@ -135,6 +173,9 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				</button>
 			)}
 
+			{/* ----------------------------------------------- */}
+			{/* Prev and Next Buttons Mobile */}
+			{/* ----------------------------------------------- */}
 			<div className={styles.mobileNavigator}>
 				{prevProject ? (
 					<button value="previous" aria-label="previous" onClick={() => onGoToProject(prevProject.id)}>
