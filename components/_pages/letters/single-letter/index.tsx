@@ -2,6 +2,7 @@ import gsap from "gsap";
 import styles from "./styles.module.scss";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
+import { events, registerEvent } from "#/utils/analytics/events";
 export default function SingleLetter({
 	url,
 	title,
@@ -22,7 +23,9 @@ export default function SingleLetter({
 	const articleRef = useRef(null);
 
 	useIsomorphicLayoutEffect(() => {
-		const tl = gsap.timeline({
+		const anim = gsap.to(articleRef.current, {
+			opacity: 1,
+			y: 0,
 			scrollTrigger: {
 				trigger: articleRef.current,
 				start: "top 80%",
@@ -32,17 +35,19 @@ export default function SingleLetter({
 			},
 		});
 
-		tl.to(articleRef.current, { opacity: 1, y: 0 });
-
 		return () => {
-			tl.scrollTrigger?.kill();
+			anim.scrollTrigger?.kill();
 		};
 	}, []);
 
 	return (
 		<article className={styles.letterWrapper} ref={articleRef}>
 			<div className={styles.container}>
-				<a href={url} target="_blank" onClick={() => window.gtag("event", "read_letter", { title })}>
+				<a
+					href={url}
+					target="_blank"
+					onClick={() => registerEvent(events.pages.letters.viewLetter({ link_url: url, article_title: title }))}
+				>
 					<h3>{title}</h3>
 					<p>
 						{date} | {time} read

@@ -4,6 +4,7 @@ const config = {
 		{
 			name: "formhealth",
 			schedule: "* * * * *", // 7AM GMT
+			// @ts-ignore
 			handler: async (event, success, failure) => {
 				try {
 					const results = await fetch("/api/mail", {
@@ -34,4 +35,5 @@ const config = {
 	],
 };
 
+// @ts-ignore
 export default slater(config);

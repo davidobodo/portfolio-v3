@@ -1,9 +1,7 @@
 import styles from "./styles.module.scss";
-import { KEYBOARD_KEYS, WORK } from "#/constants";
+import { WORK } from "#/constants";
 import { FaintBgText } from "../../../../index";
 import { Ref } from "react";
-import { useIsomorphicLayoutEffect } from "#/hooks";
-import gsap from "gsap";
 
 export type WorkDesktopProps = {
 	workContainerRef: Ref<HTMLDivElement>;
@@ -17,16 +15,11 @@ export default function ViewDesktop({ workContainerRef, onWorkTitleKeyDown, onWo
 			<div className={styles.contentWrapper} data-key="work-tabs">
 				<div className={styles.tabs} onKeyDown={onWorkDetailsKeyDown} tabIndex={0}>
 					<div className={styles.tabHeadersContainer}>
-						<ul className={styles.tabHeaders} data-key="work-companies">
+						<ul className={styles.tabHeaders} data-key="work-companies" onKeyDown={onWorkTitleKeyDown}>
 							<li className={styles.bgGradient} data-key="gradient"></li>
 							{WORK.map((item, i) => {
 								return (
-									<li
-										className={styles.tabHeader}
-										key={i}
-										// onKeyDown={onWorkTitleKeyDown}
-										data-section={i + 1}
-									>
+									<li className={styles.tabHeader} key={i} data-section={i + 1}>
 										{item.company}
 									</li>
 								);

@@ -1,14 +1,12 @@
 import Head from "next/head";
+import styles from "#/styles/_pages/single-project.module.scss";
 import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import styles from "#/styles/_pages/single-project.module.scss";
 import { useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { singleProjectAnimations } from "#/utils/animations";
 import { fetchProjects } from "#/utils";
 import { PROJECTS } from "#/constants/projects";
-import { TProject } from "#/interfaces";
 const { removeCurrentProject } = singleProjectAnimations;
 
 type Props = {

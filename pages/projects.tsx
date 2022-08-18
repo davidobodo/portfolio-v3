@@ -16,7 +16,6 @@ import {
 import styles from "#/styles/_pages/projects.module.scss";
 import {
 	useSelectProjectAnimation,
-	useGenericPageInit,
 	useWindowSize,
 	useIsomorphicLayoutEffect,
 	useProjectsPageInit,
@@ -24,10 +23,11 @@ import {
 } from "#/hooks";
 
 import { PROJECTS } from "#/constants/projects";
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
+import { events, registerEvent } from "#/utils/analytics/events";
 type TFilterBy = "tech-stack" | "project-nature";
 
 const ProjectsPage: NextPage = () => {
@@ -38,9 +38,11 @@ const ProjectsPage: NextPage = () => {
 	const onOpenFilter = () => {
 		if (showFilter) return;
 		setShowFilter(true);
+		registerEvent(events.pages.projects.openProjectsFilter());
 	};
 	const onCloseFilter = () => {
 		setShowFilter(false);
+		registerEvent(events.pages.projects.closeProjectsFilter());
 	};
 
 	const darkSectionRef = useRef(null);
@@ -73,7 +75,7 @@ const ProjectsPage: NextPage = () => {
 	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFilterBy(e.target.value as TFilterBy);
-		window.gtag("event", "filter_projects_by", { value: e.target.value });
+		registerEvent(events.pages.projects.toggleProjectsFilterBy({ filter_by: e.target.value }));
 	};
 	let filterList = [];
 	let currProjects = "All";
@@ -101,10 +103,9 @@ const ProjectsPage: NextPage = () => {
 	// DISPLAYED PROJECTS
 	//---------------------------------------------------------
 	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
+	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: string }) => {
 		const res = PROJECTS.filter((project) => {
 			const { type, tech } = project;
-			window.gtag("event", "filter_projects_key", { value: key });
 
 			if (filterBy === "tech-stack") {
 				return tech.includes(key);
@@ -113,9 +114,10 @@ const ProjectsPage: NextPage = () => {
 			}
 		});
 
+		registerEvent(events.pages.projects.filterProjectsByKey({ filter_key: key }));
 		setDisplayedProjects(res);
 		setFilterKey(key);
-	}, []);
+	};
 
 	const scrollToProjectsList = () => {
 		ScrollTrigger.refresh();

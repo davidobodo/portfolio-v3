@@ -3,6 +3,7 @@ import { TECH_STACKS } from "#/constants/tech-stacks";
 import { FaintBgText } from "../../../../index";
 import { Ref } from "react";
 import Link from "next/link";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 export type SkillsMobileProps = {
 	mobileSkillsContainerRef: Ref<HTMLDivElement>;
@@ -86,9 +87,9 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 								<p>
 									This list could get very long cause of a <strong> developers need to learn everyday </strong>{" "}
 									depending on what provides the best solution to a given problem, so would stop the list here. <br />
-									However you can see a comprehensive list of all "noteworthy" frameworks and Libraries{" "}
+									However you can see a comprehensive list of all &nbsp;noteworthy&nbsp; frameworks and Libraries{" "}
 									<Link href="/projects?open_filter=true" scroll={false}>
-										here.
+										<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>here.</a>
 									</Link>
 								</p>
 							</section>
