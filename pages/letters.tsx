@@ -4,7 +4,8 @@ import { NextPage } from "next";
 import { useRef } from "react";
 import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact } from "#/components";
 import { LETTERS } from "#/constants/letters";
-import { useGenericPageInit, useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
+import { useGenericPageInit, useWindowSize } from "#/hooks";
+
 const Letters: NextPage = () => {
 	const darkSectionRef = useRef(null);
 

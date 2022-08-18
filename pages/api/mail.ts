@@ -1,24 +1,16 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import sgMail from "@sendgrid/mail";
 
-type Data = {
-	name: string;
-};
-
 sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY as string);
 
-async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === "POST") {
-		console.log(req.body, "=========THE BOSY");
-
 		const { name, email, subject, message } = JSON.parse(req.body);
-		console.log(name, email, subject, message);
 		const msg = {
-			to: "obododavid5@gmail.com", // Change to your recipient
-			from: "admin@cadmils.com", // Change to your verified sender
+			to: process.env.NEXT_PUBLIC_MAIL_TO as string, // Change to your recipient
+			from: process.env.NEXT_PUBLIC_MAIL_FROM as string, // Change to your verified sender
 			subject: `${subject}`,
-			// text: "tESTING with a different text",
+			text: "",
 			html: `
 			<div>
 				<h1>From: ${name}</h1>
@@ -28,19 +20,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 			`,
 		};
 
-		console.log(msg);
-
 		try {
-			const data = await sgMail.send(msg);
-
-			console.log(data, "THE DATA AFTER SENDING SUCCESSFULLY");
+			await sgMail.send(msg);
 			return res.status(200).send({ message: "Sent successfully" });
 		} catch (err) {
-			throw err;
+			return res.status(400).send({ message: "Message not sent", err: err });
 		}
 	} else {
-		console.log(process.env);
-		// res.redirect("/");
+		//If User visits this route on the browser (i.e via GET request), just redirect them back home
+		res.redirect("/");
 	}
 }
 

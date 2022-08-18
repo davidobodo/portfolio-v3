@@ -1,6 +1,15 @@
 import styles from "./styles.module.scss";
 import React, { useEffect, useState, memo } from "react";
 import { Spinner } from "../../index";
+import { events, registerEvent } from "#/utils/analytics/events";
+
+class ErrorResponse {
+	constructor(public message: string, public status: number, public response: { data: { message: string } }) {
+		this.message = message;
+		this.status = status;
+		this.response = response;
+	}
+}
 
 //NOTE: Form validation is easiest when one makes use of libraries like formik, react-hooks e.t.c, But this form is too small so no need of using an external library
 function BaseForm() {
@@ -120,16 +129,10 @@ function BaseForm() {
 			isDisabled = false;
 		}
 	}
-	// console.log(hasTouchedAll, errorExists);
-	// console.log(isDisabled, "DISABLED");
-
-	// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
-
-	// console.log(URL, process.env, "te url ");
-
 	//--------------------------------------
 	//ON SUBMIT
 	//--------------------------------------
+	const [messageTimer, setMessageTimer] = useState<NodeJS.Timeout>();
 	const [serverRes, setServerRes] = useState({
 		message: "",
 		error: false,
@@ -148,10 +151,16 @@ function BaseForm() {
 			message,
 		};
 
-		const URL = process.env.NEXT_PUBLIC_MAILCHIMP_CONTACT_FORM as string;
+		const URL = "/api/mail";
 
+		const { submitFormFailure, submitFormStart, submitFormSuccess } = events.shared.contactForm;
 		try {
-			window.gtag("event", "submit_form");
+			registerEvent(
+				submitFormStart({
+					sender_email: email,
+					sender_name: name,
+				})
+			);
 			const res = await fetch(URL, {
 				method: "POST",
 				headers: {
@@ -162,31 +171,48 @@ function BaseForm() {
 			});
 
 			if (res.ok) {
-				const res2 = await res.json();
-				window.gtag("event", "submit_form_success", {
-					res: res2,
-					req: data,
-				});
+				await res.json();
+				registerEvent(
+					submitFormSuccess({
+						sender_email: email,
+						sender_name: name,
+					})
+				);
 				setServerRes({
 					error: false,
 					message: `🎉🥳 Yipee!!! Thanks ${name}, got your message. Would respond as soon as I can.`,
 				});
+
+				const id = setTimeout(() => {
+					setServerRes({
+						error: false,
+						message: "",
+					});
+				}, 5000);
+				setMessageTimer(id);
 			} else {
 				throw res;
 			}
 		} catch (err) {
-			console.log(err);
-			window.gtag("event", "submit_form_error", {
-				error: err,
-			});
-			setServerRes({
-				error: true,
-				message: err.message,
-			});
+			if (err instanceof ErrorResponse) {
+				registerEvent(submitFormFailure({ error: err.message }));
+				setServerRes({
+					error: true,
+					message: err.message,
+				});
+			}
 		} finally {
 			setIsSubmitting(false);
 		}
 	};
+
+	useEffect(() => {
+		return () => {
+			if (messageTimer) {
+				clearTimeout(messageTimer);
+			}
+		};
+	}, [messageTimer]);
 
 	return (
 		<>

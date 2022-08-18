@@ -1,12 +1,11 @@
 import styles from "./styles.module.scss";
 import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/icons";
 import { fetchProjects } from "#/utils";
-import { Ref, useState, useEffect } from "react";
+import { Ref } from "react";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { ROLES } from "#/constants";
 import Link from "next/link";
-import { TProject } from "#/interfaces";
-import { useRouter } from "next/router";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 type Props = {
 	currProjectId: string;
@@ -15,26 +14,43 @@ type Props = {
 	onGoToProject: (id: string) => void;
 };
 
+type TPageGAEvents = "info_view" | "not_found" | "github" | "live_site";
+
 export default function SingleProject({ currProjectId, onClose, modalImgRef, onGoToProject }: Props) {
 	const { currProject, nextProject, prevProject } = fetchProjects(currProjectId);
+	const { viewProjectGithub, viewProjectSite } = events.shared.homeAndProjects;
 
-	const router = useRouter();
-
-	// useEffect(() => {
-	// 	if (currProject?.id) {
-	// 		window.gtag("event", "view_project", { title: currProject.title });
-	// 	}
-	// }, [currProject?.id]);
+	const handlePageGAEvents = (key: TPageGAEvents) => {
+		if (currProject) {
+			switch (key) {
+				case "not_found":
+					registerEvent(events.pages.projects.viewUnknownProject({ project_title: currProjectId }));
+					return;
+				case "github":
+					if (currProject.githublink) {
+						registerEvent(viewProjectGithub({ project_title: currProject.title, link_url: currProject.githublink }));
+					}
+					return;
+				case "live_site":
+					if (currProject.sitelink) {
+						registerEvent(viewProjectSite({ project_title: currProject.title, link_url: currProject.sitelink }));
+					}
+					return;
+				default:
+					return;
+			}
+		}
+	};
 
 	if (!currProject) {
 		return (
 			<div className={styles.empty}>
 				<p>
-					Oops! Sorry I do not have any project by the name: <br /> <span>"{currProjectId}"</span>{" "}
+					Oops! Sorry I do not have any project by the name: <br /> <span>&nbsp;{currProjectId}&nbsp;</span>{" "}
 				</p>
 
 				<Link href="/projects" scroll={false}>
-					<a onClick={() => window.gtag("event", "not_found_project", { url: router.asPath })}>
+					<a onClick={() => handlePageGAEvents("not_found")}>
 						Go to Projects
 						<ExternalLink />
 					</a>
@@ -81,11 +97,11 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{/* Mobile Links */}
 				{/* ----------------------------------------------- */}
 				<div className={styles.links + " " + styles.mobile} data-key="buttons">
-					<a href="">
+					<a href={sitelink} target="_blank" onClick={() => handlePageGAEvents("live_site")}>
 						Visit site
 						<ExternalLink />{" "}
 					</a>
-					<a href="">
+					<a href={githublink} target="_blank" onClick={() => handlePageGAEvents("github")}>
 						Github repo <Github />{" "}
 					</a>
 				</div>
@@ -131,8 +147,10 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 						{tech.map((item) => {
 							const tool = TECH_STACKS[item];
 
+							if (!tool) return null;
+
 							return (
-								<li>
+								<li key={tool.key}>
 									<span className={styles.circle}></span>
 									{tool?.label}
 								</li>
@@ -146,14 +164,14 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{/* ----------------------------------------------- */}
 				<div className={styles.links + " " + styles.desktop} data-key="buttons">
 					{sitelink && (
-						<a href={sitelink} target="_blank">
+						<a href={sitelink} target="_blank" onClick={() => handlePageGAEvents("live_site")}>
 							Visit site
 							<ExternalLink />{" "}
 						</a>
 					)}
 
 					{githublink && (
-						<a href={githublink} target="_blank">
+						<a href={githublink} target="_blank" onClick={() => handlePageGAEvents("github")}>
 							Github repo <Github />{" "}
 						</a>
 					)}

@@ -4,6 +4,7 @@ import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
+import { events, registerEvent } from "#/utils/analytics/events";
 const { fadeIn } = sharedAnimations;
 type TCredit = {
 	link: string;
@@ -170,12 +171,16 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 		}
 	}, []);
 
+	const handleGAEvent = () => {
+		registerEvent(events.pages.credits.viewCredit({ link_url: link }));
+	};
+
 	if (role && name) {
 		return (
 			<li ref={ref}>
 				<span>Chief Reviewer</span>
 				<span className={styles.lines}></span>
-				<a href={link} target="_blank" onClick={() => window.gtag("event", "visit_credit_link", { link })}>
+				<a href={link} target="_blank" onClick={handleGAEvent}>
 					<span>Oluwaseun Adedire</span>
 				</a>
 			</li>
@@ -183,7 +188,7 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 	}
 	return (
 		<li ref={ref}>
-			<a href={link} target="_blank" onClick={() => window.gtag("event", "visit_credit_link", { link })}>
+			<a href={link} target="_blank" onClick={handleGAEvent}>
 				<span>{link}</span>
 			</a>
 		</li>

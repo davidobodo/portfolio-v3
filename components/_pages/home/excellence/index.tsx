@@ -17,7 +17,7 @@ export default function Excellence({
 			<div className={styles.container} style={{ width: containerWidth + "px" }}>
 				<Text textWrapperRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
 
-				<Image imageRef={imageRef} />
+				<BgImage imageRef={imageRef} />
 			</div>
 		</div>
 	);
@@ -48,6 +48,6 @@ function Text({
 	);
 }
 
-function Image({ imageRef }: { imageRef: Ref<HTMLDivElement> }) {
+function BgImage({ imageRef }: { imageRef: Ref<HTMLDivElement> }) {
 	return <div className={styles.bgImage} ref={imageRef}></div>;
 }

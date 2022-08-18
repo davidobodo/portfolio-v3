@@ -5,10 +5,9 @@ import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
 import gsap from "gsap";
-import { useRouter } from "next/router";
+import { events, registerEvent } from "#/utils/analytics/events";
 export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
-	const router = useRouter();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
 	const [footerHeight, setFooterHeight] = useState(10);
@@ -59,10 +58,10 @@ export default function Contact() {
 					start: "top bottom",
 					end: "bottom bottom",
 					scrub: true,
-					toggleActions: "restart complete restart reverse",
+					toggleActions: "restart complete restart reset",
 				},
 			});
-			tl.to(curtain, { zIndex: 2, duration: 0 });
+			tl.to(curtain, { zIndex: 2, duration: 0.1 });
 			tl.to(curtain, {
 				scaleY: 0,
 			});
@@ -72,21 +71,25 @@ export default function Contact() {
 		}
 	}, [footerHeight]);
 
-	const handleGAEvent = (e) => {
+	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		const { link } = e.currentTarget.dataset;
-		const { gtag } = window;
-
+		const { linkedin, twitter, resume, github, clickEmail } = events.shared.contactForm;
 		switch (link) {
 			case "resume":
-				gtag("event", "view_resume");
+				registerEvent(resume());
+				return;
 			case "linkedin":
-				gtag("event", "visit_linkedin");
+				registerEvent(linkedin());
+				return;
 			case "twitter":
-				gtag("event", "visit_twitter");
+				registerEvent(twitter());
+				return;
 			case "github":
-				gtag("event", "visit_github");
+				registerEvent(github());
+				return;
 			case "email":
-				gtag("event", "click_email");
+				registerEvent(clickEmail());
+				return;
 			default:
 				return;
 		}
@@ -94,7 +97,7 @@ export default function Contact() {
 
 	return (
 		<footer ref={wrapperRef} className={styles.wrapper}>
-			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} handleGAEvent={handleGAEvent} />
+			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} handlePageGAEvents={handlePageGAEvents} />
 
 			<div className={styles.placeholderWrapper}>
 				<SectionPlaceholder
@@ -111,10 +114,11 @@ export default function Contact() {
 function Details({
 	containerRef,
 	isFooterFixed,
-	handleGAEvent,
+	handlePageGAEvents,
 }: {
 	containerRef: Ref<HTMLDivElement>;
 	isFooterFixed: boolean;
+	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }) {
 	return (
 		<div
@@ -126,18 +130,22 @@ function Details({
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>
-					<HelpfulLinks handleGAEvent={handleGAEvent} />
+					<HelpfulLinks handlePageGAEvents={handlePageGAEvents} />
 				</div>
 				<div className={styles.formSection}>
 					<Form />
 				</div>
 			</div>
-			<Social handleGAEvent={handleGAEvent} />
+			<Social handlePageGAEvents={handlePageGAEvents} />
 		</div>
 	);
 }
 
-function HelpfulLinks({ handleGAEvent }) {
+function HelpfulLinks({
+	handlePageGAEvents,
+}: {
+	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}) {
 	return (
 		<>
 			<div>
@@ -172,16 +180,10 @@ function HelpfulLinks({ handleGAEvent }) {
 				<div className={styles.helpfulLinks}>
 					<h3>Extras</h3>
 					<ul>
-						<a
-							href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing"
-							target="_blank"
-						>
-							<span id="resume">Resume</span>
-						</a>
 						<li>
 							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing">
-								<a target="_blank">
-									<span id="resume">Resume</span>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="resume">
+									<span>Resume</span>
 								</a>
 							</Link>
 						</li>
@@ -201,34 +203,38 @@ function HelpfulLinks({ handleGAEvent }) {
 	);
 }
 
-function Social({ handleGAEvent }) {
+function Social({
+	handlePageGAEvents,
+}: {
+	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}) {
 	return (
 		<div className={styles.social}>
 			<ul>
 				<li>
-					<Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
-						<a target="_blank" onClick={handleGAEvent} data-link="linkedin">
+					<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
+						<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
 							<span>Linkedin</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="https://github.com/davidobodo" passHref>
-						<a target="_blank" onClick={handleGAEvent} data-link="github">
+						<a target="_blank" onClick={handlePageGAEvents} data-link="github">
 							<span>Github</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="https://twitter.com/phitGeek" passHref>
-						<a target="_blank" onClick={handleGAEvent} data-link="twitter">
+						<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
 							<span>Twitter</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="mailto: obododavid5@gmail.com" passHref>
-						<a target="_blank" onClick={handleGAEvent} data-link="email">
+						<a target="_blank" onClick={handlePageGAEvents} data-link="email">
 							<span>Email</span>
 						</a>
 					</Link>

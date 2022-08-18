@@ -1,9 +1,10 @@
 {
-    "extends": "next/core-web-vitals",
-    "plugins": ["@typescript-eslint"],
-    "rules": {
-        "react/jsx-no-duplicate-props": "error",
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "error"
-    }
+	"extends": "next/core-web-vitals",
+	"plugins": ["@typescript-eslint"],
+	"rules": {
+		"react/jsx-no-duplicate-props": "error",
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": "error",
+		"react/jsx-no-target-blank": "off"
+	}
 }

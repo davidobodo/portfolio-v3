@@ -4,6 +4,7 @@ import { usePageTransitionsContext } from "#/context";
 import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
 const { bannerAnimation, stopRedirectAnimation } = notFoundPageAnimations;
@@ -48,9 +49,7 @@ export default function use404PageInit() {
 
 			tl.then(() => {
 				setLogoVisibility(false);
-				window.gtag("event", "stay_in_404", {
-					url: router.asPath,
-				});
+				registerEvent(events.pages.notFound.remainLost());
 			});
 		}
 	};
