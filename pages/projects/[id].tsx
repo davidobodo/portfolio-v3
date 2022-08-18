@@ -29,7 +29,7 @@ export default function Project(props: Props) {
 		if (modalRef.current && modalImgRef.current) {
 			const tl = removeCurrentProject({
 				modalContainer: modalRef.current,
-				modalImage: modalImgRef.current,
+				modalMedia: modalImgRef.current,
 			});
 
 			tl.to(modalRef.current, { opacity: 0 });

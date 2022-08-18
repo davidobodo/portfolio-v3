@@ -23,6 +23,7 @@ import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
 import PageTransitionLayout from "./page-transition-layout";
 import ProjectsViewSelector from "./projects/view-selector";
+import Slider from "./slider";
 
 const { Button, Radio } = Atoms;
 const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
@@ -63,4 +64,5 @@ export {
 	Excellence,
 	PageTransitionLayout,
 	ProjectsViewSelector,
+	Slider,
 };

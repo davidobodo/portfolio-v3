@@ -1,0 +1,99 @@
+@import "#/styles/globals.module.scss";
+
+.slider {
+	overflow: hidden;
+	position: relative;
+
+	.control {
+		position: absolute;
+		width: clamp(3rem, 5%, 6rem);
+		z-index: 1;
+		height: 100%;
+		cursor: pointer;
+		border: 0px;
+		cursor: pointer;
+
+		svg {
+			width: 2rem;
+			stroke: var(--white);
+			opacity: 0;
+			will-change: opacity;
+			transition: opacity 200ms ease-in-out;
+
+			@media (min-width: $md) {
+				width: 4rem;
+			}
+		}
+
+		&:hover {
+			svg {
+				opacity: 1;
+			}
+		}
+
+		&.prev {
+			left: 0px;
+			top: 0px;
+			background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.7));
+		}
+
+		&.next {
+			right: 0px;
+			top: 0px;
+			background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.7));
+		}
+	}
+
+	.sliderInner {
+		display: flex;
+		will-change: transform;
+		transition: transform 200ms ease-in-out;
+
+		.item {
+			background-color: red;
+			padding-top: 62.5%;
+			width: 100%;
+			flex-shrink: 0;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-image: url(https://images.unsplash.com/photo-1657299156271-d5a435dd65b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
+
+			&:nth-child(1) {
+				background-color: green;
+			}
+			&:nth-child(2) {
+				background-color: yellow;
+			}
+			&:nth-child(3) {
+				background-color: purple;
+			}
+			&:nth-child(4) {
+				background-color: pink;
+			}
+		}
+	}
+}
+
+.indicators {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+
+	.indicator {
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+		margin-right: 1rem;
+		cursor: pointer;
+		border: 0px;
+		background-color: rgba(255, 255, 255, 0.2);
+
+		&.active {
+			background-color: var(--ash);
+		}
+
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
+}

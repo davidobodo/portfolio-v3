@@ -42,7 +42,7 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 		if (modal && modalImage) {
 			const tl = removeCurrentProject({
 				modalContainer: modal,
-				modalImage: modalImage,
+				modalMedia: modalImage,
 			});
 
 			tl.then(() => {
@@ -50,7 +50,7 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 				window.history.pushState(null, "New Page Title", `/projects/${id}`);
 				displayNextProject({
 					modalContainer: modal,
-					modalImage: modalImage,
+					modalMedia: modalImage,
 				});
 			});
 		}

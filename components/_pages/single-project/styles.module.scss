@@ -196,16 +196,19 @@
 		.title {
 		}
 
-		.image {
-			// height: 500px;
-			padding-top: 62.5%;
+		.media {
 			margin-bottom: 6rem;
 
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-color: var(--ash);
+			.image {
+				// height: 500px;
+				padding-top: 62.5%;
 
-			will-change: transform;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-color: var(--ash);
+
+				will-change: transform;
+			}
 		}
 
 		.about {
@@ -312,7 +315,7 @@
 
 	@media (min-width: $md) {
 		display: block;
-		background-color: rgba(134, 134, 139, 0.1);
+		// background-color: rgba(134, 134, 139, 0.1);
 	}
 
 	svg {

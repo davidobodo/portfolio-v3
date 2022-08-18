@@ -26,7 +26,7 @@ export const PROJECTS: TProject[] = [
 		id: "prodeus",
 		title: "Prodeus",
 		details: `
-		<p>Web application equivalane tof the Prodeus ChromE Extension, but with more features.</p>
+		<p>Web application equivalane tof the Prodeus Chrome Extension, but with more features.</p>
 		<p>Responsible for about 98% of the entire frontend architecture.</p>
 		<p>This has to be one of my proudest projects, because the feature list cut across some very challenging and exciting front sectors. </p>
 		<p>From <span>cache invalidation </span> (which everyone knows is one of the most tricky thing in development😅), 
