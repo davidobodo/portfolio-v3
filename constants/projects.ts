@@ -375,12 +375,38 @@ export const PROJECTS: TProject[] = [
 	},
 	{
 		id: "ozidi",
-		title: "Ozidi",
-		details: "My first portfolio site",
-		githublink: "",
-		roles: [],
+		title: "Ozidi/Agricpay",
+		details: `
+		<p><span>Ozidi</span> which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small-scale farmers in "Nigeria" get access to loans.</a> It is of no news that in order for 
+		any business to request for loans from banks and other loan agencies, the owner must have some form of <span>collateral to give</span> should in case the individual is not able to pay the loan. Unfortunately most smale scale farmers 
+		do not have any collateral to give, hence the need for Agricpay.
+		</p>
+		<p>
+		Agricpay aimed at solving this problem, by inculcating in the farmers mindset the <span>habit of saving</span>. Using this approach meant in the long run the farmer would be borrowing his/her own money
+		</p>
+
+		<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span> , together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>, we set out to build a 
+		fully functional dashboard to help with Agricpays vision.
+		</p>
+		<div>
+			<p>Some of the features included:</p>
+			<ul>
+				<li>- Admin authentication</li>
+				<li>- Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
+				<li>- History of all recharge cards generated</li>
+				<li>- Farmers data</li>
+			</ul>
+		</div>
+
+		<p>Unfortunately, not all startups reach the "promise land" irrespective of a solid technology, because there are more things asides from the tech involved in the success of a business. So the live links are currently down, however for curiousity sake 
+		I believe you could still visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> as well as <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
+		</p>
+
+		<p><span>Project span: July 2020 - September 2020.</span></p>
+		`,
+		roles: ["design", "fe"],
 		sitelink: "",
-		tech: ["gsap", "three.js"],
+		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
 		bgImage: "",
 		bgColor: COLORS[2],
 		type: TYPES[1],

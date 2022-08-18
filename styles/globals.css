@@ -109,7 +109,7 @@ body::-webkit-scrollbar-thumb {
 } */
 
 .hide {
-	/* overflow: hidden !important; */
+	overflow: hidden !important;
 }
 
 h1,

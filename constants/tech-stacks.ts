@@ -210,6 +210,11 @@ export const TECH_STACKS: Record<string, TTech> = {
 		label: "Google Maps",
 		link: "",
 	},
+	googleanalytics: {
+		key: "googleanalytics",
+		label: "Google Analytics",
+		link: "",
+	},
 	storybook: {
 		key: "storybook",
 		label: "Storybook",
@@ -238,6 +243,11 @@ export const TECH_STACKS: Record<string, TTech> = {
 	jquery: {
 		key: "jquery",
 		label: "JQuery",
+		link: "",
+	},
+	enzyme: {
+		key: "enzyme",
+		label: "Enzyme",
 		link: "",
 	},
 };

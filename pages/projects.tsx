@@ -104,18 +104,22 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
 	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: string }) => {
-		const res = PROJECTS.filter((project) => {
-			const { type, tech } = project;
+		let filteredProjects = PROJECTS;
 
-			if (filterBy === "tech-stack") {
-				return tech.includes(key);
-			} else {
-				return type === key;
-			}
-		});
+		if (key !== "all") {
+			filteredProjects = PROJECTS.filter((project) => {
+				const { type, tech } = project;
+
+				if (filterBy === "tech-stack") {
+					return tech.includes(key);
+				} else {
+					return type === key;
+				}
+			});
+		}
 
 		registerEvent(events.pages.projects.filterProjectsByKey({ filter_key: key }));
-		setDisplayedProjects(res);
+		setDisplayedProjects(filteredProjects);
 		setFilterKey(key);
 	};
 
