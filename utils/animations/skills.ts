@@ -31,6 +31,7 @@ class SkillsSectionAnimations {
 
 			if (paragraph) {
 				timelineActions.push({ target: paragraph, vars: { opacity: 1 } });
+				timelineActions.push({ isLabel: true, label: "full-section-is-visible" });
 			}
 		}
 
@@ -59,6 +60,7 @@ class SkillsSectionAnimations {
 
 		if (paragraph) {
 			sectionTimline.push({ target: paragraph, vars: { opacity: 1 } });
+			sectionTimline.push({ isLabel: true, label: "full-section-is-visible" });
 		}
 		return sectionTimline;
 	}
@@ -124,6 +126,12 @@ class SkillsSectionAnimations {
 				scrub: true,
 				pin: contentWrapper,
 				pinSpacing: false,
+				snap: {
+					snapTo: "labels",
+					duration: { min: 0.2, max: 2 },
+					delay: 0.1,
+					ease: "power1.inOut",
+				},
 				onUpdate: (self) => {
 					// Displace the faintbg text
 					const yDisplacement = animateFaintSvg({
@@ -185,6 +193,12 @@ class SkillsSectionAnimations {
 				scrub: true,
 				pin: contentWrapper,
 				pinSpacing: false,
+				snap: {
+					snapTo: "labels",
+					duration: { min: 0.2, max: 2 },
+					delay: 0.1,
+					ease: "power1.inOut",
+				},
 				onUpdate: (self) => {
 					// Displace the faintbg text
 					const yDisplacement = animateFaintSvg({

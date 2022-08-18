@@ -1,9 +1,10 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity } from "#/components";
+import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
+import { events, registerEvent } from "#/utils/analytics/events";
 const { fadeIn } = sharedAnimations;
 type TCredit = {
 	link: string;
@@ -102,9 +103,13 @@ export default function Credit() {
 	return (
 		<>
 			<Head>
-				<title>David Obodo - Credits</title>
-				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<title>David Obodo | Credits</title>
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
+
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 
@@ -125,7 +130,7 @@ export default function Credit() {
 					</div>
 
 					<section>
-						<h3>Sites/Resources</h3>
+						<h2>Sites/Resources</h2>
 						<ul className={styles.list}>
 							{SITES.map((item, i) => {
 								const { link } = item;
@@ -134,7 +139,7 @@ export default function Credit() {
 						</ul>
 					</section>
 					<section>
-						<h3>People</h3>
+						<h2>People</h2>
 
 						<ul className={styles.people}>
 							{PEOPLE.map((item, i) => {
@@ -147,6 +152,7 @@ export default function Credit() {
 			</Layout.DarkSection>
 
 			<Noise />
+			<Contact />
 		</>
 	);
 }
@@ -165,12 +171,16 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 		}
 	}, []);
 
+	const handleGAEvent = () => {
+		registerEvent(events.pages.credits.viewCredit({ link_url: link }));
+	};
+
 	if (role && name) {
 		return (
 			<li ref={ref}>
 				<span>Chief Reviewer</span>
 				<span className={styles.lines}></span>
-				<a href="">
+				<a href={link} target="_blank" onClick={handleGAEvent}>
 					<span>Oluwaseun Adedire</span>
 				</a>
 			</li>
@@ -178,7 +188,7 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 	}
 	return (
 		<li ref={ref}>
-			<a href="">
+			<a href={link} target="_blank" onClick={handleGAEvent}>
 				<span>{link}</span>
 			</a>
 		</li>

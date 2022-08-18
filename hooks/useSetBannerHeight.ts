@@ -22,7 +22,7 @@ export default function useSetBannerHeight({
 		if (windowInnerHeight) {
 			setBannerHeight(windowInnerHeight);
 		}
-	}, []);
+	}, [windowInnerWidth]);
 
 	// If user is on a desktop, then change the banner height when the window resizes
 	useIsomorphicLayoutEffect(() => {

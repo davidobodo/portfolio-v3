@@ -103,7 +103,9 @@ class SharedAnimations {
 	}
 
 	fadeIn({ node }: { node: Element }) {
-		const tl = gsap.timeline({
+		const anim = gsap.to(node, {
+			opacity: 1,
+			y: 0,
 			scrollTrigger: {
 				trigger: node,
 				start: "top 80%",
@@ -113,17 +115,22 @@ class SharedAnimations {
 			},
 		});
 
-		tl.to(node, { opacity: 1, y: 0 });
-
-		return tl;
+		return anim;
 	}
 
-	genericPageBannerAnimation(children: HTMLHeadingElement[], scrollIndicatorNode: HTMLDivElement) {
+	genericPageBannerAnimation({
+		children,
+		scrollIndicatorNode,
+	}: {
+		children: HTMLHeadingElement[];
+		scrollIndicatorNode: HTMLDivElement;
+	}) {
 		// const { children } = node;
 		const tl = gsap.timeline({});
 
 		//CREATE TIMELINE ACTIONS
 
+		// Make sure page is not scrollable until banner animation is complete
 		tl.add(() => {
 			document.querySelector("body")?.classList.add("hide");
 		});
@@ -148,6 +155,7 @@ class SharedAnimations {
 
 		tl.to(scrollIndicatorNode, { opacity: 1 });
 
+		// Make oage scrollable, since banner animation has been completed
 		tl.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
 		});

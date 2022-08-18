@@ -6,8 +6,8 @@ export default function Routetransition({
 	layersWrapperRef,
 	loadingTextsRef,
 }: {
-	layersWrapperRef: Ref<HTMLDivElement>;
-	loadingTextsRef: Ref<HTMLDivElement>;
+	layersWrapperRef?: Ref<HTMLDivElement>;
+	loadingTextsRef?: Ref<HTMLDivElement>;
 }) {
 	const texts = useRef(["Loading...", `It's coming...`, "Easy there tiger...", "Just some slow network..."]).current;
 

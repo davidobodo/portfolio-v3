@@ -17,12 +17,11 @@
 		width: 900px;
 	}
 
-	ul {
-		list-style: none;
+	p {
 		margin: auto;
 		width: 100%;
 
-		li {
+		span {
 			font-family: sf-pro-bold;
 			font-weight: 400;
 			letter-spacing: -0.015em;
@@ -30,6 +29,7 @@
 			font-size: 32px;
 			line-height: 1.4;
 			opacity: 0.2;
+			display: block;
 
 			@media (min-width: $lg) {
 				line-height: 1.05;

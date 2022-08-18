@@ -1,5 +1,8 @@
 @import "#/styles/globals.module.scss";
 
+.wrapper {
+	position: relative;
+}
 .container {
 	background-color: var(--light-brown);
 	width: 100%;
@@ -201,4 +204,14 @@
 	@media (min-width: $md) {
 		display: block;
 	}
+}
+
+.blackCurtain {
+	height: 50vh;
+	background-color: var(--black);
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	transform-origin: bottom;
+	z-index: 0;
 }

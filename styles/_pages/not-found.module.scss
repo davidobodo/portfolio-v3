@@ -2,7 +2,7 @@
 
 .main {
 	position: relative;
-	z-index: 1;
+	z-index: var(--z-index-content);
 	// height: 100vh;
 	background-color: var(--light-brown);
 
@@ -15,10 +15,11 @@
 		padding: 8rem 2rem 2rem;
 
 		@media (min-width: $md) {
-			padding: 10rem 5rem 5rem;
+			padding: 10rem 6rem 5rem;
 		}
 
-		h1 {
+		h1,
+		h2 {
 			font-weight: 500;
 			font-size: 3rem;
 
@@ -35,7 +36,7 @@
 		.top {
 			opacity: 0;
 			transform: translateY(100px);
-			h1 {
+			h2 {
 				span {
 					background: linear-gradient(to right, black, var(--brown));
 					line-height: 0.8em;
@@ -70,9 +71,39 @@
 					cursor: pointer;
 					color: var(--black);
 					font-size: 1.6rem;
+					position: relative;
 
 					@media (min-width: $xl) {
 						font-size: 2.4rem;
+					}
+
+					span {
+						position: relative;
+					}
+
+					&::before {
+						content: "";
+						display: block;
+						width: 0%;
+						height: 100%;
+						position: absolute;
+						z-index: 0;
+						left: 0;
+						top: 0;
+						background: var(--black);
+						transition: width 200ms ease-in-out;
+					}
+
+					&:hover,
+					&:active,
+					&:focus {
+						color: var(--light-brown);
+						text-decoration: none;
+						outline: none;
+
+						&:before {
+							width: 100%;
+						}
 					}
 				}
 			}

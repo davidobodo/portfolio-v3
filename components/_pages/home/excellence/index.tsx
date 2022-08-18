@@ -1,55 +1,37 @@
 import styles from "./styles.module.scss";
-import gsap from "gsap";
-import { useIsomorphicLayoutEffect } from "#/hooks";
-import { useRef, Ref } from "react";
+import { Ref } from "react";
 
-export default function Excellence() {
-	const containerRef = useRef(null);
-	const textWrapperRef = useRef<HTMLDivElement>(null);
-	const imageRef = useRef(null);
-
-	useIsomorphicLayoutEffect(() => {
-		if (textWrapperRef.current) {
-			const textWidth = textWrapperRef.current?.scrollWidth;
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					start: "top top",
-					trigger: containerRef.current,
-					invalidateOnRefresh: true,
-					anticipatePin: 1,
-					pin: true,
-					scrub: 1,
-					pinSpacing: true,
-					markers: true,
-					end: () => "+=" + textWrapperRef.current?.offsetWidth,
-				},
-			});
-
-			tl.to(textWrapperRef.current, {
-				x: () => -(textWidth - document.documentElement.clientWidth) + "px",
-				ease: "none",
-			});
-			tl.to(textWrapperRef.current.querySelector("svg"), {
-				scale: 60,
-				// x: -6300,
-			});
-
-			return () => {
-				tl.scrollTrigger?.kill();
-			};
-		}
-	}, []);
+export default function Excellence({
+	containerRef,
+	containerWidth,
+	textWrapperRef,
+	imageRef,
+}: {
+	containerRef: Ref<HTMLDivElement>;
+	containerWidth?: number;
+	textWrapperRef: Ref<HTMLDivElement>;
+	imageRef: Ref<HTMLDivElement>;
+}) {
 	return (
-		<div className={styles.container} ref={containerRef}>
-			<Text containerRef={textWrapperRef} />
-			<Image containerRef={imageRef} />
+		<div data-key="test" ref={containerRef}>
+			<div className={styles.container} style={{ width: containerWidth + "px" }}>
+				<Text textWrapperRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
+
+				<BgImage imageRef={imageRef} />
+			</div>
 		</div>
 	);
 }
 
-function Text({ containerRef }: { containerRef: Ref<HTMLDivElement> }) {
+function Text({
+	textWrapperRef,
+	style,
+}: {
+	textWrapperRef: Ref<HTMLDivElement>;
+	style: Record<string, string | number>;
+}) {
 	return (
-		<div className={styles.textWrapper} ref={containerRef}>
+		<div className={styles.textWrapper} ref={textWrapperRef} style={{ ...style }}>
 			<div className={styles.textInner}>
 				<svg viewBox="0 0 1225.0208 437.09163">
 					<defs id="defs842" />
@@ -66,6 +48,6 @@ function Text({ containerRef }: { containerRef: Ref<HTMLDivElement> }) {
 	);
 }
 
-function Image({ containerRef }: { containerRef: Ref<HTMLDivElement> }) {
-	return <div className={styles.bgImage} ref={containerRef}></div>;
+function BgImage({ imageRef }: { imageRef: Ref<HTMLDivElement> }) {
+	return <div className={styles.bgImage} ref={imageRef}></div>;
 }

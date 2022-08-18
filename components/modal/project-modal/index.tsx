@@ -1,6 +1,5 @@
-import { Modal, SingleProject, Noise } from "#/components";
 import styles from "./styles.module.scss";
-
+import { Modal, SingleProject, Noise } from "#/components";
 import { Ref } from "react";
 type Props = {
 	selectedProjectId: string;

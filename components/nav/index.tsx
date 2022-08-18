@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useState } from "react";
 import { Logo } from "../index";
+import Link from "next/link";
 
 export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwaysVisible?: boolean; color?: string }) {
 	const [isVisible, setIsVisible] = useState(false);
@@ -33,5 +34,11 @@ export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwa
 			};
 		}
 	}, [alwaysVisible]);
-	return <Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />;
+	return (
+		<Link href="/" scroll={false}>
+			<a>
+				<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
+			</a>
+		</Link>
+	);
 }

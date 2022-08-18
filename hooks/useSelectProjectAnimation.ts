@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { singleProjectAnimations } from "#/utils/animations";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjectAnimations;
-export default function useSelectProjectAnimation() {
+export default function useSelectProjectAnimation({ initialId = "" }: { initialId?: string }) {
 	const router = useRouter();
-	const [selectedProjectId, setSelectedProjectId] = useState<string>("");
+	const [selectedProjectId, setSelectedProjectId] = useState<string>(initialId);
 	const sourceElem = useRef<HTMLDivElement | null>(null);
 	const modalImgRef = useRef<HTMLDivElement>(null);
 	const modalRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,8 @@ export default function useSelectProjectAnimation() {
 		const selectedGridBox = e.currentTarget as HTMLDivElement;
 		sourceElem.current = type === "list-item" ? floatingBox : selectedGridBox;
 		window.history.pushState(null, "New Page Title", `/projects/${id}`);
+
+		registerEvent(events.shared.homeAndProjects.viewProjectInfo({ project_title: id as string }));
 		setSelectedProjectId(id as string);
 		setIsOpen(true);
 	};
@@ -32,7 +35,7 @@ export default function useSelectProjectAnimation() {
 		//Scroll to top
 		const elem = document.querySelector("[data-key='project-info']") as HTMLDivElement;
 		elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-
+		registerEvent(events.shared.homeAndProjects.viewProjectInfo({ project_title: id as string }));
 		const modal = modalRef.current;
 		const modalImage = modalImgRef.current;
 

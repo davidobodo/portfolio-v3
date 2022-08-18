@@ -5,23 +5,16 @@ export default function About({
 	textsListRef,
 	textsList = ABOUT_NOTE,
 }: {
-	textsListRef: Ref<HTMLUListElement>;
+	textsListRef: Ref<HTMLParagraphElement>;
 	textsList?: string[];
 }) {
 	return (
 		<div className={styles.container}>
-			<ul ref={textsListRef}>
+			<p ref={textsListRef}>
 				{textsList.map((text, i) => {
-					return <li key={i}>{text}</li>;
+					return <span key={i}>{text}</span>;
 				})}
-			</ul>
+			</p>
 		</div>
-		// <div className={styles.container}>
-		// 	<ul ref={textsListRef}>
-		// 		{textsList.map((text, i) => {
-		// 			return <li key={i}>{text}</li>;
-		// 		})}
-		// 	</ul>
-		// </div>
 	);
 }

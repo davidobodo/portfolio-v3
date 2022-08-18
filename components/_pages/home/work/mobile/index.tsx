@@ -29,15 +29,12 @@ export default function ViewMobile({ mobileWorkContainerRef }: WorkMobileProps) 
 								<div className={styles.tabDetail} key={i}>
 									<section>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
-
 										<span>{range}</span>
-
 										<ul>
 											<li> {title}</li>
-
 											{location && <li> {location}</li>}
 											<li>
-												<a href={url} target="_blank" rel="noreferrer">
+												<a href={url} target="_blank">
 													{urlLabel ? urlLabel : url}
 												</a>
 											</li>

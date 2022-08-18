@@ -10,80 +10,73 @@ import {
 	BannerCurtain,
 	Filter,
 	ProjectsFilter,
-	ProgressBar,
+	Contact,
+	ProjectsViewSelector,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
-import { useSelectProjectAnimation, useGenericPageInit, useWindowSize, useIsomorphicLayoutEffect } from "#/hooks";
+import {
+	useSelectProjectAnimation,
+	useWindowSize,
+	useIsomorphicLayoutEffect,
+	useProjectsPageInit,
+	useProjectsCurrentView,
+} from "#/hooks";
 
 import { PROJECTS } from "#/constants/projects";
-import { useState, useRef, useCallback } from "react";
-import { useRadialGradientAnimContext } from "#/state";
+import { useState, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
+import { events, registerEvent } from "#/utils/analytics/events";
 type TFilterBy = "tech-stack" | "project-nature";
 
 const ProjectsPage: NextPage = () => {
-	const darkSectionRef = useRef(null);
-	const contentRef = useRef(null);
-
-	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
-	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useGenericPageInit({
-		windowInnerHeight,
-		windowInnerWidth,
-		darkSectionRef,
-	});
-	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
-		useSelectProjectAnimation();
-
-	//-----------------------------------------
-	// TOGGLE FILTER
-	//-----------------------------------------
+	//---------------------------------------------------------
+	// TOGGLE FILTER DISPLAY
+	//---------------------------------------------------------
 	const [showFilter, setShowFilter] = useState(false);
-
 	const onOpenFilter = () => {
 		if (showFilter) return;
 		setShowFilter(true);
+		registerEvent(events.pages.projects.openProjectsFilter());
 	};
-
 	const onCloseFilter = () => {
 		setShowFilter(false);
+		registerEvent(events.pages.projects.closeProjectsFilter());
 	};
-	const [filterKey, setFilterKey] = useState("all");
 
-	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = useCallback(({ key, filterBy }: { key: string; filterBy: string }) => {
-		const res = PROJECTS.filter((project) => {
-			const { type, tech } = project;
+	const darkSectionRef = useRef(null);
+	const contentRef = useRef(null);
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { textWrapperRef, scrollIndicatorRef, blackCoverRef, bannerRef, bannerHeight } = useProjectsPageInit({
+		windowInnerHeight,
+		windowInnerWidth,
+		darkSectionRef,
+		onOpenFilter,
+	});
+	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, onGoToProject, isOpen } =
+		useSelectProjectAnimation({});
 
-			if (filterBy === "tech-stack") {
-				return tech.includes(key);
-			} else {
-				return type === key;
-			}
-		});
-
-		setDisplayedProjects(res);
-		setFilterKey(key);
-	}, []);
-
-	const { timeline } = useRadialGradientAnimContext();
+	//---------------------------------------------------------
+	// TOGGLE BETWEEN GRID AND LIST VIEW
+	//---------------------------------------------------------
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
 
 	useIsomorphicLayoutEffect(() => {
-		if (timeline) {
-			ScrollTrigger.refresh();
-			const elem = document.querySelector("[data-key='projects']");
-			if (elem) {
-				elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-			}
+		if (windowInnerWidth < 768) {
+			handleSetCurrentView("grid");
 		}
-	}, [displayedProjects.length]);
+	}, [windowInnerWidth]);
 
+	//---------------------------------------------------------
+	// TOGGLE PROJECTS DISPLAYED BASED ON FILTER
+	//---------------------------------------------------------
+	const [filterKey, setFilterKey] = useState("all");
 	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFilterBy(e.target.value as TFilterBy);
+		registerEvent(events.pages.projects.toggleProjectsFilterBy({ filter_by: e.target.value }));
 	};
-
 	let filterList = [];
 	let currProjects = "All";
 	if (filterBy === "project-nature") {
@@ -106,12 +99,52 @@ const ProjectsPage: NextPage = () => {
 		currProjects = TECH_STACKS[filterKey]?.label || "All";
 	}
 
+	//---------------------------------------------------------
+	// DISPLAYED PROJECTS
+	//---------------------------------------------------------
+	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
+	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: string }) => {
+		const res = PROJECTS.filter((project) => {
+			const { type, tech } = project;
+
+			if (filterBy === "tech-stack") {
+				return tech.includes(key);
+			} else {
+				return type === key;
+			}
+		});
+
+		registerEvent(events.pages.projects.filterProjectsByKey({ filter_key: key }));
+		setDisplayedProjects(res);
+		setFilterKey(key);
+	};
+
+	const scrollToProjectsList = () => {
+		ScrollTrigger.refresh();
+		const elem = document.querySelector("[data-key='projects']");
+		if (elem) {
+			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+		}
+	};
+
+	const [initialPageLoad, setInitialPageLoad] = useState(true);
+	useIsomorphicLayoutEffect(() => {
+		if (!initialPageLoad) {
+			scrollToProjectsList();
+		} else {
+			setInitialPageLoad(false);
+		}
+	}, [displayedProjects.length]);
+
 	return (
 		<>
 			<Head>
-				<title>David Obodo - Projects</title>
-				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<title>David Obodo | Projects</title>
+				<meta
+					name="description"
+					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
+				/>
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 			<Filter onClick={onOpenFilter} displayTriggerNode={contentRef} />
@@ -126,12 +159,16 @@ const ProjectsPage: NextPage = () => {
 				bannerHeight={bannerHeight}
 			/>
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
-				<div className={styles.content} data-key="projects">
-					<h2 className={styles.contentTitle} ref={contentRef}>
-						Viewing <span>{currProjects}</span> projects
-					</h2>
+				<div className={styles.content} data-key="projects" id="projects-list">
+					<div className={styles.header}>
+						<h2 className={styles.contentTitle} ref={contentRef}>
+							Viewing <span>{currProjects}</span> projects
+						</h2>
+
+						<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
+					</div>
 					<div className={styles.projectsWrapper}>
-						<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} />
+						<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} currentView={currentView} />
 					</div>
 					{showFilter && (
 						<ProjectsFilter
@@ -145,8 +182,8 @@ const ProjectsPage: NextPage = () => {
 					)}
 				</div>
 			</Layout.DarkSection>
+			<Contact />
 			<Noise />
-			<ProgressBar />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

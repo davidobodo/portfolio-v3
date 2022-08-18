@@ -16,7 +16,7 @@ export default function Banner({
 }) {
 	return (
 		<>
-			<div className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
+			<header className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
 				<Logo color="#000" propStyles={styles.logo} />
 				<div ref={textWrapperRef} className={styles.textWrapper}>
 					<div className={styles.firstPair}>
@@ -61,7 +61,7 @@ export default function Banner({
 					</div>
 				</div>
 				<ScrollAlert containerRef={scrollIndicatorRef} propStyles={styles.bottom} />
-			</div>
+			</header>
 			<SectionPlaceholder styles={{ height: bannerHeight ? bannerHeight + "px" : "100vh" }} />
 		</>
 	);

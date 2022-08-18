@@ -1,5 +1,6 @@
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useIsomorphicLayoutEffect } from ".";
 
 export default function useFloatingBoxAnimation() {
 	const imgRef = useRef<HTMLDivElement>(null);
@@ -7,7 +8,12 @@ export default function useFloatingBoxAnimation() {
 	const textRef = useRef<HTMLDivElement>(null);
 	const listRef = useRef<HTMLUListElement>(null);
 
-	useEffect(() => {
+	/**
+	 * Animation works just like request animation frame. It fires for eternity.
+	 * However because the "mousex" and "mouseY" variables are gloabl to its scope, it keeps getting updated values of the mouse position
+	 * NOTE: Credits given to "https://dennissnellenberg.com/", for thinking about this
+	 */
+	useIsomorphicLayoutEffect(() => {
 		let posXImage = 0;
 		let posYImage = 0;
 		let posXBtn = 0;

@@ -30,7 +30,8 @@
 		right: 5rem;
 	}
 
-	&:hover {
+	&:hover,
+	&:focus {
 		background-color: var(--light-brown);
 		color: var(--black);
 	}

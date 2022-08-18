@@ -1,6 +1,15 @@
 import styles from "./styles.module.scss";
 import React, { useEffect, useState, memo } from "react";
 import { Spinner } from "../../index";
+import { events, registerEvent } from "#/utils/analytics/events";
+
+class ErrorResponse {
+	constructor(public message: string, public status: number, public response: { data: { message: string } }) {
+		this.message = message;
+		this.status = status;
+		this.response = response;
+	}
+}
 
 //NOTE: Form validation is easiest when one makes use of libraries like formik, react-hooks e.t.c, But this form is too small so no need of using an external library
 function BaseForm() {
@@ -26,19 +35,19 @@ function BaseForm() {
 	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { value, name } = e.target;
+		const { value, id } = e.target;
 
 		setValues((prevState) => {
 			return {
 				...prevState,
-				[name]: value,
+				[id]: value,
 			};
 		});
 
 		setTouched((prevState) => {
 			return {
 				...prevState,
-				[name]: true,
+				[id]: true,
 			};
 		});
 	};
@@ -120,16 +129,10 @@ function BaseForm() {
 			isDisabled = false;
 		}
 	}
-	// console.log(hasTouchedAll, errorExists);
-	// console.log(isDisabled, "DISABLED");
-
-	// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
-
-	// console.log(URL, process.env, "te url ");
-
 	//--------------------------------------
 	//ON SUBMIT
 	//--------------------------------------
+	const [messageTimer, setMessageTimer] = useState<NodeJS.Timeout>();
 	const [serverRes, setServerRes] = useState({
 		message: "",
 		error: false,
@@ -148,48 +151,68 @@ function BaseForm() {
 			message,
 		};
 
-		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/send_mail`;
-		// const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/test`;
-		const URL = `/api/mail`;
+		const URL = "/api/mail";
 
-		// console.log(process.env);
-		// console.log(URL, "THE URL");
-
+		const { submitFormFailure, submitFormStart, submitFormSuccess } = events.shared.contactForm;
 		try {
+			registerEvent(
+				submitFormStart({
+					sender_email: email,
+					sender_name: name,
+				})
+			);
 			const res = await fetch(URL, {
 				method: "POST",
-
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(data),
-
 				mode: "no-cors",
 			});
 
-			console.log(res, "THE RESPONSE");
-
 			if (res.ok) {
-				const data = await res.json();
-				console.log(data);
+				await res.json();
+				registerEvent(
+					submitFormSuccess({
+						sender_email: email,
+						sender_name: name,
+					})
+				);
 				setServerRes({
 					error: false,
-					message: `🎉🥳 Yipee!!! Thanks ${name}, Got your message. Would respond as soon as I can.`,
+					message: `🎉🥳 Yipee!!! Thanks ${name}, got your message. Would respond as soon as I can.`,
 				});
+
+				const id = setTimeout(() => {
+					setServerRes({
+						error: false,
+						message: "",
+					});
+				}, 5000);
+				setMessageTimer(id);
 			} else {
 				throw res;
 			}
 		} catch (err) {
-			console.log(err);
-			// "That email doesnt exist 😅. Please Check it again"
-			// setServerRes({
-			// 	error: true,
-			// 	message: err.message,
-			// });
+			if (err instanceof ErrorResponse) {
+				registerEvent(submitFormFailure({ error: err.message }));
+				setServerRes({
+					error: true,
+					message: err.message,
+				});
+			}
 		} finally {
 			setIsSubmitting(false);
 		}
 	};
+
+	useEffect(() => {
+		return () => {
+			if (messageTimer) {
+				clearTimeout(messageTimer);
+			}
+		};
+	}, [messageTimer]);
 
 	return (
 		<>
@@ -198,7 +221,8 @@ function BaseForm() {
 					Would love to hear from <br /> you &#8595;.
 				</h1>
 				<p>
-					I’m currently interested in a&nbsp;<span>Full-time Front-end developer role </span> with a major on &nbsp;
+					I’m currently interested in a&nbsp;<span>Full-time Front-end developer role (remote)</span> with a major on
+					&nbsp;
 					<span>React.js Framework</span>, but still open to other opportunities. However, if you have other requests or
 					questions, don’t hesitate to use the form.
 				</p>

@@ -5,7 +5,7 @@ import { sharedAnimations } from "#/utils/animations";
 const { changeFocusedOpaqueText } = sharedAnimations;
 
 export default function useAlternateTextOpacity() {
-	const textsListRef = useRef<HTMLUListElement>(null);
+	const textsListRef = useRef<HTMLParagraphElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
 		if (textsListRef.current) {

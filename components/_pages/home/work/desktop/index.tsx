@@ -5,18 +5,21 @@ import { Ref } from "react";
 
 export type WorkDesktopProps = {
 	workContainerRef: Ref<HTMLDivElement>;
+	onWorkTitleKeyDown: (event: React.KeyboardEvent<HTMLUListElement>) => void;
+	onWorkDetailsKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
 };
-export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
+
+export default function ViewDesktop({ workContainerRef, onWorkTitleKeyDown, onWorkDetailsKeyDown }: WorkDesktopProps) {
 	return (
 		<div className={styles.container} ref={workContainerRef} id="work-section">
 			<div className={styles.contentWrapper} data-key="work-tabs">
-				<div className={styles.tabs}>
+				<div className={styles.tabs} onKeyDown={onWorkDetailsKeyDown} tabIndex={0}>
 					<div className={styles.tabHeadersContainer}>
-						<ul className={styles.tabHeaders} data-key="work-companies">
+						<ul className={styles.tabHeaders} data-key="work-companies" onKeyDown={onWorkTitleKeyDown}>
 							<li className={styles.bgGradient} data-key="gradient"></li>
 							{WORK.map((item, i) => {
 								return (
-									<li className={styles.tabHeader} key={i}>
+									<li className={styles.tabHeader} key={i} data-section={i + 1}>
 										{item.company}
 									</li>
 								);
@@ -27,19 +30,16 @@ export default function ViewDesktop({ workContainerRef }: WorkDesktopProps) {
 						{WORK.map((item, i) => {
 							const { title, company, location, range, url, note, urlLabel } = item;
 							return (
-								<div className={styles.tabDetail} key={i}>
+								<div className={styles.tabDetail} key={i} data-key="work-detail">
 									<section>
 										<h4>{company}</h4>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
-
 										<span>{range}</span>
-
 										<ul>
 											<li> {title}</li>
-
 											{location && <li> {location}</li>}
 											<li>
-												<a href={url} target="_blank" rel="noreferrer">
+												<a href={url} target="_blank">
 													{urlLabel ? urlLabel : url}
 												</a>
 											</li>

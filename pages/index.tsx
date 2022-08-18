@@ -1,5 +1,6 @@
 import Head from "next/head";
 import type { NextPage } from "next";
+import Link from "next/link";
 import styles from "#/styles/_pages/home.module.scss";
 import { useRef } from "react";
 import { PROJECTS } from "#/constants/projects";
@@ -12,6 +13,8 @@ import {
 	useAlternateTextOpacity,
 	useWorkAnimation,
 	useSkillsAnimation,
+	useExcellenceAnimation,
+	useProjectsCurrentView,
 } from "#/hooks";
 import {
 	Banners,
@@ -26,15 +29,21 @@ import {
 	BannerCurtain,
 	ProjectsHeading,
 	Noise,
-	ProgressBar,
-	// Excellence,
+	Excellence,
+	Contact,
+	ProjectsViewSelector,
 } from "#/components";
+import { ExternalLink } from "#/components/icons";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 const Home: NextPage = () => {
 	//-----------------------------------------
 	// HELPERS
 	//-----------------------------------------
 	const darkSectionRef = useRef<HTMLDivElement>(null);
+	const handleMoreProjectsGA = () => {
+		registerEvent(events.pages.home.viewMoreProjects());
+	};
 
 	//-----------------------------------------
 	// HOOKS
@@ -46,11 +55,10 @@ const Home: NextPage = () => {
 		darkSectionRef,
 	});
 	const { textsListRef } = useAlternateTextOpacity();
-	const {
-		workContainerRef,
-
-		mobileWorkContainerRef,
-	} = useWorkAnimation({ windowInnerHeight, windowInnerWidth });
+	const { workContainerRef, mobileWorkContainerRef, onWorkTitleKeyDown, onWorkDetailsKeyDown } = useWorkAnimation({
+		windowInnerHeight,
+		windowInnerWidth,
+	});
 	const { textWrapperRef: thoughtOneText } = useRevealParagraph();
 	const { textWrapperRef: thoughtTwoText } = useRevealParagraph();
 	const { headingRef: skillsSectionTitlteRef } = useRevealHeading({ windowInnerWidth });
@@ -60,14 +68,19 @@ const Home: NextPage = () => {
 	});
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
-		useSelectProjectAnimation();
+		useSelectProjectAnimation({});
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
+	const { containerRef, containerWidth, textWrapperRef, imageRef } = useExcellenceAnimation();
 
 	return (
 		<>
 			<Head>
-				<title>David Obodo</title>
-				<meta name="description" content="David Obodo's portfolio website" />
-				<link rel="icon" href="/favicon.ico" />
+				<title>David Obodo | Software Developer</title>
+				<meta
+					name="description"
+					content="David Obodo is a Software Developer that majors on Frontend Development, yet from time to time is no stranger to the entire full stack development."
+				/>
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 			<BannerCurtain containerRef={blackCoverRef} />
@@ -77,23 +90,56 @@ const Home: NextPage = () => {
 					<div className={styles.aboutWrapper}>
 						<AlternatingOpacity textsListRef={textsListRef} />
 					</div>
-					<Work workContainerRef={workContainerRef} mobileWorkContainerRef={mobileWorkContainerRef} />
+					<Work
+						workContainerRef={workContainerRef}
+						mobileWorkContainerRef={mobileWorkContainerRef}
+						onWorkTitleKeyDown={onWorkTitleKeyDown}
+						onWorkDetailsKeyDown={onWorkDetailsKeyDown}
+					/>
 					<Thoughts.One textWrapperRef={thoughtOneText} />
-					{/* <Excellence /> */}
+
+					<div className={styles.excellenceWrapper}>
+						<Excellence
+							containerRef={containerRef}
+							containerWidth={containerWidth}
+							textWrapperRef={textWrapperRef}
+							imageRef={imageRef}
+						/>
+					</div>
 					<Skills
 						skillsContainerRef={skillsContainerRef}
 						skillsSectionTitlteRef={skillsSectionTitlteRef}
 						mobileSkillsContainerRef={mobileSkillsContainerRef}
 						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
 					/>
+
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
-					<ProjectsHeading projectTitleRef={projectTitleRef} />
-					<Projects onViewProject={onSelectProject} displayedProjects={PROJECTS.slice(0, 5)} />
+					<div id="projects-list">
+						<ProjectsHeading projectTitleRef={projectTitleRef} />
+
+						<div className={styles.viewSelectorWrapper}>
+							<div></div>
+							<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
+						</div>
+						<Projects
+							onViewProject={onSelectProject}
+							displayedProjects={PROJECTS.slice(0, 8)}
+							currentView={currentView}
+						/>
+					</div>
+
+					<div className={styles.projectsBtnWrapper}>
+						<Link href="/projects" scroll={false}>
+							<a onClick={handleMoreProjectsGA}>
+								More Projects
+								<ExternalLink />
+							</a>
+						</Link>
+					</div>
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<ProgressBar />
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}
@@ -102,6 +148,7 @@ const Home: NextPage = () => {
 				isOpen={isOpen}
 				onGoToProject={onGoToProject}
 			/>
+			<Contact />
 		</>
 	);
 };

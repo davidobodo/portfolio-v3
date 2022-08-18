@@ -11,11 +11,12 @@
 	},
 	"dependencies": {
 		"@sendgrid/mail": "^7.7.0",
+		"@slaterjs/next": "^0.2.1",
 		"detect.js": "^2.2.3",
 		"fork-ts-checker-webpack-plugin": "^7.2.11",
 		"gsap": "^3.10.4",
 		"next": "12.1.6",
-		"next-pwa": "^5.5.5",
+		"next-pwa": "5.5.4",
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
 		"sass": "^1.52.2",

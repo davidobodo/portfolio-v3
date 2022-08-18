@@ -4,7 +4,9 @@ import { useRef, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
-export default function Contact({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+import gsap from "gsap";
+import { events, registerEvent } from "#/utils/analytics/events";
+export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -22,37 +24,80 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
-
-		console.log(innerWidth, placeholderRef.current, containerRef.current);
-		// console.log(containerRef.current, placeholderRef.current);
 		if (containerRef.current && placeholderRef.current) {
-			console.log("ELEMENTS EXIST");
 			if (innerWidth >= 768) {
-				console.log("WINDOW IS IN LARGE SCREE");
 				if (footerHeight > innerHeight) {
-					// containerRef.current.style.position = "relative";
-					// placeholderRef.current.style.display = "none";
-					console.log("FOOTER ISNT FIXED", footerHeight, innerHeight);
 					setIsFooterFixed(false);
 				} else {
-					console.log("FOOTER SHOULD BE FIXED");
 					setIsFooterFixed(true);
-					// containerRef.current.style.position = "fixed";
-					// placeholderRef.current.style.display = "block";
 				}
 			} else {
-				// containerRef.current.style.position = "relative";
-				// placeholderRef.current.style.display = "none";
 				setIsFooterFixed(false);
 			}
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
-	console.log(isFooterFixed, "IS THE FOOTER FIXED");
+	// Contact form would not be seen if an element inside it is focused and the contact form is still fixed, so we remove the fixed position immediately we detect user using keyboard
+	useIsomorphicLayoutEffect(() => {
+		document.body.addEventListener("keydown", function (event) {
+			if (event.key === "Tab" || event.keyCode === 9) {
+				setIsFooterFixed(false);
+			}
+		});
+	}, []);
+
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
+	useIsomorphicLayoutEffect(() => {
+		if (wrapperRef.current && footerHeight) {
+			const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: wrapperRef.current,
+					start: "top bottom",
+					end: "bottom bottom",
+					scrub: true,
+					toggleActions: "restart complete restart reset",
+				},
+			});
+			tl.to(curtain, { zIndex: 2, duration: 0.1 });
+			tl.to(curtain, {
+				scaleY: 0,
+			});
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
+	}, [footerHeight]);
+
+	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+		const { link } = e.currentTarget.dataset;
+		const { linkedin, twitter, resume, github, clickEmail } = events.shared.contactForm;
+		switch (link) {
+			case "resume":
+				registerEvent(resume());
+				return;
+			case "linkedin":
+				registerEvent(linkedin());
+				return;
+			case "twitter":
+				registerEvent(twitter());
+				return;
+			case "github":
+				registerEvent(github());
+				return;
+			case "email":
+				registerEvent(clickEmail());
+				return;
+			default:
+				return;
+		}
+	};
 
 	return (
-		<>
-			<Details containerRef={containerRef} onRouteChange={onRouteChange} isFooterFixed={isFooterFixed} />
+		<footer ref={wrapperRef} className={styles.wrapper}>
+			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} handlePageGAEvents={handlePageGAEvents} />
 
 			<div className={styles.placeholderWrapper}>
 				<SectionPlaceholder
@@ -60,19 +105,20 @@ export default function Contact({ onRouteChange }: { onRouteChange: (path: strin
 					containerRef={placeholderRef}
 				/>
 			</div>
-		</>
+
+			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
+		</footer>
 	);
 }
 
 function Details({
 	containerRef,
-	onRouteChange,
 	isFooterFixed,
-}: // isFooterFixed,
-{
+	handlePageGAEvents,
+}: {
 	containerRef: Ref<HTMLDivElement>;
-	onRouteChange: (path: string) => void;
 	isFooterFixed: boolean;
+	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }) {
 	return (
 		<div
@@ -84,42 +130,46 @@ function Details({
 			<div className={styles.containerInner}>
 				<div className={styles.leftSection}>
 					<div className={styles.top}></div>
-					<HelpfulLinks onRouteChange={onRouteChange} />
+					<HelpfulLinks handlePageGAEvents={handlePageGAEvents} />
 				</div>
 				<div className={styles.formSection}>
 					<Form />
 				</div>
 			</div>
-			<Social />
+			<Social handlePageGAEvents={handlePageGAEvents} />
 		</div>
 	);
 }
 
-function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void }) {
+function HelpfulLinks({
+	handlePageGAEvents,
+}: {
+	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}) {
 	return (
 		<>
 			<div>
 				<div className={styles.helpfulLinks}>
 					<h3>Quick Links</h3>
 					<ul>
-						<li onClick={() => onRouteChange("/")}>
-							<Link href="/">
+						<li>
+							<Link href="/" scroll={false}>
 								<a>
 									<span>Home</span>
 								</a>
 							</Link>
 						</li>
 						<li className={styles.line}></li>
-						<li onClick={() => onRouteChange("/projects")}>
-							<Link href="/projects">
+						<li>
+							<Link href="/projects" scroll={false}>
 								<a>
 									<span>Projects</span>
 								</a>
 							</Link>
 						</li>
 						<li className={styles.line}></li>
-						<li onClick={() => onRouteChange("/letters")}>
-							<Link href="/letters">
+						<li>
+							<Link href="/letters" scroll={false}>
 								<a>
 									<span>Letters </span>
 								</a>
@@ -131,17 +181,16 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 					<h3>Extras</h3>
 					<ul>
 						<li>
-							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing" passHref>
-								<a target="_blank" rel="noreferrer noopener">
-									{" "}
+							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing">
+								<a target="_blank" onClick={handlePageGAEvents} data-link="resume">
 									<span>Resume</span>
 								</a>
 							</Link>
 						</li>
 						<li className={styles.line}></li>
 
-						<li onClick={() => onRouteChange("/credits")}>
-							<Link href="/credits">
+						<li>
+							<Link href="/credits" scroll={false}>
 								<a>
 									<span>Site credits</span>
 								</a>
@@ -154,34 +203,38 @@ function HelpfulLinks({ onRouteChange }: { onRouteChange: (path: string) => void
 	);
 }
 
-function Social() {
+function Social({
+	handlePageGAEvents,
+}: {
+	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}) {
 	return (
 		<div className={styles.social}>
 			<ul>
 				<li>
-					<Link href="https://www.linkedin.com/in/obodo-david-998786174/" passHref>
-						<a target="_blank" rel="noreferrer noopener">
+					<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
+						<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
 							<span>Linkedin</span>
 						</a>
 					</Link>
 				</li>
 				<li>
-					<Link href="https://github.com/obododavid" passHref>
-						<a target="_blank" rel="noreferrer noopener">
+					<Link href="https://github.com/davidobodo" passHref>
+						<a target="_blank" onClick={handlePageGAEvents} data-link="github">
 							<span>Github</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="https://twitter.com/phitGeek" passHref>
-						<a target="_blank" rel="noreferrer noopener">
+						<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
 							<span>Twitter</span>
 						</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="mailto: obododavid5@gmail.com" passHref>
-						<a>
+						<a target="_blank" onClick={handlePageGAEvents} data-link="email">
 							<span>Email</span>
 						</a>
 					</Link>

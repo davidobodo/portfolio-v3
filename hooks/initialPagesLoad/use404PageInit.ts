@@ -1,9 +1,10 @@
 import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
-import { useInitialAppLoadContext } from "#/state";
+import { usePageTransitionsContext } from "#/context";
 import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
 const { bannerAnimation, stopRedirectAnimation } = notFoundPageAnimations;
@@ -48,6 +49,7 @@ export default function use404PageInit() {
 
 			tl.then(() => {
 				setLogoVisibility(false);
+				registerEvent(events.pages.notFound.remainLost());
 			});
 		}
 	};
@@ -76,37 +78,39 @@ export default function use404PageInit() {
 	//-------------------------------------------
 	// PAGE ANIMATION
 	//-------------------------------------------
-	const { initialAppLoad } = useInitialAppLoadContext();
+	const { initialAppLoad, setInitialAppLoad, exitAnimation } = usePageTransitionsContext();
 
 	useIsomorphicLayoutEffect(() => {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+		});
 		// Navigating to this page directly from the browser url input
 		const logo = document.querySelector("[data-key='logo']") as Element;
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 		const layers = document.querySelectorAll("[data-key='layer']");
 
-		if (!initialAppLoad) {
-			const master = gsap.timeline();
-			master.add(openNoiseLayers(layers));
+		const master = gsap.timeline();
 
-			return () => {
-				master.kill();
-			};
-		} else {
-			const master = gsap.timeline();
-			master
-				.add(drawSvgLogo(logo, logoChildren))
-				.add(openNoiseLayers(layers))
-				.add(
-					bannerAnimation({
-						sections: containerSelector<HTMLDivElement>('[data-key="section"]'),
-					})
-				)
-				.add(onInitRedirect);
-
-			return () => {
-				master.kill();
-			};
+		if (initialAppLoad) {
+			setInitialAppLoad(false);
+			master.add(drawSvgLogo(logo, logoChildren));
+			//SET PAGE OUTRO ANIMATION
+			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 		}
+
+		master.add(openNoiseLayers(layers));
+		master.add(
+			bannerAnimation({
+				sections: containerSelector<HTMLDivElement>('[data-key="section"]'),
+			})
+		);
+		master.add(onInitRedirect);
+
+		return () => {
+			master.kill();
+		};
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 

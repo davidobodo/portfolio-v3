@@ -1,62 +1,67 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-    margin: auto;
-    padding-top: 15vh;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    height: 100vh;
+	margin: auto;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 30rem;
+	padding-bottom: 30rem;
 
-    @media (min-width: $lg) {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr;
-        max-width: var(--mini-desktop-max-width);
-    }
+	@media (min-width: $lg) {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		max-width: var(--mini-desktop-max-width);
+	}
 
-    @media (min-width: $xxl) {
-        max-width: var(--max-width);
-    }
+	@media (min-width: $xxl) {
+		max-width: var(--max-width);
+	}
 
-    .rightSection {
-        display: flex;
-        align-items: center;
-    }
+	.rightSection {
+		display: flex;
+		align-items: center;
+	}
 
-    .paragraphWrapper {
-        margin-bottom: 8.4rem;
+	.paragraphWrapper {
+		margin-bottom: 8.4rem;
 
-        // @media (min-width: $lg) {
-        //     // width: 50%;
-        // }
+		&:last-child {
+			margin-bottom: 0px;
+		}
 
-        .paragraph {
-            margin-bottom: 2.4rem;
-            display: flex;
-            flex-wrap: wrap;
+		// @media (min-width: $lg) {
+		//     // width: 50%;
+		// }
 
-            .wordWrapper {
-                font-size: 1.8rem;
-                font-family: "sf-pro-bold";
-                color: var(--ash3);
-                letter-spacing: -0.015em;
-                line-height: 2;
-                overflow: hidden;
+		.paragraph {
+			margin-bottom: 2.4rem;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
 
-                @media (min-width: $md) {
-                    font-size: 2.4rem;
-                }
+			.wordWrapper {
+				font-size: 1.8rem;
+				font-family: "sf-pro-bold";
+				color: var(--ash3);
+				letter-spacing: -0.015em;
+				line-height: 2;
+				overflow: hidden;
 
-                .word {
-                    display: inline-block;
-                    transform: translateY(100%);
-                }
-            }
+				@media (min-width: $md) {
+					font-size: 2.4rem;
+				}
 
-            strong {
-                .wordWrapper {
-                    color: var(--white);
-                }
-            }
-        }
-    }
+				.word {
+					display: inline-block;
+					transform: translateY(100%);
+				}
+			}
+
+			strong {
+				.wordWrapper {
+					color: var(--white);
+				}
+			}
+		}
+	}
 }

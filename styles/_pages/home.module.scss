@@ -1,8 +1,60 @@
+@import "#/styles/globals.module.scss";
+
 .content {
 	padding-bottom: 20vh;
 
 	.aboutWrapper {
 		padding-left: 2rem;
 		padding-right: 2rem;
+	}
+
+	.excellenceWrapper {
+		width: 100vw;
+		overflow-x: hidden;
+		margin-bottom: 15rem;
+	}
+
+	.viewSelectorWrapper {
+		margin-bottom: 4rem;
+		display: flex;
+		justify-content: space-between;
+
+		@media (min-width: $md) {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: var(--mini-desktop-max-width);
+		}
+
+		@media (min-width: $xxl) {
+			max-width: var(--max-width);
+		}
+	}
+
+	.projectsBtnWrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 10rem;
+
+		a {
+			border: 1px solid var(--ash);
+			font-size: 1.6rem;
+			color: var(--ash);
+			text-decoration: none;
+			padding: 7px 30px;
+			background-color: transparent;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+
+			&:hover {
+				background-color: var(--white-alpha);
+			}
+
+			svg {
+				margin-left: 1rem;
+			}
+		}
 	}
 }

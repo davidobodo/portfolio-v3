@@ -20,12 +20,19 @@ import useAlternateTextOpacity from "./useAlternateTextOpacity";
 import useSkillsAnimation from "./useSkillsAnimation";
 import useWorkAnimation from "./useWorkAnimation";
 import useFloatingBoxAnimation from "./useFloatingBoxAnimation";
+import useExcellenceAnimation from "./useExcellenceAnimation";
+
+//---------------------------
+// PROJECTS PAGE
+//---------------------------
+import useProjectsCurrentView from "./useProjectsCurrentView";
 
 //---------------------------
 // PAGE LOADS
 //---------------------------
 import initPageLoads from "./initialPagesLoad";
-const { useHomePageInit, useGenericPageInit, useSingleProjectPageInit, use404PageInit } = initPageLoads;
+const { useHomePageInit, useGenericPageInit, useSingleProjectPageInit, use404PageInit, useProjectsPageInit } =
+	initPageLoads;
 
 export {
 	useWindowSize,
@@ -47,4 +54,7 @@ export {
 	useSingleProjectPageInit,
 	use404PageInit,
 	useFloatingBoxAnimation,
+	useExcellenceAnimation,
+	useProjectsPageInit,
+	useProjectsCurrentView,
 };

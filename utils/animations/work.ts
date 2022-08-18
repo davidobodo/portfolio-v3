@@ -20,7 +20,7 @@ class WorkSectionAnimations {
 		details: HTMLCollection;
 	}) {
 		const DESKTOP_TITLE_HEIGHT = 72;
-		let timelineActions: TTimelineAction[] = [];
+		let timelineActions: Array<TTimelineAction> = [];
 
 		// CREATE TIMELINE ACTIONS
 		for (let i = 0; i < details.length; i++) {
@@ -39,39 +39,26 @@ class WorkSectionAnimations {
 					target,
 					vars: { opacity: 0 },
 					options: ">-25%", // start at 25% towards the end of the previous animation
-					action: "decrease opac",
 				});
 			}
 
-			//Increase title opacity
-			timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } });
-
-			// Increase details opacity
+			timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } }); //Increase title opacity
 			timelineActions.push({
 				target,
 				vars: { opacity: 1, visibility: "visible" },
 				options: "<",
-				action: "increase opac",
-			});
-
-			// Add a label at this point to the timeline (Might be useful for click events)
-			// timelineActions.push({ isLabel: true, label: `active-${i}` });
-
-			// Translate details to their normal position
-			timelineActions.push({ target, vars: { y: 0 }, options: "<", action: "move up" });
+			}); // Increase details opacity
+			timelineActions.push({ target, vars: { y: 0 }, options: "<" }); // Translate details to their normal position
+			timelineActions.push({ isLabel: true, label: `section-${i + 1}-visible` });
 
 			// Dont decrease opacity for the last item
 			if (i !== details.length - 1) {
-				// Decrease title opacity
-				timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } });
-
-				// Decrease details opacity
+				timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } }); // Decrease title opacity
 				timelineActions.push({
 					target,
 					vars: { opacity: 0, visibility: "hidden" },
 					options: ">-25%", // start at 25% towards the end of the previous animation
-					action: "decrease opac",
-				});
+				}); // Decrease details opacity
 			}
 		}
 
@@ -114,6 +101,7 @@ class WorkSectionAnimations {
 				// Dont need to increase the first items opacity since its already visible
 			}
 			timelineActions.push({ target, vars: { opacity: 1 } });
+			timelineActions.push({ isLabel: true, label: `section-${i + 1}-visible` });
 
 			//Decrease bottom opacity
 			if (i !== details.length - 1) {
@@ -161,6 +149,12 @@ class WorkSectionAnimations {
 				scrub: true,
 				pin: tabsWrapper,
 				pinSpacing: false,
+				snap: {
+					snapTo: "labels",
+					duration: { min: 0.2, max: 2 },
+					delay: 0.1,
+					ease: "power1.inOut",
+				},
 				onUpdate: (self) => {
 					// Displace the faintbg text
 					const yDisplacement = animateFaintSvg({
@@ -230,6 +224,12 @@ class WorkSectionAnimations {
 				scrub: true,
 				pin: tabsWrapper,
 				pinSpacing: false,
+				snap: {
+					snapTo: "labels",
+					duration: { min: 0.2, max: 2 },
+					delay: 0.1,
+					ease: "power1.inOut",
+				},
 				onUpdate: (self) => {
 					// Displace the faintbg text
 					const yDisplacement = animateFaintSvg({

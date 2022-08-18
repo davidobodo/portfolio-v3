@@ -64,12 +64,13 @@ class AnimPageLoaders {
 
 	openNoiseLayers(node: NodeListOf<Element>) {
 		const tl = gsap.timeline();
-		tl.to(node, { scaleY: 0 });
+		tl.fromTo(node, { scaleY: 1, delay: 0.3 }, { scaleY: 0, delay: 0.3 });
 		return tl;
 	}
 
 	closeNoiseLayers({ node }: { node: NodeListOf<Element> | HTMLCollection }) {
 		const tl = gsap.timeline();
+
 		tl.to(node, { scaleY: 1 });
 		return tl;
 	}
@@ -122,12 +123,10 @@ class HomePageAnimations {
 
 		tl.to(nameLetters, { x: 0 }).to(fieldLetters, { x: 0 }).to(subFieldOne, { y: 0 }).to(subFieldTwo, { y: 0 });
 
-		// Because the animation for mobile image is different from the animation for desktop image
-		if (window.innerWidth < 768) {
-			tl.to(picMobile, { width: "100%" });
-		} else {
-			tl.to(picDesktopBlind, { width: 0 });
-		}
+		//Mobile image
+		tl.to(picMobile, { width: "100%" });
+		//Desktop image
+		tl.to(picDesktopBlind, { width: 0 }, "<");
 
 		tl.to(scrollIndicator, { opacity: 1 });
 		tl.add(() => {
@@ -349,10 +348,53 @@ class NotFoundPageAnimations {
 	}
 }
 
+class AuxilliaryAnimations {
+	animateExcellence({
+		sectionWrapper,
+		textWrapper,
+		image,
+	}: {
+		sectionWrapper: HTMLDivElement;
+		textWrapper: HTMLDivElement;
+		image: HTMLDivElement;
+	}) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				start: "top top",
+				trigger: sectionWrapper,
+				invalidateOnRefresh: true,
+				anticipatePin: 1,
+				pin: true,
+				scrub: 1,
+				pinSpacing: true,
+				refreshPriority: 1,
+				end: () => "+=" + textWrapper?.offsetWidth,
+			},
+		});
+
+		tl.to(textWrapper, {
+			x: () => -(textWrapper.scrollWidth - document.documentElement.clientWidth) + "px",
+			ease: "none",
+		});
+		tl.to(textWrapper.querySelector("svg"), {
+			scale: 60,
+		});
+		tl.to(image, {
+			borderLeftWidth: innerWidth < 768 ? "2rem" : "5.8rem",
+			borderRightWidth: innerWidth < 768 ? "2rem" : "5.8rem",
+			borderTopWidth: "10rem",
+			borderBottomWidth: "10rem",
+		});
+
+		return tl;
+	}
+}
+
 const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
 const singleProjectAnimations = new SingleProjectAnimations();
 const notFoundPageAnimations = new NotFoundPageAnimations();
+const auxilliaryAnimations = new AuxilliaryAnimations();
 
 export {
 	animPageLoaders,
@@ -364,4 +406,5 @@ export {
 	notFoundPageAnimations,
 	workSectionAnimations,
 	skillsAnimations,
+	auxilliaryAnimations,
 };

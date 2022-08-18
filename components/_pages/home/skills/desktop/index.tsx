@@ -2,6 +2,8 @@ import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { Ref } from "react";
 import { FaintBgText } from "../../../../index";
+import Link from "next/link";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 export type SkillsDesktopProps = {
 	skillsContainerRef: Ref<HTMLDivElement>;
@@ -69,26 +71,9 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 
 						<section className={styles.skills + " " + styles.others} data-key="skill">
 							<h3>Frameworks/ Libraries/ Others</h3>
+
 							<ul>
-								{[
-									"react",
-									"nextjs",
-									"nodejs",
-									"graphql",
-									"redux",
-									"gsap",
-									// "tailwindcss",
-									"threejs",
-									"expressjs",
-									"jest",
-									"web3",
-									"pupeteer",
-									"chakraui",
-									"gcp",
-									"heroku",
-									"netlify",
-									// "styledcomponents"
-								].map((key, i) => {
+								{["react", "nextjs", "nodejs", "expressjs", "jest", "rtl", "redux"].map((key, i) => {
 									const skill = TECH_STACKS[key];
 									return (
 										<li key={i}>
@@ -101,8 +86,12 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 								})}
 							</ul>
 							<p>
-								This list could get very long cause of a developers need to learn everyday depending on what provides
-								the best solution to a given problem, so would stop here
+								This list could get very long cause of a <strong> developers need to learn everyday </strong> depending
+								on what provides the best solution to a given problem, so would stop the list here. <br />
+								However you can see a comprehensive list of all &nbsp;noteworthy&nbsp; frameworks and Libraries{" "}
+								<Link scroll={false} href="/projects?open_filter=true">
+									<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>here.</a>
+								</Link>
 							</p>
 						</section>
 					</div>
