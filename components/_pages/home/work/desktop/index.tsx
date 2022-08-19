@@ -5,17 +5,16 @@ import { Ref } from "react";
 
 export type WorkDesktopProps = {
 	workContainerRef: Ref<HTMLDivElement>;
-	onWorkTitleKeyDown: (event: React.KeyboardEvent<HTMLUListElement>) => void;
 	onWorkDetailsKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
 };
 
-export default function ViewDesktop({ workContainerRef, onWorkTitleKeyDown, onWorkDetailsKeyDown }: WorkDesktopProps) {
+export default function ViewDesktop({ workContainerRef, onWorkDetailsKeyDown }: WorkDesktopProps) {
 	return (
 		<div className={styles.container} ref={workContainerRef} id="work-section">
 			<div className={styles.contentWrapper} data-key="work-tabs">
-				<div className={styles.tabs} onKeyDown={onWorkDetailsKeyDown} tabIndex={0}>
+				<div className={styles.tabs} onKeyDown={onWorkDetailsKeyDown}>
 					<div className={styles.tabHeadersContainer}>
-						<ul className={styles.tabHeaders} data-key="work-companies" onKeyDown={onWorkTitleKeyDown}>
+						<ul className={styles.tabHeaders} data-key="work-companies">
 							<li className={styles.bgGradient} data-key="gradient"></li>
 							{WORK.map((item, i) => {
 								return (
@@ -32,7 +31,7 @@ export default function ViewDesktop({ workContainerRef, onWorkTitleKeyDown, onWo
 							return (
 								<div className={styles.tabDetail} key={i} data-key="work-detail">
 									<section>
-										<h4>{company}</h4>
+										<h4 tabIndex={0}>{company}</h4>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
 										<span>{range}</span>
 										<ul>

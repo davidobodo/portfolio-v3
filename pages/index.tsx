@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 		darkSectionRef,
 	});
 	const { textsListRef } = useAlternateTextOpacity();
-	const { workContainerRef, mobileWorkContainerRef, onWorkTitleKeyDown, onWorkDetailsKeyDown } = useWorkAnimation({
+	const { workContainerRef, mobileWorkContainerRef, onWorkDetailsKeyDown } = useWorkAnimation({
 		windowInnerHeight,
 		windowInnerWidth,
 	});
@@ -93,7 +93,6 @@ const Home: NextPage = () => {
 					<Work
 						workContainerRef={workContainerRef}
 						mobileWorkContainerRef={mobileWorkContainerRef}
-						onWorkTitleKeyDown={onWorkTitleKeyDown}
 						onWorkDetailsKeyDown={onWorkDetailsKeyDown}
 					/>
 					<Thoughts.One textWrapperRef={thoughtOneText} />

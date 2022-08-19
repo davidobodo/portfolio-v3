@@ -23,4 +23,6 @@ type TProject = {
 
 type TProjectsView = "list" | "grid";
 
-export type { TTimelineAction, TProject, TProjectsView };
+type TProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };
+
+export type { TTimelineAction, TProject, TProjectsView, TProjectData };

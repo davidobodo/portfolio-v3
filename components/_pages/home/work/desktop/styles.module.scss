@@ -25,6 +25,14 @@
 			@media (min-width: $xxl) {
 				max-width: var(--max-width);
 			}
+
+			&:focus {
+				outline: none;
+
+				.tabHeaders {
+					background-color: var(--white-alpha);
+				}
+			}
 		}
 
 		// Since the height of this headers column is 100vh, "tabHeadersContainer" was brought in to center the tabHeaders
@@ -75,16 +83,11 @@
 				transform: translateY(40px);
 				opacity: 0;
 				color: var(--ash3);
-				visibility: hidden;
+				// visibility: hidden;
 
 				// &:first-child {
 				// 	visibility: visible;
 				// }
-
-				&[data-focus="active-work"] {
-					visibility: visible !important;
-					opacity: 1 !important;
-				}
 
 				h4 {
 					font-size: 18px;

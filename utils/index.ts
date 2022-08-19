@@ -1,5 +1,5 @@
 import { PROJECTS } from "#/constants/projects";
-import { TProject } from "#/interfaces";
+import { TProjectData } from "#/interfaces";
 
 function normalize(value: number, lowerlimit: number, upperLimit: number) {
 	return lowerlimit + (upperLimit - lowerlimit) * value;
@@ -24,10 +24,8 @@ function animateFaintSvg({
 	return final;
 }
 
-type ProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };
-
-function fetchProjects(id: string): ProjectData {
-	let data: ProjectData = {
+function fetchProjects(id: string): TProjectData {
+	let data: TProjectData = {
 		currProject: null,
 		nextProject: null,
 		prevProject: null,
@@ -47,4 +45,18 @@ function fetchProjects(id: string): ProjectData {
 	return data;
 }
 
-export { normalize, animateFaintSvg, fetchProjects };
+function matchElement(origin: Element, destinationTag: string): Element | void {
+	if (origin.matches(destinationTag)) {
+		return origin;
+	}
+
+	if (!origin.parentElement) return;
+
+	if (origin.parentElement.matches(destinationTag)) {
+		return origin.parentElement;
+	}
+
+	return matchElement(origin.parentElement, destinationTag);
+}
+
+export { normalize, animateFaintSvg, fetchProjects, matchElement };

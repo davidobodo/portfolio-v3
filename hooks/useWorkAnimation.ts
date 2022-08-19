@@ -1,9 +1,10 @@
 import gsap from "gsap";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { workSectionAnimations } from "#/utils/animations";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { KEYBOARD_KEYS } from "#/constants";
+import { FOCUSABLE_ELEMENT_STRING, KEYBOARD_KEYS } from "#/constants";
+import { matchElement } from "#/utils";
 
 const { desktopAnimation, mobileAnimation } = workSectionAnimations;
 const { ENTER_KEY } = KEYBOARD_KEYS;
@@ -83,49 +84,68 @@ export default function useWorkAnimation({
 		});
 	}, [windowInnerWidth]);
 
-	const [activeLabel, setActiveLabel] = useState(0);
+	const [currLabel, setActiveLabel] = useState(0);
+	const [timer, setTimer] = useState<NodeJS.Timeout>();
 
-	const onKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
-		const key = e.key || e.keyCode;
-
-		// const { section } = e.currentTarget.dataset;
-
-		// if (key === "Enter" && desktopTl) {
-		// 	const label = `section-${section}-visible`;
-		// 	gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(label) });
-		// }
-	};
+	useEffect(() => {
+		return () => {
+			if (timer) {
+				clearTimeout(timer);
+			}
+		};
+	}, [timer]);
 
 	const onWorkDetailsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		const key = e.key || e.keyCode;
-
-		console.log(activeLabel, key);
-		if (key !== "Tab" && desktopTl) {
-			e.preventDefault();
-			console.log("IN HERE ");
-			let section = 0;
-			if (key === "ArrowDown") {
-				if (activeLabel === 5) {
-					section = 1;
-				} else {
-					section = activeLabel + 1;
-				}
+		if (key === "Tab" && desktopTl) {
+			if (currLabel === 0) {
+				gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel + 1}-visible`) });
+				setActiveLabel((prevState) => prevState + 1);
+				return;
 			}
 
-			if (key === "ArrowUp") {
-				let section = 0;
-				if (activeLabel === 1 || activeLabel === 0) {
-					section = 5;
+			//Get element that triggered event
+			const trigger = e.target as HTMLDivElement;
+
+			//Get parent of element
+			const parent = matchElement(trigger, "[data-key='work-detail']");
+
+			if (parent) {
+				//Get all focusable children of the parent
+				const focusableChildren = [...parent.querySelectorAll(FOCUSABLE_ELEMENT_STRING)];
+
+				//Get the position amongst the children of the element that triggered the event
+				const pos = focusableChildren.findIndex((item) => item === trigger);
+
+				if (e.shiftKey) {
+					if (pos === 0 && currLabel !== 0) {
+						//Focus on the last element in the previous section
+
+						gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel - 1}-visible`) });
+						setActiveLabel((prevState) => prevState - 1);
+
+						const previousSection = parent.previousElementSibling;
+						if (previousSection) {
+							const previousSectionChildren = [...previousSection.querySelectorAll(FOCUSABLE_ELEMENT_STRING)];
+							const lastItem = previousSectionChildren[previousSectionChildren.length - 1] as HTMLElement;
+
+							//Wait for thread to become idle before giving the last element focus
+							if (timer) {
+								clearTimeout(timer);
+							}
+							const id = setTimeout(() => {
+								lastItem.focus();
+							}, 0);
+							setTimer(id);
+						}
+					}
 				} else {
-					section = activeLabel - 1;
+					//Only move to next work section when we have gone through all links in this work section and we are not in the last section
+					if (pos === focusableChildren.length - 1 && currLabel !== 5) {
+						gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel + 1}-visible`) });
+						setActiveLabel((prevState) => prevState + 1);
+					}
 				}
-			}
-
-			setActiveLabel(section);
-
-			if (section !== 0) {
-				const label = `section-${section}-visible`;
-				gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(label) });
 			}
 		}
 	};
@@ -133,7 +153,6 @@ export default function useWorkAnimation({
 	return {
 		workContainerRef,
 		mobileWorkContainerRef,
-		onWorkTitleKeyDown: onKeyDown,
 		onWorkDetailsKeyDown,
 	};
 }
