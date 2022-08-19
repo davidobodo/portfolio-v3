@@ -64,12 +64,6 @@
 	--z-index-scroll-to-top: 500;
 	--z-index-modal: 600;
 	--z-index-backdrop: 10;
-
-	/* ---------------------------------------------------- */
-	/* ANIMATIONS*/
-	/* ---------------------------------------------------- */
-	--animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
-	--animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 html {

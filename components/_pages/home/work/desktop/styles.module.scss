@@ -8,6 +8,27 @@
 	@media (min-width: $lg) {
 		display: block;
 	}
+	//-------------------------------
+	//GLOBAL STYLES
+	//-------------------------------
+	a {
+		cursor: pointer;
+		color: inherit;
+		text-decoration: underline;
+
+		&:hover {
+			color: var(--white);
+		}
+
+		&:focus {
+			text-decoration: none;
+			color: var(--white);
+			outline: 2px dotted;
+		}
+	}
+	//-------------------------------
+	//-------------------------------
+	//-------------------------------
 
 	.contentWrapper {
 		// Note: GSAP makes this fixed, since we apply "pinning to it". Hence our SVG is positioned relative to this
@@ -96,6 +117,11 @@
 					letter-spacing: 0.021em;
 					margin-bottom: 2rem;
 					color: var(--white);
+
+					&:focus {
+						color: var(--white);
+						outline: 2px dotted;
+					}
 				}
 
 				.notes {
@@ -105,14 +131,6 @@
 					font-family: "sf-pro-bold";
 					width: 360px;
 
-					a {
-						cursor: pointer;
-						color: inherit;
-
-						&:hover {
-							color: var(--white);
-						}
-					}
 					ol {
 						padding-left: 1.8rem;
 					}
@@ -148,16 +166,6 @@
 							border-radius: 50%;
 							top: 50%;
 							transform: translateY(-50%);
-						}
-
-						a {
-							text-decoration: underline;
-							cursor: pointer;
-							color: inherit;
-
-							&:hover {
-								color: var(--white);
-							}
 						}
 					}
 				}

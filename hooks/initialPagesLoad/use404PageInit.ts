@@ -16,7 +16,6 @@ export default function use404PageInit() {
 	const router = useRouter();
 	const [countdown, setCountdown] = useState(15);
 	const [timerId, setTimerId] = useState<NodeJS.Timeout>();
-	const [logoVisibility, setLogoVisibility] = useState(true);
 	const gradientRef = useRef<HTMLDivElement>(null);
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +47,6 @@ export default function use404PageInit() {
 			});
 
 			tl.then(() => {
-				setLogoVisibility(false);
 				registerEvent(events.pages.notFound.remainLost());
 			});
 		}
@@ -100,6 +98,10 @@ export default function use404PageInit() {
 		}
 
 		master.add(openNoiseLayers(layers));
+		master.add(() => {
+			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
+			navLogo.style.visibility = "visible";
+		});
 		master.add(
 			bannerAnimation({
 				sections: containerSelector<HTMLDivElement>('[data-key="section"]'),
@@ -119,7 +121,6 @@ export default function use404PageInit() {
 	return {
 		onStopRedirect,
 		countdown,
-		logoVisibility,
 		containerRef,
 		scrollRef,
 		gradientRef,

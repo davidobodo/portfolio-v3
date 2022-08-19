@@ -131,6 +131,8 @@ class HomePageAnimations {
 		tl.to(scrollIndicator, { opacity: 1 });
 		tl.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
+			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
+			navLogo.style.visibility = "visible";
 		});
 
 		return tl;
@@ -197,7 +199,7 @@ class SingleProjectAnimations {
 		destination,
 	}: {
 		modal: HTMLDivElement;
-		source: HTMLDivElement;
+		source: HTMLDivElement | HTMLButtonElement;
 		destination: HTMLDivElement;
 	}) {
 		const sourceRect = source.getBoundingClientRect();

@@ -7,7 +7,7 @@ const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjec
 export default function useSelectProjectAnimation({ initialId = "" }: { initialId?: string }) {
 	const router = useRouter();
 	const [selectedProjectId, setSelectedProjectId] = useState<string>(initialId);
-	const sourceElem = useRef<HTMLDivElement | null>(null);
+	const sourceElem = useRef<HTMLDivElement | HTMLButtonElement | null>(null);
 	const modalImgRef = useRef<HTMLDivElement>(null);
 	const modalRef = useRef<HTMLDivElement>(null);
 	const [isOpen, setIsOpen] = useState(false);
@@ -15,11 +15,11 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 	//-------------------------------
 	// User clicked on a project
 	//-------------------------------
-	const onSelectProject = (e: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => {
+	const onSelectProject = (e: React.MouseEvent<HTMLLIElement | HTMLButtonElement, MouseEvent>) => {
 		const { id, type } = e.currentTarget.dataset;
 		const floatingBox = document.querySelector("[data-key='project-box']") as HTMLDivElement;
 
-		const selectedGridBox = e.currentTarget as HTMLDivElement;
+		const selectedGridBox = e.currentTarget as HTMLButtonElement;
 		sourceElem.current = type === "list-item" ? floatingBox : selectedGridBox;
 		window.history.pushState(null, "New Page Title", `/projects/${id}`);
 

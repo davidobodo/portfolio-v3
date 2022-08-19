@@ -7,7 +7,7 @@ export function ProjectListView({
 	onViewProject,
 	displayedProjects,
 }: {
-	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
+	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLButtonElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
 	const { imgRef, btnRef, textRef, onMouseEnter, onMouseLeave, isActive, onEnterElement, listRef } =

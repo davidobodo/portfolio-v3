@@ -52,6 +52,11 @@
 				background-color: var(--white-alpha);
 			}
 
+			&:focus {
+				color: var(--white);
+				outline: 2px dotted var(--white);
+			}
+
 			svg {
 				margin-left: 1rem;
 			}

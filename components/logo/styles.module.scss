@@ -2,8 +2,6 @@
 
 .fullname {
 	transition: opacity 200ms ease-in, color 200ms ease-in-out;
-	position: fixed;
-	z-index: 1003;
 
 	path:nth-child(2) {
 		transform-origin: 20%;

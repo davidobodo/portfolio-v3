@@ -17,8 +17,7 @@
 		position: relative;
 		cursor: pointer;
 		overflow: hidden;
-		// border: 0.1px solid transparent;
-		// opacity: 0;
+		border: 0px;
 
 		@media (min-width: $md) {
 			height: 350px;
@@ -86,25 +85,10 @@
 			}
 		}
 
-		.boxLock {
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 3;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 100%;
-			width: 100%;
-			opacity: 0;
+		&:hover,
+		&:focus {
+			outline: none;
 
-			svg {
-				width: 100px;
-				height: 100px;
-			}
-		}
-
-		&.free:hover {
 			.boxImage {
 				transform: scale(1.08);
 				background-color: #373737;
@@ -116,20 +100,6 @@
 
 			.boxOverlay {
 				background-color: rgba(0, 0, 0, 0);
-			}
-		}
-
-		&.locked {
-			cursor: not-allowed;
-			border-color: rgba(255, 255, 255, 0.2);
-
-			.boxOverlay {
-				// background-color: var(--locked-ash);
-				background-color: rgba(0, 0, 0, 0.9);
-			}
-
-			.boxLock {
-				opacity: 1;
 			}
 		}
 	}

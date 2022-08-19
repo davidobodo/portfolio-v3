@@ -15,16 +15,17 @@
 
 	.projectsList {
 		li {
-			transition: var(--animation-smooth);
 			list-style: none;
 			border-bottom: 1px solid var(--ash);
 			cursor: pointer;
 			position: relative;
+			transition: opacity 200ms ease-in-out;
+			opacity: 0.5;
 
 			&:focus {
-				// outline: none;
-				// background-color: var(--white-alpha);
-				// color: var(--white);
+				background-color: var(--white-alpha);
+				outline: 2px dotted var(--white);
+				opacity: 1;
 			}
 
 			&:first-child {
@@ -32,7 +33,6 @@
 			}
 
 			.row {
-				transition: var(--animation-fast);
 				padding: calc(var(--section-padding) / 3.5) 8rem calc(var(--section-padding) / 3) 8rem;
 				display: flex;
 				justify-content: space-between;
@@ -44,20 +44,22 @@
 					position: relative;
 					display: block;
 					line-height: 1;
-					transition: var(--animation-fast);
 					transform: translateX(0);
 					font-size: clamp(5rem, 5.5vw, 10rem);
+					transition: transform 200ms ease-in-out;
 				}
 
 				p {
 					font-size: 1.6rem;
-					transition: var(--animation-fast);
 					transform: translateX(0);
+					transition: transform 200ms ease-in-out;
 				}
 			}
 
-			&:hover {
-				opacity: 0.33;
+			&:hover,
+			&:focus {
+				// opacity: 0.5;
+				opacity: 1;
 
 				h4 {
 					transform: translateX(calc(var(--container-padding) * -0.1));

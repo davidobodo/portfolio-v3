@@ -1,15 +1,25 @@
 @import "#/styles/globals.module.scss";
 
-.logo {
+.link {
 	position: fixed;
 	z-index: 1003;
 	top: 2rem;
 	left: 2rem;
-	width: 60px;
+	visibility: hidden;
 
 	@media (min-width: $md) {
 		top: 4rem;
 		left: 5.8rem;
+	}
+	&:focus {
+		outline: 2px dotted;
+	}
+}
+.logo {
+	position: relative;
+	width: 60px;
+
+	@media (min-width: $md) {
 		width: 79px;
 	}
 }

@@ -4,6 +4,7 @@ import { RefObject, useRef } from "react";
 import { FilterIcon } from "#/components/icons";
 import { projectAnimations } from "#/utils/animations";
 const { animateFilterButton } = projectAnimations;
+
 export default function Filter({ onClick }: { onClick: () => void; displayTriggerNode?: RefObject<HTMLDivElement> }) {
 	const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -17,10 +18,10 @@ export default function Filter({ onClick }: { onClick: () => void; displayTrigge
 		};
 	}, []);
 	return (
-		<div className={styles.container}>
-			<button className={styles.btnFilter} onClick={onClick} ref={btnRef} data-key="open-filter-btn">
-				<FilterIcon />
-			</button>
-		</div>
+		// <div className={styles.container}>
+		<button className={styles.btnFilter} onClick={onClick} ref={btnRef} data-key="open-filter-btn">
+			<FilterIcon />
+		</button>
+		// </div>
 	);
 }

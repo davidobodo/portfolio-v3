@@ -173,6 +173,10 @@
 				width: max(24px, 1.8vw);
 			}
 
+			&:focus {
+				outline: 3px dotted var(--black);
+			}
+
 			&:disabled {
 				opacity: 0.2;
 				cursor: not-allowed;

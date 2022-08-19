@@ -151,10 +151,7 @@ const ProjectsPage: NextPage = () => {
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
-			<Filter onClick={onOpenFilter} displayTriggerNode={contentRef} />
-
 			<BannerCurtain containerRef={blackCoverRef} />
-
 			<Banners.OtherPages
 				texts={["Projects", "Playground", "xperiments", "Replicas"]}
 				textWrapperRef={textWrapperRef}
@@ -162,13 +159,13 @@ const ProjectsPage: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
+			<Filter onClick={onOpenFilter} displayTriggerNode={contentRef} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.content} data-key="projects" id="projects-list">
 					<div className={styles.header}>
 						<h2 className={styles.contentTitle} ref={contentRef}>
 							Viewing <span>{currProjects}</span> projects
 						</h2>
-
 						<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
 					</div>
 					<div className={styles.projectsWrapper}>

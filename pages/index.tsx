@@ -82,7 +82,7 @@ const Home: NextPage = () => {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav />
+			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>

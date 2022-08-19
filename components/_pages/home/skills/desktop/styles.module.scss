@@ -147,7 +147,18 @@
 						}
 
 						a {
-							color: var(--white);
+							// color: var(--white);
+							color: var(--ash);
+
+							&:hover {
+								color: var(--white);
+							}
+
+							&:focus {
+								text-decoration: none;
+								color: var(--white);
+								outline: 2px dotted;
+							}
 						}
 					}
 

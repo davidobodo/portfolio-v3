@@ -33,5 +33,9 @@
 		&:hover {
 			opacity: 0.5;
 		}
+
+		&:focus {
+			outline: 2px dotted var(--white);
+		}
 	}
 }

@@ -51,11 +51,13 @@ export default function Slider({ items, id }: { items: { type: "image" | "video"
 			setItemWidth(width);
 			moveSlider(activeItem, width);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [innerWidth, innerHeight]);
 
 	useEffect(() => {
 		setActiveItem(0);
 		moveSlider(0, itemWidth);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
 	return (

@@ -4,8 +4,7 @@ import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact } from "#/componen
 import { use404PageInit } from "#/hooks";
 
 export default function NotFound() {
-	const { onStopRedirect, countdown, logoVisibility, containerRef, scrollRef, gradientRef, bannerHeight } =
-		use404PageInit();
+	const { onStopRedirect, countdown, containerRef, scrollRef, gradientRef, bannerHeight } = use404PageInit();
 
 	return (
 		<>
@@ -17,7 +16,8 @@ export default function NotFound() {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			{logoVisibility && <Nav alwaysVisible={true} color="#000" />}
+
+			<Nav />
 
 			<div className={styles.main} ref={containerRef}>
 				<header className={styles.content} style={{ minHeight: bannerHeight + "px" }}>
