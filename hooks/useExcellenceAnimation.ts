@@ -36,14 +36,13 @@ export default function useExcellenceAnimation() {
 		if (textWrapperRef.current) {
 			const svg = textWrapperRef.current.querySelector("svg");
 			const svgHeight = svg?.clientHeight as number;
-			const viewportHieght = innerHeight;
 
-			if (svgHeight < viewportHieght) {
+			if (innerHeight > innerWidth && svgHeight < innerHeight) {
 				// All is well
 				setContainerWidth(3290);
 			}
 		}
-	}, [innerHeight, containerWidth]);
+	}, [innerHeight, containerWidth, innerWidth]);
 	return {
 		containerRef,
 		containerWidth,

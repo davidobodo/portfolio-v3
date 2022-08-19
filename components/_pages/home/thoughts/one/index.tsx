@@ -77,6 +77,23 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 7,
 		},
 	];
+	const thirdParagraph = [
+		{
+			sentence: "There is just ",
+			color: "ash",
+			key: 0,
+		},
+		{
+			sentence: "one word",
+			color: "white",
+			key: 1,
+		},
+		{
+			sentence: "to describe what I do 👇🏾",
+			color: "ash",
+			key: 2,
+		},
+	];
 
 	return (
 		<div className={styles.container}>
@@ -115,6 +132,36 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 					</p>
 					<p className={styles.paragraph}>
 						{secondParagraph.map((item) => {
+							const { color, sentence, key } = item;
+							if (color === "white") {
+								return (
+									<strong key={key}>
+										{sentence.split(" ").map((item, i) => {
+											return (
+												<span className={styles.wordWrapper} key={item + i}>
+													<span className={styles.word} data-key="word">
+														{item}&nbsp;
+													</span>
+												</span>
+											);
+										})}
+									</strong>
+								);
+							} else {
+								return sentence.split(" ").map((item) => {
+									return (
+										<span className={styles.wordWrapper} key={key + item}>
+											<span className={styles.word} data-key="word">
+												{item}&nbsp;
+											</span>
+										</span>
+									);
+								});
+							}
+						})}
+					</p>
+					<p className={styles.paragraph}>
+						{thirdParagraph.map((item) => {
 							const { color, sentence, key } = item;
 							if (color === "white") {
 								return (
