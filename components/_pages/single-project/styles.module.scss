@@ -57,6 +57,7 @@
 .btnClose {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	background-color: var(--ash);
 	border: 0px;
 	height: 40px;
@@ -64,20 +65,22 @@
 	font-size: 1.4rem;
 	text-transform: uppercase;
 	width: 100px;
-	justify-content: center;
 	clip-path: inset(0em 0em 0em 6rem round 999px);
 	transition: clip-path 300ms ease-in-out;
 	cursor: pointer;
-	position: relative;
+
 	padding-left: 10px;
-	position: fixed;
 	z-index: 2000;
-	top: 2.5rem;
-	right: 2rem;
+	flex-shrink: 0;
+	position: relative;
 
 	@media (min-width: $lg) {
-		top: 4rem;
-		right: 3rem;
+		// top: 4rem;
+		// right: 3rem;
+		// position: fixed;
+		// top: 2.5rem;
+		// right: 2rem;
+		// top: 8rem;
 	}
 
 	span {
@@ -147,7 +150,6 @@
 				font-size: 4rem;
 				font-family: sf-pro-bold;
 				font-weight: 500;
-				margin-bottom: 2rem;
 			}
 
 			h2 {
@@ -194,18 +196,24 @@
 		}
 
 		.title {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
 		}
 
-		.image {
-			// height: 500px;
-			padding-top: 62.5%;
+		.media {
 			margin-bottom: 6rem;
 
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-color: var(--ash);
+			.image {
+				// height: 500px;
+				padding-top: 62.5%;
 
-			will-change: transform;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-color: var(--ash);
+
+				will-change: transform;
+			}
 		}
 
 		.about {
@@ -312,7 +320,7 @@
 
 	@media (min-width: $md) {
 		display: block;
-		background-color: rgba(134, 134, 139, 0.1);
+		// background-color: rgba(134, 134, 139, 0.1);
 	}
 
 	svg {

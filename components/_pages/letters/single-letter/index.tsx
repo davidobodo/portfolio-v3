@@ -48,18 +48,18 @@ export default function SingleLetter({
 					target="_blank"
 					onClick={() => registerEvent(events.pages.letters.viewLetter({ link_url: url, article_title: title }))}
 				>
-					<h3>{title}</h3>
-					<p>
-						{date} | {time} read
-					</p>
-					<p>{summary}</p>
-
-					<ul>
-						{tags.map((item) => {
-							return <li key={item}>#{item}</li>;
-						})}
-					</ul>
+					{title}
 				</a>
+				<p>
+					{date} | {time} read
+				</p>
+				<p>{summary}...</p>
+
+				<ul>
+					{tags.map((item) => {
+						return <li key={item}>#{item}</li>;
+					})}
+				</ul>
 			</div>
 			<span className={styles.number}>{i < 10 ? `0${i + 1}.` : `.${i + 1}`}</span>
 		</article>

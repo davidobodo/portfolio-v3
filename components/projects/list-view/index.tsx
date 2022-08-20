@@ -7,7 +7,7 @@ export function ProjectListView({
 	onViewProject,
 	displayedProjects,
 }: {
-	onViewProject: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
+	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLButtonElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
 	const { imgRef, btnRef, textRef, onMouseEnter, onMouseLeave, isActive, onEnterElement, listRef } =
@@ -61,7 +61,7 @@ function ProjectListItem({
 	return (
 		<li onMouseEnter={onMouseEnter} onClick={onClick} data-id={id} data-type="list-item" tabIndex={0}>
 			<div className={styles.row}>
-				<h4>{title}</h4>
+				<h2>{title}</h2>
 				<p>{type}</p>
 			</div>
 

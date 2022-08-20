@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { Ref, RefObject } from "react";
-import { ScrollAlert, Logo, SectionPlaceholder } from "../../index";
+import { ScrollAlert, SectionPlaceholder } from "../../index";
 export default function Banner({
 	texts,
 	textWrapperRef,
@@ -17,7 +17,6 @@ export default function Banner({
 	return (
 		<>
 			<header className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
-				<Logo color="#000" propStyles={styles.logo} />
 				<div ref={textWrapperRef} className={styles.textWrapper}>
 					<div className={styles.firstPair}>
 						{texts.slice(0, 2).map((item, i) => {

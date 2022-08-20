@@ -29,7 +29,7 @@ export default function Project(props: Props) {
 		if (modalRef.current && modalImgRef.current) {
 			const tl = removeCurrentProject({
 				modalContainer: modalRef.current,
-				modalImage: modalImgRef.current,
+				modalMedia: modalImgRef.current,
 			});
 
 			tl.to(modalRef.current, { opacity: 0 });
@@ -50,7 +50,7 @@ export default function Project(props: Props) {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav alwaysVisible={true} />
+			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div ref={modalRef} className={styles.container}>
 					<SingleProject

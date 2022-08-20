@@ -1,11 +1,16 @@
 import styles from "./styles.module.scss";
+import Link from "next/link";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useState } from "react";
 import { Logo } from "../index";
-import Link from "next/link";
+import { TLogoMode } from "#/interfaces";
 
-export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwaysVisible?: boolean; color?: string }) {
-	const [isVisible, setIsVisible] = useState(false);
+type Props = { showInBanner?: boolean; headerSectionLogoMode?: TLogoMode; hasBackdropFilter?: boolean };
+
+export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark", hasBackdropFilter = false }: Props) {
+	const [isVisible, setIsVisible] = useState(showInBanner);
+	const [logoMode, setLogoMode] = useState<TLogoMode>(headerSectionLogoMode); // Since page loads at the top (i.e header)
+	const [hasBackdrop, setHasBackdrop] = useState(hasBackdropFilter);
 	const handlescroll = () => {
 		// Get the total height of the document
 		const totalHeight = document.body.offsetHeight;
@@ -13,32 +18,53 @@ export default function Nav({ alwaysVisible = false, color = "#e1dfdd" }: { alwa
 		const LOGO_POSITION_HEIGHT = 95;
 		const diff = totalHeight - contactHeight - LOGO_POSITION_HEIGHT;
 
-		// Toggle visibility
+		// When user is in the page banner section/header section
+		if (window.pageYOffset < 95) {
+			setLogoMode(headerSectionLogoMode);
+			setHasBackdrop(hasBackdropFilter);
+			if (showInBanner) {
+				setIsVisible(true);
+			} else {
+				setIsVisible(false);
+			}
+		}
+
+		// When user is in the dark section of the page
 		if (window.pageYOffset >= 95 && window.pageYOffset < diff) {
+			setLogoMode("light");
 			setIsVisible(true);
-		} else {
+
+			if (window.innerWidth < 768) {
+				setHasBackdrop(true);
+			}
+		}
+
+		//When user is in the contact section
+		if (window.pageYOffset > diff) {
 			setIsVisible(false);
 		}
 	};
+
 	useIsomorphicLayoutEffect(() => {
-		if (alwaysVisible) {
-			setIsVisible(true);
-		} else {
-			if (typeof window !== "undefined") {
-				window.addEventListener("scroll", handlescroll);
-			}
-			return () => {
-				if (typeof window !== "undefined") {
-					window.removeEventListener("scroll", handlescroll);
-				}
-			};
-		}
-	}, [alwaysVisible]);
+		window.addEventListener("scroll", handlescroll);
+
+		return () => {
+			window.removeEventListener("scroll", handlescroll);
+		};
+	}, []);
+
+	const color = logoMode === "light" ? "#e1dfdd" : "#000";
 	return (
-		<Link href="/" scroll={false}>
-			<a>
-				<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
-			</a>
-		</Link>
+		<>
+			<Link href="/" scroll={false}>
+				<a className={styles.link} data-key="nav-logo" style={{ outlineColor: color }}>
+					<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
+				</a>
+			</Link>
+			<div
+				className={styles.container}
+				style={{ backdropFilter: hasBackdrop ? "blur(1.5rem) saturate(1.1)" : "none" }}
+			></div>
+		</>
 	);
 }

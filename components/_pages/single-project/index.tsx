@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/icons";
+import { Slider } from "#/components";
 import { fetchProjects } from "#/utils";
 import { Ref } from "react";
 import { TECH_STACKS } from "#/constants/tech-stacks";
@@ -59,8 +60,30 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 		);
 	}
 
-	const { title, bgImage, details, tech, roles, githublink, sitelink } = currProject;
+	const { title, details, tech, roles, githublink, sitelink } = currProject;
 
+	const media: { type: "image" | "video"; source: string }[] = [
+		{
+			type: "image",
+			source:
+				"https://images.unsplash.com/photo-1660814807979-8482e075420c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+		},
+		{
+			type: "image",
+			source:
+				"https://images.unsplash.com/photo-1660820149211-886c72990f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+		},
+		{
+			type: "image",
+			source:
+				"https://images.unsplash.com/photo-1660846194618-bbd5ac3825a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+		},
+		{
+			type: "image",
+			source:
+				"https://images.unsplash.com/photo-1660846343279-5c69dbcd817d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+		},
+	];
 	return (
 		<div className={styles.container} data-key="project-info">
 			{/* ----------------------------------------------- */}
@@ -80,23 +103,25 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{/* ----------------------------------------------- */}
 				{/* Close Button */}
 				{/* ----------------------------------------------- */}
-				<button onClick={onClose} className={styles.btnClose} data-key="close-button">
-					<span>
-						<strong>↙</strong>
-					</span>
-					<span>Close</span>
-				</button>
+
 				{/* ----------------------------------------------- */}
 				{/* Title */}
 				{/* ----------------------------------------------- */}
 				<section className={styles.title} data-key="title">
 					<h1>{title}</h1>
+
+					<button onClick={onClose} className={styles.btnClose} data-key="close-button">
+						<span>
+							<strong>↙</strong>
+						</span>
+						<span>Close</span>
+					</button>
 				</section>
 
 				{/* ----------------------------------------------- */}
 				{/* Mobile Links */}
 				{/* ----------------------------------------------- */}
-				<div className={styles.links + " " + styles.mobile} data-key="buttons">
+				{/* <div className={styles.links + " " + styles.mobile} data-key="buttons">
 					<a href={sitelink} target="_blank" onClick={() => handlePageGAEvents("live_site")}>
 						Visit site
 						<ExternalLink />{" "}
@@ -104,12 +129,17 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					<a href={githublink} target="_blank" onClick={() => handlePageGAEvents("github")}>
 						Github repo <Github />{" "}
 					</a>
-				</div>
+				</div> */}
 
 				{/* ----------------------------------------------- */}
-				{/* Image */}
+				{/* Media Section */}
 				{/* ----------------------------------------------- */}
-				<div className={styles.image} style={{ backgroundImage: `url(${bgImage})` }} ref={modalImgRef}></div>
+				<div className={styles.media} ref={modalImgRef}>
+					{/* <div className={styles.image} style={{ backgroundImage: `url(${bgImage})` }}></div> */}
+					<div>
+						<Slider items={media} id={currProjectId} />
+					</div>
+				</div>
 
 				{/* ----------------------------------------------- */}
 				{/* About Project */}

@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 		darkSectionRef,
 	});
 	const { textsListRef } = useAlternateTextOpacity();
-	const { workContainerRef, mobileWorkContainerRef, onWorkTitleKeyDown, onWorkDetailsKeyDown } = useWorkAnimation({
+	const { workContainerRef, mobileWorkContainerRef, onWorkDetailsKeyDown } = useWorkAnimation({
 		windowInnerHeight,
 		windowInnerWidth,
 	});
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav />
+			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
@@ -93,7 +93,6 @@ const Home: NextPage = () => {
 					<Work
 						workContainerRef={workContainerRef}
 						mobileWorkContainerRef={mobileWorkContainerRef}
-						onWorkTitleKeyDown={onWorkTitleKeyDown}
 						onWorkDetailsKeyDown={onWorkDetailsKeyDown}
 					/>
 					<Thoughts.One textWrapperRef={thoughtOneText} />

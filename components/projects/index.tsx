@@ -8,7 +8,7 @@ export default function Project({
 	displayedProjects,
 	currentView,
 }: {
-	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => void;
+	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLButtonElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 	currentView?: "list" | "grid";
 }) {

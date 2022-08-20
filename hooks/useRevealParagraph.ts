@@ -14,18 +14,19 @@ export default function useRevealText() {
 
 			if (paragraphs) {
 				const master = gsap.timeline();
-				master.add(
-					revealParagraph({
-						trigger: paragraphs[0],
-						words: paragraphs[0].querySelectorAll('[data-key="word"]'),
-					})
-				);
-				master.add(
-					revealParagraph({
-						trigger: paragraphs[1],
-						words: paragraphs[1].querySelectorAll('[data-key="word"]'),
-					})
-				);
+
+				for (let i = 0; i < paragraphs.length; i++) {
+					master.add(
+						revealParagraph({
+							trigger: paragraphs[i],
+							words: paragraphs[i].querySelectorAll('[data-key="word"]'),
+						})
+					);
+				}
+
+				return () => {
+					master.kill();
+				};
 			}
 		}
 	}, []);

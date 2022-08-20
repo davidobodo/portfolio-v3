@@ -141,7 +141,11 @@ const events = {
 };
 
 function registerEvent({ label, parameters = {} }: { label: string; parameters?: Record<string, string> }) {
-	window.gtag("event", label, parameters);
+	if (typeof window !== "undefined") {
+		if (window.gtag) {
+			window.gtag("event", label, parameters);
+		}
+	}
 }
 
 export { registerEvent, events };

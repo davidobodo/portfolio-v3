@@ -4,7 +4,7 @@ export function ProjectsGridView({
 	onViewProject,
 	displayedProjects,
 }: {
-	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLDivElement, MouseEvent>) => void;
+	onViewProject: (event: React.MouseEvent<HTMLLIElement | HTMLButtonElement, MouseEvent>) => void;
 	displayedProjects: TProject[];
 }) {
 	return (
@@ -12,16 +12,8 @@ export function ProjectsGridView({
 			{displayedProjects.map((item, i) => {
 				const { bgImage, id } = item;
 
-				let isLocked = false;
-
 				return (
-					<div
-						key={i}
-						className={isLocked ? styles.box + " " + styles.locked : styles.box + " " + styles.free}
-						data-id={id}
-						data-type="box-item"
-						onClick={onViewProject}
-					>
+					<button key={i} className={styles.box} data-id={id} data-type="box-item" onClick={onViewProject}>
 						<div
 							className={styles.boxImage}
 							// style={{ backgroundColor: `${bgColor}` }}
@@ -33,7 +25,7 @@ export function ProjectsGridView({
 						<div className={styles.boxCircle}>
 							<span>View</span>
 						</div>
-					</div>
+					</button>
 				);
 			})}
 		</div>

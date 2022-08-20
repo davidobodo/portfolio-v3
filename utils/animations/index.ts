@@ -131,6 +131,8 @@ class HomePageAnimations {
 		tl.to(scrollIndicator, { opacity: 1 });
 		tl.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
+			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
+			navLogo.style.visibility = "visible";
 		});
 
 		return tl;
@@ -197,7 +199,7 @@ class SingleProjectAnimations {
 		destination,
 	}: {
 		modal: HTMLDivElement;
-		source: HTMLDivElement;
+		source: HTMLDivElement | HTMLButtonElement;
 		destination: HTMLDivElement;
 	}) {
 		const sourceRect = source.getBoundingClientRect();
@@ -255,7 +257,7 @@ class SingleProjectAnimations {
 		return tl;
 	}
 
-	removeCurrentProject({ modalContainer, modalImage }: { modalContainer: HTMLDivElement; modalImage: HTMLDivElement }) {
+	removeCurrentProject({ modalContainer, modalMedia }: { modalContainer: HTMLDivElement; modalMedia: HTMLDivElement }) {
 		const removeCurrentProjectTl = gsap.timeline();
 		removeCurrentProjectTl
 			.to(modalContainer.querySelector("[data-key=title]"), {
@@ -278,18 +280,20 @@ class SingleProjectAnimations {
 				y: 20,
 				duration: 0.2,
 			})
-			.to(modalImage, {
-				width: "0px",
+			.to(modalMedia.children[0], {
+				// width: "0px",
+				opacity: 0,
 			});
 
 		return removeCurrentProjectTl;
 	}
 
-	displayNextProject({ modalContainer, modalImage }: { modalContainer: HTMLDivElement; modalImage: HTMLDivElement }) {
+	displayNextProject({ modalContainer, modalMedia }: { modalContainer: HTMLDivElement; modalMedia: HTMLDivElement }) {
 		const displayNextProjectTl = gsap.timeline();
 		displayNextProjectTl
-			.to(modalImage, {
-				width: "100%",
+			.to(modalMedia.children[0], {
+				// width: "100%",
+				opacity: 1,
 			})
 			.to(modalContainer.querySelector("[data-key=title]"), {
 				opacity: 1,

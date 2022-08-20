@@ -16,13 +16,13 @@ import ScrollToTop from "./scroll-to-top";
 import SectionPlaceholder from "./section-placeholder";
 import BannerCurtain from "./banner-curtain";
 import Projects from "./projects";
-import Filter from "./filter";
 import ProjectsFilter from "./projects-filter";
 import Spinner from "./spinner";
 import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
 import PageTransitionLayout from "./page-transition-layout";
 import ProjectsViewSelector from "./projects/view-selector";
+import Slider from "./slider";
 
 const { Button, Radio } = Atoms;
 const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
@@ -55,7 +55,6 @@ export {
 	SectionPlaceholder,
 	BannerCurtain,
 	ProjectsHeading,
-	Filter,
 	ProjectsFilter,
 	Spinner,
 	AlternatingOpacity,
@@ -63,4 +62,5 @@ export {
 	Excellence,
 	PageTransitionLayout,
 	ProjectsViewSelector,
+	Slider,
 };

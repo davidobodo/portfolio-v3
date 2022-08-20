@@ -1,15 +1,40 @@
 @import "#/styles/globals.module.scss";
 
-.logo {
+.container {
+	width: 100%;
+	top: 0px;
+	position: fixed;
+	z-index: var(--z-index-nav);
+	height: 70px;
+	backdrop-filter: blur(1.5rem) saturate(1.1);
+
+	@media (min-width: $md) {
+		backdrop-filter: none;
+		height: 100px;
+		display: none;
+	}
+}
+
+.link {
 	position: fixed;
 	z-index: 1003;
 	top: 2rem;
 	left: 2rem;
-	width: 60px;
+	visibility: hidden;
 
 	@media (min-width: $md) {
 		top: 4rem;
 		left: 5.8rem;
+	}
+	&:focus {
+		outline: 2px dotted;
+	}
+}
+.logo {
+	position: relative;
+	width: 60px;
+
+	@media (min-width: $md) {
 		width: 79px;
 	}
 }

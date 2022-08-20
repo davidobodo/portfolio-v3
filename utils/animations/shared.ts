@@ -133,6 +133,8 @@ class SharedAnimations {
 		// Make sure page is not scrollable until banner animation is complete
 		tl.add(() => {
 			document.querySelector("body")?.classList.add("hide");
+			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
+			navLogo.style.visibility = "visible";
 		});
 
 		// 1. Slide in first element

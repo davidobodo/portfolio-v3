@@ -8,6 +8,27 @@
 	@media (min-width: $lg) {
 		display: block;
 	}
+	//-------------------------------
+	//GLOBAL STYLES
+	//-------------------------------
+	a {
+		cursor: pointer;
+		color: inherit;
+		text-decoration: underline;
+
+		&:hover {
+			color: var(--white);
+		}
+
+		&:focus {
+			text-decoration: none;
+			color: var(--white);
+			outline: 2px dotted;
+		}
+	}
+	//-------------------------------
+	//-------------------------------
+	//-------------------------------
 
 	.contentWrapper {
 		// Note: GSAP makes this fixed, since we apply "pinning to it". Hence our SVG is positioned relative to this
@@ -24,6 +45,14 @@
 
 			@media (min-width: $xxl) {
 				max-width: var(--max-width);
+			}
+
+			&:focus {
+				outline: none;
+
+				.tabHeaders {
+					background-color: var(--white-alpha);
+				}
 			}
 		}
 
@@ -75,24 +104,24 @@
 				transform: translateY(40px);
 				opacity: 0;
 				color: var(--ash3);
-				visibility: hidden;
+				// visibility: hidden;
 
 				// &:first-child {
 				// 	visibility: visible;
 				// }
 
-				&[data-focus="active-work"] {
-					visibility: visible !important;
-					opacity: 1 !important;
-				}
-
-				h4 {
-					font-size: 18px;
+				h2 {
+					font-size: 1.8rem;
 					line-height: 1.19048;
 					font-weight: 600;
 					letter-spacing: 0.021em;
 					margin-bottom: 2rem;
 					color: var(--white);
+
+					&:focus {
+						color: var(--white);
+						outline: 2px dotted;
+					}
 				}
 
 				.notes {
@@ -102,14 +131,6 @@
 					font-family: "sf-pro-bold";
 					width: 360px;
 
-					a {
-						cursor: pointer;
-						color: inherit;
-
-						&:hover {
-							color: var(--white);
-						}
-					}
 					ol {
 						padding-left: 1.8rem;
 					}
@@ -145,16 +166,6 @@
 							border-radius: 50%;
 							top: 50%;
 							transform: translateY(-50%);
-						}
-
-						a {
-							text-decoration: underline;
-							cursor: pointer;
-							color: inherit;
-
-							&:hover {
-								color: var(--white);
-							}
 						}
 					}
 				}
