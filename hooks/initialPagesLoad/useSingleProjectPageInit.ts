@@ -29,8 +29,11 @@ export default function useSingleProjectInit() {
 		master.add(openNoiseLayers(layers));
 		master.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
-			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
-			navLogo.style.visibility = "visible";
+			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement | null;
+
+			if (navLogo) {
+				navLogo.style.visibility = "visible";
+			}
 		});
 
 		return () => {

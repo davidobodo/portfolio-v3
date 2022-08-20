@@ -31,7 +31,7 @@ export default function ViewDesktop({ workContainerRef, onWorkDetailsKeyDown }: 
 							return (
 								<div className={styles.tabDetail} key={i} data-key="work-detail">
 									<section>
-										<h4 tabIndex={0}>{company}</h4>
+										<h2 tabIndex={0}>{company}</h2>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
 										<span>{range}</span>
 										<ul>

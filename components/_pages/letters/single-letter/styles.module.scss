@@ -1,16 +1,24 @@
 @import "#/styles/globals.module.scss";
 
-.container {
-	margin: auto;
-	cursor: pointer;
+.letterWrapper {
+	padding-bottom: 6rem;
+	border-bottom: 0.01px solid rgba(255, 255, 255, 0.2);
 	position: relative;
-	z-index: 1;
+	opacity: 0;
+	transform: translateY(100px);
+	margin-bottom: 6rem;
 
-	a {
+	&:last-child {
+		margin-bottom: 0px;
+	}
+
+	.container {
+		margin: auto;
+		position: relative;
+		z-index: 1;
 		color: var(--ash);
-		text-decoration: none;
 
-		h3 {
+		h2 {
 			font-size: 3rem;
 			margin-bottom: 2rem;
 			line-height: 1.5;
@@ -52,27 +60,37 @@
 					font-size: 1.8rem;
 				}
 			}
-		}
-	}
+			// }
 
-	&:hover {
+			&:focus {
+				outline: none;
+			}
+		}
+
 		a {
-			color: var(--white);
+			color: var(--ash);
+			font-size: 1.6rem;
+
+			@media (min-width: $md) {
+				font-size: 1.8rem;
+				display: block;
+				font-size: 3rem;
+				margin-bottom: 2rem;
+				line-height: 1.5;
+				font-weight: 500;
+				font-family: sf-pro-bold;
+			}
+
+			&:focus {
+				text-decoration: none;
+				color: var(--white);
+				outline: 2px dotted var(--white);
+			}
+
+			&:hover {
+				color: var(--white);
+			}
 		}
-	}
-}
-
-.letterWrapper {
-	padding-bottom: 6rem;
-	border-bottom: 0.01px solid rgba(255, 255, 255, 0.2);
-	position: relative;
-	opacity: 0;
-	transform: translateY(100px);
-	margin-bottom: 6rem;
-
-	&:last-child {
-		margin-bottom: 0px;
-		// border-bottom: 0px;
 	}
 
 	.number {

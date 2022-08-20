@@ -5,12 +5,12 @@ import { useState } from "react";
 import { Logo } from "../index";
 import { TLogoMode } from "#/interfaces";
 
-type Props = { showInBanner?: boolean; headerSectionLogoMode?: TLogoMode };
+type Props = { showInBanner?: boolean; headerSectionLogoMode?: TLogoMode; hasBackdropFilter?: boolean };
 
-export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark" }: Props) {
+export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark", hasBackdropFilter = false }: Props) {
 	const [isVisible, setIsVisible] = useState(showInBanner);
 	const [logoMode, setLogoMode] = useState<TLogoMode>(headerSectionLogoMode); // Since page loads at the top (i.e header)
-
+	const [hasBackdrop, setHasBackdrop] = useState(hasBackdropFilter);
 	const handlescroll = () => {
 		// Get the total height of the document
 		const totalHeight = document.body.offsetHeight;
@@ -21,6 +21,7 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 		// When user is in the page banner section/header section
 		if (window.pageYOffset < 95) {
 			setLogoMode(headerSectionLogoMode);
+			setHasBackdrop(hasBackdropFilter);
 			if (showInBanner) {
 				setIsVisible(true);
 			} else {
@@ -32,6 +33,10 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 		if (window.pageYOffset >= 95 && window.pageYOffset < diff) {
 			setLogoMode("light");
 			setIsVisible(true);
+
+			if (window.innerWidth < 768) {
+				setHasBackdrop(true);
+			}
 		}
 
 		//When user is in the contact section
@@ -50,10 +55,16 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 
 	const color = logoMode === "light" ? "#e1dfdd" : "#000";
 	return (
-		<Link href="/" scroll={false}>
-			<a className={styles.link} data-key="nav-logo" style={{ outlineColor: color }}>
-				<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
-			</a>
-		</Link>
+		<>
+			<Link href="/" scroll={false}>
+				<a className={styles.link} data-key="nav-logo" style={{ outlineColor: color }}>
+					<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
+				</a>
+			</Link>
+			<div
+				className={styles.container}
+				style={{ backdropFilter: hasBackdrop ? "blur(1.5rem) saturate(1.1)" : "none" }}
+			></div>
+		</>
 	);
 }

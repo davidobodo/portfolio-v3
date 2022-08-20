@@ -1,136 +1,133 @@
-.container {
-	z-index: var(--z-index-modal);
-	height: 100vh;
-	width: 100%;
-	overflow: auto;
+.filterModal {
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: var(--z-index-modal);
+
+	padding-right: 4rem;
+	display: flex;
+	backdrop-filter: blur(1.5rem) saturate(1.1);
+	background-color: rgba(0, 0, 0, 0.3);
+	overflow: auto;
+	width: 100vw;
+	height: 100vh;
+
 	scrollbar-width: none;
-	// opacity: 0;
 
 	&::-webkit-scrollbar {
 		width: 0px;
 	}
-}
-
-.filterModal {
-	padding: 3rem;
-	padding-top: 10rem;
-	display: flex;
-	backdrop-filter: blur(1.5rem) saturate(1.1);
-	background-color: rgba(0, 0, 0, 0.3);
-	overflow: hidden;
-	width: 100%;
-	min-height: 100vh;
-	opacity: 0;
 
 	.empty {
 		flex: 1;
 		width: calc(100vw - 250px);
 		flex-shrink: 0;
 		cursor: url("/icons/cancel.svg"), pointer;
+		position: sticky; // So it stays in place when user scrolls modal
+		top: 0px;
 	}
 
 	.aside {
 		width: 250px;
 		flex-shrink: 0;
-	}
-}
+		padding-top: 4rem;
+		padding-bottom: 4rem;
 
-.filterBy {
-	margin-bottom: 4rem;
-	color: var(--white);
-	opacity: 0;
-
-	h4 {
-		margin-bottom: 2rem;
-		font-size: 1.4rem;
-		text-transform: uppercase;
-		font-size: 600;
-		text-align: right;
-	}
-
-	.filterCheck {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		margin-bottom: 1rem;
-		font-size: 1.4rem;
-		cursor: pointer;
-
-		label {
-			margin-right: 1rem;
-			cursor: pointer;
-		}
-	}
-}
-
-.closeBtn {
-	position: fixed;
-	top: 4rem;
-	right: -3rem;
-	opacity: 0;
-	background: var(--color-blue);
-	width: 4rem;
-	height: 4rem;
-	border: 0px;
-	border-radius: 50%;
-
-	cursor: pointer;
-	transform: rotate(180deg);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: background-color 200ms ease-in-out;
-	will-change: background-color;
-
-	&:hover {
-		background-color: var(--dark-blue);
-	}
-
-	&:focus {
-		background-color: var(--dark-blue);
-		box-shadow: 1px 2px 5px 1px rgba(255, 255, 255, 0.5);
-	}
-}
-
-.listWrapper {
-	list-style: none;
-
-	li {
-		border-top: 1px dotted transparent;
-		border-bottom: 1px dotted transparent;
-		cursor: pointer;
-		margin-bottom: 5px;
-		opacity: 1;
-		transform: translateX(150%);
-
-		button {
-			cursor: pointer;
-			background-color: transparent;
+		.closeBtn {
+			opacity: 0;
+			background: var(--color-blue);
+			width: 4rem;
+			height: 4rem;
 			border: 0px;
-			width: 100%;
-			display: flex;
-			justify-content: flex-end;
-			color: #fff;
-			font-size: 1.6rem;
-			font-weight: 600;
-			padding: 5px;
-			outline: none;
-		}
+			border-radius: 50%;
 
-		&.active {
-			button {
-				background-color: rgba(255, 255, 255, 0.1);
-				color: #fff;
+			cursor: pointer;
+			transform: rotate(180deg);
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background-color 200ms ease-in-out;
+			will-change: background-color;
+			margin-left: auto;
+			margin-bottom: 2rem;
+
+			&:hover {
+				background-color: var(--dark-blue);
+			}
+
+			&:focus {
+				background-color: var(--dark-blue);
+				// box-shadow: 1px 2px 5px 1px rgba(255, 255, 255, 0.5);
+				outline: 2px dotted var(--white);
 			}
 		}
 
-		&:hover,
-		&:focus-within {
-			border-color: rgba(255, 255, 255, 0.5);
+		.filterBy {
+			margin-bottom: 4rem;
+			color: var(--white);
+			opacity: 0;
+
+			h4 {
+				margin-bottom: 2rem;
+				font-size: 1.4rem;
+				text-transform: uppercase;
+				font-size: 600;
+				text-align: right;
+			}
+
+			.filterCheck {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				margin-bottom: 1rem;
+				font-size: 1.4rem;
+				cursor: pointer;
+
+				label {
+					margin-right: 1rem;
+					cursor: pointer;
+				}
+			}
+		}
+
+		.listWrapper {
+			list-style: none;
+
+			li {
+				border-top: 2px dotted transparent;
+				border-bottom: 2px dotted transparent;
+				cursor: pointer;
+				margin-bottom: 5px;
+				opacity: 1;
+				transform: translateX(150%);
+
+				button {
+					cursor: pointer;
+					background-color: transparent;
+					border: 0px;
+					width: 100%;
+					display: flex;
+					justify-content: flex-end;
+					color: #fff;
+					font-size: 1.6rem;
+					font-weight: 600;
+					padding: 5px;
+					outline: none;
+				}
+
+				&.active {
+					button {
+						background-color: rgba(255, 255, 255, 0.1);
+						color: var(--white);
+					}
+				}
+
+				&:hover,
+				&:focus-within {
+					border-color: rgba(255, 255, 255, 0.5);
+				}
+			}
 		}
 	}
 }

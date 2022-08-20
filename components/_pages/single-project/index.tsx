@@ -103,23 +103,25 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{/* ----------------------------------------------- */}
 				{/* Close Button */}
 				{/* ----------------------------------------------- */}
-				<button onClick={onClose} className={styles.btnClose} data-key="close-button">
-					<span>
-						<strong>↙</strong>
-					</span>
-					<span>Close</span>
-				</button>
+
 				{/* ----------------------------------------------- */}
 				{/* Title */}
 				{/* ----------------------------------------------- */}
 				<section className={styles.title} data-key="title">
 					<h1>{title}</h1>
+
+					<button onClick={onClose} className={styles.btnClose} data-key="close-button">
+						<span>
+							<strong>↙</strong>
+						</span>
+						<span>Close</span>
+					</button>
 				</section>
 
 				{/* ----------------------------------------------- */}
 				{/* Mobile Links */}
 				{/* ----------------------------------------------- */}
-				<div className={styles.links + " " + styles.mobile} data-key="buttons">
+				{/* <div className={styles.links + " " + styles.mobile} data-key="buttons">
 					<a href={sitelink} target="_blank" onClick={() => handlePageGAEvents("live_site")}>
 						Visit site
 						<ExternalLink />{" "}
@@ -127,7 +129,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					<a href={githublink} target="_blank" onClick={() => handlePageGAEvents("github")}>
 						Github repo <Github />{" "}
 					</a>
-				</div>
+				</div> */}
 
 				{/* ----------------------------------------------- */}
 				{/* Media Section */}

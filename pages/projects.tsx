@@ -8,7 +8,6 @@ import {
 	Layout,
 	Projects,
 	BannerCurtain,
-	Filter,
 	ProjectsFilter,
 	Contact,
 	ProjectsViewSelector,
@@ -28,6 +27,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
+import { FilterIcon } from "#/components/icons";
 type TFilterBy = "tech-stack" | "project-nature";
 
 const ProjectsPage: NextPage = () => {
@@ -125,7 +125,7 @@ const ProjectsPage: NextPage = () => {
 
 	const scrollToProjectsList = () => {
 		ScrollTrigger.refresh();
-		const elem = document.querySelector("[data-key='projects']");
+		const elem = document.querySelector("#projects-list");
 		if (elem) {
 			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 		}
@@ -159,28 +159,20 @@ const ProjectsPage: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
-			<Filter onClick={onOpenFilter} displayTriggerNode={contentRef} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
-				<div className={styles.content} data-key="projects" id="projects-list">
+				<div className={styles.content} id="projects-list">
+					<div className={styles.filterWrapper}>
+						<button onClick={onOpenFilter} data-key="open-filter-btn" aria-label="Open Filter">
+							<FilterIcon />
+						</button>
+					</div>
 					<div className={styles.header}>
-						<h2 className={styles.contentTitle} ref={contentRef}>
+						<h2 ref={contentRef}>
 							Viewing <span>{currProjects}</span> projects
 						</h2>
 						<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
 					</div>
-					<div className={styles.projectsWrapper}>
-						<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} currentView={currentView} />
-					</div>
-					{showFilter && (
-						<ProjectsFilter
-							onFilterProjects={onFilterProjects}
-							onCloseFilter={onCloseFilter}
-							filterKey={filterKey}
-							filterList={filterList}
-							filterBy={filterBy}
-							onSelectFilterBy={onSelectFilterBy}
-						/>
-					)}
+					<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} currentView={currentView} />
 				</div>
 			</Layout.DarkSection>
 			<Contact />
@@ -193,6 +185,16 @@ const ProjectsPage: NextPage = () => {
 				onGoToProject={onGoToProject}
 				isOpen={isOpen}
 			/>
+			{showFilter && (
+				<ProjectsFilter
+					onFilterProjects={onFilterProjects}
+					onCloseFilter={onCloseFilter}
+					filterKey={filterKey}
+					filterList={filterList}
+					filterBy={filterBy}
+					onSelectFilterBy={onSelectFilterBy}
+				/>
+			)}
 		</>
 	);
 };

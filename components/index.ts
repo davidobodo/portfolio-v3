@@ -16,7 +16,6 @@ import ScrollToTop from "./scroll-to-top";
 import SectionPlaceholder from "./section-placeholder";
 import BannerCurtain from "./banner-curtain";
 import Projects from "./projects";
-import Filter from "./filter";
 import ProjectsFilter from "./projects-filter";
 import Spinner from "./spinner";
 import AlternatingOpacity from "./alternating-opacity";
@@ -56,7 +55,6 @@ export {
 	SectionPlaceholder,
 	BannerCurtain,
 	ProjectsHeading,
-	Filter,
 	ProjectsFilter,
 	Spinner,
 	AlternatingOpacity,

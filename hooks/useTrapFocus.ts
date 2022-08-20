@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useState } from "react";
-import { FOCUSABLE_ELEMENT_STRING, KEYBOARD_KEYS } from "#/constants";
+import { FOCUSABLE_ELEMENT_STRING } from "#/constants";
 
 type TFocusableTypes =
 	| HTMLAnchorElement
@@ -10,7 +10,6 @@ type TFocusableTypes =
 	| HTMLButtonElement;
 
 const useTrapFocus = ({ containerRef, onClose }: { containerRef: RefObject<HTMLDivElement>; onClose: () => void }) => {
-	const { ESC_KEY, TAB_KEY } = KEYBOARD_KEYS;
 	const [firstFocusableItem, setFirstFocusableItem] = useState<HTMLElement>();
 	const [lastFocusableItem, setLastFocusableItem] = useState<HTMLElement>();
 
@@ -30,11 +29,11 @@ const useTrapFocus = ({ containerRef, onClose }: { containerRef: RefObject<HTMLD
 
 	const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		const key = e.key || e.keyCode;
-		if (key === ESC_KEY) {
+		if (key === "Escape") {
 			onClose();
 		}
 
-		if (key === TAB_KEY) {
+		if (key === "Tab") {
 			if (e.shiftKey) {
 				if (document.activeElement === firstFocusableItem) {
 					e.preventDefault();
@@ -46,6 +45,7 @@ const useTrapFocus = ({ containerRef, onClose }: { containerRef: RefObject<HTMLD
 			} else {
 				if (document.activeElement === lastFocusableItem) {
 					e.preventDefault();
+					console.log("IN HERE");
 					if (firstFocusableItem) {
 						firstFocusableItem.focus();
 					}

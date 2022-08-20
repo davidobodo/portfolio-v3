@@ -1,5 +1,20 @@
 @import "#/styles/globals.module.scss";
 
+.container {
+	width: 100%;
+	top: 0px;
+	position: fixed;
+	z-index: var(--z-index-nav);
+	height: 70px;
+	backdrop-filter: blur(1.5rem) saturate(1.1);
+
+	@media (min-width: $md) {
+		backdrop-filter: none;
+		height: 100px;
+		display: none;
+	}
+}
+
 .link {
 	position: fixed;
 	z-index: 1003;

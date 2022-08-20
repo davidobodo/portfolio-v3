@@ -38,6 +38,7 @@ const Letters: NextPage = () => {
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
+						<h2>Viewing all letters</h2>
 						{LETTERS.map((item, i) => {
 							const { url, title, date, time, summary, tags } = item;
 							return (

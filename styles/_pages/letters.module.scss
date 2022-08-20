@@ -71,10 +71,13 @@
 		max-width: 900px;
 		margin: auto;
 		padding-bottom: 15rem;
-		.title {
-			font-size: 8rem;
-			text-transform: uppercase;
-			margin-bottom: 10rem;
+
+		h2 {
+			margin-bottom: 6rem;
+			font-weight: 500;
+			color: var(--ash);
+			font-family: sf-pro-regular;
+			font-size: 1.8rem;
 		}
 	}
 }

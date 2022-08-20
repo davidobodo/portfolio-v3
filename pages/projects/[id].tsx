@@ -50,7 +50,7 @@ export default function Project(props: Props) {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav headerSectionLogoMode="light" />
+			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
 				<div ref={modalRef} className={styles.container}>
 					<SingleProject

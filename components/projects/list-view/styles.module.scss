@@ -20,12 +20,12 @@
 			cursor: pointer;
 			position: relative;
 			transition: opacity 200ms ease-in-out;
-			opacity: 0.5;
+			opacity: 1;
 
 			&:focus {
 				background-color: var(--white-alpha);
 				outline: 2px dotted var(--white);
-				opacity: 1;
+				opacity: 0.8;
 			}
 
 			&:first-child {
@@ -40,7 +40,7 @@
 				color: var(--ash);
 				text-decoration: none;
 
-				h4 {
+				h2 {
 					position: relative;
 					display: block;
 					line-height: 1;
@@ -61,7 +61,7 @@
 				// opacity: 0.5;
 				opacity: 1;
 
-				h4 {
+				h2 {
 					transform: translateX(calc(var(--container-padding) * -0.1));
 				}
 

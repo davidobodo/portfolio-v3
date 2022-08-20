@@ -100,6 +100,7 @@
 						color: var(--light-brown);
 						text-decoration: none;
 						outline: none;
+						outline: 2px dotted var(--black);
 
 						&:before {
 							width: 100%;
