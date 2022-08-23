@@ -141,7 +141,8 @@ export default function Credit() {
 					<section>
 						<h2>People</h2>
 
-						<ul className={styles.people}>
+						{/* <ul className={styles.people}> */}
+						<ul className={styles.list}>
 							{PEOPLE.map((item, i) => {
 								const { link } = item;
 								return <ListItem key={i} role="Chief Reviewer" name="Oluwaseun Adedire" link={link} />;
@@ -178,11 +179,17 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 
 	if (role && name) {
 		return (
+			// <li ref={ref}>
+			// 	<span>Chief Reviewer</span>
+			// 	<span className={styles.lines}></span>
+			// 	<a href={link} target="_blank" onClick={handleGAEvent}>
+			// 		<span>Oluwaseun Adedire</span>
+			// 	</a>
+			// </li>
+
 			<li ref={ref}>
-				<span>Chief Reviewer</span>
-				<span className={styles.lines}></span>
 				<a href={link} target="_blank" onClick={handleGAEvent}>
-					<span>Oluwaseun Adedire</span>
+					<span>{`Chief Reviewer - Christian Drey`}</span>
 				</a>
 			</li>
 		);

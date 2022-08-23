@@ -163,8 +163,11 @@
 	@media (min-width: $md) {
 		flex-direction: row;
 		height: 60px;
-		margin: 0px 6rem;
+		margin: 0px 2rem;
 		padding: 0px;
+	}
+	@media (min-width: $lg) {
+		margin: 0px 6rem;
 	}
 
 	ul {

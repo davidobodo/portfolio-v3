@@ -172,7 +172,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{/* ----------------------------------------------- */}
 				{/* Desktop Links */}
 				{/* ----------------------------------------------- */}
-				<div className={styles.links + " " + styles.desktop} data-key="buttons">
+				<div className={styles.links} data-key="buttons">
 					{sitelink && (
 						<a href={sitelink} target="_blank" onClick={() => handlePageGAEvents("live_site")}>
 							Visit site

@@ -141,7 +141,9 @@ class SharedAnimations {
 		tl.add(() => {
 			document.querySelector("body")?.classList.add("hide");
 			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
-			navLogo.style.visibility = "visible";
+			if (navLogo) {
+				navLogo.style.visibility = "visible";
+			}
 		});
 
 		// 1. Slide in first element

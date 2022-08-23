@@ -6,7 +6,7 @@
 	justify-content: space-between;
 	background-color: var(--light-brown);
 	padding: 8rem 2rem 2rem;
-	position: fixed;
+	position: relative;
 	width: 100%;
 	z-index: var(--z-index-banner);
 
@@ -38,7 +38,6 @@
 		}
 
 		h1 {
-			font-size: clamp(50px, 12.5vw, 300px);
 			letter-spacing: -2px;
 			text-transform: uppercase;
 			line-height: 0.8em;
@@ -46,6 +45,14 @@
 			font-weight: 500;
 			display: flex;
 			position: relative;
+			font-size: 5rem;
+
+			@media (min-width: $md) {
+				font-size: 9rem;
+			}
+			@media (min-width: $xl) {
+				font-size: clamp(50px, 12.5vw, 300px);
+			}
 
 			&::selection {
 				background-color: var(--black);
@@ -61,7 +68,7 @@
 					z-index: 1;
 
 					.letter {
-						transform: translateX(-100%);
+						transform: translateX(-120%);
 
 						&::selection {
 							background: var(--black);

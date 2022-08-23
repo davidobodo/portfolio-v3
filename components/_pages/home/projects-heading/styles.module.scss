@@ -14,17 +14,18 @@
 	padding: 0px 2rem;
 
 	@media (min-width: $md) {
-		font-size: 60px;
+		font-size: 5rem;
 		max-width: var(--mini-desktop-max-width);
 	}
 
 	@media (min-width: $xl) {
+		font-size: 6rem;
 		margin-bottom: 10rem;
 	}
 
 	@media (min-width: $xxl) {
 		margin-bottom: 15rem;
-		font-size: 80px;
+		font-size: 8rem;
 		max-width: var(--max-width);
 	}
 

@@ -8,7 +8,6 @@
 	height: 50px;
 
 	@media (min-width: $md) {
-		height: 100px;
 		display: none;
 	}
 }
@@ -40,7 +39,7 @@
 	position: relative;
 	width: 50px;
 
-	@media (min-width: $lg) {
+	@media (min-width: $xl) {
 		width: 79px;
 	}
 }

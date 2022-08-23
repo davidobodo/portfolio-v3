@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { Ref, RefObject } from "react";
-import { ScrollAlert, SectionPlaceholder } from "../../index";
+import { ScrollAlert } from "../../index";
 export default function Banner({
 	texts,
 	textWrapperRef,
@@ -61,7 +61,6 @@ export default function Banner({
 				</div>
 				<ScrollAlert containerRef={scrollIndicatorRef} propStyles={styles.bottom} />
 			</header>
-			<SectionPlaceholder styles={{ height: bannerHeight ? bannerHeight + "px" : "100vh" }} />
 		</>
 	);
 }

@@ -7,15 +7,32 @@
 	padding-bottom: 20vh;
 	min-height: 140vh;
 	position: relative;
-	padding-top: 5rem;
+	padding-top: 3rem;
+
+	@media (min-width: $md) {
+		padding-top: 5rem;
+	}
 
 	.filterWrapper {
-		margin-bottom: 15vh;
 		position: sticky;
-		top: 4rem;
-		right: 4rem;
+		top: 6rem;
+		right: 2rem;
 		width: 4rem;
 		margin-left: auto;
+		margin-bottom: 8rem;
+		z-index: 100;
+
+		@media (min-width: $md) {
+			top: 2rem;
+			right: 2rem;
+			margin-bottom: 15vh;
+		}
+
+		@media (min-width: $xl) {
+			top: 4rem;
+			right: 4rem;
+			margin-bottom: 15vh;
+		}
 
 		button {
 			background: var(--color-blue);
@@ -24,7 +41,6 @@
 			border: 0px;
 			border-radius: 50%;
 			cursor: pointer;
-			z-index: 10;
 
 			display: flex;
 			align-items: center;
@@ -48,16 +64,19 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 4rem;
-		justify-content: center;
+		justify-content: space-between;
+		padding-left: 2rem;
 
 		@media (min-width: $md) {
-			justify-content: space-between;
 			margin-left: auto;
 			margin-right: auto;
 
 			max-width: var(--mini-desktop-max-width);
 		}
 
+		@media (min-width: $xl) {
+			padding-left: 0rem;
+		}
 		@media (min-width: $xxl) {
 			max-width: var(--max-width);
 		}

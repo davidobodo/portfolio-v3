@@ -147,10 +147,10 @@ const ProjectsPage: NextPage = () => {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav />
+			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.OtherPages
-				texts={["Projects", "Playground", "xperiments", "Replicas"]}
+				texts={["Projects", "Playground", "Replicas", "xperiments"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}
 				bannerRef={bannerRef}

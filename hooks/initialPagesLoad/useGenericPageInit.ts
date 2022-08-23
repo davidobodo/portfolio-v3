@@ -75,6 +75,7 @@ export default function useGenericPageInit({
 				darkSection: darkSectionRef.current,
 				banner: bannerRef.current,
 				blackCurtain: blackCoverRef.current,
+				windowInnerWidth,
 			});
 
 			return () => {

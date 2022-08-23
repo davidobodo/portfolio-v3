@@ -18,12 +18,12 @@
 		z-index: 1;
 		color: var(--ash);
 
-		h2 {
-			font-size: 3rem;
-			margin-bottom: 2rem;
-			line-height: 1.5;
-			font-weight: 500;
-		}
+		// h2 {
+		// 	font-size: 3rem;
+		// 	margin-bottom: 2rem;
+		// 	line-height: 1.5;
+		// 	font-weight: 500;
+		// }
 
 		p {
 			margin-bottom: 2rem;
@@ -69,16 +69,14 @@
 
 		a {
 			color: var(--ash);
-			font-size: 1.6rem;
+			display: block;
+			font-size: 3rem;
+			margin-bottom: 2rem;
+			line-height: 1.5;
+			font-weight: 500;
+			font-family: sf-pro-bold;
 
 			@media (min-width: $md) {
-				font-size: 1.8rem;
-				display: block;
-				font-size: 3rem;
-				margin-bottom: 2rem;
-				line-height: 1.5;
-				font-weight: 500;
-				font-family: sf-pro-bold;
 			}
 
 			&:focus {

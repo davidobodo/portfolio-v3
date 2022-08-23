@@ -3,20 +3,25 @@
 .container {
 	padding-bottom: 10rem;
 
-	@media (min-width: $lg) {
+	@media (min-width: $xl) {
 		display: flex;
 	}
 
 	.content {
 		width: 100%;
-		max-width: 900px;
 		margin: 0px auto;
 		padding: 0px 2rem;
 		color: var(--ash);
 		padding-top: 12rem;
 
 		@media (min-width: $lg) {
+			padding-top: 10rem;
+			max-width: 70rem;
+		}
+
+		@media (min-width: $xl) {
 			padding-top: 15rem;
+			max-width: 90rem;
 		}
 
 		//-----------------------------------------
@@ -197,6 +202,10 @@
 		}
 
 		.links {
+			@media (min-width: $md) {
+				display: flex;
+				justify-content: flex-end;
+			}
 			a {
 				border: 1px solid var(--ash);
 				font-size: 1.6rem;
@@ -207,9 +216,11 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				margin-bottom: 2rem;
 
 				@media (min-width: $md) {
-					margin-right: 30px;
+					margin-bottom: 0rem;
+					margin-right: 3rem;
 				}
 
 				&:hover {
@@ -222,6 +233,7 @@
 
 				&:last-child {
 					margin-right: 0px;
+					margin-bottom: 0px;
 				}
 			}
 
@@ -236,14 +248,14 @@
 				}
 			}
 
-			&.desktop {
-				display: none;
+			// &.desktop {
+			// 	display: none;
 
-				@media (min-width: $md) {
-					display: flex;
-					justify-content: flex-end;
-				}
-			}
+			// 	@media (min-width: $md) {
+			// 		display: flex;
+			// 		justify-content: flex-end;
+			// 	}
+			// }
 		}
 	}
 }
@@ -265,7 +277,7 @@
 	border: 0px;
 	display: none;
 
-	@media (min-width: $md) {
+	@media (min-width: $xl) {
 		display: block;
 		// background-color: rgba(134, 134, 139, 0.1);
 	}
@@ -311,7 +323,7 @@
 	grid-template-columns: 1fr 1fr;
 	margin-top: 10rem;
 
-	@media (min-width: $md) {
+	@media (min-width: $xl) {
 		display: none;
 	}
 
@@ -322,6 +334,13 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		cursor: pointer;
+
+		&:hover {
+			svg {
+				stroke: white;
+			}
+		}
 	}
 }
 

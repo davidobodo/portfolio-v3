@@ -17,7 +17,6 @@
 		.image {
 			position: absolute;
 			width: 29vw;
-			// height: 39vw;
 			height: 69vh;
 			max-width: 68rem;
 			max-height: 90rem;
@@ -30,7 +29,6 @@
 			background-repeat: no-repeat;
 
 			width: 0px;
-			// left: -20%;
 
 			@media (min-width: $xl) {
 				// left: -25%;
@@ -66,10 +64,14 @@
 					padding-left: 2rem;
 
 					@media (min-width: $md) {
-						font-size: 60px;
+						font-size: 5rem;
+					}
+
+					@media (min-width: $xl) {
+						font-size: 6rem;
 					}
 					@media (min-width: $xxl) {
-						font-size: 80px;
+						font-size: 8rem;
 					}
 
 					span {
@@ -77,8 +79,8 @@
 						overflow: hidden;
 
 						span {
-							transform: translate(80px, 80px);
 							line-height: 1.1;
+							transform: translate(80px, 80px);
 						}
 
 						strong {
@@ -114,7 +116,7 @@
 						li {
 							font-weight: 600;
 							position: relative;
-							font-size: 16px;
+							font-size: 1.6rem;
 							line-height: 2;
 							font-family: "sf-pro-bold";
 							overflow: hidden;
@@ -139,7 +141,7 @@
 					}
 
 					p {
-						font-size: 16px;
+						font-size: 1.6rem;
 						line-height: 2;
 						font-family: "sf-pro-bold";
 						margin-top: 4rem;
@@ -150,7 +152,6 @@
 						}
 
 						a {
-							// color: var(--white);
 							color: var(--ash);
 
 							&:hover {

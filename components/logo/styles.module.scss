@@ -18,6 +18,11 @@
 	height: 100px;
 
 	@media (min-width: $md) {
+		width: 150px;
+		height: 150px;
+	}
+
+	@media (min-width: $xl) {
 		width: 200px;
 		height: 200px;
 	}
