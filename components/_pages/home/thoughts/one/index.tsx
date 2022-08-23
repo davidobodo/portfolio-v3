@@ -14,7 +14,7 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 1,
 		},
 		{
-			sentence: "we do reveal someting about",
+			sentence: "we do reveal something about",
 			color: "ash",
 			key: 2,
 		},
@@ -24,14 +24,19 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 3,
 		},
 		{
-			sentence: "so I always strive to",
+			sentence: "so I always strive to put",
 			color: "ash",
 			key: 4,
 		},
 		{
-			sentence: "put excellence into it.",
+			sentence: "my best",
 			color: "white",
 			key: 5,
+		},
+		{
+			sentence: "into it",
+			color: "ash",
+			key: 6,
 		},
 	];
 
@@ -53,28 +58,28 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 		},
 		{
 			sentence: "to using the most",
-			color: "white",
+			color: "ash",
 			key: 3,
 		},
 		{
 			sentence: "efficient algorithms",
-			color: "ash",
+			color: "white",
 			key: 4,
 		},
 		{
 			sentence: "to ensure",
-			color: "white",
+			color: "ash",
 			key: 5,
 		},
 		{
-			sentence: "to ensure",
-			color: "ash",
-			key: 6,
-		},
-		{
-			sentence: `optimal performance because "Speed is king"`,
+			sentence: `optimal performance`,
 			color: "white",
 			key: 7,
+		},
+		{
+			sentence: `because "Speed is king"`,
+			color: "ash",
+			key: 8,
 		},
 	];
 	const thirdParagraph = [

@@ -9,8 +9,8 @@ type TContext = {
 	setInitialAppLoad: (val: boolean) => void | Dispatch<SetStateAction<null>>;
 	exitAnimation: gsap.core.Timeline;
 	setExitAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
-	radialGradientAnimation: gsap.core.Timeline | null;
-	setRadialGradientAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
+	radialGradientAnimation: gsap.core.Animation | null;
+	setRadialGradientAnimation: (tl: gsap.core.Animation) => void | Dispatch<SetStateAction<null>>;
 };
 
 const PageTransitionsContext = createContext<TContext>({
@@ -29,7 +29,7 @@ const usePageTransitionsContext = () => {
 const PageTransitionsProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 	const [initialAppLoad, setInitialAppLoad] = useState<boolean>(true);
 	const [exitAnimation, setExitAnimation] = useState(() => gsap.timeline({ paused: true }));
-	const [radialGradientAnimation, setRadialGradientAnimation] = useState<gsap.core.Timeline | null>(null);
+	const [radialGradientAnimation, setRadialGradientAnimation] = useState<gsap.core.Animation | null>(null);
 
 	return (
 		<PageTransitionsContext.Provider
@@ -47,21 +47,4 @@ const PageTransitionsProvider = ({ children }: { children: JSX.Element | JSX.Ele
 	);
 };
 
-//--------------------------------------------------------
-// RADIAL GRADIENT ANIMATION
-//--------------------------------------------------------
-type TRadGradTimeline = {
-	animation: gsap.core.Timeline | null;
-	setAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
-};
-
-const RadialGradientAnimContext = createContext<TRadGradTimeline>({
-	animation: null,
-	setAnimation: () => {},
-});
-
-const useRadialGradientAnimContext = () => {
-	return useContext(RadialGradientAnimContext);
-};
-
-export { PageTransitionsProvider, usePageTransitionsContext, RadialGradientAnimContext, useRadialGradientAnimContext };
+export { PageTransitionsProvider, usePageTransitionsContext };

@@ -45,7 +45,7 @@ class WorkSectionAnimations {
 			timelineActions.push({ target: titles[i + 1], vars: { opacity: 1 } }); //Increase title opacity
 			timelineActions.push({
 				target,
-				vars: { opacity: 1, visibility: "visible" },
+				vars: { opacity: 1, zIndex: 1 },
 				options: "<",
 			}); // Increase details opacity
 			timelineActions.push({ target, vars: { y: 0 }, options: "<" }); // Translate details to their normal position
@@ -56,7 +56,8 @@ class WorkSectionAnimations {
 				timelineActions.push({ target: titles[i + 1], vars: { opacity: 0.1 } }); // Decrease title opacity
 				timelineActions.push({
 					target,
-					vars: { opacity: 0, visibility: "hidden" },
+					// vars: { opacity: 0, visibility: "hidden" },
+					vars: { opacity: 0, zIndex: -1 },
 					options: ">-25%", // start at 25% towards the end of the previous animation
 				}); // Decrease details opacity
 			}
@@ -100,7 +101,7 @@ class WorkSectionAnimations {
 				});
 				// Dont need to increase the first items opacity since its already visible
 			}
-			timelineActions.push({ target, vars: { opacity: 1 } });
+			timelineActions.push({ target, vars: { opacity: 1, zIndex: 1 } });
 			timelineActions.push({ isLabel: true, label: `section-${i + 1}-visible` });
 
 			//Decrease bottom opacity

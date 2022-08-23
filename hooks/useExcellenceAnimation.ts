@@ -12,6 +12,7 @@ export default function useExcellenceAnimation() {
 	const { innerWidth, innerHeight } = useWindowSize();
 
 	const [containerWidth, setContainerWidth] = useState<number>();
+
 	useIsomorphicLayoutEffect(() => {
 		setContainerWidth(innerWidth * 2);
 	}, [innerWidth]);
@@ -22,6 +23,7 @@ export default function useExcellenceAnimation() {
 				sectionWrapper: containerRef.current,
 				textWrapper: textWrapperRef.current,
 				image: imageRef.current,
+				innerWidth,
 			});
 
 			ScrollTrigger.refresh();
@@ -37,9 +39,12 @@ export default function useExcellenceAnimation() {
 			const svg = textWrapperRef.current.querySelector("svg");
 			const svgHeight = svg?.clientHeight as number;
 
-			if (innerHeight > innerWidth && svgHeight < innerHeight) {
-				// All is well
-				setContainerWidth(3290);
+			if (svgHeight < innerHeight) {
+				// if (innerWidth < 768) {
+				// 	setContainerWidth(2500);
+				// } else {
+				setContainerWidth(3590);
+				// }
 			}
 		}
 	}, [innerHeight, containerWidth, innerWidth]);

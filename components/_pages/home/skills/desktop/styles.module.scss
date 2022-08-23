@@ -4,7 +4,7 @@
 	min-height: 150vh; // So animation can scroll through a distance
 	display: none;
 
-	@media (min-width: $md) {
+	@media (min-width: $lg) {
 		display: block;
 	}
 
@@ -14,10 +14,32 @@
 		align-items: center; // In order to position the actual skills content in the center
 		width: 100%;
 
+		.image {
+			position: absolute;
+			width: 29vw;
+			// height: 39vw;
+			height: 69vh;
+			max-width: 68rem;
+			max-height: 90rem;
+			background-color: #28282b;
+			top: 10rem;
+			top: 50%;
+			transform: translateY(-50%);
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+
+			width: 0px;
+			// left: -20%;
+
+			@media (min-width: $xl) {
+				// left: -25%;
+			}
+		}
+
 		.wrapper {
 			margin-left: auto;
 			margin-right: auto;
-
 			width: 100%;
 
 			@media (min-width: $md) {
@@ -62,25 +84,6 @@
 						strong {
 							color: #fff;
 						}
-					}
-				}
-
-				.image {
-					position: absolute;
-					width: 29vw;
-					height: 39vw;
-					max-width: 68rem;
-					max-height: 90rem;
-					background-color: #28282b;
-					top: 10rem;
-					background-size: cover;
-					background-position: center;
-					background-repeat: no-repeat;
-
-					width: 0px;
-
-					@media (min-width: $xl) {
-						left: -25%;
 					}
 				}
 			}

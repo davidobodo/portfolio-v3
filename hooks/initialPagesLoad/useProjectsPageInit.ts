@@ -1,12 +1,14 @@
 import gsap from "gsap";
-import { useRef, RefObject, useState } from "react";
+import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
-import { animPageLoaders, sharedAnimations } from "#/utils/animations";
+import { projectAnimations, sharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 import { useRouter } from "next/router";
 
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
-const { transitionToDarkSection, genericPageBannerAnimation } = sharedAnimations;
+const { transitionToDarkSection, genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } =
+	sharedAnimations;
+
+const { scrollToProjectsSection } = projectAnimations;
 /**
  *
  * Generic pages include
@@ -34,12 +36,6 @@ export default function useProjectsPageInit({
 
 	const textRefSelector = gsap.utils.selector(textWrapperRef);
 
-	function scrollToProjectsSection() {
-		const tl = gsap.timeline();
-		tl.to(window, { scrollTo: "#projects-list" });
-		return tl;
-	}
-
 	useIsomorphicLayoutEffect(() => {
 		window.scrollTo({
 			top: 0,
@@ -50,11 +46,8 @@ export default function useProjectsPageInit({
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 
 		const master = gsap.timeline();
-
-		//PAGE INTRO ANIMATION
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
-			//SET PAGE OUTRO ANIMATION
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 			master.add(drawSvgLogo(logo, logoChildren));
 		}
@@ -93,13 +86,14 @@ export default function useProjectsPageInit({
 				darkSection: darkSectionRef.current,
 				banner: bannerRef.current,
 				blackCurtain: blackCoverRef.current,
+				windowInnerWidth,
 			});
 
 			return () => {
 				tl.scrollTrigger?.kill();
 			};
 		}
-	}, []);
+	}, [windowInnerWidth]);
 
 	return {
 		textWrapperRef,

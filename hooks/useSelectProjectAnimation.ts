@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import { singleProjectAnimations } from "#/utils/animations";
+import { projectAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
+import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 
-const { flipProjectIn, removeCurrentProject, displayNextProject } = singleProjectAnimations;
+const { flipProjectIn, removeCurrentProject, displayNextProject } = projectAnimations;
 export default function useSelectProjectAnimation({ initialId = "" }: { initialId?: string }) {
 	const router = useRouter();
 	const [selectedProjectId, setSelectedProjectId] = useState<string>(initialId);
@@ -35,7 +36,7 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 		//Scroll to top
 		const elem = document.querySelector("[data-key='project-info']") as HTMLDivElement;
 		elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-		registerEvent(events.shared.homeAndProjects.viewProjectInfo({ project_title: id as string }));
+
 		const modal = modalRef.current;
 		const modalImage = modalImgRef.current;
 
@@ -46,6 +47,7 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 			});
 
 			tl.then(() => {
+				registerEvent(events.shared.homeAndProjects.viewProjectInfo({ project_title: id as string }));
 				setSelectedProjectId(id);
 				window.history.pushState(null, "New Page Title", `/projects/${id}`);
 				displayNextProject({
@@ -77,9 +79,25 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 				});
 
 				setTl(tl);
+
+				return () => {
+					tl.kill();
+				};
 			}
 		}
 	}, [isOpen]);
+
+	// In Case user uses the browser navigation buttons to navigate. Recall we use "pushState" to alter the history stack
+	const handlePopState = () => {
+		window.location.reload();
+	};
+	useIsomorphicLayoutEffect(() => {
+		window.addEventListener("popstate", handlePopState);
+
+		return () => {
+			window.removeEventListener("popstate", handlePopState);
+		};
+	}, []);
 
 	return {
 		selectedProjectId,

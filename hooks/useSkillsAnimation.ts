@@ -17,7 +17,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
 			//------------------------------------------
 			//DESKTOP ANIMATION
 			//------------------------------------------
-			"(min-width: 768px)": () => {
+			"(min-width: 992px)": () => {
 				if (skillsContainerRef.current) {
 					const radialGradient = document.querySelector<HTMLDivElement>(
 						'[data-key="radial-gradient"]'
@@ -46,7 +46,7 @@ export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWi
 			//------------------------------------------
 			//MOBILE ANIMATION
 			//------------------------------------------
-			"(max-width: 767px)": () => {
+			"(max-width: 991px)": () => {
 				if (mobileSkillsContainerRef.current) {
 					const faintBgTitle = mobileSkillsContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
 					const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;

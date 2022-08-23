@@ -2,8 +2,6 @@ import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
 import { usePageTransitionsContext } from "../context";
 import { useRouter } from "next/router";
-import { animPageLoaders } from "#/utils/animations";
-const { showLoadingTexts, closeNoiseLayers, hideLoadingTexts } = animPageLoaders;
 
 // const newPageLoader = new AnimPageLoaders();
 

@@ -13,6 +13,13 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 	return (
 		<div className={styles.container} ref={skillsContainerRef} id="skills-section">
 			<div className={styles.contentWrapper} data-key="skills-content">
+				<div
+					className={styles.image}
+					style={{
+						backgroundImage: `url('https://images.unsplash.com/photo-1499914485622-a88fac536970?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGFuZHMlMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800')`,
+					}}
+					data-key="hand-image"
+				></div>
 				<div className={styles.wrapper}>
 					<div className={styles.heading}>
 						<h2 className={styles.subTitle} ref={skillsSectionTitlteRef}>
@@ -28,15 +35,8 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 								<span>and mind</span>
 							</span>
 						</h2>
-
-						<div
-							className={styles.image}
-							style={{
-								backgroundImage: `url('https://images.unsplash.com/photo-1499914485622-a88fac536970?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGFuZHMlMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800')`,
-							}}
-							data-key="hand-image"
-						></div>
 					</div>
+
 					<div className={styles.skillsList} data-key="skills-list">
 						<div></div>
 						<div>

@@ -1,24 +1,6 @@
-// import imgBookmark from "#/public/images/projects/bookmark.png";
-// import imgBurger from "#/public/images/projects/burger-builder.png";
-// import imgCadmils from "#/public/images/projects/cadmils.png";
-// import imgHospitalFinder from "#/public/images/projects/hospital-findr.png";
-// import imgDchat from "#/public/images/projects/d-chat.png";
-// import imgDcommerce from "#/public/images/projects/d-commerce.png";
-// import imgDdiscus from "#/public/images/projects/d-discus.png";
-// import imgDproductivity from "#/public/images/projects/d-productivity.png";
-// import imgDeveloper from "#/public/images/projects/developer.png";
-// import imgDrummachine from "#/public/images/projects/drum-machine.png";
-// import imgFreebies from "#/public/images/projects/freebies.png";
-// import imgPomodoro from "#/public/images/projects/pomodoro.png";
-// import imgPv1 from "#/public/images/projects/pv-1.png";
-// import imgQuizninja from "#/public/images/projects/quiz-ninja.png";
-// import imgShortly from "#/public/images/projects/shortly.png";
-// import imgProdeus from "#/public/images/projects/dashboard.png";
-
 import { TProject } from "#/interfaces";
 
 const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
-
 const TYPES = ["Web Application", "Website", "Learn from Tutorial", "Experiments"];
 
 export const PROJECTS: TProject[] = [
@@ -26,52 +8,75 @@ export const PROJECTS: TProject[] = [
 		id: "prodeus",
 		title: "Prodeus",
 		details: `
-		<p>Web application equivalane tof the Prodeus Chrome Extension, but with more features.</p>
-		<p>Responsible for about 98% of the entire frontend architecture.</p>
-		<p>This has to be one of my proudest projects, because the feature list cut across some very challenging and exciting front sectors. </p>
-		<p>From <span>cache invalidation </span> (which everyone knows is one of the most tricky thing in development😅), 
-		to <span>loading Infinite data</span> on both <span>single column layouts (like instagram, facebook and twitter)</span> as well as <span>multi column layouts (like pinterest)</span>. Nevertheless, the need for 
-		<span>pixel perfect delivery</span> was also quite challenging and exciting, since the CEO was indeed the Designer.
-		</p>
-		<p>
-		Also due to the enormous size of this application, there was need to structure the codebase in such a way that its easily scalable and yet performant. Handling such 
-		enterprise grade application was quite a proud moment for me, cause I can say that I "owned" the codebase. Awesome stuff.
-		</p>
+		<p>Web application equivalent of the  <a href="https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn" target="_blank">Prodeus Chrome Extension</a>, but with more features.
+		This has to be one of my proudest projects, because the feature list cuts across some very challenging and exciting frontend sectors. </p>
 		`,
+		responsibilities: `
+		<ul>
+			<li>Intelligent cache usage and cache invalidation with <a href="https://react-query-v3.tanstack.com/" target="_blank">React Query</a></li>
+			<li>Loading <span>infinite data</span> in both single column layouts (like instagram, facebook and twitter) as well as multi column layouts (like pinterest).
+			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). In addition to 
+			that, app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.
+			<li>Responsible for about <span>98%</span> of the entire frontend architecture and codebase.</li>
+		</ul>
+		`,
+
 		roles: ["fe"],
 		sitelink: "https://www.prodeus.co/",
 		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "sass", "storybook", "rtl"],
-		bgImage: "/images/projects/test.jpg",
 		type: "Web Application",
 		bgColor: "#dcd0c2",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
 	{
 		id: "cadmils",
 		title: "Cadmils Consulting",
 		details: `
-		<p>Freelance contract to setup the entire web presence for cadmils consulting agency.</p>
-		<p>From collaborating in the design with <a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a>, to coding the frontend as well as the little backend server to integrate the mailing service with sendgrid. In addition to that, I also set up
-		the company's staff emails as requested.
-		</p>
+		<p>Freelance contract to setup the entire web presence for cadmils consulting agency. Collaborated with  <a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a> to achieve the entire design of the website</p>
 		`,
+		responsibilities: `
+		<ul>
+			<li>Designed <span>3 out of the 6 pages</span> on the website using Figma</li>
+			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes</li>
+			<li>Set up the backend <span>mailing service</span> as well as company emails</li>
+		</ul>
+		`,
+
 		roles: ["design", "fe", "be"],
 		sitelink: "https://www.cadmils.com/",
 		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku", "sendgrid"],
-		bgImage: "/images/projects/cadmils.png",
 		type: "Website",
 		bgColor: "#e2d1d9",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/cadmils.png",
+			},
+		],
 	},
 	{
 		id: "medic-finder",
 		title: "Medic finder",
 		details: `
-		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place.</p>
-		<p>This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, however its of no news
+		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, however it's of no news
 		that its important is far beyond just as a requirement to get into an internship.
 		</p>
-		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store users credentials and users history. However for easy accessibility for everyone these have been removed in the current iteration. Now YOU can access the full functionality of the application without having to give out any of your credentials.</p>
-		<p>HOW TO USE: Type in a specific address, select the radius that search ought to cover, and finally select the type of medial facility you are looking for. Click on the SEARCH button and get the results of your search immediately.</p>
-		<p>It's also notworthy to say I was responsible for the Entire Design of this application 😊</p>
+		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store users credentials and users search history. However for easy accessibility for everyone these have been removed in the current iteration.
+		 </p>
+		`,
+		responsibilities: `
+		<ul>
+			<li>Designed the entire application using figma</li>
+			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes</li>
+			<li>Implemented an authentication process flow using Firebase (Now deprecated in current iteration )</li>
+			<li>Made use of Google's <a href="https://firebase.google.com" target="_blank">Cloud Firestore NoSQL database</a> to store user's previous searches (Now refactored in current iteration to use local storage)</li>
+			<li>Integrated <a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> to help give both autocomplete functionality when looking for places and display the map with the needed results</li>
+		</ul>
 		`,
 		tech: [
 			"figma",
@@ -88,58 +93,76 @@ export const PROJECTS: TProject[] = [
 			"netlify",
 		],
 		roles: ["design", "fe", "be"],
-		bgImage: "/images/projects/hospital-findr.png",
 		type: "Web Application",
 		bgColor: "#b1a994",
 		githublink: "https://github.com/obododavid/Medic-Finder",
 		sitelink: "https://medic-finder.netlify.app/",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/hospital-findr.png",
+			},
+		],
 	},
 	{
 		id: "d-productivity",
 		title: "d-productivity",
-		details: `<p>Web-based Kanban-style list-making application. Just like Trello or any other drag and drop productivity app</p>
-			<p>The main purpose of embarking on this project was to have a deeper understanding of the HTML5 drag and drop API</p>
-			<p>I eventually made two copies, of which one of them used the easy and wonderful <a href="https://www.npmjs.com/package/react-beautiful-dnd" target="_blank">react-beautiful-dnd</a> and the other used the plain <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">html5 dnd api</a>. 
-			Wonderful learning experience I say
+		details: `<p>Web-based Kanban-style list-making application just like <a href="https://trello.com/" target="_blank">Trello</a> or any other drag and drop productivity app.
+		The main purpose of embarking on this project was to have a deeper understanding of the <span>HTML5 drag and drop API.</span></p>
+			<p>Last updated on 25th February 2020.</p>
 			`,
-		roles: ["fe", "design"],
+		responsibilities: `
+		<ul>
+			<li>Designed the home screen</li>
+			<li>Implemented the drag and drop feature in two different ways</li>
+				<ul>
+					<li>Using the easy and wonderful <a href="https://www.npmjs.com/package/react-beautiful-dnd" target="_blank">react-beautiful-dnd</a> (First Iteration)</li>
+					<li>Using the plain <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">html5 dnd api</a> (Second Iteration)</li>
+				</ul>
+		</ul>
+		`,
+		roles: ["design", "fe"],
 		sitelink: "https://d-productivity.vercel.app/",
 		githublink: "https://github.com/obododavid/d-productivity",
 		tech: ["react", "typescript", "redux", "styledcomponents"],
-		bgImage: "/images/projects/d-productivity.png",
 		type: "Web Application",
 		bgColor: "#373737",
-	},
-	{
-		id: "d-Discus",
-		title: "d-Discus",
-		details: `<p>This site was my official first attempt at a full stack project. I followed along a tutorial done by <a href="https://www.youtube.com/c/TheNetNinja" target="_blank">The Net Ninja</a>. </p> 
-		<p>After which I looked for 
-		ways to "owned" the project in order to understand the inner workings perfectly. But Definitely still give the credits to "The Net Ninja". XDo check him out 
-		</p> interaction with a no sql database`,
-		sitelink: "https://myfirst-fullstackproject.firebaseapp.com/signin",
-		githublink: "https://github.com/davidobodo/d-discus",
-		tech: ["react", "typescript", "redux", "styledcomponents"],
-		bgImage: "/images/projects/d-discus.png",
-		type: "Web Application",
-		bgColor: "#373737",
-		roles: [],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/d-productivity.png",
+			},
+		],
 	},
 	{
 		id: "d-chat",
 		title: "d-chat",
 		details: `
-		<p>It's of no news that majority of applications these days have the "chatting" functionality embedded into them, so this project was an attempt to understand how the "open connection idea" upon which the functionality is built upon.
-		I initial executed it using only <a href="https://firebase.google.com/" target="_blank">Firebase</a> but that was when I was unaware of <a href="https://socket.io/" target="_blank">Socket.io</a>, which is actually the real deal
+		<p>It's of no news that majority of applications these days have the <span>"chatting" functionality</span> embedded into them, so this project was an attempt to understand how the "open connection idea" upon which the functionality is built upon works.
+		I initial executed it using only <a href="https://firebase.google.com/" target="_blank">Firebase</a> but that was when I was unaware of <a href="https://socket.io/" target="_blank">Socket.io</a>, which is actually the real deal. <a href="https://socket.io/" target="_blank">Socket.io</a> is my "goto" these days for any 
+		"open connection" functionality (e.g chat and realtime notifications)
 		</p>
+		<p>The authentication screen design is a "not so pixel perfect clone 😅" of <a href="https://dribbble.com/shots/5271131-Login-Sign-up-screen" target="_blank">Marcin Kohut</a> design  on Dribbble.</p>
+		<p>Last updated on 5th July 2020.</p>
+		`,
+		responsibilities: `
+		<ul>
+			<li>Used skype chat UI has a reference for the design</li>
+			<li>Ability to chat realtime with anyone online</li>
+		</ul>
 		`,
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
 		tech: ["react", "typescript", "redux", "materialui", "firebase", "graphql", "nodejs", "expressjs"],
-		bgImage: "/images/projects/d-chat.png",
 		bgColor: COLORS[0],
 		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/d-chat.png",
+			},
+		],
 	},
 	{
 		id: "d-commerce",
@@ -152,9 +175,14 @@ export const PROJECTS: TProject[] = [
 		roles: ["fe", "be"],
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
 		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku"],
-		bgImage: "/images/projects/d-commerce.png",
 		bgColor: COLORS[1],
 		type: TYPES[0],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/d-commerce.png",
+			},
+		],
 	},
 	{
 		id: "developer-of-the-year",
@@ -162,14 +190,20 @@ export const PROJECTS: TProject[] = [
 		details: `<p>A static desktop clone of <a href="https://www.awwwards.com/" target="_blank">awwwards</a> awards site for the year 2020.</p>
 		<p>The motivation to build this static clone was a desire to achieve the "VIEW NOMINEES CIRCULAR SECTION" at the bottom with just css and javascript😅.</p>
 		<p>Trust me wasn't an easy process cause it involved some tricky <strong>Mathematics</strong> which was finally arrived at with help from my mentor <a href="https://www.linkedin.com/in/oluwaseunadedire/" target="_blank">Oluwaseun Adedire</a>.</p>
+		<p>This is a static site and none of the call to actions are working</p>
 		`,
 		githublink: "https://github.com/davidobodo/developer-of-the-year",
 		roles: ["fe"],
 		sitelink: "https://davidobodo.github.io/developer-of-the-year/",
 		tech: ["html", "css", "sass", "javascript", "ghpages"],
-		bgImage: "/images/projects/developer.png",
 		bgColor: COLORS[2],
 		type: TYPES[3],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/developer.png",
+			},
+		],
 	},
 	{
 		id: "shortly",
@@ -182,9 +216,14 @@ export const PROJECTS: TProject[] = [
 		roles: ["fe"],
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
-		bgImage: "/images/projects/shortly.png",
 		bgColor: COLORS[3],
 		type: TYPES[3],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/shortly.png",
+			},
+		],
 	},
 	{
 		id: "bookmark",
@@ -192,63 +231,77 @@ export const PROJECTS: TProject[] = [
 		details: `<p>In the early stages of my career, I leveraged <a href="https://www.frontendmentor.io/">Frontend Mentor</a> which was very helpful in building me up.</p>
 		<p>This project involved building a static reponsive clone of a UI.</p>
 		<p>You can check out the project instructions <a href="https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158/hub/bookmark-landing-page-Xa4U_uHY" target="_blank">here</a>.</p>
+		<p>Last updated on 25th February 2020.</p>
+		
 		`,
 		roles: ["fe"],
 		githublink: "https://github.com/davidobodo/FEM-bookmark-landing-page",
 		sitelink: "https://davidobodo.github.io/FEM-bookmark-landing-page/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
-		bgImage: "/images/projects/bookmark.png",
 		bgColor: COLORS[0],
 		type: TYPES[3],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/bookmark.png",
+			},
+		],
 	},
 	{
 		id: "drum-machine",
 		title: "Drum Machine",
-		details: `<p>Simple drum machine inspired by <a href="https://javascript30.com/">Wes Bos's Javascript 30</a> </p>`,
+		details: `<p>Simple drum machine inspired by <a href="https://javascript30.com/">Wes Bos's Javascript 30</a> </p>
+		<p>Last updated on 8th Sept 2019.</p>
+		`,
 		githublink: "https://github.com/davidobodo/drumMachine",
 		roles: ["fe"],
 		sitelink: "https://davidobodo.github.io/drumMachine/",
 		tech: ["html", "css", "javascript"],
-		bgImage: "/images/projects/drum-machine.png",
 		bgColor: COLORS[2],
 		type: TYPES[3],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/drum-machine.png",
+			},
+		],
 	},
 
 	{
 		id: "pomodoro-clock",
 		title: "Pomodoro clock",
-		details: `<p>Pomodoro Clock, required by <a href="https://www.freecodecamp.org/" target="_blank">freecodecamp</a> to get a certificate </p>`,
+		details: `<p>Pomodoro Clock, required by <a href="https://www.freecodecamp.org/" target="_blank">freecodecamp</a> to get a certificate </p>
+		<p>Last updated on 8th June 2020.</p>
+		`,
 		githublink: "https://github.com/davidobodo/pomodoroClock",
 		roles: ["fe"],
 		sitelink: "https://pomodoroclock.now.sh/",
 		tech: ["react", "css", "nowsh"],
-		bgImage: "/images/projects/pomodoro.png",
 		bgColor: COLORS[3],
 		type: TYPES[3],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/pomodoro.png",
+			},
+		],
 	},
-	// {
-	// 	id: "quiz-ninja",
-	// 	title: "Quiz ninja",
-	// 	details: "How well do you know super heroes real names?",
-	// 	githublink: "",
-	// 	roles: [],
-	// 	sitelink: "https://davidobodo.github.io/Learning-javascript-quiz-ninja/",
-	// 	tech: ["react", "typescript", "redux", "styledComponents"],
-	// 	bgImage: "/images/projects/quiz-ninja.png",
-	// 	bgColor: COLORS[0],
-	// 	type: TYPES[2],
-	// },
 	{
 		id: "freebies",
 		title: "Freebies",
-		details: `<p>A static desktop clone of the <a href="https://freebies.bypeople.com/">Freebies</a> website. The motivation for this, was getting the whole moving items based on the mouse cursor position.</p>`,
+		details: `<p>A static desktop clone of the <a href="https://freebies.bypeople.com/">Freebies</a> website. The motivation for this, was achieving the moving items based on the mouse cursor position.</p>`,
 		githublink: "https://github.com/davidobodo/freebies",
 		roles: ["fe"],
 		sitelink: "https://davidobodo.github.io/freebies/",
 		tech: ["html", "css", "javascript"],
-		bgImage: "/images/projects/freebies.png",
 		bgColor: COLORS[1],
 		type: TYPES[3],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/freebies.png",
+			},
+		],
 	},
 	{
 		id: "pv1",
@@ -258,21 +311,31 @@ export const PROJECTS: TProject[] = [
 		roles: ["fe"],
 		sitelink: "https://davidobodo.github.io/portfolio/",
 		tech: ["html", "css", "javascript", "jquery", "ghpages"],
-		bgImage: "/images/projects/pv-1.png",
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/pv-1.png",
+			},
+		],
 	},
 	{
 		id: "pv2",
 		title: "Portfolio v2",
-		details: "<p>My Second portfolio web site</p>",
+		details: "<p>My second portfolio web site</p>",
 		githublink: "https://github.com/davidobodo/portfolio-v2",
 		roles: ["fe"],
 		sitelink: "https://davidobodo.github.io/portfolio/",
 		tech: ["react", "typescript", "redux", "styledcomponents", "nowsh"],
-		bgImage: "/images/projects/pv-1.png",
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/pv-1.png",
+			},
+		],
 	},
 	{
 		id: "tgwt",
@@ -285,93 +348,97 @@ export const PROJECTS: TProject[] = [
 		roles: ["fe"],
 		sitelink: "",
 		tech: ["html", "css", "javascript", "gsap", "threejs"],
-		bgImage: "",
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
 	{
 		id: "weather",
 		title: "Weather Application",
-		details: "My first portfolio site",
-		githublink: "",
-		roles: [],
-		sitelink: "",
-		tech: ["gsap", "three.js"],
-		bgImage: "",
+		details: `<p> Created this weather application from design to coding as a test for a comppany. Has quite some rich features and is still has valid use. User can check the weather of various places after which they can bookmark certain places for easy access.</p>
+		<p>In addition to that, it leverages local storage in order to give users the ability to even store notes for various places they search. Furthermore application is fully a PWA(Progressive app), so even when users are offline users can still see all their previous searches</p>
+		`,
+		githublink: "https://github.com/davidobodo/weather-app",
+		roles: ["design", "fe"],
+		sitelink: "https://knowtheweatherdcs.netlify.app/",
+		tech: ["react", "typescript", "styledcomponents", "rtl"],
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
 	{
 		id: "prodeus-editor",
 		title: "Prodeus ckeditor",
-		details: "My first portfolio site",
+		details: `<p>While building <a href="/projects/prodeus">Prodeus web app</a>, there was a need to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
+		designed editor brought up the need to build a customized solution from the famous  <a href="https://ckeditor.com" target="_blank">ckeditor</a>.
+		</p>
+		<p>Project was later published as an <a href="https://www.npmjs.com/package/prodeus-editor" target="_blank">npm package here </a></p>
+		`,
 		githublink: "",
 		roles: [],
 		sitelink: "",
-		tech: ["gsap", "three.js"],
-		bgImage: "",
+		tech: ["react", "javascript"],
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
-	{
-		id: "bloom",
-		title: "Bloom",
-		details: "My first portfolio site",
-		githublink: "",
-		roles: [],
-		sitelink: "",
-		tech: ["gsap", "three.js"],
-		bgImage: "",
-		bgColor: COLORS[2],
-		type: TYPES[1],
-	},
-	{
-		id: "chugg",
-		title: "Chugg",
-		details: "My first portfolio site",
-		githublink: "",
-		roles: [],
-		sitelink: "",
-		tech: ["gsap", "three.js"],
-		bgImage: "",
-		bgColor: COLORS[2],
-		type: TYPES[1],
-	},
+
 	{
 		id: "private-lattice",
 		title: "Private Lattice",
-		details: "My first portfolio site",
+		details: `<p>While working at <a href="https://www.upwork.com/ag/mpaccione/" target="_blank">M.Paccione Designs and Developement</a>, I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice</p>`,
 		githublink: "",
-		roles: [],
-		sitelink: "",
-		tech: ["gsap", "three.js"],
-		bgImage: "",
+		roles: ["fe"],
+		sitelink: "https://www.privatelattice.com/",
+		tech: ["react"],
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
-	// {
-	// 	id: "tgwt",
-	// 	title: "Number Guesser(A play with React Native)",
-	// 	details: "My first portfolio site",
-	// 	githublink: "",
-	// 	roles: [],
-	// 	sitelink: "",
-	// 	tech: ["gsap", "three.js"],
-	// 	bgImage: "",
-	// 	bgColor: COLORS[2],
-	// 	type: TYPES[1],
-	// },
 	{
 		id: "oppo",
 		title: "OPPO Redefinition Contest",
-		details: "My first portfolio site",
+		details: `<p>When OPPO decided to do their redefinition photography contest in the year 2020, I was among the team of 4 star developers who embarked on creating the site for the project as well as the dashboard contestants upload their photos as well as help admins to access the submissions.
+		One of my very first enterprise grade applications, which was a huge success cause I had the likes of <a href="" target="_blank">Eric Okemmadu</a>, <a href="" target="_blank">Justice Otuya</a> and <a href="" target="_blank">Ore</a> on the team
+		</p>
+		<p>Some of the noteworthy features implemeted were:</p>
+		<ul>
+			<li> - Basic Authentication for both contestants and admins</li>
+		</ul>
+		<p>Since time has passed, the site is no longer up, hence you wont be able to access it from any url. However this is a very noteworthy project. Check out the slides for some graphics about features implemented</p>
+		`,
 		githublink: "",
 		roles: [],
 		sitelink: "",
-		tech: ["gsap", "three.js"],
-		bgImage: "",
+		tech: ["react", "styledcomponents"],
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
 	{
 		id: "ozidi",
@@ -407,8 +474,13 @@ export const PROJECTS: TProject[] = [
 		roles: ["design", "fe"],
 		sitelink: "",
 		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
-		bgImage: "",
 		bgColor: COLORS[2],
 		type: TYPES[1],
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/test.jpg",
+			},
+		],
 	},
 ];

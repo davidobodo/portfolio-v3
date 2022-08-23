@@ -4,6 +4,7 @@ import { useIsomorphicLayoutEffect } from "#/hooks";
 import { homePageAnimations } from "#/utils/animations";
 
 const { revealParagraph } = homePageAnimations;
+
 export default function useRevealText() {
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const textSelector = gsap.utils.selector(textWrapperRef);

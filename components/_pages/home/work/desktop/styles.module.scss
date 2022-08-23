@@ -104,11 +104,7 @@
 				transform: translateY(40px);
 				opacity: 0;
 				color: var(--ash3);
-				// visibility: hidden;
-
-				// &:first-child {
-				// 	visibility: visible;
-				// }
+				z-index: -1;
 
 				h2 {
 					font-size: 1.8rem;
@@ -117,6 +113,7 @@
 					letter-spacing: 0.021em;
 					margin-bottom: 2rem;
 					color: var(--white);
+					display: inline-block;
 
 					&:focus {
 						color: var(--white);

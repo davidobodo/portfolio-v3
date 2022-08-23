@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import Heading from "../heading";
 import { RefObject } from "react";
-import { ScrollAlert, SectionPlaceholder } from "../../index";
+import { ScrollAlert } from "../../index";
 
 type Props = {
 	bannerRef: RefObject<HTMLDivElement>;
@@ -55,7 +55,6 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 					</div>
 				</div>
 			</header>
-			<SectionPlaceholder styles={{ height: bannerHeight ? bannerHeight + "px" : "100vh" }} />
 		</>
 	);
 }

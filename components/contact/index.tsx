@@ -37,39 +37,45 @@ export default function Contact() {
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
+	const onFooterFix = (event) => {
+		if (event.key === "Tab" || event.keyCode === 9) {
+			setIsFooterFixed(false);
+		}
+	};
+
 	// Contact form would not be seen if an element inside it is focused and the contact form is still fixed, so we remove the fixed position immediately we detect user using keyboard
 	useIsomorphicLayoutEffect(() => {
-		document.body.addEventListener("keydown", function (event) {
-			if (event.key === "Tab" || event.keyCode === 9) {
-				setIsFooterFixed(false);
-			}
-		});
+		document.body.addEventListener("keydown", onFooterFix);
+
+		return () => {
+			document.body.removeEventListener("keydown", onFooterFix);
+		};
 	}, []);
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
-	useIsomorphicLayoutEffect(() => {
-		if (wrapperRef.current && footerHeight) {
-			const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+	// useIsomorphicLayoutEffect(() => {
+	// 	if (wrapperRef.current && footerHeight) {
+	// 		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
 
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: wrapperRef.current,
-					start: "top bottom",
-					end: "bottom bottom",
-					scrub: true,
-					toggleActions: "restart complete restart reset",
-				},
-			});
-			tl.to(curtain, { zIndex: 2, duration: 0.1 });
-			tl.to(curtain, {
-				scaleY: 0,
-			});
-			return () => {
-				tl.scrollTrigger?.kill();
-			};
-		}
-	}, [footerHeight]);
+	// 		const tl = gsap.timeline({
+	// 			scrollTrigger: {
+	// 				trigger: wrapperRef.current,
+	// 				start: "top bottom",
+	// 				end: "bottom bottom",
+	// 				scrub: true,
+	// 				toggleActions: "restart complete restart reset",
+	// 			},
+	// 		});
+	// 		tl.to(curtain, { zIndex: 2, duration: 0.1 });
+	// 		tl.to(curtain, {
+	// 			scaleY: 0,
+	// 		});
+	// 		return () => {
+	// 			tl.scrollTrigger?.kill();
+	// 		};
+	// 	}
+	// }, [footerHeight]);
 
 	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		const { link } = e.currentTarget.dataset;
@@ -106,7 +112,7 @@ export default function Contact() {
 				/>
 			</div>
 
-			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
+			{/* <div className={styles.blackCurtain} data-key="contact-curtain"></div> */}
 		</footer>
 	);
 }

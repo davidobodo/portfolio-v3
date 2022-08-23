@@ -1,16 +1,22 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { useIsomorphicLayoutEffect } from "#/hooks";
+import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useState } from "react";
 import { Logo } from "../index";
 import { TLogoMode } from "#/interfaces";
 
-type Props = { showInBanner?: boolean; headerSectionLogoMode?: TLogoMode; hasBackdropFilter?: boolean };
+type Props = {
+	showInBanner?: boolean;
+	headerSectionLogoMode?: TLogoMode;
+	hasBackdropFilter?: boolean; // Should never show up in desktop
+};
 
-export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark", hasBackdropFilter = false }: Props) {
+export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark", hasBackdropFilter = true }: Props) {
 	const [isVisible, setIsVisible] = useState(showInBanner);
 	const [logoMode, setLogoMode] = useState<TLogoMode>(headerSectionLogoMode); // Since page loads at the top (i.e header)
 	const [hasBackdrop, setHasBackdrop] = useState(hasBackdropFilter);
+
+	const { innerWidth, innerHeight } = useWindowSize();
 	const handlescroll = () => {
 		// Get the total height of the document
 		const totalHeight = document.body.offsetHeight;
@@ -19,7 +25,7 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 		const diff = totalHeight - contactHeight - LOGO_POSITION_HEIGHT;
 
 		// When user is in the page banner section/header section
-		if (window.pageYOffset < 95) {
+		if (window.pageYOffset < innerHeight) {
 			setLogoMode(headerSectionLogoMode);
 			setHasBackdrop(hasBackdropFilter);
 			if (showInBanner) {
@@ -30,7 +36,7 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 		}
 
 		// When user is in the dark section of the page
-		if (window.pageYOffset >= 95 && window.pageYOffset < diff) {
+		if (window.pageYOffset >= innerHeight && window.pageYOffset < diff) {
 			setLogoMode("light");
 			setIsVisible(true);
 
@@ -63,7 +69,11 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 			</Link>
 			<div
 				className={styles.container}
-				style={{ backdropFilter: hasBackdrop ? "blur(1.5rem) saturate(1.1)" : "none" }}
+				style={{
+					backdropFilter: innerWidth >= 768 ? "none" : hasBackdrop && isVisible ? "blur(1.5rem) saturate(1.1)" : "none",
+					WebkitBackdropFilter:
+						innerWidth >= 768 ? "none" : hasBackdrop && isVisible ? "blur(1.5rem) saturate(1.1)" : "none",
+				}}
 			></div>
 		</>
 	);

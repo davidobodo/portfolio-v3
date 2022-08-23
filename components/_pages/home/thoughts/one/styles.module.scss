@@ -3,8 +3,8 @@
 .container {
 	display: flex;
 	align-items: center;
-	padding-top: 20rem;
-	padding-bottom: 20rem;
+	padding-top: 10rem;
+	// padding-bottom: 10rem;
 
 	@media (min-width: $md) {
 		padding-top: 30rem;

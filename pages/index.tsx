@@ -49,6 +49,7 @@ const Home: NextPage = () => {
 	// HOOKS
 	//-----------------------------------------
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+
 	const { bannerRef, blackCoverRef, bannerHeight } = useHomePageInit({
 		windowInnerHeight,
 		windowInnerWidth,
@@ -56,7 +57,6 @@ const Home: NextPage = () => {
 	});
 	const { textsListRef } = useAlternateTextOpacity();
 	const { workContainerRef, mobileWorkContainerRef, onWorkDetailsKeyDown } = useWorkAnimation({
-		windowInnerHeight,
 		windowInnerWidth,
 	});
 	const { textWrapperRef: thoughtOneText } = useRevealParagraph();
@@ -111,7 +111,6 @@ const Home: NextPage = () => {
 						mobileSkillsContainerRef={mobileSkillsContainerRef}
 						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
 					/>
-
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<div id="projects-list">

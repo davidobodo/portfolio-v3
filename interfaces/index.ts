@@ -16,9 +16,10 @@ type TProject = {
 	githublink?: string;
 	roles: TRoles[];
 	tech: string[];
-	bgImage: string;
 	type: string;
 	bgColor?: string;
+	media: { type: "image" | "video"; source: string }[];
+	responsibilities: string;
 };
 
 type TProjectsView = "list" | "grid";

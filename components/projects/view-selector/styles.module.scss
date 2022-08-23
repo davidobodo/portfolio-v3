@@ -1,10 +1,11 @@
 @import "#/styles/globals.module.scss";
 
 .view {
-	display: none;
+	padding: 0px 2rem;
+	display: flex;
 
-	@media (min-width: $md) {
-		display: flex;
+	@media (min-width: $xl) {
+		padding: 0px;
 	}
 
 	button {

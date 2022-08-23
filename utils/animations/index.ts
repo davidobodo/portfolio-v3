@@ -9,93 +9,6 @@ import skillsAnimations from "./skills";
 //--------------------------------------------
 // SITE LOADER
 //--------------------------------------------
-class AnimPageLoaders {
-	constructor() {}
-
-	showLoadingTexts(nodesWrapper: Element, nodes: HTMLSpanElement[]) {
-		const tl = gsap.timeline({ repeat: -1 });
-
-		// CREATE TIMELINE ACTIONS
-		let timelineActions = [];
-		timelineActions.push({ target: nodesWrapper, vars: { visibility: "visible" } });
-		for (let i = 0; i < nodes.length; i++) {
-			timelineActions.push({
-				target: nodes[i],
-				vars: {
-					opacity: 0,
-				},
-			});
-
-			// Move node to the middle
-			timelineActions.push({
-				target: nodes[i],
-				vars: {
-					y: 0,
-					opacity: 1,
-					ease: "power4.out",
-				},
-			});
-			// Move node to the top
-			timelineActions.push({
-				target: nodes[i],
-				vars: {
-					y: -300,
-					opacity: 0,
-					delay: 1,
-					ease: "power4.out",
-				},
-			});
-		}
-
-		// EXECUTE TIMELINE
-		for (let j = 0; j < timelineActions.length; j++) {
-			const { target, vars } = timelineActions[j];
-			tl.to(target, vars);
-		}
-
-		return tl;
-	}
-
-	hideLoadingTexts(node: HTMLDivElement) {
-		const tl = gsap.timeline();
-		tl.to(node, { visibility: "hidden", opacity: 0 });
-		return tl;
-	}
-
-	openNoiseLayers(node: NodeListOf<Element>) {
-		const tl = gsap.timeline();
-		tl.fromTo(node, { scaleY: 1, delay: 0.3 }, { scaleY: 0, delay: 0.3 });
-		return tl;
-	}
-
-	closeNoiseLayers({ node }: { node: NodeListOf<Element> | HTMLCollection }) {
-		const tl = gsap.timeline();
-
-		tl.to(node, { scaleY: 1 });
-		return tl;
-	}
-
-	drawSvgLogo(logoSvg: Element, logoSvgPaths: NodeListOf<Element>) {
-		const tl = gsap.timeline();
-		tl.to(logoSvgPaths, {
-			strokeDashoffset: 0,
-			duration: 2,
-			stagger: 0.8,
-			delay: 1,
-		})
-			.to(logoSvg, {
-				fill: "#fcfcfc",
-			})
-			.to(logoSvg, {
-				opacity: 0,
-			})
-			.to(logoSvg, {
-				visibility: "hidden",
-			});
-
-		return tl;
-	}
-}
 
 //--------------------------------------------
 // HOME PAGE
@@ -132,7 +45,10 @@ class HomePageAnimations {
 		tl.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
 			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
-			navLogo.style.visibility = "visible";
+
+			if (navLogo) {
+				navLogo.style.visibility = "visible";
+			}
 		});
 
 		return tl;
@@ -184,139 +100,11 @@ class HomePageAnimations {
 		tl.to(texts, {
 			y: 0,
 		})
-			.to(texts[0], { x: windowInnerWidth > 768 ? 160 : 0 })
+			.to(texts[0], { x: windowInnerWidth > 992 ? 160 : 0 })
 			.to(texts[1], { x: 0 }, "<")
-			.to(texts[2], { x: windowInnerWidth > 768 ? 160 : 0 }, "<");
+			.to(texts[2], { x: windowInnerWidth > 992 ? 160 : 0 }, "<");
 
 		return tl;
-	}
-}
-
-class SingleProjectAnimations {
-	flipProjectIn({
-		modal,
-		source,
-		destination,
-	}: {
-		modal: HTMLDivElement;
-		source: HTMLDivElement | HTMLButtonElement;
-		destination: HTMLDivElement;
-	}) {
-		const sourceRect = source.getBoundingClientRect();
-		const destinationRect = destination.getBoundingClientRect();
-
-		const tl = gsap.timeline();
-
-		tl.from(modal, {
-			opacity: 0,
-		})
-			.fromTo(
-				destination,
-				{
-					// x: sourceRect.left - destinationRect.left - 200,
-					x: sourceRect.left - destinationRect.left,
-					y: sourceRect.top - destinationRect.top,
-					scale: sourceRect.width / destinationRect.width,
-					duration: 0.2,
-					ease: "cubic-bezier(0.2, 0, 0.2, 1)",
-				},
-				{
-					x: 0,
-					y: 0,
-					scale: 1,
-					duration: 0.2,
-					ease: "cubic-bezier(0.2, 0, 0.2, 1)",
-				}
-			)
-			.from(modal.querySelector("[data-key=title]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.from(modal.querySelector("[data-key=about]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.from(modal.querySelector("[data-key=tech]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.from(modal.querySelector("[data-key=buttons]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.from(modal.querySelector("[data-key=close-button]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			});
-
-		return tl;
-	}
-
-	removeCurrentProject({ modalContainer, modalMedia }: { modalContainer: HTMLDivElement; modalMedia: HTMLDivElement }) {
-		const removeCurrentProjectTl = gsap.timeline();
-		removeCurrentProjectTl
-			.to(modalContainer.querySelector("[data-key=title]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.to(modalContainer.querySelector("[data-key=about]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.to(modalContainer.querySelector("[data-key=tech]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.to(modalContainer.querySelector("[data-key=buttons]"), {
-				opacity: 0,
-				y: 20,
-				duration: 0.2,
-			})
-			.to(modalMedia.children[0], {
-				// width: "0px",
-				opacity: 0,
-			});
-
-		return removeCurrentProjectTl;
-	}
-
-	displayNextProject({ modalContainer, modalMedia }: { modalContainer: HTMLDivElement; modalMedia: HTMLDivElement }) {
-		const displayNextProjectTl = gsap.timeline();
-		displayNextProjectTl
-			.to(modalMedia.children[0], {
-				// width: "100%",
-				opacity: 1,
-			})
-			.to(modalContainer.querySelector("[data-key=title]"), {
-				opacity: 1,
-				y: 0,
-				duration: 0.2,
-			})
-			.to(modalContainer.querySelector("[data-key=about]"), {
-				opacity: 1,
-				y: 0,
-				duration: 0.2,
-			})
-			.to(modalContainer.querySelector("[data-key=tech]"), {
-				opacity: 1,
-				y: 0,
-				duration: 0.2,
-			})
-			.to(modalContainer.querySelector("[data-key=buttons]"), {
-				opacity: 1,
-				y: 0,
-				duration: 0.2,
-			});
-
-		return displayNextProjectTl;
 	}
 }
 
@@ -357,10 +145,12 @@ class AuxilliaryAnimations {
 		sectionWrapper,
 		textWrapper,
 		image,
+		innerWidth,
 	}: {
 		sectionWrapper: HTMLDivElement;
 		textWrapper: HTMLDivElement;
 		image: HTMLDivElement;
+		innerWidth: number;
 	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -384,29 +174,24 @@ class AuxilliaryAnimations {
 			scale: 60,
 		});
 		tl.to(image, {
-			borderLeftWidth: innerWidth < 768 ? "2rem" : "5.8rem",
-			borderRightWidth: innerWidth < 768 ? "2rem" : "5.8rem",
-			borderTopWidth: "10rem",
-			borderBottomWidth: "10rem",
+			borderLeftWidth: innerWidth < 1200 ? "2rem" : "5.8rem",
+			borderRightWidth: innerWidth < 1200 ? "2rem" : "5.8rem",
+			borderTopWidth: innerWidth < 1200 ? "5rem" : "10rem",
+			borderBottomWidth: innerWidth < 1200 ? "5rem" : "10rem",
 		});
 
 		return tl;
 	}
 }
 
-const animPageLoaders = new AnimPageLoaders();
 const homePageAnimations = new HomePageAnimations();
-const singleProjectAnimations = new SingleProjectAnimations();
 const notFoundPageAnimations = new NotFoundPageAnimations();
 const auxilliaryAnimations = new AuxilliaryAnimations();
 
 export {
-	animPageLoaders,
 	homePageAnimations,
-	AnimPageLoaders,
 	sharedAnimations,
 	projectAnimations,
-	singleProjectAnimations,
 	notFoundPageAnimations,
 	workSectionAnimations,
 	skillsAnimations,

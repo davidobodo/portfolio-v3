@@ -1,11 +1,11 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
-import { animPageLoaders, sharedAnimations } from "#/utils/animations";
+import { sharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
-const { transitionToDarkSection, genericPageBannerAnimation } = sharedAnimations;
+const { transitionToDarkSection, genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } =
+	sharedAnimations;
 /**
  *
  * Generic pages include

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
-import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
+import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
 import { useEffect, useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
@@ -159,7 +159,8 @@ export default function Credit() {
 
 function ListItem({ link, role, name }: { link: string; role?: string; name?: string }) {
 	const ref = useRef<HTMLLIElement>(null);
-	useEffect(() => {
+
+	useIsomorphicLayoutEffect(() => {
 		if (ref.current) {
 			const tl = fadeIn({
 				node: ref.current,

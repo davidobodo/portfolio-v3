@@ -4,10 +4,10 @@ import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
-import { singleProjectAnimations } from "#/utils/animations";
+import { projectAnimations } from "#/utils/animations";
 import { fetchProjects } from "#/utils";
 import { PROJECTS } from "#/constants/projects";
-const { removeCurrentProject } = singleProjectAnimations;
+const { removeCurrentProject } = projectAnimations;
 
 type Props = {
 	id: string;
