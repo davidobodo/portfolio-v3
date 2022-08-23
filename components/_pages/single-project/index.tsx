@@ -145,10 +145,12 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 						</div>
 					)}
 
-					<div className={styles.responsibilities}>
-						<h3>My Responsibilities / Features I Implemented</h3>
-						<div dangerouslySetInnerHTML={{ __html: responsibilities }} />
-					</div>
+					{responsibilities?.length > 0 && (
+						<div className={styles.responsibilities}>
+							<h3>My Responsibilities / Features I Implemented</h3>
+							<div dangerouslySetInnerHTML={{ __html: responsibilities }} />
+						</div>
+					)}
 				</section>
 
 				{/* ----------------------------------------------- */}

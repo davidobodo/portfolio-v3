@@ -167,12 +167,16 @@ export const PROJECTS: TProject[] = [
 	{
 		id: "d-commerce",
 		title: "d-commerce(WIP)",
-		details: `<p>When getting acclaimated with the features of a framework/technoly or even a programming language, one of the applications one should try building is an ecommerce platform.</p>
-		<p>This is because, and e-commerce platform has features that cut across a great deal of <strong>what is possible</strong> in frontend. For this reason i set out to build this application</p>
+		details: `<p>When getting acclaimated with the features of a framework/technology or even a programming language, one of the applications one should try building is an ecommerce platform.</p>
+		<p>This is because, an e-commerce platform has features that cut across a great deal of majority of <strong>what is possible</strong> in frontend. For this reason I set out to build this application when mastering react.js</p>
 		<p>The UI was replicated from an online store. As this project was done quite a while ago I currently can't remember the exact name, if not I would have gien them their due credit </p>
+		<p>Last updated on 4th July 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/d-commerce",
 		roles: ["fe", "be"],
+		responsibilities: `
+		<ul><li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c)</li></ul>
+		`,
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
 		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku"],
 		bgColor: COLORS[1],
@@ -191,9 +195,11 @@ export const PROJECTS: TProject[] = [
 		<p>The motivation to build this static clone was a desire to achieve the "VIEW NOMINEES CIRCULAR SECTION" at the bottom with just css and javascript😅.</p>
 		<p>Trust me wasn't an easy process cause it involved some tricky <strong>Mathematics</strong> which was finally arrived at with help from my mentor <a href="https://www.linkedin.com/in/oluwaseunadedire/" target="_blank">Oluwaseun Adedire</a>.</p>
 		<p>This is a static site and none of the call to actions are working</p>
+		<p>Last updated on 15th February 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/developer-of-the-year",
 		roles: ["fe"],
+		responsibilities: ``,
 		sitelink: "https://davidobodo.github.io/developer-of-the-year/",
 		tech: ["html", "css", "sass", "javascript", "ghpages"],
 		bgColor: COLORS[2],
@@ -211,9 +217,16 @@ export const PROJECTS: TProject[] = [
 		details: `<p>In the early stages of my career, I leveraged <a href="https://www.frontendmentor.io/">Frontend Mentor</a> which was very helpful in building me up.</p>
 		<p>This project involved building a static reponsive clone of a UI and plugging it to an API endpoint that helps shorten long url links. Can't say for certain if the API ENDPOINT still returns a response as at today.</p>
 		<p>You can check out the project instructions <a href="https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G/hub/url-shortening-api-landing-page-XxrpDIAz" target="_blank">here</a>.</p>
+		<p>Last updated on 19th February 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/FEM-shortly",
 		roles: ["fe"],
+		responsibilities: `
+		<ul>
+			<li>Convert mockup into web page</li>
+			<li>Connect form to endpoint (Like I mentioned above, not certain if the API still works currently 😅)</li>
+		</ul>
+		`,
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
 		bgColor: COLORS[3],
@@ -232,9 +245,13 @@ export const PROJECTS: TProject[] = [
 		<p>This project involved building a static reponsive clone of a UI.</p>
 		<p>You can check out the project instructions <a href="https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158/hub/bookmark-landing-page-Xa4U_uHY" target="_blank">here</a>.</p>
 		<p>Last updated on 25th February 2020.</p>
-		
 		`,
 		roles: ["fe"],
+		responsibilities: `
+		<ul>
+			<li>Convert mockup into responsive web page</li>
+		</ul>
+		`,
 		githublink: "https://github.com/davidobodo/FEM-bookmark-landing-page",
 		sitelink: "https://davidobodo.github.io/FEM-bookmark-landing-page/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
@@ -255,6 +272,12 @@ export const PROJECTS: TProject[] = [
 		`,
 		githublink: "https://github.com/davidobodo/drumMachine",
 		roles: ["fe"],
+		responsibilities: `
+		<ul>
+			<li>Convert mockup into responsive web page</li>
+			<li>Connect respective clicks to their wav files</li>
+		</ul>
+		`,
 		sitelink: "https://davidobodo.github.io/drumMachine/",
 		tech: ["html", "css", "javascript"],
 		bgColor: COLORS[2],
@@ -267,31 +290,37 @@ export const PROJECTS: TProject[] = [
 		],
 	},
 
-	{
-		id: "pomodoro-clock",
-		title: "Pomodoro clock",
-		details: `<p>Pomodoro Clock, required by <a href="https://www.freecodecamp.org/" target="_blank">freecodecamp</a> to get a certificate </p>
-		<p>Last updated on 8th June 2020.</p>
-		`,
-		githublink: "https://github.com/davidobodo/pomodoroClock",
-		roles: ["fe"],
-		sitelink: "https://pomodoroclock.now.sh/",
-		tech: ["react", "css", "nowsh"],
-		bgColor: COLORS[3],
-		type: TYPES[3],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/pomodoro.png",
-			},
-		],
-	},
+	// {
+	// 	id: "pomodoro-clock",
+	// 	title: "Pomodoro clock",
+	// 	details: `<p>Pomodoro Clock, required by <a href="https://www.freecodecamp.org/" target="_blank">freecodecamp</a> to get a certificate </p>
+	// 	<p>Last updated on 8th June 2020.</p>
+	// 	`,
+	// 	githublink: "https://github.com/davidobodo/pomodoroClock",
+	// 	roles: ["fe"],
+	// 	sitelink: "https://pomodoroclock.now.sh/",
+	// 	tech: ["react", "css", "nowsh"],
+	// 	bgColor: COLORS[3],
+	// 	type: TYPES[3],
+	// 	media: [
+	// 		{
+	// 			type: "image",
+	// 			source: "/images/projects/pomodoro.png",
+	// 		},
+	// 	],
+	// },
 	{
 		id: "freebies",
 		title: "Freebies",
 		details: `<p>A static desktop clone of the <a href="https://freebies.bypeople.com/">Freebies</a> website. The motivation for this, was achieving the moving items based on the mouse cursor position.</p>`,
 		githublink: "https://github.com/davidobodo/freebies",
 		roles: ["fe"],
+		responsibilities: `
+		<ul>
+			<li>Convert mockup into web page</li>
+			<li>Connect mouse movement to svg positions</li>
+		</ul>
+		`,
 		sitelink: "https://davidobodo.github.io/freebies/",
 		tech: ["html", "css", "javascript"],
 		bgColor: COLORS[1],
@@ -308,7 +337,13 @@ export const PROJECTS: TProject[] = [
 		title: "Portfolio v1",
 		details: "<p>My very own first ever portfolio website</P>",
 		githublink: "https://github.com/davidobodo/portfolio",
-		roles: ["fe"],
+		roles: ["design", "fe"],
+		responsibilities: `
+		<ul>
+			<li>Create design for website</li>
+			<li>Convert design into responsive web page</li>
+		</ul>
+		`,
 		sitelink: "https://davidobodo.github.io/portfolio/",
 		tech: ["html", "css", "javascript", "jquery", "ghpages"],
 		bgColor: COLORS[2],
@@ -325,7 +360,13 @@ export const PROJECTS: TProject[] = [
 		title: "Portfolio v2",
 		details: "<p>My second portfolio web site</p>",
 		githublink: "https://github.com/davidobodo/portfolio-v2",
-		roles: ["fe"],
+		roles: ["design", "fe"],
+		responsibilities: `
+		<ul>
+			<li>Create design for website</li>
+			<li>Convert design into responsive web page</li>
+		</ul>
+		`,
 		sitelink: "https://davidobodo.github.io/portfolio/",
 		tech: ["react", "typescript", "redux", "styledcomponents", "nowsh"],
 		bgColor: COLORS[2],
@@ -337,26 +378,26 @@ export const PROJECTS: TProject[] = [
 			},
 		],
 	},
-	{
-		id: "tgwt",
-		title: "GSAP with Three.js",
-		details: `<p>Venturing into the world of GSAP and Three.js is definitely always challenging and fun. Had to learn a little bit of <a href="https://www.blender.org/" _blank="">Blender</a> in order to customize the 3D model to suite my need.</p>
-		<p>Definitely check out <a href="https://www.youtube.com/c/BlenderGuruOfficial" target="_blank">Blender Guru</a> and his hilarious yet educative <a href="https://www.youtube.com/watch?v=nIoXOplUvAw&list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD" target="_blank">Doughnut Tutorials</a> 😂</p>
-		<p>Also, I believe its worth mentioning, that <a href="https://sketchfab.com/" target="_blank">Sketchfab</a> is an awesome place to get 3D models as that was where I got <a href="" target="_blank">this</a> from</p>
-		`,
-		githublink: "",
-		roles: ["fe"],
-		sitelink: "",
-		tech: ["html", "css", "javascript", "gsap", "threejs"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/test.jpg",
-			},
-		],
-	},
+	// {
+	// 	id: "tgwt",
+	// 	title: "GSAP with Three.js",
+	// 	details: `<p>Venturing into the world of GSAP and Three.js is definitely always challenging and fun. Had to learn a little bit of <a href="https://www.blender.org/" _blank="">Blender</a> in order to customize the 3D model to suite my need.</p>
+	// 	<p>Definitely check out <a href="https://www.youtube.com/c/BlenderGuruOfficial" target="_blank">Blender Guru</a> and his hilarious yet educative <a href="https://www.youtube.com/watch?v=nIoXOplUvAw&list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD" target="_blank">Doughnut Tutorials</a> 😂</p>
+	// 	<p>Also, I believe its worth mentioning, that <a href="https://sketchfab.com/" target="_blank">Sketchfab</a> is an awesome place to get 3D models as that was where I got <a href="" target="_blank">this</a> from</p>
+	// 	`,
+	// 	githublink: "",
+	// 	roles: ["fe"],
+	// 	sitelink: "",
+	// 	tech: ["html", "css", "javascript", "gsap", "threejs"],
+	// 	bgColor: COLORS[2],
+	// 	type: TYPES[1],
+	// 	media: [
+	// 		{
+	// 			type: "image",
+	// 			source: "/images/projects/test.jpg",
+	// 		},
+	// 	],
+	// },
 	{
 		id: "weather",
 		title: "Weather Application",
@@ -365,6 +406,13 @@ export const PROJECTS: TProject[] = [
 		`,
 		githublink: "https://github.com/davidobodo/weather-app",
 		roles: ["design", "fe"],
+		responsibilities: `
+		<ul>
+			<li>Create design for web app</li>
+			<li>Convert design into responsive web app</li>
+			<li>Make app a  <span>Progressive Web App (PWA)</span></li>
+		</ul>
+		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
 		tech: ["react", "typescript", "styledcomponents", "rtl"],
 		bgColor: COLORS[2],
@@ -385,6 +433,11 @@ export const PROJECTS: TProject[] = [
 		<p>Project was later published as an <a href="https://www.npmjs.com/package/prodeus-editor" target="_blank">npm package here </a></p>
 		`,
 		githublink: "",
+		responsibilities: `
+		<ul>
+			<li>Customize Ckeditor to suite the Prodeus desired design</li>
+		</ul>
+		`,
 		roles: [],
 		sitelink: "",
 		tech: ["react", "javascript"],
@@ -404,8 +457,14 @@ export const PROJECTS: TProject[] = [
 		details: `<p>While working at <a href="https://www.upwork.com/ag/mpaccione/" target="_blank">M.Paccione Designs and Developement</a>, I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice</p>`,
 		githublink: "",
 		roles: ["fe"],
+		responsibilities: `
+		<ul>
+			<li>Convert Sketch Design into functional web application</li>
+			<li>Connect frontend to the necessary backend endpoints</li>
+		</ul>
+		`,
 		sitelink: "https://www.privatelattice.com/",
-		tech: ["react"],
+		tech: ["react", "sass"],
 		bgColor: COLORS[2],
 		type: TYPES[1],
 		media: [
@@ -421,14 +480,15 @@ export const PROJECTS: TProject[] = [
 		details: `<p>When OPPO decided to do their redefinition photography contest in the year 2020, I was among the team of 4 star developers who embarked on creating the site for the project as well as the dashboard contestants upload their photos as well as help admins to access the submissions.
 		One of my very first enterprise grade applications, which was a huge success cause I had the likes of <a href="" target="_blank">Eric Okemmadu</a>, <a href="" target="_blank">Justice Otuya</a> and <a href="" target="_blank">Ore</a> on the team
 		</p>
-		<p>Some of the noteworthy features implemeted were:</p>
-		<ul>
-			<li> - Basic Authentication for both contestants and admins</li>
-		</ul>
 		<p>Since time has passed, the site is no longer up, hence you wont be able to access it from any url. However this is a very noteworthy project. Check out the slides for some graphics about features implemented</p>
 		`,
 		githublink: "",
 		roles: [],
+		responsibilities: `
+		<ul>
+			<li>Convert some Design pages into pixel perfect web app equivalent</li>
+			<li>Connect some parts of the frontend to the backend endpoints</li>
+		</ul>`,
 		sitelink: "",
 		tech: ["react", "styledcomponents"],
 		bgColor: COLORS[2],
@@ -458,10 +518,10 @@ export const PROJECTS: TProject[] = [
 		<div>
 			<p>Some of the features included:</p>
 			<ul>
-				<li>- Admin authentication</li>
-				<li>- Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
-				<li>- History of all recharge cards generated</li>
-				<li>- Farmers data</li>
+				<li>Admin authentication</li>
+				<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
+				<li>History of all recharge cards generated</li>
+				<li>Farmers data</li>
 			</ul>
 		</div>
 
@@ -473,6 +533,14 @@ export const PROJECTS: TProject[] = [
 		`,
 		roles: ["design", "fe"],
 		sitelink: "",
+		responsibilities: `
+		<ul>
+			<li>Create entire app UI/UX using Figma</li>
+			<li>Convert about 80% of the design into functional responsive web app pages</li>
+			<Li>Connect pages to their respective backend endpoints</li>
+			<li>Use <span>Wordpress</span> to create a static publicly accessible web page for the company</li>
+		</ul>
+		`,
 		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
 		bgColor: COLORS[2],
 		type: TYPES[1],
