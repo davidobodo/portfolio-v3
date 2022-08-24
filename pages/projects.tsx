@@ -174,6 +174,7 @@ const ProjectsPage: NextPage = () => {
 			</Layout.DarkSection>
 			<Contact />
 			<Noise />
+
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

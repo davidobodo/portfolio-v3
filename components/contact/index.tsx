@@ -4,7 +4,7 @@ import { useRef, useState, Ref } from "react";
 import { SectionPlaceholder } from "../index";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
-import gsap from "gsap";
+// import gsap from "gsap";
 import { events, registerEvent } from "#/utils/analytics/events";
 export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
@@ -37,11 +37,11 @@ export default function Contact() {
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
-	const onFooterFix = (event) => {
+	function onFooterFix(event: { key: string; keyCode: number }) {
 		if (event.key === "Tab" || event.keyCode === 9) {
 			setIsFooterFixed(false);
 		}
-	};
+	}
 
 	// Contact form would not be seen if an element inside it is focused and the contact form is still fixed, so we remove the fixed position immediately we detect user using keyboard
 	useIsomorphicLayoutEffect(() => {

@@ -77,34 +77,42 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 		});
 	}, [windowInnerWidth]);
 
-	const [currLabel, setCurrentLabel] = useState(0);
+	function scrollToLabel(label: number) {
+		gsap.to(window, { scrollTo: desktopTl?.scrollTrigger?.labelToScroll(`section-${label}-visible`) });
+	}
+
 	const onWorkDetailsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		const key = e.key || e.keyCode;
 		if (key === "Tab" && desktopTl) {
-			//First time getting to this section
-			if (currLabel === 0) {
-				gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel + 1}-visible`) });
-				setCurrentLabel((prevState) => prevState + 1);
-				return;
-			}
-
 			const trigger = e.target as HTMLDivElement; //Get element that triggered the event
 			const parent = matchElement(trigger, "[data-key='work-detail']"); //Get parent of element
+
+			if (!(parent instanceof HTMLDivElement)) return;
+			const label = parent.dataset.label as string;
 
 			if (parent) {
 				const focusableChildren = [...parent.querySelectorAll(FOCUSABLE_ELEMENT_STRING)]; //Get all focusable children of the parent
 				const pos = focusableChildren.findIndex((item) => item === trigger); //Get the triggered elements position amongst the focusable elements of its parent
 
 				if (e.shiftKey) {
-					if (pos === 0 && currLabel !== 0) {
-						gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel - 1}-visible`) });
-						setCurrentLabel((prevState) => prevState - 1);
+					if (pos === 0) {
+						const currLabel = parseInt(label) - 1;
+						if (currLabel > 0) {
+							scrollToLabel(currLabel);
+						}
+					} else {
+						scrollToLabel(parseInt(label));
 					}
 				} else {
 					//Only move to next work section when we have gone through all links in this work section and we are not in the last section
-					if (pos === focusableChildren.length - 1 && currLabel !== 5) {
-						gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel + 1}-visible`) });
-						setCurrentLabel((prevState) => prevState + 1);
+					if (pos === focusableChildren.length - 1) {
+						const currLabel = parseInt(label) + 1;
+						//Since we dont have any other label after 5
+						if (currLabel <= 5) {
+							scrollToLabel(parseInt(label) + 1);
+						}
+					} else {
+						scrollToLabel(parseInt(label));
 					}
 				}
 			}

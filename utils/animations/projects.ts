@@ -40,7 +40,6 @@ class ProjectsAnimations {
 			.fromTo(
 				destination,
 				{
-					// x: sourceRect.left - destinationRect.left - 200,
 					x: sourceRect.left - destinationRect.left,
 					y: sourceRect.top - destinationRect.top,
 					scale: sourceRect.width / destinationRect.width,
@@ -55,6 +54,7 @@ class ProjectsAnimations {
 					ease: "cubic-bezier(0.2, 0, 0.2, 1)",
 				}
 			)
+
 			.from(modal.querySelector("[data-key=title]"), {
 				opacity: 0,
 				y: 20,

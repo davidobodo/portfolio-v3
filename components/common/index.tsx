@@ -15,7 +15,7 @@ function ScreenBlocker() {
 	return (
 		<div className={styles.blocker}>
 			<p>
-				Please use a screen size of <span>"370px or above"</span> to view app
+				Please use a screen size of <span>&amp;375px or above&amp;</span> to view app
 			</p>
 		</div>
 	);

@@ -63,7 +63,11 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 	return (
 		<>
 			<Link href="/" scroll={false}>
-				<a className={styles.link} data-key="nav-logo" style={{ outlineColor: color }}>
+				<a
+					className={styles.link}
+					data-key="nav-logo"
+					style={{ outlineColor: color, visibility: isVisible ? "visible" : "hidden" }}
+				>
 					<Logo propStyles={styles.logo} color={color} opacity={isVisible ? 1 : 0} />
 				</a>
 			</Link>

@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
 const { fadeIn } = sharedAnimations;

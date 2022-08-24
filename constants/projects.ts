@@ -166,7 +166,7 @@ export const PROJECTS: TProject[] = [
 	},
 	{
 		id: "d-commerce",
-		title: "d-commerce(WIP)",
+		title: "d-commerce",
 		details: `<p>When getting acclaimated with the features of a framework/technology or even a programming language, one of the applications one should try building is an ecommerce platform.</p>
 		<p>This is because, an e-commerce platform has features that cut across a great deal of majority of <strong>what is possible</strong> in frontend. For this reason I set out to build this application when mastering react.js</p>
 		<p>The UI was replicated from an online store. As this project was done quite a while ago I currently can't remember the exact name, if not I would have gien them their due credit </p>
