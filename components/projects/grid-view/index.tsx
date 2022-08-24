@@ -10,15 +10,11 @@ export function ProjectsGridView({
 	return (
 		<div className={styles.container}>
 			{displayedProjects.map((item, i) => {
-				const { bgImage, id } = item;
+				const { id, media } = item;
 
 				return (
 					<button key={i} className={styles.box} data-id={id} data-type="box-item" onClick={onViewProject}>
-						<div
-							className={styles.boxImage}
-							// style={{ backgroundColor: `${bgColor}` }}
-							style={{ backgroundImage: `url(${bgImage})` }}
-						>
+						<div className={styles.boxImage} style={{ backgroundImage: `url(${media[0].source})` }}>
 							<div className={styles.boxImageInner}></div>
 						</div>
 						<div className={styles.boxOverlay}></div>

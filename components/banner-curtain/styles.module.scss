@@ -1,12 +1,12 @@
 .container {
-    width: 100%;
-    position: fixed;
-    background-color: var(--black);
-    left: 0px;
-    top: -10px;
-    height: 50vh;
-    transform: scaleY(0);
-    z-index: var(--z-index-banner-curtain);
-    transform-origin: top;
-    will-change: transform;
+	width: 100%;
+	position: fixed;
+	background-color: var(--black);
+	left: 0px;
+	top: -10px;
+	height: 50vh;
+	transform: scaleY(0);
+	z-index: var(--z-index-banner-curtain);
+	transform-origin: top;
+	will-change: transform;
 }

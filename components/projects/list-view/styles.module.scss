@@ -33,32 +33,43 @@
 			}
 
 			.row {
-				padding: calc(var(--section-padding) / 3.5) 8rem calc(var(--section-padding) / 3) 8rem;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				color: var(--ash);
 				text-decoration: none;
+				padding: 4rem 2rem;
+
+				@media (min-width: $md) {
+					padding: 6rem;
+				}
+
+				@media (min-width: $xl) {
+					padding: 8rem;
+				}
 
 				h2 {
 					position: relative;
 					display: block;
 					line-height: 1;
 					transform: translateX(0);
-					font-size: clamp(5rem, 5.5vw, 10rem);
+					font-size: 2rem;
 					transition: transform 200ms ease-in-out;
+
+					@media (min-width: $md) {
+						font-size: clamp(5rem, 5.5vw, 10rem);
+					}
 				}
 
 				p {
-					font-size: 1.6rem;
 					transform: translateX(0);
 					transition: transform 200ms ease-in-out;
+					font-size: 1.6rem;
 				}
 			}
 
 			&:hover,
 			&:focus {
-				// opacity: 0.5;
 				opacity: 1;
 
 				h2 {

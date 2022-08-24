@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 const nullDimensions = {
 	innerHeight: 0,
@@ -11,11 +11,12 @@ export default function useWindowSize() {
 	const [windowSize, setWindowSize] = useState(typeof window !== "undefined" ? getDimensions() : nullDimensions);
 
 	function getDimensions() {
+		const innerHeight = window.innerHeight;
+		const innerWidth = window.innerWidth;
+
 		return {
-			innerHeight: window.innerHeight,
-			innerWidth: window.innerWidth,
-			outerHeight: window.outerHeight,
-			outerWidth: window.outerWidth,
+			innerHeight,
+			innerWidth,
 		};
 	}
 

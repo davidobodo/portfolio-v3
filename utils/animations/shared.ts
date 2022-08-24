@@ -6,10 +6,12 @@ class SharedAnimations {
 		darkSection,
 		banner,
 		blackCurtain,
+		windowInnerWidth,
 	}: {
 		darkSection: HTMLDivElement;
 		banner: HTMLDivElement;
 		blackCurtain: HTMLDivElement;
+		windowInnerWidth: number;
 	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -19,32 +21,37 @@ class SharedAnimations {
 				end: "top top",
 				scrub: true,
 				// markers: true,
+				pin: banner,
+				pinSpacing: false,
 				onEnterBack: () => {
 					if (banner && blackCurtain) {
-						banner.style.zIndex = "1";
-						banner.style.opacity = "1";
+						// banner.style.zIndex = "1";
+						// banner.style.opacity = "1";
 						blackCurtain.style.zIndex = "2";
 					}
 				},
 				onLeave: () => {
 					if (banner && blackCurtain) {
-						banner.style.zIndex = "-1";
-						banner.style.opacity = "0";
+						// banner.style.zIndex = "-1";
+						// banner.style.opacity = "0";
 						blackCurtain.style.zIndex = "-1";
 					}
 				},
 			},
 		});
-		tl.to(blackCurtain, {
-			scaleY: 1,
-			transformOrigin: "top",
-		});
-		tl.to(banner?.children, { opacity: 0 }, "<");
+
+		if (windowInnerWidth > 992) {
+			tl.to(blackCurtain, {
+				scaleY: 1,
+				height: "50vh",
+				transformOrigin: "top",
+			});
+			tl.to(banner?.children, { opacity: 0 }, "<");
+		}
 
 		return tl;
 	}
 
-	//-----
 	changeFocusedOpaqueText(texts: HTMLCollection) {
 		const firstElement = texts[0];
 		const lastElement = texts[texts.length - 1];
@@ -134,7 +141,9 @@ class SharedAnimations {
 		tl.add(() => {
 			document.querySelector("body")?.classList.add("hide");
 			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
-			navLogo.style.visibility = "visible";
+			if (navLogo) {
+				navLogo.style.visibility = "visible";
+			}
 		});
 
 		// 1. Slide in first element
@@ -161,6 +170,90 @@ class SharedAnimations {
 		tl.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
 		});
+
+		return tl;
+	}
+
+	showLoadingTexts(nodesWrapper: Element, nodes: HTMLSpanElement[]) {
+		const tl = gsap.timeline({ repeat: -1 });
+
+		// CREATE TIMELINE ACTIONS
+		let timelineActions = [];
+		timelineActions.push({ target: nodesWrapper, vars: { visibility: "visible" } });
+		for (let i = 0; i < nodes.length; i++) {
+			timelineActions.push({
+				target: nodes[i],
+				vars: {
+					opacity: 0,
+				},
+			});
+
+			// Move node to the middle
+			timelineActions.push({
+				target: nodes[i],
+				vars: {
+					y: 0,
+					opacity: 1,
+					ease: "power4.out",
+				},
+			});
+			// Move node to the top
+			timelineActions.push({
+				target: nodes[i],
+				vars: {
+					y: -300,
+					opacity: 0,
+					delay: 1,
+					ease: "power4.out",
+				},
+			});
+		}
+
+		// EXECUTE TIMELINE
+		for (let j = 0; j < timelineActions.length; j++) {
+			const { target, vars } = timelineActions[j];
+			tl.to(target, vars);
+		}
+
+		return tl;
+	}
+
+	hideLoadingTexts(node: HTMLDivElement) {
+		const tl = gsap.timeline();
+		tl.to(node, { visibility: "hidden", opacity: 0 });
+		return tl;
+	}
+
+	openNoiseLayers(node: NodeListOf<Element>) {
+		const tl = gsap.timeline();
+		tl.fromTo(node, { scaleY: 1, delay: 0.3 }, { scaleY: 0, delay: 0.3 });
+		return tl;
+	}
+
+	closeNoiseLayers({ node }: { node: NodeListOf<Element> | HTMLCollection }) {
+		const tl = gsap.timeline();
+
+		tl.to(node, { scaleY: 1 });
+		return tl;
+	}
+
+	drawSvgLogo(logoSvg: Element, logoSvgPaths: NodeListOf<Element>) {
+		const tl = gsap.timeline();
+		tl.to(logoSvgPaths, {
+			strokeDashoffset: 0,
+			duration: 2,
+			stagger: 0.8,
+			delay: 1,
+		})
+			.to(logoSvg, {
+				fill: "#fcfcfc",
+			})
+			.to(logoSvg, {
+				opacity: 0,
+			})
+			.to(logoSvg, {
+				visibility: "hidden",
+			});
 
 		return tl;
 	}

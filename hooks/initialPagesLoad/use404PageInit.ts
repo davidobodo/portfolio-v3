@@ -1,12 +1,12 @@
 import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
 import { usePageTransitionsContext } from "#/context";
-import { animPageLoaders, notFoundPageAnimations } from "#/utils/animations";
+import { sharedAnimations, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { events, registerEvent } from "#/utils/analytics/events";
 
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = animPageLoaders;
+const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = sharedAnimations;
 const { bannerAnimation, stopRedirectAnimation } = notFoundPageAnimations;
 export default function use404PageInit() {
 	const { innerHeight, innerWidth } = useWindowSize();
@@ -25,14 +25,14 @@ export default function use404PageInit() {
 	// REDIRECT FUNCTIONS/HELPERS
 	//-------------------------------------------
 	const onInitRedirect = () => {
-		const limit = new Date().getTime() + 16000;
-		const id = setInterval(() => {
-			const now = new Date().getTime();
-			const distance = limit - now;
-			const inas = Math.floor((distance % (1000 * 60)) / 1000);
-			setCountdown(inas);
-		}, 1000);
-		setTimerId(id);
+		// const limit = new Date().getTime() + 16000;
+		// const id = setInterval(() => {
+		// 	const now = new Date().getTime();
+		// 	const distance = limit - now;
+		// 	const inas = Math.floor((distance % (1000 * 60)) / 1000);
+		// 	setCountdown(inas);
+		// }, 1000);
+		// setTimerId(id);
 	};
 
 	const onStopRedirect = () => {

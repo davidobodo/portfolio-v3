@@ -1,8 +1,6 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-	width: 50px;
-	height: 50px;
 	background-color: var(--black);
 	border-radius: 50%;
 	// border: 1px solid var(--light-brown);
@@ -24,8 +22,12 @@
 
 	bottom: 1rem;
 	right: 1rem;
+	width: 4rem;
+	height: 4rem;
 
-	@media (min-width: $md) {
+	@media (min-width: $xl) {
+		width: 5rem;
+		height: 5rem;
 		bottom: 7rem;
 		right: 5rem;
 	}

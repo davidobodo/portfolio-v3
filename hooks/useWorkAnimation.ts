@@ -1,28 +1,21 @@
 import gsap from "gsap";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { workSectionAnimations } from "#/utils/animations";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { FOCUSABLE_ELEMENT_STRING, KEYBOARD_KEYS } from "#/constants";
+import { FOCUSABLE_ELEMENT_STRING } from "#/constants";
 import { matchElement } from "#/utils";
 
 const { desktopAnimation, mobileAnimation } = workSectionAnimations;
-const { ENTER_KEY } = KEYBOARD_KEYS;
 
-export default function useWorkAnimation({
-	windowInnerHeight,
-	windowInnerWidth,
-}: {
-	windowInnerHeight: number;
-	windowInnerWidth: number;
-}) {
+export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
 	const workContainerRef = useRef(null);
 	const workContainerSelector = gsap.utils.selector(workContainerRef);
 
 	const mobileWorkContainerRef = useRef(null);
 	const mobileWorkContainerSelector = gsap.utils.selector(mobileWorkContainerRef);
 
-	const [desktopTl, setDesktopTl] = useState<gsap.core.Timeline>();
+	const [desktopTl, setDesktopTl] = useState<gsap.core.Timeline>(); // Need this for keyboard accessibility
 	useIsomorphicLayoutEffect(() => {
 		ScrollTrigger.matchMedia({
 			//-----------------------------------------
@@ -84,66 +77,42 @@ export default function useWorkAnimation({
 		});
 	}, [windowInnerWidth]);
 
-	const [currLabel, setActiveLabel] = useState(0);
-	const [timer, setTimer] = useState<NodeJS.Timeout>();
-
-	useEffect(() => {
-		return () => {
-			if (timer) {
-				clearTimeout(timer);
-			}
-		};
-	}, [timer]);
+	function scrollToLabel(label: number) {
+		gsap.to(window, { scrollTo: desktopTl?.scrollTrigger?.labelToScroll(`section-${label}-visible`) });
+	}
 
 	const onWorkDetailsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		const key = e.key || e.keyCode;
 		if (key === "Tab" && desktopTl) {
-			if (currLabel === 0) {
-				gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel + 1}-visible`) });
-				setActiveLabel((prevState) => prevState + 1);
-				return;
-			}
+			const trigger = e.target as HTMLDivElement; //Get element that triggered the event
+			const parent = matchElement(trigger, "[data-key='work-detail']"); //Get parent of element
 
-			//Get element that triggered event
-			const trigger = e.target as HTMLDivElement;
-
-			//Get parent of element
-			const parent = matchElement(trigger, "[data-key='work-detail']");
+			if (!(parent instanceof HTMLDivElement)) return;
+			const label = parent.dataset.label as string;
 
 			if (parent) {
-				//Get all focusable children of the parent
-				const focusableChildren = [...parent.querySelectorAll(FOCUSABLE_ELEMENT_STRING)];
-
-				//Get the position amongst the children of the element that triggered the event
-				const pos = focusableChildren.findIndex((item) => item === trigger);
+				const focusableChildren = [...parent.querySelectorAll(FOCUSABLE_ELEMENT_STRING)]; //Get all focusable children of the parent
+				const pos = focusableChildren.findIndex((item) => item === trigger); //Get the triggered elements position amongst the focusable elements of its parent
 
 				if (e.shiftKey) {
-					if (pos === 0 && currLabel !== 0) {
-						//Focus on the last element in the previous section
-
-						gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel - 1}-visible`) });
-						setActiveLabel((prevState) => prevState - 1);
-
-						const previousSection = parent.previousElementSibling;
-						if (previousSection) {
-							const previousSectionChildren = [...previousSection.querySelectorAll(FOCUSABLE_ELEMENT_STRING)];
-							const lastItem = previousSectionChildren[previousSectionChildren.length - 1] as HTMLElement;
-
-							//Wait for thread to become idle before giving the last element focus
-							if (timer) {
-								clearTimeout(timer);
-							}
-							const id = setTimeout(() => {
-								lastItem.focus();
-							}, 0);
-							setTimer(id);
+					if (pos === 0) {
+						const currLabel = parseInt(label) - 1;
+						if (currLabel > 0) {
+							scrollToLabel(currLabel);
 						}
+					} else {
+						scrollToLabel(parseInt(label));
 					}
 				} else {
 					//Only move to next work section when we have gone through all links in this work section and we are not in the last section
-					if (pos === focusableChildren.length - 1 && currLabel !== 5) {
-						gsap.to(window, { scrollTo: desktopTl.scrollTrigger?.labelToScroll(`section-${currLabel + 1}-visible`) });
-						setActiveLabel((prevState) => prevState + 1);
+					if (pos === focusableChildren.length - 1) {
+						const currLabel = parseInt(label) + 1;
+						//Since we dont have any other label after 5
+						if (currLabel <= 5) {
+							scrollToLabel(parseInt(label) + 1);
+						}
+					} else {
+						scrollToLabel(parseInt(label));
 					}
 				}
 			}

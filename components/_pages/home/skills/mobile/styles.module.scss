@@ -7,7 +7,7 @@
 
 	display: block;
 
-	@media (min-width: $md) {
+	@media (min-width: $lg) {
 		display: none;
 	}
 
@@ -38,6 +38,10 @@
 					z-index: 1;
 
 					@media (min-width: $md) {
+						font-size: 60px;
+					}
+
+					@media (min-width: $xxl) {
 						font-size: 80px;
 					}
 

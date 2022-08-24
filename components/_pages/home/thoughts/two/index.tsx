@@ -37,7 +37,7 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 2,
 		},
 		{
-			sentence: "Learn to solve what ever problem is encountered, ain'tthat why",
+			sentence: "Learn to solve whatever problem is encountered, ain't that why",
 			color: "ash",
 			key: 3,
 		},

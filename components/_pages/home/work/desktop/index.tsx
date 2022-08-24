@@ -29,7 +29,7 @@ export default function ViewDesktop({ workContainerRef, onWorkDetailsKeyDown }: 
 						{WORK.map((item, i) => {
 							const { title, company, location, range, url, note, urlLabel } = item;
 							return (
-								<div className={styles.tabDetail} key={i} data-key="work-detail">
+								<div className={styles.tabDetail} key={i} data-key="work-detail" data-label={i + 1}>
 									<section>
 										<h2 tabIndex={0}>{company}</h2>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />

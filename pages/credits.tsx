@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
-import { useGenericPageInit, useWindowSize, useAlternateTextOpacity } from "#/hooks";
-import { useEffect, useRef } from "react";
+import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
+import { useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
 const { fadeIn } = sharedAnimations;
@@ -141,7 +141,8 @@ export default function Credit() {
 					<section>
 						<h2>People</h2>
 
-						<ul className={styles.people}>
+						{/* <ul className={styles.people}> */}
+						<ul className={styles.list}>
 							{PEOPLE.map((item, i) => {
 								const { link } = item;
 								return <ListItem key={i} role="Chief Reviewer" name="Oluwaseun Adedire" link={link} />;
@@ -159,7 +160,8 @@ export default function Credit() {
 
 function ListItem({ link, role, name }: { link: string; role?: string; name?: string }) {
 	const ref = useRef<HTMLLIElement>(null);
-	useEffect(() => {
+
+	useIsomorphicLayoutEffect(() => {
 		if (ref.current) {
 			const tl = fadeIn({
 				node: ref.current,
@@ -177,11 +179,17 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 
 	if (role && name) {
 		return (
+			// <li ref={ref}>
+			// 	<span>Chief Reviewer</span>
+			// 	<span className={styles.lines}></span>
+			// 	<a href={link} target="_blank" onClick={handleGAEvent}>
+			// 		<span>Oluwaseun Adedire</span>
+			// 	</a>
+			// </li>
+
 			<li ref={ref}>
-				<span>Chief Reviewer</span>
-				<span className={styles.lines}></span>
 				<a href={link} target="_blank" onClick={handleGAEvent}>
-					<span>Oluwaseun Adedire</span>
+					<span>{`Chief Reviewer - Christian Drey`}</span>
 				</a>
 			</li>
 		);

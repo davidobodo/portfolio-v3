@@ -26,7 +26,7 @@ const Letters: NextPage = () => {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav />
+			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.OtherPages
 				texts={["Letters", "Thoughts", "Stories", "Ideas"]}

@@ -13,7 +13,7 @@ export default function Excellence({
 	imageRef: Ref<HTMLDivElement>;
 }) {
 	return (
-		<div data-key="test" ref={containerRef}>
+		<div ref={containerRef}>
 			<div className={styles.container} style={{ width: containerWidth + "px" }}>
 				<Text textWrapperRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
 

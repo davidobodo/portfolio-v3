@@ -104,19 +104,20 @@
 				transform: translateY(40px);
 				opacity: 0;
 				color: var(--ash3);
-				// visibility: hidden;
-
-				// &:first-child {
-				// 	visibility: visible;
-				// }
+				z-index: -1;
 
 				h2 {
-					font-size: 1.8rem;
 					line-height: 1.19048;
 					font-weight: 600;
 					letter-spacing: 0.021em;
 					margin-bottom: 2rem;
 					color: var(--white);
+					display: inline-block;
+					font-size: 1.6rem;
+
+					@media (min-width: $xl) {
+						font-size: 1.8rem;
+					}
 
 					&:focus {
 						color: var(--white);
@@ -125,11 +126,15 @@
 				}
 
 				.notes {
-					font-size: 18px;
 					line-height: 2;
 					margin-bottom: 1rem;
 					font-family: "sf-pro-bold";
 					width: 360px;
+					font-size: 1.6rem;
+
+					@media (min-width: $xl) {
+						font-size: 1.8rem;
+					}
 
 					ol {
 						padding-left: 1.8rem;
@@ -137,23 +142,32 @@
 				}
 
 				span {
-					font-size: 16px;
 					line-height: 1.19048;
 					font-weight: 600;
 					margin-bottom: 4rem;
 					display: block;
+					font-size: 1.6rem;
+
+					@media (min-width: $xl) {
+						font-size: 1.8rem;
+					}
 				}
 
 				ul {
 					list-style: none;
 
 					li {
-						font-size: 18px;
 						margin-bottom: 1.2rem;
 						padding-left: 30px;
 						position: relative;
 						font-family: "sf-pro-bold";
 						line-height: 1.5;
+
+						font-size: 1.6rem;
+
+						@media (min-width: $xl) {
+							font-size: 1.8rem;
+						}
 
 						&:before {
 							content: "";

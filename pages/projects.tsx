@@ -28,9 +28,14 @@ import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { FilterIcon } from "#/components/icons";
+import { projectAnimations } from "#/utils/animations";
+
+const { scrollToProjectsSection } = projectAnimations;
+
 type TFilterBy = "tech-stack" | "project-nature";
 
 const ProjectsPage: NextPage = () => {
+	const [initialPageLoad, setInitialPageLoad] = useState(true);
 	//---------------------------------------------------------
 	// TOGGLE FILTER DISPLAY
 	//---------------------------------------------------------
@@ -123,18 +128,10 @@ const ProjectsPage: NextPage = () => {
 		setFilterKey(key);
 	};
 
-	const scrollToProjectsList = () => {
-		ScrollTrigger.refresh();
-		const elem = document.querySelector("#projects-list");
-		if (elem) {
-			elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-		}
-	};
-
-	const [initialPageLoad, setInitialPageLoad] = useState(true);
 	useIsomorphicLayoutEffect(() => {
 		if (!initialPageLoad) {
-			scrollToProjectsList();
+			ScrollTrigger.refresh();
+			scrollToProjectsSection();
 		} else {
 			setInitialPageLoad(false);
 		}
@@ -150,10 +147,10 @@ const ProjectsPage: NextPage = () => {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav />
+			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.OtherPages
-				texts={["Projects", "Playground", "xperiments", "Replicas"]}
+				texts={["Projects", "Playground", "Replicas", "xperiments"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}
 				bannerRef={bannerRef}
@@ -177,6 +174,7 @@ const ProjectsPage: NextPage = () => {
 			</Layout.DarkSection>
 			<Contact />
 			<Noise />
+
 			<ProjectModal
 				selectedProjectId={selectedProjectId}
 				modalRef={modalRef}

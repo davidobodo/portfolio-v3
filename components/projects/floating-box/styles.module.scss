@@ -1,3 +1,4 @@
+@import "#/styles/globals.module.scss";
 // NOTE: Credits given to "https://dennissnellenberg.com/", for thinking about this
 
 .container {
@@ -11,8 +12,12 @@
 	transition: width 0.4s cubic-bezier(0.36, 0, 0.66, 0);
 
 	&.active {
-		width: 45rem;
+		width: 30rem;
 		transition: width 0.4s cubic-bezier(0.34, 1, 0.64, 1); // When active class is being removed
+
+		@media (min-width: $xl) {
+			width: 45rem;
+		}
 	}
 
 	&:before {

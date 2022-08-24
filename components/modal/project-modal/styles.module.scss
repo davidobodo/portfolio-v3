@@ -1,18 +1,18 @@
 .modalContent {
-    background-color: var(--black);
-    position: relative;
+	background-color: var(--black);
+	position: relative;
 
-    .gradient {
-        background: var(--dark-radial-gradient);
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0px;
-        left: 0px;
-    }
+	.gradient {
+		background: var(--dark-radial-gradient);
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+	}
+}
 
-    .content {
-        position: relative;
-        z-index: 1;
-    }
+.content {
+	position: relative;
+	z-index: 1;
 }

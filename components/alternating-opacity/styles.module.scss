@@ -5,11 +5,17 @@
 	padding: 10rem 0rem 10rem;
 
 	@media (min-width: $md) {
-		width: 50%;
-		padding-top: 20rem;
+		width: 70%;
 		margin: auto;
+		padding-top: 10rem;
 	}
+
 	@media (min-width: $lg) {
+		width: 550px;
+	}
+
+	@media (min-width: $xl) {
+		padding-top: 20rem;
 		width: 700px;
 	}
 
@@ -26,15 +32,20 @@
 			font-weight: 400;
 			letter-spacing: -0.015em;
 			color: var(--ash);
-			font-size: 32px;
+			font-size: 3.5rem;
 			line-height: 1.4;
 			opacity: 0.2;
 			display: block;
 
-			@media (min-width: $lg) {
+			@media (min-width: $md) {
 				line-height: 1.05;
+				font-size: 50px;
+			}
+
+			@media (min-width: $xl) {
 				font-size: 68px;
 			}
+
 			@media (min-width: $xxl) {
 				font-size: 80px;
 			}

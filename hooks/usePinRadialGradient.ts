@@ -14,33 +14,28 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 
 	useIsomorphicLayoutEffect(() => {
 		if (darkSectionRef.current) {
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: darkSectionRef.current,
-					start: "top top",
-					end: "bottom bottom",
-					toggleActions: "restart pause reverse pause",
-					endTrigger: darkSectionRef.current,
-					pin: darkSectionRadialGradientRef.current,
-					// markers: true,
-				},
-			});
-
-			setRadialGradientAnimation(tl);
-
+			const anim = gsap.to(
+				{},
+				{
+					scrollTrigger: {
+						trigger: darkSectionRef.current,
+						start: "top top",
+						end: "bottom bottom",
+						toggleActions: "restart pause reverse pause",
+						endTrigger: darkSectionRef.current,
+						pin: darkSectionRadialGradientRef.current,
+					},
+				}
+			);
+			setRadialGradientAnimation(anim);
 			return () => {
-				tl.scrollTrigger?.kill();
+				anim.scrollTrigger?.kill();
 			};
 		}
 	}, [darkSectionRef]);
 
-	const recalculateGradient = () => {
-		// timeline.scrollTrigger.refresh();
-	};
-
 	return {
 		darkSectionRef,
 		darkSectionRadialGradientRef,
-		recalculateGradient,
 	};
 }

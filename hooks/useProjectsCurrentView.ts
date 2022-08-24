@@ -1,34 +1,34 @@
-import gsap from "gsap";
 import { useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { events, registerEvent } from "#/utils/analytics/events";
+import { usePageTransitionsContext } from "#/context";
+
 type TView = "list" | "grid";
 
 export default function useProjectsCurrentView() {
 	const { innerWidth: windowInnerWidth } = useWindowSize();
-	const [currentView, setCurrentView] = useState<TView>("list");
+	const [currentView, setCurrentView] = useState<TView>("grid");
 	const handleSetCurrentView = (view: TView) => {
 		setCurrentView(view);
 		registerEvent(events.shared.homeAndProjects.toggleProjectsView({ projects_view: view }));
 	};
 
+	const { radialGradientAnimation } = usePageTransitionsContext();
+
 	const [firstInstanceLoad, setFirstInstanceLoad] = useState(true);
 
-	// Anytime view changes refresh scroll trigger
+	// Anytime view changes refresh pin gradient animation
 	useEffect(() => {
 		if (!firstInstanceLoad) {
-			ScrollTrigger.refresh();
-			gsap.to(window, { scrollTo: "#projects-list" });
+			radialGradientAnimation?.scrollTrigger?.refresh();
 		} else {
 			setFirstInstanceLoad(false);
 		}
 	}, [currentView]);
 
+	//Default desktop view
 	useIsomorphicLayoutEffect(() => {
-		if (windowInnerWidth < 768) {
-			setCurrentView("grid");
-		} else {
+		if (windowInnerWidth > 1024) {
 			setCurrentView("list");
 		}
 	}, []);

@@ -67,7 +67,7 @@
 		width: 100%;
 		flex-direction: column;
 
-		@media (min-width: $md) {
+		@media (min-width: $lg) {
 			padding: 0px 6rem;
 			padding-bottom: 6rem;
 		}
@@ -87,7 +87,7 @@
 			margin-bottom: 10rem;
 		}
 
-		@media (min-width: $md) {
+		@media (min-width: $lg) {
 			flex-direction: row;
 			.leftSection {
 				order: 0;
@@ -163,8 +163,11 @@
 	@media (min-width: $md) {
 		flex-direction: row;
 		height: 60px;
-		margin: 0px 6rem;
+		margin: 0px 2rem;
 		padding: 0px;
+	}
+	@media (min-width: $lg) {
+		margin: 0px 6rem;
 	}
 
 	ul {

@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import { Modal, SingleProject, Noise } from "#/components";
 import { Ref } from "react";
+
 type Props = {
 	selectedProjectId: string;
 	modalRef: Ref<HTMLDivElement>;
@@ -21,7 +22,6 @@ export default function ProjectModal({
 		<Modal show={isOpen} modalRef={modalRef}>
 			<div className={styles.modalContent}>
 				<div className={styles.content}>
-					{/* <Nav isLight={true} /> */}
 					<SingleProject
 						currProjectId={selectedProjectId}
 						onClose={onDeselectProject}
@@ -29,7 +29,6 @@ export default function ProjectModal({
 						onGoToProject={onGoToProject}
 					/>
 				</div>
-
 				<div className={styles.gradient}></div>
 				<Noise />
 			</div>

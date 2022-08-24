@@ -5,12 +5,9 @@
 	top: 0px;
 	position: fixed;
 	z-index: var(--z-index-nav);
-	height: 70px;
-	backdrop-filter: blur(1.5rem) saturate(1.1);
+	height: 50px;
 
 	@media (min-width: $md) {
-		backdrop-filter: none;
-		height: 100px;
 		display: none;
 	}
 }
@@ -18,23 +15,31 @@
 .link {
 	position: fixed;
 	z-index: 1003;
-	top: 2rem;
+	top: 8px;
 	left: 2rem;
 	visibility: hidden;
 
-	@media (min-width: $md) {
+	@media (min-width: $lg) {
+		top: 2rem;
+	}
+	@media (min-width: $xl) {
 		top: 4rem;
+		left: 3rem;
+	}
+	@media (min-width: $xxl) {
 		left: 5.8rem;
 	}
+
 	&:focus {
 		outline: 2px dotted;
 	}
 }
+
 .logo {
 	position: relative;
-	width: 60px;
+	width: 50px;
 
-	@media (min-width: $md) {
+	@media (min-width: $xl) {
 		width: 79px;
 	}
 }

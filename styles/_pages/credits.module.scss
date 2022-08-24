@@ -68,8 +68,10 @@
 				color: var(--light-brown);
 			}
 
-			&:hover,
-			&:active,
+			&:hover {
+				color: var(--white);
+			}
+
 			&:focus {
 				color: var(--white);
 				text-decoration: none;

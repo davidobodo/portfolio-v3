@@ -1,59 +1,49 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { animPageLoaders, homePageAnimations, sharedAnimations } from "#/utils/animations";
+import { homePageAnimations, sharedAnimations } from "#/utils/animations";
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
 
-const { drawSvgLogo, openNoiseLayers, closeNoiseLayers } = animPageLoaders;
 const { bannerAnimation } = homePageAnimations;
-const { transitionToDarkSection } = sharedAnimations;
-export default function useHomeInit({
-	windowInnerHeight,
-	windowInnerWidth,
-	darkSectionRef,
-}: {
+const { transitionToDarkSection, drawSvgLogo, openNoiseLayers, closeNoiseLayers } = sharedAnimations;
+
+type Props = {
 	windowInnerHeight: number;
 	windowInnerWidth: number;
 	darkSectionRef: RefObject<HTMLDivElement>;
-}) {
-	const bannerRef = useRef<HTMLDivElement>(null);
+};
 
+export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef }: Props) {
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
+	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
+	//-----------------------------------------
+	// BANNER ANIMATION
+	//-----------------------------------------
+	const bannerRef = useRef<HTMLDivElement>(null);
 	const bannerRefSelector = gsap.utils.selector(bannerRef);
 
-	const getElements = () => {
+	useIsomorphicLayoutEffect(() => {
+		//Ensure page scrolls to the top, since it might not be at the top due to our page transition effect
+		window.scrollTo({
+			top: 0,
+			left: 0,
+		});
+
 		const nameLetters = bannerRefSelector<HTMLSpanElement>('[data-key="name"] [data-key="letter"]');
 		const fieldLetters = bannerRefSelector<HTMLSpanElement>('[data-key="field"] [data-key="letter"]');
 		const subFields = bannerRefSelector<HTMLDivElement>('[data-key="sub-field"]');
 		const picMobile = bannerRefSelector<HTMLDivElement>('[data-key="mobile-image"]');
 		const picDesktopblind = bannerRefSelector<HTMLSpanElement>('[data-key="desktop-image"] span');
 		const scrollIndicator = bannerRefSelector<HTMLDivElement>('[data-key="scroll-alert"]');
-
-		return {
-			nameLetters,
-			fieldLetters,
-			subFields,
-			picMobile,
-			picDesktopblind,
-			scrollIndicator,
-		};
-	};
-	useIsomorphicLayoutEffect(() => {
-		window.scrollTo({
-			top: 0,
-			left: 0,
-		});
-		const { nameLetters, fieldLetters, subFields, picMobile, picDesktopblind, scrollIndicator } = getElements();
 		const logo = document.querySelector("[data-key='logo']") as Element;
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 		const layers = document.querySelectorAll("[data-key='layer']");
-		const master = gsap.timeline();
 
+		const master = gsap.timeline();
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
 			master.add(drawSvgLogo(logo, logoChildren));
-			//SET PAGE OUTRO ANIMATION
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 		}
 		master.add(openNoiseLayers(layers));
@@ -74,7 +64,6 @@ export default function useHomeInit({
 		};
 	}, []);
 
-	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 	//-----------------------------------------
 	// BLACK COVER ANIMATION
 	//-----------------------------------------
@@ -85,13 +74,14 @@ export default function useHomeInit({
 				darkSection: darkSectionRef.current,
 				banner: bannerRef.current,
 				blackCurtain: blackCoverRef.current,
+				windowInnerWidth,
 			});
 
 			return () => {
 				tl.scrollTrigger?.kill();
 			};
 		}
-	}, []);
+	}, [windowInnerWidth]);
 
 	return {
 		bannerRef,
