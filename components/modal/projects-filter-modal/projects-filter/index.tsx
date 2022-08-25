@@ -89,6 +89,7 @@ export default function BaseProjectsFilter({
 		} else {
 			setInitialLoad(false);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [filterBy, initialLoad]);
 
 	//--------------------------------------------------------

@@ -11,6 +11,7 @@
 	}
 
 	.excellenceWrapper {
+		//Enforce that irrespective of what is happening in its children, its not going to scroll
 		width: 100vw;
 		overflow-x: hidden;
 		margin-bottom: 15rem;

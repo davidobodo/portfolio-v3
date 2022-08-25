@@ -146,11 +146,13 @@ class AuxilliaryAnimations {
 		textWrapper,
 		image,
 		innerWidth,
+		sectionWrapperInner,
 	}: {
 		sectionWrapper: HTMLDivElement;
 		textWrapper: HTMLDivElement;
 		image: HTMLDivElement;
 		innerWidth: number;
+		sectionWrapperInner: HTMLDivElement;
 	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -167,7 +169,7 @@ class AuxilliaryAnimations {
 		});
 
 		tl.to(textWrapper, {
-			x: () => -(textWrapper.scrollWidth - document.documentElement.clientWidth) + "px",
+			x: () => -(sectionWrapperInner.scrollWidth - document.documentElement.clientWidth) + "px",
 			ease: "none",
 		});
 		tl.to(textWrapper.querySelector("svg"), {
