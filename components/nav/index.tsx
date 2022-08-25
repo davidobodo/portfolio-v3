@@ -12,13 +12,12 @@ type Props = {
 };
 
 export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark", hasBackdropFilter = true }: Props) {
+	const { innerWidth, innerHeight } = useWindowSize();
 	const [isVisible, setIsVisible] = useState(showInBanner);
 	const [logoMode, setLogoMode] = useState<TLogoMode>(headerSectionLogoMode); // Since page loads at the top (i.e header)
 	const [hasBackdrop, setHasBackdrop] = useState(hasBackdropFilter);
 
-	const { innerWidth, innerHeight } = useWindowSize();
 	const handlescroll = () => {
-		// Get the total height of the document
 		const totalHeight = document.body.offsetHeight;
 		const contactHeight = document.querySelector('[data-key="contact-form"]')?.clientHeight || 0;
 		const LOGO_POSITION_HEIGHT = 95;
@@ -35,7 +34,7 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 			}
 		}
 
-		// When user is in the dark section of the page
+		// When user is in the dark-section/conetent section of the page
 		if (window.pageYOffset >= innerHeight && window.pageYOffset < diff) {
 			setLogoMode("light");
 			setIsVisible(true);
@@ -72,7 +71,7 @@ export default function Nav({ showInBanner = true, headerSectionLogoMode = "dark
 				</a>
 			</Link>
 			<div
-				className={styles.container}
+				className={styles.backdrop}
 				style={{
 					backdropFilter: innerWidth >= 768 ? "none" : hasBackdrop && isVisible ? "blur(1.5rem) saturate(1.1)" : "none",
 					WebkitBackdropFilter:

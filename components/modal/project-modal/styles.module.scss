@@ -1,6 +1,11 @@
-.modalContent {
+.wrapper {
 	background-color: var(--black);
 	position: relative;
+
+	.content {
+		position: relative;
+		z-index: 1;
+	}
 
 	.gradient {
 		background: var(--dark-radial-gradient);
@@ -10,9 +15,4 @@
 		top: 0px;
 		left: 0px;
 	}
-}
-
-.content {
-	position: relative;
-	z-index: 1;
 }

@@ -35,7 +35,6 @@ export default function Document() {
 				</div>
 				<NextScript />
 				<div id="modal-root"></div>
-				<div id="filter-root"></div>
 			</body>
 		</Html>
 	);

@@ -35,7 +35,7 @@ const Letters: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
-			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
 						<h2>Viewing all letters</h2>

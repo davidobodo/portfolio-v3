@@ -8,9 +8,9 @@ import {
 	Layout,
 	Projects,
 	BannerCurtain,
-	ProjectsFilter,
 	Contact,
 	ProjectsViewSelector,
+	ProjectsFilterModal,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import {
@@ -156,7 +156,7 @@ const ProjectsPage: NextPage = () => {
 				bannerRef={bannerRef}
 				bannerHeight={bannerHeight}
 			/>
-			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.content} id="projects-list">
 					<div className={styles.filterWrapper}>
 						<button onClick={onOpenFilter} data-key="open-filter-btn" aria-label="Open Filter">
@@ -183,7 +183,17 @@ const ProjectsPage: NextPage = () => {
 				onGoToProject={onGoToProject}
 				isOpen={isOpen}
 			/>
-			{showFilter && (
+
+			<ProjectsFilterModal
+				isOpen={showFilter}
+				onFilterProjects={onFilterProjects}
+				onCloseFilter={onCloseFilter}
+				filterKey={filterKey}
+				filterList={filterList}
+				filterBy={filterBy}
+				onSelectFilterBy={onSelectFilterBy}
+			/>
+			{/* {showFilter && (
 				<ProjectsFilter
 					onFilterProjects={onFilterProjects}
 					onCloseFilter={onCloseFilter}
@@ -192,7 +202,7 @@ const ProjectsPage: NextPage = () => {
 					filterBy={filterBy}
 					onSelectFilterBy={onSelectFilterBy}
 				/>
-			)}
+			)} */}
 		</>
 	);
 };

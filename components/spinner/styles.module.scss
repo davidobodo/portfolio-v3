@@ -1,15 +1,15 @@
 .ldsRing {
 	display: inline-block;
 	position: relative;
-	width: 50px;
-	height: 50px;
+	width: 5rem;
+	height: 5rem;
 }
 .ldsRing div {
 	box-sizing: border-box;
 	display: block;
 	position: absolute;
-	width: 32px;
-	height: 32px;
+	width: 3.2rem;
+	height: 3.2rem;
 	margin: 8px;
 	border: 4px solid var(--black);
 	border-radius: 50%;

@@ -1,4 +1,3 @@
-import styles from "./styles.module.scss";
 import { ProjectListView } from "./list-view";
 import { ProjectsGridView } from "./grid-view";
 import { TProject } from "#/interfaces";
@@ -15,15 +14,11 @@ export default function Project({
 	return (
 		<>
 			{currentView === "grid" && (
-				<div className={styles.gridWrapper}>
-					<ProjectsGridView onViewProject={onViewProject} displayedProjects={displayedProjects} />
-				</div>
+				<ProjectsGridView onViewProject={onViewProject} displayedProjects={displayedProjects} />
 			)}
 
 			{currentView === "list" && (
-				<div className={styles.listWrapper}>
-					<ProjectListView onViewProject={onViewProject} displayedProjects={displayedProjects} />
-				</div>
+				<ProjectListView onViewProject={onViewProject} displayedProjects={displayedProjects} />
 			)}
 		</>
 	);

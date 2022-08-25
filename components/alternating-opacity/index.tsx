@@ -1,6 +1,7 @@
-import { Ref } from "react";
 import styles from "./styles.module.scss";
+import { Ref } from "react";
 import { ABOUT_NOTE } from "#/constants";
+
 export default function About({
 	textsListRef,
 	textsList = ABOUT_NOTE,

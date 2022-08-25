@@ -1,52 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import styles from "./styles.module.scss";
-import { Ref } from "react";
+import ProjectModal from "./project-modal";
+import ProjectsFilterModal from "./projects-filter-modal";
+import ModalWrapper from "./modal-wrapper";
 
-import Project from "./project-modal";
-
-export const ProjectModal = Project;
-
-export default function Modal({
-    children,
-    show,
-    modalRef
-}: {
-    children: JSX.Element;
-    show: boolean;
-    modalRef?: Ref<HTMLDivElement>;
-}) {
-    const [isBrowser, setIsBrowser] = useState(false);
-
-    useEffect(() => {
-        setIsBrowser(true);
-    }, []);
-
-    useEffect(() => {
-        if (show) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-    }, [show]);
-
-    const modalContent = show ? (
-        <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby=""
-            aria-describedby=""
-            className={styles.container}
-            ref={modalRef}
-        >
-            <div className={styles.backdrop}></div>
-            <div className={styles.content}>{children}</div>
-        </div>
-    ) : null;
-
-    if (isBrowser) {
-        return createPortal(modalContent, document.getElementById("modal-root") as HTMLElement);
-    } else {
-        return null;
-    }
-}
+const Modals = {
+	ModalWrapper,
+	ProjectModal,
+	ProjectsFilterModal,
+};
+export default Modals;

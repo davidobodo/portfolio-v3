@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { Modal, SingleProject, Noise } from "#/components";
+import { ModalWrapper, SingleProject, Noise } from "#/components";
 import { Ref } from "react";
 
 type Props = {
@@ -19,8 +19,8 @@ export default function ProjectModal({
 	isOpen,
 }: Props) {
 	return (
-		<Modal show={isOpen} modalRef={modalRef}>
-			<div className={styles.modalContent}>
+		<ModalWrapper show={isOpen} modalRef={modalRef}>
+			<div className={styles.wrapper}>
 				<div className={styles.content}>
 					<SingleProject
 						currProjectId={selectedProjectId}
@@ -32,6 +32,6 @@ export default function ProjectModal({
 				<div className={styles.gradient}></div>
 				<Noise />
 			</div>
-		</Modal>
+		</ModalWrapper>
 	);
 }

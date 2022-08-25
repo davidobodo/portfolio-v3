@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import Heading from "../heading";
+import Heading from "./heading";
 import { RefObject } from "react";
 import { ScrollAlert } from "../../index";
 
@@ -16,7 +16,7 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 
 	return (
 		<>
-			<header className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }} data-key="banner">
+			<header className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
 				<div className={styles.topSection}>
 					<div className={styles.topSectionTexts}>
 						<div data-key="field">

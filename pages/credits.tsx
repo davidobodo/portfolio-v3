@@ -37,6 +37,9 @@ export default function Credit() {
 		{
 			link: "https://basement.studio/contact",
 		},
+		{
+			link: "https://greensock.com/forums/topic/29470-gsap-page-transitions-in-nextjs/",
+		},
 	];
 
 	const PEOPLE: TCredit[] = [
@@ -111,7 +114,7 @@ export default function Credit() {
 
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-			<Nav />
+			<Nav hasBackdropFilter={false} />
 
 			<BannerCurtain containerRef={blackCoverRef} />
 
@@ -123,7 +126,7 @@ export default function Credit() {
 				bannerHeight={bannerHeight}
 			/>
 
-			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.container}>
 					<div className={styles.summary}>
 						<AlternatingOpacity textsListRef={textsListRef} textsList={note} />

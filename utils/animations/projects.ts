@@ -1,7 +1,26 @@
 import gsap from "gsap";
 
 class ProjectsAnimations {
-	animateFilterSection({
+	animateFilterSectionOut({
+		listItems,
+		filterOptions,
+		closeFilterBtn,
+	}: {
+		listItems: HTMLElement[];
+		filterOptions: HTMLDivElement;
+		closeFilterBtn: HTMLButtonElement;
+	}) {
+		const ease = "Back.easeInOut";
+		const tl = gsap.timeline();
+
+		tl.to(listItems, { x: "150%", stagger: 0.01, ease: ease });
+		tl.to(filterOptions, { opacity: 0, ease: ease, duration: 0.1 });
+		tl.to(closeFilterBtn, { opacity: 0, ease: ease });
+
+		return tl;
+	}
+
+	animateFilterSectionIn({
 		listItems,
 		filterOptions,
 		closeFilterBtn,
@@ -18,6 +37,11 @@ class ProjectsAnimations {
 		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01, ease: ease });
 
 		return tl;
+	}
+
+	slideInListItems({ listItems }: { listItems: HTMLElement[] }) {
+		const ease = "Back.easeInOut";
+		return gsap.to(listItems, { x: 0, opacity: 1, stagger: 0.01, ease: ease });
 	}
 
 	flipProjectIn({

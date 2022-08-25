@@ -1,5 +1,10 @@
 @import "#/styles/globals.module.scss";
-// NOTE: Credits given to "https://dennissnellenberg.com/", for thinking about this
+
+/**
+NOTE: Credits given to "https://dennissnellenberg.com/", for thinking about this
+I just converted his already done implementation from plain html, css and javascript to React.
+Definitely had to tweak some few things here and there though.
+*/
 
 .container {
 	z-index: 25;
@@ -79,7 +84,7 @@
 					justify-content: center;
 
 					.inner {
-						width: 90%;
+						width: 95%;
 						height: 90%;
 						background-color: transparent;
 						display: block;
