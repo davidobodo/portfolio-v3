@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { events, registerEvent } from "#/utils/analytics/events";
+import { useIsomorphicLayoutEffect } from "#/hooks";
 export default function ScrollToTop() {
 	const [isVisible, setIsVisible] = useState(false);
 	const handlescroll = () => {
@@ -11,21 +12,12 @@ export default function ScrollToTop() {
 			setIsVisible(false);
 		}
 	};
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			window.addEventListener("scroll", handlescroll);
-		}
-		return () => {
-			if (typeof window !== "undefined") {
-				window.removeEventListener("scroll", handlescroll);
-			}
-		};
-	}, []);
 
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			window.scrollTo(0, 0);
-		}
+	useIsomorphicLayoutEffect(() => {
+		window.addEventListener("scroll", handlescroll);
+		return () => {
+			window.removeEventListener("scroll", handlescroll);
+		};
 	}, []);
 
 	const onClick = () => {

@@ -1,9 +1,11 @@
 import styles from "./styles.module.scss";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useState } from "react";
+
 export default function ProgressBar() {
 	const [scrollProgress, setScrollProgress] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
+
 	const handlescroll = () => {
 		const totalDocHeight = document.body.offsetHeight;
 		const scrolled = window.pageYOffset;

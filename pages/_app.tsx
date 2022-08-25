@@ -1,19 +1,21 @@
 import "#/styles/normalize.css";
 import "#/styles/globals.css";
 import Script from "next/script";
-import smoothscroll from "smoothscroll-polyfill";
 import type { AppProps } from "next/app";
-import { useIsomorphicLayoutEffect, useRegisterGsapScrollTrigger } from "#/hooks";
+import { useRegisterGsapScrollTrigger, useDeviceOrientation, useSmoothScroll } from "#/hooks";
 import { Common, PageTransitionLayout } from "#/components";
 import { PageTransitionsProvider } from "#/context";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
+	//Register gsap
 	useRegisterGsapScrollTrigger();
 
-	useIsomorphicLayoutEffect(() => {
-		smoothscroll.polyfill();
-	}, []);
+	//In case user changes their device orientation while on app (i.e potrait or landscape)
+	useDeviceOrientation();
+
+	//Add smoothscroll polyfill for safari
+	useSmoothScroll();
 
 	const router = useRouter();
 

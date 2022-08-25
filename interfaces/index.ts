@@ -16,7 +16,7 @@ type TProject = {
 	githublink?: string;
 	roles: TRoles[];
 	tech: string[];
-	type: string;
+	type: "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
 	bgColor?: string;
 	media: { type: "image" | "video"; source: string }[];
 	responsibilities: string;

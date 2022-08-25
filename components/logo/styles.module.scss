@@ -14,27 +14,27 @@
 }
 
 .initials {
-	width: 100px;
-	height: 100px;
+	width: 10rem;
+	height: 10rem;
 
 	@media (min-width: $md) {
-		width: 150px;
-		height: 150px;
+		width: 15rem;
+		height: 15rem;
 	}
 
 	@media (min-width: $xl) {
-		width: 200px;
-		height: 200px;
+		width: 20rem;
+		height: 20rem;
 	}
 
 	path {
 		&:nth-child(1) {
-			stroke-dasharray: 300px;
-			stroke-dashoffset: 300px;
+			stroke-dasharray: 30rem;
+			stroke-dashoffset: 30rem;
 		}
 		&:nth-child(2) {
-			stroke-dasharray: 300px;
-			stroke-dashoffset: 300px;
+			stroke-dasharray: 30rem;
+			stroke-dashoffset: 30rem;
 		}
 	}
 }

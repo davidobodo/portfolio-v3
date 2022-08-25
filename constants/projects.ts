@@ -13,10 +13,11 @@ export const PROJECTS: TProject[] = [
 		`,
 		responsibilities: `
 		<ul>
+			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). In addition to 
+			that, app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
 			<li>Intelligent cache usage and cache invalidation with <a href="https://react-query-v3.tanstack.com/" target="_blank">React Query</a></li>
 			<li>Loading <span>infinite data</span> in both single column layouts (like instagram, facebook and twitter) as well as multi column layouts (like pinterest).
-			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). In addition to 
-			that, app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.
+			
 			<li>Responsible for about <span>98%</span> of the entire frontend architecture and codebase.</li>
 		</ul>
 		`,
@@ -25,11 +26,27 @@ export const PROJECTS: TProject[] = [
 		sitelink: "https://www.prodeus.co/",
 		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "sass", "storybook", "rtl"],
 		type: "Web Application",
-		bgColor: "#dcd0c2",
+		bgColor: "#f4efe7",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/test.jpg",
+				source: "/images/projects/prodeus/dashboard-light.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/prodeus/dashboard-dark.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/prodeus/portfolio.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/prodeus/discover.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/prodeus/skills.jpg",
 			},
 		],
 	},
@@ -55,7 +72,7 @@ export const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/cadmils.png",
+				source: "/images/projects/cadmils/home.jpg",
 			},
 		],
 	},
@@ -94,13 +111,48 @@ export const PROJECTS: TProject[] = [
 		],
 		roles: ["design", "fe", "be"],
 		type: "Web Application",
-		bgColor: "#b1a994",
+		bgColor: "#f0f6ff",
 		githublink: "https://github.com/obododavid/Medic-Finder",
 		sitelink: "https://medic-finder.netlify.app/",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/hospital-findr.png",
+				source: "/images/projects/medic-finder/home.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/medic-finder/results.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/medic-finder/history.jpg",
+			},
+		],
+	},
+	{
+		id: "private-lattice",
+		title: "Private Lattice",
+		details: `<p>While working at <a href="https://www.upwork.com/ag/mpaccione/" target="_blank">M.Paccione Designs and Developement</a>, I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice</p>`,
+		githublink: "",
+		roles: ["fe"],
+		responsibilities: `
+		<ul>
+			<li>Convert Sketch Design into functional web application</li>
+			<li>Connect frontend to the necessary backend endpoints</li>
+		</ul>
+		`,
+		sitelink: "https://www.privatelattice.com/",
+		tech: ["react", "sass"],
+		bgColor: "#FF7943",
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/private-lattice/auth.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/private-lattice/home.jpg",
 			},
 		],
 	},
@@ -126,14 +178,105 @@ export const PROJECTS: TProject[] = [
 		githublink: "https://github.com/obododavid/d-productivity",
 		tech: ["react", "typescript", "redux", "styledcomponents"],
 		type: "Web Application",
-		bgColor: "#373737",
+		bgColor: "#F6EEF9",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/d-productivity.png",
+				source: "/images/projects/d-productivity/home.jpg",
 			},
 		],
 	},
+	{
+		id: "weather",
+		title: "Weather Application",
+		details: `<p> Created this weather application from design to coding as a test for a comppany. Has quite some rich features and is still has valid use. User can check the weather of various places after which they can bookmark certain places for easy access.</p>
+		<p>In addition to that, it leverages local storage in order to give users the ability to even store notes for various places they search. Furthermore application is fully a PWA(Progressive app), so even when users are offline users can still see all their previous searches</p>
+		`,
+		githublink: "https://github.com/davidobodo/weather-app",
+		roles: ["design", "fe"],
+		responsibilities: `
+		<ul>
+			<li>Create design for web app</li>
+			<li>Convert design into responsive web app</li>
+			<li>Make app a  <span>Progressive Web App (PWA)</span></li>
+		</ul>
+		`,
+		sitelink: "https://knowtheweatherdcs.netlify.app/",
+		tech: ["react", "typescript", "styledcomponents", "rtl"],
+		bgColor: "#fff",
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/weather/result.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/weather/home.jpg",
+			},
+		],
+	},
+
+	{
+		id: "d-commerce",
+		title: "d-commerce",
+		details: `<p>When getting acclaimated with the features of a framework/technology or even a programming language, one of the applications one should try building is an ecommerce platform.</p>
+		<p>This is because, an e-commerce platform has features that cut across a great deal of majority of <strong>what is possible</strong> in frontend. For this reason I set out to build this application when mastering react.js</p>
+		<p>The UI was replicated from an online store. As this project was done quite a while ago I currently can't remember the exact name, if not I would have gien them their due credit </p>
+		<p>Last updated on 4th July 2020.</p>
+		`,
+		githublink: "https://github.com/davidobodo/d-commerce",
+		roles: ["fe", "be"],
+		responsibilities: `
+		<ul><li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c)</li></ul>
+		`,
+		sitelink: "https://d-commerce-99633.firebaseapp.com/",
+		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku"],
+		bgColor: "#2e5c87",
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/d-commerce/home.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/d-commerce/item.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/d-commerce/cart.jpg",
+			},
+		],
+	},
+
+	{
+		id: "prodeus-editor",
+		title: "Prodeus ckeditor",
+		details: `<p>While building <a href="/projects/prodeus">Prodeus web app</a>, there was a need to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
+		designed editor brought up the need to build a customized solution from the famous  <a href="https://ckeditor.com" target="_blank">ckeditor</a>.
+		</p>
+		<p>Project was later published as an <a href="https://www.npmjs.com/package/prodeus-editor" target="_blank">npm package here </a></p>
+		`,
+		githublink: "",
+		responsibilities: `
+		<ul>
+			<li>Customize Ckeditor to suite the Prodeus desired design</li>
+		</ul>
+		`,
+		roles: [],
+		sitelink: "",
+		tech: ["react", "javascript"],
+		bgColor: COLORS[2],
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/prodeus-editor/pic.jpg",
+			},
+		],
+	},
+
 	{
 		id: "d-chat",
 		title: "d-chat",
@@ -155,36 +298,37 @@ export const PROJECTS: TProject[] = [
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
 		tech: ["react", "typescript", "redux", "materialui", "firebase", "graphql", "nodejs", "expressjs"],
-		bgColor: COLORS[0],
+		bgColor: "#fff",
 		type: "Web Application",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/d-chat.png",
+				source: "/images/projects/d-chat/auth.jpg",
 			},
 		],
 	},
 	{
-		id: "d-commerce",
-		title: "d-commerce",
-		details: `<p>When getting acclaimated with the features of a framework/technology or even a programming language, one of the applications one should try building is an ecommerce platform.</p>
-		<p>This is because, an e-commerce platform has features that cut across a great deal of majority of <strong>what is possible</strong> in frontend. For this reason I set out to build this application when mastering react.js</p>
-		<p>The UI was replicated from an online store. As this project was done quite a while ago I currently can't remember the exact name, if not I would have gien them their due credit </p>
-		<p>Last updated on 4th July 2020.</p>
+		id: "pv1",
+		title: "Portfolio v1",
+		details: `<p>My very own first ever portfolio website</P>
+		<p>Last updated 21st September 2019</p>
 		`,
-		githublink: "https://github.com/davidobodo/d-commerce",
-		roles: ["fe", "be"],
+		githublink: "https://github.com/davidobodo/portfolio",
+		roles: ["design", "fe"],
 		responsibilities: `
-		<ul><li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c)</li></ul>
+		<ul>
+			<li>Create design for website</li>
+			<li>Convert design into responsive web page</li>
+		</ul>
 		`,
-		sitelink: "https://d-commerce-99633.firebaseapp.com/",
-		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku"],
-		bgColor: COLORS[1],
-		type: TYPES[0],
+		sitelink: "https://davidobodo.github.io/portfolio/",
+		tech: ["html", "css", "javascript", "jquery", "ghpages"],
+		bgColor: "#1c1d26",
+		type: "Website",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/d-commerce.png",
+				source: "/images/projects/pv-1/home.jpg",
 			},
 		],
 	},
@@ -202,12 +346,12 @@ export const PROJECTS: TProject[] = [
 		responsibilities: ``,
 		sitelink: "https://davidobodo.github.io/developer-of-the-year/",
 		tech: ["html", "css", "sass", "javascript", "ghpages"],
-		bgColor: COLORS[2],
-		type: TYPES[3],
+		bgColor: "#EACEA8",
+		type: "Experiment",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/developer.png",
+				source: "/images/projects/developer/home.jpg",
 			},
 		],
 	},
@@ -230,11 +374,35 @@ export const PROJECTS: TProject[] = [
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
 		bgColor: COLORS[3],
-		type: TYPES[3],
+		type: "Website",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/shortly.png",
+				source: "/images/projects/shortly/desktop-preview.jpg",
+			},
+		],
+	},
+
+	{
+		id: "pv2",
+		title: "Portfolio v2",
+		details: "<p>My second portfolio web site</p>",
+		githublink: "https://github.com/davidobodo/portfolio-v2",
+		roles: ["design", "fe"],
+		responsibilities: `
+		<ul>
+			<li>Create design for website</li>
+			<li>Convert design into responsive web page</li>
+		</ul>
+		`,
+		sitelink: "https://www.obododavid.com",
+		tech: ["react", "typescript", "redux", "styledcomponents", "nowsh"],
+		bgColor: "",
+		type: "Website",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/pv-2/home.jpg",
 			},
 		],
 	},
@@ -256,11 +424,11 @@ export const PROJECTS: TProject[] = [
 		sitelink: "https://davidobodo.github.io/FEM-bookmark-landing-page/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
 		bgColor: COLORS[0],
-		type: TYPES[3],
+		type: "Website",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/bookmark.png",
+				source: "/images/projects/bookmark/desktop-preview.jpg",
 			},
 		],
 	},
@@ -280,39 +448,21 @@ export const PROJECTS: TProject[] = [
 		`,
 		sitelink: "https://davidobodo.github.io/drumMachine/",
 		tech: ["html", "css", "javascript"],
-		bgColor: COLORS[2],
-		type: TYPES[3],
+		bgColor: "#fff",
+		type: "Web Application",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/drum-machine.png",
+				source: "/images/projects/drum-machine/home.jpg",
 			},
 		],
 	},
-
-	// {
-	// 	id: "pomodoro-clock",
-	// 	title: "Pomodoro clock",
-	// 	details: `<p>Pomodoro Clock, required by <a href="https://www.freecodecamp.org/" target="_blank">freecodecamp</a> to get a certificate </p>
-	// 	<p>Last updated on 8th June 2020.</p>
-	// 	`,
-	// 	githublink: "https://github.com/davidobodo/pomodoroClock",
-	// 	roles: ["fe"],
-	// 	sitelink: "https://pomodoroclock.now.sh/",
-	// 	tech: ["react", "css", "nowsh"],
-	// 	bgColor: COLORS[3],
-	// 	type: TYPES[3],
-	// 	media: [
-	// 		{
-	// 			type: "image",
-	// 			source: "/images/projects/pomodoro.png",
-	// 		},
-	// 	],
-	// },
 	{
 		id: "freebies",
 		title: "Freebies",
-		details: `<p>A static desktop clone of the <a href="https://freebies.bypeople.com/">Freebies</a> website. The motivation for this, was achieving the moving items based on the mouse cursor position.</p>`,
+		details: `<p>A static desktop clone of the <a href="https://freebies.bypeople.com/" target="_blank">Freebies</a> website. The motivation for this, was achieving the moving items based on the mouse cursor position.</p>
+		<p>Last updated 14th February 2020</p>
+		`,
 		githublink: "https://github.com/davidobodo/freebies",
 		roles: ["fe"],
 		responsibilities: `
@@ -323,74 +473,35 @@ export const PROJECTS: TProject[] = [
 		`,
 		sitelink: "https://davidobodo.github.io/freebies/",
 		tech: ["html", "css", "javascript"],
-		bgColor: COLORS[1],
-		type: TYPES[3],
+		bgColor: "#000",
+		type: "Web Application",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/freebies.png",
+				source: "/images/projects/freebies/home2.jpg",
 			},
 		],
 	},
-	{
-		id: "pv1",
-		title: "Portfolio v1",
-		details: "<p>My very own first ever portfolio website</P>",
-		githublink: "https://github.com/davidobodo/portfolio",
-		roles: ["design", "fe"],
-		responsibilities: `
-		<ul>
-			<li>Create design for website</li>
-			<li>Convert design into responsive web page</li>
-		</ul>
-		`,
-		sitelink: "https://davidobodo.github.io/portfolio/",
-		tech: ["html", "css", "javascript", "jquery", "ghpages"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/pv-1.png",
-			},
-		],
-	},
-	{
-		id: "pv2",
-		title: "Portfolio v2",
-		details: "<p>My second portfolio web site</p>",
-		githublink: "https://github.com/davidobodo/portfolio-v2",
-		roles: ["design", "fe"],
-		responsibilities: `
-		<ul>
-			<li>Create design for website</li>
-			<li>Convert design into responsive web page</li>
-		</ul>
-		`,
-		sitelink: "https://davidobodo.github.io/portfolio/",
-		tech: ["react", "typescript", "redux", "styledcomponents", "nowsh"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/pv-1.png",
-			},
-		],
-	},
+
 	// {
-	// 	id: "tgwt",
-	// 	title: "GSAP with Three.js",
-	// 	details: `<p>Venturing into the world of GSAP and Three.js is definitely always challenging and fun. Had to learn a little bit of <a href="https://www.blender.org/" _blank="">Blender</a> in order to customize the 3D model to suite my need.</p>
-	// 	<p>Definitely check out <a href="https://www.youtube.com/c/BlenderGuruOfficial" target="_blank">Blender Guru</a> and his hilarious yet educative <a href="https://www.youtube.com/watch?v=nIoXOplUvAw&list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD" target="_blank">Doughnut Tutorials</a> 😂</p>
-	// 	<p>Also, I believe its worth mentioning, that <a href="https://sketchfab.com/" target="_blank">Sketchfab</a> is an awesome place to get 3D models as that was where I got <a href="" target="_blank">this</a> from</p>
+	// 	id: "oppo",
+	// 	title: "OPPO Redefinition Contest",
+	// 	details: `<p>When OPPO decided to do their redefinition photography contest in the year 2020, I was among the team of 4 star developers who embarked on creating the site for the project as well as the dashboard contestants upload their photos as well as help admins to access the submissions.
+	// 	One of my very first enterprise grade applications, which was a huge success cause I had the likes of <a href="" target="_blank">Eric Okemmadu</a>, <a href="" target="_blank">Justice Otuya</a> and <a href="" target="_blank">Ore</a> on the team
+	// 	</p>
+	// 	<p>Since time has passed, the site is no longer up, hence you wont be able to access it from any url. However this is a very noteworthy project. Check out the slides for some graphics about features implemented</p>
 	// 	`,
 	// 	githublink: "",
-	// 	roles: ["fe"],
+	// 	roles: [],
+	// 	responsibilities: `
+	// 	<ul>
+	// 		<li>Convert some Design pages into pixel perfect web app equivalent</li>
+	// 		<li>Connect some parts of the frontend to the backend endpoints</li>
+	// 	</ul>`,
 	// 	sitelink: "",
-	// 	tech: ["html", "css", "javascript", "gsap", "threejs"],
+	// 	tech: ["react", "styledcomponents"],
 	// 	bgColor: COLORS[2],
-	// 	type: TYPES[1],
+	// 	type: "Web Application",
 	// 	media: [
 	// 		{
 	// 			type: "image",
@@ -398,157 +509,55 @@ export const PROJECTS: TProject[] = [
 	// 		},
 	// 	],
 	// },
-	{
-		id: "weather",
-		title: "Weather Application",
-		details: `<p> Created this weather application from design to coding as a test for a comppany. Has quite some rich features and is still has valid use. User can check the weather of various places after which they can bookmark certain places for easy access.</p>
-		<p>In addition to that, it leverages local storage in order to give users the ability to even store notes for various places they search. Furthermore application is fully a PWA(Progressive app), so even when users are offline users can still see all their previous searches</p>
-		`,
-		githublink: "https://github.com/davidobodo/weather-app",
-		roles: ["design", "fe"],
-		responsibilities: `
-		<ul>
-			<li>Create design for web app</li>
-			<li>Convert design into responsive web app</li>
-			<li>Make app a  <span>Progressive Web App (PWA)</span></li>
-		</ul>
-		`,
-		sitelink: "https://knowtheweatherdcs.netlify.app/",
-		tech: ["react", "typescript", "styledcomponents", "rtl"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/test.jpg",
-			},
-		],
-	},
-	{
-		id: "prodeus-editor",
-		title: "Prodeus ckeditor",
-		details: `<p>While building <a href="/projects/prodeus">Prodeus web app</a>, there was a need to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
-		designed editor brought up the need to build a customized solution from the famous  <a href="https://ckeditor.com" target="_blank">ckeditor</a>.
-		</p>
-		<p>Project was later published as an <a href="https://www.npmjs.com/package/prodeus-editor" target="_blank">npm package here </a></p>
-		`,
-		githublink: "",
-		responsibilities: `
-		<ul>
-			<li>Customize Ckeditor to suite the Prodeus desired design</li>
-		</ul>
-		`,
-		roles: [],
-		sitelink: "",
-		tech: ["react", "javascript"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/test.jpg",
-			},
-		],
-	},
+	// {
+	// 	id: "ozidi",
+	// 	title: "Ozidi/Agricpay",
+	// 	details: `
+	// 	<p><span>Ozidi</span> which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small-scale farmers in "Nigeria" get access to loans.</a> It is of no news that in order for
+	// 	any business to request for loans from banks and other loan agencies, the owner must have some form of <span>collateral to give</span> should in case the individual is not able to pay the loan. Unfortunately most smale scale farmers
+	// 	do not have any collateral to give, hence the need for Agricpay.
+	// 	</p>
+	// 	<p>
+	// 	Agricpay aimed at solving this problem, by inculcating in the farmers mindset the <span>habit of saving</span>. Using this approach meant in the long run the farmer would be borrowing his/her own money
+	// 	</p>
 
-	{
-		id: "private-lattice",
-		title: "Private Lattice",
-		details: `<p>While working at <a href="https://www.upwork.com/ag/mpaccione/" target="_blank">M.Paccione Designs and Developement</a>, I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice</p>`,
-		githublink: "",
-		roles: ["fe"],
-		responsibilities: `
-		<ul>
-			<li>Convert Sketch Design into functional web application</li>
-			<li>Connect frontend to the necessary backend endpoints</li>
-		</ul>
-		`,
-		sitelink: "https://www.privatelattice.com/",
-		tech: ["react", "sass"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/test.jpg",
-			},
-		],
-	},
-	{
-		id: "oppo",
-		title: "OPPO Redefinition Contest",
-		details: `<p>When OPPO decided to do their redefinition photography contest in the year 2020, I was among the team of 4 star developers who embarked on creating the site for the project as well as the dashboard contestants upload their photos as well as help admins to access the submissions.
-		One of my very first enterprise grade applications, which was a huge success cause I had the likes of <a href="" target="_blank">Eric Okemmadu</a>, <a href="" target="_blank">Justice Otuya</a> and <a href="" target="_blank">Ore</a> on the team
-		</p>
-		<p>Since time has passed, the site is no longer up, hence you wont be able to access it from any url. However this is a very noteworthy project. Check out the slides for some graphics about features implemented</p>
-		`,
-		githublink: "",
-		roles: [],
-		responsibilities: `
-		<ul>
-			<li>Convert some Design pages into pixel perfect web app equivalent</li>
-			<li>Connect some parts of the frontend to the backend endpoints</li>
-		</ul>`,
-		sitelink: "",
-		tech: ["react", "styledcomponents"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/test.jpg",
-			},
-		],
-	},
-	{
-		id: "ozidi",
-		title: "Ozidi/Agricpay",
-		details: `
-		<p><span>Ozidi</span> which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small-scale farmers in "Nigeria" get access to loans.</a> It is of no news that in order for 
-		any business to request for loans from banks and other loan agencies, the owner must have some form of <span>collateral to give</span> should in case the individual is not able to pay the loan. Unfortunately most smale scale farmers 
-		do not have any collateral to give, hence the need for Agricpay.
-		</p>
-		<p>
-		Agricpay aimed at solving this problem, by inculcating in the farmers mindset the <span>habit of saving</span>. Using this approach meant in the long run the farmer would be borrowing his/her own money
-		</p>
+	// 	<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span> , together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>, we set out to build a
+	// 	fully functional dashboard to help with Agricpays vision.
+	// 	</p>
+	// 	<div>
+	// 		<p>Some of the features included:</p>
+	// 		<ul>
+	// 			<li>Admin authentication</li>
+	// 			<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
+	// 			<li>History of all recharge cards generated</li>
+	// 			<li>Farmers data</li>
+	// 		</ul>
+	// 	</div>
 
-		<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span> , together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>, we set out to build a 
-		fully functional dashboard to help with Agricpays vision.
-		</p>
-		<div>
-			<p>Some of the features included:</p>
-			<ul>
-				<li>Admin authentication</li>
-				<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
-				<li>History of all recharge cards generated</li>
-				<li>Farmers data</li>
-			</ul>
-		</div>
+	// 	<p>Unfortunately, not all startups reach the "promise land" irrespective of a solid technology, because there are more things asides from the tech involved in the success of a business. So the live links are currently down, however for curiousity sake
+	// 	I believe you could still visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> as well as <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
+	// 	</p>
 
-		<p>Unfortunately, not all startups reach the "promise land" irrespective of a solid technology, because there are more things asides from the tech involved in the success of a business. So the live links are currently down, however for curiousity sake 
-		I believe you could still visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> as well as <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
-		</p>
-
-		<p><span>Project span: July 2020 - September 2020.</span></p>
-		`,
-		roles: ["design", "fe"],
-		sitelink: "",
-		responsibilities: `
-		<ul>
-			<li>Create entire app UI/UX using Figma</li>
-			<li>Convert about 80% of the design into functional responsive web app pages</li>
-			<Li>Connect pages to their respective backend endpoints</li>
-			<li>Use <span>Wordpress</span> to create a static publicly accessible web page for the company</li>
-		</ul>
-		`,
-		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
-		bgColor: COLORS[2],
-		type: TYPES[1],
-		media: [
-			{
-				type: "image",
-				source: "/images/projects/test.jpg",
-			},
-		],
-	},
+	// 	<p><span>Project span: July 2020 - September 2020.</span></p>
+	// 	`,
+	// 	roles: ["design", "fe"],
+	// 	sitelink: "",
+	// 	responsibilities: `
+	// 	<ul>
+	// 		<li>Create entire app UI/UX using Figma</li>
+	// 		<li>Convert about 80% of the design into functional responsive web app pages</li>
+	// 		<Li>Connect pages to their respective backend endpoints</li>
+	// 		<li>Use <span>Wordpress</span> to create a static publicly accessible web page for the company</li>
+	// 	</ul>
+	// 	`,
+	// 	tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
+	// 	bgColor: COLORS[2],
+	// 	type: "Web Application",
+	// 	media: [
+	// 		{
+	// 			type: "image",
+	// 			source: "/images/projects/test.jpg",
+	// 		},
+	// 	],
+	// },
 ];

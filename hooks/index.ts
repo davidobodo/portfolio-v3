@@ -6,11 +6,14 @@ import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useSetBannerHeight from "./useSetBannerHeight";
 import useTrapFocus from "./useTrapFocus";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
+import useDeviceOrientation from "./useDeviceOrientation";
+import useSmoothScroll from "./useSmoothScroll";
+import usePrevious from "./usePrevious";
 
 //---------------------------
 // ANIMATIONS
 //---------------------------
-import useRegisterGsapScrollTrigger from "./useRegisterGsapScrollTrigger";
+import useRegisterGsapScrollTrigger from "./useRegisterGsapPlugins";
 import usePinRadialGradient from "./usePinRadialGradient";
 import useRevealParagraph from "./useRevealParagraph";
 import useRevealHeading from "./useRevealHeading";
@@ -57,4 +60,7 @@ export {
 	useExcellenceAnimation,
 	useProjectsPageInit,
 	useProjectsCurrentView,
+	useDeviceOrientation,
+	useSmoothScroll,
+	usePrevious,
 };

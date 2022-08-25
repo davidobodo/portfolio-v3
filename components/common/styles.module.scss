@@ -1,7 +1,7 @@
 @import "#/styles/globals.module.scss";
 
 .blocker {
-	z-index: 1000000000000000;
+	z-index: var(--z-index-app-blocker);
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -24,7 +24,7 @@
 		}
 	}
 
-	@media (min-width: 375px) {
+	@media (min-width: 320px) {
 		display: none;
 		visibility: hidden;
 	}

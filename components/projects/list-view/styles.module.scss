@@ -73,11 +73,11 @@
 				opacity: 1;
 
 				h2 {
-					transform: translateX(calc(var(--container-padding) * -0.1));
+					transform: translateX(calc(var(clamp(2.5em, 8vw, 8em)) * -0.1));
 				}
 
 				p {
-					transform: translateX(calc(var(--container-padding) * 0.1));
+					transform: translateX(calc(var(clamp(2.5em, 8vw, 8em)) * 0.1));
 				}
 			}
 

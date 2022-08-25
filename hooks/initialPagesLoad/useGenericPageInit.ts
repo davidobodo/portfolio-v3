@@ -9,7 +9,6 @@ const { transitionToDarkSection, genericPageBannerAnimation, openNoiseLayers, dr
 /**
  *
  * Generic pages include
- * 1. Projects Page
  * 2. Letters Page
  * 3. Site Credits Page
  */
@@ -82,7 +81,7 @@ export default function useGenericPageInit({
 				tl.scrollTrigger?.kill();
 			};
 		}
-	}, []);
+	}, [windowInnerWidth]);
 
 	return {
 		textWrapperRef,

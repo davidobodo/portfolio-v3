@@ -32,16 +32,8 @@
 	--dark-blue: #2437a7;
 	--red: #ff0000;
 	--green: rgb(16, 133, 16);
-	/* --dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #3c3e3b, transparent); */
 	--dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent);
 	--work-linear-gradient: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
-
-	/* ---------------------------------------------------- */
-	/* SPACING */
-	/* ---------------------------------------------------- */
-	--spacing-x: 2vw;
-	--section-padding: clamp(5em, 21vh, 24em);
-	--container-padding: clamp(2.5em, 8vw, 8em);
 
 	/* ---------------------------------------------------- */
 	/* SIZES*/
@@ -53,9 +45,10 @@
 	/* Z-INDECES*/
 	/* Pages are divided into various sections*/
 	/* ---------------------------------------------------- */
-	--z-index-nav: 800;
+	--z-index-nav-backdrop: 800;
 	--z-index-navbtn: 900;
 	--z-index-loader: 1000;
+	--z-index-nav-logo: 1003;
 	--z-index-noise: 1;
 	--z-index-banner: 1;
 	--z-index-banner-curtain: 2;
@@ -64,6 +57,7 @@
 	--z-index-scroll-to-top: 500;
 	--z-index-modal: 600;
 	--z-index-backdrop: 10;
+	--z-index-app-blocker: 1000000000000000;
 }
 
 html {
@@ -103,7 +97,7 @@ body::-webkit-scrollbar-thumb {
 } */
 
 .hide {
-	/* overflow: hidden !important; */
+	overflow: hidden !important;
 }
 
 h1,

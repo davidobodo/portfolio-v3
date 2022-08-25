@@ -14,19 +14,6 @@
 		padding: 5rem 5rem;
 	}
 
-	.logo {
-		position: absolute;
-		top: 2rem;
-		left: 2rem;
-		width: 60px;
-
-		@media (min-width: $xl) {
-			top: 4rem;
-			left: 5rem;
-			width: 79px;
-		}
-	}
-
 	.textWrapper {
 		flex: 1;
 		display: flex;
@@ -133,8 +120,4 @@
 			bottom: 5rem;
 		}
 	}
-}
-
-.placeholder {
-	height: 100vh;
 }

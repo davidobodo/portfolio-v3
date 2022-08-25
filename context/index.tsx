@@ -1,9 +1,7 @@
 import gsap from "gsap";
 import { createContext, useContext, Dispatch, SetStateAction } from "react";
 import { useState } from "react";
-//--------------------------------------------------------
-// PAGE TRANSITIONS
-//--------------------------------------------------------
+
 type TContext = {
 	initialAppLoad: boolean;
 	setInitialAppLoad: (val: boolean) => void | Dispatch<SetStateAction<null>>;

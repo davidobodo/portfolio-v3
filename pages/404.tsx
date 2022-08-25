@@ -46,7 +46,7 @@ export default function NotFound() {
 					</div>
 				</header>
 				<ScrollAlert propStyles={styles.scrollAlert} containerRef={scrollRef} />
-				<DarkRadialGradient containerRef={gradientRef} containerStyles={{ opacity: 0 }} />
+				<DarkRadialGradient containerRef={gradientRef} propStyles={styles.radialGradient} />
 				<Noise />
 			</div>
 			<Contact />

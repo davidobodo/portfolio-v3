@@ -1,13 +1,11 @@
-import { HomePage, LettersPage, SingleProject } from "./_pages";
+import { HomePage, LettersPage, SingleProject } from "./__pages__";
 
-import Atoms from "./_atoms";
 import Layout from "./layout";
 import Contact from "./contact";
 import ScrollAlert from "./scroll-alert";
 import Banners from "./banners";
 import Nav from "./nav";
 import DarkRadialGradient from "./dark-radial-gradient";
-import Modal, { ProjectModal } from "./modal";
 import Noise from "./noise";
 import Logo from "./logo";
 import RouteTransitionOverlay from "./route-transition-overlay";
@@ -16,26 +14,25 @@ import ScrollToTop from "./scroll-to-top";
 import SectionPlaceholder from "./section-placeholder";
 import BannerCurtain from "./banner-curtain";
 import Projects from "./projects";
-import ProjectsFilter from "./projects-filter";
 import Spinner from "./spinner";
 import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
 import PageTransitionLayout from "./page-transition-layout";
-import ProjectsViewSelector from "./projects/view-selector";
+import ProjectsViewSelector from "./projects/projects-view-selector";
 import Slider from "./slider";
+import Radio from "./radio";
+import Modals from "./modal";
 
-const { Button, Radio } = Atoms;
-const { Preloader, Work, Thoughts, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
+const { Work, Thoughts, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
 const { SingleLetter } = LettersPage;
+const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
 export {
-	Preloader,
 	Work,
 	Thoughts,
 	Skills,
 	FaintBgText,
 	Projects,
-	Button,
 	Contact,
 	ScrollAlert,
 	Banners,
@@ -43,7 +40,7 @@ export {
 	Radio,
 	SingleLetter,
 	DarkRadialGradient,
-	Modal,
+	ModalWrapper,
 	Layout,
 	Noise,
 	SingleProject,
@@ -55,7 +52,6 @@ export {
 	SectionPlaceholder,
 	BannerCurtain,
 	ProjectsHeading,
-	ProjectsFilter,
 	Spinner,
 	AlternatingOpacity,
 	ProgressBar,
@@ -63,4 +59,5 @@ export {
 	PageTransitionLayout,
 	ProjectsViewSelector,
 	Slider,
+	ProjectsFilterModal,
 };

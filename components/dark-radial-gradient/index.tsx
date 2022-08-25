@@ -2,18 +2,11 @@ import styles from "./styles.module.scss";
 import { Ref } from "react";
 
 export default function DarkRadialGradient({
-    containerRef,
-    containerStyles
+	containerRef,
+	propStyles,
 }: {
-    containerRef?: Ref<HTMLDivElement>;
-    containerStyles?: Record<string, string | number>;
+	containerRef?: Ref<HTMLDivElement>;
+	propStyles?: string;
 }) {
-    return (
-        <div
-            className={styles.container}
-            ref={containerRef}
-            style={{ ...containerStyles }}
-            data-key="radial-gradient"
-        ></div>
-    );
+	return <div className={styles.container + " " + propStyles} ref={containerRef} data-key="radial-gradient"></div>;
 }

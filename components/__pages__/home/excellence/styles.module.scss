@@ -1,0 +1,46 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	// The Text and Image are positioned relative to this
+	position: relative;
+	overflow: hidden;
+	height: 100vh; // Since it doesnt take the height of its children(i.e the children dont have position static)
+}
+
+.textWrapper {
+	position: absolute;
+	z-index: 2;
+	height: 100vh;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	// width: 100%;
+
+	.textInner {
+		// To control the svg dimensions
+		top: 50%;
+		position: relative;
+		transform: translateY(-50%);
+		z-index: 1;
+		width: 100%;
+
+		svg {
+			width: 100%;
+			transform-origin: 70%;
+		}
+	}
+}
+
+.bgImage {
+	position: absolute;
+	background-size: cover;
+	width: 100vw;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-image: url(https://images.unsplash.com/photo-1657299170237-2d4cd59b5156?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
+	border-color: var(--black);
+	border-style: solid;
+	background-position: bottom;
+}

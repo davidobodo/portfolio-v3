@@ -1,5 +1,5 @@
-import { useWindowSize } from "#/hooks";
 import styles from "./styles.module.scss";
+import { useWindowSize } from "#/hooks";
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "../icons";
 export default function Slider({ items, id }: { items: { type: "image" | "video"; source: string }[]; id: string }) {
@@ -9,9 +9,11 @@ export default function Slider({ items, id }: { items: { type: "image" | "video"
 
 	const [sliderDisplacement, setSliderDisplacement] = useState<number>(0);
 	const [itemWidth, setItemWidth] = useState<number>(0);
-
 	const [activeItem, setActiveItem] = useState(0);
 
+	//-----------------------------------------------------
+	// User clicked on an indicator
+	//-----------------------------------------------------
 	const handleSetActiveItem = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (!(e.target instanceof HTMLButtonElement)) {
 			return;
@@ -21,6 +23,9 @@ export default function Slider({ items, id }: { items: { type: "image" | "video"
 		moveSlider(parseInt(slide), itemWidth);
 	};
 
+	//-----------------------------------------------------
+	// User clicked on an arrow
+	//-----------------------------------------------------
 	const handleChangeItem = (e: React.MouseEvent<HTMLButtonElement>) => {
 		const { action } = e.currentTarget.dataset;
 		if (!action) return;
@@ -45,6 +50,9 @@ export default function Slider({ items, id }: { items: { type: "image" | "video"
 		setSliderDisplacement(width * itemNumber);
 	};
 
+	//------------------------------------------------------------
+	// Refresh slider when device dimentions changes
+	//------------------------------------------------------------
 	useEffect(() => {
 		if (itemsWrapperRef.current) {
 			const width = itemsWrapperRef.current.children[0].clientWidth;
@@ -54,6 +62,9 @@ export default function Slider({ items, id }: { items: { type: "image" | "video"
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [innerWidth, innerHeight]);
 
+	//------------------------------------------------------------
+	// Reset slider immediately we are viewing a different project
+	//------------------------------------------------------------
 	useEffect(() => {
 		setActiveItem(0);
 		moveSlider(0, itemWidth);

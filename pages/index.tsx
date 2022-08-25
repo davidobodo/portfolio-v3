@@ -85,7 +85,7 @@ const Home: NextPage = () => {
 			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
-			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.content}>
 					<div className={styles.aboutWrapper}>
 						<AlternatingOpacity textsListRef={textsListRef} />

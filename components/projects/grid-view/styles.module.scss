@@ -53,10 +53,14 @@
 			height: 100%;
 			top: 0px;
 			left: 0px;
-			background-color: rgba(0, 0, 0, 0.4);
 			will-change: background-color;
 			transition: background-color 200ms ease-in-out;
 			z-index: 2;
+			background-color: rgba(0, 0, 0, 0);
+
+			@media (min-width: $md) {
+				background-color: rgba(0, 0, 0, 0.4);
+			}
 		}
 
 		.boxCircle {
@@ -64,7 +68,6 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			// height: 100%;
 			opacity: 0;
 			will-change: opacity;
 			transition: opacity 200ms ease-in-out;
@@ -81,13 +84,11 @@
 
 			span {
 				background-color: var(--color-blue);
-
 				color: var(--white);
 				border-radius: 50%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-
 				text-align: center;
 				box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
 				width: 5rem;
@@ -106,7 +107,6 @@
 
 			.boxImage {
 				transform: scale(1);
-				background-color: #373737;
 			}
 
 			.boxCircle {

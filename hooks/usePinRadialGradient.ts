@@ -3,7 +3,13 @@ import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from ".";
 
-export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRef: RefObject<HTMLDivElement> }) {
+export default function usePinRadialGradient({
+	darkSectionRef,
+	bannerHeight,
+}: {
+	darkSectionRef: RefObject<HTMLDivElement>;
+	bannerHeight?: number;
+}) {
 	const darkSectionRadialGradientRef = useRef(null);
 
 	const { setRadialGradientAnimation } = usePageTransitionsContext();
@@ -13,7 +19,7 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 	//-------------------------------------------------
 
 	useIsomorphicLayoutEffect(() => {
-		if (darkSectionRef.current) {
+		if (darkSectionRef.current && bannerHeight) {
 			const anim = gsap.to(
 				{},
 				{
@@ -21,18 +27,20 @@ export default function usePinRadialGradient({ darkSectionRef }: { darkSectionRe
 						trigger: darkSectionRef.current,
 						start: "top top",
 						end: "bottom bottom",
-						toggleActions: "restart pause reverse pause",
-						endTrigger: darkSectionRef.current,
+						toggleActions: "restart complete reverse none",
+						// endTrigger: darkSectionRef.current,
 						pin: darkSectionRadialGradientRef.current,
+						// refreshPriority: 2,
 					},
 				}
 			);
+
 			setRadialGradientAnimation(anim);
 			return () => {
 				anim.scrollTrigger?.kill();
 			};
 		}
-	}, [darkSectionRef]);
+	}, [bannerHeight]);
 
 	return {
 		darkSectionRef,
