@@ -8,6 +8,8 @@ type TTimelineAction = {
 
 type TRoles = "design" | "fe" | "be" | "teamlead";
 
+type TProjectType = "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
+
 type TProject = {
 	id: string;
 	title: string;
@@ -16,15 +18,17 @@ type TProject = {
 	githublink?: string;
 	roles: TRoles[];
 	tech: string[];
-	type: "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
+	type: TProjectType;
 	bgColor?: string;
 	media: { type: "image" | "video"; source: string }[];
 	responsibilities: string;
 };
+
+type TFilterBy = "tech-stack" | "project-nature";
 
 type TProjectsView = "list" | "grid";
 
 type TProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };
 type TLogoMode = "light" | "dark";
 
-export type { TTimelineAction, TProject, TProjectsView, TProjectData, TLogoMode };
+export type { TTimelineAction, TProject, TProjectsView, TProjectData, TLogoMode, TProjectType, TFilterBy };

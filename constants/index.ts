@@ -1,3 +1,5 @@
+import { TProjectType } from "#/interfaces";
+
 const DEFAULT_MOBILE_HEIGHT = 812;
 
 const ABOUT_NOTE = [
@@ -66,21 +68,21 @@ const IMAGES = {
 	one: "https://images.unsplash.com/photo-1553608578-d6fd2621a3d8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1hbiUyMHNpdHRpbmclMjBvbiUyMGNoYWlyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800",
 };
 
-const PROJECT_NATURE = [
+const PROJECT_NATURE: { key: TProjectType; label: string }[] = [
 	{
-		key: "epa",
-		label: "Enterprise grade application",
+		key: "Web Application",
+		label: "Web Application",
 	},
 	{
-		key: "website",
+		key: "Website",
 		label: "Website",
 	},
+	// {
+	// 	key: "Learn from Tutorial",
+	// 	label: "Learn from Tutorials",
+	// },
 	{
-		key: "from-tutorials",
-		label: "From tutorials",
-	},
-	{
-		key: "experiment",
+		key: "Experiment",
 		label: "Experiment/Playful",
 	},
 ];

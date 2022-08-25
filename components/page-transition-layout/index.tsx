@@ -1,7 +1,6 @@
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useState } from "react";
-
 export default function PageTransitionLayout({
 	children,
 	path,

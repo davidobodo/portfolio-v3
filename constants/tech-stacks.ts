@@ -76,12 +76,11 @@ export const TECH_STACKS: Record<string, TTech> = {
 		// image: iconStyledComp,
 		link: "",
 	},
-	tailwindcss: {
-		key: "tailwindcss",
-		label: "Tailwind CSS",
-		// image: iconTailwind,
-		link: "",
-	},
+	// tailwindcss: {
+	// 	key: "tailwindcss",
+	// 	label: "Tailwind CSS",
+	// 	link: "",
+	// },
 	graphql: {
 		key: "graphql",
 		label: "GraphQL",
@@ -100,24 +99,27 @@ export const TECH_STACKS: Record<string, TTech> = {
 		// image: iconExpress,
 		link: "",
 	},
-	mongoDb: {
-		key: "mongoDb",
+	mongodb: {
+		key: "mongodb",
 		label: "Mongo DB",
 		// image: iconMongodb,
 		link: "",
 	},
-	web3: {
-		key: "web3",
-		label: "Web3",
-		// image: iconWeb3,
-		link: "",
-	},
-	solidity: {
-		key: "solidity",
-		label: "Solidity",
-		// image: iconSolidity,
-		link: "",
-	},
+	// web3: {
+	// 	key: "web3",
+	// 	label: "Web3",
+	// 	// image: iconWeb3,
+	// 	link: "",
+	// },
+	// solidity: {
+	// 	key: "solidity",
+	// 	label: "Solidity",
+	// 	// image: iconSolidity,
+	// 	link: "",
+	// },
+	//---------------------------------------------
+	//DEPLOYMENT SERVICES
+	//---------------------------------------------
 	heroku: {
 		key: "heroku",
 		label: "Heroku",
@@ -130,12 +132,30 @@ export const TECH_STACKS: Record<string, TTech> = {
 		// image: iconNetlify,
 		link: "",
 	},
-	gcp: {
-		key: "gcp",
-		label: "GCP",
-		// image: iconGcp,
+	// gcp: {
+	// 	key: "gcp",
+	// 	label: "GCP",
+	// 	// image: iconGcp,
+	// 	link: "",
+	// },
+	firebase: {
+		key: "firebase",
+		label: "Firebase",
 		link: "",
 	},
+	ghpages: {
+		key: "ghpages",
+		label: "Github Pages",
+		link: "",
+	},
+	nowsh: {
+		key: "nowsh",
+		label: "Now.sh",
+		link: "",
+	},
+	//---------------------------------------------
+	//---------------------------------------------
+	//---------------------------------------------
 	pupeteer: {
 		key: "pupeteer",
 		label: "Pupeteer",
@@ -195,11 +215,7 @@ export const TECH_STACKS: Record<string, TTech> = {
 		label: "Figma",
 		link: "",
 	},
-	firebase: {
-		key: "firebase",
-		label: "Firebase",
-		link: "",
-	},
+
 	rtl: {
 		key: "rtl",
 		label: "React Testing Library",
@@ -230,16 +246,7 @@ export const TECH_STACKS: Record<string, TTech> = {
 		label: "Socket.io",
 		link: "",
 	},
-	ghpages: {
-		key: "ghpages",
-		label: "Github Pages",
-		link: "",
-	},
-	nowsh: {
-		key: "nowsh",
-		label: "Now.sh",
-		link: "",
-	},
+
 	jquery: {
 		key: "jquery",
 		label: "JQuery",

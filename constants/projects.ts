@@ -24,7 +24,7 @@ export const PROJECTS: TProject[] = [
 
 		roles: ["fe"],
 		sitelink: "https://www.prodeus.co/",
-		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "sass", "storybook", "rtl"],
+		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "css", "sass", "storybook", "rtl"],
 		type: "Web Application",
 		bgColor: "#f4efe7",
 		media: [
@@ -93,9 +93,12 @@ export const PROJECTS: TProject[] = [
 			<li>Implemented an authentication process flow using Firebase (Now deprecated in current iteration )</li>
 			<li>Made use of Google's <a href="https://firebase.google.com" target="_blank">Cloud Firestore NoSQL database</a> to store user's previous searches (Now refactored in current iteration to use local storage)</li>
 			<li>Integrated <a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> to help give both autocomplete functionality when looking for places and display the map with the needed results</li>
+			<li>Connect to database using GraphQL</li>
 		</ul>
 		`,
 		tech: [
+			"html",
+			"css",
 			"figma",
 			"react",
 			"typescript",
@@ -142,7 +145,7 @@ export const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.privatelattice.com/",
-		tech: ["react", "sass"],
+		tech: ["html", "css", "react", "sass"],
 		bgColor: "#FF7943",
 		type: "Web Application",
 		media: [
@@ -176,7 +179,7 @@ export const PROJECTS: TProject[] = [
 		roles: ["design", "fe"],
 		sitelink: "https://d-productivity.vercel.app/",
 		githublink: "https://github.com/obododavid/d-productivity",
-		tech: ["react", "typescript", "redux", "styledcomponents"],
+		tech: ["html", "css", "react", "typescript", "redux", "styledcomponents"],
 		type: "Web Application",
 		bgColor: "#F6EEF9",
 		media: [
@@ -202,7 +205,7 @@ export const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
-		tech: ["react", "typescript", "styledcomponents", "rtl"],
+		tech: ["html", "css", "react", "typescript", "styledcomponents", "rtl"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -231,7 +234,7 @@ export const PROJECTS: TProject[] = [
 		<ul><li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c)</li></ul>
 		`,
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
-		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku"],
+		tech: ["html", "css", "sass", "javascript", "react", "nodejs", "expressjs", "heroku", "mongodb", "firebase"],
 		bgColor: "#2e5c87",
 		type: "Web Application",
 		media: [
@@ -266,7 +269,7 @@ export const PROJECTS: TProject[] = [
 		`,
 		roles: [],
 		sitelink: "",
-		tech: ["react", "javascript"],
+		tech: ["html", "css", "react", "javascript"],
 		bgColor: COLORS[2],
 		type: "Web Application",
 		media: [
@@ -297,7 +300,7 @@ export const PROJECTS: TProject[] = [
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
-		tech: ["react", "typescript", "redux", "materialui", "firebase", "graphql", "nodejs", "expressjs"],
+		tech: ["html", "css", "react", "typescript", "redux", "materialui", "firebase"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -396,7 +399,7 @@ export const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.obododavid.com",
-		tech: ["react", "typescript", "redux", "styledcomponents", "nowsh"],
+		tech: ["html", "css", "react", "typescript", "styledcomponents", "nowsh"],
 		bgColor: "",
 		type: "Website",
 		media: [
@@ -422,7 +425,7 @@ export const PROJECTS: TProject[] = [
 		`,
 		githublink: "https://github.com/davidobodo/FEM-bookmark-landing-page",
 		sitelink: "https://davidobodo.github.io/FEM-bookmark-landing-page/",
-		tech: ["html", "css", "sass", "typescript", "ghpages"],
+		tech: ["html", "css", "sass", "ghpages"],
 		bgColor: COLORS[0],
 		type: "Website",
 		media: [
