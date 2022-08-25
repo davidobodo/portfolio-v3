@@ -73,7 +73,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 							<h3>Frameworks/ Libraries/ Others</h3>
 
 							<ul>
-								{["react", "nextjs", "nodejs", "expressjs", "jest", "rtl", "redux"].map((key, i) => {
+								{["react", "nextjs", "nodejs", "expressjs", "jest", "rtl"].map((key, i) => {
 									const skill = TECH_STACKS[key];
 									return (
 										<li key={i}>

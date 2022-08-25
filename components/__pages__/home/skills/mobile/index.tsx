@@ -1,8 +1,8 @@
 import styles from "./styles.module.scss";
+import Link from "next/link";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { FaintBgText } from "../../../../index";
 import { Ref } from "react";
-import Link from "next/link";
 import { events, registerEvent } from "#/utils/analytics/events";
 
 export type SkillsMobileProps = {
@@ -28,14 +28,6 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 								<span>and mind</span>
 							</span>
 						</h2>
-
-						{/* <div
-                            className={styles.image}
-                            style={{
-                                backgroundImage: `url('https://images.unsplash.com/photo-1499914485622-a88fac536970?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGFuZHMlMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800')`
-                            }}
-                            data-key="hand-image"
-                        ></div> */}
 					</div>
 					<div className={styles.skillsList} data-key="lists-wrapper">
 						<div className={styles.skillsListInner}>

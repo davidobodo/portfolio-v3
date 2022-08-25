@@ -9,7 +9,7 @@
 	}
 
 	.contentWrapper {
-		height: 100vh; // Hols both the svg animation and the actual content displayed . SVG animation would be positioned relative to this
+		height: 100vh; // Holds both the svg animation and the actual content displayed . SVG animation would be positioned relative to this
 		display: flex;
 		align-items: center; // In order to position the actual skills content in the center
 		width: 100%;
@@ -27,20 +27,15 @@
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
-
 			width: 0px;
-
-			@media (min-width: $xl) {
-				// left: -25%;
-			}
 		}
 
 		.wrapper {
-			margin-left: auto;
-			margin-right: auto;
 			width: 100%;
 
 			@media (min-width: $md) {
+				margin-left: auto;
+				margin-right: auto;
 				max-width: var(--mini-desktop-max-width);
 			}
 
@@ -57,7 +52,7 @@
 					font-weight: 600;
 					letter-spacing: -0.015em;
 					color: var(--ash);
-					font-size: 36px;
+					font-size: 3.6rem;
 					margin-bottom: 7rem;
 					position: relative;
 					z-index: 1;
@@ -80,11 +75,11 @@
 
 						span {
 							line-height: 1.1;
-							transform: translate(80px, 80px);
+							transform: translate(8rem, 8rem);
 						}
 
 						strong {
-							color: #fff;
+							color: var(--white);
 						}
 					}
 				}
@@ -96,7 +91,7 @@
 				grid-template-columns: 1fr 0.8fr 1.4fr;
 
 				.skills {
-					color: var(--ash3);
+					color: var(--ash);
 					margin-bottom: 4rem;
 
 					h3 {
@@ -106,7 +101,6 @@
 						text-transform: uppercase;
 						letter-spacing: 2px;
 						color: var(--white);
-
 						opacity: 0;
 					}
 
@@ -125,10 +119,9 @@
 							.circle {
 								width: 6px;
 								height: 6px;
-								background-color: var(--ash3);
+								background-color: var(--ash);
 								display: flex;
 								border-radius: 50%;
-
 								margin-right: 2rem;
 							}
 						}

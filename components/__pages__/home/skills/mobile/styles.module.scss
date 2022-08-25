@@ -12,7 +12,7 @@
 	}
 
 	.contentWrapper {
-		height: 100vh; // Hols both the svg animation and the actual content displayed . SVG animation would be positioned relative to this
+		height: 100vh; // Holds both the svg animation and the actual content displayed . SVG animation would be positioned relative to this
 		display: flex;
 		align-items: center; // In order to position the actual skills content in the center
 		width: 100%;
@@ -65,42 +65,9 @@
 						}
 					}
 				}
-
-				// .image {
-				//     position: absolute;
-				//     height: 39vw;
-				//     max-width: 68rem;
-				//     max-height: 90rem;
-				//     background-color: #28282b;
-				//     left: -25%;
-				//     top: 10rem;
-				//     background-size: cover;
-				//     background-position: center;
-				//     background-repeat: no-repeat;
-
-				//     width: 50vw;
-				//     height: 50vh;
-				//     left: -2rem;
-
-				//     &:after {
-				//         content: "";
-				//         height: 100%;
-				//         width: 100%;
-				//         background-color: rgba(0, 0, 0, 0.7);
-				//         display: block;
-				//         position: absolute;
-				//         left: 0px;
-				//         top: 0px;
-				//     }
-
-				//     // width: 0px;
-				// }
 			}
 
 			.skillsList {
-				// display: grid;
-				// grid-gap: 4rem;
-				// grid-template-columns: 1fr 0.8fr 1.4fr;
 				position: relative;
 				height: 402px;
 
@@ -109,7 +76,7 @@
 					opacity: 0;
 
 					.skills {
-						color: var(--ash3);
+						color: var(--ash);
 						margin-bottom: 4rem;
 
 						h3 {
@@ -138,7 +105,7 @@
 								.circle {
 									width: 6px;
 									height: 6px;
-									background-color: var(--ash3);
+									background-color: var(--ash);
 									display: flex;
 									border-radius: 50%;
 
