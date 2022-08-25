@@ -2,6 +2,22 @@ import gsap from "gsap";
 import { TTimelineAction } from "#/interfaces";
 
 class SharedAnimations {
+	pinRadialGradient({ section, gradient }: { section: HTMLDivElement; gradient: HTMLDivElement }) {
+		const anim = gsap.to(
+			{},
+			{
+				scrollTrigger: {
+					trigger: section,
+					start: "top top",
+					end: "bottom bottom",
+					toggleActions: "restart complete reverse none",
+					pin: gradient,
+				},
+			}
+		);
+		return anim;
+	}
+
 	transitionToDarkSection({
 		darkSection,
 		banner,

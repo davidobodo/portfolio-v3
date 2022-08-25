@@ -29,10 +29,9 @@ import { PROJECT_NATURE } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { FilterIcon } from "#/components/icons";
 import { projectAnimations } from "#/utils/animations";
+import { TFilterBy } from "#/interfaces";
 
 const { scrollToProjectsSection } = projectAnimations;
-
-type TFilterBy = "tech-stack" | "project-nature";
 
 const ProjectsPage: NextPage = () => {
 	const [initialPageLoad, setInitialPageLoad] = useState(true);
@@ -108,7 +107,7 @@ const ProjectsPage: NextPage = () => {
 	// DISPLAYED PROJECTS
 	//---------------------------------------------------------
 	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: string }) => {
+	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => {
 		let filteredProjects = PROJECTS;
 
 		if (key !== "all") {
@@ -117,7 +116,7 @@ const ProjectsPage: NextPage = () => {
 
 				if (filterBy === "tech-stack") {
 					return tech.includes(key);
-				} else {
+				} else if (filterBy === "project-nature") {
 					return type === key;
 				}
 			});

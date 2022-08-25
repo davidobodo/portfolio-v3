@@ -70,7 +70,7 @@ const Home: NextPage = () => {
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation({});
 	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
-	const { containerRef, containerWidth, textWrapperRef, imageRef } = useExcellenceAnimation();
+	const { containerRef, containerWidth } = useExcellenceAnimation();
 
 	return (
 		<>
@@ -98,12 +98,7 @@ const Home: NextPage = () => {
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
 					<div className={styles.excellenceWrapper}>
-						<Excellence
-							containerRef={containerRef}
-							containerWidth={containerWidth}
-							textWrapperRef={textWrapperRef}
-							imageRef={imageRef}
-						/>
+						<Excellence containerRef={containerRef} containerWidth={containerWidth} />
 					</div>
 					<Skills
 						skillsContainerRef={skillsContainerRef}

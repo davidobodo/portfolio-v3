@@ -5,6 +5,7 @@ import { Radio } from "#/components";
 import { useTrapFocus, usePrevious } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { FilterCancelIcon } from "#/components/icons";
+import { TFilterBy } from "#/interfaces";
 
 const { animateFilterSectionIn, slideInListItems, animateFilterSectionOut } = projectAnimations;
 
@@ -16,11 +17,11 @@ export default function BaseProjectsFilter({
 	filterBy,
 	onSelectFilterBy,
 }: {
-	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: string }) => void;
+	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => void;
 	onCloseFilter: () => void;
 	filterKey: string;
 	filterList: { key: string; label: string }[];
-	filterBy: string;
+	filterBy: TFilterBy;
 	onSelectFilterBy: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -88,6 +89,7 @@ export default function BaseProjectsFilter({
 		} else {
 			setInitialLoad(false);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [filterBy, initialLoad]);
 
 	//--------------------------------------------------------

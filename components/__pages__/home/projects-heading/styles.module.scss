@@ -35,10 +35,10 @@
 
 		span {
 			line-height: 1.1;
-			transform: translate(80px, 40px);
+			transform: translate(8rem, 4rem);
 
 			@media (min-width: $md) {
-				transform: translate(80px, 80px);
+				transform: translate(8rem, 8rem);
 			}
 
 			strong {
@@ -48,10 +48,10 @@
 
 		&:nth-child(2) {
 			span {
-				transform: translate(40px, 40px);
+				transform: translate(4rem, 4rem);
 
 				@media (min-width: $md) {
-					transform: translate(80px, 80px);
+					transform: translate(8rem, 8rem);
 				}
 			}
 		}

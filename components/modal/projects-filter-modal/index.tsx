@@ -1,4 +1,5 @@
 import { ModalWrapper } from "#/components";
+import { TFilterBy } from "#/interfaces";
 import ProjectsFilter from "./projects-filter";
 
 export default function ProjectsFilterModal({
@@ -11,11 +12,11 @@ export default function ProjectsFilterModal({
 	onSelectFilterBy,
 }: {
 	isOpen: boolean;
-	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: string }) => void;
+	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => void;
 	onCloseFilter: () => void;
 	filterKey: string;
 	filterList: { key: string; label: string }[];
-	filterBy: string;
+	filterBy: TFilterBy;
 	onSelectFilterBy: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
 	return (

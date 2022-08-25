@@ -4,34 +4,29 @@ import { Ref } from "react";
 export default function Excellence({
 	containerRef,
 	containerWidth,
-	textWrapperRef,
-	imageRef,
 }: {
 	containerRef: Ref<HTMLDivElement>;
 	containerWidth?: number;
-	textWrapperRef: Ref<HTMLDivElement>;
-	imageRef: Ref<HTMLDivElement>;
 }) {
 	return (
-		<div ref={containerRef}>
-			<div className={styles.container} style={{ width: containerWidth + "px" }}>
-				<Text textWrapperRef={textWrapperRef} style={{ width: containerWidth + "px" }} />
-
-				<BgImage imageRef={imageRef} />
+		<>
+			{/* Trigger Div */}
+			<div ref={containerRef}>
+				{/* Use this divs scrollwidth for the horizontal scroll */}
+				<div className={styles.container} data-key="container-inner" style={{ width: containerWidth + "px" }}>
+					<Text style={{ width: containerWidth + "px" }} />
+					<BgImage />
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
-function Text({
-	textWrapperRef,
-	style,
-}: {
-	textWrapperRef: Ref<HTMLDivElement>;
-	style: Record<string, string | number>;
-}) {
+function Text({ style }: { style: Record<string, string | number> }) {
 	return (
-		<div className={styles.textWrapper} ref={textWrapperRef} style={{ ...style }}>
+		// Set the width of the svg since svg is going to take 100%
+		<div className={styles.textWrapper} data-key="text" style={{ ...style }}>
+			{/* Center the svg  */}
 			<div className={styles.textInner}>
 				<svg viewBox="0 0 1225.0208 437.09163">
 					<defs id="defs842" />
@@ -47,6 +42,6 @@ function Text({
 	);
 }
 
-function BgImage({ imageRef }: { imageRef: Ref<HTMLDivElement> }) {
-	return <div className={styles.bgImage} ref={imageRef}></div>;
+function BgImage() {
+	return <div className={styles.bgImage} data-key="image"></div>;
 }
