@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "#/styles/_pages/single-project.module.scss";
+import styles from "../../styles/_pages/single-project.module.scss";
 import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
 import { useRef } from "react";

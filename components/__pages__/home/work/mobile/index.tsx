@@ -23,11 +23,13 @@ export default function ViewMobile({ mobileWorkContainerRef }: WorkMobileProps) 
 					</ul>
 
 					<div className={styles.tabDetails} data-key="work-details">
+						<h2>WORK</h2>
 						{WORK.map((item, i) => {
-							const { title, location, range, url, note, urlLabel } = item;
+							const { title, location, range, url, note, urlLabel, company } = item;
 							return (
 								<div className={styles.tabDetail} key={i}>
 									<section>
+										<h3>{company}</h3>
 										<div className={styles.notes} dangerouslySetInnerHTML={{ __html: note }} />
 										<span>{range}</span>
 										<ul>

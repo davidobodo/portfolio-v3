@@ -51,7 +51,7 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 			//-----------------------------------------
 			//MOBILE ANIMATION
 			//-----------------------------------------
-			"(max-width: 991px)": () => {
+			"(max-width: 991px) and (min-height: 564px)": () => {
 				if (mobileWorkContainerRef.current) {
 					const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
 					const faintBgTitle = mobileWorkContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');

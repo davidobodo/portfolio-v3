@@ -4,9 +4,10 @@ declare global {
 	interface Window {
 		gtag: (type: string, name: string, config?: Record<string, string>) => {};
 		grecaptcha: {
-			ready: (val: () => {}) => { isHuman: boolean; message: string };
+			ready: (val: () => {}) => void;
 			execute: (sitekey: string, options: Record<string, string>) => Promise<token>;
 		};
+		previousOrientation: string;
 	}
 }
 

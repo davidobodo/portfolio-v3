@@ -17,28 +17,30 @@ export default function useSingleProjectInit() {
 		const logo = document.querySelector("[data-key='logo']") as Element;
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 
-		const master = gsap.timeline();
+		if (layers && logo && logoChildren) {
+			const master = gsap.timeline();
 
-		if (initialAppLoad) {
-			setInitialAppLoad(false);
-			master.add(drawSvgLogo(logo, logoChildren));
-			//SET PAGE OUTRO ANIMATION
-			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
-		}
-
-		master.add(openNoiseLayers(layers));
-		master.add(() => {
-			document.querySelector("body")?.classList.remove("hide");
-			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement | null;
-
-			if (navLogo) {
-				navLogo.style.visibility = "visible";
+			if (initialAppLoad) {
+				setInitialAppLoad(false);
+				master.add(drawSvgLogo(logo, logoChildren));
+				//SET PAGE OUTRO ANIMATION
+				exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 			}
-		});
 
-		return () => {
-			master.kill();
-		};
+			master.add(openNoiseLayers(layers));
+			master.add(() => {
+				document.querySelector("body")?.classList.remove("hide");
+				const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement | null;
+
+				if (navLogo) {
+					navLogo.style.visibility = "visible";
+				}
+			});
+
+			return () => {
+				master.kill();
+			};
+		}
 	}, []);
 
 	return {};

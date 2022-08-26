@@ -26,7 +26,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 		} catch (error: any) {
 			//Jump out of type checking for this error section
 			if (error.response) {
-				const message = error.response.body.errors[0].message;
+				const message = error.response.body.errors[0].message || "Message not sent";
 				return res.status(400).send({ message: message, status: error.code, response: error });
 			} else {
 				return res.status(400).send({ message: "Message not sent", status: 400 });
