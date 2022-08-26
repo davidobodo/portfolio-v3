@@ -36,6 +36,9 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 								<ul>
 									{["html", "css", "sass", "javascript", "typescript", "solidity"].map((key, i) => {
 										const skill = TECH_STACKS[key];
+
+										if (!skill) return null;
+
 										return (
 											<li key={i}>
 												<span>

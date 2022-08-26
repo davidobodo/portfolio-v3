@@ -45,40 +45,35 @@ export default function Credit() {
 	const PEOPLE: TCredit[] = [
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Reviewer",
+			description: "Chief Reviewer - Oluwaseun Adedire",
 		},
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Harmony",
-		},
-		{
-			link: "https://jesperlandberg.dev/",
-		},
-		{
-			link: "https://twitter.com/adeolajs",
-			description: `Adeols's portfolio gave some inspiration for this work`,
-		},
-
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Ifeanyi ",
-		},
-
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Onos",
+			description: "Assitant chief reviewer - Harmony Orakpoyovwuru",
 		},
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Lekan",
+			description: "Home page banner and Contact section - Ifeanyi ",
 		},
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Teenoh",
+			description: "Home page banner and Contact section - Onos",
 		},
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Emma ui/ux",
+			description: "Home page banner and Contact section - Lekan",
+		},
+		{
+			link: "https://www.linkedin.com/in/oluwaseunadedire/",
+			description: "Home page banner and Contact section - Teenoh",
+		},
+		{
+			link: "https://www.linkedin.com/in/oluwaseunadedire/",
+			description: "Home page banner and Contact section - Emma ui/ux",
+		},
+		{
+			link: "https://www.linkedin.com/in/oluwaseunadedire/",
+			description: "Home page banner and Contact section - Assurance",
 		},
 	];
 	const darkSectionRef = useRef(null);
@@ -147,8 +142,16 @@ export default function Credit() {
 						{/* <ul className={styles.people}> */}
 						<ul className={styles.list}>
 							{PEOPLE.map((item, i) => {
-								const { link } = item;
-								return <ListItem key={i} role="Chief Reviewer" name="Oluwaseun Adedire" link={link} />;
+								const { link, description } = item;
+								return (
+									<ListItem
+										key={i}
+										role="Chief Reviewer"
+										name="Oluwaseun Adedire"
+										link={link}
+										description={description}
+									/>
+								);
 							})}
 						</ul>
 					</section>
@@ -161,7 +164,17 @@ export default function Credit() {
 	);
 }
 
-function ListItem({ link, role, name }: { link: string; role?: string; name?: string }) {
+function ListItem({
+	link,
+	role,
+	name,
+	description,
+}: {
+	link: string;
+	role?: string;
+	name?: string;
+	description?: string;
+}) {
 	const ref = useRef<HTMLLIElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
@@ -192,7 +205,7 @@ function ListItem({ link, role, name }: { link: string; role?: string; name?: st
 
 			<li ref={ref}>
 				<a href={link} target="_blank" onClick={handleGAEvent}>
-					<span>{`Chief Reviewer - Christian Drey`}</span>
+					<span>{description}</span>
 				</a>
 			</li>
 		);

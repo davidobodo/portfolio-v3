@@ -1,12 +1,11 @@
 import "@testing-library/react";
 import { render } from "@testing-library/react";
 import ProjectsPage from "#/pages/projects/[id]";
-import { PROJECTS } from "#/constants/projects";
 const scrollTo = ({ top, left }: { top: number; left: number }) => {};
 window.scrollTo = jest.fn().mockImplementation(scrollTo);
-describe(`${PROJECTS[7].title} page`, () => {
+describe(`"Prodeus ckeditor" page`, () => {
 	it("renders correctly", () => {
-		const { asFragment } = render(<ProjectsPage id={PROJECTS[7].id} title={PROJECTS[7].title} />);
+		const { asFragment } = render(<ProjectsPage id="prodeus-editor" title="Prodeus ckeditor" />);
 		expect(asFragment()).toMatchSnapshot();
 	});
 });

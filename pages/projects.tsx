@@ -157,10 +157,6 @@ const ProjectsPage: NextPage = () => {
 			/>
 			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.content} id="projects-list">
-					<p>
-						Asides from the numerous projects I have worked on as a team member in the various companies I have been
-						part of here are a few publicly accessible (i.e not private dashboards e.t.c 😅) applications
-					</p>
 					<div className={styles.filterWrapper}>
 						<button onClick={onOpenFilter} data-key="open-filter-btn" aria-label="Open Filter">
 							<FilterIcon />

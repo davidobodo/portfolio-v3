@@ -1,7 +1,6 @@
 import { TProject } from "#/types";
 
 const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
-const TYPES = ["Web Application", "Website", "Learn from Tutorial", "Experiments"];
 
 export const PROJECTS: TProject[] = [
 	{
@@ -68,7 +67,7 @@ export const PROJECTS: TProject[] = [
 		sitelink: "https://www.cadmils.com/",
 		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku", "sendgrid"],
 		type: "Website",
-		bgColor: "#e2d1d9",
+		bgColor: "#86868b",
 		media: [
 			{
 				type: "image",
@@ -249,6 +248,25 @@ export const PROJECTS: TProject[] = [
 			{
 				type: "image",
 				source: "/images/projects/d-commerce/cart.jpg",
+			},
+		],
+	},
+
+	{
+		id: "pv-3",
+		title: "Portfolio V3",
+		details: ``,
+		githublink: "",
+		responsibilities: "",
+		roles: [],
+		sitelink: "",
+		tech: [],
+		bgColor: "",
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/prodeus-editor/pic.jpg",
 			},
 		],
 	},

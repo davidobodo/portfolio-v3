@@ -6,9 +6,9 @@ import { PROJECTS } from "#/constants/projects";
 const scrollTo = ({ top, left }: { top: number; left: number }) => {};
 
 window.scrollTo = jest.fn().mockImplementation(scrollTo);
-describe(`${PROJECTS[2].title} page`, () => {
+describe(`Medic Finder page`, () => {
 	it("renders correctly", () => {
-		const { asFragment } = render(<ProjectsPage id={PROJECTS[2].id} title={PROJECTS[2].title} />);
+		const { asFragment } = render(<ProjectsPage id="medic-finder" title="Medic finder" />);
 		expect(asFragment()).toMatchSnapshot();
 	});
 });
