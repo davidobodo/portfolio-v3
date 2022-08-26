@@ -1,5 +1,5 @@
-import Shared from "./__shared__";
-import Pages from "./__pages__";
+import Shared from "./shared";
+import Pages from "./pages";
 
 const {
 	Projects,
