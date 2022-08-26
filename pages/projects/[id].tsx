@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { fetchProjects } from "#/utils";
-import { PROJECTS } from "#/constants/projects";
+import { PROJECTS } from "#/constants";
 const { removeCurrentProject } = projectAnimations;
 
 type Props = {

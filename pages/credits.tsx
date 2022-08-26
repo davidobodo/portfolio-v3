@@ -5,6 +5,7 @@ import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorph
 import { useRef } from "react";
 import { sharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
+import { CREDIT_NOTE } from "#/constants";
 const { fadeIn } = sharedAnimations;
 type TCredit = {
 	link: string;
@@ -86,18 +87,6 @@ export default function Credit() {
 	});
 	const { textsListRef } = useAlternateTextOpacity();
 
-	const note = [
-		`I am not a "professional designer" by skill`,
-		`so in order to bring this portfolio's design to what
-        it is,`,
-		"I had to research,",
-		"draw inspiration",
-		"and also learn from what others have done.",
-		"For that I would like to acknowledge",
-		"works and people",
-		"who contributed to the design of this portfolio",
-	];
-
 	return (
 		<>
 			<Head>
@@ -124,7 +113,7 @@ export default function Credit() {
 			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.container}>
 					<div className={styles.summary}>
-						<AlternatingOpacity textsListRef={textsListRef} textsList={note} />
+						<AlternatingOpacity textsListRef={textsListRef} textsList={CREDIT_NOTE} />
 					</div>
 
 					<section>

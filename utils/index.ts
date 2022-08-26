@@ -1,4 +1,4 @@
-import { PROJECTS } from "#/constants/projects";
+import { PROJECTS } from "#/constants/";
 import { TProjectData } from "#/types";
 
 function normalize(value: number, lowerlimit: number, upperLimit: number) {

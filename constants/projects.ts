@@ -1,8 +1,6 @@
 import { TProject } from "#/types";
 
-const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
-
-export const PROJECTS: TProject[] = [
+const PROJECTS: TProject[] = [
 	{
 		id: "prodeus",
 		title: "Prodeus",
@@ -394,7 +392,7 @@ export const PROJECTS: TProject[] = [
 		`,
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
-		bgColor: COLORS[3],
+		bgColor: "#000",
 		type: "Website",
 		media: [
 			{
@@ -444,7 +442,7 @@ export const PROJECTS: TProject[] = [
 		githublink: "https://github.com/davidobodo/FEM-bookmark-landing-page",
 		sitelink: "https://davidobodo.github.io/FEM-bookmark-landing-page/",
 		tech: ["html", "css", "sass", "ghpages"],
-		bgColor: COLORS[0],
+		bgColor: "#000",
 		type: "Website",
 		media: [
 			{
@@ -559,3 +557,5 @@ export const PROJECTS: TProject[] = [
 		],
 	},
 ];
+
+export default PROJECTS;

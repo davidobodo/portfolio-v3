@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { TECH_STACKS } from "#/constants/tech-stacks";
+import { TECH_STACKS } from "#/constants";
 import { Ref } from "react";
 import { FaintBgText } from "#/components";
 import Link from "next/link";

@@ -4,7 +4,7 @@ import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/ic
 import { Slider } from "#/components";
 import { fetchProjects } from "#/utils";
 import { Ref } from "react";
-import { TECH_STACKS } from "#/constants/tech-stacks";
+import { TECH_STACKS } from "#/constants";
 import { ROLES } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
 
