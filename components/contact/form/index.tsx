@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { Spinner } from "../../index";
 import { useContactForm } from "#/hooks";
 
