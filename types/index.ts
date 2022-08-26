@@ -31,4 +31,6 @@ type TProjectsView = "list" | "grid";
 type TProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };
 type TLogoMode = "light" | "dark";
 
-export type { TTimelineAction, TProject, TProjectsView, TProjectData, TLogoMode, TProjectType, TFilterBy };
+type TFormFields = { name: string; email: string; subject: string; message: string };
+
+export type { TTimelineAction, TProject, TProjectsView, TProjectData, TLogoMode, TProjectType, TFilterBy, TFormFields };

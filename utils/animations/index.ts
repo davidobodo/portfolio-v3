@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { TTimelineAction } from "#/interfaces";
+import { TTimelineAction } from "#/types";
 import { animateFaintSvg } from "#/utils";
 import workSectionAnimations from "./work";
 import sharedAnimations from "./shared";

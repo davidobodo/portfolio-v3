@@ -1,6 +1,6 @@
 import { ProjectListView } from "./list-view";
 import { ProjectsGridView } from "./grid-view";
-import { TProject } from "#/interfaces";
+import { TProject } from "#/types";
 
 export default function Project({
 	onViewProject,

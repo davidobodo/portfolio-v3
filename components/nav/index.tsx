@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useState } from "react";
 import { Logo } from "../index";
-import { TLogoMode } from "#/interfaces";
+import { TLogoMode } from "#/types";
 
 type Props = {
 	showInBanner?: boolean;

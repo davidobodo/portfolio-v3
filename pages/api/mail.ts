@@ -10,7 +10,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 			to: process.env.NEXT_PUBLIC_MAIL_TO as string, // Change to your recipient
 			from: process.env.NEXT_PUBLIC_MAIL_FROM as string, // Change to your verified sender
 			subject: `${subject}`,
-			text: "",
+			text: "-",
 			html: `
 			<div>
 				<h1>From: ${name}</h1>
@@ -23,8 +23,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 		try {
 			await sgMail.send(msg);
 			return res.status(200).send({ message: "Sent successfully" });
-		} catch (err) {
-			return res.status(400).send({ message: "Message not sent", err: err });
+		} catch (error: any) {
+			//Jump out of type checking for this error section
+			if (error.response) {
+				const message = error.response.body.errors[0].message;
+				return res.status(400).send({ message: message, status: error.code, response: error });
+			} else {
+				return res.status(400).send({ message: "Message not sent", status: 400 });
+			}
 		}
 	} else {
 		//If User visits this route on the browser (i.e via GET request), just redirect them back home

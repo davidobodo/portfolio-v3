@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { TProject } from "#/interfaces";
+import { TProject } from "#/types";
 export function ProjectsGridView({
 	onViewProject,
 	displayedProjects,

@@ -26,16 +26,18 @@ import useFloatingBoxAnimation from "./useFloatingBoxAnimation";
 import useExcellenceAnimation from "./useExcellenceAnimation";
 
 //---------------------------
-// PROJECTS PAGE
-//---------------------------
-import useProjectsCurrentView from "./useProjectsCurrentView";
-
-//---------------------------
-// PAGE LOADS
+// PAGE LOAD
 //---------------------------
 import initPageLoads from "./initialPagesLoad";
 const { useHomePageInit, useGenericPageInit, useSingleProjectPageInit, use404PageInit, useProjectsPageInit } =
 	initPageLoads;
+
+//---------------------------
+// OTHERS
+//---------------------------
+
+import useProjectsCurrentView from "./useProjectsCurrentView";
+import useContactForm from "./useContactForm";
 
 export {
 	useWindowSize,
@@ -63,4 +65,5 @@ export {
 	useDeviceOrientation,
 	useSmoothScroll,
 	usePrevious,
+	useContactForm,
 };

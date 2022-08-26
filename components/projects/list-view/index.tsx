@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { useFloatingBoxAnimation } from "#/hooks";
 import Box from "../floating-box";
-import { TProject } from "#/interfaces";
+import { TProject } from "#/types";
 
 export function ProjectListView({
 	onViewProject,

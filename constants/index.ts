@@ -1,4 +1,4 @@
-import { TProjectType } from "#/interfaces";
+import { TProjectType } from "#/types";
 
 const DEFAULT_MOBILE_HEIGHT = 812;
 

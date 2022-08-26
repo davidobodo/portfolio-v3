@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { TProjectsView } from "#/interfaces";
+import { TProjectsView } from "#/types";
 import { ListIcon, GridIcon } from "#/components/icons";
 export default function ViewSelector({
 	currentView,

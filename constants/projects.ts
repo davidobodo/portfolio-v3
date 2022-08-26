@@ -1,4 +1,4 @@
-import { TProject } from "#/interfaces";
+import { TProject } from "#/types";
 
 const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
 const TYPES = ["Web Application", "Website", "Learn from Tutorial", "Experiments"];

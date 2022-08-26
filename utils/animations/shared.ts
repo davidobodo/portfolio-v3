@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { TTimelineAction } from "#/interfaces";
+import { TTimelineAction } from "#/types";
 
 class SharedAnimations {
 	pinRadialGradient({ section, gradient }: { section: HTMLDivElement; gradient: HTMLDivElement }) {

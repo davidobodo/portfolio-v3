@@ -1,5 +1,5 @@
 import { ModalWrapper } from "#/components";
-import { TFilterBy } from "#/interfaces";
+import { TFilterBy } from "#/types";
 import ProjectsFilter from "./projects-filter";
 
 export default function ProjectsFilterModal({

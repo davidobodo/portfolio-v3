@@ -1,5 +1,5 @@
 import { PROJECTS } from "#/constants/projects";
-import { TProjectData } from "#/interfaces";
+import { TProjectData } from "#/types";
 
 function normalize(value: number, lowerlimit: number, upperLimit: number) {
 	return lowerlimit + (upperLimit - lowerlimit) * value;

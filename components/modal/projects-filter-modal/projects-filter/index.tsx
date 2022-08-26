@@ -5,7 +5,7 @@ import { Radio } from "#/components";
 import { useTrapFocus, usePrevious } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { FilterCancelIcon } from "#/components/icons";
-import { TFilterBy } from "#/interfaces";
+import { TFilterBy } from "#/types";
 
 const { animateFilterSectionIn, slideInListItems, animateFilterSectionOut } = projectAnimations;
 

@@ -141,6 +141,21 @@
 		}
 	}
 
+	.error {
+		color: var(--red);
+		position: absolute;
+		left: 0px;
+		bottom: -25px;
+		font-size: 1.6rem;
+	}
+	.success {
+		color: var(--green);
+		position: absolute;
+		left: 0px;
+		bottom: -25px;
+		font-size: 1.6rem;
+	}
+
 	.btnWrapper {
 		button {
 			color: var(--black);
@@ -148,7 +163,6 @@
 			font-size: max(32px, 4.1666666667vw);
 			background-color: transparent;
 			border: 0px;
-			// width: 100%;
 			font-family: "sf-pro-bold";
 			font-weight: 500;
 			display: inline-flex;
@@ -157,6 +171,7 @@
 			width: 100%;
 			font-size: 3rem;
 			transition: opacity 200ms ease-in-out;
+			height: 3.2rem;
 
 			@media (min-width: $md) {
 				font-size: 3.6rem;
@@ -182,20 +197,15 @@
 				cursor: not-allowed;
 			}
 		}
-	}
 
-	.error {
-		color: var(--red);
-		position: absolute;
-		left: 0px;
-		bottom: -25px;
-		font-size: 1.6rem;
-	}
-	.success {
-		color: var(--green);
-		position: absolute;
-		left: 0px;
-		bottom: -25px;
-		font-size: 1.6rem;
+		.error {
+			bottom: auto;
+			top: 100%;
+		}
+
+		.success {
+			bottom: auto;
+			top: 100%;
+		}
 	}
 }

@@ -29,7 +29,7 @@ import { PROJECT_NATURE } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { FilterIcon } from "#/components/icons";
 import { projectAnimations } from "#/utils/animations";
-import { TFilterBy } from "#/interfaces";
+import { TFilterBy } from "#/types";
 
 const { scrollToProjectsSection } = projectAnimations;
 
@@ -157,6 +157,10 @@ const ProjectsPage: NextPage = () => {
 			/>
 			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.content} id="projects-list">
+					<p>
+						Asides from the numerous projects I have worked on as a team member in the various companies I have been
+						part of here are a few publicly accessible (i.e not private dashboards e.t.c 😅) applications
+					</p>
 					<div className={styles.filterWrapper}>
 						<button onClick={onOpenFilter} data-key="open-filter-btn" aria-label="Open Filter">
 							<FilterIcon />
@@ -192,16 +196,6 @@ const ProjectsPage: NextPage = () => {
 				filterBy={filterBy}
 				onSelectFilterBy={onSelectFilterBy}
 			/>
-			{/* {showFilter && (
-				<ProjectsFilter
-					onFilterProjects={onFilterProjects}
-					onCloseFilter={onCloseFilter}
-					filterKey={filterKey}
-					filterList={filterList}
-					filterBy={filterBy}
-					onSelectFilterBy={onSelectFilterBy}
-				/>
-			)} */}
 		</>
 	);
 };

@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { Ref } from "react";
-import { TProject } from "#/interfaces";
+import { TProject } from "#/types";
 export default function Box({
 	isActive,
 	imgRef,
