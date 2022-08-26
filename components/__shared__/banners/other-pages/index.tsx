@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { Ref, RefObject } from "react";
-import { ScrollAlert } from "../../index";
+import { ScrollAlert } from "#/components";
 export default function Banner({
 	texts,
 	textWrapperRef,

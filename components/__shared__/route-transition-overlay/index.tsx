@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { Ref, useRef } from "react";
 import { Logo } from "#/components";
 
-export default function Routetransition({
+export default function RouteTransitionOverlay({
 	layersWrapperRef,
 	loadingTextsRef,
 }: {

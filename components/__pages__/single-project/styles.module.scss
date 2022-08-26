@@ -53,7 +53,7 @@
 		}
 
 		ul {
-			padding-left: 15px;
+			padding-left: 1.5rem;
 
 			li {
 				line-height: 1.5;
@@ -89,15 +89,15 @@
 				clip-path: inset(0em 0em 0em 6rem round 999px);
 				transition: clip-path 300ms ease-in-out;
 				cursor: pointer;
-				padding-left: 10px;
+				padding-left: 1rem;
 				z-index: 2000;
 				flex-shrink: 0;
 				position: relative;
 
 				span {
 					&:nth-child(1) {
-						width: 40px;
-						height: 40px;
+						width: 4rem;
+						height: 4rem;
 						border-radius: 50%;
 						background-color: var(--white);
 						position: absolute;
@@ -140,7 +140,6 @@
 			transform-origin: top left;
 
 			.image {
-				// height: 500px;
 				padding-top: 62.5%;
 
 				background-size: cover;
@@ -248,15 +247,6 @@
 					display: none;
 				}
 			}
-
-			// &.desktop {
-			// 	display: none;
-
-			// 	@media (min-width: $md) {
-			// 		display: flex;
-			// 		justify-content: flex-end;
-			// 	}
-			// }
 		}
 	}
 }
@@ -280,7 +270,6 @@
 
 	@media (min-width: $xl) {
 		display: block;
-		// background-color: rgba(134, 134, 139, 0.1);
 	}
 
 	svg {

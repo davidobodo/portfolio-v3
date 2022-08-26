@@ -79,10 +79,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 			)}
 			<div className={styles.content}>
 				{/* ----------------------------------------------- */}
-				{/* Close Button */}
-				{/* ----------------------------------------------- */}
-
-				{/* ----------------------------------------------- */}
 				{/* Title */}
 				{/* ----------------------------------------------- */}
 				<section className={styles.title} data-key="title">
@@ -95,19 +91,6 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 						<span>Close</span>
 					</button>
 				</section>
-
-				{/* ----------------------------------------------- */}
-				{/* Mobile Links */}
-				{/* ----------------------------------------------- */}
-				{/* <div className={styles.links + " " + styles.mobile} data-key="buttons">
-					<a href={sitelink} target="_blank" onClick={() => handlePageGAEvents("live_site")}>
-						Visit site
-						<ExternalLink />{" "}
-					</a>
-					<a href={githublink} target="_blank" onClick={() => handlePageGAEvents("github")}>
-						Github repo <Github />{" "}
-					</a>
-				</div> */}
 
 				{/* ----------------------------------------------- */}
 				{/* Media Section */}
@@ -134,12 +117,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 							<h3>Role in Project</h3>
 							<ul>
 								{roles?.map((item, i) => {
-									return (
-										<li key={i}>
-											{/* <span className={styles.circle}></span> */}
-											{ROLES[item].label}
-										</li>
-									);
+									return <li key={i}>{ROLES[item].label}</li>;
 								})}
 							</ul>
 						</div>

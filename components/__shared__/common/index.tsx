@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { RouteTransitionOverlay, ScrollToTop, ProgressBar } from "../index";
+import { RouteTransitionOverlay, ScrollToTop, ProgressBar } from "#/components";
 
 export default function Common() {
 	return (

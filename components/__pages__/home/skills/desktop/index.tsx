@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants/tech-stacks";
 import { Ref } from "react";
-import { FaintBgText } from "../../../../index";
+import { FaintBgText } from "#/components";
 import Link from "next/link";
 import { events, registerEvent } from "#/utils/analytics/events";
 

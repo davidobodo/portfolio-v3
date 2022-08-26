@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import Heading from "./heading";
 import { RefObject } from "react";
-import { ScrollAlert } from "../../index";
+import { ScrollAlert } from "#/components";
 
 type Props = {
 	bannerRef: RefObject<HTMLDivElement>;

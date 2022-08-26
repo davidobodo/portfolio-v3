@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
-import { FaintBgText } from "../../../../index";
+import { FaintBgText } from "#/components";
 import { Ref } from "react";
 
 export type WorkDesktopProps = {

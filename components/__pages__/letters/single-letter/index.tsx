@@ -1,8 +1,10 @@
-import gsap from "gsap";
 import styles from "./styles.module.scss";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
 import { events, registerEvent } from "#/utils/analytics/events";
+import { sharedAnimations } from "#/utils/animations";
+
+const { fadeIn } = sharedAnimations;
 export default function SingleLetter({
 	url,
 	title,
@@ -23,21 +25,13 @@ export default function SingleLetter({
 	const articleRef = useRef(null);
 
 	useIsomorphicLayoutEffect(() => {
-		const anim = gsap.to(articleRef.current, {
-			opacity: 1,
-			y: 0,
-			scrollTrigger: {
-				trigger: articleRef.current,
-				start: "top 80%",
-				end: "bottom center",
-				toggleActions: "restart pause reverse pause",
-				scrub: true,
-			},
-		});
+		if (articleRef.current) {
+			const anim = fadeIn({ node: articleRef.current });
 
-		return () => {
-			anim.scrollTrigger?.kill();
-		};
+			return () => {
+				anim.scrollTrigger?.kill();
+			};
+		}
 	}, []);
 
 	return (

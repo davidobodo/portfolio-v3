@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import React, { memo } from "react";
-import { Spinner } from "../../index";
+import { Spinner } from "#/components";
 import { useContactForm } from "#/hooks";
 
 //NOTE: Form validation is easiest when one makes use of libraries like formik, react-hooks e.t.c, But this form is too small so no need of using an external library

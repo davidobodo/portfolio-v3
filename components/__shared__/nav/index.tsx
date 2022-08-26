@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useState } from "react";
-import { Logo } from "../index";
+import { Logo } from "#/components";
 import { TLogoMode } from "#/types";
 
 type Props = {

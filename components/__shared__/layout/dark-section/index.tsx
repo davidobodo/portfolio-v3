@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { DarkRadialGradient, Noise } from "../../index";
+import { DarkRadialGradient, Noise } from "#/components";
 import { usePinRadialGradient } from "#/hooks";
 import { RefObject } from "react";
 

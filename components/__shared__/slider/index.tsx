@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { useWindowSize } from "#/hooks";
 import { useEffect, useState, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "../icons";
+import { ChevronLeft, ChevronRight } from "../../icons";
 export default function Slider({ items, id }: { items: { type: "image" | "video"; source: string }[]; id: string }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 

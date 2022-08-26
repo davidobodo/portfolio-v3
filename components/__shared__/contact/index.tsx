@@ -1,11 +1,11 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { useRef, useState, Ref } from "react";
-import { SectionPlaceholder } from "../index";
+import { SectionPlaceholder } from "#/components";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { Form } from "./form";
-// import gsap from "gsap";
 import { events, registerEvent } from "#/utils/analytics/events";
+
 export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
