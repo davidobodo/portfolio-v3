@@ -77,9 +77,9 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 		});
 	}, [windowInnerWidth]);
 
-	function scrollToLabel(label: number) {
+	const scrollToLabel = (label: number) => {
 		gsap.to(window, { scrollTo: desktopTl?.scrollTrigger?.labelToScroll(`section-${label}-visible`) });
-	}
+	};
 
 	const onWorkDetailsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		const key = e.key || e.keyCode;

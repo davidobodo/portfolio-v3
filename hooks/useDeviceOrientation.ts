@@ -15,22 +15,22 @@ export default function useDeviceOrientation() {
 	}
 
 	useIsomorphicLayoutEffect(() => {
-		// window.previousOrientation = window.screen.orientation.type;
-		// if (screen.orientation) {
-		// 	screen.orientation.addEventListener("change", handleOrientationChange);
-		// 	return () => {
-		// 		screen.orientation.removeEventListener("change", handleOrientationChange);
-		// 	};
-		// } else {
-		// 	if (typeof window !== "undefined") {
-		// 		//For ios device
-		// 		window.addEventListener("orientationchange", handleOrientationChange);
-		// 	}
-		// 	return () => {
-		// 		if (typeof window !== "undefined") {
-		// 			window.removeEventListener("orientationchange", handleOrientationChange);
-		// 		}
-		// 	};
-		// }
+		window.previousOrientation = window.screen.orientation.type;
+		if (screen.orientation) {
+			screen.orientation.addEventListener("change", handleOrientationChange);
+			return () => {
+				screen.orientation.removeEventListener("change", handleOrientationChange);
+			};
+		} else {
+			if (typeof window !== "undefined") {
+				//For ios device
+				window.addEventListener("orientationchange", handleOrientationChange);
+			}
+			return () => {
+				if (typeof window !== "undefined") {
+					window.removeEventListener("orientationchange", handleOrientationChange);
+				}
+			};
+		}
 	}, []);
 }

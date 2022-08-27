@@ -3,12 +3,12 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { useRef, useState } from "react";
 import { auxilliaryAnimations } from "#/utils/animations";
-
 const { animateExcellence } = auxilliaryAnimations;
+
 export default function useExcellenceAnimation() {
-	const { innerWidth, innerHeight } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const containerRefSelector = gsap.utils.selector(containerRef);
+	const { innerWidth, innerHeight } = useWindowSize();
 	const [containerWidth, setContainerWidth] = useState<number>();
 
 	useIsomorphicLayoutEffect(() => {

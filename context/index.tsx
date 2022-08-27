@@ -1,6 +1,5 @@
 import gsap from "gsap";
-import { createContext, useContext, Dispatch, SetStateAction } from "react";
-import { useState } from "react";
+import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
 
 type TContext = {
 	initialAppLoad: boolean;

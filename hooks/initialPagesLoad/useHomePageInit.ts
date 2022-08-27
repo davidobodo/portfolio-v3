@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { useRef, RefObject } from "react";
 import { homePageAnimations, sharedAnimations } from "#/utils/animations";
 import { usePageTransitionsContext } from "#/context";
-import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
+import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
 const { bannerAnimation } = homePageAnimations;
 const { transitionToDarkSection, drawSvgLogo, openNoiseLayers, closeNoiseLayers } = sharedAnimations;
@@ -64,24 +64,11 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 		};
 	}, []);
 
-	//-----------------------------------------
-	// BLACK COVER ANIMATION
-	//-----------------------------------------
-	const blackCoverRef = useRef<HTMLDivElement>(null);
-	useIsomorphicLayoutEffect(() => {
-		if (darkSectionRef.current && bannerRef.current && blackCoverRef.current) {
-			const tl = transitionToDarkSection({
-				darkSection: darkSectionRef.current,
-				banner: bannerRef.current,
-				blackCurtain: blackCoverRef.current,
-				windowInnerWidth,
-			});
-
-			return () => {
-				tl.scrollTrigger?.kill();
-			};
-		}
-	}, [windowInnerWidth]);
+	const { blackCoverRef } = useTransitionToDarkSection({
+		windowInnerWidth,
+		darkSectionRef,
+		bannerRef,
+	});
 
 	return {
 		bannerRef,

@@ -25,14 +25,14 @@ export default function use404PageInit() {
 	// REDIRECT FUNCTIONS/HELPERS
 	//-------------------------------------------
 	const onInitRedirect = () => {
-		// const limit = new Date().getTime() + 16000;
-		// const id = setInterval(() => {
-		// 	const now = new Date().getTime();
-		// 	const distance = limit - now;
-		// 	const inas = Math.floor((distance % (1000 * 60)) / 1000);
-		// 	setCountdown(inas);
-		// }, 1000);
-		// setTimerId(id);
+		const limit = new Date().getTime() + 16000;
+		const id = setInterval(() => {
+			const now = new Date().getTime();
+			const distance = limit - now;
+			const inas = Math.floor((distance % (1000 * 60)) / 1000);
+			setCountdown(inas);
+		}, 1000);
+		setTimerId(id);
 	};
 
 	const onStopRedirect = () => {

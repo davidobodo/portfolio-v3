@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import gsap from "gsap";
 import { sharedAnimations } from "#/utils/animations";
 import useIsomorphicLayoutEffect from "../useIsomorphicLayoutEffect";
@@ -23,7 +22,6 @@ export default function useSingleProjectInit() {
 			if (initialAppLoad) {
 				setInitialAppLoad(false);
 				master.add(drawSvgLogo(logo, logoChildren));
-				//SET PAGE OUTRO ANIMATION
 				exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 			}
 

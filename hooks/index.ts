@@ -18,12 +18,12 @@ import usePinRadialGradient from "./usePinRadialGradient";
 import useRevealParagraph from "./useRevealParagraph";
 import useRevealHeading from "./useRevealHeading";
 import useSelectProjectAnimation from "./useSelectProjectAnimation";
-import usePageTransition from "./usePageTransition";
 import useAlternateTextOpacity from "./useAlternateTextOpacity";
 import useSkillsAnimation from "./useSkillsAnimation";
 import useWorkAnimation from "./useWorkAnimation";
 import useFloatingBoxAnimation from "./useFloatingBoxAnimation";
 import useExcellenceAnimation from "./useExcellenceAnimation";
+import useTransitionToDarkSection from "./useTransitionToDarkSection";
 
 //---------------------------
 // PAGE LOAD
@@ -35,7 +35,6 @@ const { useHomePageInit, useGenericPageInit, useSingleProjectPageInit, use404Pag
 //---------------------------
 // OTHERS
 //---------------------------
-
 import useProjectsCurrentView from "./useProjectsCurrentView";
 import useContactForm from "./useContactForm";
 
@@ -51,7 +50,6 @@ export {
 	useRevealParagraph,
 	useRevealHeading,
 	useSelectProjectAnimation,
-	usePageTransition,
 	useSkillsAnimation,
 	useWorkAnimation,
 	useHomePageInit,
@@ -66,4 +64,5 @@ export {
 	useSmoothScroll,
 	usePrevious,
 	useContactForm,
+	useTransitionToDarkSection,
 };
