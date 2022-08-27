@@ -7,8 +7,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === "POST") {
 		const { name, email, subject, message } = JSON.parse(req.body);
 		const msg = {
-			to: process.env.NEXT_PUBLIC_MAIL_TO as string, // Change to your recipient
-			from: process.env.NEXT_PUBLIC_MAIL_FROM as string, // Change to your verified sender
+			to: process.env.NEXT_PUBLIC_MAIL_TO as string,
+			from: process.env.NEXT_PUBLIC_MAIL_FROM as string,
 			subject: `${subject}`,
 			text: "-",
 			html: `

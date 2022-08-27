@@ -1,3 +1,10 @@
+type TRoles = "design" | "fe" | "be" | "teamlead";
+type TProjectType = "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
+type TFilterBy = "tech-stack" | "project-nature";
+type TProjectsView = "list" | "grid";
+type TLogoMode = "light" | "dark";
+type TProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };
+type TFormFields = { name: string; email: string; subject: string; message: string };
 type TTimelineAction = {
 	target?: Element | NodeListOf<Element>;
 	vars?: Record<string, string | number>;
@@ -5,11 +12,6 @@ type TTimelineAction = {
 	isLabel?: boolean;
 	label?: string;
 };
-
-type TRoles = "design" | "fe" | "be" | "teamlead";
-
-type TProjectType = "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
-
 type TProject = {
 	id: string;
 	title: string;
@@ -23,14 +25,5 @@ type TProject = {
 	media: { type: "image" | "video"; source: string }[];
 	responsibilities: string;
 };
-
-type TFilterBy = "tech-stack" | "project-nature";
-
-type TProjectsView = "list" | "grid";
-
-type TProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };
-type TLogoMode = "light" | "dark";
-
-type TFormFields = { name: string; email: string; subject: string; message: string };
 
 export type { TTimelineAction, TProject, TProjectsView, TProjectData, TLogoMode, TProjectType, TFilterBy, TFormFields };

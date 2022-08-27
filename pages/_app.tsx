@@ -37,21 +37,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 				`}
 			</Script>
 
-			{/* <Script src="https://www.google.com/recaptcha/api.js"></Script> */}
 			<Script
 				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
 			></Script>
 
-			{/* <Script src="https://www.google.com/recaptcha/api.js?onload=recaptchaLoaded&render=explicit" async defer></Script> */}
-
-			<>
-				<PageTransitionsProvider>
-					<PageTransitionLayout path={router.asPath}>
-						<Component {...pageProps} />
-						<Common />
-					</PageTransitionLayout>
-				</PageTransitionsProvider>
-			</>
+			<PageTransitionsProvider>
+				<PageTransitionLayout path={router.asPath}>
+					<Component {...pageProps} />
+					<Common />
+				</PageTransitionLayout>
+			</PageTransitionsProvider>
 		</>
 	);
 }

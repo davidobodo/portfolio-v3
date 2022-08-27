@@ -1,8 +1,8 @@
 import gsap from "gsap";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 import useIsomorphicLayoutEffect from "../useIsomorphicLayoutEffect";
 import { usePageTransitionsContext } from "#/context";
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = sharedAnimations;
+const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = otherSharedAnimations;
 
 export default function useSingleProjectInit() {
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();

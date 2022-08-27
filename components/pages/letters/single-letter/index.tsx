@@ -2,9 +2,9 @@ import styles from "./styles.module.scss";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
 import { events, registerEvent } from "#/utils/analytics/events";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 
-const { fadeIn } = sharedAnimations;
+const { fadeIn } = otherSharedAnimations;
 export default function SingleLetter({
 	url,
 	title,

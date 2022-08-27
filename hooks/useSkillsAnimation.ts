@@ -1,10 +1,10 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { skillsAnimations } from "#/utils/animations";
+import { skillsSectionAnimations } from "#/utils/animations";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const { desktopAnimation, mobileAnimation } = skillsAnimations;
+const { desktopAnimation, mobileAnimation } = skillsSectionAnimations;
 
 export default function useSkillsAnimation({ windowInnerWidth }: { windowInnerWidth: number }) {
 	const skillsContainerRef = useRef<HTMLDivElement>(null);

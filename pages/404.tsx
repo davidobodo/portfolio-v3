@@ -16,9 +16,7 @@ export default function NotFound() {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
-
 			<Nav />
-
 			<div className={styles.main} ref={containerRef}>
 				<header className={styles.content} style={{ minHeight: bannerHeight + "px" }}>
 					<div className={styles.top} data-key="section">

@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import { TTimelineAction } from "#/types";
-import { animateFaintSvg } from "#/utils";
-import { sharedAnimations } from "./index";
+import { animateFaintSvg, executeTimelineActions } from "#/utils";
 
 class SkillsSectionAnimations {
 	constructor() {
@@ -156,7 +155,7 @@ class SkillsSectionAnimations {
 		});
 
 		// EXECUTE TIMELINE ACTIONS
-		sharedAnimations.executeTimelineActions({
+		executeTimelineActions({
 			tl,
 			tlActions: timelineActions,
 		});
@@ -223,7 +222,7 @@ class SkillsSectionAnimations {
 		});
 
 		// EXECUTE TIMELINE ACTIONS
-		sharedAnimations.executeTimelineActions({
+		executeTimelineActions({
 			tl,
 			tlActions: timelineActions,
 		});

@@ -1,9 +1,9 @@
 import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from ".";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 
-const { pinRadialGradient } = sharedAnimations;
+const { pinRadialGradient } = otherSharedAnimations;
 
 export default function usePinRadialGradient({
 	darkSectionRef,

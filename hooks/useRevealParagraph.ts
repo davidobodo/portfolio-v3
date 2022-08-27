@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { homePageAnimations } from "#/utils/animations";
+import { otherHomeSectionsAnimations } from "#/utils/animations";
 
-const { revealParagraph } = homePageAnimations;
+const { revealParagraph } = otherHomeSectionsAnimations;
 
 export default function useRevealText() {
 	const textWrapperRef = useRef<HTMLDivElement>(null);

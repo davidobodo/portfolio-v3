@@ -3,10 +3,11 @@ import styles from "#/styles/_pages/credits.module.scss";
 import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { CREDIT_NOTE } from "#/constants";
-const { fadeIn } = sharedAnimations;
+
+const { fadeIn } = otherSharedAnimations;
 type TCredit = {
 	link: string;
 	description?: string;
@@ -128,7 +129,6 @@ export default function Credit() {
 					<section>
 						<h2>People</h2>
 
-						{/* <ul className={styles.people}> */}
 						<ul className={styles.list}>
 							{PEOPLE.map((item, i) => {
 								const { link, description } = item;
@@ -184,14 +184,6 @@ function ListItem({
 
 	if (role && name) {
 		return (
-			// <li ref={ref}>
-			// 	<span>Chief Reviewer</span>
-			// 	<span className={styles.lines}></span>
-			// 	<a href={link} target="_blank" onClick={handleGAEvent}>
-			// 		<span>Oluwaseun Adedire</span>
-			// 	</a>
-			// </li>
-
 			<li ref={ref}>
 				<a href={link} target="_blank" onClick={handleGAEvent}>
 					<span>{description}</span>

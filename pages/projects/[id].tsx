@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../../styles/_pages/single-project.module.scss";
 import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
 import { useRef } from "react";
@@ -52,7 +51,7 @@ export default function Project(props: Props) {
 			</Head>
 			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
-				<div ref={modalRef} className={styles.container}>
+				<div ref={modalRef}>
 					<SingleProject
 						currProjectId={selectedProjectId}
 						onClose={onDeselectProject}

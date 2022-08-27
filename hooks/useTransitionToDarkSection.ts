@@ -1,8 +1,8 @@
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 import { useRef, RefObject } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
 
-const { transitionToDarkSection } = sharedAnimations;
+const { transitionToDarkSection } = otherSharedAnimations;
 
 export default function useTransitionToDarkSection({
 	windowInnerWidth,

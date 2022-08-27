@@ -1,7 +1,6 @@
 import gsap from "gsap";
-import { TTimelineAction } from "#/types";
 
-class SharedAnimations {
+class OtherSharedAnimations {
 	pinRadialGradient({ section, gradient }: { section: HTMLDivElement; gradient: HTMLDivElement }) {
 		const anim = gsap.to(
 			{},
@@ -107,24 +106,6 @@ class SharedAnimations {
 		return tl;
 	}
 
-	executeTimelineActions({ tl, tlActions }: { tl: gsap.core.Timeline; tlActions: TTimelineAction[] }) {
-		for (let j = 0; j < tlActions.length; j++) {
-			const { target, vars, options, isLabel, label } = tlActions[j];
-
-			if (isLabel && label) {
-				tl.add(label);
-			} else {
-				if (target && vars) {
-					if (options) {
-						tl.to(target, vars, options);
-					} else {
-						tl.to(target, vars);
-					}
-				}
-			}
-		}
-	}
-
 	fadeIn({ node }: { node: Element }) {
 		const anim = gsap.to(node, {
 			opacity: 1,
@@ -190,56 +171,6 @@ class SharedAnimations {
 		return tl;
 	}
 
-	showLoadingTexts(nodesWrapper: Element, nodes: HTMLSpanElement[]) {
-		const tl = gsap.timeline({ repeat: -1 });
-
-		// CREATE TIMELINE ACTIONS
-		let timelineActions = [];
-		timelineActions.push({ target: nodesWrapper, vars: { visibility: "visible" } });
-		for (let i = 0; i < nodes.length; i++) {
-			timelineActions.push({
-				target: nodes[i],
-				vars: {
-					opacity: 0,
-				},
-			});
-
-			// Move node to the middle
-			timelineActions.push({
-				target: nodes[i],
-				vars: {
-					y: 0,
-					opacity: 1,
-					ease: "power4.out",
-				},
-			});
-			// Move node to the top
-			timelineActions.push({
-				target: nodes[i],
-				vars: {
-					y: -300,
-					opacity: 0,
-					delay: 1,
-					ease: "power4.out",
-				},
-			});
-		}
-
-		// EXECUTE TIMELINE
-		for (let j = 0; j < timelineActions.length; j++) {
-			const { target, vars } = timelineActions[j];
-			tl.to(target, vars);
-		}
-
-		return tl;
-	}
-
-	hideLoadingTexts(node: HTMLDivElement) {
-		const tl = gsap.timeline();
-		tl.to(node, { visibility: "hidden", opacity: 0 });
-		return tl;
-	}
-
 	openNoiseLayers(node: NodeListOf<Element>) {
 		const tl = gsap.timeline();
 		tl.fromTo(node, { scaleY: 1, delay: 0.3 }, { scaleY: 0, delay: 0.3 });
@@ -275,6 +206,6 @@ class SharedAnimations {
 	}
 }
 
-const sharedAnimations = new SharedAnimations();
+const otherSharedAnimations = new OtherSharedAnimations();
 
-export default sharedAnimations;
+export default otherSharedAnimations;

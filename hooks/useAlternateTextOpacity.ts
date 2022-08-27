@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 
-const { changeFocusedOpaqueText } = sharedAnimations;
+const { changeFocusedOpaqueText } = otherSharedAnimations;
 
 export default function useAlternateTextOpacity() {
 	const textsListRef = useRef<HTMLParagraphElement>(null);

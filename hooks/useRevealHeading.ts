@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "#/hooks";
-import { homePageAnimations } from "#/utils/animations";
+import { otherHomeSectionsAnimations } from "#/utils/animations";
 
-const { revealHeading } = homePageAnimations;
+const { revealHeading } = otherHomeSectionsAnimations;
 
 export default function useRevealHeading({ windowInnerWidth }: { windowInnerWidth: number }) {
 	const headingRef = useRef<HTMLHeadingElement>(null);

@@ -1,11 +1,11 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
-import { projectAnimations, sharedAnimations } from "#/utils/animations";
+import { projectAnimations, otherSharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 import { useRouter } from "next/router";
 
-const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } = sharedAnimations;
+const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } = otherSharedAnimations;
 
 const { scrollToProjectsSection } = projectAnimations;
 

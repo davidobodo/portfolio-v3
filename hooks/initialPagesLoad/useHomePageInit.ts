@@ -1,11 +1,11 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { homePageAnimations, sharedAnimations } from "#/utils/animations";
+import { otherHomeSectionsAnimations, otherSharedAnimations } from "#/utils/animations";
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
-const { bannerAnimation } = homePageAnimations;
-const { transitionToDarkSection, drawSvgLogo, openNoiseLayers, closeNoiseLayers } = sharedAnimations;
+const { bannerAnimation } = otherHomeSectionsAnimations;
+const { drawSvgLogo, openNoiseLayers, closeNoiseLayers } = otherSharedAnimations;
 
 type Props = {
 	windowInnerHeight: number;

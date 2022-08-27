@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { TTimelineAction } from "#/types";
-import { animateFaintSvg } from "#/utils";
-import { sharedAnimations } from "./index";
+import { animateFaintSvg, executeTimelineActions } from "#/utils";
+
 class WorkSectionAnimations {
 	constructor() {
 		this.desktopAnimation = this.desktopAnimation.bind(this);
@@ -183,7 +183,7 @@ class WorkSectionAnimations {
 		});
 
 		// EXECUTE TIMELINE ACTIONS
-		sharedAnimations.executeTimelineActions({
+		executeTimelineActions({
 			tl,
 			tlActions: timelineActions,
 		});
@@ -254,7 +254,7 @@ class WorkSectionAnimations {
 		const timelineActions = this.createMobileAnimationTimeline({ titles, details, titlesContainer });
 
 		// EXECUTE TIMELINE ACTIONS
-		sharedAnimations.executeTimelineActions({
+		executeTimelineActions({
 			tl,
 			tlActions: timelineActions,
 		});
