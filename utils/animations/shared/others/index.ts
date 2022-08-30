@@ -173,14 +173,15 @@ class OtherSharedAnimations {
 
 	openNoiseLayers(node: NodeListOf<Element>) {
 		const tl = gsap.timeline();
-		tl.fromTo(node, { scaleY: 1, delay: 0.3 }, { scaleY: 0, delay: 0.3 });
+		const ease = "Power2.easeInOut";
+		tl.fromTo(node, { scaleY: 1, delay: 0.3, ease: ease }, { scaleY: 0, delay: 0.3, ease: ease });
 		return tl;
 	}
 
 	closeNoiseLayers({ node }: { node: NodeListOf<Element> | HTMLCollection }) {
 		const tl = gsap.timeline();
 
-		tl.to(node, { scaleY: 1 });
+		tl.to(node, { scaleY: 1, ease: "Power1.easeIn" });
 		return tl;
 	}
 

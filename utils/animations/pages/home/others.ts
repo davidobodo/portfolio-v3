@@ -20,14 +20,13 @@ class OtherHomeSectionsAnimations {
 	}) {
 		const tl = gsap.timeline();
 
-		tl.to(nameLetters, { x: 0 }).to(fieldLetters, { x: 0 }).to(subFieldOne, { y: 0 }).to(subFieldTwo, { y: 0 });
-
-		//Mobile image
-		tl.to(picMobile, { width: "100%" });
-		//Desktop image
-		tl.to(picDesktopBlind, { width: 0 }, "<");
-
-		tl.to(scrollIndicator, { opacity: 1 });
+		tl.to(nameLetters, { x: 0 })
+			.to(fieldLetters, { x: 0 })
+			.to(subFieldOne, { y: 0 })
+			.to(subFieldTwo, { y: 0 })
+			.to(picMobile, { width: "100%", ease: "Power2.easeIn" }) //Mobile image
+			.to(picDesktopBlind, { width: 0, ease: "Power2.easeIn" }, "<") //Desktop image
+			.to(scrollIndicator, { opacity: 1 });
 		tl.add(() => {
 			document.querySelector("body")?.classList.remove("hide");
 			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement;
