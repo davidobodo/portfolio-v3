@@ -204,6 +204,10 @@ class OtherSharedAnimations {
 
 		return tl;
 	}
+
+	removePageLoaderBlocker({ node }: { node: HTMLDivElement }) {
+		return gsap.to(node, { opacity: 0, zIndex: -2, duration: 1 });
+	}
 }
 
 const otherSharedAnimations = new OtherSharedAnimations();

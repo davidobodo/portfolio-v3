@@ -4,7 +4,8 @@ import { usePageTransitionsContext } from "#/context";
 import { otherSharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
-const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } = otherSharedAnimations;
+const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } =
+	otherSharedAnimations;
 /**
  *
  * Generic pages include
@@ -44,6 +45,11 @@ export default function useGenericPageInit({
 			setInitialAppLoad(false);
 			//SET PAGE OUTRO ANIMATION
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
+			master.add(
+				removePageLoaderBlocker({
+					node: document.getElementById("blocker") as HTMLDivElement,
+				})
+			);
 			master.add(drawSvgLogo(logo, logoChildren));
 		}
 		master.add(openNoiseLayers(layers));

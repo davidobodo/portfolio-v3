@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { otherSharedAnimations } from "#/utils/animations";
 import useIsomorphicLayoutEffect from "../useIsomorphicLayoutEffect";
 import { usePageTransitionsContext } from "#/context";
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = otherSharedAnimations;
+const { openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
 
 export default function useSingleProjectInit() {
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
@@ -21,6 +21,11 @@ export default function useSingleProjectInit() {
 
 			if (initialAppLoad) {
 				setInitialAppLoad(false);
+				master.add(
+					removePageLoaderBlocker({
+						node: document.getElementById("blocker") as HTMLDivElement,
+					})
+				);
 				master.add(drawSvgLogo(logo, logoChildren));
 				exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 			}

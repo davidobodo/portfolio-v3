@@ -1,11 +1,11 @@
 import gsap from "gsap";
-import { useRef, RefObject } from "react";
+import { useRef, RefObject, useState } from "react";
 import { otherHomeSectionsAnimations, otherSharedAnimations } from "#/utils/animations";
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
 const { bannerAnimation } = otherHomeSectionsAnimations;
-const { drawSvgLogo, openNoiseLayers, closeNoiseLayers } = otherSharedAnimations;
+const { drawSvgLogo, openNoiseLayers, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
 
 type Props = {
 	windowInnerHeight: number;
@@ -23,7 +23,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 	const bannerRef = useRef<HTMLDivElement>(null);
 	const bannerRefSelector = gsap.utils.selector(bannerRef);
 
-	useIsomorphicLayoutEffect(() => {
+	const initPage = () => {
 		//Ensure page scrolls to the top, since it might not be at the top due to our page transition effect
 		window.scrollTo({
 			top: 0,
@@ -41,8 +41,14 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 		const layers = document.querySelectorAll("[data-key='layer']");
 
 		const master = gsap.timeline();
+
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
+			master.add(
+				removePageLoaderBlocker({
+					node: document.getElementById("blocker") as HTMLDivElement,
+				})
+			);
 			master.add(drawSvgLogo(logo, logoChildren));
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 		}
@@ -59,9 +65,31 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 			})
 		);
 
-		return () => {
-			master.kill();
+		return master;
+	};
+
+	useIsomorphicLayoutEffect(() => {
+		const callback = () => {
+			const tl = initPage();
+
+			return () => {
+				tl.kill();
+			};
 		};
+
+		if (document.readyState === "complete") {
+			const tl = initPage();
+
+			return () => {
+				tl.kill();
+			};
+		} else {
+			window.addEventListener("load", callback);
+
+			return () => {
+				window.removeEventListener("load", callback);
+			};
+		}
 	}, []);
 
 	const { blackCoverRef } = useTransitionToDarkSection({

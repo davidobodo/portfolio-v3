@@ -5,7 +5,8 @@ import { projectAnimations, otherSharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 import { useRouter } from "next/router";
 
-const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } = otherSharedAnimations;
+const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } =
+	otherSharedAnimations;
 
 const { scrollToProjectsSection } = projectAnimations;
 
@@ -41,6 +42,11 @@ export default function useProjectsPageInit({
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
+			master.add(
+				removePageLoaderBlocker({
+					node: document.getElementById("blocker") as HTMLDivElement,
+				})
+			);
 			master.add(drawSvgLogo(logo, logoChildren));
 		}
 		master.add(openNoiseLayers(layers));

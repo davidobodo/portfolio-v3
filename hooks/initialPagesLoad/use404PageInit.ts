@@ -6,7 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { events, registerEvent } from "#/utils/analytics/events";
 
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = otherSharedAnimations;
+const { openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
 const { bannerAnimation, stopRedirectAnimation } = notFoundPageAnimations;
 export default function use404PageInit() {
 	const { innerHeight, innerWidth } = useWindowSize();
@@ -92,6 +92,11 @@ export default function use404PageInit() {
 
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
+			master.add(
+				removePageLoaderBlocker({
+					node: document.getElementById("blocker") as HTMLDivElement,
+				})
+			);
 			master.add(drawSvgLogo(logo, logoChildren));
 			//SET PAGE OUTRO ANIMATION
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
