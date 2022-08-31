@@ -125,7 +125,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 
 					{responsibilities?.length > 0 && (
 						<div className={styles.responsibilities}>
-							<h3>My Responsibilities / Features I Implemented</h3>
+							<h3>My Responsibilities &#38; Features I Implemented</h3>
 							<div dangerouslySetInnerHTML={{ __html: responsibilities }} />
 						</div>
 					)}
@@ -136,7 +136,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				{/* ----------------------------------------------- */}
 				<section className={styles.tech} data-key="tech">
 					<h2>Technical Sheet</h2>
-					<p>Some noteworthy technologies I got involved with while working on this project.</p>
+					<p>Some noteworthy technologies I got involved with while working on this project:</p>
 
 					<ul>
 						{tech.map((item) => {

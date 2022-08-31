@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { Ref, useRef } from "react";
+import { Ref } from "react";
 import { Logo } from "#/components";
 
 export default function RouteTransitionOverlay({ layersWrapperRef }: { layersWrapperRef?: Ref<HTMLDivElement> }) {

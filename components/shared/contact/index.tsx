@@ -1,15 +1,22 @@
-import Link from "next/link";
 import styles from "./styles.module.scss";
-import { useRef, useState, Ref } from "react";
+import { useRef, useState, useEffect } from "react";
 import { SectionPlaceholder } from "#/components";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
-import { Form } from "./form";
 import { events, registerEvent } from "#/utils/analytics/events";
+import { otherSharedAnimations } from "#/utils/animations";
+import { Details } from "./details";
 
-export default function Contact() {
+const { openContactCurtain } = otherSharedAnimations;
+
+export default function Contact({ projectId }: { projectId?: string }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
+	//-------------------------------------------------------------
+	// FOOTER HEIGHT
+	//-------------------------------------------------------------
 	const [footerHeight, setFooterHeight] = useState(10);
 	const calculateFooterHeight = (node: HTMLDivElement) => {
 		setFooterHeight(node.clientHeight);
@@ -20,8 +27,15 @@ export default function Contact() {
 		}
 	}, [innerWidth, innerHeight]);
 
+	//-------------------------------------------------------------
+	// FIXED FOOTER LOGIC
+	//-------------------------------------------------------------
 	const [isFooterFixed, setIsFooterFixed] = useState(true);
-
+	const onFooterFix = (event: { key: string; keyCode: number }) => {
+		if (event.key === "Tab" || event.keyCode === 9) {
+			setIsFooterFixed(false);
+		}
+	};
 	useIsomorphicLayoutEffect(() => {
 		//On desktop devices toggle between fixed and relative cause footer height might be greater than viewport height
 		if (containerRef.current && placeholderRef.current) {
@@ -37,14 +51,9 @@ export default function Contact() {
 		}
 	}, [innerHeight, innerWidth, footerHeight]);
 
-	function onFooterFix(event: { key: string; keyCode: number }) {
-		if (event.key === "Tab" || event.keyCode === 9) {
-			setIsFooterFixed(false);
-		}
-	}
-
-	// Contact form would not be seen if an element inside it is focused and the contact form is still fixed, so we remove the fixed position immediately we detect user using keyboard
 	useIsomorphicLayoutEffect(() => {
+		// Contact form would not be seen if an element inside it is focused and the contact form is still fixed,
+		// so we remove the fixed position immediately we detect user using keyboard
 		document.body.addEventListener("keydown", onFooterFix);
 
 		return () => {
@@ -52,31 +61,37 @@ export default function Contact() {
 		};
 	}, []);
 
-	const wrapperRef = useRef<HTMLDivElement>(null);
+	//-------------------------------------------------------------
+	// REVEAL FOOTER ANIMATION
+	//-------------------------------------------------------------
+	const [tl, setTl] = useState<gsap.core.Timeline>();
+	useIsomorphicLayoutEffect(() => {
+		if (wrapperRef.current && footerHeight) {
+			const tl = openContactCurtain({
+				trigger: wrapperRef.current,
+				curtain: wrapperRef.current.querySelector("[data-key='contact-curtain']") as HTMLDivElement,
+			});
 
-	// useIsomorphicLayoutEffect(() => {
-	// 	if (wrapperRef.current && footerHeight) {
-	// 		const curtain = wrapperRef.current.querySelector("[data-key='contact-curtain']");
+			setTl(tl);
 
-	// 		const tl = gsap.timeline({
-	// 			scrollTrigger: {
-	// 				trigger: wrapperRef.current,
-	// 				start: "top bottom",
-	// 				end: "bottom bottom",
-	// 				scrub: true,
-	// 				toggleActions: "restart complete restart reset",
-	// 			},
-	// 		});
-	// 		tl.to(curtain, { zIndex: 2, duration: 0.1 });
-	// 		tl.to(curtain, {
-	// 			scaleY: 0,
-	// 		});
-	// 		return () => {
-	// 			tl.scrollTrigger?.kill();
-	// 		};
-	// 	}
-	// }, [footerHeight]);
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
+	}, [footerHeight]);
 
+	//-------------------------------------------------------------
+	// If page height changes particularly on single projects page
+	//-------------------------------------------------------------
+	useEffect(() => {
+		if (projectId && tl) {
+			tl.scrollTrigger?.refresh();
+		}
+	}, [projectId, tl]);
+
+	//-------------------------------------------------------------
+	// Google analytics
+	//-------------------------------------------------------------
 	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		const { link } = e.currentTarget.dataset;
 		const { linkedin, twitter, resume, github, clickEmail } = events.shared.contactForm;
@@ -112,142 +127,7 @@ export default function Contact() {
 				/>
 			</div>
 
-			{/* <div className={styles.blackCurtain} data-key="contact-curtain"></div> */}
+			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
 		</footer>
-	);
-}
-
-function Details({
-	containerRef,
-	isFooterFixed,
-	handlePageGAEvents,
-}: {
-	containerRef: Ref<HTMLDivElement>;
-	isFooterFixed: boolean;
-	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-}) {
-	return (
-		<div
-			className={styles.container}
-			ref={containerRef}
-			data-key="contact-form"
-			style={{ position: isFooterFixed ? "fixed" : "relative" }}
-		>
-			<div className={styles.containerInner}>
-				<div className={styles.leftSection}>
-					<div className={styles.top}></div>
-					<HelpfulLinks handlePageGAEvents={handlePageGAEvents} />
-				</div>
-				<div className={styles.formSection}>
-					<Form />
-				</div>
-			</div>
-			<Social handlePageGAEvents={handlePageGAEvents} />
-		</div>
-	);
-}
-
-function HelpfulLinks({
-	handlePageGAEvents,
-}: {
-	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-}) {
-	return (
-		<>
-			<div>
-				<div className={styles.helpfulLinks}>
-					<h3>Quick Links</h3>
-					<ul>
-						<li>
-							<Link href="/" scroll={false}>
-								<a>
-									<span>Home</span>
-								</a>
-							</Link>
-						</li>
-						<li className={styles.line}></li>
-						<li>
-							<Link href="/projects" scroll={false}>
-								<a>
-									<span>Projects</span>
-								</a>
-							</Link>
-						</li>
-						<li className={styles.line}></li>
-						<li>
-							<Link href="/letters" scroll={false}>
-								<a>
-									<span>Letters </span>
-								</a>
-							</Link>
-						</li>
-					</ul>
-				</div>
-				<div className={styles.helpfulLinks}>
-					<h3>Extras</h3>
-					<ul>
-						<li>
-							<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing">
-								<a target="_blank" onClick={handlePageGAEvents} data-link="resume">
-									<span>Resume</span>
-								</a>
-							</Link>
-						</li>
-						<li className={styles.line}></li>
-
-						<li>
-							<Link href="/credits" scroll={false}>
-								<a>
-									<span>Site credits</span>
-								</a>
-							</Link>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</>
-	);
-}
-
-function Social({
-	handlePageGAEvents,
-}: {
-	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-}) {
-	return (
-		<div className={styles.social}>
-			<ul>
-				<li>
-					<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
-						<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
-							<span>Linkedin</span>
-						</a>
-					</Link>
-				</li>
-				<li>
-					<Link href="https://github.com/davidobodo" passHref>
-						<a target="_blank" onClick={handlePageGAEvents} data-link="github">
-							<span>Github</span>
-						</a>
-					</Link>
-				</li>
-				<li>
-					<Link href="https://twitter.com/phitGeek" passHref>
-						<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
-							<span>Twitter</span>
-						</a>
-					</Link>
-				</li>
-				<li>
-					<Link href="mailto: obododavid5@gmail.com" passHref>
-						<a target="_blank" onClick={handlePageGAEvents} data-link="email">
-							<span>Email</span>
-						</a>
-					</Link>
-				</li>
-			</ul>
-
-			<p> &#169; 2022 David Obodo</p>
-		</div>
 	);
 }

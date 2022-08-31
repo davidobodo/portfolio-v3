@@ -67,6 +67,24 @@ class OtherSharedAnimations {
 		return tl;
 	}
 
+	openContactCurtain({ trigger, curtain }: { trigger: HTMLDivElement; curtain: HTMLDivElement }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger,
+				start: "top bottom",
+				end: "bottom bottom",
+				scrub: true,
+				toggleActions: "restart complete restart reset",
+			},
+		});
+		tl.to(curtain, { zIndex: 2, duration: 0.1 });
+		tl.to(curtain, {
+			scaleY: 0,
+		});
+
+		return tl;
+	}
+
 	changeFocusedOpaqueText(texts: HTMLCollection) {
 		const firstElement = texts[0];
 		const lastElement = texts[texts.length - 1];

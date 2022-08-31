@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { fetchProjects } from "#/utils";
 import { PROJECTS } from "#/constants";
+import { usePageTransitionsContext } from "#/context";
 const { removeCurrentProject } = projectAnimations;
 
 type Props = {
@@ -39,6 +40,13 @@ export default function Project(props: Props) {
 		}
 	};
 
+	const { radialGradientAnimation } = usePageTransitionsContext();
+
+	useEffect(() => {
+		radialGradientAnimation?.scrollTrigger?.refresh();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectedProjectId]);
+
 	return (
 		<>
 			<Head>
@@ -61,7 +69,7 @@ export default function Project(props: Props) {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<Contact />
+			<Contact projectId={selectedProjectId} />
 		</>
 	);
 }

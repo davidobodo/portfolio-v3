@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { projectAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
-
 const { flipProjectIn, removeCurrentProject, displayNextProject } = projectAnimations;
 export default function useSelectProjectAnimation({ initialId = "" }: { initialId?: string }) {
 	const router = useRouter();
@@ -34,9 +33,9 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 	//-------------------------------
 	const onGoToProject = (id: string) => {
 		//Scroll to top
+
 		const elem = document.querySelector("[data-key='project-info']") as HTMLDivElement;
 		elem.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-
 		const modal = modalRef.current;
 		const modalImage = modalImgRef.current;
 

@@ -5,13 +5,14 @@ const PROJECTS: TProject[] = [
 		id: "prodeus",
 		title: "Prodeus",
 		details: `
-		<p>Web application equivalent of the  <a href="https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn" target="_blank">Prodeus Chrome Extension</a>, but with more features.
-		This has to be one of my proudest projects, because the feature list cuts across some very challenging and exciting frontend sectors. </p>
+		<p>Web application equivalent of the  <a href="https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn" target="_blank">Prodeus Chrome Extension</a> but with more features.
+		This has to be one of my proudest projects because the feature list cuts across some very challenging and exciting frontend sectors. </p>
 		`,
 		responsibilities: `
 		<ul>
-			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). In addition to 
-			that, app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
+			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). 
+			In addition to 
+			that, the app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
 			<li>Intelligent cache usage and cache invalidation with <a href="https://react-query-v3.tanstack.com/" target="_blank">React Query</a></li>
 			<li>Loading <span>infinite data</span> in both single column layouts (like instagram, facebook and twitter) as well as multi column layouts (like pinterest).
 			
@@ -51,13 +52,14 @@ const PROJECTS: TProject[] = [
 		id: "cadmils",
 		title: "Cadmils Consulting",
 		details: `
-		<p>Freelance contract to setup the entire web presence for cadmils consulting agency. Collaborated with  <a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a> to achieve the entire design of the website</p>
+		<p>This was a freelance contract to setup the entire web presence for Cadmils Consulting Agency. Collaborated with 
+		<a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a> to achieve the entire design of the website.</p>
 		`,
 		responsibilities: `
 		<ul>
-			<li>Designed <span>3 out of the 6 pages</span> on the website using Figma</li>
-			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes</li>
-			<li>Set up the backend <span>mailing service</span> as well as company emails</li>
+			<li>Designed <span>3 out of the 6 pages</span> on the website using Figma.</li>
+			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes.</li>
+			<li>Set up the backend <span>mailing service</span> as well as company emails.</li>
 		</ul>
 		`,
 
