@@ -1,0 +1,63 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	margin: auto;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 30rem;
+	padding-bottom: 30rem;
+
+	@media (min-width: $lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		max-width: var(--mini-desktop-max-width);
+	}
+
+	@media (min-width: $xxl) {
+		max-width: var(--max-width);
+	}
+
+	.rightSection {
+		display: flex;
+		align-items: center;
+	}
+
+	.paragraphWrapper {
+		margin-bottom: 8.4rem;
+
+		&:last-child {
+			margin-bottom: 0px;
+		}
+
+		.paragraph {
+			margin-bottom: 2.4rem;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+
+			.wordWrapper {
+				font-size: 1.8rem;
+				font-family: "sf-pro-bold";
+				color: var(--ash);
+				letter-spacing: -0.015em;
+				line-height: 2;
+				overflow: hidden;
+
+				@media (min-width: $xl) {
+					font-size: 2.4rem;
+				}
+
+				.word {
+					display: inline-block;
+					transform: translateY(100%);
+				}
+			}
+
+			strong {
+				.wordWrapper {
+					color: var(--white);
+				}
+			}
+		}
+	}
+}

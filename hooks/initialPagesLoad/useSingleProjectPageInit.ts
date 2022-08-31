@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import gsap from "gsap";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
 import useIsomorphicLayoutEffect from "../useIsomorphicLayoutEffect";
 import { usePageTransitionsContext } from "#/context";
-const { openNoiseLayers, drawSvgLogo, closeNoiseLayers } = sharedAnimations;
+const { openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
 
 export default function useSingleProjectInit() {
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
@@ -17,28 +16,34 @@ export default function useSingleProjectInit() {
 		const logo = document.querySelector("[data-key='logo']") as Element;
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
 
-		const master = gsap.timeline();
+		if (layers && logo && logoChildren) {
+			const master = gsap.timeline();
 
-		if (initialAppLoad) {
-			setInitialAppLoad(false);
-			master.add(drawSvgLogo(logo, logoChildren));
-			//SET PAGE OUTRO ANIMATION
-			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
-		}
-
-		master.add(openNoiseLayers(layers));
-		master.add(() => {
-			document.querySelector("body")?.classList.remove("hide");
-			const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement | null;
-
-			if (navLogo) {
-				navLogo.style.visibility = "visible";
+			if (initialAppLoad) {
+				setInitialAppLoad(false);
+				master.add(
+					removePageLoaderBlocker({
+						node: document.getElementById("blocker") as HTMLDivElement,
+					})
+				);
+				master.add(drawSvgLogo(logo, logoChildren));
+				exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 			}
-		});
 
-		return () => {
-			master.kill();
-		};
+			master.add(openNoiseLayers(layers));
+			master.add(() => {
+				document.querySelector("body")?.classList.remove("hide");
+				const navLogo = document.querySelector("[data-key='nav-logo']") as HTMLElement | null;
+
+				if (navLogo) {
+					navLogo.style.visibility = "visible";
+				}
+			});
+
+			return () => {
+				master.kill();
+			};
+		}
 	}, []);
 
 	return {};

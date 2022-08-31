@@ -1,20 +1,18 @@
-import { TProject } from "#/interfaces";
+import { TProject } from "#/types";
 
-const COLORS = ["#dcd0c2", "#e2d1d9", "#b1a994", "#373737"];
-const TYPES = ["Web Application", "Website", "Learn from Tutorial", "Experiments"];
-
-export const PROJECTS: TProject[] = [
+const PROJECTS: TProject[] = [
 	{
 		id: "prodeus",
 		title: "Prodeus",
 		details: `
-		<p>Web application equivalent of the  <a href="https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn" target="_blank">Prodeus Chrome Extension</a>, but with more features.
-		This has to be one of my proudest projects, because the feature list cuts across some very challenging and exciting frontend sectors. </p>
+		<p>Web application equivalent of the  <a href="https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn" target="_blank">Prodeus Chrome Extension</a> but with more features.
+		This has to be one of my proudest projects because the feature list cuts across some very challenging and exciting frontend sectors. </p>
 		`,
 		responsibilities: `
 		<ul>
-			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). In addition to 
-			that, app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
+			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). 
+			In addition to 
+			that, the app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
 			<li>Intelligent cache usage and cache invalidation with <a href="https://react-query-v3.tanstack.com/" target="_blank">React Query</a></li>
 			<li>Loading <span>infinite data</span> in both single column layouts (like instagram, facebook and twitter) as well as multi column layouts (like pinterest).
 			
@@ -54,13 +52,14 @@ export const PROJECTS: TProject[] = [
 		id: "cadmils",
 		title: "Cadmils Consulting",
 		details: `
-		<p>Freelance contract to setup the entire web presence for cadmils consulting agency. Collaborated with  <a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a> to achieve the entire design of the website</p>
+		<p>This was a freelance contract to setup the entire web presence for Cadmils Consulting Agency. Collaborated with 
+		<a href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/" target="_blank">Harmony Orakpoyovwuru</a> to achieve the entire design of the website.</p>
 		`,
 		responsibilities: `
 		<ul>
-			<li>Designed <span>3 out of the 6 pages</span> on the website using Figma</li>
-			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes</li>
-			<li>Set up the backend <span>mailing service</span> as well as company emails</li>
+			<li>Designed <span>3 out of the 6 pages</span> on the website using Figma.</li>
+			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes.</li>
+			<li>Set up the backend <span>mailing service</span> as well as company emails.</li>
 		</ul>
 		`,
 
@@ -68,7 +67,7 @@ export const PROJECTS: TProject[] = [
 		sitelink: "https://www.cadmils.com/",
 		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku", "sendgrid"],
 		type: "Website",
-		bgColor: "#e2d1d9",
+		bgColor: "#86868b",
 		media: [
 			{
 				type: "image",
@@ -254,6 +253,25 @@ export const PROJECTS: TProject[] = [
 	},
 
 	{
+		id: "pv-3",
+		title: "Portfolio V3",
+		details: ``,
+		githublink: "",
+		responsibilities: "",
+		roles: [],
+		sitelink: "",
+		tech: [],
+		bgColor: "",
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/prodeus-editor/pic.jpg",
+			},
+		],
+	},
+
+	{
 		id: "prodeus-editor",
 		title: "Prodeus ckeditor",
 		details: `<p>While building <a href="/projects/prodeus">Prodeus web app</a>, there was a need to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
@@ -270,7 +288,7 @@ export const PROJECTS: TProject[] = [
 		roles: [],
 		sitelink: "",
 		tech: ["html", "css", "react", "javascript"],
-		bgColor: COLORS[2],
+		bgColor: "#000",
 		type: "Web Application",
 		media: [
 			{
@@ -376,7 +394,7 @@ export const PROJECTS: TProject[] = [
 		`,
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
 		tech: ["html", "css", "sass", "typescript", "ghpages"],
-		bgColor: COLORS[3],
+		bgColor: "#000",
 		type: "Website",
 		media: [
 			{
@@ -426,7 +444,7 @@ export const PROJECTS: TProject[] = [
 		githublink: "https://github.com/davidobodo/FEM-bookmark-landing-page",
 		sitelink: "https://davidobodo.github.io/FEM-bookmark-landing-page/",
 		tech: ["html", "css", "sass", "ghpages"],
-		bgColor: COLORS[0],
+		bgColor: "#000",
 		type: "Website",
 		media: [
 			{
@@ -485,82 +503,61 @@ export const PROJECTS: TProject[] = [
 			},
 		],
 	},
+	{
+		id: "ozidi",
+		title: "Ozidi/Agricpay",
+		details: `
+		<p><span>Ozidi</span> which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small-scale farmers in "Nigeria" get access to loans.</a> It is of no news that in order for
+		any business to request for loans from banks and other loan agencies, the owner must have some form of <span>collateral to give</span> should in case the individual is not able to pay the loan. Unfortunately most smale scale farmers
+		do not have any collateral to give, hence the need for Agricpay.
+		</p>
+		<p>
+		Agricpay aimed at solving this problem, by inculcating in the farmers mindset the <span>habit of saving</span>. Using this approach meant in the long run the farmer would be borrowing his/her own money
+		</p>
 
-	// {
-	// 	id: "oppo",
-	// 	title: "OPPO Redefinition Contest",
-	// 	details: `<p>When OPPO decided to do their redefinition photography contest in the year 2020, I was among the team of 4 star developers who embarked on creating the site for the project as well as the dashboard contestants upload their photos as well as help admins to access the submissions.
-	// 	One of my very first enterprise grade applications, which was a huge success cause I had the likes of <a href="" target="_blank">Eric Okemmadu</a>, <a href="" target="_blank">Justice Otuya</a> and <a href="" target="_blank">Ore</a> on the team
-	// 	</p>
-	// 	<p>Since time has passed, the site is no longer up, hence you wont be able to access it from any url. However this is a very noteworthy project. Check out the slides for some graphics about features implemented</p>
-	// 	`,
-	// 	githublink: "",
-	// 	roles: [],
-	// 	responsibilities: `
-	// 	<ul>
-	// 		<li>Convert some Design pages into pixel perfect web app equivalent</li>
-	// 		<li>Connect some parts of the frontend to the backend endpoints</li>
-	// 	</ul>`,
-	// 	sitelink: "",
-	// 	tech: ["react", "styledcomponents"],
-	// 	bgColor: COLORS[2],
-	// 	type: "Web Application",
-	// 	media: [
-	// 		{
-	// 			type: "image",
-	// 			source: "/images/projects/test.jpg",
-	// 		},
-	// 	],
-	// },
-	// {
-	// 	id: "ozidi",
-	// 	title: "Ozidi/Agricpay",
-	// 	details: `
-	// 	<p><span>Ozidi</span> which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small-scale farmers in "Nigeria" get access to loans.</a> It is of no news that in order for
-	// 	any business to request for loans from banks and other loan agencies, the owner must have some form of <span>collateral to give</span> should in case the individual is not able to pay the loan. Unfortunately most smale scale farmers
-	// 	do not have any collateral to give, hence the need for Agricpay.
-	// 	</p>
-	// 	<p>
-	// 	Agricpay aimed at solving this problem, by inculcating in the farmers mindset the <span>habit of saving</span>. Using this approach meant in the long run the farmer would be borrowing his/her own money
-	// 	</p>
+		<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span> , together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>, we set out to build a
+		fully functional dashboard to help with Agricpays vision.
+		</p>
+		<div>
+			<p>Some of the features included:</p>
+			<ul>
+				<li>Admin authentication</li>
+				<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
+				<li>History of all recharge cards generated</li>
+				<li>Farmers data</li>
+			</ul>
+		</div>
 
-	// 	<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span> , together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>, we set out to build a
-	// 	fully functional dashboard to help with Agricpays vision.
-	// 	</p>
-	// 	<div>
-	// 		<p>Some of the features included:</p>
-	// 		<ul>
-	// 			<li>Admin authentication</li>
-	// 			<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
-	// 			<li>History of all recharge cards generated</li>
-	// 			<li>Farmers data</li>
-	// 		</ul>
-	// 	</div>
+		<p>Unfortunately, not all startups reach the "promise land" irrespective of a solid technology, because there are more things asides from the tech involved in the success of a business. So the live links are currently down, however for curiousity sake
+		I believe you could still visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> as well as <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
+		</p>
 
-	// 	<p>Unfortunately, not all startups reach the "promise land" irrespective of a solid technology, because there are more things asides from the tech involved in the success of a business. So the live links are currently down, however for curiousity sake
-	// 	I believe you could still visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> as well as <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
-	// 	</p>
-
-	// 	<p><span>Project span: July 2020 - September 2020.</span></p>
-	// 	`,
-	// 	roles: ["design", "fe"],
-	// 	sitelink: "",
-	// 	responsibilities: `
-	// 	<ul>
-	// 		<li>Create entire app UI/UX using Figma</li>
-	// 		<li>Convert about 80% of the design into functional responsive web app pages</li>
-	// 		<Li>Connect pages to their respective backend endpoints</li>
-	// 		<li>Use <span>Wordpress</span> to create a static publicly accessible web page for the company</li>
-	// 	</ul>
-	// 	`,
-	// 	tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
-	// 	bgColor: COLORS[2],
-	// 	type: "Web Application",
-	// 	media: [
-	// 		{
-	// 			type: "image",
-	// 			source: "/images/projects/test.jpg",
-	// 		},
-	// 	],
-	// },
+		<p><span>Project span: July 2020 - September 2020.</span></p>
+		`,
+		roles: ["design", "fe"],
+		sitelink: "",
+		responsibilities: `
+		<ul>
+			<li>Create entire app UI/UX using Figma</li>
+			<li>Convert about 80% of the design into functional responsive web app pages</li>
+			<Li>Connect pages to their respective backend endpoints</li>
+			<li>Use <span>Wordpress</span> to create a static publicly accessible web page for the company</li>
+		</ul>
+		`,
+		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
+		bgColor: "#56D686",
+		type: "Web Application",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/ozidi/generator.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/ozidi/reg.jpg",
+			},
+		],
+	},
 ];
+
+export default PROJECTS;

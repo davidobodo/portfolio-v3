@@ -1,11 +1,11 @@
 import gsap from "gsap";
-import { useRef, RefObject } from "react";
-import { homePageAnimations, sharedAnimations } from "#/utils/animations";
+import { useRef, RefObject, useState } from "react";
+import { otherHomeSectionsAnimations, otherSharedAnimations } from "#/utils/animations";
 import { usePageTransitionsContext } from "#/context";
-import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
+import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
-const { bannerAnimation } = homePageAnimations;
-const { transitionToDarkSection, drawSvgLogo, openNoiseLayers, closeNoiseLayers } = sharedAnimations;
+const { bannerAnimation } = otherHomeSectionsAnimations;
+const { drawSvgLogo, openNoiseLayers, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
 
 type Props = {
 	windowInnerHeight: number;
@@ -23,7 +23,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 	const bannerRef = useRef<HTMLDivElement>(null);
 	const bannerRefSelector = gsap.utils.selector(bannerRef);
 
-	useIsomorphicLayoutEffect(() => {
+	const initPage = () => {
 		//Ensure page scrolls to the top, since it might not be at the top due to our page transition effect
 		window.scrollTo({
 			top: 0,
@@ -41,8 +41,14 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 		const layers = document.querySelectorAll("[data-key='layer']");
 
 		const master = gsap.timeline();
+
 		if (initialAppLoad) {
 			setInitialAppLoad(false);
+			master.add(
+				removePageLoaderBlocker({
+					node: document.getElementById("blocker") as HTMLDivElement,
+				})
+			);
 			master.add(drawSvgLogo(logo, logoChildren));
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
 		}
@@ -59,29 +65,38 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 			})
 		);
 
-		return () => {
-			master.kill();
-		};
-	}, []);
+		return master;
+	};
 
-	//-----------------------------------------
-	// BLACK COVER ANIMATION
-	//-----------------------------------------
-	const blackCoverRef = useRef<HTMLDivElement>(null);
 	useIsomorphicLayoutEffect(() => {
-		if (darkSectionRef.current && bannerRef.current && blackCoverRef.current) {
-			const tl = transitionToDarkSection({
-				darkSection: darkSectionRef.current,
-				banner: bannerRef.current,
-				blackCurtain: blackCoverRef.current,
-				windowInnerWidth,
-			});
+		const callback = () => {
+			const tl = initPage();
 
 			return () => {
-				tl.scrollTrigger?.kill();
+				tl.kill();
+			};
+		};
+
+		if (document.readyState === "complete") {
+			const tl = initPage();
+
+			return () => {
+				tl.kill();
+			};
+		} else {
+			window.addEventListener("load", callback);
+
+			return () => {
+				window.removeEventListener("load", callback);
 			};
 		}
-	}, [windowInnerWidth]);
+	}, []);
+
+	const { blackCoverRef } = useTransitionToDarkSection({
+		windowInnerWidth,
+		darkSectionRef,
+		bannerRef,
+	});
 
 	return {
 		bannerRef,

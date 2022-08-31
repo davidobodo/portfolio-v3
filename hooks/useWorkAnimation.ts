@@ -51,7 +51,7 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 			//-----------------------------------------
 			//MOBILE ANIMATION
 			//-----------------------------------------
-			"(max-width: 991px)": () => {
+			"(max-width: 991px) and (min-height: 564px)": () => {
 				if (mobileWorkContainerRef.current) {
 					const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
 					const faintBgTitle = mobileWorkContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
@@ -77,9 +77,9 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 		});
 	}, [windowInnerWidth]);
 
-	function scrollToLabel(label: number) {
+	const scrollToLabel = (label: number) => {
 		gsap.to(window, { scrollTo: desktopTl?.scrollTrigger?.labelToScroll(`section-${label}-visible`) });
-	}
+	};
 
 	const onWorkDetailsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		const key = e.key || e.keyCode;

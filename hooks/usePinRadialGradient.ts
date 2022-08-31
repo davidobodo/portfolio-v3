@@ -1,9 +1,10 @@
 import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from ".";
-import { sharedAnimations } from "#/utils/animations";
+import { otherSharedAnimations } from "#/utils/animations";
+import { useRouter } from "next/router";
 
-const { pinRadialGradient } = sharedAnimations;
+const { pinRadialGradient } = otherSharedAnimations;
 
 export default function usePinRadialGradient({
 	darkSectionRef,
@@ -12,11 +13,17 @@ export default function usePinRadialGradient({
 	darkSectionRef: RefObject<HTMLDivElement>;
 	bannerHeight?: number;
 }) {
+	const { pathname } = useRouter();
 	const darkSectionRadialGradientRef = useRef(null);
 	const { setRadialGradientAnimation } = usePageTransitionsContext();
 
 	useIsomorphicLayoutEffect(() => {
-		if (darkSectionRef.current && bannerHeight && darkSectionRadialGradientRef.current) {
+		//Single projects page doesnt have a banner
+		if (
+			(pathname === "/projects/[id]" || bannerHeight) &&
+			darkSectionRef.current &&
+			darkSectionRadialGradientRef.current
+		) {
 			const anim = pinRadialGradient({
 				section: darkSectionRef.current,
 				gradient: darkSectionRadialGradientRef.current,
@@ -27,7 +34,7 @@ export default function usePinRadialGradient({
 				anim.scrollTrigger?.kill();
 			};
 		}
-	}, [bannerHeight]);
+	}, [bannerHeight, pathname]);
 
 	return {
 		darkSectionRef,

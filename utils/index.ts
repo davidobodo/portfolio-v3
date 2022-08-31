@@ -1,5 +1,5 @@
-import { PROJECTS } from "#/constants/projects";
-import { TProjectData } from "#/interfaces";
+import { PROJECTS } from "#/constants/";
+import { TProjectData, TTimelineAction } from "#/types";
 
 function normalize(value: number, lowerlimit: number, upperLimit: number) {
 	return lowerlimit + (upperLimit - lowerlimit) * value;
@@ -59,4 +59,22 @@ function matchElement(origin: Element, destinationTag: string): Element | void {
 	return matchElement(origin.parentElement, destinationTag);
 }
 
-export { normalize, animateFaintSvg, fetchProjects, matchElement };
+function executeTimelineActions({ tl, tlActions }: { tl: gsap.core.Timeline; tlActions: TTimelineAction[] }) {
+	for (let j = 0; j < tlActions.length; j++) {
+		const { target, vars, options, isLabel, label } = tlActions[j];
+
+		if (isLabel && label) {
+			tl.add(label);
+		} else {
+			if (target && vars) {
+				if (options) {
+					tl.to(target, vars, options);
+				} else {
+					tl.to(target, vars);
+				}
+			}
+		}
+	}
+}
+
+export { normalize, animateFaintSvg, fetchProjects, matchElement, executeTimelineActions };

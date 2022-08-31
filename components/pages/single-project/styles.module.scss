@@ -1,0 +1,392 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	padding-bottom: 10rem;
+
+	@media (min-width: $xl) {
+		display: flex;
+	}
+
+	.content {
+		width: 100%;
+		margin: 0px auto;
+		padding: 0px 2rem;
+		color: var(--ash);
+		padding-top: 12rem;
+
+		@media (min-width: $lg) {
+			padding-top: 10rem;
+			max-width: 70rem;
+		}
+
+		@media (min-width: $xl) {
+			padding-top: 15rem;
+			max-width: 90rem;
+		}
+
+		//-----------------------------------------
+		// GLOBAL STYLES
+		//-----------------------------------------
+		h1 {
+			font-size: 4rem;
+			font-family: sf-pro-bold;
+			font-weight: 500;
+		}
+
+		h2 {
+			font-family: sf-pro-bold;
+			font-weight: 500;
+			font-size: 3rem;
+			border-bottom: 1px solid var(--ash);
+			padding-bottom: 2rem;
+			text-transform: uppercase;
+		}
+
+		p {
+			line-height: 1.5;
+			font-family: sf-pro-regular;
+			font-size: 1.6rem;
+
+			@media (min-width: $lg) {
+				font-size: 1.8rem;
+			}
+		}
+
+		ul {
+			padding-left: 1.5rem;
+
+			li {
+				line-height: 1.5;
+				margin-bottom: 1rem;
+				font-family: sf-pro-regular;
+				font-size: 1.6rem;
+
+				@media (min-width: $lg) {
+					font-size: 1.8rem;
+				}
+			}
+		}
+		//-----------------------------------------
+		//-----------------------------------------
+		//-----------------------------------------
+		.title {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			margin-bottom: 4rem;
+
+			.btnClose {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: var(--ash);
+				border: 0px;
+				height: 40px;
+				border-radius: 3rem;
+				font-size: 1.4rem;
+				text-transform: uppercase;
+				width: 100px;
+				clip-path: inset(0em 0em 0em 6rem round 999px);
+				transition: clip-path 300ms ease-in-out;
+				cursor: pointer;
+				padding-left: 1rem;
+				z-index: 2000;
+				flex-shrink: 0;
+				position: relative;
+
+				span {
+					&:nth-child(1) {
+						width: 4rem;
+						height: 4rem;
+						border-radius: 50%;
+						background-color: var(--white);
+						position: absolute;
+						left: calc(100% - 40px);
+						transition: left 300ms ease-in-out, transform 300ms ease-in-out;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						strong {
+							transition: opacity 300ms ease-in-out;
+							color: var(--black);
+						}
+					}
+
+					&:nth-child(2) {
+						color: var(--white);
+					}
+				}
+
+				&:hover {
+					clip-path: inset(0em 0em 0em 0rem round 999px);
+
+					span {
+						&:nth-child(1) {
+							left: 0px;
+							transform: scale(0.3);
+
+							strong {
+								opacity: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.media {
+			margin-bottom: 6rem;
+			transform-origin: top left;
+
+			.image {
+				padding-top: 62.5%;
+
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-color: var(--ash);
+
+				will-change: transform;
+			}
+		}
+
+		.about {
+			margin-bottom: 6rem;
+
+			h2 {
+				margin-bottom: 2rem;
+			}
+
+			h3 {
+				text-transform: uppercase;
+				margin-bottom: 1rem;
+				font-size: 1.8rem;
+
+				@media (min-width: $lg) {
+					font-size: 2rem;
+				}
+			}
+
+			a {
+				color: var(--white);
+			}
+
+			span {
+				color: var(--white);
+			}
+
+			.details {
+				margin-bottom: 4rem;
+
+				p {
+					margin-bottom: 1rem;
+				}
+			}
+
+			.roles {
+				margin-top: 4rem;
+				margin-bottom: 4rem;
+			}
+		}
+
+		.tech {
+			margin-bottom: 6rem;
+
+			h2 {
+				margin-bottom: 2rem;
+			}
+
+			p {
+				margin-bottom: 2rem;
+			}
+		}
+
+		.links {
+			@media (min-width: $md) {
+				display: flex;
+				justify-content: flex-end;
+			}
+			a {
+				border: 1px solid var(--ash);
+				font-size: 1.6rem;
+				color: var(--ash);
+				text-decoration: none;
+				padding: 7px 30px;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 2rem;
+
+				@media (min-width: $md) {
+					margin-bottom: 0rem;
+					margin-right: 3rem;
+				}
+
+				&:hover {
+					background-color: var(--white-alpha);
+				}
+
+				svg {
+					margin-left: 1rem;
+				}
+
+				&:last-child {
+					margin-right: 0px;
+					margin-bottom: 0px;
+				}
+			}
+
+			&.mobile {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 2rem;
+				margin-bottom: 5rem;
+
+				@media (min-width: $md) {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+//-------------------------------------
+// NAVIGATION (DESKTOP)
+//-------------------------------------
+
+.desktopNavigator {
+	position: sticky;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	background-color: transparent;
+	width: 8vh;
+	height: 40vh;
+	opacity: 0.5;
+	outline: none;
+	border: 0px;
+	display: none;
+
+	@media (min-width: $xl) {
+		display: block;
+	}
+
+	svg {
+		will-change: transform;
+		transition: transform 200ms ease-in-out;
+	}
+
+	&.btnPrevious {
+		left: 5rem;
+		background-image: rgba(134, 134, 139, 0.5);
+
+		&:hover {
+			opacity: 1;
+
+			svg {
+				transform: translateX(-3px);
+			}
+		}
+	}
+
+	&.btnNext {
+		right: 5rem;
+
+		&:hover {
+			opacity: 1;
+
+			svg {
+				transform: translateX(3px);
+			}
+		}
+	}
+}
+
+//-------------------------------------
+// NAVIGATION (MOBILE)
+//-------------------------------------
+.mobileNavigator {
+	display: flex;
+	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 10rem;
+
+	@media (min-width: $xl) {
+		display: none;
+	}
+
+	button {
+		background-color: transparent;
+		// width: 100px;
+		border: 0px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		cursor: pointer;
+
+		&:hover {
+			svg {
+				stroke: white;
+			}
+		}
+	}
+}
+
+//-----------------------------------------------
+// FOR NOT FOUND PROJECT
+//-----------------------------------------------
+.empty {
+	padding-bottom: 10rem;
+	padding-top: 10rem;
+	padding: 10rem 2rem;
+	max-width: 90rem;
+	color: var(--ash);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+
+	p {
+		font-family: sf-pro-bold;
+		font-weight: 500;
+		margin-bottom: 4rem;
+		text-align: center;
+		font-size: 1.8rem;
+
+		@media (min-width: $md) {
+			font-size: 2.4rem;
+		}
+
+		@media (min-width: $lg) {
+			font-size: 4rem;
+		}
+	}
+
+	span {
+		color: var(--white);
+	}
+
+	a {
+		border: 1px solid var(--ash);
+		font-size: 1.6rem;
+		color: var(--ash);
+		text-decoration: none;
+		padding: 7px 30px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:hover {
+			background-color: var(--white-alpha);
+		}
+
+		svg {
+			margin-left: 1rem;
+		}
+	}
+}

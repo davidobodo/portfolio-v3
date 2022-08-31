@@ -24,7 +24,6 @@ export default function useWindowSize() {
 		setWindowSize(getDimensions());
 	}
 
-	// set resize handler once on mount and clean before unmount
 	useIsomorphicLayoutEffect(() => {
 		window.addEventListener("resize", onResize);
 

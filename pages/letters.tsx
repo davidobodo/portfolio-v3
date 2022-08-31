@@ -3,7 +3,7 @@ import styles from "#/styles/_pages/letters.module.scss";
 import { NextPage } from "next";
 import { useRef } from "react";
 import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact } from "#/components";
-import { LETTERS } from "#/constants/letters";
+import { LETTERS } from "#/constants";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
 
 const Letters: NextPage = () => {

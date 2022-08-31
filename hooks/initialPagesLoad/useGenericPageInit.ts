@@ -1,16 +1,16 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
 import { usePageTransitionsContext } from "#/context";
-import { sharedAnimations } from "#/utils/animations";
-import { useIsomorphicLayoutEffect, useSetBannerHeight } from "#/hooks";
+import { otherSharedAnimations } from "#/utils/animations";
+import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
-const { transitionToDarkSection, genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers } =
-	sharedAnimations;
+const { genericPageBannerAnimation, openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } =
+	otherSharedAnimations;
 /**
  *
  * Generic pages include
- * 2. Letters Page
- * 3. Site Credits Page
+ * 1. Letters Page
+ * 2. Site Credits Page
  */
 
 export default function useGenericPageInit({
@@ -45,6 +45,11 @@ export default function useGenericPageInit({
 			setInitialAppLoad(false);
 			//SET PAGE OUTRO ANIMATION
 			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
+			master.add(
+				removePageLoaderBlocker({
+					node: document.getElementById("blocker") as HTMLDivElement,
+				})
+			);
 			master.add(drawSvgLogo(logo, logoChildren));
 		}
 		master.add(openNoiseLayers(layers));
@@ -63,25 +68,12 @@ export default function useGenericPageInit({
 	}, []);
 
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
-	//-----------------------------------------
-	// BLACK COVER ANIMATION
-	//-----------------------------------------
-	const blackCoverRef = useRef<HTMLDivElement>(null);
 
-	useIsomorphicLayoutEffect(() => {
-		if (darkSectionRef.current && bannerRef.current && blackCoverRef.current) {
-			const tl = transitionToDarkSection({
-				darkSection: darkSectionRef.current,
-				banner: bannerRef.current,
-				blackCurtain: blackCoverRef.current,
-				windowInnerWidth,
-			});
-
-			return () => {
-				tl.scrollTrigger?.kill();
-			};
-		}
-	}, [windowInnerWidth]);
+	const { blackCoverRef } = useTransitionToDarkSection({
+		windowInnerWidth,
+		darkSectionRef,
+		bannerRef,
+	});
 
 	return {
 		textWrapperRef,

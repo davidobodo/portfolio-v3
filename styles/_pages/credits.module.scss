@@ -80,7 +80,6 @@
 		}
 
 		.list {
-			// padding-left: 3rem;
 			li {
 				display: flex;
 				flex-direction: column;
@@ -98,9 +97,6 @@
 				}
 
 				&:before {
-					// content: "";
-					// position: absolute;
-					// display: block;
 					width: 10px;
 					height: 10px;
 					border-radius: 50%;

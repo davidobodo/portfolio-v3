@@ -1,0 +1,189 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	// Has the long height that helps span the animation through a long scroll distance
+	min-height: 250vh;
+	display: none;
+
+	@media (min-width: $lg) {
+		display: block;
+	}
+	//-------------------------------
+	//GLOBAL STYLES
+	//-------------------------------
+	a {
+		cursor: pointer;
+		color: inherit;
+		text-decoration: underline;
+
+		&:hover {
+			color: var(--white);
+		}
+
+		&:focus {
+			text-decoration: none;
+			color: var(--white);
+			outline: 2px dotted;
+		}
+	}
+	//-------------------------------
+	//-------------------------------
+	//-------------------------------
+
+	.contentWrapper {
+		// Note: GSAP makes this fixed, since we apply "pinning to it". Hence our SVG is positioned relative to this
+		height: 100vh; // So content can be this tall and animated SVG runs from the bottom of the viewport to the top
+
+		.tabs {
+			// Holds the work content
+			display: grid;
+			grid-gap: 8rem;
+			grid-template-columns: 1.5fr 1fr;
+			margin: auto;
+			height: 100%;
+			max-width: 1024px;
+
+			@media (min-width: $xxl) {
+				max-width: var(--max-width);
+			}
+
+			&:focus {
+				outline: none;
+
+				.tabHeaders {
+					background-color: var(--white-alpha);
+				}
+			}
+		}
+
+		// Since the height of this headers column is 100vh, "tabHeadersContainer" was brought in to center the tabHeaders
+		.tabHeadersContainer {
+			display: flex;
+			// align-items: center; // Helps to align the content to the center of the container
+			flex-direction: column;
+			justify-content: center;
+
+			.tabHeaders {
+				position: relative;
+				z-index: 1;
+				overflow: hidden;
+
+				.bgGradient {
+					background-image: var(--work-linear-gradient);
+					height: 72px;
+					width: 100vw;
+					position: absolute;
+					transform: translate(0px, -83px);
+				}
+
+				.tabHeader {
+					color: var(--white);
+					list-style: none;
+					font-family: "sf-pro-bold";
+					font-weight: 600;
+					line-height: 1.05;
+					letter-spacing: -0.015em;
+					padding: 1rem 4rem 1rem 2rem;
+					opacity: 0.1;
+
+					font-size: 50px;
+				}
+			}
+		}
+
+		.tabDetails {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			align-items: center; // Helps to alifn the content to the center of the container
+
+			.tabDetail {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				transform: translateY(40px);
+				opacity: 0;
+				color: var(--ash);
+				z-index: -1;
+
+				h2 {
+					line-height: 1.19048;
+					font-weight: 600;
+					letter-spacing: 0.021em;
+					margin-bottom: 2rem;
+					color: var(--white);
+					display: inline-block;
+					font-size: 1.6rem;
+
+					@media (min-width: $xl) {
+						font-size: 1.8rem;
+					}
+
+					&:focus {
+						color: var(--white);
+						outline: 2px dotted;
+					}
+				}
+
+				.notes {
+					line-height: 2;
+					margin-bottom: 1rem;
+					font-family: "sf-pro-bold";
+					width: 360px;
+					font-size: 1.6rem;
+
+					@media (min-width: $xl) {
+						font-size: 1.8rem;
+					}
+
+					ol {
+						padding-left: 1.8rem;
+					}
+				}
+
+				span {
+					line-height: 1.19048;
+					font-weight: 600;
+					margin-bottom: 4rem;
+					display: block;
+					font-size: 1.6rem;
+
+					@media (min-width: $xl) {
+						font-size: 1.8rem;
+					}
+				}
+
+				ul {
+					list-style: none;
+
+					li {
+						margin-bottom: 1.2rem;
+						padding-left: 30px;
+						position: relative;
+						font-family: "sf-pro-bold";
+						line-height: 1.5;
+
+						font-size: 1.6rem;
+
+						@media (min-width: $xl) {
+							font-size: 1.8rem;
+						}
+
+						&:before {
+							content: "";
+							position: absolute;
+							left: 0;
+							width: 6px;
+							height: 6px;
+							background-color: var(--ash);
+							display: flex;
+							border-radius: 50%;
+							top: 50%;
+							transform: translateY(-50%);
+						}
+					}
+				}
+			}
+		}
+	}
+}

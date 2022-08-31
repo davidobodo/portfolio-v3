@@ -1,0 +1,180 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	// Has the long height that helps span the animation through a long scroll distance
+	min-height: 250vh;
+	display: block;
+
+	@media (min-width: $lg) {
+		display: none;
+	}
+
+	.contentWrapper {
+		padding-top: 7rem;
+		position: relative;
+
+		@media (min-height: $min-app-height) {
+			// Note: GSAP makes this fixed, since we apply "pinning to it". Hence our SVG is positioned relative to this
+			height: 100vh; // So content can be this tall and animated SVG runs from the bottom of the viewport to the top
+			display: flex;
+			align-items: center;
+		}
+
+		.tabs {
+			// To wrap the work content
+			position: relative;
+			overflow: hidden;
+
+			.bgGradient {
+				display: none;
+
+				@media (min-height: $min-app-height) {
+					background-image: var(--work-linear-gradient);
+					height: 53px;
+					width: 100vw;
+					position: absolute;
+					top: 0px;
+					left: -2rem;
+					display: block;
+				}
+			}
+
+			.tabHeaders {
+				display: none;
+
+				@media (min-height: $min-app-height) {
+					display: flex;
+					flex-wrap: nowrap;
+					padding-left: 2rem;
+					position: relative; // So that the translation works (i.e moving the titles to the left)
+				}
+
+				@media (min-height: 641px) {
+					margin-bottom: 3rem;
+				}
+
+				.tabHeader {
+					color: var(--ash);
+					cursor: pointer;
+					list-style: none;
+					font-family: "sf-pro-bold";
+					font-weight: 600;
+					font-size: 5rem;
+					line-height: 1.05;
+					font-weight: 600;
+					letter-spacing: -0.015em;
+					margin-right: 2rem;
+					opacity: 0.2;
+				}
+			}
+
+			.tabDetails {
+				@media (min-height: $min-app-height) {
+					position: relative;
+					height: 564px; //Assumption from text height
+				}
+
+				h2 {
+					margin-bottom: 2rem;
+					color: var(--white);
+					font-size: 4.4rem;
+					padding: 0px 2rem;
+
+					@media (min-height: $min-app-height) {
+						display: none;
+					}
+				}
+
+				.tabDetail {
+					display: flex;
+					align-items: center;
+					padding-left: 2rem;
+					padding-right: 2rem;
+					width: 100vw;
+					color: var(--ash);
+					margin-bottom: 4rem;
+
+					@media (min-height: $min-app-height) {
+						position: absolute;
+						opacity: 0;
+						z-index: -1;
+						margin-bottom: 0px;
+					}
+
+					h3 {
+						margin-bottom: 2rem;
+						color: var(--white);
+						font-size: 1.6rem;
+
+						@media (min-height: $min-app-height) {
+							display: none;
+						}
+					}
+
+					.notes {
+						line-height: 2;
+						margin-bottom: 1rem;
+						font-family: "sf-pro-bold";
+						font-size: 1.6rem;
+
+						a {
+							cursor: pointer;
+							color: inherit;
+
+							&:hover {
+								color: var(--white);
+							}
+						}
+						ol {
+							padding-left: 1.8rem;
+						}
+					}
+
+					span {
+						font-size: 1.6rem;
+						line-height: 1.19048;
+						font-weight: 600;
+						margin-bottom: 4rem;
+						display: block;
+					}
+
+					ul {
+						list-style: none;
+
+						li {
+							font-size: 1.6rem;
+							margin-bottom: 1.2rem;
+							padding-left: 30px;
+							position: relative;
+							font-family: "sf-pro-bold";
+							line-height: 1.5;
+
+							&:before {
+								content: "";
+								position: absolute;
+								left: 0;
+								width: 6px;
+								height: 6px;
+								background-color: var(--ash);
+								display: flex;
+								border-radius: 50%;
+								top: 50%;
+								transform: translateY(-50%);
+							}
+
+							a {
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+
+								&:hover {
+									color: var(--white);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

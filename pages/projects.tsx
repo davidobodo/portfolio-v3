@@ -21,15 +21,14 @@ import {
 	useProjectsCurrentView,
 } from "#/hooks";
 
-import { PROJECTS } from "#/constants/projects";
+import { PROJECTS, TECH_STACKS } from "#/constants";
 import { useState, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { TECH_STACKS } from "#/constants/tech-stacks";
 import { PROJECT_NATURE } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { FilterIcon } from "#/components/icons";
 import { projectAnimations } from "#/utils/animations";
-import { TFilterBy } from "#/interfaces";
+import { TFilterBy } from "#/types";
 
 const { scrollToProjectsSection } = projectAnimations;
 
@@ -192,16 +191,6 @@ const ProjectsPage: NextPage = () => {
 				filterBy={filterBy}
 				onSelectFilterBy={onSelectFilterBy}
 			/>
-			{/* {showFilter && (
-				<ProjectsFilter
-					onFilterProjects={onFilterProjects}
-					onCloseFilter={onCloseFilter}
-					filterKey={filterKey}
-					filterList={filterList}
-					filterBy={filterBy}
-					onSelectFilterBy={onSelectFilterBy}
-				/>
-			)} */}
 		</>
 	);
 };

@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import styles from "#/styles/_pages/home.module.scss";
 import { useRef } from "react";
-import { PROJECTS } from "#/constants/projects";
+import { PROJECTS } from "#/constants";
 import {
 	useRevealParagraph,
 	useWindowSize,

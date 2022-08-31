@@ -1,0 +1,62 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	display: flex;
+	align-items: center;
+	padding-top: 10rem;
+
+	@media (min-width: $md) {
+		padding-top: 30rem;
+		padding-bottom: 25rem;
+	}
+}
+.containerInner {
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+
+	@media (min-width: $md) {
+		max-width: var(--mini-desktop-max-width);
+	}
+
+	@media (min-width: $xxl) {
+		max-width: var(--max-width);
+	}
+
+	.paragraphWrapper {
+		@media (min-width: $md) {
+			width: 50%;
+		}
+
+		.paragraph {
+			margin-bottom: 2.4rem;
+			display: flex;
+			flex-wrap: wrap;
+
+			.wordWrapper {
+				font-size: 1.8rem;
+				font-family: "sf-pro-bold";
+				color: var(--ash);
+				letter-spacing: -0.015em;
+				line-height: 2;
+				overflow: hidden;
+
+				@media (min-width: $xl) {
+					font-size: 2.4rem;
+				}
+
+				.word {
+					display: inline-block;
+					transform: translateY(100%);
+				}
+			}
+
+			strong {
+				.wordWrapper {
+					color: var(--white);
+				}
+			}
+		}
+	}
+}

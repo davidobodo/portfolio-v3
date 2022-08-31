@@ -1,0 +1,84 @@
+.container {
+	.logo {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1001;
+	}
+
+	.layers {
+		.layer {
+			height: 50vh;
+			width: 100%;
+			background-color: var(--black);
+			position: fixed;
+			left: 0px;
+			z-index: var(--z-index-loader);
+			overflow: hidden;
+
+			&:after {
+				content: "";
+				width: calc(100% + 20rem);
+				height: calc(100% + 20rem);
+				background-position: 50%;
+				position: absolute;
+				left: -10rem;
+				top: -10rem;
+				background-image: url("/images/grain.png");
+				opacity: 0.08;
+				will-change: transform;
+				-webkit-animation: noise 1s steps(2) infinite;
+				animation: noise 1s steps(2) infinite;
+			}
+
+			&:nth-child(1) {
+				top: 0px;
+				// transform: scaleY(0);
+				transform-origin: top;
+			}
+
+			&:nth-child(2) {
+				bottom: 0px;
+				// transform: scaleY(0);
+				transform-origin: bottom;
+			}
+		}
+	}
+}
+
+@keyframes noise {
+	0% {
+		transform: translate3d(0, 9rem, 0);
+	}
+	10% {
+		transform: translate3d(-1rem, -4rem, 0);
+	}
+	20% {
+		transform: translate3d(-8rem, 2rem, 0);
+	}
+	30% {
+		transform: translate3d(9rem, -9rem, 0);
+	}
+	40% {
+		transform: translate3d(-2rem, 7rem, 0);
+	}
+	50% {
+		transform: translate3d(-9rem, -4rem, 0);
+	}
+	60% {
+		transform: translate3d(2rem, 6rem, 0);
+	}
+	70% {
+		transform: translate3d(7rem, -8rem, 0);
+	}
+	80% {
+		transform: translate3d(-9rem, 1rem, 0);
+	}
+	90% {
+		transform: translate3d(6rem, -5rem, 0);
+	}
+	to {
+		transform: translate3d(-7rem, 0, 0);
+	}
+}
