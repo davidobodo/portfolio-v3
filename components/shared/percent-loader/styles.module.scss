@@ -1,0 +1,18 @@
+.percentLoader {
+	background-color: var(--black);
+	height: 100vh;
+	width: 100vw;
+	z-index: 100000000;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	will-change: opacity;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--white);
+	text-transform: uppercase;
+	font-size: 2rem;
+	font-size: clamp(50px, 12.5vw, 300px);
+	font-family: sf-pro-bold;
+}

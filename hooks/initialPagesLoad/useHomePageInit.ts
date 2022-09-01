@@ -42,28 +42,28 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 
 		const master = gsap.timeline();
 
-		if (initialAppLoad) {
-			setInitialAppLoad(false);
-			master.add(
-				removePageLoaderBlocker({
-					node: document.getElementById("blocker") as HTMLDivElement,
-				})
-			);
-			master.add(drawSvgLogo(logo, logoChildren));
-			exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
-		}
-		master.add(openNoiseLayers(layers));
-		master.add(
-			bannerAnimation({
-				nameLetters,
-				fieldLetters,
-				subFieldOne: subFields[0],
-				subFieldTwo: subFields[1],
-				picMobile: picMobile[0],
-				picDesktopBlind: picDesktopblind[0],
-				scrollIndicator: scrollIndicator[0],
-			})
-		);
+		// if (initialAppLoad) {
+		// 	setInitialAppLoad(false);
+		// 	master.add(
+		// 		removePageLoaderBlocker({
+		// 			node: document.getElementById("blocker") as HTMLDivElement,
+		// 		})
+		// 	);
+		// 	master.add(drawSvgLogo(logo, logoChildren));
+		// 	exitAnimation.add(closeNoiseLayers({ node: layers }), 0);
+		// }
+		// master.add(openNoiseLayers(layers));
+		// master.add(
+		// 	bannerAnimation({
+		// 		nameLetters,
+		// 		fieldLetters,
+		// 		subFieldOne: subFields[0],
+		// 		subFieldTwo: subFields[1],
+		// 		picMobile: picMobile[0],
+		// 		picDesktopBlind: picDesktopblind[0],
+		// 		scrollIndicator: scrollIndicator[0],
+		// 	})
+		// );
 
 		return master;
 	};

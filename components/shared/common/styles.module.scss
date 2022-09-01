@@ -1,22 +1,5 @@
 @import "#/styles/globals.module.scss";
 
-.loadblocker {
-	background-color: var(--black);
-	height: 100vh;
-	width: 100vw;
-	z-index: 100000000;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	will-change: opacity;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 2rem;
-	color: #fff;
-	text-transform: uppercase;
-}
-
 .sizeblocker {
 	z-index: var(--z-index-app-blocker);
 	position: fixed;
