@@ -79,20 +79,21 @@ const PROJECTS: TProject[] = [
 		id: "medic-finder",
 		title: "Medic finder",
 		details: `
-		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, however it's of no news
-		that its important is far beyond just as a requirement to get into an internship.
+		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, 
+		however it's importance is far beyond just a requirement to get into the internship.
 		</p>
-		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store users credentials and users search history. However for easy accessibility for everyone these have been removed in the current iteration.
+		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
+		However, for easy accessibility for everyone, these have been removed in the current iteration.
 		 </p>
 		`,
 		responsibilities: `
 		<ul>
-			<li>Designed the entire application using figma</li>
-			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes</li>
-			<li>Implemented an authentication process flow using Firebase (Now deprecated in current iteration )</li>
-			<li>Made use of Google's <a href="https://firebase.google.com" target="_blank">Cloud Firestore NoSQL database</a> to store user's previous searches (Now refactored in current iteration to use local storage)</li>
-			<li>Integrated <a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> to help give both autocomplete functionality when looking for places and display the map with the needed results</li>
-			<li>Connect to database using GraphQL</li>
+			<li>Designed the entire application using figma.</li>
+			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes.</li>
+			<li>Implemented an authentication process flow using Firebase (now deprecated in current iteration).</li>
+			<li>Made use of Google's <a href="https://firebase.google.com" target="_blank">Cloud Firestore NoSQL database</a> to store user's previous searches (now refactored in current iteration to use local storage).</li>
+			<li>Integrated <a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> to help give both autocomplete functionality when looking for places and display the map with the needed results.</li>
+			<li>Connect to database using GraphQL.</li>
 		</ul>
 		`,
 		tech: [
@@ -134,13 +135,14 @@ const PROJECTS: TProject[] = [
 	{
 		id: "private-lattice",
 		title: "Private Lattice",
-		details: `<p>While working at <a href="https://www.upwork.com/ag/mpaccione/" target="_blank">M.Paccione Designs and Developement</a>, I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice</p>`,
+		details: `<p>While working at <a href="https://www.upwork.com/ag/mpaccione/" target="_blank">M.Paccione Designs and Developement</a>, 
+		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.</p>`,
 		githublink: "",
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert Sketch Design into functional web application</li>
-			<li>Connect frontend to the necessary backend endpoints</li>
+			<li>Convert Sketch Design into functional web application.</li>
+			<li>Connect frontend to the necessary backend endpoints.</li>
 		</ul>
 		`,
 		sitelink: "https://www.privatelattice.com/",
@@ -161,17 +163,17 @@ const PROJECTS: TProject[] = [
 	{
 		id: "d-productivity",
 		title: "d-productivity",
-		details: `<p>Web-based Kanban-style list-making application just like <a href="https://trello.com/" target="_blank">Trello</a> or any other drag and drop productivity app.
-		The main purpose of embarking on this project was to have a deeper understanding of the <span>HTML5 drag and drop API.</span></p>
+		details: `<p>Web-based Kanban-style list-making application, just like <a href="https://trello.com/" target="_blank">Trello</a> or any other drag and drop productivity app.
+		The main purpose of embarking on this project was to have a better understanding of the <span>HTML5 drag and drop API.</span></p>
 			<p>Last updated on 25th February 2020.</p>
 			`,
 		responsibilities: `
 		<ul>
-			<li>Designed the home screen</li>
-			<li>Implemented the drag and drop feature in two different ways</li>
+			<li>Designed the home screen.</li>
+			<li>Implemented the drag and drop feature in two different ways:</li>
 				<ul>
-					<li>Using the easy and wonderful <a href="https://www.npmjs.com/package/react-beautiful-dnd" target="_blank">react-beautiful-dnd</a> (First Iteration)</li>
-					<li>Using the plain <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">html5 dnd api</a> (Second Iteration)</li>
+					<li>Using the easy and wonderful <a href="https://www.npmjs.com/package/react-beautiful-dnd" target="_blank">react-beautiful-dnd</a> (first iteration).</li>
+					<li>Using the plain <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">html5 dnd api</a> (second iteration).</li>
 				</ul>
 		</ul>
 		`,
@@ -191,7 +193,8 @@ const PROJECTS: TProject[] = [
 	{
 		id: "weather",
 		title: "Weather Application",
-		details: `<p> Created this weather application from design to coding as a test for a comppany. Has quite some rich features and is still has valid use. User can check the weather of various places after which they can bookmark certain places for easy access.</p>
+		details: `<p>I created this weather application from design to coding, as a test for a company. 
+		Has quite some rich features and is still has valid use. User can check the weather of various places after which they can bookmark certain places for easy access.</p>
 		<p>In addition to that, it leverages local storage in order to give users the ability to even store notes for various places they search. Furthermore application is fully a PWA(Progressive app), so even when users are offline users can still see all their previous searches</p>
 		`,
 		githublink: "https://github.com/davidobodo/weather-app",
