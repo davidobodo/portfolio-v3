@@ -194,16 +194,16 @@ const PROJECTS: TProject[] = [
 		id: "weather",
 		title: "Weather Application",
 		details: `<p>I created this weather application from design to coding, as a test for a company. 
-		Has quite some rich features and is still has valid use. User can check the weather of various places after which they can bookmark certain places for easy access.</p>
-		<p>In addition to that, it leverages local storage in order to give users the ability to even store notes for various places they search. Furthermore application is fully a PWA(Progressive app), so even when users are offline users can still see all their previous searches</p>
+		A user can check the weather of various places, after which they can bookmark certain places for easy access.</p>
+		<p>In addition to that, it leverages local storage in order to give users the ability to store notes for various places they search. Furthermore, the application is fully a PWA (Progressive Web App), so even when users are offline, users can still see all their previous searches.</p>
 		`,
 		githublink: "https://github.com/davidobodo/weather-app",
 		roles: ["design", "fe"],
 		responsibilities: `
 		<ul>
-			<li>Create design for web app</li>
-			<li>Convert design into responsive web app</li>
-			<li>Make app a  <span>Progressive Web App (PWA)</span></li>
+			<li>Create design for web app.</li>
+			<li>Convert design into responsive web app.</li>
+			<li>Make app a  <span>Progressive Web App (PWA)</span>.</li>
 		</ul>
 		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
@@ -225,15 +225,18 @@ const PROJECTS: TProject[] = [
 	{
 		id: "d-commerce",
 		title: "d-commerce",
-		details: `<p>When getting acclaimated with the features of a framework/technology or even a programming language, one of the applications one should try building is an ecommerce platform.</p>
-		<p>This is because, an e-commerce platform has features that cut across a great deal of majority of <strong>what is possible</strong> in frontend. For this reason I set out to build this application when mastering react.js</p>
-		<p>The UI was replicated from an online store. As this project was done quite a while ago I currently can't remember the exact name, if not I would have gien them their due credit </p>
-		<p>Last updated on 4th July 2020.</p>
+		details: `<p>When getting acclimated with the features of a framework/technology or even a programming language, one of the applications one should try to build is an e-commerce platform.</p>
+		<p>This is because, an e-commerce platform has features that cut across a great deal of <strong>what is possible</strong> in frontend. For this reason, I set out to build this application when mastering react.js.</p>
+		<p>The UI was replicated from an online store. But as this project was done quite a while ago, I currently can't remember the exact name, if not I would have given them their due credit </p>
+		<p>Last updated on the 4th of July, 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/d-commerce",
 		roles: ["fe", "be"],
 		responsibilities: `
-		<ul><li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c)</li></ul>
+		<ul>
+			<li>Create a pixel perfect replica of the UI.</li>
+			<li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c).</li>
+		</ul>
 		`,
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
 		tech: ["html", "css", "sass", "javascript", "react", "nodejs", "expressjs", "heroku", "mongodb", "firebase"],
@@ -277,15 +280,16 @@ const PROJECTS: TProject[] = [
 	{
 		id: "prodeus-editor",
 		title: "Prodeus ckeditor",
-		details: `<p>While building <a href="/projects/prodeus">Prodeus web app</a>, there was a need to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
+		details: `<p>While I was building <a href="/projects/prodeus">Prodeus web app</a>, there was a need for me to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
 		designed editor brought up the need to build a customized solution from the famous  <a href="https://ckeditor.com" target="_blank">ckeditor</a>.
 		</p>
-		<p>Project was later published as an <a href="https://www.npmjs.com/package/prodeus-editor" target="_blank">npm package here </a></p>
+		<p>The project was later published as an <a href="https://www.npmjs.com/package/prodeus-editor" target="_blank">npm package here.</a></p>
 		`,
 		githublink: "",
 		responsibilities: `
 		<ul>
-			<li>Customize Ckeditor to suite the Prodeus desired design</li>
+			<li>Customize Ckeditor to suite the Prodeus desired design.</li>
+			<li>Publish project as an npm package.</li>
 		</ul>
 		`,
 		roles: [],
@@ -305,12 +309,12 @@ const PROJECTS: TProject[] = [
 		id: "d-chat",
 		title: "d-chat",
 		details: `
-		<p>It's of no news that majority of applications these days have the <span>"chatting" functionality</span> embedded into them, so this project was an attempt to understand how the "open connection idea" upon which the functionality is built upon works.
-		I initial executed it using only <a href="https://firebase.google.com/" target="_blank">Firebase</a> but that was when I was unaware of <a href="https://socket.io/" target="_blank">Socket.io</a>, which is actually the real deal. <a href="https://socket.io/" target="_blank">Socket.io</a> is my "goto" these days for any 
-		"open connection" functionality (e.g chat and realtime notifications)
+		<p>It is no news that majority of applications these days have the <span>"chatting" functionality</span> embedded in them. So this project was an attempt to understand how the "open connection idea", upon which the functionality is built upon, works.
+		Due to my obliviousness of <a href="https://socket.io/" target="_blank">Socket.io</a> at the time, I executed this project using only <a href="https://firebase.google.com/" target="_blank">Firebase</a>. Now Scoket.io is my go-to for 
+		any "open connection" functionality (e.g chat and realtime notifications).
 		</p>
-		<p>The authentication screen design is a "not so pixel perfect clone 😅" of <a href="https://dribbble.com/shots/5271131-Login-Sign-up-screen" target="_blank">Marcin Kohut</a> design  on Dribbble.</p>
-		<p>Last updated on 5th July 2020.</p>
+		<p>The authentication screen design is a "not so pixel perfect clone" of <a href="https://dribbble.com/shots/5271131-Login-Sign-up-screen" target="_blank">Marcin Kohut</a> design  on Dribbble.</p>
+		<p>Last updated on the 5th of July 2020.</p>
 		`,
 		responsibilities: `
 		<ul>
@@ -334,8 +338,8 @@ const PROJECTS: TProject[] = [
 	{
 		id: "pv1",
 		title: "Portfolio v1",
-		details: `<p>My very own first ever portfolio website</P>
-		<p>Last updated 21st September 2019</p>
+		details: `<p>My very own first ever portfolio website.</P>
+		<p>Last updated on the 21st of September 2019</p>
 		`,
 		githublink: "https://github.com/davidobodo/portfolio",
 		roles: ["design", "fe"],
@@ -358,12 +362,12 @@ const PROJECTS: TProject[] = [
 	},
 	{
 		id: "developer-of-the-year",
-		title: "developer of the year",
+		title: "Developer of the year",
 		details: `<p>A static desktop clone of <a href="https://www.awwwards.com/" target="_blank">awwwards</a> awards site for the year 2020.</p>
-		<p>The motivation to build this static clone was a desire to achieve the "VIEW NOMINEES CIRCULAR SECTION" at the bottom with just css and javascript😅.</p>
-		<p>Trust me wasn't an easy process cause it involved some tricky <strong>Mathematics</strong> which was finally arrived at with help from my mentor <a href="https://www.linkedin.com/in/oluwaseunadedire/" target="_blank">Oluwaseun Adedire</a>.</p>
-		<p>This is a static site and none of the call to actions are working</p>
-		<p>Last updated on 15th February 2020.</p>
+		<p>The motivation behind building this static clone was the desire to achieve the "VIEW NOMINEES CIRCULAR SECTION" at the bottom of the design with just css and javascript😅.</p>
+		<p>Trust me, it wasn't an easy process because I encountered tricky mathematical problems, which were later solved with the help of my mentor <a href="https://www.linkedin.com/in/oluwaseunadedire/" target="_blank">Oluwaseun Adedire</a>.</p>
+		<p>Note that this is a static site hence, none of the call to actions are working.</p>
+		<p>Last updated on the 15th of February 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/developer-of-the-year",
 		roles: ["fe"],
@@ -558,6 +562,32 @@ const PROJECTS: TProject[] = [
 			{
 				type: "image",
 				source: "/images/projects/ozidi/reg.jpg",
+			},
+		],
+	},
+	{
+		id: "phitnftswhitelist",
+		title: "PhitNFTS Whitelist",
+		details: `
+
+		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0xC62EEfe06F1f69C3010ab44F4581B1329F938D31" target="_blank">Rinkeby Etherscan</a></p>
+		`,
+		roles: ["design", "fe", "be"],
+		sitelink: "",
+		responsibilities: `
+	
+		`,
+		tech: ["react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
+		bgColor: "#56D686",
+		type: "Learn from Tutorial",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/phitnftswhitelist/joined.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/phitnftswhitelist/pending.jpg",
 			},
 		],
 	},
