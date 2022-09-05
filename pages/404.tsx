@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "#/styles/_pages/not-found.module.scss";
 import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact, HeadChildren } from "#/components";
 import { use404PageInit } from "#/hooks";
+import { METADATA } from "#/constants";
 
 export default function NotFound() {
 	const { onStopRedirect, countdown, containerRef, scrollRef, gradientRef, bannerHeight } = use404PageInit();
@@ -9,7 +10,7 @@ export default function NotFound() {
 	return (
 		<>
 			<Head>
-				<HeadChildren location="notfound" />
+				<HeadChildren {...METADATA["notfound"]} />
 			</Head>
 			<Nav />
 			<div className={styles.main} ref={containerRef}>
