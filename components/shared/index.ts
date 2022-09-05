@@ -20,7 +20,7 @@ import ProjectsViewSelector from "./projects/projects-view-selector";
 import Slider from "./slider";
 import Radio from "./radio";
 import Modals from "./modal";
-import PercentLoader from "./percent-loader";
+import Preloader from "./preloader";
 
 const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
@@ -49,7 +49,7 @@ const Shared = {
 	Slider,
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
-	PercentLoader,
+	Preloader,
 };
 
 export default Shared;

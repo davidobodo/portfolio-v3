@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
-import { RouteTransitionOverlay, ScrollToTop, ProgressBar, PercentLoader } from "#/components";
+import { RouteTransitionOverlay, ScrollToTop, ProgressBar, Preloader } from "#/components";
 
 export default function Common() {
 	return (
 		<>
-			<PercentLoader />
+			<Preloader />
 			<ScreenBlocker />
 			<RouteTransitionOverlay />
 			<ScrollToTop />

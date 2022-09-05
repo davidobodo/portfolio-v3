@@ -26,7 +26,7 @@ const {
 	Slider,
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
-	PercentLoader,
+	Preloader,
 } = Shared;
 
 const { HomePage, LettersPage, SingleProject } = Pages;
@@ -66,5 +66,5 @@ export {
 	Slider,
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
-	PercentLoader,
+	Preloader,
 };
