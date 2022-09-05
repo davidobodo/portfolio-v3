@@ -27,11 +27,10 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "typescript",
 		label: "Typescript",
 	},
-	// solidity: {
-	// 	key: "solidity",
-	// 	label: "Solidity",
-	// 	// image: iconSolidity,
-	// },
+	solidity: {
+		key: "solidity",
+		label: "Solidity",
+	},
 	//---------------------------------------------
 	//FRAMEWORKS/LIBRARIES
 	//---------------------------------------------
@@ -103,15 +102,14 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "rtl",
 		label: "React Testing Library",
 	},
-	// tailwindcss: {
-	// 	key: "tailwindcss",
-	// 	label: "Tailwind CSS",
-	// },
-	// web3: {
-	// 	key: "web3",
-	// 	label: "Web3",
-	// 	// image: iconWeb3,
-	// },
+	tailwindcss: {
+		key: "tailwindcss",
+		label: "Tailwind CSS",
+	},
+	web3: {
+		key: "web3",
+		label: "Web3",
+	},
 	//---------------------------------------------
 	//OTHERS
 	//---------------------------------------------

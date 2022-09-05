@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/not-found.module.scss";
-import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact } from "#/components";
+import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact, HeadChildren } from "#/components";
 import { use404PageInit } from "#/hooks";
 
 export default function NotFound() {
@@ -9,12 +9,7 @@ export default function NotFound() {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Lets take you home</title>
-				<meta
-					name="description"
-					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
-				/>
-				<link rel="icon" href="/icon-192x192.png" />
+				<HeadChildren location="notfound" />
 			</Head>
 			<Nav />
 			<div className={styles.main} ref={containerRef}>

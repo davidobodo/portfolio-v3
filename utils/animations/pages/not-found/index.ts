@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 class NotFoundPageAnimations {
 	bannerAnimation({ sections }: { sections: HTMLDivElement[] }) {
 		const tl = gsap.timeline();

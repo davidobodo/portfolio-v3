@@ -26,6 +26,8 @@ const {
 	Slider,
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
+	Preloader,
+	HeadChildren,
 } = Shared;
 
 const { HomePage, LettersPage, SingleProject } = Pages;
@@ -65,4 +67,6 @@ export {
 	Slider,
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
+	Preloader,
+	HeadChildren,
 };
