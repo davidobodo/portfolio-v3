@@ -32,7 +32,6 @@ import {
 	Excellence,
 	Contact,
 	ProjectsViewSelector,
-	PercentLoader,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
 import { events, registerEvent } from "#/utils/analytics/events";
