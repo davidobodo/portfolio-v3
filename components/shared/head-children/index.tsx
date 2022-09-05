@@ -1,11 +1,14 @@
-import { METADATA } from "#/constants";
-
 export default function HeadChildren({
-	location,
+	title,
+	description,
+	url,
+	image,
 }: {
-	location: "home" | "projects" | "letters" | "credits" | "notfound";
+	title: string;
+	description: string;
+	url: string;
+	image: string;
 }) {
-	const { title, description, url, image } = METADATA[location];
 	return (
 		<>
 			<title>{title}</title>

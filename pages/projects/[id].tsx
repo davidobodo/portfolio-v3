@@ -1,11 +1,10 @@
 import Head from "next/head";
-import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
+import { Nav, Layout, Noise, SingleProject, Contact, HeadChildren } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
-import { fetchProjects } from "#/utils";
-import { PROJECTS } from "#/constants";
+import { METADATA, PROJECTS } from "#/constants";
 import { usePageTransitionsContext } from "#/context";
 const { removeCurrentProject } = projectAnimations;
 
@@ -15,7 +14,7 @@ type Props = {
 };
 
 export default function Project(props: Props) {
-	const { id, title } = props;
+	const { id } = props;
 	const darkSectionRef = useRef(null);
 	const router = useRouter();
 	useSingleProjectPageInit();
@@ -50,12 +49,7 @@ export default function Project(props: Props) {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Projects | {title}</title>
-				<meta
-					name="description"
-					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
-				/>
-				<link rel="icon" href="/icon-192x192.png" />
+				<HeadChildren {...METADATA["singleproject"]({ id })} />
 			</Head>
 			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef}>
@@ -90,9 +84,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { id: string } }) {
 	const { id } = params;
 
-	const { currProject } = fetchProjects(id);
-
 	return {
-		props: { id, title: currProject?.title },
+		props: { id },
 	};
 }

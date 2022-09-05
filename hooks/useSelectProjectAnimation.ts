@@ -12,6 +12,12 @@ export default function useSelectProjectAnimation({ initialId = "" }: { initialI
 	const modalRef = useRef<HTMLDivElement>(null);
 	const [isOpen, setIsOpen] = useState(false);
 
+	useEffect(() => {
+		if (initialId) {
+			setSelectedProjectId(initialId);
+		}
+	}, [initialId]);
+
 	//-------------------------------
 	// User clicked on a project
 	//-------------------------------

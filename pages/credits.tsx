@@ -5,7 +5,7 @@ import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorph
 import { useRef } from "react";
 import { otherSharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
-import { CREDIT_NOTE } from "#/constants";
+import { CREDIT_NOTE, METADATA } from "#/constants";
 
 const { fadeIn } = otherSharedAnimations;
 type TCredit = {
@@ -91,7 +91,7 @@ export default function Credit() {
 	return (
 		<>
 			<Head>
-				<HeadChildren location="credits" />
+				<HeadChildren {...METADATA["credits"]} />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 

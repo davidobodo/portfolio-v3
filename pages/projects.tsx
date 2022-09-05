@@ -22,7 +22,7 @@ import {
 	useProjectsCurrentView,
 } from "#/hooks";
 
-import { PROJECTS, TECH_STACKS } from "#/constants";
+import { METADATA, PROJECTS, TECH_STACKS } from "#/constants";
 import { useState, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { PROJECT_NATURE } from "#/constants";
@@ -139,7 +139,7 @@ const ProjectsPage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<HeadChildren location="projects" />
+				<HeadChildren {...METADATA["projects"]} />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
