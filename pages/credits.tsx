@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
+import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact, HeadChildren } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
 import { otherSharedAnimations } from "#/utils/animations";
@@ -91,13 +91,7 @@ export default function Credit() {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Credits</title>
-				<meta
-					name="description"
-					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
-				/>
-
-				<link rel="icon" href="/icon-192x192.png" />
+				<HeadChildren location="credits" />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 

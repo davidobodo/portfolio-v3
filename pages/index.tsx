@@ -32,6 +32,7 @@ import {
 	Excellence,
 	Contact,
 	ProjectsViewSelector,
+	HeadChildren,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
 import { events, registerEvent } from "#/utils/analytics/events";
@@ -75,12 +76,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Software Developer</title>
-				<meta
-					name="description"
-					content="David Obodo is a Software Developer that majors on Frontend Development, yet from time to time is no stranger to the entire full stack development."
-				/>
-				<link rel="icon" href="/icon-192x192.png" />
+				<HeadChildren location="home" />
 			</Head>
 			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />

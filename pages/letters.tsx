@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "#/styles/_pages/letters.module.scss";
 import { NextPage } from "next";
 import { useRef } from "react";
-import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact } from "#/components";
+import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact, HeadChildren } from "#/components";
 import { LETTERS } from "#/constants";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
 
@@ -19,12 +19,7 @@ const Letters: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Letters</title>
-				<meta
-					name="description"
-					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
-				/>
-				<link rel="icon" href="/icon-192x192.png" />
+				<HeadChildren location="letters" />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />

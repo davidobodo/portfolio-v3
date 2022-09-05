@@ -11,6 +11,7 @@ import {
 	Contact,
 	ProjectsViewSelector,
 	ProjectsFilterModal,
+	HeadChildren,
 } from "#/components";
 import styles from "#/styles/_pages/projects.module.scss";
 import {
@@ -138,12 +139,7 @@ const ProjectsPage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>David Obodo | Projects</title>
-				<meta
-					name="description"
-					content="Software Developer that is highly addicted to Front End Development, yet capable of Full Stack Development3"
-				/>
-				<link rel="icon" href="/icon-192x192.png" />
+				<HeadChildren location="projects" />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
