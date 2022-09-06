@@ -1,14 +1,11 @@
 import styles from "./styles.module.scss";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { SectionPlaceholder } from "#/components";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { events, registerEvent } from "#/utils/analytics/events";
-import { otherSharedAnimations } from "#/utils/animations";
 import { Details } from "./details";
 
-const { openContactCurtain } = otherSharedAnimations;
-
-export default function Contact({ projectId }: { projectId?: string }) {
+export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -62,34 +59,6 @@ export default function Contact({ projectId }: { projectId?: string }) {
 	}, []);
 
 	//-------------------------------------------------------------
-	// REVEAL FOOTER ANIMATION
-	//-------------------------------------------------------------
-	const [tl, setTl] = useState<gsap.core.Timeline>();
-	useIsomorphicLayoutEffect(() => {
-		if (wrapperRef.current && footerHeight) {
-			const tl = openContactCurtain({
-				trigger: wrapperRef.current,
-				curtain: wrapperRef.current.querySelector("[data-key='contact-curtain']") as HTMLDivElement,
-			});
-
-			setTl(tl);
-
-			return () => {
-				tl.scrollTrigger?.kill();
-			};
-		}
-	}, [footerHeight]);
-
-	//-------------------------------------------------------------
-	// If page height changes particularly on single projects page
-	//-------------------------------------------------------------
-	useEffect(() => {
-		if (projectId && tl) {
-			tl.scrollTrigger?.refresh();
-		}
-	}, [projectId, tl]);
-
-	//-------------------------------------------------------------
 	// Google analytics
 	//-------------------------------------------------------------
 	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -126,8 +95,6 @@ export default function Contact({ projectId }: { projectId?: string }) {
 					containerRef={placeholderRef}
 				/>
 			</div>
-
-			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
 		</footer>
 	);
 }

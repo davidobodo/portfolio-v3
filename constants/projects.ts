@@ -261,13 +261,13 @@ const PROJECTS: TProject[] = [
 	{
 		id: "pv-3",
 		title: "Portfolio V3",
-		details: ``,
+		details: `This is a PWA`,
 		githublink: "",
 		responsibilities: "",
-		roles: [],
+		roles: ["design", "fe", "be"],
 		sitelink: "",
-		tech: [],
-		bgColor: "",
+		tech: ["react", "nextjs", "sass", "gsap", "googleanalytics", "sendgrid"],
+		bgColor: "#e1dfdd",
 		type: "Web Application",
 		media: [
 			{
@@ -463,15 +463,15 @@ const PROJECTS: TProject[] = [
 	{
 		id: "drum-machine",
 		title: "Drum Machine",
-		details: `<p>Simple drum machine inspired by <a href="https://javascript30.com/">Wes Bos's Javascript 30</a> </p>
-		<p>Last updated on 8th Sept 2019.</p>
+		details: `<p>Simple drum machine inspired by <a href="https://javascript30.com/">Wes Bos's Javascript 30.</a> </p>
+		<p>Last updated on the 8th of September 2019.</p>
 		`,
 		githublink: "https://github.com/davidobodo/drumMachine",
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert mockup into responsive web page</li>
-			<li>Connect respective clicks to their wav files</li>
+			<li>Convert mockup into responsive web page.</li>
+			<li>Connect respective clicks to their wav files.</li>
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/drumMachine/",
@@ -488,8 +488,8 @@ const PROJECTS: TProject[] = [
 	{
 		id: "freebies",
 		title: "Freebies",
-		details: `<p>A static desktop clone of the <a href="https://freebies.bypeople.com/" target="_blank">Freebies</a> website. The motivation for this, was achieving the moving items based on the mouse cursor position.</p>
-		<p>Last updated 14th February 2020</p>
+		details: `<p>This is static desktop clone of the <a href="https://freebies.bypeople.com/" target="_blank">Freebies</a> website. The motivation behind this was to achieve the ability to move items based on the mouse cursor position.</p>
+		<p>Last updated on the 14th of February 2020</p>
 		`,
 		githublink: "https://github.com/davidobodo/freebies",
 		roles: ["fe"],
@@ -514,29 +514,29 @@ const PROJECTS: TProject[] = [
 		id: "ozidi",
 		title: "Ozidi/Agricpay",
 		details: `
-		<p><span>Ozidi</span> which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small-scale farmers in "Nigeria" get access to loans.</a> It is of no news that in order for
-		any business to request for loans from banks and other loan agencies, the owner must have some form of <span>collateral to give</span> should in case the individual is not able to pay the loan. Unfortunately most smale scale farmers
-		do not have any collateral to give, hence the need for Agricpay.
+		<p><span>Ozidi</span>, which later became <span>Agricpay</span>, was a promising startup which had a vision to <a>help small scale farmers in "Nigeria" get access to loans.</a> It is no news that in order for
+		a business owner to apply for a loan from banks and other loan agencies, the owner must have <span>collateral to use</span>, in case the owner will not be able to pay the loan. Unfortunately, most small scale farmers
+		do not have any collateral to give, hence the need for Agricpay to be built.
 		</p>
 		<p>
-		Agricpay aimed at solving this problem, by inculcating in the farmers mindset the <span>habit of saving</span>. Using this approach meant in the long run the farmer would be borrowing his/her own money
+		Agricpay aimed at solving this problem, by inculcating in the farmers mindset, the <span>habit of saving</span>. Using this approach meant, in the long run the farmer will be borrowing his/her own money.
 		</p>
 
-		<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span> , together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>, we set out to build a
-		fully functional dashboard to help with Agricpays vision.
+		<p>I worked as the <span>"main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend </span>, together with <a href="https://www.linkedin.com/in/godinson/" target="_blank">Joseph Godwin (full stack developer)</a> and <a href="https://www.linkedin.com/in/oluwaferanmiadetunji/" target="_blank">Adetunji Oluwaferanmi (full stack developer)</a>, at the <a href="https://www.enye.tech/" target="_blank">Enye Cohort 4 internship</a>. 
+		We set out to build a fully functional dashboard to help with Agricpay's vision.
 		</p>
 		<div>
 			<p>Some of the features included:</p>
 			<ul>
-				<li>Admin authentication</li>
-				<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards)</li>
-				<li>History of all recharge cards generated</li>
-				<li>Farmers data</li>
+				<li>Admin authentication.</li>
+				<li>Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards).</li>
+				<li>History of all recharge cards generated.</li>
+				<li>Farmers data.</li>
 			</ul>
 		</div>
 
-		<p>Unfortunately, not all startups reach the "promise land" irrespective of a solid technology, because there are more things asides from the tech involved in the success of a business. So the live links are currently down, however for curiousity sake
-		I believe you could still visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> as well as <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
+		<p>Unfortunately, not all startups reach the "promise land", irrespective of a solid technology, because there are more things asides the tech involved in the success of a business. So the live links are currently down. However for curiousity sake,
+		visit <a href="https://mobile.twitter.com/agricpay" target="_blank">Twitter</a> or <a href="https://www.instagram.com/agricpay/" target="_blank">Instagram</a>
 		</p>
 
 		<p><span>Project span: July 2020 - September 2020.</span></p>
@@ -545,10 +545,10 @@ const PROJECTS: TProject[] = [
 		sitelink: "",
 		responsibilities: `
 		<ul>
-			<li>Create entire app UI/UX using Figma</li>
-			<li>Convert about 80% of the design into functional responsive web app pages</li>
-			<Li>Connect pages to their respective backend endpoints</li>
-			<li>Use <span>Wordpress</span> to create a static publicly accessible web page for the company</li>
+			<li>Created entire app UI/UX using Figma.</li>
+			<li>Converted about 80% of the design into functional responsive web app pages.</li>
+			<Li>Connected pages to their respective backend endpoints.</li>
+			<li>Used <span>Wordpress</span> to create a static publicly accessible web page for the company.</li>
 		</ul>
 		`,
 		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
