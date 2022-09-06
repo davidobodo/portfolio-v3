@@ -62,6 +62,7 @@
 		@media (min-width: $md) {
 			display: flex;
 			justify-content: space-between;
+			flex: 1;
 		}
 
 		.topSectionTexts {
@@ -92,7 +93,7 @@
 			//----------
 			max-height: calc(100vh - 44rem);
 			width: 100%; // 355px
-			height: 35rem;
+			// height: 35rem;
 			//----------
 			display: none;
 			position: relative;
@@ -101,14 +102,14 @@
 				display: block;
 				//----------
 				width: 25rem;
-				height: 35rem;
-				max-height: none;
+				max-height: 35rem;
+				height: 100%;
 				//----------
 			}
 			@media (min-width: $xxl) {
 				//----------
 				width: 38rem;
-				height: 50rem;
+				max-height: 50rem;
 				//----------
 			}
 

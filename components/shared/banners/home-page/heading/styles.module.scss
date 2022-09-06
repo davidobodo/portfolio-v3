@@ -31,11 +31,7 @@
 				}
 
 				@media (min-width: $md) {
-					font-size: 8vw;
-				}
-
-				@media (min-width: $xxl) {
-					font-size: 16rem;
+					font-size: clamp(6rem, 15vh, 16rem);
 				}
 			}
 		}

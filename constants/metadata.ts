@@ -29,7 +29,7 @@ const metadata = {
 		image: `${BASE_URL}/images/covers/credits.png`,
 	},
 	notfound: {
-		title: "Davud Obodo | Lost | Software Developer (Frontend Developer)",
+		title: "David Obodo | Lost | Software Developer (Frontend Developer)",
 		description: "404 Page not found  - Go Home ",
 		url: `${BASE_URL}/lost`,
 		image: `${BASE_URL}/images/covers/not-found.png`,
