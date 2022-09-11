@@ -21,7 +21,6 @@ import Slider from "./slider";
 import Radio from "./radio";
 import Modals from "./modal";
 import Preloader from "./preloader";
-import HeadChildren from "./head-children";
 
 const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
@@ -51,7 +50,6 @@ const Shared = {
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
 	Preloader,
-	HeadChildren,
 };
 
 export default Shared;

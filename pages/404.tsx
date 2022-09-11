@@ -1,16 +1,42 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/not-found.module.scss";
-import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact, HeadChildren } from "#/components";
+import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact } from "#/components";
 import { use404PageInit } from "#/hooks";
 import { METADATA } from "#/constants";
 
 export default function NotFound() {
 	const { onStopRedirect, countdown, containerRef, scrollRef, gradientRef, bannerHeight } = use404PageInit();
 
+	const { title, description, url, image } = METADATA["notfound"];
 	return (
 		<>
 			<Head>
-				<HeadChildren {...METADATA["notfound"]} />
+				<title>{title}</title>
+				<meta charSet="utf-8" />
+				<meta property="type" content="website" />
+				<meta property="url" content={url} />
+				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+				<meta name="theme-color" content="#e1dfdd" />
+
+				<meta property="title" content={title} />
+				<meta name="description" content={description} />
+				<meta property="image" content={image} />
+				<meta content="image/*" property="og:image:type" />
+
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={description} />
+				<meta property="og:url" content={url} />
+				<meta property="og:image" content={image} />
+				<meta property="og:site_name" content={title} />
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:site" content="@phitGeek" />
+				<meta name="twitter:title" content={title} />
+				<meta name="twitter:description" content={description} />
+				<meta name="twitter:image" content={image} />
+
+				<link rel="icon" href="/icon-192x192.png" />
 			</Head>
 			<Nav />
 			<div className={styles.main} ref={containerRef}>
