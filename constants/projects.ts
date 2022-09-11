@@ -591,6 +591,33 @@ const PROJECTS: TProject[] = [
 			},
 		],
 	},
+	{
+		id: "phitnfts",
+		title: "PhitNFTS ",
+		details: `
+
+		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0xC62EEfe06F1f69C3010ab44F4581B1329F938D31" target="_blank">Rinkeby Etherscan</a></p>
+		<p>See NFT Collection on <a href="https://testnets.opensea.io/collection/phit-nfts-v4" target="_blank">Opensea Testnet</a></p>
+		`,
+		roles: ["design", "fe", "be"],
+		sitelink: "",
+		responsibilities: `
+	
+		`,
+		tech: ["react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
+		bgColor: "#56D686",
+		type: "Learn from Tutorial",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/phitnftswhitelist/joined.jpg",
+			},
+			{
+				type: "image",
+				source: "/images/projects/phitnftswhitelist/pending.jpg",
+			},
+		],
+	},
 ];
 
 export default PROJECTS;
