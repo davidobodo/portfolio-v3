@@ -90,7 +90,7 @@ export default function Project(props: Props) {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<Contact />
+			<Contact refreshAnim={selectedProjectId} />
 		</>
 	);
 }
