@@ -37,8 +37,17 @@
 			@media (min-width: $md) {
 				font-size: 9rem;
 			}
+
 			@media (min-width: $xl) {
+				font-size: clamp(50px, 22vh, 153px);
+			}
+
+			@media (min-width: $xxl) {
 				font-size: clamp(50px, 12.5vw, 300px);
+			}
+
+			@media (min-width: $xl) and (max-height: 700px) {
+				font-size: clamp(50px, 22vh, 153px);
 			}
 
 			&::selection {

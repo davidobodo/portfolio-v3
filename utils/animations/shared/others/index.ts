@@ -40,15 +40,11 @@ class OtherSharedAnimations {
 				pinSpacing: false,
 				onEnterBack: () => {
 					if (banner && blackCurtain) {
-						// banner.style.zIndex = "1";
-						// banner.style.opacity = "1";
 						blackCurtain.style.zIndex = "2";
 					}
 				},
 				onLeave: () => {
 					if (banner && blackCurtain) {
-						// banner.style.zIndex = "-1";
-						// banner.style.opacity = "0";
 						blackCurtain.style.zIndex = "-1";
 					}
 				},
@@ -173,7 +169,7 @@ class OtherSharedAnimations {
 
 	openNoiseLayers(node: NodeListOf<Element>) {
 		const tl = gsap.timeline();
-		const ease = "Power2.easeInOut";
+		const ease = "Power1.easeInOut";
 		tl.fromTo(node, { scaleY: 1, delay: 0.3, ease: ease }, { scaleY: 0, delay: 0.3, ease: ease });
 		return tl;
 	}
