@@ -1,11 +1,13 @@
 import styles from "./styles.module.scss";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { SectionPlaceholder } from "#/components";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { Details } from "./details";
+import { otherSharedAnimations } from "#/utils/animations";
 
-export default function Contact() {
+const { openContactCurtain } = otherSharedAnimations;
+export default function Contact({ refreshAnim = "refresh" }: { refreshAnim?: string }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -59,6 +61,34 @@ export default function Contact() {
 	}, []);
 
 	//-------------------------------------------------------------
+	// REVEAL FOOTER ANIMATION
+	//-------------------------------------------------------------
+	const [tl, setTl] = useState<gsap.core.Timeline>();
+	useIsomorphicLayoutEffect(() => {
+		if (wrapperRef.current && footerHeight) {
+			const tl = openContactCurtain({
+				trigger: wrapperRef.current,
+				curtain: wrapperRef.current.querySelector("[data-key='contact-curtain']") as HTMLDivElement,
+			});
+
+			setTl(tl);
+
+			return () => {
+				tl.scrollTrigger?.kill();
+			};
+		}
+	}, [footerHeight]);
+
+	//-------------------------------------------------------------
+	// If page height changes particularly on single projects page
+	//-------------------------------------------------------------
+	useEffect(() => {
+		if (refreshAnim && tl) {
+			tl.scrollTrigger?.refresh();
+		}
+	}, [refreshAnim, tl]);
+
+	//-------------------------------------------------------------
 	// Google analytics
 	//-------------------------------------------------------------
 	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -95,6 +125,8 @@ export default function Contact() {
 					containerRef={placeholderRef}
 				/>
 			</div>
+
+			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
 		</footer>
 	);
 }

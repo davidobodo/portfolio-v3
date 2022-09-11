@@ -205,6 +205,24 @@ class OtherSharedAnimations {
 	removePageLoaderBlocker({ node }: { node: HTMLDivElement }) {
 		return gsap.to(node, { opacity: 0, zIndex: -2, duration: 1 });
 	}
+
+	openContactCurtain({ trigger, curtain }: { trigger: HTMLDivElement; curtain: HTMLDivElement }) {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger,
+				start: "top bottom",
+				end: "bottom bottom",
+				scrub: true,
+				toggleActions: "restart complete restart reset",
+			},
+		});
+		tl.to(curtain, { zIndex: 2, duration: 0.1 });
+		tl.to(curtain, {
+			scaleY: 0,
+		});
+
+		return tl;
+	}
 }
 
 const otherSharedAnimations = new OtherSharedAnimations();
