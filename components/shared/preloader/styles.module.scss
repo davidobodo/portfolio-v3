@@ -1,4 +1,6 @@
-.percentLoader {
+@import "#/styles/globals.module.scss";
+
+.wrapper {
 	background-color: var(--black);
 	height: 100vh;
 	width: 100vw;
@@ -7,23 +9,43 @@
 	top: 0px;
 	left: 0px;
 	will-change: opacity;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	color: var(--white);
+	display: flex;
+
+	align-items: flex-start;
+	justify-content: center;
+	padding: 3rem 2rem;
+
+	@media (min-width: $md) {
+		justify-content: flex-end;
+		padding: 5rem;
+	}
+
+	.container {
+		display: flex;
+		align-items: center;
+
+		p {
+			font-size: 1.8rem;
+			text-transform: uppercase;
+			font-family: sf-pro-bold;
+			margin-right: 2rem;
+		}
+	}
 }
 
 .ellipsis {
 	display: inline-block;
 	position: relative;
 	width: 80px;
-	height: 80px;
+	height: 30px;
 }
+
 .ellipsis div {
 	position: absolute;
-	top: 33px;
-	width: 13px;
-	height: 13px;
+	top: 12px;
+	width: 5px;
+	height: 5px;
 	border-radius: 50%;
 	background: #fff;
 	animation-timing-function: cubic-bezier(0, 1, 1, 0);
