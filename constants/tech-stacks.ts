@@ -86,6 +86,10 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "materialui",
 		label: "Material UI",
 	},
+	semanticui: {
+		key: "semanticui",
+		label: "Semantic UI",
+	},
 	socketio: {
 		key: "socketio",
 		label: "Socket.io",

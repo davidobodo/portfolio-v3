@@ -22,7 +22,19 @@ const PROJECTS: TProject[] = [
 
 		roles: ["fe"],
 		sitelink: "https://www.prodeus.co/",
-		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "css", "sass", "storybook", "rtl"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"javascript",
+			"typescript",
+			"react",
+			"reactquery",
+			"redux",
+			"styledcomponents",
+			"storybook",
+			"rtl",
+		],
 		type: "Web Application",
 		bgColor: "#f4efe7",
 		media: [
@@ -97,10 +109,12 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		tech: [
+			"figma",
 			"html",
 			"css",
-			"figma",
+			"sass",
 			"react",
+			"javascript",
 			"typescript",
 			"redux",
 			"materialui",
@@ -146,7 +160,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.privatelattice.com/",
-		tech: ["html", "css", "react", "sass"],
+		tech: ["html", "css", "javascript", "react", "sass", "semanticui"],
 		bgColor: "#FF7943",
 		type: "Web Application",
 		media: [
@@ -180,7 +194,7 @@ const PROJECTS: TProject[] = [
 		roles: ["design", "fe"],
 		sitelink: "https://d-productivity.vercel.app/",
 		githublink: "https://github.com/obododavid/d-productivity",
-		tech: ["html", "css", "react", "typescript", "redux", "styledcomponents"],
+		tech: ["html", "css", "sass", "react", "javascript", "typescript", "redux", "styledcomponents"],
 		type: "Web Application",
 		bgColor: "#F6EEF9",
 		media: [
@@ -207,7 +221,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
-		tech: ["html", "css", "react", "typescript", "styledcomponents", "rtl"],
+		tech: ["html", "css", "sass", "react", "typescript", "styledcomponents", "rtl"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -239,7 +253,19 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
-		tech: ["html", "css", "sass", "javascript", "react", "nodejs", "expressjs", "heroku", "mongodb", "firebase"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"styledcomponents",
+			"javascript",
+			"react",
+			"nodejs",
+			"expressjs",
+			"heroku",
+			"mongodb",
+			"firebase",
+		],
 		bgColor: "#2e5c87",
 		type: "Web Application",
 		media: [
@@ -266,7 +292,7 @@ const PROJECTS: TProject[] = [
 		responsibilities: "",
 		roles: ["design", "fe", "be"],
 		sitelink: "",
-		tech: ["react", "nextjs", "sass", "gsap", "googleanalytics", "sendgrid"],
+		tech: ["html", "css", "react", "nextjs", "sass", "gsap", "googleanalytics", "sendgrid"],
 		bgColor: "#e1dfdd",
 		type: "Web Application",
 		media: [
@@ -325,7 +351,7 @@ const PROJECTS: TProject[] = [
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
-		tech: ["html", "css", "react", "typescript", "redux", "materialui", "firebase"],
+		tech: ["html", "css", "sass", "react", "typescript", "redux", "materialui", "firebase"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -350,7 +376,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/portfolio/",
-		tech: ["html", "css", "javascript", "jquery", "ghpages"],
+		tech: ["html", "css", "sass", "javascript", "jquery", "ghpages"],
 		bgColor: "#1c1d26",
 		type: "Website",
 		media: [
@@ -424,7 +450,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.obododavid.com",
-		tech: ["html", "css", "react", "typescript", "styledcomponents", "nowsh"],
+		tech: ["html", "css", "sass", "react", "typescript", "styledcomponents", "nowsh"],
 		bgColor: "",
 		type: "Website",
 		media: [
@@ -551,7 +577,7 @@ const PROJECTS: TProject[] = [
 			<li>Used <span>Wordpress</span> to create a static publicly accessible web page for the company.</li>
 		</ul>
 		`,
-		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
+		tech: ["html", "css", "sass", "react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
 		bgColor: "#56D686",
 		type: "Web Application",
 		media: [
@@ -577,7 +603,7 @@ const PROJECTS: TProject[] = [
 		responsibilities: `
 	
 		`,
-		tech: ["react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
+		tech: ["html", "css", "react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
 		bgColor: "#56D686",
 		type: "Learn from Tutorial",
 		media: [
@@ -604,7 +630,7 @@ const PROJECTS: TProject[] = [
 		responsibilities: `
 	
 		`,
-		tech: ["react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
+		tech: ["html", "css", "react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
 		bgColor: "#56D686",
 		type: "Learn from Tutorial",
 		media: [
