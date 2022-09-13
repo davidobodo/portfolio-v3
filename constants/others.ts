@@ -36,6 +36,10 @@ const PROJECT_NATURE: { key: TProjectType; label: string }[] = [
 		key: "Experiment",
 		label: "Experiment/Playful",
 	},
+	{
+		key: "Learn from Tutorial",
+		label: "Learn from Tutorial",
+	},
 ];
 
 const FOCUSABLE_ELEMENT_STRING =

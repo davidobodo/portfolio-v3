@@ -34,6 +34,8 @@ const PROJECTS: TProject[] = [
 			"styledcomponents",
 			"storybook",
 			"rtl",
+			"jest",
+			"googleanalytics",
 		],
 		type: "Web Application",
 		bgColor: "#f4efe7",
@@ -77,7 +79,7 @@ const PROJECTS: TProject[] = [
 
 		roles: ["design", "fe", "be"],
 		sitelink: "https://www.cadmils.com/",
-		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku", "sendgrid"],
+		tech: ["html", "css", "sass", "javascript", "jquery", "nodejs", "expressjs", "heroku", "sendgrid"],
 		type: "Website",
 		bgColor: "#86868b",
 		media: [
@@ -94,8 +96,8 @@ const PROJECTS: TProject[] = [
 		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, 
 		however it's importance is far beyond just a requirement to get into the internship.
 		</p>
-		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
-		However, for easy accessibility for everyone, these have been removed in the current iteration.
+		<p>This project has <span>two iterations</span>, initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
+		However, for easy accessibility to everyone, these have been removed in the current iteration.
 		 </p>
 		`,
 		responsibilities: `
@@ -122,7 +124,6 @@ const PROJECTS: TProject[] = [
 			"graphql",
 			"nodejs",
 			"expressjs",
-			"rtl",
 			"googlemaps",
 			"netlify",
 		],
@@ -221,7 +222,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
-		tech: ["html", "css", "sass", "react", "typescript", "styledcomponents", "rtl"],
+		tech: ["html", "css", "sass", "react", "javascript", "typescript", "styledcomponents", "rtl", "jest"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -259,6 +260,7 @@ const PROJECTS: TProject[] = [
 			"sass",
 			"styledcomponents",
 			"javascript",
+			"typescript",
 			"react",
 			"nodejs",
 			"expressjs",
@@ -292,7 +294,19 @@ const PROJECTS: TProject[] = [
 		responsibilities: "",
 		roles: ["design", "fe", "be"],
 		sitelink: "",
-		tech: ["html", "css", "react", "nextjs", "sass", "gsap", "googleanalytics", "sendgrid"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"react",
+			"nextjs",
+			"javascript",
+			"typescript",
+			"gsap",
+			"googleanalytics",
+			"sendgrid",
+			"jest",
+		],
 		bgColor: "#e1dfdd",
 		type: "Web Application",
 		media: [
@@ -351,7 +365,7 @@ const PROJECTS: TProject[] = [
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
-		tech: ["html", "css", "sass", "react", "typescript", "redux", "materialui", "firebase"],
+		tech: ["html", "css", "sass", "react", "javascipt", "redux", "materialui", "firebase"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -426,7 +440,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
-		tech: ["html", "css", "sass", "typescript", "ghpages"],
+		tech: ["html", "css", "sass", "javascript", "ghpages"],
 		bgColor: "#000",
 		type: "Website",
 		media: [
@@ -450,7 +464,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.obododavid.com",
-		tech: ["html", "css", "sass", "react", "typescript", "styledcomponents", "nowsh"],
+		tech: ["html", "css", "sass", "react", "javascript", "typescript", "styledcomponents", "googleanalytics"],
 		bgColor: "",
 		type: "Website",
 		media: [
@@ -577,7 +591,20 @@ const PROJECTS: TProject[] = [
 			<li>Used <span>Wordpress</span> to create a static publicly accessible web page for the company.</li>
 		</ul>
 		`,
-		tech: ["html", "css", "sass", "react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"react",
+			"redux",
+			"javascript",
+			"typescript",
+			"materialui",
+			"ga",
+			"graphql",
+			"enzyme",
+			"jest",
+		],
 		bgColor: "#56D686",
 		type: "Web Application",
 		media: [
