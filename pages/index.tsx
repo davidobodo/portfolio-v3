@@ -69,7 +69,7 @@ const Home: NextPage = () => {
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation({});
-	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView({});
 	const { containerRef, containerWidth } = useExcellenceAnimation();
 
 	const { title, description, url, image } = METADATA["home"];

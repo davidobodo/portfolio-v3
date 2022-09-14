@@ -5,9 +5,9 @@ import { usePageTransitionsContext } from "#/context";
 
 type TView = "list" | "grid";
 
-export default function useProjectsCurrentView() {
+export default function useProjectsCurrentView({ defaultView }: { defaultView?: TView }) {
 	const { innerWidth: windowInnerWidth } = useWindowSize();
-	const [currentView, setCurrentView] = useState<TView>("grid");
+	const [currentView, setCurrentView] = useState<TView>(defaultView ? defaultView : "grid");
 	const handleSetCurrentView = (view: TView) => {
 		setCurrentView(view);
 		registerEvent(events.shared.homeAndProjects.toggleProjectsView({ projects_view: view }));
@@ -28,7 +28,7 @@ export default function useProjectsCurrentView() {
 
 	//Default desktop view
 	useIsomorphicLayoutEffect(() => {
-		if (windowInnerWidth > 1024) {
+		if (windowInnerWidth > 1024 && !defaultView) {
 			setCurrentView("list");
 		}
 	}, []);

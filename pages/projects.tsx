@@ -63,7 +63,7 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// TOGGLE BETWEEN GRID AND LIST VIEW
 	//---------------------------------------------------------
-	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView({ defaultView: "grid" });
 
 	useIsomorphicLayoutEffect(() => {
 		if (windowInnerWidth < 768) {
@@ -105,26 +105,23 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// DISPLAYED PROJECTS
 	//---------------------------------------------------------
-	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
 	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => {
-		let filteredProjects = PROJECTS;
-
-		if (key !== "all") {
-			filteredProjects = PROJECTS.filter((project) => {
-				const { type, tech } = project;
-
-				if (filterBy === "tech-stack") {
-					return tech.includes(key);
-				} else if (filterBy === "project-nature") {
-					return type === key;
-				}
-			});
-		}
-
 		registerEvent(events.pages.projects.filterProjectsByKey({ filter_key: key }));
-		setDisplayedProjects(filteredProjects);
 		setFilterKey(key);
 	};
+
+	let displayedProjects = PROJECTS;
+	if (filterKey !== "all") {
+		displayedProjects = PROJECTS.filter((project) => {
+			const { type, tech } = project;
+
+			if (filterBy === "tech-stack") {
+				return tech.includes(filterKey);
+			} else if (filterBy === "project-nature") {
+				return type === filterKey;
+			}
+		});
+	}
 
 	useIsomorphicLayoutEffect(() => {
 		if (!initialPageLoad) {

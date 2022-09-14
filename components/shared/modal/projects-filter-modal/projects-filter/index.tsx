@@ -33,6 +33,12 @@ export default function BaseProjectsFilter({
 	const onClose = () => {
 		document.body.style.overflow = "auto";
 
+		// Remoce open filter params
+		const searchParams = new URLSearchParams(window.location.search);
+		searchParams.delete("open_filter");
+		const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+		window.history.pushState(null, "", newRelativePathQuery);
+
 		const listItems = containerRefSelector('[data-key="list-items"]');
 		const filterOptions = containerRefSelector<HTMLDivElement>('[data-key="filter-options"]');
 		const tl = animateFilterSectionOut({
@@ -79,7 +85,6 @@ export default function BaseProjectsFilter({
 	};
 
 	const [initialLoad, setInitialLoad] = useState(true);
-
 	const prevFilter = usePrevious(filterBy);
 	useEffect(() => {
 		if (!initialLoad && prevFilter && prevFilter !== filterBy) {
