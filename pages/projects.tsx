@@ -105,7 +105,7 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// DISPLAYED PROJECTS
 	//---------------------------------------------------------
-	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => {
+	const onFilterProjects = ({ key }: { key: string }) => {
 		registerEvent(events.pages.projects.filterProjectsByKey({ filter_key: key }));
 		setFilterKey(key);
 	};

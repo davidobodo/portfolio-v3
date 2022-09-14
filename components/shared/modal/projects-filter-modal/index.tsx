@@ -12,7 +12,7 @@ export default function ProjectsFilterModal({
 	onSelectFilterBy,
 }: {
 	isOpen: boolean;
-	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => void;
+	onFilterProjects: ({ key }: { key: string }) => void;
 	onCloseFilter: () => void;
 	filterKey: string;
 	filterList: { key: string; label: string }[];

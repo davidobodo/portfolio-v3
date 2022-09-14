@@ -17,7 +17,7 @@ export default function BaseProjectsFilter({
 	filterBy,
 	onSelectFilterBy,
 }: {
-	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => void;
+	onFilterProjects: ({ key }: { key: string }) => void;
 	onCloseFilter: () => void;
 	filterKey: string;
 	filterList: { key: string; label: string }[];
@@ -79,7 +79,6 @@ export default function BaseProjectsFilter({
 		document.body.style.overflow = "auto";
 		onFilterProjects({
 			key,
-			filterBy,
 		});
 		onClose();
 	};
