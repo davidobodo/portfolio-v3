@@ -63,14 +63,13 @@ export default function useProjectsPageInit({
 			master.add(scrollToProjectsSection());
 			master.add(() => {
 				onOpenFilter();
-				// window.history.pushState(null, "New Page Title", `/projects`);
 			});
 		}
 
 		return () => {
 			master.kill();
 		};
-	}, [router.query.open_filter]);
+	}, []);
 
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 

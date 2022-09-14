@@ -180,6 +180,8 @@ const ProjectsPage: NextPage = () => {
 							<FilterIcon />
 						</button>
 					</div>
+
+					<p className={styles.note}>Note: Projects listed here are mainly freelance/personal projects</p>
 					<div className={styles.header}>
 						<h2 ref={contentRef}>
 							Viewing <span>{currProjects}</span> projects

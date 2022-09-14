@@ -103,7 +103,16 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 							<p>
 								Developers need <strong> to learn everyday </strong> so this list could get really long 😅. <br /> See
 								&nbsp;
-								<Link scroll={false} href="/projects?open_filter=true">
+								{/* <Link scroll={false} href="/projects?open_filter=true"> */}
+								<Link
+									scroll={false}
+									href={{
+										pathname: "/projects",
+										query: {
+											open_filter: true,
+										},
+									}}
+								>
 									<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>
 										more frameworks/libraries here.
 									</a>

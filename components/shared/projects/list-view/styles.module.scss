@@ -70,14 +70,18 @@
 
 			&:hover,
 			&:focus {
-				opacity: 1;
+				opacity: 0.5;
 
 				h2 {
-					transform: translateX(calc(var(clamp(2.5em, 8vw, 8em)) * -0.1));
+					transform: translateX(-20px);
 				}
 
 				p {
-					transform: translateX(calc(var(clamp(2.5em, 8vw, 8em)) * 0.1));
+					transform: translateX(20px);
+				}
+
+				.number {
+					opacity: 0.2;
 				}
 			}
 
@@ -90,6 +94,7 @@
 				color: var(--white);
 				opacity: 0.02;
 				line-height: 0.8em;
+				transition: opacity 200ms ease-in-out;
 			}
 		}
 	}
