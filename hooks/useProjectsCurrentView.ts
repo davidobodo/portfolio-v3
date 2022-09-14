@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { events, registerEvent } from "#/utils/analytics/events";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 
 type TView = "list" | "grid";
 
@@ -13,7 +13,7 @@ export default function useProjectsCurrentView({ defaultView }: { defaultView?: 
 		registerEvent(events.shared.homeAndProjects.toggleProjectsView({ projects_view: view }));
 	};
 
-	const { radialGradientAnimation } = usePageTransitionsContext();
+	const { radialGradientAnimation, contactOpenerAnimation } = useAnimationsContext();
 
 	const [firstInstanceLoad, setFirstInstanceLoad] = useState(true);
 
@@ -21,6 +21,7 @@ export default function useProjectsCurrentView({ defaultView }: { defaultView?: 
 	useEffect(() => {
 		if (!firstInstanceLoad) {
 			radialGradientAnimation?.scrollTrigger?.refresh();
+			contactOpenerAnimation?.scrollTrigger?.refresh();
 		} else {
 			setFirstInstanceLoad(false);
 		}

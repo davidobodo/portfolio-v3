@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useWindowSize } from "..";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 import { otherSharedAnimations, notFoundPageAnimations } from "#/utils/animations";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -76,7 +76,7 @@ export default function use404PageInit() {
 	//-------------------------------------------
 	// PAGE ANIMATION
 	//-------------------------------------------
-	const { initialAppLoad, setInitialAppLoad, exitAnimation } = usePageTransitionsContext();
+	const { initialAppLoad, setInitialAppLoad, exitAnimation } = useAnimationsContext();
 
 	useIsomorphicLayoutEffect(() => {
 		window.scrollTo({
