@@ -63,7 +63,7 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// TOGGLE BETWEEN GRID AND LIST VIEW
 	//---------------------------------------------------------
-	const { currentView, handleSetCurrentView } = useProjectsCurrentView({ defaultView: "grid" });
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView({});
 
 	useIsomorphicLayoutEffect(() => {
 		if (windowInnerWidth < 768) {

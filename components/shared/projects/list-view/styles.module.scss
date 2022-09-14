@@ -79,10 +79,6 @@
 				p {
 					transform: translateX(20px);
 				}
-
-				.number {
-					opacity: 0.2;
-				}
 			}
 
 			.number {
@@ -94,7 +90,6 @@
 				color: var(--white);
 				opacity: 0.02;
 				line-height: 0.8em;
-				transition: opacity 200ms ease-in-out;
 			}
 		}
 	}
