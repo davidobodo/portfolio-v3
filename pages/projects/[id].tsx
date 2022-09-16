@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
+import { Nav, Layout, Noise, SingleProject, Footer } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
@@ -91,7 +91,7 @@ export default function Project(props: Props) {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<Contact />
+			<Footer />
 		</>
 	);
 }

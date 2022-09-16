@@ -3,7 +3,7 @@ import Pages from "./pages";
 
 const {
 	Projects,
-	Contact,
+	Footer,
 	ScrollAlert,
 	Banners,
 	Nav,
@@ -45,7 +45,7 @@ export {
 	Excellence,
 	SingleProject,
 	Projects,
-	Contact,
+	Footer,
 	ScrollAlert,
 	Nav,
 	Radio,

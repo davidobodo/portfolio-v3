@@ -8,7 +8,7 @@ import {
 	Layout,
 	Projects,
 	BannerCurtain,
-	Contact,
+	Footer,
 	ProjectsViewSelector,
 	ProjectsFilterModal,
 } from "#/components";
@@ -191,7 +191,7 @@ const ProjectsPage: NextPage = () => {
 					<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} currentView={currentView} />
 				</div>
 			</Layout.DarkSection>
-			<Contact />
+			<Footer />
 			<Noise />
 
 			<ProjectModal

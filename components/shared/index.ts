@@ -1,5 +1,5 @@
 import Layout from "./layout";
-import Contact from "./contact";
+import Footer from "./footer";
 import ScrollAlert from "./scroll-alert";
 import Banners from "./banners";
 import Nav from "./nav";
@@ -26,7 +26,7 @@ const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
 const Shared = {
 	Projects,
-	Contact,
+	Footer,
 	ScrollAlert,
 	Banners,
 	Nav,

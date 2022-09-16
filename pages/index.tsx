@@ -30,7 +30,7 @@ import {
 	ProjectsHeading,
 	Noise,
 	Excellence,
-	Contact,
+	Footer,
 	ProjectsViewSelector,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
 				isOpen={isOpen}
 				onGoToProject={onGoToProject}
 			/>
-			<Contact />
+			<Footer />
 		</>
 	);
 };

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/not-found.module.scss";
-import { Nav, Noise, DarkRadialGradient, ScrollAlert, Contact } from "#/components";
+import { Nav, Noise, DarkRadialGradient, ScrollAlert, Footer } from "#/components";
 import { use404PageInit } from "#/hooks";
 import { METADATA } from "#/constants";
 
@@ -69,7 +69,7 @@ export default function NotFound() {
 				<DarkRadialGradient containerRef={gradientRef} propStyles={styles.radialGradient} />
 				<Noise />
 			</div>
-			<Contact />
+			<Footer />
 		</>
 	);
 }
