@@ -1,35 +1,35 @@
 import PROJECTS from "./projects";
 
-const BASE_URL = "https://portfolio-v3-rho-ten.vercel.app";
+const BASE_URL = "https://www.davidobodo.com";
 const metadata = {
 	home: {
-		title: "David Obodo | Software Developer (Frontend Developer)",
-		description:
-			"David Obodo is a Software Developer that majors on Frontend Development, yet is no stranger to the entire full stack development.",
+		title: "David Obodo: Software Developer (Front End Developer)",
+		description: `David Obodo is a Software Developer that majors in Front End Development, yet has the skillset of a full stack developer which enables him to provide 
+			end-to-end service effectively. 
+			`,
 		url: `${BASE_URL}`,
 		image: `${BASE_URL}/images/covers/home.png`,
 	},
 	projects: {
-		title: "David Obodo | Projects | Software Developer (Frontend Developer)",
-		description:
-			"Projects | Playground | Replicas | Xperiments from David Obodo (Software Developer, Front end Developer)",
+		title: "David Obodo: Projects",
+		description: "Projects | Playground | Replicas | Xperiments from David Obodo",
 		url: `${BASE_URL}/projects`,
 		image: `${BASE_URL}/images/covers/projects.png`,
 	},
 	letters: {
-		title: "David Obodo | Letters | Software Developer (Frontend Developer)",
-		description: "Letters | Thoughts | Stories | Ideas from David Obodo (Software Developer, Front end Developer)",
+		title: "David Obodo: Letters",
+		description: "Letters | Thoughts | Stories | Ideas from David Obodo",
 		url: `${BASE_URL}/letters`,
 		image: `${BASE_URL}/images/covers/letters.png`,
 	},
 	credits: {
-		title: "David Obodo | Credits | Software Developer (Frontend Developer)",
-		description: "Portfolio Credits",
+		title: "David Obodo: Credits",
+		description: "Site Credits",
 		url: `${BASE_URL}/credits`,
 		image: `${BASE_URL}/images/covers/credits.png`,
 	},
 	notfound: {
-		title: "David Obodo | Lost | Software Developer (Frontend Developer)",
+		title: "David Obodo: Lost",
 		description: "404 Page not found  - Go Home ",
 		url: `${BASE_URL}/lost`,
 		image: `${BASE_URL}/images/covers/not-found.png`,

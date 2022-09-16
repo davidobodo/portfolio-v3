@@ -36,7 +36,7 @@ export default function NotFound() {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav />
 			<div className={styles.main} ref={containerRef}>

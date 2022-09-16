@@ -101,7 +101,7 @@ const Home: NextPage = () => {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
