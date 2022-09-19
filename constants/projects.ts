@@ -622,16 +622,21 @@ const PROJECTS: TProject[] = [
 		id: "phitnftswhitelist",
 		title: "PhitNFTS Whitelist",
 		details: `
-
+		<p>Keeping abreast with latest technology advancements, I decided to learn web3 on the side. This has been really easy and straight forward with the help of <a href="https://learnweb3.io/" target="_blank">LearnWeb3</a>. This project
+		is a modified version of the whitelist dapp taught in Learnweb3.</p>
+		<p>In order to solidify some concepts taught, I decided to modify the project a little bit. Some of these modifications include:</p>
+		<ul>
+		<li>Refactoring of UI</li>
+		<li>Displaying connected wallet address</li>
+		</ul>
 		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0xC62EEfe06F1f69C3010ab44F4581B1329F938D31" target="_blank">Rinkeby Etherscan</a></p>
 		`,
 		roles: ["design", "fe", "be"],
-		sitelink: "",
-		responsibilities: `
-	
-		`,
+		sitelink: "https://learnweb3-phitnftwhitelist.vercel.app/",
+		githublink: "https://github.com/davidobodo/learnweb3-phitnftwhitelist",
+		responsibilities: ``,
 		tech: ["html", "css", "react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
-		bgColor: "#56D686",
+		bgColor: "#000",
 		type: "Learn from Tutorial",
 		media: [
 			{
@@ -648,26 +653,52 @@ const PROJECTS: TProject[] = [
 		id: "phitnfts",
 		title: "PhitNFTS ",
 		details: `
-
-		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0xC62EEfe06F1f69C3010ab44F4581B1329F938D31" target="_blank">Rinkeby Etherscan</a></p>
-		<p>See NFT Collection on <a href="https://testnets.opensea.io/collection/phit-nfts-v4" target="_blank">Opensea Testnet</a></p>
+		<p>Keeping abreast with latest technology advancements, I decided to learn web3 on the side. This has been really easy and straight forward with the help of <a href="https://learnweb3.io/" target="_blank">LearnWeb3</a>. This project
+		is a modified version of the whitelist dapp taught in Learnweb3.</p>
+		<p>In order to solidify some concepts taught, I decided to modify the project a little bit. Some of these modifications include:</p>
+		<ul>
+		<li>Refactoring of UI</li>
+		<li>Displaying connected wallet address</li>
+		<li>Giving users a direct link to their minted NFT</li>
+		</ul>
+		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0x864EC287eF39A1DE0445EA1Fb441b5EE7c83626F" target="_blank">Rinkeby Etherscan</a></p>
+		<p>See NFT Collection on <a href="https://testnets.opensea.io/collection/phit-nfts-xuwds2pvht" target="_blank">Testnet Opensea</a></p>
 		`,
 		roles: ["design", "fe", "be"],
-		sitelink: "",
-		responsibilities: `
-	
-		`,
+		sitelink: "https://learnweb3-phitnfts.vercel.app/",
+		githublink: "https://github.com/davidobodo/learnweb3-phitnfts",
+		responsibilities: ``,
 		tech: ["html", "css", "react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
-		bgColor: "#56D686",
+		bgColor: "#fff",
 		type: "Learn from Tutorial",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/phitnftswhitelist/joined.jpg",
+				source: "/images/projects/phitnfts/joined.jpg",
 			},
 			{
 				type: "image",
-				source: "/images/projects/phitnftswhitelist/pending.jpg",
+				source: "/images/projects/phitnfts/pending.jpg",
+			},
+		],
+	},
+	{
+		id: "three",
+		title: "GSAP and Three.js Experiment",
+		details: `
+		<p>Just an experiment to hook up gsap with three.js. Also needed to learn a couple things about <a href="https://www.blender.org/" target="_blank">Blender</a> in order to modify the 3D models</p>
+		`,
+		roles: [],
+		sitelink: "https://laptop-phone-three-js.vercel.app/",
+		githublink: "https://github.com/davidobodo/laptop-phone-three-js",
+		responsibilities: ``,
+		tech: ["html", "css", "javascript", "gsap", "threejs"],
+		bgColor: "#fff",
+		type: "Experiment",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/laptop-phone/index.gif",
 			},
 		],
 	},
