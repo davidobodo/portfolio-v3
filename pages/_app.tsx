@@ -5,7 +5,6 @@ import type { AppProps } from "next/app";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
 import { Common } from "#/components";
 import { AnimationsProvider } from "#/context";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	//Register gsap
@@ -13,8 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 	//Add smoothscroll polyfill for safari
 	useSmoothScroll();
-
-	const router = useRouter();
 
 	return (
 		<>
