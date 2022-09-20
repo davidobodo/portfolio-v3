@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { Nav, Layout, Noise, SingleProject, Contact } from "#/components";
+import { Nav, Layout, Noise, SingleProject, Footer } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { METADATA, PROJECTS } from "#/constants";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 const { removeCurrentProject } = projectAnimations;
 
 type Props = {
@@ -39,10 +39,11 @@ export default function Project(props: Props) {
 		}
 	};
 
-	const { radialGradientAnimation } = usePageTransitionsContext();
+	const { radialGradientAnimation, contactOpenerAnimation } = useAnimationsContext();
 
 	useEffect(() => {
 		radialGradientAnimation?.scrollTrigger?.refresh();
+		contactOpenerAnimation?.scrollTrigger?.refresh();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedProjectId]);
 
@@ -76,10 +77,10 @@ export default function Project(props: Props) {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
-			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef} pathname="/projects/[id]">
 				<div ref={modalRef}>
 					<SingleProject
 						currProjectId={selectedProjectId}
@@ -90,7 +91,7 @@ export default function Project(props: Props) {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<Contact refreshAnim={selectedProjectId} />
+			<Footer />
 		</>
 	);
 }

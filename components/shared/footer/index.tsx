@@ -1,13 +1,14 @@
 import styles from "./styles.module.scss";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { SectionPlaceholder } from "#/components";
 import { useIsomorphicLayoutEffect, useWindowSize } from "#/hooks";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { Details } from "./details";
 import { otherSharedAnimations } from "#/utils/animations";
+import { useAnimationsContext } from "#/context";
 
 const { openContactCurtain } = otherSharedAnimations;
-export default function Contact({ refreshAnim = "refresh" }: { refreshAnim?: string }) {
+export default function Contact() {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -60,10 +61,10 @@ export default function Contact({ refreshAnim = "refresh" }: { refreshAnim?: str
 		};
 	}, []);
 
+	const { setContactOpenerAnimation } = useAnimationsContext();
 	//-------------------------------------------------------------
 	// REVEAL FOOTER ANIMATION
 	//-------------------------------------------------------------
-	const [tl, setTl] = useState<gsap.core.Timeline>();
 	useIsomorphicLayoutEffect(() => {
 		if (wrapperRef.current && footerHeight) {
 			const tl = openContactCurtain({
@@ -71,22 +72,13 @@ export default function Contact({ refreshAnim = "refresh" }: { refreshAnim?: str
 				curtain: wrapperRef.current.querySelector("[data-key='contact-curtain']") as HTMLDivElement,
 			});
 
-			setTl(tl);
+			setContactOpenerAnimation(tl);
 
 			return () => {
 				tl.scrollTrigger?.kill();
 			};
 		}
 	}, [footerHeight]);
-
-	//-------------------------------------------------------------
-	// If page height changes particularly on single projects page
-	//-------------------------------------------------------------
-	useEffect(() => {
-		if (refreshAnim && tl) {
-			tl.scrollTrigger?.refresh();
-		}
-	}, [refreshAnim, tl]);
 
 	//-------------------------------------------------------------
 	// Google analytics

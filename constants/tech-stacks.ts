@@ -46,9 +46,9 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "jest",
 		label: "Jest",
 	},
-	chakraui: {
-		key: "chakraui",
-		label: "Chakra UI",
+	rtl: {
+		key: "rtl",
+		label: "React Testing Library",
 	},
 	reactquery: {
 		key: "reactquery",
@@ -70,10 +70,6 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "expressjs",
 		label: "Express.js",
 	},
-	pupeteer: {
-		key: "pupeteer",
-		label: "Pupeteer",
-	},
 	threejs: {
 		key: "threejs",
 		label: "Three.js",
@@ -86,9 +82,9 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "materialui",
 		label: "Material UI",
 	},
-	socketio: {
-		key: "socketio",
-		label: "Socket.io",
+	semanticui: {
+		key: "semanticui",
+		label: "Semantic UI",
 	},
 	jquery: {
 		key: "jquery",
@@ -98,10 +94,7 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "enzyme",
 		label: "Enzyme",
 	},
-	rtl: {
-		key: "rtl",
-		label: "React Testing Library",
-	},
+
 	tailwindcss: {
 		key: "tailwindcss",
 		label: "Tailwind CSS",
@@ -161,15 +154,12 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "ghpages",
 		label: "Github Pages",
 	},
-	nowsh: {
-		key: "nowsh",
-		label: "Now.sh",
-	},
-	// gcp: {
-	// 	key: "gcp",
-	// 	label: "GCP",
-	// 	// image: iconGcp,
-	// },
 };
 
 export default TECH_STACKS;
+
+/**
+ * chakra ui
+ * pupeteer
+ * socket io
+ */

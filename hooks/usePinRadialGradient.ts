@@ -1,21 +1,21 @@
 import { useRef, RefObject } from "react";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 import { useIsomorphicLayoutEffect } from ".";
 import { otherSharedAnimations } from "#/utils/animations";
-import { useRouter } from "next/router";
 
 const { pinRadialGradient } = otherSharedAnimations;
 
 export default function usePinRadialGradient({
 	darkSectionRef,
 	bannerHeight,
+	pathname,
 }: {
 	darkSectionRef: RefObject<HTMLDivElement>;
 	bannerHeight?: number;
+	pathname?: string;
 }) {
-	const { pathname } = useRouter();
 	const darkSectionRadialGradientRef = useRef(null);
-	const { setRadialGradientAnimation } = usePageTransitionsContext();
+	const { setRadialGradientAnimation } = useAnimationsContext();
 
 	useIsomorphicLayoutEffect(() => {
 		//Single projects page doesnt have a banner

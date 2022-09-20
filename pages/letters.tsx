@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "#/styles/_pages/letters.module.scss";
 import { NextPage } from "next";
 import { useRef } from "react";
-import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Contact } from "#/components";
+import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Footer } from "#/components";
 import { LETTERS, METADATA } from "#/constants";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
 
@@ -46,7 +46,7 @@ const Letters: NextPage = () => {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
@@ -80,7 +80,7 @@ const Letters: NextPage = () => {
 				</div>
 			</Layout.DarkSection>
 			<Noise />
-			<Contact />
+			<Footer />
 		</>
 	);
 };

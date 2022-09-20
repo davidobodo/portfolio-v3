@@ -46,28 +46,33 @@ exports[`Bookmark page renders correctly 1`] = `
     <div
       class="content"
     >
-      <div
-        class="container"
-      >
+      <div>
         <div
-          class="container"
-          data-key="project-info"
+          class="empty"
         >
-          <button
-            aria-label="previous"
-            class="desktopNavigator btnPrevious"
-            value="previous"
+          <p>
+            Oops! Sorry I do not have any project by the name: 
+            <br />
+             
+            <span>
+               boookmark 
+            </span>
+             
+          </p>
+          <a
+            href="/projects"
           >
+            Go to Projects
             <svg
-              class="icon icon-tabler icon-tabler-chevron-left"
+              class="icon icon-tabler icon-tabler-external-link"
               fill="none"
-              height="60"
+              height="24"
               stroke="#86868b"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="1.5"
               viewBox="0 0 24 24"
-              width="60"
+              width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -75,301 +80,20 @@ exports[`Bookmark page renders correctly 1`] = `
                 fill="none"
                 stroke="none"
               />
-              <polyline
-                points="15 6 9 12 15 18"
-              />
-            </svg>
-          </button>
-          <div
-            class="content"
-          >
-            <section
-              class="title"
-              data-key="title"
-            >
-              <h1>
-                Bookmark
-              </h1>
-              <button
-                class="btnClose"
-                data-key="close-button"
-              >
-                <span>
-                  <strong>
-                    ↙
-                  </strong>
-                </span>
-                <span>
-                  Close
-                </span>
-              </button>
-            </section>
-            <div
-              class="media"
-            >
-              <div
-                class="image"
-                style="background-image: url(/images/projects/bookmark/desktop-preview.jpg);"
-              />
-            </div>
-            <section
-              class="about"
-              data-key="about"
-            >
-              <h2>
-                About this project
-              </h2>
-              <div
-                class="details"
-              >
-                <p>
-                  In the early stages of my career, I leveraged 
-                  <a
-                    href="https://www.frontendmentor.io/"
-                  >
-                    Frontend Mentor
-                  </a>
-                   which was very helpful in building me up.
-                </p>
-                
-		
-                <p>
-                  This project involved building a static reponsive clone of a UI.
-                </p>
-                
-		
-                <p>
-                  You can check out the project instructions 
-                  <a
-                    href="https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158/hub/bookmark-landing-page-Xa4U_uHY"
-                    target="_blank"
-                  >
-                    here
-                  </a>
-                  .
-                </p>
-                
-		
-                <p>
-                  Last updated on 25th February 2020.
-                </p>
-                
-		
-              </div>
-              <div
-                class="roles"
-              >
-                <h3>
-                  Role in Project
-                </h3>
-                <ul>
-                  <li>
-                    Front End Developer
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="responsibilities"
-              >
-                <h3>
-                  My Responsibilities / Features I Implemented
-                </h3>
-                <div>
-                  
-		
-                  <ul>
-                    
-			
-                    <li>
-                      Convert mockup into responsive web page
-                    </li>
-                    
-		
-                  </ul>
-                  
-		
-                </div>
-              </div>
-            </section>
-            <section
-              class="tech"
-              data-key="tech"
-            >
-              <h2>
-                Technical Sheet
-              </h2>
-              <p>
-                Some noteworthy technologies I got involved with while working on this project.
-              </p>
-              <ul>
-                <li>
-                  HTML
-                </li>
-                <li>
-                  CSS
-                </li>
-                <li>
-                  SASS/SCSS
-                </li>
-                <li>
-                  Github Pages
-                </li>
-              </ul>
-            </section>
-            <div
-              class="links"
-              data-key="buttons"
-            >
-              <a
-                href="https://davidobodo.github.io/FEM-bookmark-landing-page/"
-                target="_blank"
-              >
-                Visit site
-                <svg
-                  class="icon icon-tabler icon-tabler-external-link"
-                  fill="none"
-                  height="24"
-                  stroke="#86868b"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                    stroke="none"
-                  />
-                  <path
-                    d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"
-                  />
-                  <line
-                    x1="10"
-                    x2="20"
-                    y1="14"
-                    y2="4"
-                  />
-                  <polyline
-                    points="15 4 20 4 20 9"
-                  />
-                </svg>
-                 
-              </a>
-              <a
-                href="https://github.com/davidobodo/FEM-bookmark-landing-page"
-                target="_blank"
-              >
-                Github repo 
-                <svg
-                  class="icon icon-tabler icon-tabler-brand-github"
-                  fill="none"
-                  height="24"
-                  stroke="#86868b"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                    stroke="none"
-                  />
-                  <path
-                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-                  />
-                </svg>
-                 
-              </a>
-            </div>
-          </div>
-          <button
-            aria-label="previous"
-            class="desktopNavigator btnNext"
-            value="next"
-          >
-            <svg
-              class="icon icon-tabler icon-tabler-chevron-right"
-              fill="none"
-              height="60"
-              stroke="#86868b"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              width="60"
-              xmlns="http://www.w3.org/2000/svg"
-            >
               <path
-                d="M0 0h24v24H0z"
-                fill="none"
-                stroke="none"
+                d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"
+              />
+              <line
+                x1="10"
+                x2="20"
+                y1="14"
+                y2="4"
               />
               <polyline
-                points="9 6 15 12 9 18"
+                points="15 4 20 4 20 9"
               />
             </svg>
-          </button>
-          <div
-            class="mobileNavigator"
-          >
-            <button
-              aria-label="previous"
-              value="previous"
-            >
-              <svg
-                class="icon icon-tabler icon-tabler-chevron-left"
-                fill="none"
-                height="60"
-                stroke="#86868b"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-                width="60"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
-                />
-                <polyline
-                  points="15 6 9 12 15 18"
-                />
-              </svg>
-            </button>
-            <button
-              aria-label="previous"
-              value="next"
-            >
-              <svg
-                class="icon icon-tabler icon-tabler-chevron-right"
-                fill="none"
-                height="60"
-                stroke="#86868b"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-                width="60"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
-                />
-                <polyline
-                  points="9 6 15 12 9 18"
-                />
-              </svg>
-            </button>
-          </div>
+          </a>
         </div>
       </div>
       <div
@@ -662,6 +386,10 @@ exports[`Bookmark page renders correctly 1`] = `
         style="height: 0px; display: block;"
       />
     </div>
+    <div
+      class="blackCurtain"
+      data-key="contact-curtain"
+    />
   </footer>
 </DocumentFragment>
 `;

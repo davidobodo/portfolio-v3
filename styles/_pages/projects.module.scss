@@ -57,6 +57,30 @@
 		}
 	}
 
+	.note {
+		color: var(--ash);
+		font-size: 1.6rem;
+		margin-bottom: 6rem;
+		padding-left: 2rem;
+		text-align: center;
+		font-family: sf-pro-regular;
+
+		@media (min-width: $md) {
+			margin-left: auto;
+			margin-right: auto;
+
+			max-width: var(--mini-desktop-max-width);
+		}
+
+		@media (min-width: $xl) {
+			padding-left: 0rem;
+		}
+
+		@media (min-width: $xxl) {
+			max-width: var(--max-width);
+		}
+	}
+
 	.header {
 		display: flex;
 		align-items: center;

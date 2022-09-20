@@ -122,7 +122,7 @@ class OtherHomeSectionsAnimations {
 			ease: "none",
 		});
 		tl.to(textWrapper.querySelector("svg"), {
-			scale: 60,
+			scale: 50,
 		});
 		tl.to(image, {
 			borderLeftWidth: innerWidth < 1200 ? "2rem" : "5.8rem",

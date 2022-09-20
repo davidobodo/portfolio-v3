@@ -1,5 +1,5 @@
 import Layout from "./layout";
-import Contact from "./contact";
+import Footer from "./footer";
 import ScrollAlert from "./scroll-alert";
 import Banners from "./banners";
 import Nav from "./nav";
@@ -14,8 +14,8 @@ import Projects from "./projects";
 import Spinner from "./spinner";
 import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
-import PageTransitionLayout from "./page-transition-layout";
-import RouteTransitionOverlay from "./route-transition-overlay";
+import PageTransitionLayout from "./page-transition-wrapper";
+import RouteTransitionOverlay from "./page-transition-overlay";
 import ProjectsViewSelector from "./projects/projects-view-selector";
 import Slider from "./slider";
 import Radio from "./radio";
@@ -26,7 +26,7 @@ const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
 const Shared = {
 	Projects,
-	Contact,
+	Footer,
 	ScrollAlert,
 	Banners,
 	Nav,

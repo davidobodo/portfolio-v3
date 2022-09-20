@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Contact } from "#/components";
+import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Footer } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
 import { otherSharedAnimations } from "#/utils/animations";
@@ -50,32 +50,8 @@ export default function Credit() {
 			description: "Chief Reviewer - Oluwaseun Adedire",
 		},
 		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
+			link: "https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/",
 			description: "Assitant chief reviewer - Harmony Orakpoyovwuru",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Ifeanyi ",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Onos",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Lekan",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Teenoh",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Emma ui/ux",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Assurance",
 		},
 	];
 	const darkSectionRef = useRef(null);
@@ -118,7 +94,7 @@ export default function Credit() {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 
@@ -169,7 +145,7 @@ export default function Credit() {
 			</Layout.DarkSection>
 
 			<Noise />
-			<Contact />
+			<Footer />
 		</>
 	);
 }

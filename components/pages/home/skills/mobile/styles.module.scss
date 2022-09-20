@@ -149,3 +149,20 @@
 		}
 	}
 }
+
+.imageSection {
+	background-color: var(--ash);
+	margin-top: 10rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	padding-top: 82.5%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url(https://images.unsplash.com/photo-1521790361543-f645cf042ec4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dHlwaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60);
+	display: block;
+
+	@media (min-width: $lg) {
+		display: none;
+	}
+}

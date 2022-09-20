@@ -70,14 +70,14 @@
 
 			&:hover,
 			&:focus {
-				opacity: 1;
+				opacity: 0.5;
 
 				h2 {
-					transform: translateX(calc(var(clamp(2.5em, 8vw, 8em)) * -0.1));
+					transform: translateX(-20px);
 				}
 
 				p {
-					transform: translateX(calc(var(clamp(2.5em, 8vw, 8em)) * 0.1));
+					transform: translateX(20px);
 				}
 			}
 

@@ -8,7 +8,7 @@ import {
 	Layout,
 	Projects,
 	BannerCurtain,
-	Contact,
+	Footer,
 	ProjectsViewSelector,
 	ProjectsFilterModal,
 } from "#/components";
@@ -63,7 +63,7 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// TOGGLE BETWEEN GRID AND LIST VIEW
 	//---------------------------------------------------------
-	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView({});
 
 	useIsomorphicLayoutEffect(() => {
 		if (windowInnerWidth < 768) {
@@ -105,26 +105,23 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// DISPLAYED PROJECTS
 	//---------------------------------------------------------
-	const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
-	const onFilterProjects = ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => {
-		let filteredProjects = PROJECTS;
-
-		if (key !== "all") {
-			filteredProjects = PROJECTS.filter((project) => {
-				const { type, tech } = project;
-
-				if (filterBy === "tech-stack") {
-					return tech.includes(key);
-				} else if (filterBy === "project-nature") {
-					return type === key;
-				}
-			});
-		}
-
+	const onFilterProjects = ({ key }: { key: string }) => {
 		registerEvent(events.pages.projects.filterProjectsByKey({ filter_key: key }));
-		setDisplayedProjects(filteredProjects);
 		setFilterKey(key);
 	};
+
+	let displayedProjects = PROJECTS;
+	if (filterKey !== "all") {
+		displayedProjects = PROJECTS.filter((project) => {
+			const { type, tech } = project;
+
+			if (filterBy === "tech-stack") {
+				return tech.includes(filterKey);
+			} else if (filterBy === "project-nature") {
+				return type === filterKey;
+			}
+		});
+	}
 
 	useIsomorphicLayoutEffect(() => {
 		if (!initialPageLoad) {
@@ -165,7 +162,7 @@ const ProjectsPage: NextPage = () => {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
@@ -183,6 +180,8 @@ const ProjectsPage: NextPage = () => {
 							<FilterIcon />
 						</button>
 					</div>
+
+					<p className={styles.note}>Note: Projects listed here are mainly freelance/personal projects</p>
 					<div className={styles.header}>
 						<h2 ref={contentRef}>
 							Viewing <span>{currProjects}</span> projects
@@ -192,7 +191,7 @@ const ProjectsPage: NextPage = () => {
 					<Projects onViewProject={onSelectProject} displayedProjects={displayedProjects} currentView={currentView} />
 				</div>
 			</Layout.DarkSection>
-			<Contact />
+			<Footer />
 			<Noise />
 
 			<ProjectModal

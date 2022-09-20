@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useRef, RefObject } from "react";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 import { otherSharedAnimations } from "#/utils/animations";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
@@ -25,7 +25,7 @@ export default function useGenericPageInit({
 	const bannerRef = useRef<HTMLDivElement>(null);
 	const textWrapperRef = useRef<HTMLDivElement>(null);
 	const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
+	const { initialAppLoad, exitAnimation, setInitialAppLoad } = useAnimationsContext();
 
 	const textRefSelector = gsap.utils.selector(textWrapperRef);
 

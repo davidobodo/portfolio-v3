@@ -7,14 +7,17 @@ export default function Layout({
 	children,
 	darkSectionRef,
 	bannerHeight,
+	pathname,
 }: {
 	children: JSX.Element;
 	darkSectionRef: RefObject<HTMLDivElement>;
 	bannerHeight?: number;
+	pathname?: string;
 }) {
 	const { darkSectionRadialGradientRef } = usePinRadialGradient({
 		darkSectionRef,
 		bannerHeight,
+		pathname,
 	});
 
 	return (

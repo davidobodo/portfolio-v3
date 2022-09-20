@@ -22,7 +22,21 @@ const PROJECTS: TProject[] = [
 
 		roles: ["fe"],
 		sitelink: "https://www.prodeus.co/",
-		tech: ["typescript", "react", "reactquery", "redux", "styledcomponents", "html", "css", "sass", "storybook", "rtl"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"javascript",
+			"typescript",
+			"react",
+			"reactquery",
+			"redux",
+			"styledcomponents",
+			"storybook",
+			"rtl",
+			"jest",
+			"googleanalytics",
+		],
 		type: "Web Application",
 		bgColor: "#f4efe7",
 		media: [
@@ -65,7 +79,7 @@ const PROJECTS: TProject[] = [
 
 		roles: ["design", "fe", "be"],
 		sitelink: "https://www.cadmils.com/",
-		tech: ["html", "css", "sass", "javascript", "nodejs", "expressjs", "heroku", "sendgrid"],
+		tech: ["html", "css", "sass", "javascript", "jquery", "nodejs", "expressjs", "heroku", "sendgrid"],
 		type: "Website",
 		bgColor: "#86868b",
 		media: [
@@ -82,8 +96,8 @@ const PROJECTS: TProject[] = [
 		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, 
 		however it's importance is far beyond just a requirement to get into the internship.
 		</p>
-		<p>Initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
-		However, for easy accessibility for everyone, these have been removed in the current iteration.
+		<p>This project has <span>two iterations</span>, initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
+		However, for easy accessibility to everyone, these have been removed in the current iteration.
 		 </p>
 		`,
 		responsibilities: `
@@ -97,10 +111,12 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		tech: [
+			"figma",
 			"html",
 			"css",
-			"figma",
+			"sass",
 			"react",
+			"javascript",
 			"typescript",
 			"redux",
 			"materialui",
@@ -108,7 +124,6 @@ const PROJECTS: TProject[] = [
 			"graphql",
 			"nodejs",
 			"expressjs",
-			"rtl",
 			"googlemaps",
 			"netlify",
 		],
@@ -146,7 +161,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.privatelattice.com/",
-		tech: ["html", "css", "react", "sass"],
+		tech: ["html", "css", "javascript", "react", "sass", "semanticui"],
 		bgColor: "#FF7943",
 		type: "Web Application",
 		media: [
@@ -180,7 +195,7 @@ const PROJECTS: TProject[] = [
 		roles: ["design", "fe"],
 		sitelink: "https://d-productivity.vercel.app/",
 		githublink: "https://github.com/obododavid/d-productivity",
-		tech: ["html", "css", "react", "typescript", "redux", "styledcomponents"],
+		tech: ["html", "css", "sass", "react", "javascript", "typescript", "redux", "styledcomponents"],
 		type: "Web Application",
 		bgColor: "#F6EEF9",
 		media: [
@@ -207,7 +222,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
-		tech: ["html", "css", "react", "typescript", "styledcomponents", "rtl"],
+		tech: ["html", "css", "sass", "react", "javascript", "typescript", "styledcomponents", "rtl", "jest"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -239,7 +254,20 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
-		tech: ["html", "css", "sass", "javascript", "react", "nodejs", "expressjs", "heroku", "mongodb", "firebase"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"styledcomponents",
+			"javascript",
+			"typescript",
+			"react",
+			"nodejs",
+			"expressjs",
+			"heroku",
+			"mongodb",
+			"firebase",
+		],
 		bgColor: "#2e5c87",
 		type: "Web Application",
 		media: [
@@ -261,12 +289,33 @@ const PROJECTS: TProject[] = [
 	{
 		id: "pv-3",
 		title: "Portfolio V3",
-		details: `This is a PWA`,
+		details: `<p>Current Portfolio website</p>`,
 		githublink: "",
-		responsibilities: "",
+		responsibilities: `
+		<ul>
+			<li>Design entire site</li>
+			<li>Translated designs into high quality responsive code</li>
+			<li>Make site a PWA</li>
+			<li>Enable google analytics</li>
+			<li>Used Next.js api routes feature to implement the sendgrid backend for the mailing service</li>
+			<li>Configure Google recaptcha to prevent spamming of mail</li>
+		</ul>
+		`,
 		roles: ["design", "fe", "be"],
-		sitelink: "",
-		tech: ["react", "nextjs", "sass", "gsap", "googleanalytics", "sendgrid"],
+		sitelink: "https://www.davidobodo.com",
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"react",
+			"nextjs",
+			"javascript",
+			"typescript",
+			"gsap",
+			"googleanalytics",
+			"sendgrid",
+			"jest",
+		],
 		bgColor: "#e1dfdd",
 		type: "Web Application",
 		media: [
@@ -325,7 +374,7 @@ const PROJECTS: TProject[] = [
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
-		tech: ["html", "css", "react", "typescript", "redux", "materialui", "firebase"],
+		tech: ["html", "css", "sass", "react", "javascipt", "redux", "materialui", "firebase"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -350,7 +399,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/portfolio/",
-		tech: ["html", "css", "javascript", "jquery", "ghpages"],
+		tech: ["html", "css", "sass", "javascript", "jquery", "ghpages"],
 		bgColor: "#1c1d26",
 		type: "Website",
 		media: [
@@ -400,7 +449,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
-		tech: ["html", "css", "sass", "typescript", "ghpages"],
+		tech: ["html", "css", "sass", "javascript", "ghpages"],
 		bgColor: "#000",
 		type: "Website",
 		media: [
@@ -424,7 +473,7 @@ const PROJECTS: TProject[] = [
 		</ul>
 		`,
 		sitelink: "https://www.obododavid.com",
-		tech: ["html", "css", "react", "typescript", "styledcomponents", "nowsh"],
+		tech: ["html", "css", "sass", "react", "javascript", "typescript", "styledcomponents", "googleanalytics"],
 		bgColor: "",
 		type: "Website",
 		media: [
@@ -551,7 +600,20 @@ const PROJECTS: TProject[] = [
 			<li>Used <span>Wordpress</span> to create a static publicly accessible web page for the company.</li>
 		</ul>
 		`,
-		tech: ["react", "redux", "typescript", "materialui", "ga", "graphql", "enzyme", "jest"],
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"react",
+			"redux",
+			"javascript",
+			"typescript",
+			"materialui",
+			"ga",
+			"graphql",
+			"enzyme",
+			"jest",
+		],
 		bgColor: "#56D686",
 		type: "Web Application",
 		media: [
@@ -569,16 +631,21 @@ const PROJECTS: TProject[] = [
 		id: "phitnftswhitelist",
 		title: "PhitNFTS Whitelist",
 		details: `
-
+		<p>Keeping abreast with latest technology advancements, I decided to learn web3 on the side. This has been really easy and straight forward with the help of <a href="https://learnweb3.io/" target="_blank">LearnWeb3</a>. This project
+		is a modified version of the whitelist dapp taught in Learnweb3.</p>
+		<p>In order to solidify some concepts taught, I decided to modify the project a little bit. Some of these modifications include:</p>
+		<ul>
+		<li>Refactoring of UI</li>
+		<li>Displaying connected wallet address</li>
+		</ul>
 		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0xC62EEfe06F1f69C3010ab44F4581B1329F938D31" target="_blank">Rinkeby Etherscan</a></p>
 		`,
 		roles: ["design", "fe", "be"],
-		sitelink: "",
-		responsibilities: `
-	
-		`,
-		tech: ["react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
-		bgColor: "#56D686",
+		sitelink: "https://learnweb3-phitnftwhitelist.vercel.app/",
+		githublink: "https://github.com/davidobodo/learnweb3-phitnftwhitelist",
+		responsibilities: ``,
+		tech: ["html", "css", "react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
+		bgColor: "#000",
 		type: "Learn from Tutorial",
 		media: [
 			{
@@ -595,26 +662,52 @@ const PROJECTS: TProject[] = [
 		id: "phitnfts",
 		title: "PhitNFTS ",
 		details: `
-
-		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0xC62EEfe06F1f69C3010ab44F4581B1329F938D31" target="_blank">Rinkeby Etherscan</a></p>
-		<p>See NFT Collection on <a href="https://testnets.opensea.io/collection/phit-nfts-v4" target="_blank">Opensea Testnet</a></p>
+		<p>Keeping abreast with latest technology advancements, I decided to learn web3 on the side. This has been really easy and straight forward with the help of <a href="https://learnweb3.io/" target="_blank">LearnWeb3</a>. This project
+		is a modified version of the whitelist dapp taught in Learnweb3.</p>
+		<p>In order to solidify some concepts taught, I decided to modify the project a little bit. Some of these modifications include:</p>
+		<ul>
+		<li>Refactoring of UI</li>
+		<li>Displaying connected wallet address</li>
+		<li>Giving users a direct link to their minted NFT</li>
+		</ul>
+		<p>See contract details on <a href="https://rinkeby.etherscan.io/address/0x864EC287eF39A1DE0445EA1Fb441b5EE7c83626F" target="_blank">Rinkeby Etherscan</a></p>
+		<p>See NFT Collection on <a href="https://testnets.opensea.io/collection/phit-nfts-xuwds2pvht" target="_blank">Testnet Opensea</a></p>
 		`,
 		roles: ["design", "fe", "be"],
-		sitelink: "",
-		responsibilities: `
-	
-		`,
-		tech: ["react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
-		bgColor: "#56D686",
+		sitelink: "https://learnweb3-phitnfts.vercel.app/",
+		githublink: "https://github.com/davidobodo/learnweb3-phitnfts",
+		responsibilities: ``,
+		tech: ["html", "css", "react", "nextjs", "javascript", "tailwindcss", "solidity", "web3"],
+		bgColor: "#fff",
 		type: "Learn from Tutorial",
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/phitnftswhitelist/joined.jpg",
+				source: "/images/projects/phitnfts/joined.jpg",
 			},
 			{
 				type: "image",
-				source: "/images/projects/phitnftswhitelist/pending.jpg",
+				source: "/images/projects/phitnfts/pending.jpg",
+			},
+		],
+	},
+	{
+		id: "three",
+		title: "GSAP and Three.js Experiment",
+		details: `
+		<p>Just an experiment to hook up gsap with three.js. Also needed to learn a couple things about <a href="https://www.blender.org/" target="_blank">Blender</a> in order to modify the 3D models</p>
+		`,
+		roles: [],
+		sitelink: "https://laptop-phone-three-js.vercel.app/",
+		githublink: "https://github.com/davidobodo/laptop-phone-three-js",
+		responsibilities: ``,
+		tech: ["html", "css", "javascript", "gsap", "threejs"],
+		bgColor: "#fff",
+		type: "Experiment",
+		media: [
+			{
+				type: "image",
+				source: "/images/projects/laptop-phone/index.gif",
 			},
 		],
 	},

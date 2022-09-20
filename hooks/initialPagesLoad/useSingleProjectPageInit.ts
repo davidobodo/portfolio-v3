@@ -1,11 +1,11 @@
 import gsap from "gsap";
 import { otherSharedAnimations } from "#/utils/animations";
 import useIsomorphicLayoutEffect from "../useIsomorphicLayoutEffect";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 const { openNoiseLayers, drawSvgLogo, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
 
 export default function useSingleProjectInit() {
-	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
+	const { initialAppLoad, exitAnimation, setInitialAppLoad } = useAnimationsContext();
 
 	useIsomorphicLayoutEffect(() => {
 		window.scrollTo({

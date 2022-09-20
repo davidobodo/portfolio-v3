@@ -75,7 +75,20 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 							<h3>Frameworks/ Libraries/ Others</h3>
 
 							<ul>
-								{["react", "nextjs", "nodejs", "expressjs", "jest", "rtl"].map((key, i) => {
+								{[
+									"react",
+									"nextjs",
+									"nodejs",
+									"expressjs",
+									"jest",
+									"rtl",
+									"gsap",
+									"web3",
+									"threejs",
+									"redux",
+									"reactquery",
+									"tailwindcss",
+								].map((key, i) => {
 									const skill = TECH_STACKS[key];
 									return (
 										<li key={i}>
@@ -88,11 +101,21 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 								})}
 							</ul>
 							<p>
-								This list could get very long cause of a <strong> developers need to learn everyday </strong> depending
-								on what provides the best solution to a given problem, so would stop the list here. <br />
-								However you can see a comprehensive list of all &nbsp;noteworthy&nbsp; frameworks and Libraries{" "}
-								<Link scroll={false} href="/projects?open_filter=true">
-									<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>here.</a>
+								Developers need <strong> to learn everyday </strong> so this list could get really long 😅. <br /> See
+								&nbsp;
+								{/* <Link scroll={false} href="/projects?open_filter=true"> */}
+								<Link
+									scroll={false}
+									href={{
+										pathname: "/projects",
+										query: {
+											open_filter: true,
+										},
+									}}
+								>
+									<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>
+										more frameworks/libraries here.
+									</a>
 								</Link>
 							</p>
 						</section>

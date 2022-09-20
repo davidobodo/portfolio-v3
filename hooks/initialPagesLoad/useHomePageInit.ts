@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useRef, RefObject, useState } from "react";
 import { otherHomeSectionsAnimations, otherSharedAnimations } from "#/utils/animations";
-import { usePageTransitionsContext } from "#/context";
+import { useAnimationsContext } from "#/context";
 import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
 
 const { bannerAnimation } = otherHomeSectionsAnimations;
@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef }: Props) {
-	const { initialAppLoad, exitAnimation, setInitialAppLoad } = usePageTransitionsContext();
+	const { initialAppLoad, exitAnimation, setInitialAppLoad } = useAnimationsContext();
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
 	//-----------------------------------------

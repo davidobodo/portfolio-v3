@@ -30,7 +30,7 @@ import {
 	ProjectsHeading,
 	Noise,
 	Excellence,
-	Contact,
+	Footer,
 	ProjectsViewSelector,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
 	const { headingRef: projectTitleRef } = useRevealHeading({ windowInnerWidth });
 	const { selectedProjectId, onSelectProject, onDeselectProject, modalImgRef, modalRef, isOpen, onGoToProject } =
 		useSelectProjectAnimation({});
-	const { currentView, handleSetCurrentView } = useProjectsCurrentView();
+	const { currentView, handleSetCurrentView } = useProjectsCurrentView({});
 	const { containerRef, containerWidth } = useExcellenceAnimation();
 
 	const { title, description, url, image } = METADATA["home"];
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
-				<link rel="icon" href="/icon-192x192.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
 				isOpen={isOpen}
 				onGoToProject={onGoToProject}
 			/>
-			<Contact />
+			<Footer />
 		</>
 	);
 };

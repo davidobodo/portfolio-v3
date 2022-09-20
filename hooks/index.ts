@@ -6,7 +6,6 @@ import useCalculateFooterHeight from "./useCalculateFooterHeight";
 import useSetBannerHeight from "./useSetBannerHeight";
 import useTrapFocus from "./useTrapFocus";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
-import useDeviceOrientation from "./useDeviceOrientation";
 import useSmoothScroll from "./useSmoothScroll";
 import usePrevious from "./usePrevious";
 
@@ -60,7 +59,6 @@ export {
 	useExcellenceAnimation,
 	useProjectsPageInit,
 	useProjectsCurrentView,
-	useDeviceOrientation,
 	useSmoothScroll,
 	usePrevious,
 	useContactForm,

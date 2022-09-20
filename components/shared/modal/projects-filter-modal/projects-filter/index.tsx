@@ -17,7 +17,7 @@ export default function BaseProjectsFilter({
 	filterBy,
 	onSelectFilterBy,
 }: {
-	onFilterProjects: ({ key, filterBy }: { key: string; filterBy: TFilterBy }) => void;
+	onFilterProjects: ({ key }: { key: string }) => void;
 	onCloseFilter: () => void;
 	filterKey: string;
 	filterList: { key: string; label: string }[];
@@ -32,6 +32,12 @@ export default function BaseProjectsFilter({
 	//--------------------------------------------------------
 	const onClose = () => {
 		document.body.style.overflow = "auto";
+
+		// Remoce open filter params
+		const searchParams = new URLSearchParams(window.location.search);
+		searchParams.delete("open_filter");
+		const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+		window.history.pushState(null, "", newRelativePathQuery);
 
 		const listItems = containerRefSelector('[data-key="list-items"]');
 		const filterOptions = containerRefSelector<HTMLDivElement>('[data-key="filter-options"]');
@@ -73,13 +79,11 @@ export default function BaseProjectsFilter({
 		document.body.style.overflow = "auto";
 		onFilterProjects({
 			key,
-			filterBy,
 		});
 		onClose();
 	};
 
 	const [initialLoad, setInitialLoad] = useState(true);
-
 	const prevFilter = usePrevious(filterBy);
 	useEffect(() => {
 		if (!initialLoad && prevFilter && prevFilter !== filterBy) {

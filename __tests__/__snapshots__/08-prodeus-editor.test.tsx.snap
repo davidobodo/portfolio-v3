@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`"Prodeus ckeditor" page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                Prodeus ckeditor
               </h1>
               <button
                 class="btnClose"
@@ -105,63 +105,10 @@ exports[`Private Lattice page renders correctly 1`] = `
             <div
               class="media"
             >
-              <div>
-                <div
-                  class="slider"
-                >
-                  <div
-                    class="sliderInner"
-                    style="transform: translateX(-0px);"
-                  >
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
-                    />
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
-                    />
-                  </div>
-                  <button
-                    class="control next"
-                    data-action=">"
-                  >
-                    <svg
-                      class="icon icon-tabler icon-tabler-chevron-right"
-                      fill="none"
-                      height="60"
-                      stroke="#86868b"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      viewBox="0 0 24 24"
-                      width="60"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                        stroke="none"
-                      />
-                      <polyline
-                        points="9 6 15 12 9 18"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  class="indicators"
-                >
-                  <button
-                    class="indicator active"
-                    data-slide="0"
-                  />
-                  <button
-                    class="indicator"
-                    data-slide="1"
-                  />
-                </div>
-              </div>
+              <div
+                class="image"
+                style="background-image: url(/images/projects/prodeus-editor/pic.jpg);"
+              />
             </div>
             <section
               class="about"
@@ -174,28 +121,36 @@ exports[`Private Lattice page renders correctly 1`] = `
                 class="details"
               >
                 <p>
-                  While working at 
+                  While I was building 
                   <a
-                    href="https://www.upwork.com/ag/mpaccione/"
+                    href="/projects/prodeus"
+                  >
+                    Prodeus web app
+                  </a>
+                  , there was a need for me to create a text editor. Despite the fact that there are many around, the requirement for a pixel perfect
+		designed editor brought up the need to build a customized solution from the famous  
+                  <a
+                    href="https://ckeditor.com"
                     target="_blank"
                   >
-                    M.Paccione Designs and Developement
+                    ckeditor
                   </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                  .
+		
                 </p>
-              </div>
-              <div
-                class="roles"
-              >
-                <h3>
-                  Role in Project
-                </h3>
-                <ul>
-                  <li>
-                    Front End Developer
-                  </li>
-                </ul>
+                
+		
+                <p>
+                  The project was later published as an 
+                  <a
+                    href="https://www.npmjs.com/package/prodeus-editor"
+                    target="_blank"
+                  >
+                    npm package here.
+                  </a>
+                </p>
+                
+		
               </div>
               <div
                 class="responsibilities"
@@ -210,12 +165,12 @@ exports[`Private Lattice page renders correctly 1`] = `
                     
 			
                     <li>
-                      Convert Sketch Design into functional web application.
+                      Customize Ckeditor to suite the Prodeus desired design.
                     </li>
                     
 			
                     <li>
-                      Connect frontend to the necessary backend endpoints.
+                      Publish project as an npm package.
                     </li>
                     
 		
@@ -243,61 +198,17 @@ exports[`Private Lattice page renders correctly 1`] = `
                   CSS
                 </li>
                 <li>
-                  Vanilla Javascript
-                </li>
-                <li>
                   React.js
                 </li>
                 <li>
-                  SASS/SCSS
-                </li>
-                <li>
-                  Semantic UI
+                  Vanilla Javascript
                 </li>
               </ul>
             </section>
             <div
               class="links"
               data-key="buttons"
-            >
-              <a
-                href="https://www.privatelattice.com/"
-                target="_blank"
-              >
-                Visit site
-                <svg
-                  class="icon icon-tabler icon-tabler-external-link"
-                  fill="none"
-                  height="24"
-                  stroke="#86868b"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                    stroke="none"
-                  />
-                  <path
-                    d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"
-                  />
-                  <line
-                    x1="10"
-                    x2="20"
-                    y1="14"
-                    y2="4"
-                  />
-                  <polyline
-                    points="15 4 20 4 20 9"
-                  />
-                </svg>
-                 
-              </a>
-            </div>
+            />
           </div>
           <button
             aria-label="previous"

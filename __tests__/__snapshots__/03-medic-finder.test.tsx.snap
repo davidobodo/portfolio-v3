@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`Medic Finder page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                Medic finder
               </h1>
               <button
                 class="btnClose"
@@ -115,11 +115,15 @@ exports[`Private Lattice page renders correctly 1`] = `
                   >
                     <div
                       class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
+                      style="background-image: url(/images/projects/medic-finder/home.jpg);"
                     />
                     <div
                       class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
+                      style="background-image: url(/images/projects/medic-finder/results.jpg);"
+                    />
+                    <div
+                      class="item"
+                      style="background-image: url(/images/projects/medic-finder/history.jpg);"
                     />
                   </div>
                   <button
@@ -160,6 +164,10 @@ exports[`Private Lattice page renders correctly 1`] = `
                     class="indicator"
                     data-slide="1"
                   />
+                  <button
+                    class="indicator"
+                    data-slide="2"
+                  />
                 </div>
               </div>
             </div>
@@ -173,17 +181,33 @@ exports[`Private Lattice page renders correctly 1`] = `
               <div
                 class="details"
               >
+                
+		
                 <p>
-                  While working at 
+                  Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the 
                   <a
-                    href="https://www.upwork.com/ag/mpaccione/"
+                    href="https://www.enye.tech/"
                     target="_blank"
                   >
-                    M.Paccione Designs and Developement
+                    enye
                   </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                   internship programme, 
+		however it's importance is far beyond just a requirement to get into the internship.
+		
                 </p>
+                
+		
+                <p>
+                  This project has 
+                  <span>
+                    two iterations
+                  </span>
+                  , initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
+		However, for easy accessibility to everyone, these have been removed in the current iteration.
+		 
+                </p>
+                
+		
               </div>
               <div
                 class="roles"
@@ -193,7 +217,13 @@ exports[`Private Lattice page renders correctly 1`] = `
                 </h3>
                 <ul>
                   <li>
+                    UI/UX Designer
+                  </li>
+                  <li>
                     Front End Developer
+                  </li>
+                  <li>
+                    Back End Developer
                   </li>
                 </ul>
               </div>
@@ -210,12 +240,50 @@ exports[`Private Lattice page renders correctly 1`] = `
                     
 			
                     <li>
-                      Convert Sketch Design into functional web application.
+                      Designed the entire application using figma.
                     </li>
                     
 			
                     <li>
-                      Connect frontend to the necessary backend endpoints.
+                      Converted all mockup designs into 
+                      <span>
+                        pixel perfect pages
+                      </span>
+                       for all screen sizes.
+                    </li>
+                    
+			
+                    <li>
+                      Implemented an authentication process flow using Firebase (now deprecated in current iteration).
+                    </li>
+                    
+			
+                    <li>
+                      Made use of Google's 
+                      <a
+                        href="https://firebase.google.com"
+                        target="_blank"
+                      >
+                        Cloud Firestore NoSQL database
+                      </a>
+                       to store user's previous searches (now refactored in current iteration to use local storage).
+                    </li>
+                    
+			
+                    <li>
+                      Integrated 
+                      <a
+                        href="https://developers.google.com/maps"
+                        target="_blank"
+                      >
+                        Google Maps Platform
+                      </a>
+                       to help give both autocomplete functionality when looking for places and display the map with the needed results.
+                    </li>
+                    
+			
+                    <li>
+                      Connect to database using GraphQL.
                     </li>
                     
 		
@@ -237,22 +305,49 @@ exports[`Private Lattice page renders correctly 1`] = `
               </p>
               <ul>
                 <li>
+                  Figma
+                </li>
+                <li>
                   HTML
                 </li>
                 <li>
                   CSS
                 </li>
                 <li>
-                  Vanilla Javascript
+                  SASS/SCSS
                 </li>
                 <li>
                   React.js
                 </li>
                 <li>
-                  SASS/SCSS
+                  Vanilla Javascript
                 </li>
                 <li>
-                  Semantic UI
+                  Typescript
+                </li>
+                <li>
+                  Redux
+                </li>
+                <li>
+                  Material UI
+                </li>
+                <li>
+                  Firebase
+                </li>
+                <li>
+                  GraphQL
+                </li>
+                <li>
+                  Node.js
+                </li>
+                <li>
+                  Express.js
+                </li>
+                <li>
+                  Google Maps
+                </li>
+                <li>
+                  Netlify
                 </li>
               </ul>
             </section>
@@ -261,7 +356,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="buttons"
             >
               <a
-                href="https://www.privatelattice.com/"
+                href="https://medic-finder.netlify.app/"
                 target="_blank"
               >
                 Visit site
@@ -293,6 +388,34 @@ exports[`Private Lattice page renders correctly 1`] = `
                   />
                   <polyline
                     points="15 4 20 4 20 9"
+                  />
+                </svg>
+                 
+              </a>
+              <a
+                href="https://github.com/obododavid/Medic-Finder"
+                target="_blank"
+              >
+                Github repo 
+                <svg
+                  class="icon icon-tabler icon-tabler-brand-github"
+                  fill="none"
+                  height="24"
+                  stroke="#86868b"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                    stroke="none"
+                  />
+                  <path
+                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
                   />
                 </svg>
                  

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`D Commerce page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                d-commerce
               </h1>
               <button
                 class="btnClose"
@@ -115,11 +115,15 @@ exports[`Private Lattice page renders correctly 1`] = `
                   >
                     <div
                       class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
+                      style="background-image: url(/images/projects/d-commerce/home.jpg);"
                     />
                     <div
                       class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
+                      style="background-image: url(/images/projects/d-commerce/item.jpg);"
+                    />
+                    <div
+                      class="item"
+                      style="background-image: url(/images/projects/d-commerce/cart.jpg);"
                     />
                   </div>
                   <button
@@ -160,6 +164,10 @@ exports[`Private Lattice page renders correctly 1`] = `
                     class="indicator"
                     data-slide="1"
                   />
+                  <button
+                    class="indicator"
+                    data-slide="2"
+                  />
                 </div>
               </div>
             </div>
@@ -174,16 +182,29 @@ exports[`Private Lattice page renders correctly 1`] = `
                 class="details"
               >
                 <p>
-                  While working at 
-                  <a
-                    href="https://www.upwork.com/ag/mpaccione/"
-                    target="_blank"
-                  >
-                    M.Paccione Designs and Developement
-                  </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                  When getting acclimated with the features of a framework/technology or even a programming language, one of the applications one should try to build is an e-commerce platform.
                 </p>
+                
+		
+                <p>
+                  This is because, an e-commerce platform has features that cut across a great deal of 
+                  <strong>
+                    what is possible
+                  </strong>
+                   in frontend. For this reason, I set out to build this application when mastering react.js.
+                </p>
+                
+		
+                <p>
+                  The UI was replicated from an online store. But as this project was done quite a while ago, I currently can't remember the exact name, if not I would have given them their due credit 
+                </p>
+                
+		
+                <p>
+                  Last updated on the 4th of July, 2020.
+                </p>
+                
+		
               </div>
               <div
                 class="roles"
@@ -194,6 +215,9 @@ exports[`Private Lattice page renders correctly 1`] = `
                 <ul>
                   <li>
                     Front End Developer
+                  </li>
+                  <li>
+                    Back End Developer
                   </li>
                 </ul>
               </div>
@@ -210,12 +234,12 @@ exports[`Private Lattice page renders correctly 1`] = `
                     
 			
                     <li>
-                      Convert Sketch Design into functional web application.
+                      Create a pixel perfect replica of the UI.
                     </li>
                     
 			
                     <li>
-                      Connect frontend to the necessary backend endpoints.
+                      Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c).
                     </li>
                     
 		
@@ -243,16 +267,34 @@ exports[`Private Lattice page renders correctly 1`] = `
                   CSS
                 </li>
                 <li>
+                  SASS/SCSS
+                </li>
+                <li>
+                  Styled Components
+                </li>
+                <li>
                   Vanilla Javascript
+                </li>
+                <li>
+                  Typescript
                 </li>
                 <li>
                   React.js
                 </li>
                 <li>
-                  SASS/SCSS
+                  Node.js
                 </li>
                 <li>
-                  Semantic UI
+                  Express.js
+                </li>
+                <li>
+                  Heroku
+                </li>
+                <li>
+                  Mongo DB
+                </li>
+                <li>
+                  Firebase
                 </li>
               </ul>
             </section>
@@ -261,7 +303,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="buttons"
             >
               <a
-                href="https://www.privatelattice.com/"
+                href="https://d-commerce-99633.firebaseapp.com/"
                 target="_blank"
               >
                 Visit site
@@ -293,6 +335,34 @@ exports[`Private Lattice page renders correctly 1`] = `
                   />
                   <polyline
                     points="15 4 20 4 20 9"
+                  />
+                </svg>
+                 
+              </a>
+              <a
+                href="https://github.com/davidobodo/d-commerce"
+                target="_blank"
+              >
+                Github repo 
+                <svg
+                  class="icon icon-tabler icon-tabler-brand-github"
+                  fill="none"
+                  height="24"
+                  stroke="#86868b"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                    stroke="none"
+                  />
+                  <path
+                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
                   />
                 </svg>
                  

@@ -8,28 +8,33 @@ type TContext = {
 	setExitAnimation: (tl: gsap.core.Timeline) => void | Dispatch<SetStateAction<null>>;
 	radialGradientAnimation: gsap.core.Animation | null;
 	setRadialGradientAnimation: (tl: gsap.core.Animation) => void | Dispatch<SetStateAction<null>>;
+	contactOpenerAnimation: gsap.core.Animation | null;
+	setContactOpenerAnimation: (tl: gsap.core.Animation) => void | Dispatch<SetStateAction<null>>;
 };
 
-const PageTransitionsContext = createContext<TContext>({
+const AnimationsContext = createContext<TContext>({
 	initialAppLoad: true,
 	setInitialAppLoad: () => {},
 	exitAnimation: gsap.timeline({ paused: true }),
 	setExitAnimation: () => {},
 	radialGradientAnimation: null,
 	setRadialGradientAnimation: () => {},
+	contactOpenerAnimation: null,
+	setContactOpenerAnimation: () => {},
 });
 
-const usePageTransitionsContext = () => {
-	return useContext(PageTransitionsContext);
+const useAnimationsContext = () => {
+	return useContext(AnimationsContext);
 };
 
-const PageTransitionsProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+const AnimationsProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 	const [initialAppLoad, setInitialAppLoad] = useState<boolean>(true);
 	const [exitAnimation, setExitAnimation] = useState(() => gsap.timeline({ paused: true }));
 	const [radialGradientAnimation, setRadialGradientAnimation] = useState<gsap.core.Animation | null>(null);
+	const [contactOpenerAnimation, setContactOpenerAnimation] = useState<gsap.core.Animation | null>(null);
 
 	return (
-		<PageTransitionsContext.Provider
+		<AnimationsContext.Provider
 			value={{
 				initialAppLoad,
 				setInitialAppLoad,
@@ -37,11 +42,13 @@ const PageTransitionsProvider = ({ children }: { children: JSX.Element | JSX.Ele
 				setExitAnimation,
 				radialGradientAnimation,
 				setRadialGradientAnimation,
+				contactOpenerAnimation,
+				setContactOpenerAnimation,
 			}}
 		>
 			{children}
-		</PageTransitionsContext.Provider>
+		</AnimationsContext.Provider>
 	);
 };
 
-export { PageTransitionsProvider, usePageTransitionsContext };
+export { AnimationsProvider, useAnimationsContext };
