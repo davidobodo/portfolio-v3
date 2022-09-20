@@ -3,7 +3,7 @@ import "#/styles/globals.css";
 import Script from "next/script";
 import type { AppProps } from "next/app";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
-import { Common, PageTransitionLayout } from "#/components";
+import { Common } from "#/components";
 import { AnimationsProvider } from "#/context";
 import { useRouter } from "next/router";
 
@@ -39,10 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 			></Script>
 
 			<AnimationsProvider>
-				<PageTransitionLayout path={router.asPath}>
-					<Component {...pageProps} />
-					<Common />
-				</PageTransitionLayout>
+				<Component {...pageProps} />
+				<Common />
 			</AnimationsProvider>
 		</>
 	);
