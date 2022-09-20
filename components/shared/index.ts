@@ -14,7 +14,6 @@ import Projects from "./projects";
 import Spinner from "./spinner";
 import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
-import PageTransitionLayout from "./page-transition-wrapper";
 import RouteTransitionOverlay from "./page-transition-overlay";
 import ProjectsViewSelector from "./projects/projects-view-selector";
 import Slider from "./slider";
@@ -44,7 +43,6 @@ const Shared = {
 	Spinner,
 	AlternatingOpacity,
 	ProgressBar,
-	PageTransitionLayout,
 	ProjectsViewSelector,
 	Slider,
 	ProjectsFilterModal,

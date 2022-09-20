@@ -109,38 +109,40 @@ export default function Credit() {
 			/>
 
 			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
-				<div className={styles.container}>
-					<div className={styles.summary}>
-						<AlternatingOpacity textsListRef={textsListRef} textsList={CREDIT_NOTE} />
+				<div className={styles.mainContent}>
+					<div className={styles.container}>
+						<div className={styles.summary}>
+							<AlternatingOpacity textsListRef={textsListRef} textsList={CREDIT_NOTE} />
+						</div>
+
+						<section>
+							<h2>Sites/Resources</h2>
+							<ul className={styles.list}>
+								{SITES.map((item, i) => {
+									const { link } = item;
+									return <ListItem key={i} link={link} />;
+								})}
+							</ul>
+						</section>
+						<section>
+							<h2>People</h2>
+
+							<ul className={styles.list}>
+								{PEOPLE.map((item, i) => {
+									const { link, description } = item;
+									return (
+										<ListItem
+											key={i}
+											role="Chief Reviewer"
+											name="Oluwaseun Adedire"
+											link={link}
+											description={description}
+										/>
+									);
+								})}
+							</ul>
+						</section>
 					</div>
-
-					<section>
-						<h2>Sites/Resources</h2>
-						<ul className={styles.list}>
-							{SITES.map((item, i) => {
-								const { link } = item;
-								return <ListItem key={i} link={link} />;
-							})}
-						</ul>
-					</section>
-					<section>
-						<h2>People</h2>
-
-						<ul className={styles.list}>
-							{PEOPLE.map((item, i) => {
-								const { link, description } = item;
-								return (
-									<ListItem
-										key={i}
-										role="Chief Reviewer"
-										name="Oluwaseun Adedire"
-										link={link}
-										description={description}
-									/>
-								);
-							})}
-						</ul>
-					</section>
 				</div>
 			</Layout.DarkSection>
 

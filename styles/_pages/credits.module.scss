@@ -1,8 +1,11 @@
 @import "#/styles/globals.module.scss";
 
-.main {
-	position: relative;
-	z-index: 1;
+.mainContent {
+	padding-bottom: 2rem;
+
+	@media (min-width: $md) {
+		padding-bottom: 20vh;
+	}
 }
 
 .container {
@@ -16,7 +19,7 @@
 	padding: 8rem 2rem;
 
 	@media (min-width: $md) {
-		padding: 20vh 8rem;
+		padding: 20vh 8rem 0px;
 	}
 
 	h1 {
@@ -89,11 +92,14 @@
 				color: var(--ash);
 				transform: translateY(100px);
 				opacity: 0;
-
 				margin-bottom: 2rem;
 
 				@media (min-width: $md) {
 					margin-bottom: 4rem;
+				}
+
+				&:last-child {
+					margin-bottom: 0px;
 				}
 
 				&:before {
