@@ -289,11 +289,20 @@ const PROJECTS: TProject[] = [
 	{
 		id: "pv-3",
 		title: "Portfolio V3",
-		details: `This is a PWA`,
+		details: `<p>Current Portfolio website</p>`,
 		githublink: "",
-		responsibilities: "",
+		responsibilities: `
+		<ul>
+			<li>Design entire site</li>
+			<li>Translated designs into high quality responsive code</li>
+			<li>Make site a PWA</li>
+			<li>Enable google analytics</li>
+			<li>Used Next.js api routes feature to implement the sendgrid backend for the mailing service</li>
+			<li>Configure Google recaptcha to prevent spamming of mail</li>
+		</ul>
+		`,
 		roles: ["design", "fe", "be"],
-		sitelink: "",
+		sitelink: "https://www.davidobodo.com",
 		tech: [
 			"html",
 			"css",

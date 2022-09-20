@@ -50,32 +50,8 @@ export default function Credit() {
 			description: "Chief Reviewer - Oluwaseun Adedire",
 		},
 		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
+			link: "https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/",
 			description: "Assitant chief reviewer - Harmony Orakpoyovwuru",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Ifeanyi ",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Onos",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Lekan",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Teenoh",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Emma ui/ux",
-		},
-		{
-			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Home page banner and Contact section - Assurance",
 		},
 	];
 	const darkSectionRef = useRef(null);

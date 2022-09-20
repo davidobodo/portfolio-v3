@@ -46,9 +46,7 @@ exports[`Shortly page renders correctly 1`] = `
     <div
       class="content"
     >
-      <div
-        class="container"
-      >
+      <div>
         <div
           class="container"
           data-key="project-info"
@@ -172,7 +170,7 @@ exports[`Shortly page renders correctly 1`] = `
                 class="responsibilities"
               >
                 <h3>
-                  My Responsibilities / Features I Implemented
+                  My Responsibilities & Features I Implemented
                 </h3>
                 <div>
                   
@@ -204,7 +202,7 @@ exports[`Shortly page renders correctly 1`] = `
                 Technical Sheet
               </h2>
               <p>
-                Some noteworthy technologies I got involved with while working on this project.
+                Some noteworthy technologies I got involved with while working on this project:
               </p>
               <ul>
                 <li>
@@ -217,7 +215,7 @@ exports[`Shortly page renders correctly 1`] = `
                   SASS/SCSS
                 </li>
                 <li>
-                  Typescript
+                  Vanilla Javascript
                 </li>
                 <li>
                   Github Pages
@@ -670,6 +668,10 @@ exports[`Shortly page renders correctly 1`] = `
         style="height: 0px; display: block;"
       />
     </div>
+    <div
+      class="blackCurtain"
+      data-key="contact-curtain"
+    />
   </footer>
 </DocumentFragment>
 `;

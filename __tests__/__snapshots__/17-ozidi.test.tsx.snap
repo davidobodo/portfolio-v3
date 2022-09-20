@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`Ozidi page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                Ozidi/Agricpay
               </h1>
               <button
                 class="btnClose"
@@ -115,11 +115,11 @@ exports[`Private Lattice page renders correctly 1`] = `
                   >
                     <div
                       class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
+                      style="background-image: url(/images/projects/ozidi/generator.jpg);"
                     />
                     <div
                       class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
+                      style="background-image: url(/images/projects/ozidi/reg.jpg);"
                     />
                   </div>
                   <button
@@ -173,17 +173,142 @@ exports[`Private Lattice page renders correctly 1`] = `
               <div
                 class="details"
               >
+                
+		
                 <p>
-                  While working at 
+                  <span>
+                    Ozidi
+                  </span>
+                  , which later became 
+                  <span>
+                    Agricpay
+                  </span>
+                  , was a promising startup which had a vision to 
+                  <a>
+                    help small scale farmers in "Nigeria" get access to loans.
+                  </a>
+                   It is no news that in order for
+		a business owner to apply for a loan from banks and other loan agencies, the owner must have 
+                  <span>
+                    collateral to use
+                  </span>
+                  , in case the owner will not be able to pay the loan. Unfortunately, most small scale farmers
+		do not have any collateral to give, hence the need for Agricpay to be built.
+		
+                </p>
+                
+		
+                <p>
+                  
+		Agricpay aimed at solving this problem, by inculcating in the farmers mindset, the 
+                  <span>
+                    habit of saving
+                  </span>
+                  . Using this approach meant, in the long run the farmer will be borrowing his/her own money.
+		
+                </p>
+                
+
+		
+                <p>
+                  I worked as the 
+                  <span>
+                    "main" frontend developer responsible for the entire ui/ux as well as about 80% of the entire frontend 
+                  </span>
+                  , together with 
                   <a
-                    href="https://www.upwork.com/ag/mpaccione/"
+                    href="https://www.linkedin.com/in/godinson/"
                     target="_blank"
                   >
-                    M.Paccione Designs and Developement
+                    Joseph Godwin (full stack developer)
                   </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                   and 
+                  <a
+                    href="https://www.linkedin.com/in/oluwaferanmiadetunji/"
+                    target="_blank"
+                  >
+                    Adetunji Oluwaferanmi (full stack developer)
+                  </a>
+                  , at the 
+                  <a
+                    href="https://www.enye.tech/"
+                    target="_blank"
+                  >
+                    Enye Cohort 4 internship
+                  </a>
+                  . 
+		We set out to build a fully functional dashboard to help with Agricpay's vision.
+		
                 </p>
+                
+		
+                <div>
+                  
+			
+                  <p>
+                    Some of the features included:
+                  </p>
+                  
+			
+                  <ul>
+                    
+				
+                    <li>
+                      Admin authentication.
+                    </li>
+                    
+				
+                    <li>
+                      Ability to generate recharge card numbers. (i.e Farmers save by buying reacharge cards).
+                    </li>
+                    
+				
+                    <li>
+                      History of all recharge cards generated.
+                    </li>
+                    
+				
+                    <li>
+                      Farmers data.
+                    </li>
+                    
+			
+                  </ul>
+                  
+		
+                </div>
+                
+
+		
+                <p>
+                  Unfortunately, not all startups reach the "promise land", irrespective of a solid technology, because there are more things asides the tech involved in the success of a business. So the live links are currently down. However for curiousity sake,
+		visit 
+                  <a
+                    href="https://mobile.twitter.com/agricpay"
+                    target="_blank"
+                  >
+                    Twitter
+                  </a>
+                   or 
+                  <a
+                    href="https://www.instagram.com/agricpay/"
+                    target="_blank"
+                  >
+                    Instagram
+                  </a>
+                  
+		
+                </p>
+                
+
+		
+                <p>
+                  <span>
+                    Project span: July 2020 - September 2020.
+                  </span>
+                </p>
+                
+		
               </div>
               <div
                 class="roles"
@@ -192,6 +317,9 @@ exports[`Private Lattice page renders correctly 1`] = `
                   Role in Project
                 </h3>
                 <ul>
+                  <li>
+                    UI/UX Designer
+                  </li>
                   <li>
                     Front End Developer
                   </li>
@@ -210,12 +338,26 @@ exports[`Private Lattice page renders correctly 1`] = `
                     
 			
                     <li>
-                      Convert Sketch Design into functional web application.
+                      Created entire app UI/UX using Figma.
                     </li>
                     
 			
                     <li>
-                      Connect frontend to the necessary backend endpoints.
+                      Converted about 80% of the design into functional responsive web app pages.
+                    </li>
+                    
+			
+                    <li>
+                      Connected pages to their respective backend endpoints.
+                    </li>
+                    
+			
+                    <li>
+                      Used 
+                      <span>
+                        Wordpress
+                      </span>
+                       to create a static publicly accessible web page for the company.
                     </li>
                     
 		
@@ -243,61 +385,38 @@ exports[`Private Lattice page renders correctly 1`] = `
                   CSS
                 </li>
                 <li>
-                  Vanilla Javascript
+                  SASS/SCSS
                 </li>
                 <li>
                   React.js
                 </li>
                 <li>
-                  SASS/SCSS
+                  Redux
                 </li>
                 <li>
-                  Semantic UI
+                  Vanilla Javascript
+                </li>
+                <li>
+                  Typescript
+                </li>
+                <li>
+                  Material UI
+                </li>
+                <li>
+                  GraphQL
+                </li>
+                <li>
+                  Enzyme
+                </li>
+                <li>
+                  Jest
                 </li>
               </ul>
             </section>
             <div
               class="links"
               data-key="buttons"
-            >
-              <a
-                href="https://www.privatelattice.com/"
-                target="_blank"
-              >
-                Visit site
-                <svg
-                  class="icon icon-tabler icon-tabler-external-link"
-                  fill="none"
-                  height="24"
-                  stroke="#86868b"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                    stroke="none"
-                  />
-                  <path
-                    d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"
-                  />
-                  <line
-                    x1="10"
-                    x2="20"
-                    y1="14"
-                    y2="4"
-                  />
-                  <polyline
-                    points="15 4 20 4 20 9"
-                  />
-                </svg>
-                 
-              </a>
-            </div>
+            />
           </div>
           <button
             aria-label="previous"

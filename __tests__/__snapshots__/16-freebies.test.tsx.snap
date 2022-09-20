@@ -46,9 +46,7 @@ exports[`Freebies page renders correctly 1`] = `
     <div
       class="content"
     >
-      <div
-        class="container"
-      >
+      <div>
         <div
           class="container"
           data-key="project-info"
@@ -123,19 +121,19 @@ exports[`Freebies page renders correctly 1`] = `
                 class="details"
               >
                 <p>
-                  A static desktop clone of the 
+                  This is static desktop clone of the 
                   <a
                     href="https://freebies.bypeople.com/"
                     target="_blank"
                   >
                     Freebies
                   </a>
-                   website. The motivation for this, was achieving the moving items based on the mouse cursor position.
+                   website. The motivation behind this was to achieve the ability to move items based on the mouse cursor position.
                 </p>
                 
 		
                 <p>
-                  Last updated 14th February 2020
+                  Last updated on the 14th of February 2020
                 </p>
                 
 		
@@ -156,7 +154,7 @@ exports[`Freebies page renders correctly 1`] = `
                 class="responsibilities"
               >
                 <h3>
-                  My Responsibilities / Features I Implemented
+                  My Responsibilities & Features I Implemented
                 </h3>
                 <div>
                   
@@ -188,7 +186,7 @@ exports[`Freebies page renders correctly 1`] = `
                 Technical Sheet
               </h2>
               <p>
-                Some noteworthy technologies I got involved with while working on this project.
+                Some noteworthy technologies I got involved with while working on this project:
               </p>
               <ul>
                 <li>
@@ -648,6 +646,10 @@ exports[`Freebies page renders correctly 1`] = `
         style="height: 0px; display: block;"
       />
     </div>
+    <div
+      class="blackCurtain"
+      data-key="contact-curtain"
+    />
   </footer>
 </DocumentFragment>
 `;

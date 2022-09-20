@@ -46,9 +46,7 @@ exports[`Prodeus page renders correctly 1`] = `
     <div
       class="content"
     >
-      <div
-        class="container"
-      >
+      <div>
         <div
           class="container"
           data-key="project-info"
@@ -182,8 +180,8 @@ exports[`Prodeus page renders correctly 1`] = `
                   >
                     Prodeus Chrome Extension
                   </a>
-                  , but with more features.
-		This has to be one of my proudest projects, because the feature list cuts across some very challenging and exciting frontend sectors. 
+                   but with more features.
+		This has to be one of my proudest projects because the feature list cuts across some very challenging and exciting frontend sectors. 
                 </p>
                 
 		
@@ -204,7 +202,7 @@ exports[`Prodeus page renders correctly 1`] = `
                 class="responsibilities"
               >
                 <h3>
-                  My Responsibilities / Features I Implemented
+                  My Responsibilities & Features I Implemented
                 </h3>
                 <div>
                   
@@ -220,8 +218,9 @@ exports[`Prodeus page renders correctly 1`] = `
                       <span>
                         59 pages
                       </span>
-                       with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). In addition to 
-			that, app has about 
+                       with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). 
+			In addition to 
+			that, the app has about 
                       <span>
                         14 unique modals
                       </span>
@@ -276,9 +275,21 @@ exports[`Prodeus page renders correctly 1`] = `
                 Technical Sheet
               </h2>
               <p>
-                Some noteworthy technologies I got involved with while working on this project.
+                Some noteworthy technologies I got involved with while working on this project:
               </p>
               <ul>
+                <li>
+                  HTML
+                </li>
+                <li>
+                  CSS
+                </li>
+                <li>
+                  SASS/SCSS
+                </li>
+                <li>
+                  Vanilla Javascript
+                </li>
                 <li>
                   Typescript
                 </li>
@@ -295,19 +306,16 @@ exports[`Prodeus page renders correctly 1`] = `
                   Styled Components
                 </li>
                 <li>
-                  HTML
-                </li>
-                <li>
-                  CSS
-                </li>
-                <li>
-                  SASS/SCSS
-                </li>
-                <li>
                   Storybook
                 </li>
                 <li>
                   React Testing Library
+                </li>
+                <li>
+                  Jest
+                </li>
+                <li>
+                  Google Analytics
                 </li>
               </ul>
             </section>
@@ -704,6 +712,10 @@ exports[`Prodeus page renders correctly 1`] = `
         style="height: 0px; display: block;"
       />
     </div>
+    <div
+      class="blackCurtain"
+      data-key="contact-curtain"
+    />
   </footer>
 </DocumentFragment>
 `;

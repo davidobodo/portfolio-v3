@@ -80,7 +80,7 @@ export default function Project(props: Props) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
-			<Layout.DarkSection darkSectionRef={darkSectionRef}>
+			<Layout.DarkSection darkSectionRef={darkSectionRef} pathname="/projects/[id]">
 				<div ref={modalRef}>
 					<SingleProject
 						currProjectId={selectedProjectId}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`Developer of the year page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                Developer of the year
               </h1>
               <button
                 class="btnClose"
@@ -105,63 +105,10 @@ exports[`Private Lattice page renders correctly 1`] = `
             <div
               class="media"
             >
-              <div>
-                <div
-                  class="slider"
-                >
-                  <div
-                    class="sliderInner"
-                    style="transform: translateX(-0px);"
-                  >
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
-                    />
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
-                    />
-                  </div>
-                  <button
-                    class="control next"
-                    data-action=">"
-                  >
-                    <svg
-                      class="icon icon-tabler icon-tabler-chevron-right"
-                      fill="none"
-                      height="60"
-                      stroke="#86868b"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      viewBox="0 0 24 24"
-                      width="60"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                        stroke="none"
-                      />
-                      <polyline
-                        points="9 6 15 12 9 18"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  class="indicators"
-                >
-                  <button
-                    class="indicator active"
-                    data-slide="0"
-                  />
-                  <button
-                    class="indicator"
-                    data-slide="1"
-                  />
-                </div>
-              </div>
+              <div
+                class="image"
+                style="background-image: url(/images/projects/developer/home.jpg);"
+              />
             </div>
             <section
               class="about"
@@ -174,16 +121,44 @@ exports[`Private Lattice page renders correctly 1`] = `
                 class="details"
               >
                 <p>
-                  While working at 
+                  A static desktop clone of 
                   <a
-                    href="https://www.upwork.com/ag/mpaccione/"
+                    href="https://www.awwwards.com/"
                     target="_blank"
                   >
-                    M.Paccione Designs and Developement
+                    awwwards
                   </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                   awards site for the year 2020.
                 </p>
+                
+		
+                <p>
+                  The motivation behind building this static clone was the desire to achieve the "VIEW NOMINEES CIRCULAR SECTION" at the bottom of the design with just css and javascript😅.
+                </p>
+                
+		
+                <p>
+                  Trust me, it wasn't an easy process because I encountered tricky mathematical problems, which were later solved with the help of my mentor 
+                  <a
+                    href="https://www.linkedin.com/in/oluwaseunadedire/"
+                    target="_blank"
+                  >
+                    Oluwaseun Adedire
+                  </a>
+                  .
+                </p>
+                
+		
+                <p>
+                  Note that this is a static site hence, none of the call to actions are working.
+                </p>
+                
+		
+                <p>
+                  Last updated on the 15th of February 2020.
+                </p>
+                
+		
               </div>
               <div
                 class="roles"
@@ -196,33 +171,6 @@ exports[`Private Lattice page renders correctly 1`] = `
                     Front End Developer
                   </li>
                 </ul>
-              </div>
-              <div
-                class="responsibilities"
-              >
-                <h3>
-                  My Responsibilities & Features I Implemented
-                </h3>
-                <div>
-                  
-		
-                  <ul>
-                    
-			
-                    <li>
-                      Convert Sketch Design into functional web application.
-                    </li>
-                    
-			
-                    <li>
-                      Connect frontend to the necessary backend endpoints.
-                    </li>
-                    
-		
-                  </ul>
-                  
-		
-                </div>
               </div>
             </section>
             <section
@@ -243,16 +191,13 @@ exports[`Private Lattice page renders correctly 1`] = `
                   CSS
                 </li>
                 <li>
-                  Vanilla Javascript
-                </li>
-                <li>
-                  React.js
-                </li>
-                <li>
                   SASS/SCSS
                 </li>
                 <li>
-                  Semantic UI
+                  Vanilla Javascript
+                </li>
+                <li>
+                  Github Pages
                 </li>
               </ul>
             </section>
@@ -261,7 +206,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="buttons"
             >
               <a
-                href="https://www.privatelattice.com/"
+                href="https://davidobodo.github.io/developer-of-the-year/"
                 target="_blank"
               >
                 Visit site
@@ -293,6 +238,34 @@ exports[`Private Lattice page renders correctly 1`] = `
                   />
                   <polyline
                     points="15 4 20 4 20 9"
+                  />
+                </svg>
+                 
+              </a>
+              <a
+                href="https://github.com/davidobodo/developer-of-the-year"
+                target="_blank"
+              >
+                Github repo 
+                <svg
+                  class="icon icon-tabler icon-tabler-brand-github"
+                  fill="none"
+                  height="24"
+                  stroke="#86868b"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                    stroke="none"
+                  />
+                  <path
+                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
                   />
                 </svg>
                  

@@ -4,9 +4,7 @@ const BASE_URL = "https://www.davidobodo.com";
 const metadata = {
 	home: {
 		title: "David Obodo: Software Developer (Front End Developer)",
-		description: `David Obodo is a Software Developer that majors in Front End Development, yet has the skillset of a full stack developer which enables him to provide 
-			end-to-end service effectively. 
-			`,
+		description: `David Obodo is a Software Developer that majors in Front End Development, yet capable of full stack development.`,
 		url: `${BASE_URL}`,
 		image: `${BASE_URL}/images/covers/home.png`,
 	},

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`Cadmils page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                Cadmils Consulting
               </h1>
               <button
                 class="btnClose"
@@ -105,63 +105,10 @@ exports[`Private Lattice page renders correctly 1`] = `
             <div
               class="media"
             >
-              <div>
-                <div
-                  class="slider"
-                >
-                  <div
-                    class="sliderInner"
-                    style="transform: translateX(-0px);"
-                  >
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
-                    />
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
-                    />
-                  </div>
-                  <button
-                    class="control next"
-                    data-action=">"
-                  >
-                    <svg
-                      class="icon icon-tabler icon-tabler-chevron-right"
-                      fill="none"
-                      height="60"
-                      stroke="#86868b"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      viewBox="0 0 24 24"
-                      width="60"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                        stroke="none"
-                      />
-                      <polyline
-                        points="9 6 15 12 9 18"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  class="indicators"
-                >
-                  <button
-                    class="indicator active"
-                    data-slide="0"
-                  />
-                  <button
-                    class="indicator"
-                    data-slide="1"
-                  />
-                </div>
-              </div>
+              <div
+                class="image"
+                style="background-image: url(/images/projects/cadmils/home.jpg);"
+              />
             </div>
             <section
               class="about"
@@ -173,17 +120,21 @@ exports[`Private Lattice page renders correctly 1`] = `
               <div
                 class="details"
               >
+                
+		
                 <p>
-                  While working at 
+                  This was a freelance contract to setup the entire web presence for Cadmils Consulting Agency. Collaborated with 
+		
                   <a
-                    href="https://www.upwork.com/ag/mpaccione/"
+                    href="https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/"
                     target="_blank"
                   >
-                    M.Paccione Designs and Developement
+                    Harmony Orakpoyovwuru
                   </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                   to achieve the entire design of the website.
                 </p>
+                
+		
               </div>
               <div
                 class="roles"
@@ -193,7 +144,13 @@ exports[`Private Lattice page renders correctly 1`] = `
                 </h3>
                 <ul>
                   <li>
+                    UI/UX Designer
+                  </li>
+                  <li>
                     Front End Developer
+                  </li>
+                  <li>
+                    Back End Developer
                   </li>
                 </ul>
               </div>
@@ -210,12 +167,29 @@ exports[`Private Lattice page renders correctly 1`] = `
                     
 			
                     <li>
-                      Convert Sketch Design into functional web application.
+                      Designed 
+                      <span>
+                        3 out of the 6 pages
+                      </span>
+                       on the website using Figma.
                     </li>
                     
 			
                     <li>
-                      Connect frontend to the necessary backend endpoints.
+                      Converted all mockup designs into 
+                      <span>
+                        pixel perfect pages
+                      </span>
+                       for all screen sizes.
+                    </li>
+                    
+			
+                    <li>
+                      Set up the backend 
+                      <span>
+                        mailing service
+                      </span>
+                       as well as company emails.
                     </li>
                     
 		
@@ -243,16 +217,25 @@ exports[`Private Lattice page renders correctly 1`] = `
                   CSS
                 </li>
                 <li>
-                  Vanilla Javascript
-                </li>
-                <li>
-                  React.js
-                </li>
-                <li>
                   SASS/SCSS
                 </li>
                 <li>
-                  Semantic UI
+                  Vanilla Javascript
+                </li>
+                <li>
+                  JQuery
+                </li>
+                <li>
+                  Node.js
+                </li>
+                <li>
+                  Express.js
+                </li>
+                <li>
+                  Heroku
+                </li>
+                <li>
+                  Sendgrid
                 </li>
               </ul>
             </section>
@@ -261,7 +244,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="buttons"
             >
               <a
-                href="https://www.privatelattice.com/"
+                href="https://www.cadmils.com/"
                 target="_blank"
               >
                 Visit site

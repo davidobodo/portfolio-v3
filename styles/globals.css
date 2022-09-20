@@ -76,7 +76,7 @@ body {
 	margin: 0;
 	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-family: "sf-pro-regular";
-	background: var(--light-brown);
+	background: var(--black);
 	scroll-behavior: smooth;
 	scrollbar-width: none;
 }

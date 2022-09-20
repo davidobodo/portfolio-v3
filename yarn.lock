@@ -3073,10 +3073,10 @@ follow-redirects@^1.14.8:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
   integrity sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==
 
-fork-ts-checker-webpack-plugin@^7.2.11:
-  version "7.2.11"
-  resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-7.2.11.tgz#aff3febbc11544ba3ad0ae4d5aa4055bd15cd26d"
-  integrity sha512-2e5+NyTUTE1Xq4fWo7KFEQblCaIvvINQwUX3jRmEGlgCTc1Ecqw/975EfQrQ0GEraxJTnp8KB9d/c8hlCHUMJA==
+fork-ts-checker-webpack-plugin@^7.2.13:
+  version "7.2.13"
+  resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-7.2.13.tgz#51ffd6a2f96f03ab64b92f8aedf305dbf3dee0f1"
+  integrity sha512-fR3WRkOb4bQdWB/y7ssDUlVdrclvwtyCUIHCfivAoYxq9dF7XfrDKbMdZIfwJ7hxIAqkYSGeU7lLJE6xrxIBdg==
   dependencies:
     "@babel/code-frame" "^7.16.7"
     chalk "^4.1.2"
@@ -3086,6 +3086,7 @@ fork-ts-checker-webpack-plugin@^7.2.11:
     fs-extra "^10.0.0"
     memfs "^3.4.1"
     minimatch "^3.0.4"
+    node-abort-controller "^3.0.1"
     schema-utils "^3.1.1"
     semver "^7.3.5"
     tapable "^2.2.1"
@@ -4433,6 +4434,11 @@ next@12.1.6:
     "@next/swc-win32-arm64-msvc" "12.1.6"
     "@next/swc-win32-ia32-msvc" "12.1.6"
     "@next/swc-win32-x64-msvc" "12.1.6"
+
+node-abort-controller@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/node-abort-controller/-/node-abort-controller-3.0.1.tgz#f91fa50b1dee3f909afabb7e261b1e1d6b0cb74e"
+  integrity sha512-/ujIVxthRs+7q6hsdjHMaj8hRG9NuWmwrz+JdRwZ14jdFoKSkm+vDsCbF9PLpnSqjaWQJuTmVtcWHNLr+vrOFw==
 
 node-int64@^0.4.0:
   version "0.4.0"

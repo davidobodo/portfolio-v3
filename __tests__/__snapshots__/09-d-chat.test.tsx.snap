@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Private Lattice page renders correctly 1`] = `
+exports[`D Chat page renders correctly 1`] = `
 <DocumentFragment>
   <a
     class="link"
@@ -86,7 +86,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="title"
             >
               <h1>
-                Private Lattice
+                d-chat
               </h1>
               <button
                 class="btnClose"
@@ -105,63 +105,10 @@ exports[`Private Lattice page renders correctly 1`] = `
             <div
               class="media"
             >
-              <div>
-                <div
-                  class="slider"
-                >
-                  <div
-                    class="sliderInner"
-                    style="transform: translateX(-0px);"
-                  >
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/auth.jpg);"
-                    />
-                    <div
-                      class="item"
-                      style="background-image: url(/images/projects/private-lattice/home.jpg);"
-                    />
-                  </div>
-                  <button
-                    class="control next"
-                    data-action=">"
-                  >
-                    <svg
-                      class="icon icon-tabler icon-tabler-chevron-right"
-                      fill="none"
-                      height="60"
-                      stroke="#86868b"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      viewBox="0 0 24 24"
-                      width="60"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                        stroke="none"
-                      />
-                      <polyline
-                        points="9 6 15 12 9 18"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  class="indicators"
-                >
-                  <button
-                    class="indicator active"
-                    data-slide="0"
-                  />
-                  <button
-                    class="indicator"
-                    data-slide="1"
-                  />
-                </div>
-              </div>
+              <div
+                class="image"
+                style="background-image: url(/images/projects/d-chat/auth.jpg);"
+              />
             </div>
             <section
               class="about"
@@ -173,29 +120,51 @@ exports[`Private Lattice page renders correctly 1`] = `
               <div
                 class="details"
               >
+                
+		
                 <p>
-                  While working at 
+                  It is no news that majority of applications these days have the 
+                  <span>
+                    "chatting" functionality
+                  </span>
+                   embedded in them. So this project was an attempt to understand how the "open connection idea", upon which the functionality is built upon, works.
+		Due to my obliviousness of 
                   <a
-                    href="https://www.upwork.com/ag/mpaccione/"
+                    href="https://socket.io/"
                     target="_blank"
                   >
-                    M.Paccione Designs and Developement
+                    Socket.io
                   </a>
-                  , 
-		I had the opportunity to add value as the main frontend developer in quite a couple of projects, amongst which is Private Lattice.
+                   at the time, I executed this project using only 
+                  <a
+                    href="https://firebase.google.com/"
+                    target="_blank"
+                  >
+                    Firebase
+                  </a>
+                  . Now Scoket.io is my go-to for 
+		any "open connection" functionality (e.g chat and realtime notifications).
+		
                 </p>
-              </div>
-              <div
-                class="roles"
-              >
-                <h3>
-                  Role in Project
-                </h3>
-                <ul>
-                  <li>
-                    Front End Developer
-                  </li>
-                </ul>
+                
+		
+                <p>
+                  The authentication screen design is a "not so pixel perfect clone" of 
+                  <a
+                    href="https://dribbble.com/shots/5271131-Login-Sign-up-screen"
+                    target="_blank"
+                  >
+                    Marcin Kohut
+                  </a>
+                   design  on Dribbble.
+                </p>
+                
+		
+                <p>
+                  Last updated on the 5th of July 2020.
+                </p>
+                
+		
               </div>
               <div
                 class="responsibilities"
@@ -210,12 +179,12 @@ exports[`Private Lattice page renders correctly 1`] = `
                     
 			
                     <li>
-                      Convert Sketch Design into functional web application.
+                      Used skype chat UI has a reference for the design
                     </li>
                     
 			
                     <li>
-                      Connect frontend to the necessary backend endpoints.
+                      Ability to chat realtime with anyone online
                     </li>
                     
 		
@@ -243,16 +212,19 @@ exports[`Private Lattice page renders correctly 1`] = `
                   CSS
                 </li>
                 <li>
-                  Vanilla Javascript
+                  SASS/SCSS
                 </li>
                 <li>
                   React.js
                 </li>
                 <li>
-                  SASS/SCSS
+                  Redux
                 </li>
                 <li>
-                  Semantic UI
+                  Material UI
+                </li>
+                <li>
+                  Firebase
                 </li>
               </ul>
             </section>
@@ -261,7 +233,7 @@ exports[`Private Lattice page renders correctly 1`] = `
               data-key="buttons"
             >
               <a
-                href="https://www.privatelattice.com/"
+                href="https://d-chat-98abe.firebaseapp.com/auth"
                 target="_blank"
               >
                 Visit site
@@ -293,6 +265,34 @@ exports[`Private Lattice page renders correctly 1`] = `
                   />
                   <polyline
                     points="15 4 20 4 20 9"
+                  />
+                </svg>
+                 
+              </a>
+              <a
+                href="https://github.com/davidobodo/d-chat"
+                target="_blank"
+              >
+                Github repo 
+                <svg
+                  class="icon icon-tabler icon-tabler-brand-github"
+                  fill="none"
+                  height="24"
+                  stroke="#86868b"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                    stroke="none"
+                  />
+                  <path
+                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
                   />
                 </svg>
                  
