@@ -87,7 +87,7 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			background-image: url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800);
+			// background-image: url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800);
 			background-position: center;
 
 			//----------
@@ -113,12 +113,15 @@
 				//----------
 			}
 
-			span {
+			.blind {
 				position: absolute;
 				display: block;
 				width: 100%;
 				height: 100%;
 				background-color: var(--light-brown);
+				top: 0;
+				left: 0;
+				z-index: 10;
 			}
 
 			svg {
@@ -140,11 +143,12 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			background-image: url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800);
+			// background-image: url(https://images.unsplash.com/photo-1595065733126-085c7ee07de6?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwc2l0dGluZyUyMG9uJTIwY2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800);
 			background-position: center;
 			width: 0px;
 			height: 35rem;
 			max-height: calc(100vh - 44rem);
+			position: relative;
 
 			@media (min-width: $md) {
 				display: none;
