@@ -93,13 +93,13 @@ class OtherHomeSectionsAnimations {
 	animateExcellence({
 		sectionWrapper,
 		textWrapper,
-		image,
+		imageFrame,
 		innerWidth,
 		sectionWrapperInner,
 	}: {
 		sectionWrapper: HTMLDivElement;
 		textWrapper: HTMLDivElement;
-		image: HTMLDivElement;
+		imageFrame: HTMLDivElement;
 		innerWidth: number;
 		sectionWrapperInner: HTMLDivElement;
 	}) {
@@ -124,7 +124,7 @@ class OtherHomeSectionsAnimations {
 		tl.to(textWrapper.querySelector("svg"), {
 			scale: 50,
 		});
-		tl.to(image, {
+		tl.to(imageFrame, {
 			borderLeftWidth: innerWidth < 1200 ? "2rem" : "5.8rem",
 			borderRightWidth: innerWidth < 1200 ? "2rem" : "5.8rem",
 			borderTopWidth: innerWidth < 1200 ? "5rem" : "10rem",

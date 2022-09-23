@@ -11,6 +11,7 @@ export function Details({
 	isFooterFixed: boolean;
 	handlePageGAEvents: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }) {
+	///////
 	return (
 		<div
 			className={styles.container}

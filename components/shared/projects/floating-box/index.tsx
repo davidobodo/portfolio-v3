@@ -1,6 +1,8 @@
 import styles from "./styles.module.scss";
 import { Ref } from "react";
 import { TProject } from "#/types";
+import Image from "next/image";
+
 export default function Box({
 	isActive,
 	imgRef,
@@ -24,7 +26,7 @@ export default function Box({
 				<div className={styles.projectsListBoundary}>
 					<ul className={styles.projectsList} data-key="projects-list">
 						{displayedProjects.map((item, i) => {
-							const { bgColor, media } = item;
+							const { bgColor, media, title } = item;
 							return (
 								<li key={i} className={styles.project + " " + styles.visible}>
 									<span
@@ -33,12 +35,7 @@ export default function Box({
 											backgroundColor: bgColor,
 										}}
 									>
-										<span
-											className={styles.inner}
-											style={{
-												backgroundImage: `url(${media[0].source})`,
-											}}
-										></span>
+										<Image src={media[0].source} alt={title} />
 									</span>
 								</li>
 							);

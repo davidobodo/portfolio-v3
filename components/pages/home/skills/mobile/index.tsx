@@ -4,6 +4,8 @@ import { TECH_STACKS } from "#/constants";
 import { FaintBgText } from "#/components";
 import { Ref } from "react";
 import { events, registerEvent } from "#/utils/analytics/events";
+import Image from "next/image";
+import handImg from "#/public/home-hand.jpg";
 
 export type SkillsMobileProps = {
 	mobileSkillsContainerRef: Ref<HTMLDivElement>;
@@ -115,7 +117,9 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 				</div>
 			</div>
 
-			<div className={styles.imageSection}></div>
+			<div className={styles.imageSection}>
+				<Image src={handImg} layout="fill" objectFit="cover" alt="My hand" />
+			</div>
 		</>
 	);
 }

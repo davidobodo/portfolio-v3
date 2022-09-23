@@ -2,7 +2,14 @@ import styles from "./styles.module.scss";
 import { useWindowSize } from "#/hooks";
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "../../icons";
-export default function Slider({ items, id }: { items: { type: "image" | "video"; source: string }[]; id: string }) {
+import { StaticImageData } from "next/image";
+export default function Slider({
+	items,
+	id,
+}: {
+	items: { type: "image" | "video"; source: StaticImageData }[];
+	id: string;
+}) {
 	const { innerHeight, innerWidth } = useWindowSize();
 
 	const itemsWrapperRef = useRef<HTMLDivElement>(null);
