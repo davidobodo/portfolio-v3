@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { TProject } from "#/types";
+import Image from "next/image";
 export function ProjectsGridView({
 	onViewProject,
 	displayedProjects,
@@ -10,13 +11,11 @@ export function ProjectsGridView({
 	return (
 		<div className={styles.container}>
 			{displayedProjects.map((item, i) => {
-				const { id, media } = item;
+				const { id, media, title } = item;
 
 				return (
 					<button key={i} className={styles.box} data-id={id} data-type="box-item" onClick={onViewProject}>
-						<div className={styles.boxImage} style={{ backgroundImage: `url(${media[0].source})` }}>
-							<div className={styles.boxImageInner}></div>
-						</div>
+						<Image src={media[0].source} alt={title} />
 						<div className={styles.boxOverlay}></div>
 						<div className={styles.boxCircle}>
 							<span>View</span>

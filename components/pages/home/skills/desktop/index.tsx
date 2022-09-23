@@ -4,6 +4,8 @@ import { Ref } from "react";
 import { FaintBgText } from "#/components";
 import Link from "next/link";
 import { events, registerEvent } from "#/utils/analytics/events";
+import Image from "next/image";
+import handImg from "#/public/home-hand.jpg";
 
 export type SkillsDesktopProps = {
 	skillsContainerRef: Ref<HTMLDivElement>;
@@ -13,13 +15,9 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 	return (
 		<div className={styles.container} ref={skillsContainerRef} id="skills-section">
 			<div className={styles.contentWrapper} data-key="skills-content">
-				<div
-					className={styles.image}
-					style={{
-						backgroundImage: `url('https://images.unsplash.com/photo-1499914485622-a88fac536970?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGFuZHMlMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800')`,
-					}}
-					data-key="hand-image"
-				></div>
+				<div className={styles.image} data-key="hand-image">
+					<Image src={handImg} layout="fill" objectFit="cover" alt="My hand" />
+				</div>
 				<div className={styles.wrapper}>
 					<div className={styles.heading}>
 						<h2 className={styles.subTitle} ref={skillsSectionTitlteRef}>

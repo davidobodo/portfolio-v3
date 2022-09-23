@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 type TRoles = "design" | "fe" | "be" | "teamlead";
 type TProjectType = "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
 type TFilterBy = "tech-stack" | "project-nature";
@@ -22,7 +24,7 @@ type TProject = {
 	tech: string[];
 	type: TProjectType;
 	bgColor?: string;
-	media: { type: "image" | "video"; source: string }[];
+	media: { type: "image" | "video"; source: StaticImageData }[];
 	responsibilities: string;
 };
 

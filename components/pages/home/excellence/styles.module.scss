@@ -38,9 +38,22 @@
 	height: 100%;
 	left: 0;
 	top: 0;
-	background-image: url(https://images.unsplash.com/photo-1657299170237-2d4cd59b5156?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
-	background-image: url(/images/excel.png);
+	// background-image: url(/home-excel.png);
 	border-color: var(--black);
 	border-style: solid;
 	background-position: bottom;
+	background-color: #fff;
+
+	.frame {
+		position: absolute;
+		width: 100vw;
+		height: 100%;
+		border-width: 0px;
+		border-style: solid;
+		border-color: var(--black);
+		top: 0px;
+		left: 0px;
+		display: block;
+		z-index: 10;
+	}
 }

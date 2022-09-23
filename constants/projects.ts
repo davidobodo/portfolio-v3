@@ -1,5 +1,39 @@
 import { TProject } from "#/types";
 
+import prodeus1 from "#/public/proj-prodeus-dashboard-light.jpg";
+import prodeus2 from "#/public/proj-prodeus-dashboard-dark.jpg";
+import prodeus3 from "#/public/proj-prodeus-portfolio.jpg";
+import prodeus4 from "#/public/proj-prodeus-discover.jpg";
+import prodeus5 from "#/public/proj-prodeus-skills.jpg";
+import cadmils from "#/public/proj-cadmils-home.jpg";
+import medic1 from "#/public/proj-medic-home.jpg";
+import medic2 from "#/public/proj-medic-results.jpg";
+import medic3 from "#/public/proj-medic-history.jpg";
+import lattice1 from "#/public/proj-lattice-auth.jpg";
+import lattice2 from "#/public/proj-lattice-home.jpg";
+import dprod from "#/public/proj-dprod-home.jpg";
+import weather1 from "#/public/proj-weather-result.jpg";
+import weather2 from "#/public/proj-weather-home.jpg";
+import dcom1 from "#/public/proj-dcom-home.jpg";
+import dcom2 from "#/public/proj-dcom-item.jpg";
+import dcom3 from "#/public/proj-dcom-cart.jpg";
+import prodeusEditor from "#/public/proj-prodeuseditor-pic.jpg";
+import dchat from "#/public/proj-dchat-auth.jpg";
+import pv1 from "#/public/proj-pv1-home.jpg";
+import devofyear from "#/public/proj-dev-home.jpg";
+import shortly from "#/public/proj-shortly-desktop-preview.jpg";
+import pv2 from "#/public/proj-pv2-home.jpg";
+import bookmark from "#/public/proj-bookmark-desktop-preview.jpg";
+import drum from "#/public/proj-drum-home.jpg";
+import freebies from "#/public/proj-freebies-home.jpg";
+import ozidi1 from "#/public/proj-ozidi-generator.jpg";
+import ozidi2 from "#/public/proj-ozidi-reg.jpg";
+import phintnftwhitelist1 from "#/public/proj-phitnftwhitelist-joined.jpg";
+import phintnftwhitelist2 from "#/public/proj-phitnftwhitelist-pending.jpg";
+import phitnft1 from "#/public/proj-phitnft-joined.jpg";
+import phitnft2 from "#/public/proj-phitnft-pending.jpg";
+import laptopPhone from "#/public/proj-laptopphone-index.gif";
+
 const PROJECTS: TProject[] = [
 	{
 		id: "prodeus",
@@ -42,23 +76,23 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/prodeus/dashboard-light.jpg",
+				source: prodeus1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/prodeus/dashboard-dark.jpg",
+				source: prodeus2,
 			},
 			{
 				type: "image",
-				source: "/images/projects/prodeus/portfolio.jpg",
+				source: prodeus3,
 			},
 			{
 				type: "image",
-				source: "/images/projects/prodeus/discover.jpg",
+				source: prodeus4,
 			},
 			{
 				type: "image",
-				source: "/images/projects/prodeus/skills.jpg",
+				source: prodeus5,
 			},
 		],
 	},
@@ -85,7 +119,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/cadmils/home.jpg",
+				source: cadmils,
 			},
 		],
 	},
@@ -135,15 +169,15 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/medic-finder/home.jpg",
+				source: medic1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/medic-finder/results.jpg",
+				source: medic2,
 			},
 			{
 				type: "image",
-				source: "/images/projects/medic-finder/history.jpg",
+				source: medic3,
 			},
 		],
 	},
@@ -167,11 +201,11 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/private-lattice/auth.jpg",
+				source: lattice1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/private-lattice/home.jpg",
+				source: lattice2,
 			},
 		],
 	},
@@ -201,7 +235,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/d-productivity/home.jpg",
+				source: dprod,
 			},
 		],
 	},
@@ -228,11 +262,11 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/weather/result.jpg",
+				source: weather1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/weather/home.jpg",
+				source: weather2,
 			},
 		],
 	},
@@ -273,15 +307,15 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/d-commerce/home.jpg",
+				source: dcom1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/d-commerce/item.jpg",
+				source: dcom2,
 			},
 			{
 				type: "image",
-				source: "/images/projects/d-commerce/cart.jpg",
+				source: dcom3,
 			},
 		],
 	},
@@ -321,7 +355,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/prodeus-editor/pic.jpg",
+				source: prodeusEditor,
 			},
 		],
 	},
@@ -349,7 +383,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/prodeus-editor/pic.jpg",
+				source: prodeusEditor,
 			},
 		],
 	},
@@ -380,7 +414,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/d-chat/auth.jpg",
+				source: dchat,
 			},
 		],
 	},
@@ -405,7 +439,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/pv-1/home.jpg",
+				source: pv1,
 			},
 		],
 	},
@@ -428,7 +462,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/developer/home.jpg",
+				source: devofyear,
 			},
 		],
 	},
@@ -455,7 +489,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/shortly/desktop-preview.jpg",
+				source: shortly,
 			},
 		],
 	},
@@ -479,7 +513,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/pv-2/home.jpg",
+				source: pv2,
 			},
 		],
 	},
@@ -505,7 +539,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/bookmark/desktop-preview.jpg",
+				source: bookmark,
 			},
 		],
 	},
@@ -530,7 +564,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/drum-machine/home.jpg",
+				source: drum,
 			},
 		],
 	},
@@ -555,7 +589,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/freebies/home2.jpg",
+				source: freebies,
 			},
 		],
 	},
@@ -619,11 +653,11 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/ozidi/generator.jpg",
+				source: ozidi1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/ozidi/reg.jpg",
+				source: ozidi2,
 			},
 		],
 	},
@@ -650,11 +684,11 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/phitnftswhitelist/joined.jpg",
+				source: phintnftwhitelist1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/phitnftswhitelist/pending.jpg",
+				source: phintnftwhitelist2,
 			},
 		],
 	},
@@ -683,11 +717,11 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/phitnfts/joined.jpg",
+				source: phitnft1,
 			},
 			{
 				type: "image",
-				source: "/images/projects/phitnfts/pending.jpg",
+				source: phitnft2,
 			},
 		],
 	},
@@ -707,7 +741,7 @@ const PROJECTS: TProject[] = [
 		media: [
 			{
 				type: "image",
-				source: "/images/projects/laptop-phone/index.gif",
+				source: laptopPhone,
 			},
 		],
 	},
