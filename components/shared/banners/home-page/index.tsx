@@ -3,6 +3,9 @@ import Heading from "./heading";
 import { RefObject } from "react";
 import { ScrollAlert } from "#/components";
 
+import Image from "next/image";
+import bannerImg from "#/public/home-banner.png";
+
 type Props = {
 	bannerRef: RefObject<HTMLDivElement>;
 	bannerHeight: number | undefined;
@@ -31,10 +34,13 @@ export default function Banner({ bannerRef, bannerHeight }: Props) {
 					</div>
 
 					<div>
-						<div className={styles.desktopImage} data-key="desktop-image">
-							<span></span>
+						<div className={styles.desktopImage}>
+							<Image src={bannerImg} layout="fill" objectFit="cover" alt="Profile picture" />
+							<span className={styles.blind} data-key="desktop-image-blind"></span>
 						</div>
-						<div className={styles.mobileImage} data-key="mobile-image"></div>
+						<div className={styles.mobileImage} data-key="mobile-image">
+							<Image src={bannerImg} layout="fill" objectFit="cover" alt="Profile picture" />
+						</div>
 					</div>
 				</div>
 

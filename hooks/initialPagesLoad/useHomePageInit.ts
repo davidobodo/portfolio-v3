@@ -34,7 +34,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 		const fieldLetters = bannerRefSelector<HTMLSpanElement>('[data-key="field"] [data-key="letter"]');
 		const subFields = bannerRefSelector<HTMLDivElement>('[data-key="sub-field"]');
 		const picMobile = bannerRefSelector<HTMLDivElement>('[data-key="mobile-image"]');
-		const picDesktopblind = bannerRefSelector<HTMLSpanElement>('[data-key="desktop-image"] span');
+		const picDesktopblind = bannerRefSelector<HTMLSpanElement>('[data-key="desktop-image-blind"]');
 		const scrollIndicator = bannerRefSelector<HTMLDivElement>('[data-key="scroll-alert"]');
 		const logo = document.querySelector("[data-key='logo']") as Element;
 		const logoChildren = document.querySelectorAll("[data-key='logo'] path");
