@@ -1,25 +1,24 @@
 .svgContainer {
-    position: absolute;
-    width: 100%;
-    bottom: -20%;
+	position: absolute;
+	width: 100%;
+	bottom: -20%;
 
-    .svgAnimation {
-        width: 100%;
-        height: 13vw;
-        text {
-            font-family: Roboto, Arial, sans-serif;
-            font-family: "sf-pro-bold";
-            font-size: 18vw;
-            display: block;
-            stroke-width: 0px;
-            stroke-dashoffset: -1500;
-            stroke-dashoffset: 0;
-            stroke-dasharray: 2000;
-            stroke-linecap: butt;
-            stroke-linejoin: round;
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10 and IE 11 */
-            user-select: none;
-        }
-    }
+	.svgAnimation {
+		width: 100%;
+		height: 13vw;
+		text {
+			font-family: "sf-pro-bold";
+			font-size: 18vw;
+			display: block;
+			stroke-width: 0px;
+			stroke-dashoffset: -1500;
+			stroke-dashoffset: 0;
+			stroke-dasharray: 2000;
+			stroke-linecap: butt;
+			stroke-linejoin: round;
+			-webkit-user-select: none; /* Safari */
+			-ms-user-select: none; /* IE 10 and IE 11 */
+			user-select: none;
+		}
+	}
 }
