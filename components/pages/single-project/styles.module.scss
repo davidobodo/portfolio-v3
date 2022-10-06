@@ -140,13 +140,10 @@
 			transform-origin: top left;
 
 			.image {
-				padding-top: 62.5%;
-
-				background-size: cover;
-				background-repeat: no-repeat;
 				background-color: var(--ash);
 				background-position: center;
-
+				background-size: cover;
+				background-repeat: no-repeat;
 				will-change: transform;
 			}
 		}
