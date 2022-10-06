@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { NextPage } from "next";
+import { NextPageContext } from "next";
 import {
 	Noise,
 	Banners,
@@ -32,7 +32,7 @@ import { TFilterBy } from "#/types";
 
 const { scrollToProjectsSection } = projectAnimations;
 
-const ProjectsPage: NextPage = () => {
+function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy; initFilterKey: string }) {
 	const [initialPageLoad, setInitialPageLoad] = useState(true);
 	//---------------------------------------------------------
 	// TOGGLE FILTER DISPLAY
@@ -74,8 +74,10 @@ const ProjectsPage: NextPage = () => {
 	//---------------------------------------------------------
 	// TOGGLE PROJECTS DISPLAYED BASED ON FILTER
 	//---------------------------------------------------------
-	const [filterKey, setFilterKey] = useState("all");
-	const [filterBy, setFilterBy] = useState<TFilterBy>("tech-stack");
+
+	const [filterKey, setFilterKey] = useState(initFilterKey);
+	const [filterBy, setFilterBy] = useState<TFilterBy>(initFilterBy);
+
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFilterBy(e.target.value as TFilterBy);
 		registerEvent(events.pages.projects.toggleProjectsFilterBy({ filter_by: e.target.value }));
@@ -214,6 +216,16 @@ const ProjectsPage: NextPage = () => {
 			/>
 		</>
 	);
-};
+}
 
 export default ProjectsPage;
+
+export async function getServerSideProps(ctx: NextPageContext) {
+	const { query } = ctx;
+	return {
+		props: {
+			initFilterBy: query.filter_by || "tech-stack",
+			initFilterKey: query.filter_key || "all",
+		},
+	};
+}
