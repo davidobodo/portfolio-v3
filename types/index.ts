@@ -24,7 +24,7 @@ type TProject = {
 	tech: string[];
 	type: TProjectType;
 	bgColor?: string;
-	media: { type: "image" | "video"; source: StaticImageData }[];
+	media: { type: "image" | "video" | "gif"; source: StaticImageData }[];
 	responsibilities: string;
 };
 

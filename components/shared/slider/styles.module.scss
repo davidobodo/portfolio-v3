@@ -50,12 +50,8 @@
 		transition: transform 200ms ease-in-out;
 
 		.item {
-			padding-top: 62.5%;
 			width: 100%;
 			flex-shrink: 0;
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-image: url(https://images.unsplash.com/photo-1657299156271-d5a435dd65b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
 			background-color: var(--ash);
 		}
 	}

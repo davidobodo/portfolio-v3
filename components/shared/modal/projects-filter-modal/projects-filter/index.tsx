@@ -33,7 +33,7 @@ export default function BaseProjectsFilter({
 	const onClose = () => {
 		document.body.style.overflow = "auto";
 
-		// Remoce open filter params
+		// Remove open filter params
 		const searchParams = new URLSearchParams(window.location.search);
 		searchParams.delete("open_filter");
 		const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
@@ -57,7 +57,6 @@ export default function BaseProjectsFilter({
 	//--------------------------------------------------------
 	//INITIAL ANIMATION
 	//--------------------------------------------------------
-
 	useEffect(() => {
 		const listItems = containerRefSelector('[data-key="list-items"]');
 		const filterOptions = containerRefSelector<HTMLDivElement>('[data-key="filter-options"]');
@@ -80,6 +79,7 @@ export default function BaseProjectsFilter({
 		onFilterProjects({
 			key,
 		});
+		window.history.pushState(null, "New Page Title", `/projects?filter_by=${filterBy}&filter_key=${key}`);
 		onClose();
 	};
 

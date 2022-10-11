@@ -1,4 +1,5 @@
 import styles from "./styles.module.scss";
+import Image from "next/image";
 import { useWindowSize } from "#/hooks";
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "../../icons";
@@ -7,7 +8,7 @@ export default function Slider({
 	items,
 	id,
 }: {
-	items: { type: "image" | "video"; source: StaticImageData }[];
+	items: { type: "image" | "video" | "gif"; source: StaticImageData }[];
 	id: string;
 }) {
 	const { innerHeight, innerWidth } = useWindowSize();
@@ -96,13 +97,9 @@ export default function Slider({
 					{items.map((a, i) => {
 						const { source } = a;
 						return (
-							<div
-								key={i}
-								className={styles.item}
-								style={{
-									backgroundImage: `url(${source})`,
-								}}
-							></div>
+							<div key={i} className={styles.item}>
+								<Image src={source} alt={`Picture ${i}`} />
+							</div>
 						);
 					})}
 				</div>

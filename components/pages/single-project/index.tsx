@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import Image, { StaticImageData } from "next/image";
 import { ChevronRight, ChevronLeft, Github, ExternalLink } from "#/components/icons";
 import { Slider } from "#/components";
 import { fetchProjects } from "#/utils";
@@ -101,7 +102,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 							<Slider items={media} id={currProjectId} />
 						</div>
 					) : (
-						<div className={styles.image} style={{ backgroundImage: `url(${media[0].source})` }}></div>
+						<SingleMediaFile file={media[0]} title={title} />
 					)}
 				</div>
 
@@ -201,6 +202,32 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 					<div></div>
 				)}
 			</div>
+		</div>
+	);
+}
+
+function SingleMediaFile({
+	file,
+	title,
+}: {
+	file: { type: "image" | "video" | "gif"; source: StaticImageData };
+	title: string;
+}) {
+	if (file.type === "gif") {
+		return (
+			<div
+				className={styles.image}
+				style={{
+					paddingTop: "62.5%",
+				}}
+			>
+				<Image src={file.source} alt={title} layout="fill" objectFit="cover" />
+			</div>
+		);
+	}
+	return (
+		<div className={styles.image}>
+			<Image src={file.source} alt={title} />
 		</div>
 	);
 }

@@ -740,7 +740,7 @@ const PROJECTS: TProject[] = [
 		type: "Experiment",
 		media: [
 			{
-				type: "image",
+				type: "gif",
 				source: laptopPhone,
 			},
 		],
