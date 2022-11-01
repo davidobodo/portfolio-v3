@@ -96,12 +96,14 @@ class OtherHomeSectionsAnimations {
 		imageFrame,
 		innerWidth,
 		sectionWrapperInner,
+		imageWrapper,
 	}: {
 		sectionWrapper: HTMLDivElement;
 		textWrapper: HTMLDivElement;
 		imageFrame: HTMLDivElement;
 		innerWidth: number;
 		sectionWrapperInner: HTMLDivElement;
+		imageWrapper: HTMLDivElement;
 	}) {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -123,6 +125,10 @@ class OtherHomeSectionsAnimations {
 		});
 		tl.to(textWrapper.querySelector("svg"), {
 			scale: 50,
+		});
+		tl.to(imageWrapper.querySelector("img"), {
+			filter: "grayscale(0%)",
+			duration: 1,
 		});
 		tl.to(imageFrame, {
 			borderLeftWidth: innerWidth < 1200 ? "2rem" : "5.8rem",

@@ -3,7 +3,7 @@ import Heading from "./heading";
 import { RefObject } from "react";
 import { ScrollAlert } from "#/components";
 import Image from "next/image";
-import bannerImg from "#/public/home-banner.png";
+import bannerImg from "#/public/home-banner.jpg";
 
 type Props = {
 	bannerRef: RefObject<HTMLDivElement>;
