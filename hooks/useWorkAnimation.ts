@@ -24,6 +24,7 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 			"(min-width: 992px)": () => {
 				if (workContainerRef.current) {
 					const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
+					const noise = document.querySelector('[data-key="noise"]') as HTMLDivElement;
 					const faintBgTitle = workContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
 					const workTabs = workContainerSelector<HTMLDivElement>('[data-key="work-tabs"]');
 					const workTabsTitles = workContainerSelector<HTMLDivElement>('[data-key="work-companies"]');
@@ -39,6 +40,7 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 						titles: workTabsTitles[0].children,
 						details: workTabsDetails[0].children,
 						windowInnerWidth,
+						noise,
 					});
 
 					setDesktopTl(tl);
@@ -53,6 +55,7 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 			//-----------------------------------------
 			"(max-width: 991px) and (min-height: 564px)": () => {
 				if (mobileWorkContainerRef.current) {
+					const noise = document.querySelector('[data-key="noise"]') as HTMLDivElement;
 					const radialGradient = document.querySelector('[data-key="radial-gradient"]') as HTMLDivElement;
 					const faintBgTitle = mobileWorkContainerSelector<HTMLDivElement>('[data-key="faint-svg"]');
 					const workTabs = mobileWorkContainerSelector<HTMLDivElement>('[data-key="work-tabs"]');
@@ -68,6 +71,7 @@ export default function useWorkAnimation({ windowInnerWidth }: { windowInnerWidt
 						titles: workTabsTitles[0].children as unknown as HTMLLIElement[],
 						details: workTabsDetails[0].children,
 						windowInnerWidth,
+						noise,
 					});
 					return () => {
 						tl.scrollTrigger?.kill();

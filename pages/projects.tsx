@@ -47,7 +47,6 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 		setShowFilter(false);
 		registerEvent(events.pages.projects.closeProjectsFilter());
 	};
-
 	const darkSectionRef = useRef(null);
 	const contentRef = useRef(null);
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
@@ -64,7 +63,6 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 	// TOGGLE BETWEEN GRID AND LIST VIEW
 	//---------------------------------------------------------
 	const { currentView, handleSetCurrentView } = useProjectsCurrentView({});
-
 	useIsomorphicLayoutEffect(() => {
 		if (windowInnerWidth < 768) {
 			handleSetCurrentView("grid");
@@ -74,7 +72,6 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 	//---------------------------------------------------------
 	// TOGGLE PROJECTS DISPLAYED BASED ON FILTER
 	//---------------------------------------------------------
-
 	const [filterKey, setFilterKey] = useState(initFilterKey);
 	const [filterBy, setFilterBy] = useState<TFilterBy>(initFilterBy);
 
@@ -113,16 +110,52 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 	};
 
 	let displayedProjects = PROJECTS;
-	if (filterKey !== "all") {
-		displayedProjects = PROJECTS.filter((project) => {
-			const { type, tech } = project;
 
-			if (filterBy === "tech-stack") {
-				return tech.includes(filterKey);
-			} else if (filterBy === "project-nature") {
-				return type === filterKey;
-			}
-		});
+	if (filterBy === "tech-stack") {
+		if (filterKey === "all") {
+			displayedProjects = PROJECTS;
+		} else {
+			displayedProjects = PROJECTS.filter((project) => {
+				return project.tech.includes(filterKey);
+			});
+		}
+	}
+
+	if (filterBy === "project-nature") {
+		if (filterKey === "all") {
+			displayedProjects = PROJECTS;
+		} else {
+			displayedProjects = PROJECTS.filter((project) => {
+				return project.type === filterKey;
+			});
+		}
+	}
+
+	if (filterBy === "open-source") {
+		if (filterKey === "all") {
+			displayedProjects = PROJECTS.filter((project) => {
+				const { githublink } = project;
+				return githublink && githublink.length > 0;
+			});
+		} else {
+			displayedProjects = PROJECTS.filter((project) => {
+				const { githublink, tech } = project;
+				return githublink && githublink.length > 0 && tech.includes(filterKey);
+			});
+		}
+	}
+	if (filterBy === "closed-source") {
+		if (filterKey === "all") {
+			displayedProjects = PROJECTS.filter((project) => {
+				const { githublink } = project;
+				return !githublink || githublink.length === 0;
+			});
+		} else {
+			displayedProjects = PROJECTS.filter((project) => {
+				const { githublink, tech } = project;
+				return (!githublink || githublink.length === 0) && tech.includes(filterKey);
+			});
+		}
 	}
 
 	useIsomorphicLayoutEffect(() => {

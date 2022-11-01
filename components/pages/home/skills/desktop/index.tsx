@@ -2,8 +2,8 @@ import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants";
 import { Ref } from "react";
 import { FaintBgText } from "#/components";
-import Link from "next/link";
 import { events, registerEvent } from "#/utils/analytics/events";
+import Link from "next/link";
 import Image from "next/image";
 import handImg from "#/public/home-hand.jpg";
 
@@ -16,7 +16,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 		<div className={styles.container} ref={skillsContainerRef} id="skills-section">
 			<div className={styles.contentWrapper} data-key="skills-content">
 				<div className={styles.image} data-key="hand-image">
-					<Image src={handImg} layout="fill" objectFit="cover" alt="My hand" />
+					<Image src={handImg} layout="fill" objectFit="cover" alt="My hand" objectPosition="left" />
 				</div>
 				<div className={styles.wrapper}>
 					<div className={styles.heading}>

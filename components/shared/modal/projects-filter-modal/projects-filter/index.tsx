@@ -107,6 +107,24 @@ export default function BaseProjectsFilter({
 	//--------------------------------------------------------
 	//MODAL CONTENT
 	//--------------------------------------------------------
+	const FILTERS = [
+		{
+			label: "Tech Stack",
+			key: "tech-stack",
+		},
+		{
+			label: "Project Nature",
+			key: "project-nature",
+		},
+		// {
+		// 	label: "Open Source",
+		// 	key: "open-source",
+		// },
+		// {
+		// 	label: "Closed Source",
+		// 	key: "closed-source",
+		// },
+	];
 
 	return (
 		<div className={styles.filterModal} onKeyDown={onKeyDown} ref={containerRef}>
@@ -118,27 +136,29 @@ export default function BaseProjectsFilter({
 				<div className={styles.filterBy} data-key="filter-options">
 					<h4>Filter by</h4>
 
-					<div className={styles.filterCheck}>
-						<label htmlFor="tech-stack">Tech Stack</label>
-						<Radio
-							id="tech-stack"
-							name="filter"
-							value="tech-stack"
-							onchange={onSelectFilterBy}
-							checked={filterBy === "tech-stack"}
-						/>
-					</div>
-					<div className={styles.filterCheck}>
-						<label htmlFor="project-nature">Project Nature</label>
-						<Radio
-							id="project-nature"
-							name="filter"
-							value="project-nature"
-							onchange={onSelectFilterBy}
-							checked={filterBy === "project-nature"}
-						/>
-					</div>
+					{FILTERS.slice(0, 2).map((item) => {
+						const { label, key } = item;
+						return (
+							<div className={styles.filterCheck} key={key}>
+								<label htmlFor={key}>{label}</label>
+								<Radio id={key} name="filter" value={key} onchange={onSelectFilterBy} checked={filterBy === key} />
+							</div>
+						);
+					})}
 				</div>
+				{/* <div className={styles.filterBy} data-key="filter-options" style={{ opacity: 1 }}>
+					<h4>Souce Code availability</h4>
+
+					{FILTERS.slice(2).map((item) => {
+						const { label, key } = item;
+						return (
+							<div className={styles.filterCheck} key={key}>
+								<label htmlFor={key}>{label}</label>
+								<Radio id={key} name="filter" value={key} onchange={onSelectFilterBy} checked={filterBy === key} />
+							</div>
+						);
+					})}
+				</div> */}
 				<ul className={styles.listWrapper}>
 					{filterList.map((item) => {
 						const { key } = item;

@@ -78,6 +78,7 @@ class WorkSectionAnimations {
 		details: HTMLCollection;
 		titlesContainer: HTMLUListElement;
 	}) {
+		console.log(details, "TEH DETAILS");
 		const posDic: Record<string, string | number> = {};
 
 		for (let k = 0; k < titles.length; k++) {
@@ -92,7 +93,7 @@ class WorkSectionAnimations {
 			const topTarget = titles[i];
 
 			//Increase bottom opacity
-			timelineActions.push({ target: topTarget, vars: { opacity: 1 } });
+			timelineActions.push({ target: topTarget, vars: { opacity: 1 }, label: "increase opacity" });
 
 			if (i !== 0) {
 				timelineActions.push({
@@ -112,6 +113,8 @@ class WorkSectionAnimations {
 			}
 		}
 
+		console.log(timelineActions, "THE ACTIONS");
+
 		return timelineActions;
 	}
 
@@ -127,9 +130,11 @@ class WorkSectionAnimations {
 		titles,
 		details,
 		windowInnerWidth,
+		noise,
 	}: {
 		faintBgTitle: HTMLDivElement;
 		radialGradient: HTMLDivElement;
+		noise: HTMLDivElement;
 		container: HTMLDivElement;
 		tabsWrapper: HTMLDivElement;
 		titleBg: HTMLLIElement;
@@ -170,6 +175,7 @@ class WorkSectionAnimations {
 					const gradientOpacity = 1 - self.progress;
 					if (radialGradient) {
 						radialGradient.style.opacity = gradientOpacity.toString();
+						noise.style.opacity = gradientOpacity.toString();
 					}
 				},
 			},
@@ -203,8 +209,10 @@ class WorkSectionAnimations {
 		details,
 		titlesContainer,
 		windowInnerWidth,
+		noise,
 	}: {
 		radialGradient: HTMLDivElement;
+		noise: HTMLDivElement;
 		faintBgTitle: HTMLDivElement;
 		container: HTMLDivElement;
 		tabsWrapper: HTMLDivElement;
@@ -245,6 +253,7 @@ class WorkSectionAnimations {
 					const gradientOpacity = 1 - self.progress;
 					if (radialGradient) {
 						radialGradient.style.opacity = gradientOpacity.toString();
+						noise.style.opacity = gradientOpacity.toString();
 					}
 				},
 			},

@@ -2,7 +2,6 @@ import styles from "./styles.module.scss";
 import Heading from "./heading";
 import { RefObject } from "react";
 import { ScrollAlert } from "#/components";
-
 import Image from "next/image";
 import bannerImg from "#/public/home-banner.png";
 

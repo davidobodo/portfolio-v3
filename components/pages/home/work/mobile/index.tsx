@@ -23,7 +23,7 @@ export default function ViewMobile({ mobileWorkContainerRef }: WorkMobileProps) 
 					</ul>
 
 					<div className={styles.tabDetails} data-key="work-details">
-						<h2>WORK</h2>
+						{/* <h2>WORK</h2> */}
 						{WORK.map((item, i) => {
 							const { title, location, range, url, note, urlLabel, company } = item;
 							return (
