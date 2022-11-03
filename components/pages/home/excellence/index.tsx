@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { Ref } from "react";
 import Image from "next/image";
-import excelImg from "#/public/home-2.jpg";
+import excelImg from "#/public/home-excel.jpg";
 
 export default function Excellence({
 	containerRef,

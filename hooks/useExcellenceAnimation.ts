@@ -31,14 +31,12 @@ export default function useExcellenceAnimation() {
 			const text = containerRefSelector<HTMLDivElement>('[data-key="text"]');
 			const imageFrame = containerRefSelector<HTMLDivElement>('[data-key="image-frame"]');
 			const scroll = containerRefSelector<HTMLDivElement>('[data-key="container-inner"]');
-			const imageWrapper = containerRefSelector<HTMLDivElement>('[data-key="image-wrapper"]');
 			const tl = animateExcellence({
 				sectionWrapper: containerRef.current,
 				textWrapper: text[0],
 				sectionWrapperInner: scroll[0],
 				imageFrame: imageFrame[0],
 				innerWidth,
-				imageWrapper: imageWrapper[0],
 			});
 
 			ScrollTrigger.refresh();
