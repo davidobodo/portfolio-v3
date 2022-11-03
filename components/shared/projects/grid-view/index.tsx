@@ -15,7 +15,7 @@ export function ProjectsGridView({
 
 				return (
 					<button key={i} className={styles.box} data-id={id} data-type="box-item" onClick={onViewProject}>
-						<Image src={media[0].source} alt={title} />
+						<Image src={media[0].source} alt={title} objectFit="cover" layout="fill" />
 						<div className={styles.boxOverlay}></div>
 						<div className={styles.boxCircle}>
 							<span>View</span>

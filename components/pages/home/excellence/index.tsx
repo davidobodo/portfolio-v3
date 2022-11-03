@@ -48,14 +48,7 @@ function BgImage() {
 	return (
 		<div className={styles.bgImage} data-key="image-wrapper">
 			<div className={styles.frame} data-key="image-frame"></div>
-			<Image
-				src={excelImg}
-				layout="fill"
-				objectFit="cover"
-				objectPosition="right"
-				alt="Excellence"
-				style={{ filter: "grayscale(100%)" }}
-			/>
+			<Image src={excelImg} layout="fill" objectFit="cover" alt="Excellence" style={{ filter: "grayscale(100%)" }} />
 		</div>
 	);
 }

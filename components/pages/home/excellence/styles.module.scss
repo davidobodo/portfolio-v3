@@ -57,6 +57,10 @@
 	}
 
 	img {
-		filter: grayscale(0%);
+		object-position: center;
+
+		@media (min-width: $md) {
+			object-position: right;
+		}
 	}
 }
