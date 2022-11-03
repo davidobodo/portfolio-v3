@@ -101,6 +101,11 @@ const Home: NextPage = () => {
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content={image} />
 
+				<meta
+					name="keywords"
+					content="David, Obodo, Software Developer, Frontend, Fullstack, Frontend Developer, Fullstack Developer"
+				/>
+
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav showInBanner={false} />

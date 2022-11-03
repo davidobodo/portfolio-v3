@@ -8,6 +8,7 @@ export default function NotFound() {
 	const { onStopRedirect, countdown, containerRef, scrollRef, gradientRef, bannerHeight } = use404PageInit();
 
 	const { title, description, url, image } = METADATA["notfound"];
+
 	return (
 		<>
 			<Head>

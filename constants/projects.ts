@@ -23,6 +23,7 @@ import pv1 from "#/public/proj-pv1-home.jpg";
 import devofyear from "#/public/proj-dev-home.jpg";
 import shortly from "#/public/proj-shortly-desktop-preview.jpg";
 import pv2 from "#/public/proj-pv2-home.jpg";
+import pv3 from "#/public/proj-pv3-home.jpg";
 import bookmark from "#/public/proj-bookmark-desktop-preview.jpg";
 import drum from "#/public/proj-drum-home.jpg";
 import freebies from "#/public/proj-freebies-home.jpg";
@@ -350,12 +351,12 @@ const PROJECTS: TProject[] = [
 			"sendgrid",
 			"jest",
 		],
-		bgColor: "#e1dfdd",
+		bgColor: "#000",
 		type: "Web Application",
 		media: [
 			{
 				type: "image",
-				source: prodeusEditor,
+				source: pv3,
 			},
 		],
 	},

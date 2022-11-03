@@ -107,9 +107,11 @@ class SkillsSectionAnimations {
 		lists,
 		container,
 		windowInnerWidth,
+		noise,
 	}: {
 		faintBgTitle: HTMLDivElement;
 		radialGradient: HTMLDivElement;
+		noise: HTMLDivElement;
 		contentWrapper: HTMLDivElement;
 		listsWrapper: HTMLDivElement;
 		lists: HTMLDivElement[];
@@ -144,6 +146,7 @@ class SkillsSectionAnimations {
 
 					if (radialGradient) {
 						radialGradient.style.opacity = self.progress.toString();
+						noise.style.opacity = self.progress.toString();
 					}
 				},
 			},
@@ -174,9 +177,11 @@ class SkillsSectionAnimations {
 		contentWrapper,
 		container,
 		windowInnerWidth,
+		noise,
 	}: {
 		faintBgTitle: HTMLDivElement;
 		radialGradient: HTMLDivElement;
+		noise: HTMLDivElement;
 		image: HTMLDivElement;
 		lists: HTMLDivElement[];
 		contentWrapper: HTMLDivElement;
@@ -211,6 +216,7 @@ class SkillsSectionAnimations {
 
 					if (radialGradient) {
 						radialGradient.style.opacity = self.progress.toString();
+						noise.style.opacity = self.progress.toString();
 					}
 				},
 			},

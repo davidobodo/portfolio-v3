@@ -38,7 +38,6 @@
 	height: 100%;
 	left: 0;
 	top: 0;
-	// background-image: url(/home-excel.png);
 	border-color: var(--black);
 	border-style: solid;
 	background-position: bottom;
@@ -55,5 +54,13 @@
 		left: 0px;
 		display: block;
 		z-index: 10;
+	}
+
+	img {
+		object-position: center;
+
+		@media (min-width: $md) {
+			object-position: right;
+		}
 	}
 }

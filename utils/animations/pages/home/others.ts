@@ -125,10 +125,10 @@ class OtherHomeSectionsAnimations {
 			scale: 50,
 		});
 		tl.to(imageFrame, {
-			borderLeftWidth: innerWidth < 1200 ? "2rem" : "5.8rem",
-			borderRightWidth: innerWidth < 1200 ? "2rem" : "5.8rem",
-			borderTopWidth: innerWidth < 1200 ? "5rem" : "10rem",
-			borderBottomWidth: innerWidth < 1200 ? "5rem" : "10rem",
+			borderLeftWidth: innerWidth < 1200 ? "2rem" : innerWidth > 1200 && innerWidth < 1560 ? "4rem" : "5.8rem",
+			borderRightWidth: innerWidth < 1200 ? "2rem" : innerWidth > 1200 && innerWidth < 1560 ? "4rem" : "5.8rem",
+			borderTopWidth: innerWidth < 1200 ? "5rem" : innerWidth > 1200 && innerWidth < 1560 ? "6rem" : "10rem",
+			borderBottomWidth: innerWidth < 1200 ? "5rem" : innerWidth > 1200 && innerWidth < 1560 ? "6rem" : "10rem",
 		});
 
 		return tl;

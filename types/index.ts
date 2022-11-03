@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image";
 
 type TRoles = "design" | "fe" | "be" | "teamlead";
 type TProjectType = "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
-type TFilterBy = "tech-stack" | "project-nature";
+type TFilterBy = "tech-stack" | "project-nature" | "open-source" | "closed-source";
 type TProjectsView = "list" | "grid";
 type TLogoMode = "light" | "dark";
 type TProjectData = { currProject: TProject | null; nextProject: TProject | null; prevProject: TProject | null };

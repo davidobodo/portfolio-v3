@@ -1,7 +1,7 @@
 import { TProjectType } from "#/types";
 
 const ABOUT_NOTE = [
-	"4 years dedicating my time into converting designs into",
+	"Over the years I've spent time converting designs into",
 	"pixel-perfect,",
 	"performant,",
 	"accessible",

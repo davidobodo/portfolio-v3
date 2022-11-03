@@ -22,6 +22,12 @@
 		cursor: pointer;
 		overflow: hidden;
 		border: 0px;
+		background-color: var(--light-ash);
+		height: 140px;
+
+		@media (min-width: $md) {
+			height: 340px;
+		}
 
 		img {
 			transition: transform 200ms ease-in-out;

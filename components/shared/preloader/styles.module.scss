@@ -14,11 +14,11 @@
 
 	align-items: flex-start;
 	justify-content: center;
-	padding: 3rem 2rem;
+	padding: 2rem 2rem;
 
 	@media (min-width: $md) {
 		justify-content: flex-end;
-		padding: 5rem;
+		padding: 4rem;
 	}
 
 	.container {
@@ -26,7 +26,7 @@
 		align-items: center;
 
 		p {
-			font-size: 1.8rem;
+			font-size: 1.4rem;
 			text-transform: uppercase;
 			font-family: sf-pro-bold;
 			margin-right: 2rem;
