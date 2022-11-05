@@ -1,8 +1,13 @@
 import gsap from "gsap";
-import { useRef, RefObject, useState } from "react";
+import { useRef, RefObject } from "react";
 import { otherHomeSectionsAnimations, otherSharedAnimations } from "#/utils/animations";
 import { useAnimationsContext } from "#/context";
-import { useIsomorphicLayoutEffect, useSetBannerHeight, useTransitionToDarkSection } from "#/hooks";
+import {
+	useIsomorphicLayoutEffect,
+	useSetBannerHeight,
+	useTransitionToDarkSection,
+	useDebounceScrollToTop,
+} from "#/hooks";
 
 const { bannerAnimation } = otherHomeSectionsAnimations;
 const { drawSvgLogo, openNoiseLayers, closeNoiseLayers, removePageLoaderBlocker } = otherSharedAnimations;
@@ -17,6 +22,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = useAnimationsContext();
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
+	useDebounceScrollToTop();
 	//-----------------------------------------
 	// BANNER ANIMATION
 	//-----------------------------------------

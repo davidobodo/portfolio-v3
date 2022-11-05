@@ -78,7 +78,6 @@ class WorkSectionAnimations {
 		details: HTMLCollection;
 		titlesContainer: HTMLUListElement;
 	}) {
-		console.log(details, "TEH DETAILS");
 		const posDic: Record<string, string | number> = {};
 
 		for (let k = 0; k < titles.length; k++) {
@@ -112,8 +111,6 @@ class WorkSectionAnimations {
 				timelineActions.push({ target, vars: { opacity: 0 } });
 			}
 		}
-
-		console.log(timelineActions, "THE ACTIONS");
 
 		return timelineActions;
 	}
@@ -155,6 +152,7 @@ class WorkSectionAnimations {
 				scrub: true,
 				pin: tabsWrapper,
 				pinSpacing: false,
+				refreshPriority: 1,
 				snap: {
 					snapTo: "labels",
 					duration: { min: 0.2, max: 2 },

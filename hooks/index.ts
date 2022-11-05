@@ -8,6 +8,7 @@ import useTrapFocus from "./useTrapFocus";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 import useSmoothScroll from "./useSmoothScroll";
 import usePrevious from "./usePrevious";
+import useDebounceScrollToTop from "./useDebounceScrollToTop";
 
 //---------------------------
 // ANIMATIONS
@@ -63,4 +64,5 @@ export {
 	usePrevious,
 	useContactForm,
 	useTransitionToDarkSection,
+	useDebounceScrollToTop,
 };
