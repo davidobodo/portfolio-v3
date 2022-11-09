@@ -77,4 +77,28 @@ function executeTimelineActions({ tl, tlActions }: { tl: gsap.core.Timeline; tlA
 	}
 }
 
-export { normalize, animateFaintSvg, fetchProjects, matchElement, executeTimelineActions };
+function preventAppScroll() {
+	// const app = document.getElementById("app");
+	// if (app) {
+	// 	app.style.overflow = "hidden";
+	// }
+	document.body.style.overflow = "hidden";
+}
+
+function allowAppScroll() {
+	// const app = document.getElementById("app");
+	// if (app) {
+	// 	app.style.overflow = "auto";
+	// }
+	document.body.style.overflow = "auto";
+}
+
+export {
+	normalize,
+	animateFaintSvg,
+	fetchProjects,
+	matchElement,
+	executeTimelineActions,
+	preventAppScroll,
+	allowAppScroll,
+};

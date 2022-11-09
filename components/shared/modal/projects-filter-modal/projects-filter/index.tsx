@@ -6,6 +6,7 @@ import { useTrapFocus, usePrevious } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { FilterCancelIcon } from "#/components/icons";
 import { TFilterBy } from "#/types";
+import { allowAppScroll, preventAppScroll } from "#/utils";
 
 const { animateFilterSectionIn, slideInListItems, animateFilterSectionOut } = projectAnimations;
 
@@ -31,7 +32,7 @@ export default function BaseProjectsFilter({
 	//CLOSE
 	//--------------------------------------------------------
 	const onClose = () => {
-		document.body.style.overflow = "auto";
+		allowAppScroll();
 
 		// Remove open filter params
 		const searchParams = new URLSearchParams(window.location.search);
@@ -66,7 +67,7 @@ export default function BaseProjectsFilter({
 			closeFilterBtn: document.querySelector('[data-key="close-filter-btn"]') as HTMLButtonElement,
 		});
 		tl.add(() => {
-			document.body.style.overflow = "hidden";
+			preventAppScroll();
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -75,7 +76,7 @@ export default function BaseProjectsFilter({
 	//Select a filter key
 	//--------------------------------------------------------
 	const onSetFilterKey = (key: string) => {
-		document.body.style.overflow = "auto";
+		allowAppScroll();
 		onFilterProjects({
 			key,
 		});

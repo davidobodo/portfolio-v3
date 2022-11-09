@@ -52,7 +52,15 @@
 			}
 
 			&:focus {
-				outline: 2px dotted var(--white);
+				outline: none;
+				&::before {
+					content: "";
+					position: absolute;
+					border: 2px dotted #fff;
+					border-radius: 50%;
+					width: 100%;
+					height: 100%;
+				}
 			}
 		}
 	}

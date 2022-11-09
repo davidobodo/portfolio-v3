@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Ref } from "react";
 import styles from "./styles.module.scss";
 import { createPortal } from "react-dom";
-import { Ref } from "react";
+import { allowAppScroll, preventAppScroll } from "#/utils";
 
 export default function Modal({
 	children,
@@ -20,9 +20,9 @@ export default function Modal({
 
 	useEffect(() => {
 		if (show) {
-			document.body.style.overflow = "hidden";
+			preventAppScroll();
 		} else {
-			document.body.style.overflow = "auto";
+			allowAppScroll();
 		}
 	}, [show]);
 
