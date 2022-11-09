@@ -29,12 +29,12 @@
 
 	path {
 		&:nth-child(1) {
-			stroke-dasharray: 30rem;
-			stroke-dashoffset: 30rem;
+			stroke-dasharray: 300;
+			stroke-dashoffset: 300;
 		}
 		&:nth-child(2) {
-			stroke-dasharray: 30rem;
-			stroke-dashoffset: 30rem;
+			stroke-dasharray: 300;
+			stroke-dashoffset: 300;
 		}
 	}
 }

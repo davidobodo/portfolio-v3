@@ -5,7 +5,7 @@ import { FaintBgText } from "#/components";
 import { events, registerEvent } from "#/utils/analytics/events";
 import Link from "next/link";
 import Image from "next/image";
-import handImg from "#/public/home-hand.jpg";
+import handImg from "#/public/home-hand-2.jpg";
 
 export type SkillsDesktopProps = {
 	skillsContainerRef: Ref<HTMLDivElement>;

@@ -45,11 +45,35 @@ const LETTERS = [
 	},
 	{
 		title: "How to cancel an http/https request”",
-		date: "Jum 18, 2022",
+		date: "Jun 18, 2022",
 		time: "3 min",
 		summary: `Recently had the need to cancel an http request and after googling a bit I did get the solution I needed. However, `,
 		tags: ["programming", "http", "https", "ajax", "javascript", "cancel"],
 		url: "https://obododavid.hashnode.dev/how-to-cancel-an-httphttps-request",
+	},
+	{
+		title: "Testing Frontend Applications - Part 1: Introduction",
+		date: "Oct 14, 2022",
+		time: "5 min",
+		summary: `Introduction to my series on testing frontend applications.`,
+		tags: ["Testing", "React", "Next.js", "Frontend Development", "Testing Library"],
+		url: "https://blog.davidobodo.com/testing-frontend-applications-introduction",
+	},
+	{
+		title: "Testing Frontend Applications - Part 2: Setting up Next.js project for testing",
+		date: "Oct 17, 2022",
+		time: "7 min",
+		summary: `Setting up a Next.js appliaction for testing, since our application would be built with Next.js`,
+		tags: ["React", "Next.js", "Testing Library", "Jest", "React Testing Library"],
+		url: "https://blog.davidobodo.com/testing-frontend-applications-setting-up-nextjs-project-for-testing",
+	},
+	{
+		title: "Testing Frontend Applications - Part 3A: What should I test?",
+		date: "Oct 25, 2022",
+		time: "7 min",
+		summary: `Thought process behind deciding what to test in our application`,
+		tags: ["React", "Next.js", "Testing Library", "Jest", "React Testing Library"],
+		url: "https://blog.davidobodo.com/testing-frontend-applications-what-should-i-test",
 	},
 ];
 

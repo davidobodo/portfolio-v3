@@ -1,7 +1,5 @@
 import styles from "./styles.module.scss";
 import { Ref } from "react";
-import Image from "next/image";
-import excelImg from "#/public/home-excel.jpg";
 
 export default function Excellence({
 	containerRef,
@@ -48,7 +46,6 @@ function BgImage() {
 	return (
 		<div className={styles.bgImage} data-key="image-wrapper">
 			<div className={styles.frame} data-key="image-frame"></div>
-			<Image src={excelImg} layout="fill" objectFit="cover" alt="Excellence" style={{ filter: "grayscale(100%)" }} />
 		</div>
 	);
 }

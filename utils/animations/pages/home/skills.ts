@@ -15,7 +15,7 @@ class SkillsSectionAnimations {
 	private createDesktopAnimationTimeline({ lists, image }: { image: HTMLDivElement; lists: HTMLDivElement[] }) {
 		let timelineActions: TTimelineAction[] = [];
 
-		timelineActions.push({ target: image, vars: { width: "29vw", duration: 2 } });
+		timelineActions.push({ target: image, vars: { width: "29vw" } });
 
 		for (let i = 0; i < lists.length; i++) {
 			const header = lists[i].firstElementChild as HTMLElement;

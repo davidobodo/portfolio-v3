@@ -40,8 +40,14 @@
 	top: 0;
 	border-color: var(--black);
 	border-style: solid;
-	background-position: bottom;
-	background-color: #fff;
+	background-color: var(--light-brown);
+	background-image: url(/home-excel.jpg);
+	object-position: center;
+	background-position: center;
+
+	@media (min-width: $md) {
+		background-position: right;
+	}
 
 	.frame {
 		position: absolute;

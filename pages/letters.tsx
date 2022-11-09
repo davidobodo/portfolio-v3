@@ -18,6 +18,9 @@ const Letters: NextPage = () => {
 
 	const { title, description, url, image } = METADATA["letters"];
 
+	LETTERS.sort((a, b) => {
+		return new Date(`${b.date}`).getTime() - new Date(`${a.date}`).getTime();
+	});
 	return (
 		<>
 			<Head>

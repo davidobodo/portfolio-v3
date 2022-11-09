@@ -13,7 +13,7 @@ class ProjectsAnimations {
 		const ease = "Back.easeInOut";
 		const tl = gsap.timeline();
 
-		tl.to(listItems, { x: "150%", stagger: 0.01, ease: ease });
+		tl.to(listItems, { opacity: 0, stagger: 0.01, ease: ease, reversed: true });
 		tl.to(filterOptions, { opacity: 0, ease: ease, duration: 0.1 });
 		tl.to(closeFilterBtn, { opacity: 0, ease: ease });
 
@@ -34,7 +34,7 @@ class ProjectsAnimations {
 
 		tl.to(closeFilterBtn, { rotate: 0, opacity: 1, ease: ease });
 		tl.to(filterOptions, { opacity: 1, ease: ease, duration: 0.1 });
-		tl.to(listItems, { x: 0, opacity: 1, stagger: 0.01, ease: ease });
+		tl.to(listItems, { opacity: 1, stagger: 0.01, ease: ease });
 
 		return tl;
 	}

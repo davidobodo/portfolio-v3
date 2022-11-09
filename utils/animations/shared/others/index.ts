@@ -35,7 +35,6 @@ class OtherSharedAnimations {
 				start: "top bottom",
 				end: "top top",
 				scrub: true,
-				// markers: true,
 				pin: banner,
 				pinSpacing: false,
 				onEnterBack: () => {
@@ -210,7 +209,7 @@ class OtherSharedAnimations {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger,
-				start: "top bottom",
+				start: "top 110%",
 				end: "bottom bottom",
 				scrub: true,
 				toggleActions: "restart complete restart reset",

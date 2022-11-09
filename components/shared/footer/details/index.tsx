@@ -95,6 +95,13 @@ export function Details({
 						</Link>
 					</li>
 					<li>
+						<Link href="https://blog.davidobodo.com" passHref>
+							<a target="_blank" onClick={handlePageGAEvents} data-link="blog">
+								<span>Blog</span>
+							</a>
+						</Link>
+					</li>
+					<li>
 						<Link href="https://twitter.com/phitGeek" passHref>
 							<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
 								<span>Twitter</span>

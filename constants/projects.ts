@@ -737,7 +737,7 @@ const PROJECTS: TProject[] = [
 		githublink: "https://github.com/davidobodo/laptop-phone-three-js",
 		responsibilities: ``,
 		tech: ["html", "css", "javascript", "gsap", "threejs"],
-		bgColor: "#fff",
+		bgColor: "#000",
 		type: "Experiment",
 		media: [
 			{

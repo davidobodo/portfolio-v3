@@ -1,7 +1,7 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-	min-height: 150vh; // So animation can scroll through a distance
+	min-height: 200vh; // So animation can scroll through a distance
 	display: none;
 
 	@media (min-width: $lg) {
