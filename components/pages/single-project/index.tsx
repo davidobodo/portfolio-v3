@@ -115,7 +115,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 
 					{roles?.length > 0 && (
 						<div className={styles.roles}>
-							<h3>Role in Project</h3>
+							<h3>{roles.length === 1 ? "Role" : "Roles"} in Project</h3>
 							<ul>
 								{roles?.map((item, i) => {
 									return <li key={i}>{ROLES[item].label}</li>;

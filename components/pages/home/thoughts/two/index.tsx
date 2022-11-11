@@ -4,7 +4,7 @@ import { Ref } from "react";
 export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTMLDivElement> }) {
 	const firstParagraph = [
 		{
-			sentence: "Truth is the life of a programmer requires one to",
+			sentence: "Truth is, the life of a programmer requires one to",
 			color: "ash",
 			key: 0,
 		},
@@ -14,7 +14,7 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 1,
 		},
 		{
-			sentence: "everyday, cause technology keeps changing at a",
+			sentence: "everyday, because technology keeps changing at a",
 			color: "ash",
 			key: 2,
 		},
@@ -27,7 +27,7 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 
 	const secondParagraph = [
 		{
-			sentence: "I have therefore embraced the concept of being a ",
+			sentence: "I have therefore, embraced the concept of being a ",
 			color: "ash",
 			key: 1,
 		},
@@ -37,12 +37,12 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 2,
 		},
 		{
-			sentence: "Learn to solve whatever problem is encountered, ain't that why",
+			sentence: "Learning to solve whatever problem is encountered, ain't that why",
 			color: "ash",
 			key: 3,
 		},
 		{
-			sentence: "Googling is almost our best friend 😅",
+			sentence: "Googling is a developers best friend 😅 ?",
 			color: "white",
 			key: 4,
 		},

@@ -15,10 +15,9 @@ function BaseForm() {
 					Would love to hear from <br /> you &#8595;.
 				</h1>
 				<p>
-					I’m currently interested in a&nbsp;<span>Full-time Front-end developer role (remote)</span> with a major on
-					&nbsp;
-					<span>React.js Framework</span>, but still open to other opportunities. However, if you have other requests or
-					questions, don’t hesitate to use the form.
+					I am currently interested in a &#8220;Full-time Front-end developer role (remote)&#8220; with a major on
+					&#8220;React.js Framework&#8220;, but still open to other opportunities. However, if you have other requests
+					or questions, don’t hesitate to use the form.
 				</p>
 			</div>
 			<form noValidate className={styles.form} onSubmit={onSubmit}>

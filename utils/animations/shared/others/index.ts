@@ -184,9 +184,8 @@ class OtherSharedAnimations {
 		const tl = gsap.timeline();
 		tl.to(logoSvgPaths, {
 			strokeDashoffset: 0,
-			duration: 2,
-			stagger: 0.8,
-			delay: 1,
+			duration: 1,
+			stagger: 0.2,
 		})
 			.to(logoSvg, {
 				fill: "#fcfcfc",
