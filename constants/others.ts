@@ -6,8 +6,10 @@ const ABOUT_NOTE = [
 	"performant,",
 	"accessible",
 	"and responsive applications/websites.",
-	"I have always been excited about the entire development spectrum, so frequently engage in backend.",
-	"Well what can I say, I sincerely simply love working on ambitious projects with positive people",
+	"I have always been excited about the entire development spectrum,",
+	"so I frequently engage in backend.",
+	"Well what can I say,",
+	"I sincerely simply love working on ambitious projects with positive people",
 	"in a conducive work environment.",
 ];
 
