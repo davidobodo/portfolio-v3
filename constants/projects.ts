@@ -45,9 +45,9 @@ const PROJECTS: TProject[] = [
 		`,
 		responsibilities: `
 		<ul>
-			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views app (i.e standard mode, organization student mode, organization admin mode). 
+			<li><span>Pixel perfect delivery</span> of around <span>59 pages</span> with 20 having 3 different unique views based on mode user views application (i.e standard mode, organization student mode, organization admin mode). 
 			In addition to 
-			that, the app has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
+			that, the application has about <span>14 unique modals</span> and users can view the entire app in both <span>light and dark mode</span>.</li>
 			<li>Intelligent cache usage and cache invalidation with <a href="https://react-query-v3.tanstack.com/" target="_blank">React Query</a></li>
 			<li>Loading <span>infinite data</span> in both single column layouts (like instagram, facebook and twitter) as well as multi column layouts (like pinterest).
 			
@@ -131,8 +131,8 @@ const PROJECTS: TProject[] = [
 		<p>Easily find Hospitals, Clinics, Pharmacies and Health care centers around any place. This project was built as a requirement to get into the <a href="https://www.enye.tech/" target="_blank">enye</a> internship programme, 
 		however it's importance is far beyond just a requirement to get into the internship.
 		</p>
-		<p>This project has <span>two iterations</span>, initial iteration was built with a full authentication process as well as a backend infrastructure to store user's credentials and users search history. 
-		However, for easy accessibility to everyone, these have been removed in the current iteration.
+		<p>This project has <span>two iterations</span>. Initial iteration was built with a full authentication process as well as a backend infrastructure to store users credentials and users search history. 
+		However, for easy accessibility, these have been removed in the current iteration.
 		 </p>
 		`,
 		responsibilities: `
@@ -140,9 +140,9 @@ const PROJECTS: TProject[] = [
 			<li>Designed the entire application using figma.</li>
 			<li>Converted all mockup designs into <span>pixel perfect pages</span> for all screen sizes.</li>
 			<li>Implemented an authentication process flow using Firebase (now deprecated in current iteration).</li>
-			<li>Made use of Google's <a href="https://firebase.google.com" target="_blank">Cloud Firestore NoSQL database</a> to store user's previous searches (now refactored in current iteration to use local storage).</li>
-			<li>Integrated <a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> to help give both autocomplete functionality when looking for places and display the map with the needed results.</li>
-			<li>Connect to database using GraphQL.</li>
+			<li>Made use of Google's <a href="https://firebase.google.com" target="_blank">Cloud Firestore NoSQL database</a> to store users previous searches (now refactored in current iteration to use local storage).</li>
+			<li>Integrated <a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> to help give both autocomplete functionality when looking for places and to display the map with the needed results.</li>
+			<li>Connected to database using GraphQL.</li>
 		</ul>
 		`,
 		tech: [
@@ -191,8 +191,8 @@ const PROJECTS: TProject[] = [
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert Sketch Design into functional web application.</li>
-			<li>Connect frontend to the necessary backend endpoints.</li>
+			<li>Converted Sketch Designs into a functional web application.</li>
+			<li>Connected the frontend to the necessary backend API endpoints.</li>
 		</ul>
 		`,
 		sitelink: "https://www.privatelattice.com/",
@@ -215,7 +215,7 @@ const PROJECTS: TProject[] = [
 		title: "d-productivity",
 		details: `<p>Web-based Kanban-style list-making application, just like <a href="https://trello.com/" target="_blank">Trello</a> or any other drag and drop productivity app.
 		The main purpose of embarking on this project was to have a better understanding of the <span>HTML5 drag and drop API.</span></p>
-			<p>Last updated on 25th February 2020.</p>
+			<p>Last updated on the 25th of February, 2020.</p>
 			`,
 		responsibilities: `
 		<ul>
@@ -251,9 +251,9 @@ const PROJECTS: TProject[] = [
 		roles: ["design", "fe"],
 		responsibilities: `
 		<ul>
-			<li>Create design for web app.</li>
-			<li>Convert design into responsive web app.</li>
-			<li>Make app a  <span>Progressive Web App (PWA)</span>.</li>
+			<li>Created the design for the web application.</li>
+			<li>Converted designs into responsive web application.</li>
+			<li>Made app a <span>Progressive Web App (PWA)</span>.</li>
 		</ul>
 		`,
 		sitelink: "https://knowtheweatherdcs.netlify.app/",
@@ -277,15 +277,15 @@ const PROJECTS: TProject[] = [
 		title: "d-commerce",
 		details: `<p>When getting acclimated with the features of a framework/technology or even a programming language, one of the applications one should try to build is an e-commerce platform.</p>
 		<p>This is because, an e-commerce platform has features that cut across a great deal of <strong>what is possible</strong> in frontend. For this reason, I set out to build this application when mastering react.js.</p>
-		<p>The UI was replicated from an online store. But as this project was done quite a while ago, I currently can't remember the exact name, if not I would have given them their due credit </p>
+		<p>The UI was replicated from an online store. But as this project was done quite a while ago, I currently cannot remember the exact name of the online store, if not, I would have given them their due credit.</p>
 		<p>Last updated on the 4th of July, 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/d-commerce",
 		roles: ["fe", "be"],
 		responsibilities: `
 		<ul>
-			<li>Create a pixel perfect replica of the UI.</li>
-			<li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout e.t.c).</li>
+			<li>Created a pixel perfect replica of the UI.</li>
+			<li>Implemented all the requirements of an ecommerce site (i.e viewing items, adding to cart, proceeding to checkout, authentication e.t.c).</li>
 		</ul>
 		`,
 		sitelink: "https://d-commerce-99633.firebaseapp.com/",
@@ -324,16 +324,16 @@ const PROJECTS: TProject[] = [
 	{
 		id: "pv-3",
 		title: "Portfolio V3",
-		details: `<p>Current Portfolio website</p>`,
+		details: `<p>Current portfolio website.</p>`,
 		githublink: "",
 		responsibilities: `
 		<ul>
-			<li>Design entire site</li>
+			<li>Designed entire site.</li>
 			<li>Translated designs into high quality responsive code</li>
-			<li>Make site a PWA</li>
-			<li>Enable google analytics</li>
-			<li>Used Next.js api routes feature to implement the sendgrid backend for the mailing service</li>
-			<li>Configure Google recaptcha to prevent spamming of mail</li>
+			<li>Made site a Progressice Web Application(PWA).</li>
+			<li>Enabled google analytics</li>
+			<li>Used Next.js api routes feature to implement the sendgrid backend for the mailing service.</li>
+			<li>Configured Google recaptcha to prevent spamming of mail.</li>
 		</ul>
 		`,
 		roles: ["design", "fe", "be"],
@@ -372,8 +372,8 @@ const PROJECTS: TProject[] = [
 		githublink: "",
 		responsibilities: `
 		<ul>
-			<li>Customize Ckeditor to suite the Prodeus desired design.</li>
-			<li>Publish project as an npm package.</li>
+			<li>Customized Ckeditor to suite the Prodeus desired design.</li>
+			<li>Published project as an npm package.</li>
 		</ul>
 		`,
 		roles: [],
@@ -393,17 +393,17 @@ const PROJECTS: TProject[] = [
 		id: "d-chat",
 		title: "d-chat",
 		details: `
-		<p>It is no news that majority of applications these days have the <span>"chatting" functionality</span> embedded in them. So this project was an attempt to understand how the "open connection idea", upon which the functionality is built upon, works.
-		Due to my obliviousness of <a href="https://socket.io/" target="_blank">Socket.io</a> at the time, I executed this project using only <a href="https://firebase.google.com/" target="_blank">Firebase</a>. Now Scoket.io is my go-to for 
+		<p>It is no news that majority of applications these days have the <span>"chatting" functionality</span> embedded in them. So this project was an attempt to understand how the "open connection idea", upon which the functionality works is built.
+		Due to my obliviousness of <a href="https://socket.io/" target="_blank">Socket.io</a> at the time of creation, I executed this project using only <a href="https://firebase.google.com/" target="_blank">Firebase</a>. Now Socket.io is my go-to for 
 		any "open connection" functionality (e.g chat and realtime notifications).
 		</p>
-		<p>The authentication screen design is a "not so pixel perfect clone" of <a href="https://dribbble.com/shots/5271131-Login-Sign-up-screen" target="_blank">Marcin Kohut</a> design  on Dribbble.</p>
-		<p>Last updated on the 5th of July 2020.</p>
+		<p>The authentication screen design is a "not so pixel perfect clone" of <a href="https://dribbble.com/shots/5271131-Login-Sign-up-screen" target="_blank">Marcin Kohut's</a> design  on Dribbble.</p>
+		<p>Last updated on the 5th of July, 2020.</p>
 		`,
 		responsibilities: `
 		<ul>
-			<li>Used skype chat UI has a reference for the design</li>
-			<li>Ability to chat realtime with anyone online</li>
+			<li>Used skype chat UI has a reference for the design.</li>
+			<li>Added the ability to chat realtime with anyone online.</li>
 		</ul>
 		`,
 		roles: [],
@@ -423,14 +423,14 @@ const PROJECTS: TProject[] = [
 		id: "pv1",
 		title: "Portfolio v1",
 		details: `<p>My very own first ever portfolio website.</P>
-		<p>Last updated on the 21st of September 2019</p>
+		<p>Last updated on the 21st of September, 2019</p>
 		`,
 		githublink: "https://github.com/davidobodo/portfolio",
 		roles: ["design", "fe"],
 		responsibilities: `
 		<ul>
-			<li>Create design for website</li>
-			<li>Convert design into responsive web page</li>
+			<li>Created the design for website.</li>
+			<li>Converted the design into a responsive web page.</li>
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/portfolio/",
@@ -451,7 +451,7 @@ const PROJECTS: TProject[] = [
 		<p>The motivation behind building this static clone was the desire to achieve the "VIEW NOMINEES CIRCULAR SECTION" at the bottom of the design with just css and javascript😅.</p>
 		<p>Trust me, it wasn't an easy process because I encountered tricky mathematical problems, which were later solved with the help of my mentor <a href="https://www.linkedin.com/in/oluwaseunadedire/" target="_blank">Oluwaseun Adedire</a>.</p>
 		<p>Note that this is a static site hence, none of the call to actions are working.</p>
-		<p>Last updated on the 15th of February 2020.</p>
+		<p>Last updated on the 15th of February, 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/developer-of-the-year",
 		roles: ["fe"],
@@ -471,16 +471,16 @@ const PROJECTS: TProject[] = [
 		id: "shortly",
 		title: "Shortly",
 		details: `<p>In the early stages of my career, I leveraged <a href="https://www.frontendmentor.io/">Frontend Mentor</a> which was very helpful in building me up.</p>
-		<p>This project involved building a static reponsive clone of a UI and plugging it to an API endpoint that helps shorten long url links. Can't say for certain if the API ENDPOINT still returns a response as at today.</p>
+		<p>This project involved building a static reponsive clone of a UI and plugging it to an API endpoint that helps shorten long url links. I cannot say for certain if the API ENDPOINT still returns a response as at the point you are reading this.</p>
 		<p>You can check out the project instructions <a href="https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G/hub/url-shortening-api-landing-page-XxrpDIAz" target="_blank">here</a>.</p>
-		<p>Last updated on 19th February 2020.</p>
+		<p>Last updated on the 19th of February, 2020.</p>
 		`,
 		githublink: "https://github.com/davidobodo/FEM-shortly",
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert mockup into web page</li>
-			<li>Connect form to endpoint (Like I mentioned above, not certain if the API still works currently 😅)</li>
+			<li>Converted mockup into web page</li>
+			<li>Connected form to endpoint (Like I mentioned above, not certain if the API still works currently 😅)</li>
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/FEM-shortly/",
@@ -498,13 +498,13 @@ const PROJECTS: TProject[] = [
 	{
 		id: "pv2",
 		title: "Portfolio v2",
-		details: "<p>My second portfolio web site</p>",
+		details: "<p>My second portfolio website</p>",
 		githublink: "https://github.com/davidobodo/portfolio-v2",
 		roles: ["design", "fe"],
 		responsibilities: `
 		<ul>
-			<li>Create design for website</li>
-			<li>Convert design into responsive web page</li>
+			<li>Created design for website</li>
+			<li>Converted design into responsive web page</li>
 		</ul>
 		`,
 		sitelink: "https://www.obododavid.com",
@@ -521,15 +521,15 @@ const PROJECTS: TProject[] = [
 	{
 		id: "bookmark",
 		title: "Bookmark",
-		details: `<p>In the early stages of my career, I leveraged <a href="https://www.frontendmentor.io/">Frontend Mentor</a> which was very helpful in building me up.</p>
+		details: `<p>In the early stages of my career, I leveraged <a href="https://www.frontendmentor.io/">Frontend Mentor</a>, which was very helpful in building me up.</p>
 		<p>This project involved building a static reponsive clone of a UI.</p>
 		<p>You can check out the project instructions <a href="https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158/hub/bookmark-landing-page-Xa4U_uHY" target="_blank">here</a>.</p>
-		<p>Last updated on 25th February 2020.</p>
+		<p>Last updated on the 25th of February, 2020.</p>
 		`,
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert mockup into responsive web page</li>
+			<li>Converted mockup into responsive web page</li>
 		</ul>
 		`,
 		githublink: "https://github.com/davidobodo/FEM-bookmark-landing-page",
@@ -547,15 +547,15 @@ const PROJECTS: TProject[] = [
 	{
 		id: "drum-machine",
 		title: "Drum Machine",
-		details: `<p>Simple drum machine inspired by <a href="https://javascript30.com/">Wes Bos's Javascript 30.</a> </p>
-		<p>Last updated on the 8th of September 2019.</p>
+		details: `<p>Simple drum machine inspired by <a href="https://javascript30.com/" target="_blank">Wes Bos's Javascript 30.</a> </p>
+		<p>Last updated on the 8th of September, 2019.</p>
 		`,
 		githublink: "https://github.com/davidobodo/drumMachine",
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert mockup into responsive web page.</li>
-			<li>Connect respective clicks to their wav files.</li>
+			<li>Converted mockup into responsive web page.</li>
+			<li>Connected respective clicks to their wav files.</li>
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/drumMachine/",
@@ -572,15 +572,15 @@ const PROJECTS: TProject[] = [
 	{
 		id: "freebies",
 		title: "Freebies",
-		details: `<p>This is static desktop clone of the <a href="https://freebies.bypeople.com/" target="_blank">Freebies</a> website. The motivation behind this was to achieve the ability to move items based on the mouse cursor position.</p>
-		<p>Last updated on the 14th of February 2020</p>
+		details: `<p>This is a static desktop clone of the <a href="https://freebies.bypeople.com/" target="_blank">Freebies</a> website. The motivation behind this was to achieve the ability to move items based on the mouse cursor position.</p>
+		<p>Last updated on the 14th of February, 2020</p>
 		`,
 		githublink: "https://github.com/davidobodo/freebies",
 		roles: ["fe"],
 		responsibilities: `
 		<ul>
-			<li>Convert mockup into web page</li>
-			<li>Connect mouse movement to svg positions</li>
+			<li>Converted mockup into web page</li>
+			<li>Connected mouse movement to svg positions</li>
 		</ul>
 		`,
 		sitelink: "https://davidobodo.github.io/freebies/",
@@ -730,7 +730,7 @@ const PROJECTS: TProject[] = [
 		id: "three",
 		title: "GSAP and Three.js Experiment",
 		details: `
-		<p>Just an experiment to hook up gsap with three.js. Also needed to learn a couple things about <a href="https://www.blender.org/" target="_blank">Blender</a> in order to modify the 3D models</p>
+		<p>Just an experiment to hook up gsap with three.js. I Also needed to learn a couple of things about <a href="https://www.blender.org/" target="_blank">Blender</a> in order to modify the 3D models.</p>
 		`,
 		roles: [],
 		sitelink: "https://laptop-phone-three-js.vercel.app/",

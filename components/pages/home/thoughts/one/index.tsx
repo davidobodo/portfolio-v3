@@ -34,7 +34,7 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 5,
 		},
 		{
-			sentence: "into it",
+			sentence: "into it.",
 			color: "ash",
 			key: 6,
 		},
@@ -77,7 +77,7 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 			key: 7,
 		},
 		{
-			sentence: `because "Speed is king"`,
+			sentence: `because "Speed is king".`,
 			color: "ash",
 			key: 8,
 		},

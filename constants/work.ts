@@ -15,7 +15,7 @@ const WORK = [
 		range: "July 2019 - Present",
 		url: "https://www.upwork.com/freelancers/~017d93e122abfca5eb/",
 		urlLabel: "Upwork profile",
-		note: `Wroked with <a href="https://www.upwork.com/ag/mpaccione/" target="_blank" >M.Paccione Design & Development Agency</a> to bring ideas to life. Also occasionally dive into side projects when the need arises since skilled hands are always needed. More freelance projects are shown soon in the projects section.`,
+		note: `Worked with <a href="https://www.upwork.com/ag/mpaccione/" target="_blank" >M.Paccione Design & Development Agency</a> to bring ideas to life. Also, I occasionally dive into side projects when the need arises since skilled hands are always needed. More freelance projects will be shown soon in the projects section.`,
 	},
 	{
 		title: "Full Stack Developer (Remote)",
@@ -45,7 +45,7 @@ const WORK = [
 		location: "London, United Kingdom",
 		range: "July - December 2016",
 		url: "https://www.sumo-soft.com/",
-		note: `Developed new user interfaces for the clients <a href="https://www.richard-james.com/" target="_blank" >Richard James</a> and <a href="https://www.archibaldlondon.com/" target="_blank" >Archibald London</a>  using mockups provided by a UI/UX designer as guide.`,
+		note: `Developed new user interfaces for the clients, <a href="https://www.richard-james.com/" target="_blank" >Richard James</a> and <a href="https://www.archibaldlondon.com/" target="_blank" >Archibald London</a>  using mockups provided by a UI/UX designer as guide.`,
 	},
 ];
 

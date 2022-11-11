@@ -55,7 +55,7 @@ export function Details({
 							<h3>Extras</h3>
 							<ul>
 								<li>
-									<Link href="https://drive.google.com/file/d/1dVxGS3654jFz_YiWrkrCDU93ISZSj_lc/view?usp=sharing">
+									<Link href="https://drive.google.com/file/d/1U8jfN1X4sefh7HbCwQDBQuR_1PvbpVOq/view?usp=sharing">
 										<a target="_blank" onClick={handlePageGAEvents} data-link="resume">
 											<span>Resume</span>
 										</a>

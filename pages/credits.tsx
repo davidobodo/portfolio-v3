@@ -47,11 +47,11 @@ export default function Credit() {
 	const PEOPLE: TCredit[] = [
 		{
 			link: "https://www.linkedin.com/in/oluwaseunadedire/",
-			description: "Chief Reviewer - Oluwaseun Adedire",
+			description: "Chief reviewer - Oluwaseun Adedire",
 		},
 		{
 			link: "https://www.linkedin.com/in/harmony-orakpoyovwuru-1716b117a/",
-			description: "Assitant chief reviewer - Harmony Orakpoyovwuru",
+			description: "Assistant chief reviewer - Harmony Orakpoyovwuru",
 		},
 	];
 	const darkSectionRef = useRef(null);
