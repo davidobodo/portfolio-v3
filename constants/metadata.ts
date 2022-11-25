@@ -52,6 +52,12 @@ const metadata = {
 			};
 		}
 	},
+	blog: {
+		title: "David Obodo: Blog",
+		description: "404 Page not found  - Go Home ",
+		url: `${BASE_URL}/blog`,
+		image: `${BASE_URL}/images/covers/not-found.png`,
+	},
 };
 
 export default metadata;

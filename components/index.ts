@@ -26,6 +26,8 @@ const {
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
 	Preloader,
+	PostCard,
+	SeriesCard,
 } = Shared;
 
 const { HomePage, LettersPage, SingleProject } = Pages;
@@ -65,4 +67,6 @@ export {
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
 	Preloader,
+	PostCard,
+	SeriesCard,
 };

@@ -35,10 +35,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
 			></Script>
 
-			<AnimationsProvider>
+			{Component.isPlain ? (
 				<Component {...pageProps} />
-				<Common />
-			</AnimationsProvider>
+			) : (
+				<AnimationsProvider>
+					<Component {...pageProps} />
+					<Common />
+				</AnimationsProvider>
+			)}
 		</>
 	);
 }

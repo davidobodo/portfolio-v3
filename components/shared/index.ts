@@ -20,6 +20,8 @@ import Slider from "./slider";
 import Radio from "./radio";
 import Modals from "./modal";
 import Preloader from "./preloader";
+import PostCard from "./post-card";
+import SeriesCard from "./series-card";
 
 const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
@@ -48,6 +50,8 @@ const Shared = {
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
 	Preloader,
+	PostCard,
+	SeriesCard,
 };
 
 export default Shared;

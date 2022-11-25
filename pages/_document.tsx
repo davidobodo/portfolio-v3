@@ -4,20 +4,8 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				<link
-					rel="preload"
-					href="/fonts/sf-pro/SFPRODISPLAYBOLD.OTF"
-					as="font"
-					type="font/otf"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF"
-					as="font"
-					type="font/otf"
-					crossOrigin="anonymous"
-				/>
+				<link rel="preload" href="/fonts/sf-pro/SFPRODISPLAYBOLD.OTF" as="font" type="font/otf" crossOrigin="anonymous" />
+				<link rel="preload" href="/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF" as="font" type="font/otf" crossOrigin="anonymous" />
 				<link
 					rel="preload"
 					href="/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF"
@@ -29,7 +17,7 @@ export default function Document() {
 				<link rel="apple-touch-icon" href="/icon-192x192.png"></link>
 				<meta name="theme-color" content="#e1dfdd" />
 			</Head>
-			<body className="hide">
+			<body>
 				<div id="app">
 					<Main />
 				</div>

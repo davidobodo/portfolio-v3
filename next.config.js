@@ -22,6 +22,9 @@ const nextConfig = {
 		register: true,
 		skipWaiting: true,
 	},
+	images: {
+		domains: ["images.unsplash.com", "miro.medium.com", "blog.davidobodo.com"],
+	},
 };
 
 // module.exports = nextConfig;
