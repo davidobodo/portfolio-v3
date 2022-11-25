@@ -53,7 +53,6 @@ export default function use404PageInit() {
 	};
 
 	const redirectToHome = () => {
-		console.log("CALLED REDIRECT TO HOME");
 		closeNoiseLayers({ node: document.querySelectorAll("[data-key='layer']") }).then(() => {
 			router.push("/");
 		});
