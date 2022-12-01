@@ -11,6 +11,9 @@
 		"test": "jest --watch"
 	},
 	"dependencies": {
+		"@mdx-js/loader": "^2.1.5",
+		"@mdx-js/react": "^2.1.5",
+		"@next/mdx": "^13.0.5",
 		"@sendgrid/mail": "^7.7.0",
 		"detect.js": "^2.2.3",
 		"gsap": "3.10.4",

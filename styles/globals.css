@@ -110,7 +110,7 @@ h6 {
 /* GOOGLE RECAPTCHA LOGO */
 /* -----------------------------------------------*/
 .grecaptcha-badge {
-	right: -205px !important;
+	right: -305px !important;
 	bottom: 0px !important;
 }
 .grecaptcha-badge:hover {

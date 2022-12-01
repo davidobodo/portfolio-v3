@@ -1,6 +1,17 @@
-/** @type {import('next').NextConfig} */
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const withPWA = require("next-pwa");
+const withMDX = require("@next/mdx")({
+	extension: /\.mdx?$/,
+	options: {
+		// If you use remark-gfm, you'll need to use next.config.mjs
+		// as the package is ESM only
+		// https://github.com/remarkjs/remark-gfm#install
+		remarkPlugins: [],
+		rehypePlugins: [],
+		// If you use `MDXProvider`, uncomment the following line.
+		// providerImportSource: "@mdx-js/react",
+	},
+});
 // const withBundleAnalyzer = require("@next/bundle-analyzer")({
 // 	enabled: process.env.ANALYZE === "true",
 // });
@@ -29,4 +40,4 @@ const nextConfig = {
 
 // module.exports = nextConfig;
 
-module.exports = withPWA(nextConfig);
+module.exports = withPWA(withMDX({ ...nextConfig, pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"] }));

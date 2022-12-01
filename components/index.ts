@@ -28,6 +28,7 @@ const {
 	Preloader,
 	PostCard,
 	SeriesCard,
+	MDXComponents,
 } = Shared;
 
 const { HomePage, LettersPage, SingleProject } = Pages;
@@ -69,4 +70,5 @@ export {
 	Preloader,
 	PostCard,
 	SeriesCard,
+	MDXComponents,
 };

@@ -1,0 +1,102 @@
+The purpose of writing tests is to ensure that our application is functioning exactly how we want it to without any errors. However, after doing so, how can we know if the amount of tests we have written are even enough and covered all important places of our application ?
+
+Say hello to `Jest "collect coverage"`. With the collect coverage option we can easily know exactly how much of our code has been tested and how much of our code is left to test. Without further ado, let's get into it.
+
+Open you `jest.config` file and add teh collectCoverage option into your `jest.config`. Your file should now look like this:
+
+```
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+};
+
+export default createJestConfig(customJestConfig);
+
+```
+
+With the coverage option set, make sure you restart your terminal. After running the test command again you should see a table like this generated in your console:
+
+![Screenshot 2022-11-30 at 16.11.22.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1669828887066/26D8tzJFb.png align="left")
+
+Sweet right 😅?
+
+That's not all, If you look at the root folder of your application, you would see that a folder named `coverage` has been created for you. Go into the folder, then into `icov-report` folder, inside which open the `index.html` file in the browser
+
+![Screenshot 2022-11-30 at 16.15.54.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1669828967051/oXCBFkf5S.png align="left")
+
+When you open the `index.html` file in the browser you would see a more beautiful graphical display like this:
+
+![Screenshot 2022-11-30 at 16.03.58.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1669829046455/sVLMmIZwj.png align="left")
+
+It lists all the "main" folders being run in your application code and gives information about the code in it. let'e move into pages since that is our first point of concern
+
+![Screenshot 2022-11-30 at 18.26.32.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1669829203662/Tgu8jJt4h.png align="left")
+
+You can see both pages of our application being listed. You would notice that right our table
+has a header split into basically five columns:
+
+1. File - The file who has the information we want to display
+2. Statements - If all possible executable statements in your code are covered in your tests
+3. Branches - If all possible branches (e.g if else statement) in your code are covered in your tests
+4. Functions - If all the functions present in your code are covered in your tests
+5. Lines - More or less just like "statements"
+
+Since our `index.tsx` is our main home feed page let's go into it. But before going intot it let's take note of our scores for `index.tsx`
+
+- Statement = 91.04%
+- Branches = 90.9%
+- Functions = 100%
+- Lines = 90.76%
+
+Now if we open our index.tsx file we should
+
+![Screenshot 2022-11-30 at 18.41.08.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1669830100599/K6RqL2myC.png align="left")
+
+Straight up we can see the reason why the scores for our index file is not 100%. The "red" highlighting is showing us, places of our code that were never tested. With this information, we know that we need to write tests for when our network request fails and even also to write test when a user tries to create a post and there is no text in the inputValue
+
+You can see that there is no other easy way we would have been able to check for this, but collecting coverage using jest helps us straight away.
+
+### Deciding where to collect coverage from
+
+By default `jest` tries to collect coverage from all "functioning" files in our application, but if you want to you can specify a `collectCoverageFrom` key in our `jest.config`, and in there you can either specify files or folders you want to collect coverage from or you don't want to collect coverage from
+
+### Improving the firmness of our application using coverage threshold
+
+If we are being realistic, most times people do not have the time to write code for every test case such that you have a 100% on the four parameters (i.e statement, branches, functions and lines) that coverage covers. However with the concept of setting a threshold you can set a comfortable boundary. You can set a threshold for the entire application or simply for specific files. Setting a threshold for the entire application looks something like this. Open `jest.config`:
+
+```
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+	coverageThreshold: {
+		global: {
+			lines: 80,
+			functions: 80,
+			branches: 80,
+			statements: 80,
+		},
+	},
+};
+
+export default createJestConfig(customJestConfig);
+```
+
+We have specified global and set 80 percent as the threshold that we want for our various parameters. Now in our application, anytime our tests run and this threshold is not reached, we would see some sort of notification message in the console.
+
+However the purpose of setting threshold is not mainly for seeing a message in our console, but we can tie this up to our production build such that if our threshold is not met the build fails. This really makes up to be sure that at least the available tests in our application are enough to our standard.
