@@ -1,0 +1,70 @@
+.container {
+	color: #fff;
+	max-width: 1024px;
+	margin: auto;
+	padding-top: 10rem;
+
+	h1 {
+		font-size: 6.4rem;
+	}
+
+	h2 {
+		font-size: 4.8rem;
+	}
+
+	h3 {
+		font-size: 3.6rem;
+	}
+
+	p {
+		font-size: 2rem;
+		margin: 2rem 0px;
+		line-height: 1.625;
+	}
+
+	ul {
+		line-height: 2.6rem;
+		margin: 2rem 0px;
+		padding-left: 2rem;
+
+		li {
+			font-size: 2rem;
+			line-height: 1.8;
+
+			ul {
+				margin: 0px;
+			}
+		}
+	}
+
+	a {
+		color: #f0666b;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	b {
+		font-family: "sf-pro-bold";
+	}
+
+	hr {
+		opacity: 0.2;
+	}
+
+	code {
+		background-color: #edf2f7;
+		color: #000;
+		padding: 0.2rem 0.8rem;
+		border-radius: 2px;
+	}
+
+	blockquote {
+		border-left-color: #f0666b;
+		border-left-style: solid;
+		border-left-width: 6px;
+		padding-left: 3.2rem;
+	}
+}

@@ -3,9 +3,8 @@ import "#/styles/globals.css";
 import Script from "next/script";
 import type { AppProps } from "next/app";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
-import { Common, MDXComponents } from "#/components";
+import { Common } from "#/components";
 import { AnimationsProvider } from "#/context";
-import { MDXProvider } from "@mdx-js/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	//Register gsap
@@ -42,9 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<Common />
 				</AnimationsProvider>
 			) : (
-				// <MDXProvider components={MDXComponents}>
 				<Component {...pageProps} />
-				// </MDXProvider>
 			)}
 		</>
 	);
