@@ -1,0 +1,34 @@
+---
+title: Functions for Beginners
+date: 'August 4, 2021'
+description: Learn how to create and use functions
+thumbnailUrl: '/javascript-functions-thumbnail.jpeg'
+tags: ['functions', 'javascript']
+---
+
+<div>
+  This is a blog post about <strong>functions</strong>. <br/>
+  We'll learn what functions are, how to write functions, and how to use them.
+</div>
+
+<br/>
+
+### This is a Markdown sub-heading
+We just used a `###` subheading in our blog post.
+
+<SyntaxHighlighter language="javascript">
+  {`
+    const doStuff = () => {
+      return console.log('hey')
+    }
+  `}
+</SyntaxHighlighter>
+
+```
+  // this is a code block
+  const doSomething = () => {
+    return console.log('hey')
+  }
+```
+
+<div>Here, I'm using a component inside my MarkDown file: {<Button text={"Click me"}/>}</div>

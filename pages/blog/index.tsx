@@ -1,9 +1,13 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import { METADATA, LETTERS } from "#/constants";
 import Head from "next/head";
 import styles from "#/styles/_pages/blog.module.scss";
 import { PostCard, SeriesCard } from "#/components";
 
-export default function Blog() {
+export default function Blog({ posts }) {
+	console.log(posts, "TEH POSTS");
 	const { title, description, url, image } = METADATA["blog"];
 
 	const TAGS = [
@@ -68,7 +72,6 @@ export default function Blog() {
 							<div className={styles.search}>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									class="icon icon-tabler icon-tabler-search"
 									width="28"
 									height="28"
 									viewBox="0 0 24 24"
@@ -120,3 +123,23 @@ export default function Blog() {
 }
 
 Blog.isPlain = true;
+
+export const getStaticProps = async () => {
+	const files = fs.readdirSync(path.join("posts"));
+
+	const posts = files.map((filename) => {
+		const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
+		const { data: frontMatter } = matter(markdownWithMeta);
+
+		return {
+			frontMatter,
+			slug: filename.split(".")[0],
+		};
+	});
+
+	return {
+		props: {
+			posts,
+		},
+	};
+};

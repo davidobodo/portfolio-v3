@@ -42,9 +42,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<Common />
 				</AnimationsProvider>
 			) : (
-				<MDXProvider components={MDXComponents}>
-					<Component {...pageProps} />
-				</MDXProvider>
+				// <MDXProvider components={MDXComponents}>
+				<Component {...pageProps} />
+				// </MDXProvider>
 			)}
 		</>
 	);
