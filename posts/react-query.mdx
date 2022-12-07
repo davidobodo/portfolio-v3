@@ -153,7 +153,7 @@ Because React Query will trigger a refetch whenever the query key changes.
 So when we pass a variable parameter to our _queryFn_, we almost always want to fetch data when that value changes.
 Instead of orchestrating complex effects to manually trigger a refetch, we can utilize the query key:
 
-```ts:title=feature/todos/queries.ts
+```tsx[class="line-numbers"][data-line="2-5,8-11"]
 type State = 'all' | 'open' | 'done'
 type Todo = {
   id: number
@@ -188,29 +188,28 @@ or, if possible, pre-fill the newly created cache entry with
 [initialData](https://react-query.tanstack.com/guides/initial-query-data#initial-data-from-cache).
 The above example is perfect for that, because we can do some client side pre-filtering on our todos:
 
-```ts:title=pre-filtering {15-20}
-type State = 'all' | 'open' | 'done'
+```tsx[class="line-numbers"]
+type State = "all" | "open" | "done";
 type Todo = {
-  id: number
-  state: State
-}
-type Todos = ReadonlyArray<Todo>
+	id: number;
+	state: State;
+};
+type Todos = ReadonlyArray<Todo>;
 
 const fetchTodos = async (state: State): Promise<Todos> => {
-  const response = await axios.get(`todos/${state}`)
-  return response.data
-}
+	const response = await axios.get(`todos/${state}`);
+	return response.data;
+};
 
 export const useTodosQuery = (state: State) =>
-  useQuery(['todos', state], () => fetchTodos(state), {
-    initialData: () => {
-      const allTodos = queryClient.getQueryData<Todos>(['todos', 'all'])
-      const filteredData =
-        allTodos?.filter((todo) => todo.state === state) ?? []
+	useQuery(["todos", state], () => fetchTodos(state), {
+		initialData: () => {
+			const allTodos = queryClient.getQueryData<Todos>(["todos", "all"]);
+			const filteredData = allTodos?.filter((todo) => todo.state === state) ?? [];
 
-      return filteredData.length > 0 ? filteredData : undefined
-    },
-  })
+			return filteredData.length > 0 ? filteredData : undefined;
+		},
+	});
 ```
 
 Now, every time the user switches between states, if we don't have data yet,
@@ -234,7 +233,7 @@ and render your Form once you have data.
 Background updates are very unlikely to yield something new, and even if, your Form has already been initialized.
 So if you do that on purpose, make sure to _not_ fire off unnecessary background refetches by setting _staleTime_:
 
-```jsx:title=initial-form-data
+```js
 const App = () => {
   const { data } = useQuery('key', queryFn, { staleTime: Infinity })
 

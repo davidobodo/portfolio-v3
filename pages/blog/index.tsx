@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { METADATA, LETTERS } from "#/constants";
 import Head from "next/head";
 import styles from "#/styles/_pages/blog.module.scss";
-import { PostCard, SeriesCard } from "#/components";
+import { PostCard, SeriesCard, Layout } from "#/components";
 
 export default function Blog({ posts }) {
 	console.log(posts, "TEH POSTS");
@@ -63,61 +63,56 @@ export default function Blog({ posts }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className={styles.pageContainer}>
-				<div className={styles.pageRadialGradient}></div>
-				<div className={styles.pageContent}>
-					<div className={styles.container}>
-						<header>
-							<h1>Blog</h1>
-							<div className={styles.search}>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="28"
-									height="28"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="#fff"
-									fill="none"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								>
-									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-									<circle cx="10" cy="10" r="7" />
-									<line x1="21" y1="21" x2="15" y2="15" />
-								</svg>
-								<input type="text" placeholder="Search" />
-							</div>
-						</header>
-						<div className={styles.tagsSearch}>
-							<div className={styles.tags}>
-								<p>Filter by Tags</p>
-								{/* <p>Latest</p> */}
-								{TAGS.map((item) => {
-									return <button>{item}</button>;
-								})}
-							</div>
+			<Layout.BlogLayout>
+				<div className={styles.container}>
+					<div className={styles.containerHeader}>
+						<h1>Blog</h1>
+						<div className={styles.search}>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="28"
+								height="28"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="#fff"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<circle cx="10" cy="10" r="7" />
+								<line x1="21" y1="21" x2="15" y2="15" />
+							</svg>
+							<input type="text" placeholder="Search" />
 						</div>
-
-						<section>
-							{/* <h2></h2> */}
-							<div className={styles.seriesWrapper}>
-								{[1].map((item) => {
-									return <SeriesCard />;
-								})}
-							</div>
-						</section>
-						<section>
-							<h2>Articles</h2>
-							<div className={styles.cardsWrapper}>
-								{LETTERS.map((item) => {
-									const { url, title, date, time, summary, tags, img } = item;
-									return <PostCard title={title} subtitle={summary} img={img} />;
-								})}
-							</div>
-						</section>
 					</div>
+					<div className={styles.tagsSearch}>
+						<div className={styles.tags}>
+							<p>Filter posts by Tag</p>
+							{TAGS.map((item) => {
+								return <button>{item}</button>;
+							})}
+						</div>
+					</div>
+
+					<section>
+						<div className={styles.seriesWrapper}>
+							{[1].map((item) => {
+								return <SeriesCard />;
+							})}
+						</div>
+					</section>
+					<section>
+						<h2>Articles</h2>
+						<div className={styles.cardsWrapper}>
+							{LETTERS.map((item) => {
+								const { url, title, date, time, summary, tags, img } = item;
+								return <PostCard title={title} subtitle={summary} img={img} />;
+							})}
+						</div>
+					</section>
 				</div>
-			</div>
+			</Layout.BlogLayout>
 		</div>
 	);
 }

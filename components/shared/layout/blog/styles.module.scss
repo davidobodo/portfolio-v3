@@ -1,0 +1,36 @@
+.container {
+	.radialGradient {
+		background: var(--dark-radial-gradient);
+		position: fixed;
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.content {
+		z-index: 1;
+		position: relative;
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			// max-width: 1400px;
+			padding: 5rem 3vw 0px;
+			margin: auto;
+			margin-bottom: 18rem;
+
+			.navlinks {
+				display: flex;
+				gap: 4rem;
+
+				a {
+					font-size: 2rem;
+					color: #fff;
+					text-decoration: none;
+					font-weight: 700;
+					font-family: "sf-pro-regular";
+				}
+			}
+		}
+	}
+}

@@ -2,7 +2,6 @@
 	color: #fff;
 	max-width: 1024px;
 	margin: auto;
-	padding-top: 10rem;
 
 	h1 {
 		font-size: 6.4rem;
@@ -10,16 +9,30 @@
 
 	h2 {
 		font-size: 4.8rem;
+		margin-top: 3.6rem;
 	}
 
 	h3 {
 		font-size: 3.6rem;
+		margin-top: 3.2rem;
+	}
+
+	h4 {
+		font-size: 3rem;
+		margin-top: 3rem;
 	}
 
 	p {
 		font-size: 2rem;
 		margin: 2rem 0px;
 		line-height: 1.625;
+
+		code {
+			background-color: #edf2f7;
+			color: #000;
+			padding: 0.2rem 0.8rem;
+			border-radius: 2px;
+		}
 	}
 
 	ul {
@@ -54,17 +67,74 @@
 		opacity: 0.2;
 	}
 
-	code {
-		background-color: #edf2f7;
-		color: #000;
-		padding: 0.2rem 0.8rem;
-		border-radius: 2px;
-	}
-
 	blockquote {
 		border-left-color: #f0666b;
 		border-left-style: solid;
 		border-left-width: 6px;
 		padding-left: 3.2rem;
+	}
+
+	pre {
+		code {
+			font-size: 2rem;
+		}
+	}
+
+	.header {
+		button {
+			background-color: transparent;
+			font-size: 1.6rem;
+			color: #fff;
+			border: 0px;
+			cursor: pointer;
+			margin-bottom: 4rem;
+			display: flex;
+			gap: 1.4rem;
+			align-items: center;
+			display: none;
+
+			svg {
+				transition: transform 200ms ease-in-out;
+			}
+
+			&:hover {
+				svg {
+					transform: translateX(-10px);
+				}
+			}
+		}
+
+		text-align: center;
+
+		h1 {
+			// margin-bottom: 2.4rem;
+			margin-bottom: 1.2rem;
+		}
+
+		.summary {
+			margin: 0px;
+			margin-bottom: 1.2rem;
+		}
+
+		.info {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1.4rem;
+			margin-top: 0px;
+			margin-bottom: 4rem;
+
+			span {
+				width: 6px;
+				height: 6px;
+				background-color: var(--ash);
+				border-radius: 50%;
+			}
+		}
+		.blogImage {
+			height: 450px;
+			background-color: var(--ash);
+			margin-bottom: 8rem;
+		}
 	}
 }

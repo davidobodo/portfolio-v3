@@ -1,81 +1,60 @@
-.cardsWrapper {
-	display: grid;
-	grid-gap: 4rem;
-	grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
-}
+.container {
+	color: #fff;
+	max-width: 1200px;
+	margin: auto;
+	padding: 0px 2rem;
 
-.pageContainer {
-	.pageRadialGradient {
-		background: var(--dark-radial-gradient);
-		position: fixed;
-		height: 100vh;
-		width: 100vw;
+	.containerHeader {
+		margin-bottom: 6rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
-	.pageContent {
-		z-index: 1;
-		position: relative;
+	h1 {
+		font-size: 6.4rem;
+	}
 
-		.container {
-			color: #fff;
-			max-width: 1200px;
-			margin: auto;
-			padding: 2rem;
+	section {
+		margin-bottom: 10rem;
 
-			header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 10rem;
+		h2 {
+			font-family: "sf-pro-regular";
+			font-size: 1.4rem;
+			letter-spacing: 5px;
+			margin-bottom: 3rem;
+			text-transform: uppercase;
+		}
+	}
+
+	.tagsSearch {
+		display: flex;
+		justify-content: space-between;
+		gap: 4rem;
+		margin-bottom: 10rem;
+
+		.tags {
+			p {
+				color: #fff;
+				margin-bottom: 2rem;
+				font-size: 1.4rem;
+				letter-spacing: 5px;
+				margin-bottom: 2rem;
+				text-transform: uppercase;
 			}
-
-			h1 {
-				font-size: 6.4rem;
-				// margin-bottom: 6rem;
-			}
-
-			section {
-				margin-bottom: 10rem;
-
-				h2 {
-					font-family: "sf-pro-regular";
-					font-size: 1.4rem;
-					letter-spacing: 5px;
-					margin-bottom: 3rem;
-					text-transform: uppercase;
-				}
-			}
-
-			.tagsSearch {
-				display: flex;
-				justify-content: space-between;
-				gap: 4rem;
-				margin-bottom: 10rem;
-
-				.tags {
-					p {
-						color: #fff;
-						margin-bottom: 2rem;
-						font-size: 1.4rem;
-						letter-spacing: 5px;
-						margin-bottom: 2rem;
-						text-transform: uppercase;
-					}
-					button {
-						height: 4rem;
-						font-size: 1.6rem;
-						padding: 0px 2rem;
-						border-radius: 3rem;
-						border: 0px;
-						cursor: pointer;
-						margin-right: 1rem;
-						margin-bottom: 1rem;
-						border: 0px;
-						background-color: transparent;
-						color: #fff;
-						border: 1px solid #fff;
-					}
-				}
+			button {
+				height: 4rem;
+				font-size: 1.6rem;
+				padding: 0px 2rem;
+				border-radius: 3rem;
+				border: 0px;
+				cursor: pointer;
+				margin-right: 1rem;
+				margin-bottom: 1rem;
+				border: 0px;
+				background-color: transparent;
+				color: #fff;
+				border: 1px solid #fff;
 			}
 		}
 	}
@@ -115,4 +94,10 @@
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
+}
+
+.cardsWrapper {
+	display: grid;
+	grid-gap: 4rem;
+	grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
 }

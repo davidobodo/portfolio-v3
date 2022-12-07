@@ -1,7 +1,8 @@
 import DarkSection from "./dark-section";
-
+import BlogLayout from "./blog";
 const Layout = {
-    DarkSection
+	DarkSection,
+	BlogLayout,
 };
 
 export default Layout;

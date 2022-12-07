@@ -1,0 +1,39 @@
+.line-numbers span.line-numbers-rows {
+	margin-top: -1px;
+}
+
+.line-numbers {
+	padding-left: 6.8em !important;
+}
+
+:root {
+	--highlight-background: rgb(0 0 0 / 0);
+	--highlight-width: 0;
+}
+
+.line-numbers span.line-numbers-rows > span {
+	position: relative;
+}
+
+.line-numbers span.line-numbers-rows > span::after {
+	content: " ";
+	background: var(--highlight-background);
+	width: var(--highlight-width);
+	position: absolute;
+	top: 0;
+}
+
+.prism-copy-button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 10ch;
+	background-color: rgb(100 100 100 / 0.5);
+	border-width: 0;
+	color: rgb(0, 0, 0);
+	cursor: pointer;
+}
+
+.prism-copy-button[disabled] {
+	cursor: default;
+}

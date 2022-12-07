@@ -5,6 +5,9 @@ import type { AppProps } from "next/app";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
 import { Common } from "#/components";
 import { AnimationsProvider } from "#/context";
+import "prismjs/themes/prism-okaidia.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "#/styles/prism-overrides.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	//Register gsap
