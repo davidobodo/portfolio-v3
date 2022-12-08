@@ -89,7 +89,7 @@ export default function Post({ frontMatter, mdxSource }) {
 		return () => cleanup.forEach((f) => f());
 	}, []);
 
-	const { title, description, tags, date, banner } = frontMatter;
+	const { title, description, tags, date, banner, readingTime } = frontMatter;
 
 	console.log(format(new Date(date), "mediumDate"));
 
@@ -129,7 +129,8 @@ export default function Post({ frontMatter, mdxSource }) {
 							}, "")}
 						</span>
 						<span>
-							<span className={styles.circle}></span>8 min read
+							<span className={styles.circle}></span>
+							{readingTime} read
 						</span>
 					</p>
 					<div className={styles.blogImage} style={{ backgroundColor: frontMatter.color ?? "#000" }}>
