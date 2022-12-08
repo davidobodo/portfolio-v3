@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { format } from "fecha";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { MDXComponents, Layout } from "#/components";
+import { Layout, Highlight } from "#/components";
 import styles from "#/styles/_pages/blog-post.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 // import rehypeHighlight from "rehype-highlight";
@@ -11,9 +12,8 @@ import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 // import "highlight.js/styles/atom-one-dark.css";
-
-const components = {};
 
 function highlightCode(pre, highlightRanges, lineNumberRowsContainer) {
 	const ranges = highlightRanges.split(",").filter((val) => val);
@@ -89,11 +89,15 @@ export default function Post({ frontMatter, mdxSource }) {
 		return () => cleanup.forEach((f) => f());
 	}, []);
 
+	const { title, description, tags, date, banner } = frontMatter;
+
+	console.log(format(new Date(date), "mediumDate"));
+
 	return (
 		<Layout.BlogLayout>
 			<div className={styles.container} ref={rootRef}>
 				<section className={styles.header}>
-					<button>
+					{/* <button>
 						<svg
 							width="28"
 							height="28"
@@ -110,16 +114,29 @@ export default function Post({ frontMatter, mdxSource }) {
 							<line x1="5" y1="12" x2="9" y2="8" />
 						</svg>
 						Back to overview
-					</button>
-					<h1>Practical React Query</h1>
-					<p className={styles.summary}>A complete guide to understanding react query from start to finish</p>
+					</button> */}
+					<h1>{title}</h1>
+					<p className={styles.summary}>{description}</p>
 					<p className={styles.info}>
-						22nd December 2022 <span></span>
-						React, React Query <span></span>8 min read
+						<span>
+							<span className={styles.circle}></span>
+							{format(new Date(date), "MMMM Do, YYYY")}
+						</span>
+						<span>
+							<span className={styles.circle}></span>
+							{tags.reduce((total, a, i) => {
+								return i === 0 ? total + "" + a : total + ", " + a;
+							}, "")}
+						</span>
+						<span>
+							<span className={styles.circle}></span>8 min read
+						</span>
 					</p>
-					<div className={styles.blogImage}></div>
+					<div className={styles.blogImage} style={{ backgroundColor: frontMatter.color ?? "#000" }}>
+						{banner && <Image src={banner} layout="fill" objectFit="contain" />}
+					</div>
 				</section>
-				<MDXRemote {...mdxSource} components={components} />
+				<MDXRemote {...mdxSource} components={{ Highlight, Image }} />
 			</div>
 		</Layout.BlogLayout>
 	);

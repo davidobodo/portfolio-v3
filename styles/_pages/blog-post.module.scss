@@ -1,31 +1,55 @@
+@import "#/styles/globals.module.scss";
+
 .container {
 	color: #fff;
 	max-width: 1024px;
 	margin: auto;
 
+	padding: 2rem;
+
 	h1 {
-		font-size: 6.4rem;
+		font-size: 3.6rem;
+
+		@media (min-width: $md) {
+			font-size: 6.4rem;
+		}
 	}
 
 	h2 {
-		font-size: 4.8rem;
+		font-size: 3rem;
 		margin-top: 3.6rem;
+
+		@media (min-width: $md) {
+			font-size: 4.8rem;
+		}
 	}
 
 	h3 {
-		font-size: 3.6rem;
+		font-size: 2.4rem;
 		margin-top: 3.2rem;
+
+		@media (min-width: $md) {
+			font-size: 3.6rem;
+		}
 	}
 
 	h4 {
-		font-size: 3rem;
+		font-size: 2rem;
 		margin-top: 3rem;
+
+		@media (min-width: $md) {
+			font-size: 3rem;
+		}
 	}
 
 	p {
-		font-size: 2rem;
 		margin: 2rem 0px;
 		line-height: 1.625;
+		font-size: 1.6rem;
+
+		@media (min-width: $md) {
+			font-size: 2rem;
+		}
 
 		code {
 			background-color: #edf2f7;
@@ -41,8 +65,12 @@
 		padding-left: 2rem;
 
 		li {
-			font-size: 2rem;
+			font-size: 1.6rem;
 			line-height: 1.8;
+
+			@media (min-width: $md) {
+				font-size: 2rem;
+			}
 
 			ul {
 				margin: 0px;
@@ -51,7 +79,8 @@
 	}
 
 	a {
-		color: #f0666b;
+		// #a2abe2
+		color: var(--blog-accent);
 		text-decoration: none;
 
 		&:hover {
@@ -68,7 +97,7 @@
 	}
 
 	blockquote {
-		border-left-color: #f0666b;
+		border-left-color: var(--blog-accent);
 		border-left-style: solid;
 		border-left-width: 6px;
 		padding-left: 3.2rem;
@@ -76,7 +105,11 @@
 
 	pre {
 		code {
-			font-size: 2rem;
+			font-size: 1.6rem;
+
+			@media (min-width: $md) {
+				font-size: 2rem;
+			}
 		}
 	}
 
@@ -118,23 +151,56 @@
 
 		.info {
 			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 1.4rem;
+			flex-wrap: wrap;
+			gap: 2px;
 			margin-top: 0px;
 			margin-bottom: 4rem;
+			color: var(--ash);
+
+			align-items: center;
+			flex-direction: column;
+
+			@media (min-width: $md) {
+				gap: 1.4rem;
+				flex-direction: row;
+				justify-content: center;
+
+				// align-items: center;
+
+				// align-items: flex-start;
+				//    flex-direction: column;
+			}
+
+			// span {
+			// 	width: 6px;
+			// 	height: 6px;
+			// 	background-color: var(--ash);
+			// 	border-radius: 50%;
+			// }
 
 			span {
+				display: flex;
+				align-items: center;
+			}
+
+			.circle {
 				width: 6px;
 				height: 6px;
 				background-color: var(--ash);
 				border-radius: 50%;
+				margin-right: 1rem;
 			}
 		}
 		.blogImage {
-			height: 450px;
+			// height: 450px;
 			background-color: var(--ash);
+			// background-color: transparent;
 			margin-bottom: 8rem;
+			position: relative;
+
+			padding-top: 52.5%;
+			@media (min-width: $md) {
+			}
 		}
 	}
 }

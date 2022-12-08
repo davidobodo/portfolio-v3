@@ -22,7 +22,6 @@ import Modals from "./modal";
 import Preloader from "./preloader";
 import PostCard from "./post-card";
 import SeriesCard from "./series-card";
-import MDXComponents from "./mdx-components";
 
 const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
@@ -53,7 +52,6 @@ const Shared = {
 	Preloader,
 	PostCard,
 	SeriesCard,
-	MDXComponents,
 };
 
 export default Shared;

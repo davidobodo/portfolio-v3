@@ -28,12 +28,12 @@ const {
 	Preloader,
 	PostCard,
 	SeriesCard,
-	MDXComponents,
 } = Shared;
 
-const { HomePage, LettersPage, SingleProject } = Pages;
+const { HomePage, LettersPage, SingleProject, Blog } = Pages;
 const { Thoughts, Work, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
 const { SingleLetter } = LettersPage;
+const { Highlight } = Blog;
 
 export {
 	Thoughts,
@@ -70,5 +70,5 @@ export {
 	Preloader,
 	PostCard,
 	SeriesCard,
-	MDXComponents,
+	Highlight,
 };

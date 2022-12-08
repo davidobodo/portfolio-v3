@@ -105,6 +105,11 @@ export default function Blog({ posts }) {
 					<section>
 						<h2>Articles</h2>
 						<div className={styles.cardsWrapper}>
+							{posts.map((item) => {
+								const { url, title, date, time, summary, tags, img, banner, description } = item.frontMatter;
+								console.log(item, "TEH ITME");
+								return <PostCard title={title} subtitle={description} img={banner} url={url} />;
+							})}
 							{LETTERS.map((item) => {
 								const { url, title, date, time, summary, tags, img } = item;
 								return <PostCard title={title} subtitle={summary} img={img} />;
