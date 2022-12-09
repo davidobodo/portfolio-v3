@@ -1,36 +1,8 @@
 import styles from "./styles.module.scss";
-import { useIsomorphicLayoutEffect } from "#/hooks";
-import { useState } from "react";
+import { usePageScrollProgress } from "#/hooks";
 
 export default function ProgressBar() {
-	const [scrollProgress, setScrollProgress] = useState(0);
-	const [isVisible, setIsVisible] = useState(false);
-
-	const handlescroll = () => {
-		const totalDocHeight = document.body.offsetHeight;
-		const scrolled = window.pageYOffset;
-		const viewportHeight = window.innerHeight;
-
-		const numerator = (viewportHeight + scrolled) * 100;
-		const denominator = totalDocHeight;
-		const percent = numerator / denominator;
-
-		setScrollProgress(percent);
-
-		if (scrolled >= viewportHeight && scrolled < totalDocHeight) {
-			setIsVisible(true);
-		} else {
-			setIsVisible(false);
-		}
-	};
-
-	useIsomorphicLayoutEffect(() => {
-		window.addEventListener("scroll", handlescroll);
-
-		return () => {
-			window.removeEventListener("scroll", handlescroll);
-		};
-	}, []);
+	const { scrollProgress, isVisible } = usePageScrollProgress();
 	return (
 		<div className={isVisible ? styles.barWrapper + " " + styles.show : styles.barWrapper}>
 			<div className={styles.bar} style={{ height: scrollProgress + "%" }}></div>
