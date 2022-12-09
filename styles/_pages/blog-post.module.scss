@@ -211,12 +211,12 @@
 }
 
 .postInfo {
-	margin-bottom: 20rem;
+	margin-bottom: 10rem;
 }
 
 .morelike {
-	margin: auto;
-	max-width: 1440px;
+	// margin: auto;
+	// max-width: 1440px;
 	margin-bottom: 16rem;
 
 	h2 {
@@ -230,13 +230,18 @@
 	}
 
 	.morelikeposts {
-		// display: grid;
-		// grid-template-columns: 1fr 1fr 1fr;
-		// grid-gap: 4rem;
-		display: flex;
-		justify-content: center;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
 		gap: 4rem;
 	}
+}
+
+.bottomSection {
+	margin: auto;
+	max-width: 1200px;
+}
+
+.comments {
 }
 
 .topprogress {
@@ -246,4 +251,30 @@
 	background-color: var(--pink);
 	width: 100%;
 	z-index: 10;
+}
+
+.myInformation {
+	margin-bottom: 16rem;
+	.top {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid var(--ash);
+		margin-bottom: 4rem;
+
+		a {
+			font-size: 2rem;
+		}
+	}
+
+	.bottom {
+		display: flex;
+		align-items: center;
+		gap: 4rem;
+
+		p {
+			flex: 1;
+			margin: 0px;
+		}
+	}
 }

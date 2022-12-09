@@ -34,10 +34,7 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 							<a>Blog</a>
 						</Link>
 						<Link href="/" passHref>
-							<a>About</a>
-						</Link>
-						<Link href="/projects" passHref>
-							<a>Projects</a>
+							<a>Portolio</a>
 						</Link>
 					</div>
 				</header>
@@ -46,6 +43,13 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 
 				<footer className={styles.footer}>
 					<ul>
+						<li>
+							<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
+									<span>Portfolio</span>
+								</a>
+							</Link>
+						</li>
 						<li>
 							<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
 								<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">

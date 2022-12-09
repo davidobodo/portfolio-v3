@@ -16,6 +16,9 @@ import Image from "next/image";
 import { LETTERS } from "#/constants";
 import PostCard from "#/components/shared/post-card";
 import { usePageScrollProgress } from "#/hooks";
+import Link from "next/link";
+import bannerImg from "#/public/home-banner.jpg";
+import { TwitterShareButton } from "next-share";
 // import "highlight.js/styles/atom-one-dark.css";
 
 //-----------------------------------------
@@ -155,8 +158,12 @@ export default function Post({ frontMatter, mdxSource }) {
 				<section className={styles.postInfo}>
 					<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle }} />
 				</section>
+				<MyInformation />
 			</div>
-			<MoreLike />
+
+			<div className={styles.bottomSection}>
+				<MoreLike />
+			</div>
 		</Layout.BlogLayout>
 	);
 }
@@ -234,7 +241,31 @@ function MoreLike() {
 }
 
 function MyInformation() {
-	return <section className={styles.myinformation}></section>;
+	return (
+		<section className={styles.myInformation}>
+			<div className={styles.top}>
+				{/* <TwitterShareButton url={"http://localhost:3000"}> */}
+				<Link href="" passHref>
+					<a>Tweet this article</a>
+				</Link>
+				{/* </TwitterShareButton> */}
+
+				<Link href="" passHref>
+					<a>Discuss on Twitter</a>
+				</Link>
+			</div>
+
+			<div className={styles.bottom}>
+				<Image src={bannerImg} width="180px" height="180px" objectFit="cover" style={{ borderRadius: "50%" }} />
+
+				<p>
+					David Obodo is a JavaScript software engineer and teacher. Kent's taught hundreds of thousands of people how to
+					make the world a better place with quality software development tools and practices. He lives with his wife and
+					four kids in Utah
+				</p>
+			</div>
+		</section>
+	);
 }
 
 function TopProgress() {
