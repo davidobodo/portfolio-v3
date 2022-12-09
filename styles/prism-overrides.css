@@ -1,14 +1,22 @@
+/* ----------------------------------------------------- */
+/* LINE NUMBERING / HIGHLIGHTING */
+/* ----------------------------------------------------- */
+:root {
+	--highlight-background: rgb(0 0 0 / 0);
+	--highlight-width: 0;
+}
+
 .line-numbers span.line-numbers-rows {
 	margin-top: -1px;
+	border-right: 0px;
+	left: -3.4em;
 }
 
 .line-numbers {
 	padding-left: 6.8em !important;
-}
-
-:root {
-	--highlight-background: rgb(0 0 0 / 0);
-	--highlight-width: 0;
+	padding-right: 0px !important;
+	margin: 0px !important;
+	border-radius: 0px !important;
 }
 
 .line-numbers span.line-numbers-rows > span {
@@ -23,15 +31,25 @@
 	top: 0;
 }
 
+/* ----------------------------------------------------- */
+/* COPY BUTTON */
+/* ----------------------------------------------------- */
 .prism-copy-button {
 	position: absolute;
-	top: 5px;
-	right: 5px;
-	width: 10ch;
 	background-color: rgb(100 100 100 / 0.5);
 	border-width: 0;
-	color: rgb(0, 0, 0);
 	cursor: pointer;
+	padding: 5px 24px;
+
+	right: 0px;
+	font-size: 1.6rem;
+	color: #fff;
+	top: 0px;
+	border-bottom-left-radius: 5px;
+}
+
+.prism-copy-button:hover {
+	background-color: var(--blog-accent);
 }
 
 .prism-copy-button[disabled] {

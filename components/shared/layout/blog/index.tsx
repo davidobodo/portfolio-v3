@@ -2,10 +2,11 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 
 export default function BlogLayout({ children }: { children: JSX.Element }) {
+	const handlePageGAEvents = () => {};
 	return (
 		<div className={styles.container}>
 			<div className={styles.radialGradient}></div>
-			<div className={styles.content}>
+			<div className={styles.contentWrapper}>
 				<header className={styles.header}>
 					<div>
 						<svg width="79" height="43" viewBox="0 0 79 43" fill="none" xmlns="http://www.w3.org/2000/svg" id="logo">
@@ -35,9 +36,55 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 						<Link href="/" passHref>
 							<a>About</a>
 						</Link>
+						<Link href="/projects" passHref>
+							<a>Projects</a>
+						</Link>
 					</div>
 				</header>
-				{children}
+
+				<div className={styles.content}>{children}</div>
+
+				<footer className={styles.footer}>
+					<ul>
+						<li>
+							<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
+									<span>Linkedin</span>
+								</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="https://github.com/davidobodo" passHref>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="github">
+									<span>Github</span>
+								</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="https://blog.davidobodo.com" passHref>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="blog">
+									<span>Blog</span>
+								</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="https://twitter.com/phitGeek" passHref>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
+									<span>Twitter</span>
+								</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="mailto: contact@davidobodo.com" passHref>
+								<a target="_blank" onClick={handlePageGAEvents} data-link="email">
+									<span>Email</span>
+								</a>
+							</Link>
+						</li>
+					</ul>
+
+					<p> &#169; 2022 David Obodo</p>
+				</footer>
 			</div>
 		</div>
 	);

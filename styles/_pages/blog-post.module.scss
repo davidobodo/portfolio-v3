@@ -79,6 +79,10 @@
 		}
 	}
 
+	img {
+		width: 100%;
+	}
+
 	a {
 		// #a2abe2
 		color: var(--blog-accent);
@@ -203,5 +207,34 @@
 			@media (min-width: $md) {
 			}
 		}
+	}
+}
+
+.postInfo {
+	margin-bottom: 20rem;
+}
+
+.morelike {
+	margin: auto;
+	max-width: 1440px;
+	margin-bottom: 16rem;
+
+	h2 {
+		font-family: "sf-pro-regular";
+		font-size: 1.4rem;
+		letter-spacing: 5px;
+		margin-bottom: 3rem;
+		text-transform: uppercase;
+		color: #fff;
+		text-align: center;
+	}
+
+	.morelikeposts {
+		// display: grid;
+		// grid-template-columns: 1fr 1fr 1fr;
+		// grid-gap: 4rem;
+		display: flex;
+		justify-content: center;
+		gap: 4rem;
 	}
 }

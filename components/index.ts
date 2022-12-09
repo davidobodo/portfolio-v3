@@ -33,7 +33,7 @@ const {
 const { HomePage, LettersPage, SingleProject, Blog } = Pages;
 const { Thoughts, Work, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
 const { SingleLetter } = LettersPage;
-const { Highlight } = Blog;
+const { Highlight, CodeTitle } = Blog;
 
 export {
 	Thoughts,
@@ -71,4 +71,5 @@ export {
 	PostCard,
 	SeriesCard,
 	Highlight,
+	CodeTitle,
 };

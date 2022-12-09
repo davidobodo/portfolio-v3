@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { format } from "fecha";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { Layout, Highlight } from "#/components";
+import { Layout, Highlight, CodeTitle } from "#/components";
 import styles from "#/styles/_pages/blog-post.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 // import rehypeHighlight from "rehype-highlight";
@@ -13,8 +13,13 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { LETTERS } from "#/constants";
+import PostCard from "#/components/shared/post-card";
 // import "highlight.js/styles/atom-one-dark.css";
 
+//-----------------------------------------
+//Highlight code
+//-----------------------------------------
 function highlightCode(pre, highlightRanges, lineNumberRowsContainer) {
 	const ranges = highlightRanges.split(",").filter((val) => val);
 	const preWidth = pre.scrollWidth;
@@ -29,11 +34,15 @@ function highlightCode(pre, highlightRanges, lineNumberRowsContainer) {
 		for (let i = +start; i <= +end; i++) {
 			const lineNumberSpan: HTMLSpanElement = lineNumberRowsContainer.querySelector(`span:nth-child(${i})`);
 			lineNumberSpan.style.setProperty("--highlight-background", "rgb(100 100 100 / 0.5)");
-			lineNumberSpan.style.setProperty("--highlight-width", `${preWidth}px`);
+			lineNumberSpan.style.setProperty("--highlight-width", `${preWidth - 5}px`); // 5 is the width of the left border
+			lineNumberSpan.style.setProperty("border-left", `5px solid #f0666b`);
 		}
 	}
 }
 
+//-----------------------------------------
+//Create copy button
+//-----------------------------------------
 function createCopyButton(codeEl) {
 	const button = document.createElement("button");
 	button.classList.add("prism-copy-button");
@@ -55,43 +64,49 @@ function createCopyButton(codeEl) {
 	return button;
 }
 
+function createFileName() {}
+
 export default function Post({ frontMatter, mdxSource }) {
 	const rootRef = useRef<HTMLDivElement>(null);
+	const preInstance = useRef<boolean>();
 
 	useEffect(() => {
-		const allPres = rootRef.current.querySelectorAll("pre");
-		const cleanup: (() => void)[] = [];
+		if (!preInstance.current && rootRef.current) {
+			preInstance.current = true; // So this code is not run twice
+			const allPres = rootRef.current.querySelectorAll("pre");
+			const cleanup: (() => void)[] = [];
 
-		for (const pre of allPres) {
-			const code = pre.firstElementChild;
-			if (!code || !/code/i.test(code.tagName)) {
-				continue;
+			for (const pre of allPres) {
+				const code = pre.firstElementChild;
+				if (!code || !/code/i.test(code.tagName)) {
+					continue;
+				}
+
+				//Add a copy button to this code block
+				const copyButton = createCopyButton(code);
+				pre.appendChild(copyButton);
+
+				//Add highlighting
+				const highlightRanges = pre.dataset.line;
+				const lineNumbersContainer = pre.querySelector(".line-numbers-rows");
+				if (!highlightRanges || !lineNumbersContainer) {
+					continue;
+				}
+
+				const runHighlight = () => highlightCode(pre, highlightRanges, lineNumbersContainer);
+				runHighlight();
+
+				const ro = new ResizeObserver(runHighlight);
+				ro.observe(pre);
+
+				cleanup.push(() => ro.disconnect());
 			}
 
-			pre.appendChild(createCopyButton(code));
-
-			const highlightRanges = pre.dataset.line;
-			const lineNumbersContainer = pre.querySelector(".line-numbers-rows");
-
-			if (!highlightRanges || !lineNumbersContainer) {
-				continue;
-			}
-
-			const runHighlight = () => highlightCode(pre, highlightRanges, lineNumbersContainer);
-			runHighlight();
-
-			const ro = new ResizeObserver(runHighlight);
-			ro.observe(pre);
-
-			cleanup.push(() => ro.disconnect());
+			return () => cleanup.forEach((f) => f());
 		}
-
-		return () => cleanup.forEach((f) => f());
 	}, []);
 
 	const { title, description, tags, date, banner, readingTime } = frontMatter;
-
-	console.log(format(new Date(date), "mediumDate"));
 
 	return (
 		<Layout.BlogLayout>
@@ -137,8 +152,11 @@ export default function Post({ frontMatter, mdxSource }) {
 						{banner && <Image src={banner} layout="fill" objectFit="contain" />}
 					</div>
 				</section>
-				<MDXRemote {...mdxSource} components={{ Highlight, Image }} />
+				<section className={styles.postInfo}>
+					<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle }} />
+				</section>
 			</div>
+			<MoreLike />
 		</Layout.BlogLayout>
 	);
 }
@@ -198,4 +216,23 @@ export async function getStaticProps({ params }) {
 			mdxSource,
 		},
 	};
+}
+
+function MoreLike() {
+	return (
+		<div className={styles.morelike}>
+			<h2>More Articles</h2>
+
+			<div className={styles.morelikeposts}>
+				{LETTERS.slice(0, 3).map((item) => {
+					const { url, title, date, time, summary, tags, img } = item;
+					return <PostCard title={title} subtitle={summary} img={img} />;
+				})}
+			</div>
+		</div>
+	);
+}
+
+function MyInformation() {
+	return <section className={styles.myinformation}></section>;
 }
