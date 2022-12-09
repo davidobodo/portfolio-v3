@@ -34,6 +34,9 @@
 /* ----------------------------------------------------- */
 /* COPY BUTTON */
 /* ----------------------------------------------------- */
+.remark-highlight {
+	position: relative;
+}
 .prism-copy-button {
 	position: absolute;
 	background-color: rgb(100 100 100 / 0.5);

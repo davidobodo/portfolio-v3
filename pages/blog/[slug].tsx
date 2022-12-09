@@ -11,10 +11,11 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { LETTERS } from "#/constants";
 import PostCard from "#/components/shared/post-card";
+import { usePageScrollProgress } from "#/hooks";
 // import "highlight.js/styles/atom-one-dark.css";
 
 //-----------------------------------------
@@ -64,8 +65,6 @@ function createCopyButton(codeEl) {
 	return button;
 }
 
-function createFileName() {}
-
 export default function Post({ frontMatter, mdxSource }) {
 	const rootRef = useRef<HTMLDivElement>(null);
 	const preInstance = useRef<boolean>();
@@ -84,7 +83,7 @@ export default function Post({ frontMatter, mdxSource }) {
 
 				//Add a copy button to this code block
 				const copyButton = createCopyButton(code);
-				pre.appendChild(copyButton);
+				pre.parentElement.appendChild(copyButton);
 
 				//Add highlighting
 				const highlightRanges = pre.dataset.line;
@@ -110,6 +109,7 @@ export default function Post({ frontMatter, mdxSource }) {
 
 	return (
 		<Layout.BlogLayout>
+			<TopProgress />
 			<div className={styles.container} ref={rootRef}>
 				<section className={styles.header}>
 					{/* <button>
@@ -235,4 +235,10 @@ function MoreLike() {
 
 function MyInformation() {
 	return <section className={styles.myinformation}></section>;
+}
+
+function TopProgress() {
+	const { scrollProgress } = usePageScrollProgress();
+
+	return <div className={styles.topprogress} style={{ width: scrollProgress + "%" }}></div>;
 }
