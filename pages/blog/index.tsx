@@ -7,7 +7,6 @@ import styles from "#/styles/_pages/blog.module.scss";
 import { PostCard, SeriesCard, Layout } from "#/components";
 
 export default function Blog({ posts }) {
-	console.log(posts, "TEH POSTS");
 	const { title, description, url, image } = METADATA["blog"];
 
 	const TAGS = [
@@ -27,6 +26,10 @@ export default function Blog({ posts }) {
 		"sass",
 		"scss",
 	];
+
+	const latestPost = posts[0].frontMatter;
+
+	console.log(latestPost, "asdjashd");
 	return (
 		<div className={styles.wrapper}>
 			<Head>
@@ -96,23 +99,24 @@ export default function Blog({ posts }) {
 					</div>
 
 					<section>
+						<h2 className={styles.latest}>LATEST</h2>
 						<div className={styles.seriesWrapper}>
-							{[1].map((item) => {
-								return <SeriesCard />;
-							})}
+							<SeriesCard
+								img={latestPost.banner}
+								title={latestPost.title}
+								url={latestPost.url}
+								time={latestPost.readingTime}
+								date={latestPost.date}
+								summary={latestPost.description}
+							/>
 						</div>
 					</section>
 					<section>
 						<h2>Articles</h2>
 						<div className={styles.cardsWrapper}>
-							{posts.map((item) => {
+							{posts.slice(1).map((item) => {
 								const { url, title, date, time, summary, tags, img, banner, description } = item.frontMatter;
-								console.log(item, "TEH ITME");
 								return <PostCard title={title} subtitle={description} img={banner} url={url} />;
-							})}
-							{LETTERS.map((item) => {
-								const { url, title, date, time, summary, tags, img } = item;
-								return <PostCard title={title} subtitle={summary} img={img} />;
 							})}
 						</div>
 					</section>
@@ -127,15 +131,22 @@ Blog.isPlain = true;
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
 
-	const posts = files.map((filename) => {
-		const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
-		const { data: frontMatter } = matter(markdownWithMeta);
+	console.log(files, "TEH FILES");
+	const posts = files
+		.map((filename) => {
+			const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
+			const { data: frontMatter } = matter(markdownWithMeta);
 
-		return {
-			frontMatter,
-			slug: filename.split(".")[0],
-		};
-	});
+			return {
+				frontMatter,
+				slug: filename.split(".")[0],
+			};
+		})
+		.sort((a, b) => {
+			return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
+		});
+
+	console.log(posts, "TEH POSTS ");
 
 	return {
 		props: {

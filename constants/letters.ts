@@ -24,7 +24,6 @@ const LETTERS = [
 		date: "Aug 3, 2020",
 		time: "2 min",
 		summary: `How does true love feel?
-
             How do butterflies in our stomach dance on seeing a soul?`,
 		tags: ["life", "beingHuman", "love"],
 		url: "https://medium.com/@obododavid5/why-did-it-end-eeba8dc6ff81",

@@ -1,8 +1,8 @@
 ---
 title: Test Coverage
-description: How can you know if the tests you have written are enough?
-date: "2020-11-16"
-# banner: /images/posts/snapshot.png
+description: How can you know if the tests you have written are enough ?
+date: "2022-12-10"
+banner: /images/posts/test-coverage/banner.png
 tags:
  - NextJs
  - React Testing Library
@@ -14,64 +14,20 @@ readingTime: 4 mins
 import Image from "next/image";
 import { CodeTitle } from "#/components";
 
-The purpose of writing tests is to ensure that our application is functioning exactly how we want it to without any errors. However, after doing so, how can we know if the amount of tests we have written are even enough and covered all important places of our application ?
+The purpose of writing tests is to ensure that our application is functioning exactly how we want it to without any errors.
 
-Say hello to `Jest "collect coverage"`. With the collect coverage option we can easily know exactly how much of our code has been tested and how much of our code is left to test. Without further ado, let's get into it.
+However, after doing so, how can we know if the amount of tests we have written are even enough to cover all important places of our application ?
+Say hello to `Jest "collect coverage"`.
 
-Open you `jest.config` file and add teh collectCoverage option into your `jest.config`. Your file should now look like this:
+With the collect coverage option we can easily know exactly how much of our code has been tested and how much of our code is left to test. Without further ado, let's get into it.
 
-With the coverage option set, make sure you restart your terminal. After running the test command again you should see a table like this generated in your console:
+### Setting the coverage option
 
-<img src="/images/posts/test-coverage/one.png" />
+Open you `jest.config` file and add the collectCoverage option into the file. Your file should now look like this:
 
-Sweet right 😅?
+<CodeTitle>jest.config.ts</CodeTitle>
 
-That's not all, If you look at the root folder of your application, you would see that a folder named `coverage` has been created for you. Go into the folder, then into `icov-report` folder, inside which open the `index.html` file in the browser
-
-<img src="/images/posts/test-coverage/two.png" />
-
-When you open the `index.html` file in the browser you would see a more beautiful graphical display like this:
-
-<img src="/images/posts/test-coverage/three.png" />
-
-It lists all the "main" folders being run in your application code and gives information about the code in it. let'e move into pages since that is our first point of concern
-
-<img src="/images/posts/test-coverage/four.png" />
-
-You can see both pages of our application being listed. You would notice that right our table has a header split into basically five columns:
-
-1. File - The file who has the information we want to display
-2. Statements - If all possible executable statements in your code are covered in your tests
-3. Branches - If all possible branches (e.g if else statement) in your code are covered in your tests
-4. Functions - If all the functions present in your code are covered in your tests
-5. Lines - More or less just like "statements"
-
-Since our `index.tsx` is our main home feed page let's go into it. But before going intot it let's take note of our scores for `index.tsx`
-
-- Statement = 91.04%
-- Branches = 90.9%
-- Functions = 100%
-- Lines = 90.76%
-
-Now if we open our index.tsx file we should
-
-<img src="/images/posts/test-coverage/five.png" />
-
-Straight up we can see the reason why the scores for our index file is not 100%. The "red" highlighting is showing us, places of our code that were never tested. With this information, we know that we need to write tests for when our network request fails and even also to write test when a user tries to create a post and there is no text in the inputValue
-
-You can see that there is no other easy way we would have been able to check for this, but collecting coverage using jest helps us straight away.
-
-### Deciding where to collect coverage from
-
-By default `jest` tries to collect coverage from all "functioning" files in our application, but if you want to you can specify a `collectCoverageFrom` key in our `jest.config`, and in there you can either specify files or folders you want to collect coverage from or you don't want to collect coverage from
-
-### Improving the firmness of our application using coverage threshold
-
-If we are being realistic, most times people do not have the time to write code for every test case such that you have a 100% on the four parameters (i.e statement, branches, functions and lines) that coverage covers. However with the concept of setting a threshold you can set a comfortable boundary. You can set a threshold for the entire application or simply for specific files. Setting a threshold for the entire application looks something like this. Open `jest.config`:
-
-<CodeTitle>Jest configuration</CodeTitle>
-
-```tsx[class="line-numbers"][data-line="12-19"]
+```tsx[class="line-numbers"][data-line="11"]
 import nextJest from "next/jest";
 
 const createJestConfig = nextJest({
@@ -83,6 +39,116 @@ const customJestConfig = {
 	testEnvironment: "jest-environment-jsdom",
 	verbose: true,
 	collectCoverage: true,
+};
+
+export default createJestConfig(customJestConfig);
+```
+
+With the coverage option set, make sure you restart your terminal. After running the test command again you should see a table like this generated in your console:
+
+{/* <img src="/images/posts/test-coverage/one.png" /> */}
+
+Sweet right 😅?
+
+### Viewing/Analyzing the coverage data
+
+That's not all, If you look at the root folder of your application, you would see that a folder named `coverage` has been created for you.
+
+Go into the folder, then into `icov-report` folder, inside which open the `index.html` file in the browser
+When you open the `index.html` file in the browser you would see a more beautiful graphical display like this:
+
+{/* <img src="/images/posts/test-coverage/two.png" /> */}
+
+{/* <img src="/images/posts/test-coverage/three.png" /> */}
+
+It lists all the "main" folders being run in your application code and gives information about the code in it.
+
+Let's move into pages since that is our first point of concern
+You can see both pages of our application being listed. You would notice that right our table has a header split into basically five columns:
+{/* <img src="/images/posts/test-coverage/four.png" /> */}
+
+1. File - The file who has the information we want to display
+2. Statements - If all possible executable statements in your code are covered in your tests
+3. Branches - If all possible branches (e.g if else statement) in your code are covered in your tests
+4. Functions - If all the functions present in your code are covered in your tests
+5. Lines - More or less just like "statements"
+
+Since our `index.tsx` is our main home feed page let's go into it. But before going intot it let's take note of our scores i.e
+
+- Statement = 91.04%
+- Branches = 90.9%
+- Functions = 100%
+- Lines = 90.76%
+
+{/* <img src="/images/posts/test-coverage/five.png" /> */}
+Now if we open our index.tsx file we should.
+Straight up we can see the reason why the scores for our index file is not 100%. The "red" highlighting is showing us, places of our code that were never tested. With this information, we know that we need to write tests for when our network request fails and even also to write test when a user tries to create a post and there is no text in the inputValue
+
+You can see that there is no other easy way we would have been able to check for this, but collecting coverage using jest helps us straight away.
+
+### Deciding where to collect coverage from
+
+By default "jest" tries to collect coverage from all "functioning" files in our application, but if you want to you can specify a `collectCoverageFrom` key in our "jest.config".
+
+In there you can either specify files or folders you want to collect coverage from or you don't want to collect coverage from
+
+<CodeTitle>jest.config.ts</CodeTitle>
+
+```tsx[class="line-numbers"][data-line="12-20"]
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+	collectCoverageFrom: [
+		//Cover these files
+		"pages/**/*.{js,jsx,ts,tsx}",
+		//Dont cover these files
+		"!**/node_modules/**",
+		"!pages/_app.js",
+		"!pages/api/**/*.{js,jsx,ts,tsx}",
+	],
+};
+
+export default createJestConfig(customJestConfig);
+```
+
+### Improving the firmness of our application using coverage threshold
+
+If we are being realistic, most times people do not have the time to write code for every test case such that you have a 100% on the four parameters (i.e statement, branches, functions and lines) that coverage covers.
+
+However with the concept of setting a threshold you can set a comfortable boundary. You can set a threshold for the entire application or simply for specific files.
+
+Setting a threshold for the entire application looks something like this. Open `jest.config`:
+
+<CodeTitle>jest.config.ts</CodeTitle>
+
+```tsx[class="line-numbers"][data-line="20-27"]
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+		collectCoverageFrom: [
+		//Cover these files
+		"pages/**/*.{js,jsx,ts,tsx}",
+		//Dont cover these files
+		"!**/node_modules/**",
+		"!pages/_app.js",
+		"!pages/api/**/*.{js,jsx,ts,tsx}",
+	],
 	coverageThreshold: {
 		global: {
 			lines: 80,
@@ -100,129 +166,6 @@ We have specified global and set 80 percent as the threshold that we want for ou
 
 However the purpose of setting threshold is not mainly for seeing a message in our console, but we can tie this up to our production build such that if our threshold is not met the build fails. This really makes up to be sure that at least the available tests in our application are enough to our standard.
 
-<CodeTitle>__tests__/home.test.tsx</CodeTitle>
-
-```tsx[class="line-numbers"]
-import axios from "axios";
-import Home from "../pages/index";
-import { postsData } from "../data";
-import { setupUserEvent, render, screen, waitForElementToBeRemoved, within } from "../utils/tests";
-
-describe("User", () => {
-	it("can see posts when they open the application.", async () => {
-		//Set a custom reponse for our request
-		axios.get.mockResolvedValue({ data: postsData });
-
-		//Render a component (Since user would not be executing any actio, we don't need to setup events)
-		render(<Home />);
-
-		//Assert that user can see Post Feed heading
-		expect(screen.getByText("Post Feed")).toBeInTheDocument();
-
-		//Assert that user can see an input
-		expect(screen.getByRole("textbox", { name: /post/ })).toBeInTheDocument();
-
-		//Assert that loading text is on the screen
-		expect(screen.getByText("Loading...")).toBeInTheDocument();
-
-		//Wait for loading text to be removed off the screen (i.e when our async called completes)
-		await waitForElementToBeRemoved(() => screen.queryByText("Loading..."));
-
-		//Assert that a network request was made which was called once and with a certain url
-		expect(axios.get).toBeCalledTimes(1);
-
-		//Assert that user can see 10 posts by default on the users screen
-		const posts = screen.getAllByRole("article");
-		expect(posts).toHaveLength(10);
-	});
-
-	it("can create post successfully", async () => {
-		const { user } = setupUserEvent(<Home />);
-
-		//Get input field
-		const inputField = screen.getByRole("textbox");
-
-		//Type inside input
-		await user.type(inputField, "I am updating the field");
-
-		//Get submit button
-		const btnSubmit = screen.getByRole("button", { name: "Post" });
-
-		//click submit button
-		await user.click(btnSubmit);
-
-		expect(axios.post).toBeCalledTimes(1);
-
-		//Assert that user can now see 11 posts by default on the users screen
-		const posts = screen.getAllByRole("article");
-		expect(posts).toHaveLength(11);
-	});
-
-	it("can edit post", async () => {
-		const { user } = setupUserEvent(<Home />);
-
-		//Wait for loading text to be removed off the screen (i.e when our async called completes)
-		await waitForElementToBeRemoved(() => screen.queryByText("Loading..."));
-
-		//Get first post
-		const posts = screen.getAllByRole("article");
-		const firstPost = posts[0];
-
-		//Click on edit button
-		const focusedElement = within(firstPost);
-		const btnEdit = focusedElement.getByRole("button", { name: "Edit" });
-
-		await user.click(btnEdit);
-
-		//Assert that buttons have changed
-		expect(focusedElement.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
-		expect(focusedElement.getByRole("button", { name: "Submit" })).toBeInTheDocument();
-		expect(focusedElement.queryByRole("button", { name: "Edit" })).not.toBeInTheDocument();
-		expect(focusedElement.queryByRole("button", { name: "Delete" })).not.toBeInTheDocument();
-
-		const textareField = focusedElement.getByRole("textbox");
-		await user.type(textareField, "I am going");
-
-		//Assert that what user typed is added to the end of the existing text
-		expect(textareField).toHaveValue(postsData[99].body + "I am going");
-
-		const btnSubmit = focusedElement.getByRole("button", { name: "Submit" });
-
-		await user.click(btnSubmit);
-
-		expect(axios.put).toBeCalledTimes(1);
-
-		//Assert that buttons have changed to default state
-		expect(focusedElement.queryByRole("button", { name: "Cancel" })).not.toBeInTheDocument();
-		expect(focusedElement.queryByRole("button", { name: "Submit" })).not.toBeInTheDocument();
-		expect(focusedElement.getByRole("button", { name: "Edit" })).toBeInTheDocument();
-		expect(focusedElement.getByRole("button", { name: "Delete" })).toBeInTheDocument();
-	});
-
-	it("can delete post", async () => {
-		const { user } = setupUserEvent(<Home />);
-
-		//Wait for loading text to be removed off the screen (i.e when our async called completes)
-		await waitForElementToBeRemoved(() => screen.queryByText("Loading..."));
-
-		const posts = screen.getAllByRole("article");
-		const firstPost = posts[0];
-
-		const btnDelete = within(firstPost).getByRole("button", { name: "Delete" });
-
-		await user.click(btnDelete);
-
-		expect(axios.delete).toBeCalledTimes(1);
-
-		const remainingPosts = screen.getAllByRole("article");
-		expect(remainingPosts).toHaveLength(9);
-	});
-});
-
-```
+Thank you for reading...
 
 ---
-
-I hope that these practical tips will help you getting started with React
-Query, so go check it out :) If you have any further questions, please let
-me know in the comments below. ⬇️

@@ -1,4 +1,4 @@
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+// const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const withPWA = require("next-pwa");
 // const withMDX = require("@next/mdx")({
 // 	extension: /\.mdx?$/,
@@ -18,16 +18,16 @@ const withPWA = require("next-pwa");
 
 const nextConfig = {
 	reactStrictMode: true,
-	webpack(config, options) {
-		const { dev, isServer } = options;
+	// webpack(config, options) {
+	// 	const { dev, isServer } = options;
 
-		// Do not run type checking twice:
-		if (dev && isServer) {
-			config.plugins.push(new ForkTsCheckerWebpackPlugin());
-		}
+	// 	// Do not run type checking twice:
+	// 	if (dev && isServer) {
+	// 		config.plugins.push(new ForkTsCheckerWebpackPlugin());
+	// 	}
 
-		return config;
-	},
+	// 	return config;
+	// },
 	pwa: {
 		dest: "public",
 		register: true,

@@ -6,7 +6,7 @@
 	text-decoration: none;
 	border: 1px solid transparent;
 	transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
-	padding: 0.5rem;
+	padding: 1rem;
 
 	&:hover {
 		border: 1px solid var(--blog-accent);
@@ -27,9 +27,11 @@
 	h3 {
 		font-size: 2.4rem;
 		margin-bottom: 2rem;
+		padding: 0px 1rem;
 	}
 
 	p {
+		padding: 0px 1rem;
 		font-size: 1.6rem;
 		line-height: 2.4rem;
 		display: -webkit-box;

@@ -9,11 +9,11 @@
 .line-numbers span.line-numbers-rows {
 	margin-top: -1px;
 	border-right: 0px;
-	left: -3.4em;
+	left: -3.3em;
 }
 
 .line-numbers {
-	padding-left: 6.8em !important;
+	padding-left: 5.8em !important;
 	padding-right: 0px !important;
 	margin: 0px !important;
 	border-radius: 0px !important;
@@ -36,6 +36,7 @@
 /* ----------------------------------------------------- */
 .remark-highlight {
 	position: relative;
+	margin-bottom: 6rem;
 }
 .prism-copy-button {
 	position: absolute;

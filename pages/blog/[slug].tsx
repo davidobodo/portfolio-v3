@@ -39,7 +39,7 @@ function highlightCode(pre, highlightRanges, lineNumberRowsContainer) {
 			const lineNumberSpan: HTMLSpanElement = lineNumberRowsContainer.querySelector(`span:nth-child(${i})`);
 			lineNumberSpan.style.setProperty("--highlight-background", "rgb(100 100 100 / 0.5)");
 			lineNumberSpan.style.setProperty("--highlight-width", `${preWidth - 5}px`); // 5 is the width of the left border
-			lineNumberSpan.style.setProperty("border-left", `5px solid #f0666b`);
+			lineNumberSpan.style.setProperty("border-left", `5px solid #fff`);
 		}
 	}
 }
@@ -136,16 +136,13 @@ export default function Post({ frontMatter, mdxSource }) {
 					<h1>{title}</h1>
 					<p className={styles.summary}>{description}</p>
 					<p className={styles.info}>
-						<span>
-							<span className={styles.circle}></span>
-							{format(new Date(date), "MMMM Do, YYYY")}
-						</span>
-						<span>
+						<span>{format(new Date(date), "MMMM Do, YYYY")}</span>
+						{/* <span>
 							<span className={styles.circle}></span>
 							{tags.reduce((total, a, i) => {
 								return i === 0 ? total + "" + a : total + ", " + a;
 							}, "")}
-						</span>
+						</span> */}
 						<span>
 							<span className={styles.circle}></span>
 							{readingTime} read
@@ -157,6 +154,16 @@ export default function Post({ frontMatter, mdxSource }) {
 				</section>
 				<section className={styles.postInfo}>
 					<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle }} />
+
+					<div className={styles.ctas}>
+						<Link href="" passHref>
+							<a>Tweet this article</a>
+						</Link>
+
+						<Link href="" passHref>
+							<a>Discuss on Twitter</a>
+						</Link>
+					</div>
 				</section>
 				<MyInformation />
 			</div>
@@ -243,18 +250,6 @@ function MoreLike() {
 function MyInformation() {
 	return (
 		<section className={styles.myInformation}>
-			<div className={styles.top}>
-				{/* <TwitterShareButton url={"http://localhost:3000"}> */}
-				<Link href="" passHref>
-					<a>Tweet this article</a>
-				</Link>
-				{/* </TwitterShareButton> */}
-
-				<Link href="" passHref>
-					<a>Discuss on Twitter</a>
-				</Link>
-			</div>
-
 			<div className={styles.bottom}>
 				<Image src={bannerImg} width="180px" height="180px" objectFit="cover" style={{ borderRadius: "50%" }} />
 

@@ -8,6 +8,15 @@
 	grid-gap: 4rem;
 	grid-template-columns: 1fr 1fr 1fr;
 
+	// border: 1px solid transparent;
+	// transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
+	// padding: 1rem;
+
+	// &:hover {
+	// 	border: 1px solid var(--blog-accent);
+	// 	transform: translateY(-10px);
+	// }
+
 	.info {
 		// flex: 1;
 
@@ -23,17 +32,31 @@
 			margin-bottom: 2rem;
 		}
 
-		p {
+		.summary {
 			font-size: 1.8rem;
 			line-height: 3.4rem;
 			display: -webkit-box;
 			-webkit-line-clamp: 6;
 			-webkit-box-orient: vertical;
 			overflow: hidden;
+			margin-bottom: 2rem;
 		}
 
 		.time {
 			margin-bottom: 1rem;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			font-size: 1.6rem;
+			color: var(--ash);
+
+			.circle {
+				width: 6px;
+				height: 6px;
+				background-color: var(--ash);
+				border-radius: 50%;
+				// margin-right: 1rem;
+			}
 		}
 	}
 

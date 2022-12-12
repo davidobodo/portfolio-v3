@@ -29,14 +29,14 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 						</svg>
 					</div>
 
-					<div className={styles.navlinks}>
+					{/* <div className={styles.navlinks}>
 						<Link href="/blog" passHref>
 							<a>Blog</a>
 						</Link>
 						<Link href="/" passHref>
 							<a>Portolio</a>
 						</Link>
-					</div>
+					</div> */}
 				</header>
 
 				<div className={styles.content}>{children}</div>

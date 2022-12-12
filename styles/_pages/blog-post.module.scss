@@ -1,41 +1,43 @@
 @import "#/styles/globals.module.scss";
 
 .container {
+	color: rgba(255, 255, 255, 0.75);
 	color: #fff;
-	max-width: 1024px;
+	max-width: 800px;
 	margin: auto;
 
 	padding: 2rem;
 
 	h1 {
 		font-size: 3.6rem;
+		color: #bddefd;
 
 		@media (min-width: $md) {
-			font-size: 6.4rem;
+			font-size: 4.4rem;
 		}
 	}
 
 	h2 {
 		font-size: 3rem;
-		margin-top: 3.6rem;
+		margin-top: 6.2rem;
 
 		@media (min-width: $md) {
-			font-size: 4.8rem;
+			font-size: 3.4rem;
 		}
 	}
 
 	h3 {
 		font-size: 2.4rem;
-		margin-top: 3.2rem;
+		margin-top: 6.2rem;
 
 		@media (min-width: $md) {
-			font-size: 3.6rem;
+			font-size: 2.8rem;
 		}
 	}
 
 	h4 {
 		font-size: 2rem;
-		margin-top: 3rem;
+		margin-top: 6.2rem;
 
 		@media (min-width: $md) {
 			font-size: 3rem;
@@ -43,17 +45,19 @@
 	}
 
 	p {
-		margin: 2rem 0px;
+		margin: 2.2rem 0px;
 		line-height: 1.625;
 		font-size: 1.6rem;
 
 		@media (min-width: $md) {
-			font-size: 2rem;
+			font-size: 1.8rem;
 		}
 
 		code {
-			background-color: #edf2f7;
+			// background-color: #edf2f7;
 			color: #000;
+			background-color: #23262b;
+			color: white;
 			padding: 0.2rem 0.8rem;
 			border-radius: 2px;
 		}
@@ -63,14 +67,20 @@
 	ol {
 		line-height: 2.6rem;
 		margin: 2rem 0px;
-		padding-left: 2rem;
+		padding-left: 4rem;
 
 		li {
 			font-size: 1.6rem;
 			line-height: 1.8;
+			margin: 0.8rem 0px;
+			padding-left: 0.8rem;
 
 			@media (min-width: $md) {
-				font-size: 2rem;
+				font-size: 1.8rem;
+			}
+
+			&::marker {
+				color: var(--ash);
 			}
 
 			ul {
@@ -85,7 +95,9 @@
 
 	a {
 		// #a2abe2
-		color: var(--blog-accent);
+		// color: var(--blog-accent);
+		color: #fff;
+		color: #bddefd;
 		text-decoration: none;
 
 		&:hover {
@@ -113,7 +125,7 @@
 			font-size: 1.6rem;
 
 			@media (min-width: $md) {
-				font-size: 2rem;
+				font-size: 1.8rem;
 			}
 		}
 	}
@@ -165,6 +177,8 @@
 			align-items: center;
 			flex-direction: column;
 
+			font-size: 1.4rem;
+
 			@media (min-width: $md) {
 				gap: 1.4rem;
 				flex-direction: row;
@@ -189,10 +203,10 @@
 			}
 
 			.circle {
-				width: 6px;
-				height: 6px;
+				width: 30px;
+				height: 2px;
 				background-color: var(--ash);
-				border-radius: 50%;
+				// border-radius: 50%;
 				margin-right: 1rem;
 			}
 		}
@@ -200,10 +214,15 @@
 			// height: 450px;
 			background-color: var(--ash);
 			// background-color: transparent;
-			margin-bottom: 8rem;
+			margin-bottom: 5rem;
 			position: relative;
 
 			padding-top: 52.5%;
+
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			border: 1px solid #bddefd;
+			// border-radius: 10px;
+			overflow: hidden;
 			@media (min-width: $md) {
 			}
 		}
@@ -248,24 +267,17 @@
 	height: 3px;
 	position: fixed;
 	top: 0px;
+	// background-color: var(--light-brown);
+	background-color: var(--blue);
 	background-color: var(--pink);
+	background-color: rgb(250, 209, 210);
+	background-color: #bddefd;
 	width: 100%;
 	z-index: 10;
 }
 
 .myInformation {
 	margin-bottom: 16rem;
-	.top {
-		display: flex;
-		justify-content: space-between;
-		padding-bottom: 2rem;
-		border-bottom: 1px solid var(--ash);
-		margin-bottom: 4rem;
-
-		a {
-			font-size: 2rem;
-		}
-	}
 
 	.bottom {
 		display: flex;
@@ -276,5 +288,21 @@
 			flex: 1;
 			margin: 0px;
 		}
+	}
+}
+
+.ctas {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 3rem;
+	// padding-bottom: 2rem;
+	// border-bottom: 1px solid var(--ash);
+	// margin-bottom: 4rem;
+
+	a {
+		font-size: 1.8rem;
+		color: rgba(255, 255, 255, 0.75);
+		text-transform: uppercase;
+		// text-decoration: underline;
 	}
 }
