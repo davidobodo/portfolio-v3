@@ -16,10 +16,13 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			// max-width: 1400px;
-			padding: 5rem 3vw 0px;
 			margin: auto;
 			margin-bottom: 8rem;
+			padding: 5rem 2rem 0px;
+
+			@media (min-width: $md) {
+				padding: 5rem 3vw 0px;
+			}
 
 			.navlinks {
 				display: flex;
@@ -36,10 +39,11 @@
 		}
 
 		.content {
+			min-height: calc(100vh - 230px);
 		}
 
 		.footer {
-			border-top: 1px solid rgba(255, 255, 255, 0.5);
+			border-top: 1px solid rgba(255, 255, 255, 0.2);
 
 			// margin: 0px 2rem;
 			padding: 2rem 0px;
@@ -53,11 +57,12 @@
 			@media (min-width: $md) {
 				flex-direction: row;
 				height: 60px;
-				margin: 0px 2rem;
+				padding: 0px 2rem;
 				padding: 0px;
 			}
+
 			@media (min-width: $lg) {
-				margin: 0px 6rem;
+				padding: 0px 6rem;
 			}
 
 			ul {
@@ -67,13 +72,18 @@
 				height: 100%;
 				margin-bottom: 2rem;
 
+				flex-direction: column;
+				gap: 4rem;
+				margin-bottom: 8rem;
+
 				@media (min-width: $md) {
+					flex-direction: row;
+					margin-bottom: 0px;
+					gap: 2rem;
 					margin-bottom: 0px;
 				}
 
 				li {
-					margin-right: 2rem;
-
 					a {
 						text-decoration: none;
 						text-transform: uppercase;
@@ -85,10 +95,11 @@
 
 			p {
 				font-size: 1.6rem;
-				// &::selection {
-				// 	background: #fff;
-				// 	color: var(--light-brown);
-				// }
+				padding-bottom: 4rem;
+
+				@media (min-width: $md) {
+					padding-bottom: 0rem;
+				}
 			}
 		}
 	}

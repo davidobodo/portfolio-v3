@@ -1,35 +1,85 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { METADATA, LETTERS } from "#/constants";
 import Head from "next/head";
 import styles from "#/styles/_pages/blog.module.scss";
-import { PostCard, SeriesCard, Layout } from "#/components";
-
-export default function Blog({ posts }) {
+import { METADATA } from "#/constants";
+import { PostCard, SeriesCard, Layout, MyInformation } from "#/components";
+import { SearchIcon } from "#/components/icons";
+import { useState } from "react";
+import { TPostFrontMatter } from "#/types";
+export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter; slug: string }[] }) {
 	const { title, description, url, image } = METADATA["blog"];
 
-	const TAGS = [
-		"react",
-		"testing",
-		"javascript",
-		"typescript",
-		"next.js",
-		"life",
-		"random-thoughts",
-		"ajax",
-		"react-testing-library",
-		"node",
-		"express",
-		"css",
-		"html",
-		"sass",
-		"scss",
-	];
+	// const TAGS = [
+	// 	"react",
+	// 	"testing",
+	// 	"javascript",
+	// 	"typescript",
+	// 	"next.js",
+	// 	"life",
+	// 	"random-thoughts",
+	// 	"ajax",
+	// 	"react-testing-library",
+	// 	"node",
+	// 	"express",
+	// 	"css",
+	// 	"html",
+	// 	"sass",
+	// 	"scss",
+	// ];
 
 	const latestPost = posts[0].frontMatter;
+	const remainingPosts = posts.slice(1);
 
-	console.log(latestPost, "asdjashd");
+	const [searchFilter, setSearchFilter] = useState("");
+	const onChange = (e) => {
+		setSearchFilter(e.target.value);
+	};
+
+	let displayedPosts = remainingPosts;
+
+	if (searchFilter.length > 0) {
+		displayedPosts = posts.filter((post) => {
+			const { title } = post.frontMatter;
+			return title.toLowerCase().includes(searchFilter.toLowerCase());
+		});
+	} else {
+		displayedPosts = remainingPosts;
+	}
+
+	const renderPosts = () => {
+		if (displayedPosts.length > 0) {
+			return (
+				<>
+					<h2>Articles</h2>
+					<div className={styles.cardsWrapper}>
+						{displayedPosts.map((item) => {
+							const { url, title, date, banner, description, readingTime } = item.frontMatter;
+							return (
+								<PostCard
+									title={title}
+									subtitle={description}
+									img={banner}
+									url={url}
+									key={url}
+									time={readingTime}
+									date={date}
+								/>
+							);
+						})}
+					</div>
+				</>
+			);
+		} else {
+			return (
+				<div className={styles.noResults}>
+					No results for <strong> &apos;{searchFilter}&apos; </strong>
+				</div>
+			);
+		}
+	};
+
 	return (
 		<div className={styles.wrapper}>
 			<Head>
@@ -68,58 +118,45 @@ export default function Blog({ posts }) {
 
 			<Layout.BlogLayout>
 				<div className={styles.container}>
-					<div className={styles.containerHeader}>
+					<div className={styles.header}>
 						<h1>Blog</h1>
 						<div className={styles.search}>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="28"
-								height="28"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="#fff"
-								fill="none"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<circle cx="10" cy="10" r="7" />
-								<line x1="21" y1="21" x2="15" y2="15" />
-							</svg>
-							<input type="text" placeholder="Search" />
+							<SearchIcon />
+							<input type="text" placeholder="Search" value={searchFilter} onChange={onChange} />
 						</div>
 					</div>
-					<div className={styles.tagsSearch}>
+					{/* <div className={styles.tagsSearch}>
 						<div className={styles.tags}>
 							<p>Filter posts by Tag</p>
 							{TAGS.map((item) => {
-								return <button>{item}</button>;
+								return <button key={item}>{item}</button>;
 							})}
 						</div>
-					</div>
+					</div> */}
 
-					<section>
-						<h2 className={styles.latest}>LATEST</h2>
-						<div className={styles.seriesWrapper}>
-							<SeriesCard
-								img={latestPost.banner}
-								title={latestPost.title}
-								url={latestPost.url}
-								time={latestPost.readingTime}
-								date={latestPost.date}
-								summary={latestPost.description}
-							/>
+					{searchFilter.trim().length === 0 && (
+						<section className={styles.latest}>
+							<h2>LATEST</h2>
+							<div>
+								<SeriesCard
+									img={latestPost.banner}
+									title={latestPost.title}
+									url={latestPost.url}
+									time={latestPost.readingTime}
+									date={latestPost.date}
+									summary={latestPost.longDescription}
+								/>
+							</div>
+						</section>
+					)}
+
+					<section className={styles.articles}>{renderPosts()}</section>
+
+					{searchFilter.trim().length === 0 && (
+						<div className={styles.myInfoWrapper}>
+							<MyInformation />
 						</div>
-					</section>
-					<section>
-						<h2>Articles</h2>
-						<div className={styles.cardsWrapper}>
-							{posts.slice(1).map((item) => {
-								const { url, title, date, time, summary, tags, img, banner, description } = item.frontMatter;
-								return <PostCard title={title} subtitle={description} img={banner} url={url} />;
-							})}
-						</div>
-					</section>
+					)}
 				</div>
 			</Layout.BlogLayout>
 		</div>
@@ -131,7 +168,6 @@ Blog.isPlain = true;
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
 
-	console.log(files, "TEH FILES");
 	const posts = files
 		.map((filename) => {
 			const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
@@ -145,8 +181,6 @@ export const getStaticProps = async () => {
 		.sort((a, b) => {
 			return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
 		});
-
-	console.log(posts, "TEH POSTS ");
 
 	return {
 		props: {

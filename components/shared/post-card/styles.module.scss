@@ -1,17 +1,10 @@
 .container {
-	color: #fff;
+	color: var(--white);
 	height: 400px;
 	border-radius: 1rem;
-	// max-width: 36rem;
+	max-width: 36rem;
 	text-decoration: none;
 	border: 1px solid transparent;
-	transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
-	padding: 1rem;
-
-	&:hover {
-		border: 1px solid var(--blog-accent);
-		transform: translateY(-10px);
-	}
 
 	.image {
 		background-color: var(--ash);
@@ -22,21 +15,53 @@
 		background-size: cover;
 		background-position: center;
 		overflow: hidden;
+		border: 1px solid transparent;
+		transition: border 0.2s ease-in-out;
 	}
 
 	h3 {
 		font-size: 2.4rem;
 		margin-bottom: 2rem;
-		padding: 0px 1rem;
 	}
 
-	p {
-		padding: 0px 1rem;
+	.summary {
 		font-size: 1.6rem;
 		line-height: 2.4rem;
 		display: -webkit-box;
-		-webkit-line-clamp: 4;
+		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+		margin-bottom: 1rem;
+	}
+
+	.time {
+		margin-bottom: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		font-size: 1.4rem;
+		color: var(--ash);
+
+		.line {
+			background-color: var(--ash);
+			width: 20px;
+			height: 2px;
+			background-color: var(--ash);
+		}
+	}
+
+	&:hover {
+		color: var(--light-blue);
+		.image {
+			border: 2px solid var(--light-blue);
+		}
+
+		.time {
+			color: var(--light-blue);
+
+			.line {
+				background-color: var(--light-blue);
+			}
+		}
 	}
 }

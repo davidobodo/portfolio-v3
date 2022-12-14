@@ -17,7 +17,7 @@ const withPWA = require("next-pwa");
 // });
 
 const nextConfig = {
-	reactStrictMode: true,
+	reactStrictMode: false,
 	// webpack(config, options) {
 	// 	const { dev, isServer } = options;
 
@@ -35,6 +35,9 @@ const nextConfig = {
 	},
 	images: {
 		domains: ["images.unsplash.com", "miro.medium.com", "blog.davidobodo.com"],
+	},
+	typescript: {
+		ignoreBuildErrors: true,
 	},
 };
 

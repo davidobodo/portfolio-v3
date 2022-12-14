@@ -1,0 +1,39 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 3rem;
+	margin-top: 3rem;
+	padding-bottom: 2rem;
+	// padding-bottom: 2rem;
+	// border-bottom: 1px solid var(--ash);
+	// margin-bottom: 4rem;
+
+	a {
+		font-size: 1.6rem;
+		color: rgba(255, 255, 255, 0.75);
+		color: var(--pink);
+		color: #bddefd;
+		// text-transform: uppercase;
+		text-decoration: none !important;
+		position: relative;
+		// text-decoration: underline;
+
+		span {
+			height: 2px;
+			background-color: #fff;
+			position: absolute;
+			bottom: -4px;
+			left: 0px;
+			width: 0px;
+			transition: width 200ms ease-in-out;
+		}
+
+		&:hover {
+			color: #fff;
+
+			span {
+				width: 100%;
+			}
+		}
+	}
+}

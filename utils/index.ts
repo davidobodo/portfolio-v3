@@ -78,19 +78,53 @@ function executeTimelineActions({ tl, tlActions }: { tl: gsap.core.Timeline; tlA
 }
 
 function preventAppScroll() {
-	// const app = document.getElementById("app");
-	// if (app) {
-	// 	app.style.overflow = "hidden";
-	// }
 	document.body.style.overflow = "hidden";
 }
 
 function allowAppScroll() {
-	// const app = document.getElementById("app");
-	// if (app) {
-	// 	app.style.overflow = "auto";
-	// }
 	document.body.style.overflow = "auto";
+}
+
+//TODO: How am i clearing the timeout
+function createCopyButton(codeEl: Element) {
+	const button = document.createElement("button");
+	button.classList.add("prism-copy-button");
+	button.textContent = "Copy";
+
+	button.addEventListener("click", () => {
+		if (button.textContent === "Copied") {
+			return;
+		}
+		navigator.clipboard.writeText(codeEl.textContent || "");
+		button.textContent = "Copied";
+		button.disabled = true;
+		setTimeout(() => {
+			button.textContent = "Copy";
+			button.disabled = false;
+		}, 3000);
+	});
+
+	return button;
+}
+
+function highlightCode(pre: Element, highlightRanges: string, lineNumberRowsContainer: Element) {
+	const ranges = highlightRanges.split(",").filter((val: string) => val);
+	const preWidth = pre.scrollWidth;
+
+	for (const range of ranges) {
+		let [start, end] = range.split("-");
+		if (!start || !end) {
+			start = range;
+			end = range;
+		}
+
+		for (let i = start; i <= end; i++) {
+			const lineNumberSpan = lineNumberRowsContainer.querySelector(`span:nth-child(${i})`) as HTMLSpanElement;
+			lineNumberSpan.style.setProperty("--highlight-background", "rgb(100 100 100 / 0.5)");
+			lineNumberSpan.style.setProperty("--highlight-width", `${preWidth - 5}px`); // 5 is the width of the left border
+			lineNumberSpan.style.setProperty("border-left", `5px solid #fff`);
+		}
+	}
 }
 
 export {
@@ -101,4 +135,6 @@ export {
 	executeTimelineActions,
 	preventAppScroll,
 	allowAppScroll,
+	createCopyButton,
+	highlightCode,
 };

@@ -1,4 +1,6 @@
 import styles from "./styles.module.scss";
+import Link from "next/link";
+import { format } from "fecha";
 
 export default function SeriesCard({
 	url,
@@ -7,25 +9,33 @@ export default function SeriesCard({
 	summary,
 	date,
 	time,
+}: {
+	url: string;
+	img: string;
+	title: string;
+	summary: string;
+	date: string;
+	time: string;
 }) {
 	return (
-		<a className={styles.container}>
-			<div className={styles.info}>
-				{/* <p className={styles.latest}>LATEST</p> */}
-				<h3>{title}</h3>
-
-				<p className={styles.summary}>{summary}</p>
-				<p className={styles.time}>
-					<span className={styles.circle}></span>
-					{time} read <span className={styles.circle}></span> {date}
-				</p>
-			</div>
-			<div
-				className={styles.image}
-				style={{
-					backgroundImage: `url(${img})`,
-				}}
-			></div>
-		</a>
+		<Link href={url} passHref>
+			<a className={styles.container}>
+				<div className={styles.info}>
+					<h3>{title}</h3>
+					<p className={styles.summary}>{summary}</p>
+					<p className={styles.time}>
+						{format(new Date(date), "MMMM Do, YYYY")}
+						<span className={styles.line}></span>
+						{time} read
+					</p>
+				</div>
+				<div
+					className={styles.image}
+					style={{
+						backgroundImage: `url(${img})`,
+					}}
+				></div>
+			</a>
+		</Link>
 	);
 }

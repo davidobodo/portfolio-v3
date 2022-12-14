@@ -1,81 +1,49 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { format } from "fecha";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import { Layout, Highlight, CodeTitle } from "#/components";
 import styles from "#/styles/_pages/blog-post.module.scss";
-import SyntaxHighlighter from "react-syntax-highlighter";
-// import rehypeHighlight from "rehype-highlight";
 import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { LETTERS } from "#/constants";
-import PostCard from "#/components/shared/post-card";
-import { usePageScrollProgress } from "#/hooks";
-import Link from "next/link";
-import bannerImg from "#/public/home-banner.jpg";
-import { TwitterShareButton } from "next-share";
-// import "highlight.js/styles/atom-one-dark.css";
+import { useEffect, useRef } from "react";
+import { format } from "fecha";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import {
+	Layout,
+	Highlight,
+	CodeTitle,
+	Center,
+	SimilarArticles,
+	MyInformation,
+	ShareArticle,
+	TopProgress,
+} from "#/components";
+import { TPostFrontMatter, TMdxSource } from "#/types";
+import { createCopyButton, highlightCode } from "#/utils";
 
-//-----------------------------------------
-//Highlight code
-//-----------------------------------------
-function highlightCode(pre, highlightRanges, lineNumberRowsContainer) {
-	const ranges = highlightRanges.split(",").filter((val) => val);
-	const preWidth = pre.scrollWidth;
-
-	for (const range of ranges) {
-		let [start, end] = range.split("-");
-		if (!start || !end) {
-			start = range;
-			end = range;
-		}
-
-		for (let i = +start; i <= +end; i++) {
-			const lineNumberSpan: HTMLSpanElement = lineNumberRowsContainer.querySelector(`span:nth-child(${i})`);
-			lineNumberSpan.style.setProperty("--highlight-background", "rgb(100 100 100 / 0.5)");
-			lineNumberSpan.style.setProperty("--highlight-width", `${preWidth - 5}px`); // 5 is the width of the left border
-			lineNumberSpan.style.setProperty("border-left", `5px solid #fff`);
-		}
-	}
-}
-
-//-----------------------------------------
-//Create copy button
-//-----------------------------------------
-function createCopyButton(codeEl) {
-	const button = document.createElement("button");
-	button.classList.add("prism-copy-button");
-	button.textContent = "Copy";
-
-	button.addEventListener("click", () => {
-		if (button.textContent === "Copied") {
-			return;
-		}
-		navigator.clipboard.writeText(codeEl.textContent || "");
-		button.textContent = "Copied";
-		button.disabled = true;
-		setTimeout(() => {
-			button.textContent = "Copy";
-			button.disabled = false;
-		}, 3000);
-	});
-
-	return button;
-}
-
-export default function Post({ frontMatter, mdxSource }) {
-	const rootRef = useRef<HTMLDivElement>(null);
+export default function Post({
+	frontMatter,
+	mdxSource,
+	similarPosts,
+	slug,
+}: {
+	frontMatter: TPostFrontMatter;
+	mdxSource: TMdxSource;
+	similarPosts: {
+		frontMatter: TPostFrontMatter;
+		slug: string;
+	}[];
+	slug: string;
+}) {
+	const postContentRef = useRef<HTMLDivElement>(null);
 	const preInstance = useRef<boolean>();
 
 	useEffect(() => {
-		if (!preInstance.current && rootRef.current) {
+		if (!preInstance.current && postContentRef.current) {
 			preInstance.current = true; // So this code is not run twice
-			const allPres = rootRef.current.querySelectorAll("pre");
+			const allPres = postContentRef.current.querySelectorAll("pre");
 			const cleanup: (() => void)[] = [];
 
 			for (const pre of allPres) {
@@ -86,7 +54,7 @@ export default function Post({ frontMatter, mdxSource }) {
 
 				//Add a copy button to this code block
 				const copyButton = createCopyButton(code);
-				pre.parentElement.appendChild(copyButton);
+				pre?.parentElement?.appendChild(copyButton);
 
 				//Add highlighting
 				const highlightRanges = pre.dataset.line;
@@ -94,7 +62,6 @@ export default function Post({ frontMatter, mdxSource }) {
 				if (!highlightRanges || !lineNumbersContainer) {
 					continue;
 				}
-
 				const runHighlight = () => highlightCode(pre, highlightRanges, lineNumbersContainer);
 				runHighlight();
 
@@ -108,69 +75,68 @@ export default function Post({ frontMatter, mdxSource }) {
 		}
 	}, []);
 
-	const { title, description, tags, date, banner, readingTime } = frontMatter;
+	// if (!frontMatter) {
+	// 	return <NotFound slug={slug} />;
+	// }
+
+	const { title, description, tags, date, banner, bannerAlt, readingTime } = frontMatter;
 
 	return (
 		<Layout.BlogLayout>
-			<TopProgress />
-			<div className={styles.container} ref={rootRef}>
-				<section className={styles.header}>
-					{/* <button>
-						<svg
-							width="28"
-							height="28"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="#fff"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-							<line x1="5" y1="12" x2="19" y2="12" />
-							<line x1="5" y1="12" x2="9" y2="16" />
-							<line x1="5" y1="12" x2="9" y2="8" />
-						</svg>
-						Back to overview
-					</button> */}
-					<h1>{title}</h1>
-					<p className={styles.summary}>{description}</p>
-					<p className={styles.info}>
-						<span>{format(new Date(date), "MMMM Do, YYYY")}</span>
-						{/* <span>
+			<>
+				<TopProgress />
+				<div className={styles.container} ref={postContentRef}>
+					<section className={styles.header}>
+						{/* <button>
+							<svg
+								width="28"
+								height="28"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="#fff"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+								<line x1="5" y1="12" x2="9" y2="16" />
+								<line x1="5" y1="12" x2="9" y2="8" />
+							</svg>
+							Back to overview
+						</button> */}
+						<h1>{title}</h1>
+						<p className={styles.summary}>{description}</p>
+						<p className={styles.info}>
+							<span>{format(new Date(date), "MMMM Do, YYYY")}</span>
+							{/* <span>
 							<span className={styles.circle}></span>
 							{tags.reduce((total, a, i) => {
 								return i === 0 ? total + "" + a : total + ", " + a;
 							}, "")}
 						</span> */}
-						<span>
-							<span className={styles.circle}></span>
-							{readingTime} read
-						</span>
-					</p>
-					<div className={styles.blogImage} style={{ backgroundColor: frontMatter.color ?? "#000" }}>
-						{banner && <Image src={banner} layout="fill" objectFit="contain" />}
-					</div>
-				</section>
-				<section className={styles.postInfo}>
-					<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle }} />
+							<span>
+								<span className={styles.line}></span>
+								{readingTime} read
+							</span>
+						</p>
+						<div className={styles.image} style={{ backgroundColor: frontMatter.color ?? "#000" }}>
+							{banner && <Image src={banner} layout="fill" objectFit="contain" alt={bannerAlt} />}
+						</div>
+					</section>
+					<section className={styles.postContentWrapper}>
+						<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle, Center }} />
+					</section>
+				</div>
+				<div className={styles.shareAndInfoWrapper}>
+					<ShareArticle />
+					<MyInformation />
+				</div>
 
-					<div className={styles.ctas}>
-						<Link href="" passHref>
-							<a>Tweet this article</a>
-						</Link>
-
-						<Link href="" passHref>
-							<a>Discuss on Twitter</a>
-						</Link>
-					</div>
-				</section>
-				<MyInformation />
-			</div>
-
-			<div className={styles.bottomSection}>
-				<MoreLike />
-			</div>
+				<div className={styles.similarArticlesWrapper}>
+					<SimilarArticles data={similarPosts} />
+				</div>
+			</>
 		</Layout.BlogLayout>
 	);
 }
@@ -193,12 +159,12 @@ export async function getStaticPaths() {
 	};
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
-	const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
 
+	//Get post details
+	const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
 	const { data: frontMatter, content } = matter(markdownWithMeta);
-	// const mdxSource = await serialize(content);
 	const mdxSource = await serialize(content, {
 		mdxOptions: {
 			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
@@ -206,65 +172,45 @@ export async function getStaticProps({ params }) {
 				[
 					remarkPrism,
 					{
-						plugins: [
-							// "autolinker",
-							// "command-line",
-							// "data-uri-highlight",
-							// "diff-highlight",
-							// "inline-color",
-							// "keep-markup",
-							"line-numbers",
-							// "show-invisibles",
-							// "treeview",
-						],
+						plugins: ["line-numbers"],
 					},
 				],
 			],
 		},
 	});
 
+	//Get similar posts
+	const files = fs.readdirSync(path.join("posts"));
+
+	const allPosts = files.map((filename) => {
+		const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
+		const { data: frontMatter } = matter(markdownWithMeta);
+
+		return {
+			frontMatter,
+			slug: filename.split(".")[0],
+		};
+	});
+	const similarPosts = allPosts
+		.filter((post) => {
+			const { tags, title } = post.frontMatter as TPostFrontMatter;
+			return tags.some((tag) => frontMatter.tags.includes(tag)) && frontMatter.title !== title;
+		})
+		.sort((a, b) => {
+			return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
+		})
+		.slice(0, 3);
+
 	return {
 		props: {
 			frontMatter,
 			slug,
 			mdxSource,
+			similarPosts,
 		},
 	};
 }
 
-function MoreLike() {
-	return (
-		<div className={styles.morelike}>
-			<h2>More Articles</h2>
-
-			<div className={styles.morelikeposts}>
-				{LETTERS.slice(0, 3).map((item) => {
-					const { url, title, date, time, summary, tags, img } = item;
-					return <PostCard title={title} subtitle={summary} img={img} />;
-				})}
-			</div>
-		</div>
-	);
-}
-
-function MyInformation() {
-	return (
-		<section className={styles.myInformation}>
-			<div className={styles.bottom}>
-				<Image src={bannerImg} width="180px" height="180px" objectFit="cover" style={{ borderRadius: "50%" }} />
-
-				<p>
-					David Obodo is a JavaScript software engineer and teacher. Kent's taught hundreds of thousands of people how to
-					make the world a better place with quality software development tools and practices. He lives with his wife and
-					four kids in Utah
-				</p>
-			</div>
-		</section>
-	);
-}
-
-function TopProgress() {
-	const { scrollProgress } = usePageScrollProgress();
-
-	return <div className={styles.topprogress} style={{ width: scrollProgress + "%" }}></div>;
-}
+// function NotFound({ slug }) {
+// 	return <div>{slug}</div>;
+// }

@@ -1,8 +1,10 @@
 ---
 title: Test Coverage
 description: How can you know if the tests you have written are enough ?
+longDescription: It's a huge milestone to write tests for your application, but then if your tests do not cover the necessary parts of your application then writing the test was simply a waste. In this article we see how we can make use of "jest's coverage" feature to help know how much of our application is being covered by our tests
 date: "2022-12-10"
 banner: /images/posts/test-coverage/banner.png
+bannerAlt: test-coverage
 tags:
  - NextJs
  - React Testing Library
@@ -12,7 +14,21 @@ readingTime: 4 mins
 ---
 
 import Image from "next/image";
-import { CodeTitle } from "#/components";
+import { CodeTitle, Center } from "#/components";
+
+<Center>TABLE OF CONTENT</Center>
+
+---
+
+1. [What we need](react-query-data-transformations)
+2. [Setting the coverage option](react-query-data-transformations)
+3. [Viewing/Analyzing the coverage data](react-query-render-optimizations)
+4. [Deciding where to collect coverage from](status-checks-in-react-query)
+5. [Improving the firmness of our application using coverage threshold](testing-react-query)
+
+---
+
+### What we need
 
 The purpose of writing tests is to ensure that our application is functioning exactly how we want it to without any errors.
 
@@ -167,5 +183,3 @@ We have specified global and set 80 percent as the threshold that we want for ou
 However the purpose of setting threshold is not mainly for seeing a message in our console, but we can tie this up to our production build such that if our threshold is not met the build fails. This really makes up to be sure that at least the available tests in our application are enough to our standard.
 
 Thank you for reading...
-
----
