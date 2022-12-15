@@ -129,7 +129,7 @@ export default function Post({
 					</section>
 				</div>
 				<div className={styles.shareAndInfoWrapper}>
-					<ShareArticle />
+					<ShareArticle url={slug} title={title} />
 					<MyInformation />
 				</div>
 

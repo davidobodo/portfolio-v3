@@ -6,7 +6,7 @@ import TECH_STACKS from "./tech-stacks";
 import METADATA from "./metadata";
 
 const { ABOUT_NOTE, CREDIT_NOTE, PROJECT_NATURE, FOCUSABLE_ELEMENT_STRING, ROLES } = others;
-
+const BASE_URL = "https://www.davidobodo.com";
 export {
 	WORK,
 	ABOUT_NOTE,
@@ -18,4 +18,5 @@ export {
 	LETTERS,
 	TECH_STACKS,
 	METADATA,
+	BASE_URL,
 };
