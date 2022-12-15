@@ -29,11 +29,38 @@
 				gap: 4rem;
 
 				a {
-					font-size: 2rem;
-					color: #fff;
+					font-size: 1.6rem;
+					color: var(--white);
 					text-decoration: none;
 					font-weight: 700;
 					font-family: "sf-pro-regular";
+					position: relative;
+
+					span {
+						height: 2px;
+						background-color: var(--light-blue);
+						position: absolute;
+						bottom: -4px;
+						left: 0px;
+						width: 0px;
+						transition: width 200ms ease-in-out;
+					}
+
+					&:hover {
+						color: var(--light-blue);
+
+						span {
+							width: 100%;
+						}
+					}
+
+					&.active {
+						color: var(--light-blue);
+
+						span {
+							width: 100%;
+						}
+					}
 				}
 			}
 		}

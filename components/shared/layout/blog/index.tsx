@@ -1,7 +1,10 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function BlogLayout({ children }: { children: JSX.Element }) {
+	const router = useRouter();
+
 	const handlePageGAEvents = () => {};
 	return (
 		<div className={styles.container}>
@@ -29,14 +32,20 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 						</svg>
 					</div>
 
-					{/* <div className={styles.navlinks}>
+					<div className={styles.navlinks}>
 						<Link href="/blog" passHref>
-							<a>Blog</a>
+							<a className={router.pathname === "/blog" ? styles.active : ""}>
+								Blog
+								<span></span>
+							</a>
 						</Link>
 						<Link href="/" passHref>
-							<a>Portolio</a>
+							<a>
+								Portolio
+								<span></span>
+							</a>
 						</Link>
-					</div> */}
+					</div>
 				</header>
 
 				<div className={styles.content}>{children}</div>
