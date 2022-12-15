@@ -75,9 +75,28 @@ export default function Post({
 		}
 	}, []);
 
-	// if (!frontMatter) {
-	// 	return <NotFound slug={slug} />;
-	// }
+	if (!frontMatter) {
+		return (
+			<Layout.BlogLayout>
+				<>
+					<TopProgress />
+					<div className={styles.notFound}>
+						<h1>
+							404 <br />
+							<span>"/blog/{slug}"</span> is not a page on davidobodo.com. <br /> So sorry
+						</h1>
+
+						<h2>Looking for something to read?</h2>
+					</div>
+					<div className={styles.shareAndInfoWrapper}>{/* <MyInformation /> */}</div>
+
+					<div className={styles.similarArticlesWrapper}>
+						<SimilarArticles data={similarPosts} />
+					</div>
+				</>
+			</Layout.BlogLayout>
+		);
+	}
 
 	const { title, description, tags, date, banner, bannerAlt, readingTime } = frontMatter;
 
@@ -87,40 +106,17 @@ export default function Post({
 				<TopProgress />
 				<div className={styles.container} ref={postContentRef}>
 					<section className={styles.header}>
-						{/* <button>
-							<svg
-								width="28"
-								height="28"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="#fff"
-								fill="none"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<line x1="5" y1="12" x2="19" y2="12" />
-								<line x1="5" y1="12" x2="9" y2="16" />
-								<line x1="5" y1="12" x2="9" y2="8" />
-							</svg>
-							Back to overview
-						</button> */}
 						<h1>{title}</h1>
 						<p className={styles.summary}>{description}</p>
 						<p className={styles.info}>
 							<span>{format(new Date(date), "MMMM Do, YYYY")}</span>
-							{/* <span>
-							<span className={styles.circle}></span>
-							{tags.reduce((total, a, i) => {
-								return i === 0 ? total + "" + a : total + ", " + a;
-							}, "")}
-						</span> */}
+
 							<span>
 								<span className={styles.line}></span>
 								{readingTime} read
 							</span>
 						</p>
-						<div className={styles.image} style={{ backgroundColor: frontMatter.color ?? "#000" }}>
+						<div className={styles.image} style={{ backgroundColor: "#000" }}>
 							{banner && <Image src={banner} layout="fill" objectFit="contain" alt={bannerAlt} />}
 						</div>
 					</section>
@@ -162,55 +158,104 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 
-	//Get post details
-	const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
-	const { data: frontMatter, content } = matter(markdownWithMeta);
-	const mdxSource = await serialize(content, {
-		mdxOptions: {
-			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
-			remarkPlugins: [
-				[
-					remarkPrism,
-					{
-						plugins: ["line-numbers"],
-					},
-				],
-			],
-		},
-	});
-
 	//Get similar posts
 	const files = fs.readdirSync(path.join("posts"));
 
-	const allPosts = files.map((filename) => {
-		const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
-		const { data: frontMatter } = matter(markdownWithMeta);
+	const allPosts = files
+		.map((filename) => {
+			const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
+			const { data: frontMatter } = matter(markdownWithMeta);
 
-		return {
-			frontMatter,
-			slug: filename.split(".")[0],
-		};
-	});
-	const similarPosts = allPosts
-		.filter((post) => {
-			const { tags, title } = post.frontMatter as TPostFrontMatter;
-			return tags.some((tag) => frontMatter.tags.includes(tag)) && frontMatter.title !== title;
+			return {
+				frontMatter,
+				slug: filename.split(".")[0],
+			};
 		})
 		.sort((a, b) => {
 			return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
-		})
-		.slice(0, 3);
+		});
 
-	return {
-		props: {
-			frontMatter,
-			slug,
-			mdxSource,
-			similarPosts,
-		},
-	};
+	try {
+		//Get post details
+		const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
+		const { data: frontMatter, content } = matter(markdownWithMeta);
+		const mdxSource = await serialize(content, {
+			mdxOptions: {
+				rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
+				remarkPlugins: [
+					[
+						remarkPrism,
+						{
+							plugins: ["line-numbers"],
+						},
+					],
+				],
+			},
+		});
+
+		const similarPosts = allPosts
+			.filter((post) => {
+				const { tags, title } = post.frontMatter as TPostFrontMatter;
+				return tags.some((tag) => frontMatter.tags.includes(tag)) && frontMatter.title !== title;
+			})
+			.slice(0, 3);
+
+		return {
+			props: {
+				frontMatter,
+				slug,
+				mdxSource,
+				similarPosts,
+			},
+		};
+	} catch (e) {
+		return {
+			props: {
+				frontMatter: null,
+				slug,
+				mdxSource: null,
+				similarPosts: allPosts.slice(0, 3),
+			},
+		};
+	}
 }
 
-// function NotFound({ slug }) {
-// 	return <div>{slug}</div>;
+function NotFound({ slug }) {
+	return <div>dsjkajdkaj</div>;
+}
+
+// function Found(){
+// 	return (
+
+// 	)
 // }
+
+{
+	/* <button>
+							<svg
+								width="28"
+								height="28"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="#fff"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+								<line x1="5" y1="12" x2="9" y2="16" />
+								<line x1="5" y1="12" x2="9" y2="8" />
+							</svg>
+							Back to overview
+						</button> */
+}
+
+{
+	/* <span>
+							<span className={styles.circle}></span>
+							{tags.reduce((total, a, i) => {
+								return i === 0 ? total + "" + a : total + ", " + a;
+							}, "")}
+						</span> */
+}

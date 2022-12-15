@@ -18,7 +18,7 @@ export default function PostCard({
 	subtitle: string;
 	time: string;
 	date: string;
-	color: string;
+	color?: string;
 }) {
 	const isExternal = url.startsWith("http");
 	return (

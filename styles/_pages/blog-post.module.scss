@@ -1,5 +1,35 @@
 @import "#/styles/globals.module.scss";
 
+.notFound {
+	max-width: 1200px;
+	margin: auto;
+	padding: 2rem;
+	color: var(--white);
+	text-align: center;
+
+	h1 {
+		font-size: 3.6rem;
+
+		@media (min-width: $md) {
+			font-size: 4.4rem;
+		}
+
+		span {
+			color: var(--light-blue);
+		}
+	}
+
+	h2 {
+		font-size: 3rem;
+		margin-top: 6.2rem;
+		color: var(--light-blue);
+
+		@media (min-width: $md) {
+			font-size: 3.4rem;
+		}
+	}
+}
+
 .container {
 	color: var(--white);
 	max-width: 800px;

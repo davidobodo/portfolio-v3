@@ -15,8 +15,8 @@ export default function SimilarArticles({
 			<h2>More Articles</h2>
 
 			<div className={styles.posts}>
-				{data.map((item) => {
-					const { url, title, date, time, summary, tags, img, banner, description, readingTime } = item.frontMatter;
+				{data?.map((item) => {
+					const { url, title, date, banner, description, readingTime } = item.frontMatter;
 					return (
 						<PostCard title={title} subtitle={description} img={banner} url={url} key={url} time={readingTime} date={date} />
 					);
