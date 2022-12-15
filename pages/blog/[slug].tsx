@@ -73,7 +73,7 @@ export default function Post({
 
 			return () => cleanup.forEach((f) => f());
 		}
-	}, []);
+	}, [slug]);
 
 	if (!frontMatter) {
 		return (

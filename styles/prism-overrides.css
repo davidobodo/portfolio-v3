@@ -52,7 +52,8 @@
 }
 
 .prism-copy-button:hover {
-	background-color: var(--blog-accent);
+	background-color: var(--light-blue);
+	color: #000;
 }
 
 .prism-copy-button[disabled] {
