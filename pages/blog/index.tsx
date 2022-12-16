@@ -9,26 +9,6 @@ import { SearchIcon } from "#/components/icons";
 import { useState } from "react";
 import { TPostFrontMatter } from "#/types";
 export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter; slug: string }[] }) {
-	const { title, description, url, image } = METADATA["blog"];
-
-	// const TAGS = [
-	// 	"react",
-	// 	"testing",
-	// 	"javascript",
-	// 	"typescript",
-	// 	"next.js",
-	// 	"life",
-	// 	"random-thoughts",
-	// 	"ajax",
-	// 	"react-testing-library",
-	// 	"node",
-	// 	"express",
-	// 	"css",
-	// 	"html",
-	// 	"sass",
-	// 	"scss",
-	// ];
-
 	const latestPost = posts[0].frontMatter;
 	const remainingPosts = posts.slice(1);
 
@@ -47,6 +27,8 @@ export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter
 	} else {
 		displayedPosts = remainingPosts;
 	}
+
+	const { title, description, url, image } = METADATA["blog"];
 
 	const renderPosts = () => {
 		if (displayedPosts.length > 0) {
@@ -79,6 +61,8 @@ export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter
 			);
 		}
 	};
+
+	console.log(image, "TEH IMAGE");
 
 	return (
 		<div className={styles.wrapper}>
@@ -188,3 +172,21 @@ export const getStaticProps = async () => {
 		},
 	};
 };
+
+// const TAGS = [
+// 	"react",
+// 	"testing",
+// 	"javascript",
+// 	"typescript",
+// 	"next.js",
+// 	"life",
+// 	"random-thoughts",
+// 	"ajax",
+// 	"react-testing-library",
+// 	"node",
+// 	"express",
+// 	"css",
+// 	"html",
+// 	"sass",
+// 	"scss",
+// ];

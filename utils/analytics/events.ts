@@ -137,6 +137,39 @@ const events = {
 		notFound: {
 			remainLost: () => ({ label: "remain_lost" }),
 		},
+		blog: {
+			clickNavBlogLink: () => {
+				return {
+					label: "nav_blog_link",
+				};
+			},
+			clickNavPortfolioLink: () => {
+				return {
+					label: "nav_portfolio_link",
+				};
+			},
+			tweetBlogPost: ({ title, url }: { title: string; url: string }) => {
+				return {
+					label: "tweet_post",
+					parameters: {
+						blog_title: title,
+						blog_url: url,
+					},
+				};
+			},
+			discussBlogPost: ({ title, url }: { title: string; url: string }) => {
+				return {
+					label: "discuss_post",
+					parameters: {
+						blog_title: title,
+						blog_url: url,
+					},
+				};
+			},
+			clickFooterPortfolioLink: () => ({
+				label: "footer_portfolio_link",
+			}),
+		},
 	},
 };
 

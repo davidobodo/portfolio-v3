@@ -1,11 +1,44 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { events, registerEvent } from "#/utils/analytics/events";
 
 export default function BlogLayout({ children }: { children: JSX.Element }) {
 	const router = useRouter();
 
-	const handlePageGAEvents = () => {};
+	const handlePageGAEvents = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+		const { link } = e.currentTarget.dataset;
+		const { linkedin, twitter, resume, github, clickEmail } = events.shared.contactForm;
+		const { clickFooterPortfolioLink, clickNavBlogLink, clickNavPortfolioLink } = events.pages.blog;
+		switch (link) {
+			case "resume":
+				registerEvent(resume());
+				return;
+			case "linkedin":
+				registerEvent(linkedin());
+				return;
+			case "twitter":
+				registerEvent(twitter());
+				return;
+			case "github":
+				registerEvent(github());
+				return;
+			case "email":
+				registerEvent(clickEmail());
+				return;
+			case "clickFooterPortfolioLink":
+				registerEvent(clickFooterPortfolioLink());
+				return;
+			case "clickNavPortfolioLink":
+				registerEvent(clickNavPortfolioLink());
+				return;
+			case "clickNavBlogLink":
+				registerEvent(clickNavBlogLink());
+				return;
+			default:
+				return;
+		}
+	};
 	return (
 		<div className={styles.container}>
 			<div className={styles.radialGradient}></div>
@@ -34,12 +67,16 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 
 					<div className={styles.navlinks}>
 						<Link href="/blog" passHref>
-							<a className={router.pathname === "/blog" ? styles.active : ""}>
+							<a
+								className={router.pathname === "/blog" ? styles.active : ""}
+								onClick={handlePageGAEvents}
+								data-link="clickNavBlogLink"
+							>
 								Blog
 								<span></span>
 							</a>
 						</Link>
-						<Link href="/" passHref>
+						<Link href="/" passHref onClick={handlePageGAEvents} data-link="clickNavPortfolioLink">
 							<a>
 								Portolio
 								<span></span>
@@ -54,7 +91,7 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 					<ul>
 						<li>
 							<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
-								<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
+								<a target="_blank" onClick={handlePageGAEvents} data-link="clickFooterPortfolioLink">
 									<span>Portfolio</span>
 								</a>
 							</Link>

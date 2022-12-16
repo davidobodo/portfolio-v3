@@ -53,10 +53,10 @@ const metadata = {
 		}
 	},
 	blog: {
-		title: "David Obodo: Blog",
-		description: "404 Page not found  - Go Home ",
+		title: "The David Obodo Blog",
+		description: "Technical and Life articles written by David Obodo",
 		url: `${BASE_URL}/blog`,
-		image: `${BASE_URL}/images/covers/not-found.png`,
+		image: `${BASE_URL}/images/covers/blog.png`,
 	},
 };
 
