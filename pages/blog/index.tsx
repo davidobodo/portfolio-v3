@@ -6,14 +6,14 @@ import styles from "#/styles/_pages/blog.module.scss";
 import { METADATA } from "#/constants";
 import { PostCard, SeriesCard, Layout, MyInformation } from "#/components";
 import { SearchIcon } from "#/components/icons";
-import { useState } from "react";
+import React, { useState } from "react";
 import { TPostFrontMatter } from "#/types";
 export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter; slug: string }[] }) {
 	const latestPost = posts[0].frontMatter;
 	const remainingPosts = posts.slice(1);
 
 	const [searchFilter, setSearchFilter] = useState("");
-	const onChange = (e) => {
+	const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchFilter(e.target.value);
 	};
 
@@ -61,8 +61,6 @@ export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter
 			);
 		}
 	};
-
-	console.log(image, "TEH IMAGE");
 
 	return (
 		<div className={styles.wrapper}>

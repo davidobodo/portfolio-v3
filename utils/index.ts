@@ -97,10 +97,12 @@ function highlightCode(pre: Element, highlightRanges: string, lineNumberRowsCont
 	const preWidth = pre.scrollWidth;
 
 	for (const range of ranges) {
-		let [start, end] = range.split("-");
+		const split = range.split("-");
+		let start = parseInt(split[0]);
+		let end = parseInt(split[1]);
 		if (!start || !end) {
-			start = range;
-			end = range;
+			start = parseInt(range);
+			end = parseInt(range);
 		}
 
 		for (let i = start; i <= end; i++) {

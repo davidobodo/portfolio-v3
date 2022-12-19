@@ -4,12 +4,12 @@ import matter from "gray-matter";
 import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { BASE_URL } from "#/constants";
 
 import { serialize } from "next-mdx-remote/serialize";
 import { BlogView } from "#/components";
 import { TPostFrontMatter, TMdxSource } from "#/types";
 import Head from "next/head";
-import { BASE_URL } from "#/constants";
 export default function Post({
 	frontMatter,
 	mdxSource,
@@ -86,7 +86,7 @@ export async function getStaticPaths() {
 
 	return {
 		paths,
-		fallback: true,
+		fallback: false,
 	};
 }
 

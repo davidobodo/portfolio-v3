@@ -20,9 +20,9 @@ export default function MyInformation() {
 				<div>
 					<p>David Obodo is a Fullstack developer, with main focus on Frontend development.</p>
 					<p>
-						David's articles are "inspired" by times he{" "}
+						David&apos;s articles are &apos;inspired&apos; by times he{" "}
 						<span>found a simpler way to understand a concept or implement a feature</span> and when he{" "}
-						<span>had a thought to share</span> (well who doesn't every once in a while).
+						<span>had a thought to share</span> (well who doesn&apos;t every once in a while).
 					</p>
 					<p>
 						David writes because <span>teaching is the best way to solidify his own knowledge</span> and to also{" "}

@@ -92,7 +92,7 @@ export default function BlogView({
 					<div className={styles.notFound}>
 						<h1>
 							404 <br />
-							<span>"/blog/{slug}"</span> is not a page on davidobodo.com. <br /> So sorry
+							<span>&apos;/blog/{slug}&apos;</span> is not a page on davidobodo.com. <br /> So sorry
 						</h1>
 
 						<h2>Looking for something to read?</h2>
