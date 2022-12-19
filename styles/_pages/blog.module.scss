@@ -90,9 +90,9 @@
 		margin-bottom: 10rem;
 
 		.cardsWrapper {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 4rem;
+			display: grid;
+			grid-gap: 4rem;
+			grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
 		}
 
 		.noResults {

@@ -110,13 +110,13 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 								</a>
 							</Link>
 						</li>
-						<li>
+						{/* <li>
 							<Link href="https://blog.davidobodo.com" passHref>
 								<a target="_blank" onClick={handlePageGAEvents} data-link="blog">
 									<span>Blog</span>
 								</a>
 							</Link>
-						</li>
+						</li> */}
 						<li>
 							<Link href="https://twitter.com/phitGeek" passHref>
 								<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">

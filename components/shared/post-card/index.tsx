@@ -28,10 +28,7 @@ export default function PostCard({
 	return (
 		<Link href={url} passHref>
 			<a className={styles.container} target={isExternal ? "_blank" : "_self"}>
-				<div
-					className={styles.image}
-					style={{ backgroundImage: `url(${img})`, backgroundColor: color, borderColor: color }}
-				>
+				<div className={styles.image} style={{ backgroundImage: `url(${img})` }}>
 					{/* {img && <Image src={img} layout="fill" objectFit="contain" />} */}
 				</div>
 				<h3>{title}</h3>

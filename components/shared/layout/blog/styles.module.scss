@@ -110,6 +110,11 @@
 						text-transform: uppercase;
 						color: rgba(255, 255, 255, 0.5);
 						font-size: 1.6rem;
+
+						&:hover {
+							color: var(--white);
+							text-decoration: underline;
+						}
 					}
 				}
 			}

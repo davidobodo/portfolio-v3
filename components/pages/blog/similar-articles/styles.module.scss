@@ -15,9 +15,5 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
 		gap: 4rem;
-		display: flex;
-		gap: 4rem;
-		justify-content: center;
-		flex-wrap: wrap;
 	}
 }

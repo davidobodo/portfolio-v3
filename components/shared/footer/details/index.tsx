@@ -43,12 +43,19 @@ export function Details({
 								</li>
 								<li className={styles.line}></li>
 								<li>
+									<Link href="/blog">
+										<a>
+											<span>Blog </span>
+										</a>
+									</Link>
+								</li>
+								{/* <li>
 									<Link href="/letters">
 										<a>
 											<span>Letters </span>
 										</a>
 									</Link>
-								</li>
+								</li> */}
 							</ul>
 						</div>
 						<div className={styles.helpfulLinks}>
@@ -94,13 +101,13 @@ export function Details({
 							</a>
 						</Link>
 					</li>
-					<li>
+					{/* <li>
 						<Link href="https://blog.davidobodo.com" passHref>
 							<a target="_blank" onClick={handlePageGAEvents} data-link="blog">
 								<span>Blog</span>
 							</a>
 						</Link>
-					</li>
+					</li> */}
 					<li>
 						<Link href="https://twitter.com/phitGeek" passHref>
 							<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
