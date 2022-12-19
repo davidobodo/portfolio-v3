@@ -76,8 +76,8 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 								<span></span>
 							</a>
 						</Link>
-						<Link href="/" passHref onClick={handlePageGAEvents} data-link="clickNavPortfolioLink">
-							<a>
+						<Link href="/" passHref>
+							<a onClick={handlePageGAEvents} data-link="clickNavPortfolioLink">
 								Portolio
 								<span></span>
 							</a>

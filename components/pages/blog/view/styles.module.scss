@@ -85,6 +85,15 @@
 	//------------------------------------------
 	//GLOBAL
 	//------------------------------------------
+	a {
+		text-decoration: none;
+		color: var(--light-blue);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
 	h1 {
 		font-size: 3.6rem;
 
@@ -127,6 +136,7 @@
 	h4 {
 		a {
 			position: relative;
+			color: var(--white);
 
 			&:hover {
 				text-decoration: none;
@@ -179,6 +189,13 @@
 			margin: 0.8rem 0px;
 			padding-left: 0.8rem;
 
+			code {
+				background-color: #1a202c;
+				color: var(--white);
+				padding: 0.2rem 0.8rem;
+				border-radius: 2px;
+			}
+
 			@media (min-width: $md) {
 				font-size: 1.8rem;
 			}
@@ -195,15 +212,6 @@
 
 	img {
 		width: 100%;
-	}
-
-	a {
-		color: var(--white);
-		text-decoration: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 
 	b {
@@ -229,6 +237,10 @@
 				font-size: 1.8rem;
 			}
 		}
+	}
+
+	strong {
+		font-family: "sf-pro-bold";
 	}
 
 	.postContentWrapper {

@@ -16,7 +16,7 @@
 		background-position: center;
 		overflow: hidden;
 		border: 1px solid transparent;
-		transition: border 0.2s ease-in-out;
+		transition: border 0.1s ease-in-out;
 	}
 
 	h3 {
@@ -51,17 +51,17 @@
 	}
 
 	&:hover {
-		color: var(--light-blue);
-		.image {
-			border: 2px solid var(--light-blue);
-		}
+		// color: var(--light-blue);
+		// .image {
+		// 	border: 2px solid var(--light-blue);
+		// }
 
-		.time {
-			color: var(--light-blue);
+		// .time {
+		// 	color: var(--light-blue);
 
-			.line {
-				background-color: var(--light-blue);
-			}
-		}
+		// 	.line {
+		// 		background-color: var(--light-blue);
+		// 	}
+		// }
 	}
 }

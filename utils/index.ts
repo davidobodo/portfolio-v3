@@ -85,25 +85,10 @@ function allowAppScroll() {
 	document.body.style.overflow = "auto";
 }
 
-//TODO: How am i clearing the timeout
-function createCopyButton(codeEl: Element) {
+function createCopyButton() {
 	const button = document.createElement("button");
 	button.classList.add("prism-copy-button");
 	button.textContent = "Copy";
-
-	button.addEventListener("click", () => {
-		if (button.textContent === "Copied") {
-			return;
-		}
-		navigator.clipboard.writeText(codeEl.textContent || "");
-		button.textContent = "Copied";
-		button.disabled = true;
-		setTimeout(() => {
-			button.textContent = "Copy";
-			button.disabled = false;
-		}, 3000);
-	});
-
 	return button;
 }
 

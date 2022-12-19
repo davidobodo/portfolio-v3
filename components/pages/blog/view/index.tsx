@@ -46,7 +46,21 @@ export default function BlogView({
 				}
 
 				//Add a copy button to this code block
-				const copyButton = createCopyButton(code);
+				const copyButton = createCopyButton();
+
+				copyButton.addEventListener("click", () => {
+					if (copyButton.textContent === "Copied") {
+						return;
+					}
+					navigator.clipboard.writeText(code.textContent || "");
+					copyButton.textContent = "Copied";
+					copyButton.disabled = true;
+					setTimeout(() => {
+						copyButton.textContent = "Copy";
+						copyButton.disabled = false;
+					}, 3000);
+				});
+
 				pre?.parentElement?.appendChild(copyButton);
 
 				//Add highlighting
@@ -64,7 +78,9 @@ export default function BlogView({
 				cleanup.push(() => ro.disconnect());
 			}
 
-			return () => cleanup.forEach((f) => f());
+			return () => {
+				cleanup.forEach((f) => f());
+			};
 		}
 	}, [slug]);
 
