@@ -90,7 +90,7 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 				<footer className={styles.footer}>
 					<ul>
 						<li>
-							<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
+							<Link href="/" passHref>
 								<a target="_blank" onClick={handlePageGAEvents} data-link="clickFooterPortfolioLink">
 									<span>Portfolio</span>
 								</a>

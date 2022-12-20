@@ -44,13 +44,13 @@ import { CodeTitle, Center } from "#/components";
 
 ### What we need
 
-The purpose of writing tests is to ensure that our application is functioning exactly how we want it to without any errors.
+The purpose of writing tests is to ensure that our application is functioning exactly how we want it to, without any errors.
 
-However, after writing tests, how can we know if the amount of tests we have written are enough to cover all important places in our application ?
+However, after writing tests, how can we know if the written tests are enough to cover all important places in our application ?
 
 Say hello to `Jest "collect coverage"`.
 
-With the "collect coverage" option provided by jest, we can easily know how much of our code has been tested and how much of our code is left to test.
+With the `collectCoverage` option provided by jest, we can easily know how much of our code has been tested and how much of our code is left to test.
 
 ### Setting the coverage option
 
@@ -85,7 +85,7 @@ Sweet right 😅?
 
 ### Viewing the coverage data
 
-That's not all, If you look at the root folder of your application, you would see that a "supposed hidden" folder named `coverage` has been created for you.
+That's not all; If you look at the root folder of your application, you would see that a supposed "hidden" folder named `coverage` has been created for you.
 
 Go into the folder, then into `icov-report` folder, open the `index.html` file in the browser.
 
@@ -122,9 +122,9 @@ Since our `index.tsx` is our main home feed page let's go into it. But before go
 
 <img src="/images/posts/test-coverage/coverage-home-page.png" />
 
-Straight up we can see the reason why none of the scores for our `index` file is 100% in any of the four criteria (i.e statements, branches, functions and lines).
+Straight up, we can see the reason why none of the scores for our `index` file is 100% in any of the four criteria (i.e statements, branches, functions and lines).
 
-The "red" highlighting is shows us, places of our code that were never tested. With this information, we know that we need to write tests for when our network request fails, (i.e line 39 in the image above) and for when a user tries to create a post and there is no text in the inputValue.
+The "red" highlighting shows us places of our code that were never tested. With this information, we know that we need to write tests for when our network request fails, (i.e line 39 in the image above) and for when a user tries to create a post and there is no text in the inputValue.
 
 See the easy way `collectCoverage` made us know what was left out.
 
@@ -217,6 +217,6 @@ We have successfully learnt how to:
 - use `collectCoverageFrom` to determine parts of our application to cover
 - and finally how to use `coverageThreshold` to specify how much of our applcication must be tested.
 
-I hope you do use this knowledge to write robust tests that cover the entirety of your application as you want.
+I hope you use this knowledge to write robust tests that cover the entirety of your application as you want.
 
 Thank you
