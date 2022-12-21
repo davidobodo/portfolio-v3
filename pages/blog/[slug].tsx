@@ -26,9 +26,9 @@ export default function Post({
 }) {
 	const seo = {
 		title: frontMatter?.title || "The David Obodo Blog",
-		url: frontMatter?.url ? `${BASE_URL}/${frontMatter?.url}` : `${BASE_URL}/blog`,
+		url: frontMatter?.url ? `${BASE_URL}${frontMatter?.url}` : `${BASE_URL}/blog`,
 		description: frontMatter?.description || "Technical and Life articles written by David Obodo",
-		image: frontMatter?.banner || `${BASE_URL}/images/covers/blog.png`,
+		image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
 	};
 	return (
 		<>
