@@ -30,6 +30,7 @@ export default function Post({
 		description: frontMatter?.description || "Technical and Life articles written by David Obodo",
 		image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
 	};
+
 	return (
 		<>
 			<Head>
@@ -65,6 +66,7 @@ export default function Post({
 
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+
 			<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
 		</>
 	);
@@ -86,7 +88,7 @@ export async function getStaticPaths() {
 
 	return {
 		paths,
-		fallback: true,
+		fallback: "blocking",
 	};
 }
 
