@@ -69,7 +69,11 @@ export default function Post({
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
+			{!slug ? (
+				<div>Loading...</div>
+			) : (
+				<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
+			)}
 		</>
 	);
 }
@@ -90,7 +94,7 @@ export async function getStaticPaths() {
 
 	return {
 		paths,
-		fallback: "blocking",
+		fallback: true,
 	};
 }
 
