@@ -31,6 +31,8 @@ export default function Post({
 		image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
 	};
 
+	console.log(slug, "SLUG IN CLIENT");
+
 	return (
 		<>
 			<Head>
@@ -121,8 +123,12 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 		return item.slug === slug;
 	});
 
+	console.log(postExists, "POST EXISTS");
+
 	//Doesn't exist, so return
 	if (!postExists) {
+		console.log("POST DOESNT EXIST SO RETURNING BEFORE TRYING TO READ FILE ASYNC");
+
 		return {
 			props: {
 				frontMatter: null,
@@ -167,6 +173,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 			},
 		};
 	} catch (e) {
+		console.log(e, "=======INSIDE THE SERVER CATCH");
 		return {
 			props: {
 				frontMatter: null,
