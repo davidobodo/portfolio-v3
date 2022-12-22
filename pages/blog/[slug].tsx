@@ -7,7 +7,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BASE_URL } from "#/constants";
 
 import { serialize } from "next-mdx-remote/serialize";
-import { BlogView } from "#/components";
+import { BlogView, ErrorBoundary } from "#/components";
 import { TPostFrontMatter, TMdxSource } from "#/types";
 import Head from "next/head";
 export default function Post({
@@ -35,45 +35,47 @@ export default function Post({
 
 	return (
 		<>
-			<Head>
-				<title>{seo.title}</title>
-				<meta charSet="utf-8" />
-				<meta property="type" content="website" />
-				<meta property="url" content={seo.url} />
-				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-				<meta name="theme-color" content="#e1dfdd" />
+			<ErrorBoundary>
+				<Head>
+					<title>{seo.title}</title>
+					<meta charSet="utf-8" />
+					<meta property="type" content="website" />
+					<meta property="url" content={seo.url} />
+					<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+					<meta name="theme-color" content="#e1dfdd" />
 
-				<meta property="title" content={seo.title} />
-				<meta name="description" content={seo.description} />
-				<meta property="image" content={seo.image} />
-				<meta content="image/*" property="og:image:type" />
+					<meta property="title" content={seo.title} />
+					<meta name="description" content={seo.description} />
+					<meta property="image" content={seo.image} />
+					<meta content="image/*" property="og:image:type" />
 
-				<meta property="og:type" content="website" />
-				<meta property="og:title" content={seo.title} />
-				<meta property="og:description" content={seo.description} />
-				<meta property="og:url" content={seo.url} />
-				<meta property="og:image" content={seo.image} />
-				<meta property="og:site_name" content={seo.title} />
+					<meta property="og:type" content="website" />
+					<meta property="og:title" content={seo.title} />
+					<meta property="og:description" content={seo.description} />
+					<meta property="og:url" content={seo.url} />
+					<meta property="og:image" content={seo.image} />
+					<meta property="og:site_name" content={seo.title} />
 
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:site" content="@phitGeek" />
-				<meta name="twitter:title" content={seo.title} />
-				<meta name="twitter:description" content={seo.description} />
-				<meta name="twitter:image" content={seo.image} />
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:site" content="@phitGeek" />
+					<meta name="twitter:title" content={seo.title} />
+					<meta name="twitter:description" content={seo.description} />
+					<meta name="twitter:image" content={seo.image} />
 
-				<meta
-					name="keywords"
-					content="David, Obodo, Software Developer, Frontend, Fullstack, Frontend Developer, Fullstack Developer"
-				/>
+					<meta
+						name="keywords"
+						content="David, Obodo, Software Developer, Frontend, Fullstack, Frontend Developer, Fullstack Developer"
+					/>
 
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+					<link rel="icon" href="/favicon.ico" />
+				</Head>
 
-			{!slug ? (
-				<div>Loading...</div>
-			) : (
-				<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
-			)}
+				{!slug ? (
+					<div>Loading...</div>
+				) : (
+					<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
+				)}
+			</ErrorBoundary>
 		</>
 	);
 }

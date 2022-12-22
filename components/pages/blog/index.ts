@@ -6,6 +6,7 @@ import MyInformation from "./my-information";
 import ShareArticle from "./share-article";
 import TopProgress from "./top-progress";
 import BlogView from "./view";
+import ErrorBoundary from "./error-boundary";
 const Blog = {
 	Highlight,
 	CodeTitle,
@@ -15,6 +16,7 @@ const Blog = {
 	ShareArticle,
 	TopProgress,
 	BlogView,
+	ErrorBoundary,
 };
 
 export default Blog;
