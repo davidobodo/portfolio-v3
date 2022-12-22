@@ -173,6 +173,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 			},
 		};
 	} catch (e) {
+		return {
+			notFound: true,
+		};
 		console.log(e, "=======INSIDE THE SERVER CATCH");
 		return {
 			props: {
