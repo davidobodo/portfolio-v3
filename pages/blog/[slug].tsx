@@ -126,64 +126,64 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 	console.log(postExists, "POST EXISTS");
 
 	//Doesn't exist, so return
-	if (!postExists) {
-		console.log("POST DOESNT EXIST SO RETURNING BEFORE TRYING TO READ FILE ASYNC");
+	// if (!postExists) {
+	console.log("POST DOESNT EXIST SO RETURNING BEFORE TRYING TO READ FILE ASYNC");
 
-		return {
-			props: {
-				frontMatter: null,
-				slug,
-				mdxSource: null,
-				similarPosts: allPosts.slice(0, 3),
-			},
-		};
-	}
+	return {
+		props: {
+			frontMatter: null,
+			slug,
+			mdxSource: null,
+			similarPosts: allPosts.slice(0, 3),
+		},
+	};
+	// }
 
-	try {
-		//Get post details
-		const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
-		const { data: frontMatter, content } = matter(markdownWithMeta);
-		const mdxSource = await serialize(content, {
-			mdxOptions: {
-				rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
-				remarkPlugins: [
-					[
-						remarkPrism,
-						{
-							plugins: ["line-numbers"],
-						},
-					],
-				],
-			},
-		});
+	// try {
+	// 	//Get post details
+	// 	const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
+	// 	const { data: frontMatter, content } = matter(markdownWithMeta);
+	// 	const mdxSource = await serialize(content, {
+	// 		mdxOptions: {
+	// 			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
+	// 			remarkPlugins: [
+	// 				[
+	// 					remarkPrism,
+	// 					{
+	// 						plugins: ["line-numbers"],
+	// 					},
+	// 				],
+	// 			],
+	// 		},
+	// 	});
 
-		const similarPosts = allPosts
-			.filter((post) => {
-				const { tags, title } = post.frontMatter as TPostFrontMatter;
-				return tags.some((tag) => frontMatter.tags.includes(tag)) && frontMatter.title !== title;
-			})
-			.slice(0, 3);
+	// 	const similarPosts = allPosts
+	// 		.filter((post) => {
+	// 			const { tags, title } = post.frontMatter as TPostFrontMatter;
+	// 			return tags.some((tag) => frontMatter.tags.includes(tag)) && frontMatter.title !== title;
+	// 		})
+	// 		.slice(0, 3);
 
-		return {
-			props: {
-				frontMatter,
-				slug,
-				mdxSource,
-				similarPosts,
-			},
-		};
-	} catch (e) {
-		return {
-			notFound: true,
-		};
-		console.log(e, "=======INSIDE THE SERVER CATCH");
-		return {
-			props: {
-				frontMatter: null,
-				slug,
-				mdxSource: null,
-				similarPosts: allPosts.slice(0, 3),
-			},
-		};
-	}
+	// 	return {
+	// 		props: {
+	// 			frontMatter,
+	// 			slug,
+	// 			mdxSource,
+	// 			similarPosts,
+	// 		},
+	// 	};
+	// } catch (e) {
+	// 	return {
+	// 		notFound: true,
+	// 	};
+	// 	console.log(e, "=======INSIDE THE SERVER CATCH");
+	// 	return {
+	// 		props: {
+	// 			frontMatter: null,
+	// 			slug,
+	// 			mdxSource: null,
+	// 			similarPosts: allPosts.slice(0, 3),
+	// 		},
+	// 	};
+	// }
 }
