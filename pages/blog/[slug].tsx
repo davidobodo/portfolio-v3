@@ -98,9 +98,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 
-	//Get similar posts
+	//Get Files
 	const files = fs.readdirSync(path.join("posts"));
 
+	//Get file details
 	const allPosts = files
 		.map((filename) => {
 			const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
@@ -114,6 +115,23 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 		.sort((a, b) => {
 			return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
 		});
+
+	//Check if the post we are searching for exists
+	const postExists = allPosts.find((item) => {
+		return item.slug === slug;
+	});
+
+	//Doesn't exist, so return
+	if (!postExists) {
+		return {
+			props: {
+				frontMatter: null,
+				slug,
+				mdxSource: null,
+				similarPosts: allPosts.slice(0, 3),
+			},
+		};
+	}
 
 	try {
 		//Get post details
