@@ -5,7 +5,7 @@
 	text-decoration: none;
 
 	.image {
-		background-color: var(--ash);
+		background-color: #232323;
 		height: 190px;
 		margin-bottom: 2rem;
 		border-radius: 1rem;
@@ -54,7 +54,6 @@
 		color: var(--ash);
 
 		.line {
-			background-color: var(--ash);
 			width: 20px;
 			height: 2px;
 			background-color: var(--ash);
@@ -102,29 +101,74 @@
 	&:hover {
 		&:nth-child(5n) {
 			.image {
-				border-color: purple;
+				border-color: #e48be4;
+			}
+
+			color: #e48be4;
+
+			.time {
+				color: #e48be4;
+				.line {
+					background-color: #e48be4;
+				}
 			}
 		}
 
 		&:nth-child(5n - 1) {
 			.image {
-				border-color: green;
+				border-color: #73eb73;
+			}
+
+			color: #73eb73;
+
+			.time {
+				color: #73eb73;
+				.line {
+					background-color: #73eb73;
+				}
 			}
 		}
 
 		&:nth-child(5n - 2) {
 			.image {
-				border-color: #ffd644;
+				border-color: var(--light-blue);
+			}
+
+			color: var(--light-blue);
+
+			.time {
+				color: var(--light-blue);
+				.line {
+					background-color: var(--light-blue);
+				}
 			}
 		}
 		&:nth-child(5n - 3) {
 			.image {
 				border-color: orange;
 			}
+
+			color: orange;
+
+			.time {
+				color: orange;
+				.line {
+					background-color: orange;
+				}
+			}
 		}
 		&:nth-child(5n - 4) {
 			.image {
-				border-color: #4b96ff;
+				border-color: #ffd644;
+			}
+
+			color: #ffd644;
+
+			.time {
+				color: #ffd644;
+				.line {
+					background-color: #ffd644;
+				}
 			}
 		}
 	}
