@@ -84,6 +84,8 @@ export default function BlogView({
 		}
 	}, [slug]);
 
+	console.log(frontMatter, "teh frontmatter");
+
 	if (!frontMatter) {
 		return (
 			<Layout.BlogLayout>

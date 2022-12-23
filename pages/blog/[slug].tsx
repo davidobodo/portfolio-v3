@@ -10,6 +10,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { BlogView, ErrorBoundary } from "#/components";
 import { TPostFrontMatter, TMdxSource } from "#/types";
 import Head from "next/head";
+import { getPostFromSlug, getSlugs } from "#/utils/blog";
 export default function Post({
 	frontMatter,
 	mdxSource,
@@ -34,7 +35,7 @@ export default function Post({
 	// };
 
 	console.log(slug, "SLUG IN CLIENT");
-	console.log(data, "THE DATA ========");
+	console.log(data, frontMatter, "THE DATA ========");
 
 	return (
 		<>
@@ -76,13 +77,10 @@ export default function Post({
 				<div style={{ backgroundColor: "white", height: "50vh", color: "black" }}>
 					<h1>THIS IS THE PAGE</h1>
 					<div>{data?.title}</div>
+					<div>{frontMatter?.title}</div>
 				</div>
 
-				{/* {!slug ? (
-					<div>Loading...</div>
-				) : (
-					<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
-				)} */}
+				<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
 			</ErrorBoundary>
 		</>
 	);
@@ -92,30 +90,14 @@ export default function Post({
 // GET STATIC PATHS
 //------------------------------------------------
 export async function getStaticPaths() {
-	const paths = LETTERS.map((filename) => {
-		return {
-			params: {
-				slug: filename.url,
-			},
-		};
-	});
+	const paths = getSlugs().map((slug) => ({ params: { slug } }));
+
+	console.log(paths, "TEH PATHS");
 
 	return {
 		paths,
 		fallback: "blocking",
 	};
-	// const paths = files.map((filename) => {
-	// 	return {
-	// 		params: {
-	// 			slug: filename.replace(".mdx", ""),
-	// 		},
-	// 	};
-	// });
-
-	// return {
-	// 	paths,
-	// 	fallback: true,
-	// };
 }
 
 //------------------------------------------------
@@ -123,16 +105,37 @@ export async function getStaticPaths() {
 //------------------------------------------------
 export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
+	const { content, meta } = getPostFromSlug(slug);
 
-	const file = LETTERS.find((item) => item.link === slug);
+	console.log(meta, "THE META");
+	if (!meta) {
+		return {
+			props: {
+				mdxSource: null,
+				frontMatter: null,
+				slug,
+				similarPosts: [],
+			},
+		};
+	}
 
-	return {
-		props: {
-			slug,
-			data: file || null,
+	const mdxSource = await serialize(content, {
+		mdxOptions: {
+			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
+			remarkPlugins: [
+				[
+					remarkPrism,
+					{
+						plugins: ["line-numbers"],
+					},
+				],
+			],
 		},
-	};
+	});
 
+	console.log(slug, meta, "TEH SLUG");
+
+	return { props: { mdxSource, frontMatter: meta, slug, similarPosts: [] } };
 	// //Get Files
 	// const files = fs.readdirSync(path.join("posts"));
 
