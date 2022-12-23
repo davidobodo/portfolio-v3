@@ -2,6 +2,7 @@ import path from "path";
 import fs from "fs";
 import { sync } from "glob";
 import matter from "gray-matter";
+import { TPostFrontMatter } from "#/types";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 
@@ -33,7 +34,7 @@ export const getAllPosts = () => {
 
 interface Post {
 	content: string;
-	meta: PostMeta | null;
+	meta: TPostFrontMatter | null;
 }
 
 export interface PostMeta {
@@ -46,24 +47,25 @@ export interface PostMeta {
 
 export const getPostFromSlug = (slug: string): Post => {
 	const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
-	console.log(postPath, "THE POST PATH");
 	try {
 		const source = fs.readFileSync(postPath);
-		console.log(source, "====THE SOURCE TO BE ANALYZED");
 		const { content, data } = matter(source);
 
 		return {
 			content,
 			meta: {
-				slug,
-				excerpt: data.excerpt ?? "",
-				title: data.title ?? slug,
-				tags: (data.tags ?? []).sort(),
-				date: (data.date ?? new Date()).toString(),
+				banner: data.banner ?? null,
+				bannerAlt: data.bannerAlt ?? null,
+				date: data.date ?? null,
+				description: data.description ?? null,
+				longDescription: data.longDescription ?? null,
+				readingTime: data.readingTime ?? null,
+				tags: data.tags ?? null,
+				title: data.title ?? null,
+				url: data.url ?? null,
 			},
 		};
 	} catch (e) {
-		console.log(e, "THE ERROR GOTTEN HERE");
 		return {
 			content: "",
 			meta: null,

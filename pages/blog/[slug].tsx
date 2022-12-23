@@ -27,20 +27,17 @@ export default function Post({
 	slug: string;
 	data: any;
 }) {
-	// const seo = {
-	// 	title: frontMatter?.title || "The David Obodo Blog",
-	// 	url: frontMatter?.url ? `${BASE_URL}${frontMatter?.url}` : `${BASE_URL}/blog`,
-	// 	description: frontMatter?.description || "Technical and Life articles written by David Obodo",
-	// 	image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
-	// };
-
-	console.log(slug, "SLUG IN CLIENT");
-	console.log(data, frontMatter, "THE DATA ========");
+	const seo = {
+		title: frontMatter?.title || "The David Obodo Blog",
+		url: frontMatter?.url ? `${BASE_URL}${frontMatter?.url}` : `${BASE_URL}/blog`,
+		description: frontMatter?.description || "Technical and Life articles written by David Obodo",
+		image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
+	};
 
 	return (
 		<>
 			<ErrorBoundary>
-				{/* <Head>
+				<Head>
 					<title>{seo.title}</title>
 					<meta charSet="utf-8" />
 					<meta property="type" content="website" />
@@ -72,13 +69,7 @@ export default function Post({
 					/>
 
 					<link rel="icon" href="/favicon.ico" />
-				</Head> */}
-
-				<div style={{ backgroundColor: "white", height: "50vh", color: "black" }}>
-					<h1>THIS IS THE PAGE</h1>
-					<div>{data?.title}</div>
-					<div>{frontMatter?.title}</div>
-				</div>
+				</Head>
 
 				<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
 			</ErrorBoundary>
@@ -91,8 +82,6 @@ export default function Post({
 //------------------------------------------------
 export async function getStaticPaths() {
 	const paths = getSlugs().map((slug) => ({ params: { slug } }));
-
-	console.log(paths, "TEH PATHS");
 
 	return {
 		paths,
@@ -107,7 +96,6 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 	const { content, meta } = getPostFromSlug(slug);
 
-	console.log(meta, "THE META");
 	if (!meta) {
 		return {
 			props: {
@@ -133,93 +121,5 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 		},
 	});
 
-	console.log(slug, meta, "TEH SLUG");
-
 	return { props: { mdxSource, frontMatter: meta, slug, similarPosts: [] } };
-	// //Get Files
-	// const files = fs.readdirSync(path.join("posts"));
-
-	// //Get file details
-	// const allPosts = files
-	// 	.map((filename) => {
-	// 		const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
-	// 		const { data: frontMatter } = matter(markdownWithMeta);
-
-	// 		return {
-	// 			frontMatter,
-	// 			slug: filename.split(".")[0],
-	// 		};
-	// 	})
-	// 	.sort((a, b) => {
-	// 		return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
-	// 	});
-
-	// //Check if the post we are searching for exists
-	// const postExists = allPosts.find((item) => {
-	// 	return item.slug === slug;
-	// });
-
-	// console.log(postExists, "POST EXISTS");
-
-	// //Doesn't exist, so return
-	// // if (!postExists) {
-	// console.log("POST DOESNT EXIST SO RETURNING BEFORE TRYING TO READ FILE ASYNC");
-
-	// return {
-	// 	props: {
-	// 		frontMatter: null,
-	// 		slug,
-	// 		mdxSource: null,
-	// 		similarPosts: allPosts.slice(0, 3),
-	// 	},
-	// };
-	// }
-
-	// try {
-	// 	//Get post details
-	// 	const markdownWithMeta = fs.readFileSync(path.join("posts", slug + ".mdx"), "utf-8");
-	// 	const { data: frontMatter, content } = matter(markdownWithMeta);
-	// 	const mdxSource = await serialize(content, {
-	// 		mdxOptions: {
-	// 			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
-	// 			remarkPlugins: [
-	// 				[
-	// 					remarkPrism,
-	// 					{
-	// 						plugins: ["line-numbers"],
-	// 					},
-	// 				],
-	// 			],
-	// 		},
-	// 	});
-
-	// 	const similarPosts = allPosts
-	// 		.filter((post) => {
-	// 			const { tags, title } = post.frontMatter as TPostFrontMatter;
-	// 			return tags.some((tag) => frontMatter.tags.includes(tag)) && frontMatter.title !== title;
-	// 		})
-	// 		.slice(0, 3);
-
-	// 	return {
-	// 		props: {
-	// 			frontMatter,
-	// 			slug,
-	// 			mdxSource,
-	// 			similarPosts,
-	// 		},
-	// 	};
-	// } catch (e) {
-	// 	return {
-	// 		notFound: true,
-	// 	};
-	// 	console.log(e, "=======INSIDE THE SERVER CATCH");
-	// 	return {
-	// 		props: {
-	// 			frontMatter: null,
-	// 			slug,
-	// 			mdxSource: null,
-	// 			similarPosts: allPosts.slice(0, 3),
-	// 		},
-	// 	};
-	// }
 }
