@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { BASE_URL } from "#/constants";
+import { BASE_URL, LETTERS } from "#/constants";
 
 import { serialize } from "next-mdx-remote/serialize";
 import { BlogView, ErrorBoundary } from "#/components";
@@ -15,6 +15,7 @@ export default function Post({
 	mdxSource,
 	similarPosts,
 	slug,
+	data,
 }: {
 	frontMatter: TPostFrontMatter;
 	mdxSource: TMdxSource;
@@ -23,20 +24,22 @@ export default function Post({
 		slug: string;
 	}[];
 	slug: string;
+	data: any;
 }) {
-	const seo = {
-		title: frontMatter?.title || "The David Obodo Blog",
-		url: frontMatter?.url ? `${BASE_URL}${frontMatter?.url}` : `${BASE_URL}/blog`,
-		description: frontMatter?.description || "Technical and Life articles written by David Obodo",
-		image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
-	};
+	// const seo = {
+	// 	title: frontMatter?.title || "The David Obodo Blog",
+	// 	url: frontMatter?.url ? `${BASE_URL}${frontMatter?.url}` : `${BASE_URL}/blog`,
+	// 	description: frontMatter?.description || "Technical and Life articles written by David Obodo",
+	// 	image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
+	// };
 
 	console.log(slug, "SLUG IN CLIENT");
+	console.log(data, "THE DATA ========");
 
 	return (
 		<>
 			<ErrorBoundary>
-				<Head>
+				{/* <Head>
 					<title>{seo.title}</title>
 					<meta charSet="utf-8" />
 					<meta property="type" content="website" />
@@ -68,13 +71,18 @@ export default function Post({
 					/>
 
 					<link rel="icon" href="/favicon.ico" />
-				</Head>
+				</Head> */}
 
-				{!slug ? (
+				<div style={{ backgroundColor: "white", height: "50vh", color: "black" }}>
+					<h1>THIS IS THE PAGE</h1>
+					<div>{data?.title}</div>
+				</div>
+
+				{/* {!slug ? (
 					<div>Loading...</div>
 				) : (
 					<BlogView slug={slug} frontMatter={frontMatter} similarPosts={similarPosts} mdxSource={mdxSource} />
-				)}
+				)} */}
 			</ErrorBoundary>
 		</>
 	);
@@ -84,20 +92,30 @@ export default function Post({
 // GET STATIC PATHS
 //------------------------------------------------
 export async function getStaticPaths() {
-	const files = fs.readdirSync(path.join("posts"));
-
-	const paths = files.map((filename) => {
+	const paths = LETTERS.map((filename) => {
 		return {
 			params: {
-				slug: filename.replace(".mdx", ""),
+				slug: filename.url,
 			},
 		};
 	});
 
 	return {
 		paths,
-		fallback: true,
+		fallback: "blocking",
 	};
+	// const paths = files.map((filename) => {
+	// 	return {
+	// 		params: {
+	// 			slug: filename.replace(".mdx", ""),
+	// 		},
+	// 	};
+	// });
+
+	// return {
+	// 	paths,
+	// 	fallback: true,
+	// };
 }
 
 //------------------------------------------------
@@ -106,43 +124,52 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 
-	//Get Files
-	const files = fs.readdirSync(path.join("posts"));
-
-	//Get file details
-	const allPosts = files
-		.map((filename) => {
-			const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
-			const { data: frontMatter } = matter(markdownWithMeta);
-
-			return {
-				frontMatter,
-				slug: filename.split(".")[0],
-			};
-		})
-		.sort((a, b) => {
-			return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
-		});
-
-	//Check if the post we are searching for exists
-	const postExists = allPosts.find((item) => {
-		return item.slug === slug;
-	});
-
-	console.log(postExists, "POST EXISTS");
-
-	//Doesn't exist, so return
-	// if (!postExists) {
-	console.log("POST DOESNT EXIST SO RETURNING BEFORE TRYING TO READ FILE ASYNC");
+	const file = LETTERS.find((item) => item.link === slug);
 
 	return {
 		props: {
-			frontMatter: null,
 			slug,
-			mdxSource: null,
-			similarPosts: allPosts.slice(0, 3),
+			data: file || null,
 		},
 	};
+
+	// //Get Files
+	// const files = fs.readdirSync(path.join("posts"));
+
+	// //Get file details
+	// const allPosts = files
+	// 	.map((filename) => {
+	// 		const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
+	// 		const { data: frontMatter } = matter(markdownWithMeta);
+
+	// 		return {
+	// 			frontMatter,
+	// 			slug: filename.split(".")[0],
+	// 		};
+	// 	})
+	// 	.sort((a, b) => {
+	// 		return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
+	// 	});
+
+	// //Check if the post we are searching for exists
+	// const postExists = allPosts.find((item) => {
+	// 	return item.slug === slug;
+	// });
+
+	// console.log(postExists, "POST EXISTS");
+
+	// //Doesn't exist, so return
+	// // if (!postExists) {
+	// console.log("POST DOESNT EXIST SO RETURNING BEFORE TRYING TO READ FILE ASYNC");
+
+	// return {
+	// 	props: {
+	// 		frontMatter: null,
+	// 		slug,
+	// 		mdxSource: null,
+	// 		similarPosts: allPosts.slice(0, 3),
+	// 	},
+	// };
 	// }
 
 	// try {
