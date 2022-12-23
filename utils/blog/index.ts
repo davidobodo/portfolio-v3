@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 import { sync } from "glob";
 import matter from "gray-matter";
-import { TPostFrontMatter } from "#/types";
+import { TPost } from "#/types";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 
@@ -32,20 +32,7 @@ export const getAllPosts = () => {
 	return posts;
 };
 
-interface Post {
-	content: string;
-	meta: TPostFrontMatter | null;
-}
-
-export interface PostMeta {
-	excerpt: string;
-	slug: string;
-	title: string;
-	tags: string[];
-	date: string;
-}
-
-export const getPostFromSlug = (slug: string): Post => {
+export const getPostFromSlug = (slug: string): TPost => {
 	const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
 	try {
 		const source = fs.readFileSync(postPath);

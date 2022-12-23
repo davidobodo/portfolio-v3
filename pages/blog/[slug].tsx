@@ -1,16 +1,13 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import Head from "next/head";
 import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { BASE_URL, LETTERS } from "#/constants";
+import { BASE_URL } from "#/constants";
 
 import { serialize } from "next-mdx-remote/serialize";
 import { BlogView, ErrorBoundary } from "#/components";
-import { TPostFrontMatter, TMdxSource } from "#/types";
-import Head from "next/head";
-import { getPostFromSlug, getSlugs } from "#/utils/blog";
+import { TPostFrontMatter, TMdxSource, TPost } from "#/types";
+import { getAllPosts, getPostFromSlug, getSlugs } from "#/utils/blog";
 export default function Post({
 	frontMatter,
 	mdxSource,
@@ -20,10 +17,7 @@ export default function Post({
 }: {
 	frontMatter: TPostFrontMatter;
 	mdxSource: TMdxSource;
-	similarPosts: {
-		frontMatter: TPostFrontMatter;
-		slug: string;
-	}[];
+	similarPosts: TPost[];
 	slug: string;
 	data: any;
 }) {
@@ -96,13 +90,15 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 	const { content, meta } = getPostFromSlug(slug);
 
+	const allPosts = getAllPosts().filter((item) => item.meta?.url !== `/blog/${slug}`);
+
 	if (!meta) {
 		return {
 			props: {
 				mdxSource: null,
 				frontMatter: null,
 				slug,
-				similarPosts: [],
+				similarPosts: allPosts.slice(0, 3),
 			},
 		};
 	}
@@ -121,5 +117,5 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 		},
 	});
 
-	return { props: { mdxSource, frontMatter: meta, slug, similarPosts: [] } };
+	return { props: { mdxSource, frontMatter: meta, slug, similarPosts: allPosts.slice(0, 3) } };
 }

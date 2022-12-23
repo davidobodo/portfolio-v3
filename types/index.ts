@@ -40,6 +40,11 @@ type TPostFrontMatter = {
 	url: string;
 };
 
+type TPost = {
+	content: string;
+	meta: TPostFrontMatter | null;
+};
+
 type TMdxSource = {
 	compiledSource: string;
 	frontMatter: TPostFrontMatter;
@@ -57,4 +62,5 @@ export type {
 	TFormFields,
 	TPostFrontMatter,
 	TMdxSource,
+	TPost,
 };

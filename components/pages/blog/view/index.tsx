@@ -13,7 +13,7 @@ import {
 	TopProgress,
 } from "#/components";
 import { createCopyButton, highlightCode } from "#/utils";
-import { TPostFrontMatter, TMdxSource } from "#/types";
+import { TPostFrontMatter, TMdxSource, TPost } from "#/types";
 import styles from "./styles.module.scss";
 
 export default function BlogView({
@@ -24,10 +24,7 @@ export default function BlogView({
 }: {
 	frontMatter: TPostFrontMatter;
 	mdxSource: TMdxSource;
-	similarPosts: {
-		frontMatter: TPostFrontMatter;
-		slug: string;
-	}[];
+	similarPosts: TPost[];
 	slug: string;
 }) {
 	const postContentRef = useRef<HTMLDivElement>(null);
