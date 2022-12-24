@@ -38,6 +38,7 @@ type TPostFrontMatter = {
 	tags: string[];
 	title: string;
 	url: string;
+	ogbanner?: string;
 };
 
 type TPost = {

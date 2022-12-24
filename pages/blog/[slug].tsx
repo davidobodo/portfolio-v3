@@ -13,19 +13,17 @@ export default function Post({
 	mdxSource,
 	similarPosts,
 	slug,
-	data,
 }: {
 	frontMatter: TPostFrontMatter;
 	mdxSource: TMdxSource;
 	similarPosts: TPost[];
 	slug: string;
-	data: any;
 }) {
 	const seo = {
 		title: frontMatter?.title || "The David Obodo Blog",
 		url: frontMatter?.url ? `${BASE_URL}${frontMatter?.url}` : `${BASE_URL}/blog`,
 		description: frontMatter?.description || "Technical and Life articles written by David Obodo",
-		image: `${BASE_URL}${frontMatter?.banner}` || `${BASE_URL}/images/covers/blog.png`,
+		image: `${BASE_URL}${frontMatter?.ogbanner}` || `${BASE_URL}/images/covers/blog.png`,
 	};
 
 	return (
