@@ -36,7 +36,7 @@ import {
 import { ExternalLink } from "#/components/icons";
 import { events, registerEvent } from "#/utils/analytics/events";
 
-const Home: NextPage = () => {
+export default function Home() {
 	//-----------------------------------------
 	// HELPERS
 	//-----------------------------------------
@@ -141,11 +141,7 @@ const Home: NextPage = () => {
 							<div></div>
 							<ProjectsViewSelector currentView={currentView} handleSetCurrentView={handleSetCurrentView} />
 						</div>
-						<Projects
-							onViewProject={onSelectProject}
-							displayedProjects={PROJECTS.slice(0, 8)}
-							currentView={currentView}
-						/>
+						<Projects onViewProject={onSelectProject} displayedProjects={PROJECTS.slice(0, 8)} currentView={currentView} />
 					</div>
 
 					<div className={styles.projectsBtnWrapper}>
@@ -170,6 +166,6 @@ const Home: NextPage = () => {
 			<Footer />
 		</>
 	);
-};
+}
 
-export default Home;
+Home.withAnim = true;

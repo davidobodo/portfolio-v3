@@ -262,3 +262,5 @@ export async function getServerSideProps(ctx: NextPageContext) {
 		},
 	};
 }
+
+ProjectsPage.withAnim = true;

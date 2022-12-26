@@ -1,0 +1,19 @@
+.container {
+	margin-bottom: 16rem;
+
+	h2 {
+		font-family: "sf-pro-regular";
+		font-size: 1.4rem;
+		letter-spacing: 5px;
+		margin-bottom: 3rem;
+		text-transform: uppercase;
+		color: #fff;
+		text-align: center;
+	}
+
+	.posts {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+		gap: 4rem;
+	}
+}

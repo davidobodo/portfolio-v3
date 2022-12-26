@@ -1,0 +1,45 @@
+@import "#/styles/globals.module.scss";
+
+.myInformation {
+	border-top: 1px solid;
+	border-top: 1px solid var(--white-alpha);
+	padding-top: 3rem;
+	margin-bottom: 16rem;
+
+	.bottom {
+		@media (min-width: $md) {
+			display: flex;
+			align-items: center;
+			gap: 4rem;
+		}
+
+		.imageWrapper {
+			width: 18rem;
+			height: 18rem;
+			flex-shrink: 0;
+			margin: auto;
+			margin-bottom: 2rem;
+
+			@media (min-width: $md) {
+				margin-bottom: 0px;
+			}
+		}
+
+		p {
+			margin: 0px;
+			margin-bottom: 1rem;
+			line-height: 1.625;
+			font-size: 1.6rem;
+			color: var(--white);
+			text-align: center;
+
+			@media (min-width: $md) {
+				text-align: left;
+			}
+
+			span {
+				color: var(--light-blue);
+			}
+		}
+	}
+}

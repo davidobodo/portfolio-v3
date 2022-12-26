@@ -1,12 +1,14 @@
 import "#/styles/normalize.css";
 import "#/styles/globals.css";
 import Script from "next/script";
-import type { AppProps } from "next/app";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
 import { Common } from "#/components";
 import { AnimationsProvider } from "#/context";
+import "prismjs/themes/prism-okaidia.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "#/styles/prism-overrides.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
 	//Register gsap
 	useRegisterGsapScrollTrigger();
 
@@ -35,10 +37,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
 			></Script>
 
-			<AnimationsProvider>
+			{Component.withAnim ? (
+				<AnimationsProvider>
+					<Component {...pageProps} />
+					<Common />
+				</AnimationsProvider>
+			) : (
 				<Component {...pageProps} />
-				<Common />
-			</AnimationsProvider>
+			)}
 		</>
 	);
 }

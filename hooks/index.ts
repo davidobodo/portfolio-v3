@@ -9,6 +9,7 @@ import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 import useSmoothScroll from "./useSmoothScroll";
 import usePrevious from "./usePrevious";
 import useDebounceScrollToTop from "./useDebounceScrollToTop";
+import usePageScrollProgress from "./usePageScrollProgress";
 
 //---------------------------
 // ANIMATIONS
@@ -65,4 +66,5 @@ export {
 	useContactForm,
 	useTransitionToDarkSection,
 	useDebounceScrollToTop,
+	usePageScrollProgress,
 };

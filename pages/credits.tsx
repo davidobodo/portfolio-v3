@@ -34,7 +34,8 @@ export default function Credit() {
 		},
 
 		{
-			link: "https://javascript.plainenglish.io/advanced-page-transitions-in-next-js-with-router-events-and-gsap-e8435d2410bb ",
+			link:
+				"https://javascript.plainenglish.io/advanced-page-transitions-in-next-js-with-router-events-and-gsap-e8435d2410bb ",
 		},
 		{
 			link: "https://basement.studio/contact",
@@ -131,13 +132,7 @@ export default function Credit() {
 								{PEOPLE.map((item, i) => {
 									const { link, description } = item;
 									return (
-										<ListItem
-											key={i}
-											role="Chief Reviewer"
-											name="Oluwaseun Adedire"
-											link={link}
-											description={description}
-										/>
+										<ListItem key={i} role="Chief Reviewer" name="Oluwaseun Adedire" link={link} description={description} />
 									);
 								})}
 							</ul>
@@ -151,6 +146,7 @@ export default function Credit() {
 		</>
 	);
 }
+Credit.withAnim = true;
 
 function ListItem({
 	link,

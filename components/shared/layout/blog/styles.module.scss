@@ -1,0 +1,132 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	.radialGradient {
+		background: var(--dark-radial-gradient);
+		position: fixed;
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.contentWrapper {
+		z-index: 1;
+		position: relative;
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin: auto;
+			margin-bottom: 8rem;
+			padding: 5rem 2rem 0px;
+
+			@media (min-width: $md) {
+				padding: 5rem 3vw 0px;
+			}
+
+			.navlinks {
+				display: flex;
+				gap: 4rem;
+
+				a {
+					font-size: 1.6rem;
+					color: var(--white);
+					text-decoration: none;
+					font-weight: 700;
+					font-family: "sf-pro-regular";
+					position: relative;
+
+					span {
+						height: 2px;
+						background-color: var(--light-blue);
+						position: absolute;
+						bottom: -4px;
+						left: 0px;
+						width: 0px;
+						transition: width 200ms ease-in-out;
+					}
+
+					&:hover {
+						color: var(--light-blue);
+
+						span {
+							width: 100%;
+						}
+					}
+
+					&.active {
+						color: var(--light-blue);
+
+						span {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+
+		.content {
+			min-height: calc(100vh - 230px);
+		}
+
+		.footer {
+			border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+			padding: 2rem 0px;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			color: rgba(255, 255, 255, 0.5);
+
+			@media (min-width: $md) {
+				flex-direction: row;
+				height: 60px;
+				padding: 0px 6rem;
+			}
+
+			ul {
+				list-style: none;
+				display: flex;
+				align-items: center;
+				height: 100%;
+				margin-bottom: 2rem;
+
+				flex-direction: column;
+				gap: 4rem;
+				margin-bottom: 8rem;
+
+				@media (min-width: $md) {
+					flex-direction: row;
+					margin-bottom: 0px;
+					gap: 2rem;
+					margin-bottom: 0px;
+				}
+
+				li {
+					a {
+						text-decoration: none;
+						text-transform: uppercase;
+						color: rgba(255, 255, 255, 0.5);
+						font-size: 1.6rem;
+
+						&:hover {
+							color: var(--white);
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+
+			p {
+				font-size: 1.6rem;
+				padding-bottom: 4rem;
+
+				@media (min-width: $md) {
+					padding-bottom: 0rem;
+				}
+			}
+		}
+	}
+}
