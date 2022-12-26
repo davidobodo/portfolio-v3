@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.davidobodo.com
+
+# Sitemaps
+Sitemap: https://www.davidobodo.com/sitemap.xml
