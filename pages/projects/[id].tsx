@@ -109,6 +109,8 @@ export async function getStaticPaths() {
 	};
 }
 
+Project.withAnim = true;
+
 export async function getStaticProps({ params }: { params: { id: string } }) {
 	const { id } = params;
 

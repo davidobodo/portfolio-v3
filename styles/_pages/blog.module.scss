@@ -1,0 +1,148 @@
+@import "#/styles/globals.module.scss";
+
+.container {
+	color: var(--white);
+	max-width: 1200px;
+	margin: auto;
+	padding: 0px 2rem;
+
+	//---------------------------------------------
+	// GLOBAL
+	//---------------------------------------------
+	h2 {
+		font-family: "sf-pro-regular";
+		font-size: 1.4rem;
+		letter-spacing: 5px;
+		margin-bottom: 3rem;
+		text-transform: uppercase;
+	}
+
+	//---------------------------------------------
+	// HEADER
+	//---------------------------------------------
+	.header {
+		margin-bottom: 6rem;
+		display: flex;
+
+		flex-direction: column;
+
+		@media (min-width: $md) {
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: row;
+		}
+
+		h1 {
+			font-size: 4.4rem;
+			margin-bottom: 2rem;
+
+			@media (min-width: $md) {
+				font-size: 6.4rem;
+				margin-bottom: 0rem;
+			}
+		}
+
+		.search {
+			height: 50px;
+			border-radius: 3rem;
+			border: 1px solid var(--white-alpha);
+			display: flex;
+			align-items: center;
+			padding: 0px 2rem;
+			max-width: 50rem;
+
+			svg {
+				margin-right: 1.4rem;
+			}
+
+			input {
+				background-color: transparent;
+				font-size: 1.6rem;
+				color: var(--white);
+				border: 0px;
+				flex: 1;
+				outline: none;
+
+				@media (min-width: $md) {
+					min-width: 34rem;
+				}
+			}
+
+			input::placeholder {
+				color: var(--white-alpha);
+			}
+		}
+	}
+
+	//---------------------------------------------
+	// LATEST SECTION
+	//---------------------------------------------
+	.latest {
+		border-bottom: 1px solid var(--white-alpha);
+		padding-bottom: 8rem;
+		margin-bottom: 8rem;
+	}
+
+	//---------------------------------------------
+	// ARTICLES SECTION
+	//---------------------------------------------
+	.articles {
+		margin-bottom: 10rem;
+
+		.cardsWrapper {
+			display: grid;
+			grid-gap: 4rem;
+			grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
+		}
+
+		.noResults {
+			font-size: 1.8rem;
+			text-align: center;
+
+			strong {
+				color: var(--light-blue);
+				font-family: "sf-pro-bold";
+			}
+		}
+	}
+
+	//---------------------------------------------
+	// MYINFO SECTION
+	//---------------------------------------------
+	.myInfoWrapper {
+		// max-width: 800px;
+		// margin: auto;
+	}
+
+	// .tagsSearch {
+	// 	display: flex;
+	// 	justify-content: space-between;
+	// 	gap: 4rem;
+	// 	margin-bottom: 10rem;
+
+	// 	.tags {
+	// 		p {
+	// 			color: var(--white);
+	// 			margin-bottom: 2rem;
+	// 			font-size: 1.4rem;
+	// 			letter-spacing: 5px;
+	// 			margin-bottom: 2rem;
+	// 			text-transform: uppercase;
+	// 		}
+	// 		button {
+	// 			height: 4rem;
+	// 			font-size: 1.6rem;
+	// 			padding: 0px 2rem;
+	// 			border-radius: 3rem;
+	// 			border: 0px;
+	// 			cursor: pointer;
+	// 			margin-right: 1rem;
+	// 			margin-bottom: 1rem;
+	// 			border: 0px;
+	// 			background-color: transparent;
+	// 			color: var(--white);
+	// 			border: 1px solid var(--white);
+	// 		}
+	// 	}
+	// }
+}

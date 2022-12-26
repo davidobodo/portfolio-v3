@@ -28,4 +28,40 @@ type TProject = {
 	responsibilities: string;
 };
 
-export type { TTimelineAction, TProject, TProjectsView, TProjectData, TLogoMode, TProjectType, TFilterBy, TFormFields };
+type TPostFrontMatter = {
+	banner: string;
+	bannerAlt: string;
+	date: string;
+	description: string;
+	longDescription: string;
+	readingTime: string;
+	tags: string[];
+	title: string;
+	url: string;
+	ogbanner?: string;
+};
+
+type TPost = {
+	content: string;
+	meta: TPostFrontMatter | null;
+};
+
+type TMdxSource = {
+	compiledSource: string;
+	frontMatter: TPostFrontMatter;
+	scope: {};
+};
+
+export type {
+	TTimelineAction,
+	TProject,
+	TProjectsView,
+	TProjectData,
+	TLogoMode,
+	TProjectType,
+	TFilterBy,
+	TFormFields,
+	TPostFrontMatter,
+	TMdxSource,
+	TPost,
+};

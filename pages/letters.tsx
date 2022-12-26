@@ -6,7 +6,7 @@ import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Footer } from
 import { LETTERS, METADATA } from "#/constants";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
 
-const Letters: NextPage = () => {
+export default function Letters() {
 	const darkSectionRef = useRef(null);
 
 	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
@@ -67,16 +67,7 @@ const Letters: NextPage = () => {
 						{LETTERS.map((item, i) => {
 							const { url, title, date, time, summary, tags } = item;
 							return (
-								<SingleLetter
-									url={url}
-									title={title}
-									date={date}
-									time={time}
-									summary={summary}
-									tags={tags}
-									key={url}
-									i={i}
-								/>
+								<SingleLetter url={url} title={title} date={date} time={time} summary={summary} tags={tags} key={url} i={i} />
 							);
 						})}
 					</div>
@@ -86,6 +77,6 @@ const Letters: NextPage = () => {
 			<Footer />
 		</>
 	);
-};
+}
 
-export default Letters;
+Letters.withAnim = true;

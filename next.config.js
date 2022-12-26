@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const withPWA = require("next-pwa");
 // const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -6,7 +5,7 @@ const withPWA = require("next-pwa");
 // });
 
 const nextConfig = {
-	reactStrictMode: true,
+	reactStrictMode: false,
 	webpack(config, options) {
 		const { dev, isServer } = options;
 
@@ -22,6 +21,12 @@ const nextConfig = {
 		register: true,
 		skipWaiting: true,
 	},
+	images: {
+		domains: ["images.unsplash.com", "miro.medium.com", "blog.davidobodo.com"],
+	},
+	// typescript: {
+	// 	ignoreBuildErrors: true,
+	// },
 };
 
 // module.exports = nextConfig;

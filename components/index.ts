@@ -26,11 +26,24 @@ const {
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
 	Preloader,
+	PostCard,
+	SeriesCard,
 } = Shared;
 
-const { HomePage, LettersPage, SingleProject } = Pages;
+const { HomePage, LettersPage, SingleProject, Blog } = Pages;
 const { Thoughts, Work, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
 const { SingleLetter } = LettersPage;
+const {
+	Highlight,
+	CodeTitle,
+	Center,
+	MyInformation,
+	SimilarArticles,
+	ShareArticle,
+	TopProgress,
+	BlogView,
+	ErrorBoundary,
+} = Blog;
 
 export {
 	Thoughts,
@@ -65,4 +78,15 @@ export {
 	ProjectsFilterModal,
 	RouteTransitionOverlay,
 	Preloader,
+	PostCard,
+	SeriesCard,
+	Highlight,
+	CodeTitle,
+	Center,
+	SimilarArticles,
+	MyInformation,
+	ShareArticle,
+	TopProgress,
+	BlogView,
+	ErrorBoundary,
 };

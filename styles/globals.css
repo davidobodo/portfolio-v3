@@ -25,14 +25,21 @@
 	--light-ash: #c0c4c91f;
 	--brown: #29231c;
 	--white-alpha: rgba(255, 255, 255, 0.1);
-	--color-blue: #455ce9;
+	--blue: #455ce9;
 	--color-white: #ffffff;
 	--dark-blue: #2437a7;
 	--red: #ff0000;
 	--green: rgb(16, 133, 16);
 	--dark-radial-gradient: radial-gradient(farthest-side at 50% 50%, #2a2b2a, transparent);
 	--work-linear-gradient: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
+	--pink: #f0666b;
+	/* --blog-accent: #f0666b; */
+	--blog-accent: #455ce9;
+	--light-blue: #bddefd;
+	--white-alpha: rgba(255, 255, 255, 0.2);
+	/* --blog-accent: #1f2632; */
 
+	/* #dd6e28 */
 	/* ---------------------------------------------------- */
 	/* SIZES*/
 	/* ---------------------------------------------------- */
@@ -110,7 +117,7 @@ h6 {
 /* GOOGLE RECAPTCHA LOGO */
 /* -----------------------------------------------*/
 .grecaptcha-badge {
-	right: -205px !important;
+	right: -305px !important;
 	bottom: 0px !important;
 }
 .grecaptcha-badge:hover {

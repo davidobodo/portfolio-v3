@@ -103,7 +103,7 @@ Definitely had to tweak some few things here and there though.
 	height: 0;
 	border-radius: 50%;
 	border: 0;
-	background: var(--color-blue);
+	background: var(--blue);
 	position: fixed;
 	z-index: 26;
 	pointer-events: none;
@@ -125,7 +125,7 @@ Definitely had to tweak some few things here and there though.
 .text {
 	border-radius: 50%;
 	border: 0;
-	background: var(--color-blue);
+	background: var(--blue);
 	position: fixed;
 	z-index: 26;
 	pointer-events: none;

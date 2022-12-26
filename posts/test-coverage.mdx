@@ -1,0 +1,223 @@
+---
+title: Test Coverage
+description: How can you know if the tests you have written are enough ?
+longDescription: It's a huge milestone to write tests for your application, but then if your tests do not cover the necessary parts of your application then writing the test was simply a waste. In this article we see how we can make use of "jest's coverage" feature to help know how much of our application is being covered by our tests
+date: "2022-12-10"
+banner: /images/posts/test-coverage/banner.png
+ogbanner: /images/posts/test-coverage/ogbanner.png
+bannerAlt: test-coverage
+tags:
+ - NextJs
+ - React Testing Library
+ - Jest
+url: /blog/test-coverage
+readingTime: 4 mins
+---
+
+import Image from "next/image";
+import { CodeTitle, Center } from "#/components";
+
+<Center>OTHER ARTICLES IN SERIES </Center>
+
+---
+
+- [#1: Introduction](https://blog.davidobodo.com/testing-frontend-applications-introduction-part-1)
+- [#2: Setting up Next.js Project for testing](https://blog.davidobodo.com/testing-frontend-applications-setting-up-nextjs-project-for-testing-part-2)
+- #3: Writing the tests
+  - [#3A: What should I test?](https://blog.davidobodo.com/testing-frontend-applications-what-should-i-test-part-3a)
+  - [#3B: Testing App Initial Load](https://blog.davidobodo.com/testing-frontend-applications-user-story-1-testing-app-initial-load-part-3b)
+  - [#3C: User can create a post](https://blog.davidobodo.com/testing-frontend-applications-user-story-2-user-can-create-a-post-part-3c)
+  - [#3D: User can edit a post](https://blog.davidobodo.com/testing-frontend-applications-user-story-3-user-can-edit-a-post-part-3d)
+  - [#3E: User can delete a post](https://blog.davidobodo.com/testing-frontend-applications-user-story-4-user-can-delete-a-post-part-3e)
+  - [#3F: Snapshot Tests and Conclusion](https://blog.davidobodo.com/testing-frontend-applications-snapshot-tests-and-conclusion-part-3f)
+- **#4: Test Coverage (i.e This article 😁)**
+
+<Center>TABLE OF CONTENT</Center>
+
+---
+
+1. [What we need](#what-we-need)
+2. [Setting the coverage option](#setting-the-coverage-option)
+3. [Viewing the coverage data](#viewing-the-coverage-data)
+4. [Analyzing the coverage data](#analyzing-the-coverage-data)
+5. [Deciding where to collect coverage from](#deciding-where-to-collect-coverage-from)
+6. [Improving the firmness of our application using "coverage threshold"](#improving-the-firmness-of-our-application-using-coverage-threshold)
+
+### What we need
+
+The purpose of writing tests is to ensure that our application is functioning exactly how we want it to, without any errors.
+
+However, after writing tests, how can we know if the written tests are enough to cover all important places in our application ?
+
+Say hello to `Jest "collect coverage"`.
+
+With the `collectCoverage` option provided by jest, we can easily know how much of our code has been tested and how much of our code is left to test.
+
+### Setting the coverage option
+
+Open you `jest.config` file and add the `collectCoverage`. Your file should now look like this:
+
+<CodeTitle>jest.config.ts</CodeTitle>
+
+```tsx[class="line-numbers"][data-line="11"]
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+};
+
+export default createJestConfig(customJestConfig);
+```
+
+With the `collectCoverage` option set, make sure you restart your terminal.
+
+After running the test command again, you should see a table like this generated in your console:
+
+<img src="/images/posts/test-coverage/tests-console-result.png" alt="Results after running tests" />
+
+Sweet right 😅?
+
+### Viewing the coverage data
+
+That's not all; If you look at the root folder of your application, you will see that a supposed "hidden" folder named `coverage` has been created for you.
+
+Go into the folder, then into `icov-report` folder, open the `index.html` file in the browser.
+
+<img src="/images/posts/test-coverage/vs-code-files.png" alt="Code editor files view" />
+
+When you open the `index.html` file in the browser you would see a more beautiful graphical display like the one shown below.
+
+It is simply a more detailed equivalent of the previous one displayed in our console above.
+
+<img src="/images/posts/test-coverage/coverage-folders.png" alt="Coverage report viewed in browser (Folders)" />
+
+Click on `pages` since that is our first point of concern.
+
+<img src="/images/posts/test-coverage/coverage-files.png" alt="Coverage report viewed in browser (Files)" />
+
+You can see both pages of our application being listed (i.e `about.tsx` and `index.tsx`).
+
+### Analyzing the coverage data
+
+If you look at the table in the previous image, you will notice that the table has five columns:
+
+1. File - The file which has the information we want to display
+2. Statements - Measures if all possible executable statements in your code are covered in your tests
+3. Branches - Measures if all possible branches (e.g if else statement) in your code are covered in your tests
+4. Functions - Measures if all the functions present in your code are covered in your tests
+5. Lines - More or less just like "statements"
+
+Since our `index.tsx` is our main home feed page let's go into it. But before going into it let's take note of our scores i.e
+
+- Statement = 91.04%
+- Branches = 90.9%
+- Functions = 100%
+- Lines = 90.76%
+
+<img src="/images/posts/test-coverage/coverage-home-page.png" />
+
+Straight up, we can see the reason why none of the scores for our `index` file is 100% in any of the four criteria (i.e statements, branches, functions and lines).
+
+The "red" highlighting shows us places of our code that were never tested. With this information, we know that we need to write tests for when our network request fails, (i.e line 39 in the image above) and for when a user tries to create a post and there is no text in the inputValue.
+
+See the easy way `collectCoverage` made us know what was left out.
+
+### Deciding where to collect coverage from
+
+By default, `jest` tries to collect coverage from all "functioning" files (i.e any file that is imported when our application runs) in our application. However, you can manually specify which files jest should check and which it shouldn't by using the `collectCoverageFrom` key in our "jest.config".
+
+The `collectCoverageFrom` key takes an array of strings. Add `"!"` at the front of folders and files you don't want to cover.
+
+<CodeTitle>jest.config.ts</CodeTitle>
+
+```tsx[class="line-numbers"][data-line="12-20"]
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+	collectCoverageFrom: [
+		//Cover these files
+		"pages/**/*.{js,jsx,ts,tsx}",
+		//Dont cover these files
+		"!**/node_modules/**",
+		"!pages/_app.js",
+		"!pages/api/**/*.{js,jsx,ts,tsx}",
+	],
+};
+
+export default createJestConfig(customJestConfig);
+```
+
+### Improving the firmness of our application using coverage threshold
+
+If we are being realistic, most times, people do not have the time to write code for every test case, such that you have a 100% in the four parameters (i.e statement, branches, functions and lines) that coverage covers.
+
+Jest gives us a nice `coverageThreshold` key, which we can use to specify a convenient percentage of our application that our tests must cover.
+
+<CodeTitle>jest.config.ts</CodeTitle>
+
+```tsx[class="line-numbers"][data-line="20-27"]
+import nextJest from "next/jest";
+
+const createJestConfig = nextJest({
+	dir: "./",
+});
+
+const customJestConfig = {
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	testEnvironment: "jest-environment-jsdom",
+	verbose: true,
+	collectCoverage: true,
+		collectCoverageFrom: [
+		//Cover these files
+		"pages/**/*.{js,jsx,ts,tsx}",
+		//Dont cover these files
+		"!**/node_modules/**",
+		"!pages/_app.js",
+		"!pages/api/**/*.{js,jsx,ts,tsx}",
+	],
+	coverageThreshold: {
+		global: {
+			lines: 80,
+			functions: 80,
+			branches: 80,
+			statements: 80,
+		},
+	},
+};
+
+export default createJestConfig(customJestConfig);
+```
+
+We have specified the `global` key, and set 80 percent as the threshold that we want for our various parameters. Now in our application, anytime our tests run and this threshold is not reached, we will see some sort of notification message in the console.
+
+However, the purpose of setting threshold is not mainly for seeing a message in our console. We can tie this up to our production build, such that if our threshold is not met, the build fails.
+
+With this we can be sure that at least the available tests in our application are either equal to or above our acceptable threshold.
+
+### Conclusion
+
+We have successfully learnt how to:
+
+- enable the `collectCoverage` option in jest
+- analyse the output we get
+- use `collectCoverageFrom` to determine parts of our application to cover
+- and finally, how to use `coverageThreshold` to specify how much of our applcication must be tested.
+
+I hope you use this knowledge to write robust tests that cover the entirety of your application as you want.
+
+Thank you

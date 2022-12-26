@@ -1,6 +1,6 @@
 import PROJECTS from "./projects";
 
-const BASE_URL = "https://www.davidobodo.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const metadata = {
 	home: {
 		title: "David Obodo: Software Developer (Front End Developer)",
@@ -51,6 +51,12 @@ const metadata = {
 				image: `${BASE_URL}/images/covers/invalid-project.png`,
 			};
 		}
+	},
+	blog: {
+		title: "The David Obodo Blog",
+		description: "Technical and Life articles written by David Obodo",
+		url: `${BASE_URL}/blog`,
+		image: `${BASE_URL}/images/covers/blog.png`,
 	},
 };
 
