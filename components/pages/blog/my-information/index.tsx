@@ -22,7 +22,7 @@ export default function MyInformation() {
 					<p>
 						David&apos;s articles are &apos;inspired&apos; by times he{" "}
 						<span>found a simpler way to understand a concept or implement a feature</span> and when he{" "}
-						<span>had a thought to share</span> (well who doesn&apos;t every once in a while).
+						<span>had a thought to share</span> (well who doesn&apos;t every once in a while)?
 					</p>
 					<p>
 						David writes because <span>teaching is the best way to solidify his own knowledge</span> and to also{" "}

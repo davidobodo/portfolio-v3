@@ -181,7 +181,11 @@
 	ol {
 		line-height: 2.6rem;
 		margin: 2rem 0px;
-		padding-left: 4rem;
+		padding-left: 3rem;
+
+		@media (min-width: $md) {
+			padding-left: 4rem;
+		}
 
 		li {
 			font-size: 1.6rem;
@@ -257,4 +261,5 @@
 .similarArticlesWrapper {
 	margin: auto;
 	max-width: 1200px;
+	padding: 0px 2rem;
 }
