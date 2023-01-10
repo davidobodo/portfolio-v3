@@ -30,21 +30,17 @@
 		h3 {
 			font-size: 3rem;
 			margin-bottom: 2rem;
+			font-weight: 500;
 		}
 
 		.summary {
 			font-size: 1.6rem;
 			display: -webkit-box;
-			-webkit-line-clamp: 2;
+			-webkit-line-clamp: 6;
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 			margin-bottom: 2rem;
-			line-height: 2.4rem;
-
-			@media (min-width: $md) {
-				line-height: 3.4rem;
-				-webkit-line-clamp: 6;
-			}
+			line-height: 3.4rem;
 		}
 
 		.time {
@@ -70,6 +66,7 @@
 		background-position: center;
 		order: 1;
 		min-height: 19rem;
+		border: 2px solid transparent;
 		transition: border 0.2s ease-in-out;
 		margin-bottom: 2rem;
 

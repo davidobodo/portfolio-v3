@@ -1,12 +1,13 @@
 @import "#/styles/globals.module.scss";
 
 .container {
-	border: 2px solid #f0666b;
+	border: 2px solid var(--light-blue);
 	padding: 2rem;
 	font-size: 1.6rem;
 	text-align: center;
+	font-style: italic;
 
 	@media (min-width: $md) {
-		font-size: 2rem;
+		font-size: 1.8rem;
 	}
 }
