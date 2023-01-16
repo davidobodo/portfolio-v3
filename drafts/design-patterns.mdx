@@ -17,3 +17,29 @@ Design patterns are most often used in OOP languages;
 CREATIONAL DESIGN PATTERN
 
 Create only one instance to a class and provide only one global access point to that class
+
+```js
+class Logger {
+	constructor() {
+		if (Logger.instance === null) {
+			this.logs = [];
+			Logger.instance = true;
+			return;
+		}
+
+		return Logger.instance;
+	}
+
+	log(message) {
+		console.log(message);
+		this.logs.push(message);
+	}
+
+	print() {
+		console.log(this.logs.length);
+	}
+}
+
+const logger = new Logger();
+Object.freeze(logger); // So we can't add any new property
+```

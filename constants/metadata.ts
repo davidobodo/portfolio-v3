@@ -9,7 +9,7 @@ const metadata = {
 	},
 	projects: {
 		title: "David Obodo: Projects",
-		description: "Projects, Playground, Replicas and Xperiments from David Obodo",
+		description: "A list of projects, replicas, and experiments from David Obodo",
 		url: `${BASE_URL}/projects`,
 		image: `${BASE_URL}/images/covers/projects.png`,
 	},
@@ -21,7 +21,7 @@ const metadata = {
 	},
 	credits: {
 		title: "David Obodo: Credits",
-		description: "Site Credits for some parts of the design of this portfolio",
+		description: "Site credits for some parts of the design of this portfolio",
 		url: `${BASE_URL}/credits`,
 		image: `${BASE_URL}/images/covers/credits.png`,
 	},
