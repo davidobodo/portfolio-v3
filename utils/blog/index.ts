@@ -51,6 +51,7 @@ export const getPostFromSlug = (slug: string): TPost => {
 				title: data.title ?? null,
 				url: data.url ?? null,
 				ogbanner: data.ogbanner ?? "",
+				bgColor: data.bgColor ?? "",
 			},
 		};
 	} catch (e) {

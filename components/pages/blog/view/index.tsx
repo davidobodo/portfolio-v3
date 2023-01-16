@@ -104,7 +104,7 @@ export default function BlogView({
 		);
 	}
 
-	const { title, description, tags, date, banner, bannerAlt, readingTime } = frontMatter;
+	const { title, description, date, banner, bannerAlt, readingTime, bgColor } = frontMatter;
 
 	return (
 		<Layout.BlogLayout>
@@ -122,7 +122,7 @@ export default function BlogView({
 								{readingTime} read
 							</span>
 						</p>
-						<div className={styles.image} style={{ backgroundColor: "#000" }}>
+						<div className={styles.image} style={{ backgroundColor: bgColor ? bgColor : "#000" }}>
 							{banner && <Image src={banner} layout="fill" objectFit="contain" alt={bannerAlt} />}
 						</div>
 					</section>
