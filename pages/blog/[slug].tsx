@@ -3,7 +3,6 @@ import remarkPrism from "remark-prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BASE_URL } from "#/constants";
-
 import { serialize } from "next-mdx-remote/serialize";
 import { BlogView, ErrorBoundary } from "#/components";
 import { TPostFrontMatter, TMdxSource, TPost } from "#/types";
