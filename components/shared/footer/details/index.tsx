@@ -27,7 +27,7 @@ export function Details({
 							<h3>Quick Links</h3>
 							<ul>
 								<li>
-									<Link href="/">
+									<Link href="/" passHref>
 										<a>
 											<span>Home</span>
 										</a>
@@ -35,7 +35,7 @@ export function Details({
 								</li>
 								<li className={styles.line}></li>
 								<li>
-									<Link href="/projects">
+									<Link href="/projects" passHref>
 										<a>
 											<span>Projects</span>
 										</a>
@@ -43,7 +43,7 @@ export function Details({
 								</li>
 								<li className={styles.line}></li>
 								<li>
-									<Link href="/blog">
+									<Link href="/blog" passHref>
 										<a>
 											<span>Blog </span>
 										</a>
@@ -71,7 +71,7 @@ export function Details({
 								<li className={styles.line}></li>
 
 								<li>
-									<Link href="/credits">
+									<Link href="/credits" passHref>
 										<a>
 											<span>Site credits</span>
 										</a>
