@@ -1,0 +1,126 @@
+1. Install next-pwa
+
+```
+yarn add next-pwa
+```
+
+2. Add config to `next.config.js` file
+
+```js
+const withPWA = require("next-pwa");
+
+const nextConfig = {
+	...otherConfigurations,
+	pwa: {
+		dest: "public",
+		register: true,
+		skipWaiting: true,
+	},
+};
+
+module.exports = withPWA(nextConfig);
+```
+
+3. Go to this site [Simicart](https://www.simicart.com/manifest-generator.html) in order to generate your manifest file
+
+- Make sure you select `display` as `standalone`
+  Asides from that every other thing to fill should be straight forward
+
+- Make sure to upload an image with dimensions of 512x512
+
+- Download files
+
+4. Put all files in that folder directly in the root of our public folder
+
+5. Rename `manifest.webmanifest` to `manifest.json`
+
+6. In `manifest.json` file duplicate all icons and add a purpose field to them
+
+BEFORE
+
+```js
+icons: [
+	{
+		src: "/icon-192x192.png",
+		sizes: "192x192",
+		type: "image/png",
+	},
+	{
+		src: "/icon-256x256.png",
+		sizes: "256x256",
+		type: "image/png",
+	},
+	{
+		src: "/icon-384x384.png",
+		sizes: "384x384",
+		type: "image/png",
+	},
+	{
+		src: "/icon-512x512.png",
+		sizes: "512x512",
+		type: "image/png",
+	},
+];
+```
+
+AFTER
+
+```js
+icons: [
+	{
+		src: "/icon-192x192.png",
+		sizes: "192x192",
+		type: "image/png",
+	},
+	{
+		src: "/icon-256x256.png",
+		sizes: "256x256",
+		type: "image/png",
+	},
+	{
+		src: "/icon-384x384.png",
+		sizes: "384x384",
+		type: "image/png",
+	},
+	{
+		src: "/icon-512x512.png",
+		sizes: "512x512",
+		type: "image/png",
+	},
+	{
+		src: "/icon-192x192.png",
+		sizes: "192x192",
+		type: "image/png",
+		purpose: "maskable",
+	},
+	{
+		src: "/icon-256x256.png",
+		sizes: "256x256",
+		type: "image/png",
+		purpose: "maskable",
+	},
+	{
+		src: "/icon-384x384.png",
+		sizes: "384x384",
+		type: "image/png",
+		purpose: "maskable",
+	},
+	{
+		src: "/icon-512x512.png",
+		sizes: "512x512",
+		type: "image/png",
+		purpose: "maskable",
+	},
+];
+```
+
+7. Go to the `_document.js` file if you have created one, if not then create a new one
+
+add a link to the manifest.json file insdie the heade tag, so head tag should now look like this
+
+```
+	<Head>
+		<link rel="manifest" href="/manifest.json" />
+	</Head>
+
+```
