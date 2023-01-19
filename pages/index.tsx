@@ -1,5 +1,5 @@
 import Head from "next/head";
-import type { NextPage } from "next";
+import type { NextPage, NextPageContext } from "next";
 import Link from "next/link";
 import styles from "#/styles/_pages/home.module.scss";
 import { useRef } from "react";
@@ -36,7 +36,7 @@ import {
 import { ExternalLink } from "#/components/icons";
 import { events, registerEvent } from "#/utils/analytics/events";
 
-export default function Home() {
+export default function Home({ initSectionId }: { initSectionId: string }) {
 	//-----------------------------------------
 	// HELPERS
 	//-----------------------------------------
@@ -54,6 +54,7 @@ export default function Home() {
 		windowInnerHeight,
 		windowInnerWidth,
 		darkSectionRef,
+		initSectionId,
 	});
 	const { textsListRef } = useAlternateTextOpacity();
 	const { workContainerRef, mobileWorkContainerRef, onWorkDetailsKeyDown } = useWorkAnimation({
@@ -113,25 +114,31 @@ export default function Home() {
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.content}>
-					<div className={styles.aboutWrapper}>
+					<div className={styles.aboutWrapper} id="about">
 						<AlternatingOpacity textsListRef={textsListRef} />
 					</div>
-					<Work
-						workContainerRef={workContainerRef}
-						mobileWorkContainerRef={mobileWorkContainerRef}
-						onWorkDetailsKeyDown={onWorkDetailsKeyDown}
-					/>
+					<div id="work">
+						<Work
+							workContainerRef={workContainerRef}
+							mobileWorkContainerRef={mobileWorkContainerRef}
+							onWorkDetailsKeyDown={onWorkDetailsKeyDown}
+						/>
+					</div>
+
 					<Thoughts.One textWrapperRef={thoughtOneText} />
 
-					<div className={styles.excellenceWrapper}>
+					<div className={styles.excellenceWrapper} id="excellence">
 						<Excellence containerRef={containerRef} containerWidth={containerWidth} />
 					</div>
-					<Skills
-						skillsContainerRef={skillsContainerRef}
-						skillsSectionTitlteRef={skillsSectionTitlteRef}
-						mobileSkillsContainerRef={mobileSkillsContainerRef}
-						mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
-					/>
+					<div id="skills">
+						<Skills
+							skillsContainerRef={skillsContainerRef}
+							skillsSectionTitlteRef={skillsSectionTitlteRef}
+							mobileSkillsContainerRef={mobileSkillsContainerRef}
+							mobileSkillsSectionTitlteRef={mobileSkillsSectionTitlteRef}
+						/>
+					</div>
+
 					<Thoughts.Two textWrapperRef={thoughtTwoText} />
 
 					<div id="projects-list">
@@ -163,9 +170,20 @@ export default function Home() {
 				isOpen={isOpen}
 				onGoToProject={onGoToProject}
 			/>
-			<Footer />
+			<div id="footer">
+				<Footer />
+			</div>
 		</>
 	);
 }
 
 Home.withAnim = true;
+
+export async function getServerSideProps(ctx: NextPageContext) {
+	const { sectionId } = ctx.query;
+	return {
+		props: {
+			initSectionId: sectionId || "",
+		},
+	};
+}
