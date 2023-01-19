@@ -16,9 +16,12 @@ type Props = {
 	windowInnerHeight: number;
 	windowInnerWidth: number;
 	darkSectionRef: RefObject<HTMLDivElement>;
+	initSectionId: string;
 };
 
-export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef }: Props) {
+const sectionIds = ["about", "work", "excellence", "skills", "footer"];
+
+export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef, initSectionId }: Props) {
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = useAnimationsContext();
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
@@ -70,6 +73,10 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 				scrollIndicator: scrollIndicator[0],
 			})
 		);
+
+		if (initSectionId && sectionIds.includes(initSectionId)) {
+			master.add(gsap.to(window, { duration: 1, scrollTo: `#${initSectionId}` }));
+		}
 
 		return master;
 	};
