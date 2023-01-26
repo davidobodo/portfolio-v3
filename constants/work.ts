@@ -43,7 +43,7 @@ const WORK = [
 		title: "Front End Developer (Remote)",
 		company: "Sumosoft",
 		location: "London, United Kingdom",
-		range: "July - December 2016",
+		range: "September 2019 - February 2020",
 		url: "https://www.sumo-soft.com/",
 		note: `Developed new user interfaces for the clients, <a href="https://www.richard-james.com/" target="_blank" >Richard James</a> and <a href="https://www.archibaldlondon.com/" target="_blank" >Archibald London</a>  using mockups provided by a UI/UX designer as guide.`,
 	},
