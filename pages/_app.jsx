@@ -2,7 +2,7 @@ import "#/styles/normalize.css";
 import "#/styles/globals.css";
 import Script from "next/script";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
-import { Common } from "#/components";
+import { Common, Awwwards } from "#/components";
 import { AnimationsProvider } from "#/context";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
@@ -36,6 +36,8 @@ function MyApp({ Component, pageProps }) {
 			<Script
 				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
 			></Script>
+
+			<Awwwards />
 
 			{Component.withAnim ? (
 				<AnimationsProvider>
