@@ -28,6 +28,7 @@ const {
 	Preloader,
 	PostCard,
 	SeriesCard,
+	Awwwards,
 } = Shared;
 
 const { HomePage, LettersPage, SingleProject, Blog } = Pages;
@@ -89,4 +90,5 @@ export {
 	TopProgress,
 	BlogView,
 	ErrorBoundary,
+	Awwwards,
 };

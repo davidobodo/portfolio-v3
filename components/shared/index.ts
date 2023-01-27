@@ -22,6 +22,7 @@ import Modals from "./modal";
 import Preloader from "./preloader";
 import PostCard from "./post-card";
 import SeriesCard from "./series-card";
+import Awwwards from "./awwwards";
 
 const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
 
@@ -52,6 +53,7 @@ const Shared = {
 	Preloader,
 	PostCard,
 	SeriesCard,
+	Awwwards,
 };
 
 export default Shared;
