@@ -14,11 +14,11 @@ function BaseForm() {
 				<h4>
 					Would love to hear from <br /> you &#8595;.
 				</h4>
-				{/* <p>
+				<p>
 					I am currently interested in a &#8220;Full-time Front-end developer role (remote)&#8220; with a major on
 					&#8220;React.js Framework&#8220;, but still open to other opportunities. However, if you have other requests or
 					questions, don’t hesitate to use the form.
-				</p> */}
+				</p>
 			</section>
 			<form noValidate className={styles.form} onSubmit={onSubmit}>
 				<div className={styles.twoColumns}>
