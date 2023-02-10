@@ -88,7 +88,7 @@ export function Details({
 			<div className={styles.social}>
 				<ul>
 					<li>
-						<Link href="https://www.linkedin.com/in/david-obodo-998786174/" passHref>
+						<Link href="https://www.linkedin.com/in/david-obodo" passHref>
 							<a target="_blank" onClick={handlePageGAEvents} data-link="linkedin">
 								<span>Linkedin</span>
 							</a>

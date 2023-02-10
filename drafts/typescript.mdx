@@ -1,0 +1,40 @@
+## void
+
+absence of having any type at all
+most commonly used as the return type of a function that does not return a value
+
+## never
+
+only type never can be assigned to itself
+UseCase
+
+- to force our hand to handle all cases
+
+```typescript
+
+```
+
+A function returning `never` cannot have a reachable end pointx
+A function returning `never` cannot ever reach the end of the function i.e the second parenthesis `}`
+
+- Using `never` to do one or the other
+
+## Unknown
+
+Anything is assignable to `unknown`
+`unknown` is not assignable to anything except `any` and `unknown`
+
+To make sure that we have hit all cases
+
+Instead of using `any`, use `unknown` then use type checks before performing any action
+
+## Alias
+
+assigning a type to a name instead of repeating it everytime e.g
+
+```
+type TLogin = {
+    firstName: string;
+    lastName: string;
+}
+```
