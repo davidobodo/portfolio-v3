@@ -13,12 +13,18 @@ export default function Project({
 }) {
 	return (
 		<>
-			{currentView === "grid" && (
-				<ProjectsGridView onViewProject={onViewProject} displayedProjects={displayedProjects} />
-			)}
+			{displayedProjects.length === 0 ? (
+				<div style={{ color: "#86868b", fontSize: "1.6rem", textAlign: "center", padding: "0px 2rem" }}>
+					Oops, no &quot;PUBLIC&quot; project with that tech
+				</div>
+			) : (
+				<>
+					{currentView === "grid" && (
+						<ProjectsGridView onViewProject={onViewProject} displayedProjects={displayedProjects} />
+					)}
 
-			{currentView === "list" && (
-				<ProjectListView onViewProject={onViewProject} displayedProjects={displayedProjects} />
+					{currentView === "list" && <ProjectListView onViewProject={onViewProject} displayedProjects={displayedProjects} />}
+				</>
 			)}
 		</>
 	);
