@@ -62,7 +62,7 @@ export function Details({
 							<h3>Extras</h3>
 							<ul>
 								<li>
-									<Link href="https://drive.google.com/file/d/1U8jfN1X4sefh7HbCwQDBQuR_1PvbpVOq/view?usp=sharing">
+									<Link href="https://drive.google.com/file/d/1NwreScCytcCiQR0XxxIXP9MXzgJDFkVz/view?usp=sharing">
 										<a target="_blank" onClick={handlePageGAEvents} data-link="resume">
 											<span>Resume</span>
 										</a>
