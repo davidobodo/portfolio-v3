@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 import { format } from "fecha";
 import { MDXRemote } from "next-mdx-remote";
 import {
@@ -104,11 +104,12 @@ export default function BlogView({
 		);
 	}
 
-	const { title, description, date, banner, bannerAlt, readingTime, bgColor } = frontMatter;
+	const { title, description, date, banner, bannerAlt, readingTime, bgColor, themeColor } = frontMatter;
 
+	const style: CSSProperties = { "--light-blue": themeColor ? themeColor : "#bddefd" } as unknown as CSSProperties;
 	return (
 		<Layout.BlogLayout>
-			<>
+			<div style={style}>
 				<TopProgress />
 				<div className={styles.container} ref={postContentRef}>
 					<section className={styles.header}>
@@ -138,7 +139,7 @@ export default function BlogView({
 				<div className={styles.similarArticlesWrapper}>
 					<SimilarArticles data={similarPosts} />
 				</div>
-			</>
+			</div>
 		</Layout.BlogLayout>
 	);
 }

@@ -1,0 +1,191 @@
+---
+title: Why you should still learn Data structures and Algorithms
+description: Data structures and Algorithms and the famous Blind 75 list written in Javascript
+longDescription: With the widespread emergence of Artificial Intelligence, many now assume there are less reasons to learn Data structures and Algorithms, since one can simply ask AI to solve an Algorithm. However, I think still learning and understanding Data structures and Algorithms goes a long way.
+date: "2023-03-28"
+banner: /images/posts/ds-and-a/ds-and-a.png
+ogbanner: /images/posts/ds-and-a/ds-and-a.png
+tags:
+ - Life
+ - Programming
+url: /blog/ds-and-a
+readingTime: 6 mins
+bgColor: "#000"
+themeColor: "#F7DF1C"
+---
+
+<Center>TABLE OF CONTENT</Center>
+
+---
+
+1. [CHATGPT, How does this affect interviews?](#chatgpt-how-does-this-affect-interviews)
+2. [Should I still learn Data structures and Algorithms?](#should-i-still-learn-data-structures-and-algorithms)
+   - [Time complexity (How to manage time/speed)](#time-complexity-how-to-manage-timespeed)
+   - [Space complexity (How to manage space/memory)](#space-complexity-how-to-manage-spacememory)
+3. [Blind 75, 🤔 actually Blind 76](#blind-75-actually-blind-76)
+
+---
+
+## CHATGPT, How does this affect interviews?
+
+Let's be honest, the only reason most self taught developers ever considered learning Data structures and Algorithms was for interview preparations.
+
+Well the game has changed. CHATGPT is here 😂.
+
+Yes, it is true that these days we really do not need to take the extra effort like before to learn how to solve certain algorithm questions, because CHATGPT can do that for us and even give us some comprehensive explanation on the solution.
+
+Does that mean it can do everything for us?
+
+<img src="https://media.giphy.com/media/MKorKFj0Muz4P0CI7D/giphy.gif" alt="Artifical Intelligence" />
+
+😂 😂 At least not yet.
+
+You see, solving algorithms was a vital part of a lot of company's interview process, but now that we have Artificial Intelligence, what then happens to this process? Because, unless it's a live interview and you specifically instruct a developer not to use the AI, any smart developer should definitely use it. 🤷🏽
+
+Whatever the case may be, some things stand out when solving algorithms
+
+- Can you solve the problem in psuedo code(i.e just explain the solution to someone without even writing code)?
+
+- If some parameters and constraints are changed, would you be able to alter the solution to suit the new constraints?
+
+- Can you think of a better solution that would be better optimized?
+
+- Do you really understand why that solution works?
+
+In all this, just always remember that Artificial Intelligence (i.e CHATGPT in this case), is simply there to assist, and it's not every time it can answer all these questions accurately for you.
+
+## Should I still learn Data structures and Algorithms?
+
+I have thought about this question and also have been asked by a couple of people, since we now have Artifical Intelligence to solve problems.
+
+<Highlight>
+	To think that data structures and algorithms are just for the sake of interviews and not to think of their practical
+	application is to do great injustice to oneself
+</Highlight>
+
+For programming languages will rise and fall, will come and go, but Data structures and Algorithms are everlasting.
+
+This is because Data structures and Algorithms focus on two things which would forever remain constant in the programming world:
+
+1. Time complexity - How fast is this going to execute ?
+2. Space complexity - How much space is this execution going to take up ?
+
+This is never going to change. If you build something small that is going to be used by very few people,
+you might not necessarily need to take into account these two. But if you build something you expect to be big and used by millions of people,
+be rest assured that you need to take into account these two.
+
+<Highlight>For at the heart of Data structures and algorithm, is learning how to manage time and space.</Highlight>
+
+#### Time complexity (How to manage time/speed)
+
+Take for example:
+
+```tsx[class="line-numbers"][data-line="9,19"]
+const arrayIdStore = [
+    {id: '111', name: 'first'},
+    {id: '222', name: 'second'},
+    {id: '333', name: 'third'},
+    {id: '444', name: 'fourth'}
+    {id: '555', name: 'fifth'}
+]
+
+const found = arrayIdStore.find(item => item.id === '111') // O(n)
+
+const arrayObjectStore = {
+    '111': {id: '111', name: 'first'},
+    '222': {id: '222', name: 'second'},
+    '333': {id: '333', name: 'third'},
+    '444': {id: '444', name: 'fourth'}
+    '555': {id: '555', name: 'fifth'}
+}
+
+const found2 = arrayObjectStore['111'] // O(1)
+```
+
+In the above code snippet, let's assume that you are required to get the data that has an id of `111`.
+
+If your storage is an array, then you most likely might need to search through the entire array list before you can find what you are looking, if the object with id `111` is placed at the end of the array.
+
+If your storage is an object, you can simply get it once, without having to search through the entire object storage, irrespective of whether it is the first item or last item in the storage
+
+This is what is called TIME COMPLEXITY.
+
+For in the array storage method, the time to find an item increases as the number of items in the array increases. While in the object storage method, the time to find an item remains constant irrespective of the object size.
+
+#### Space complexity (How to manage space/memory)
+
+Let's consider these two methods of solving the famous [fibonacci sequence](https://www.mathsisfun.com/numbers/fibonacci-sequence.html):
+
+```tsx[class="line-numbers"][data-line=""]
+//-----------------------
+// METHOD 1
+//-----------------------
+function fib(n){
+    const store = [];
+    store[0] = 0;
+    store[1] = 1;
+
+    for(let i = 2; i <= n; i++){
+        store[i] = store[i-1] + store[i-2]
+    }
+
+    return store[n]
+}
+fib(10) //55
+
+//-----------------------
+// METHOD 2
+//-----------------------
+function fib2(n){
+    let v1 = 0;
+    let v2 = 1;
+
+    for(let i = 1; i < n; i++){
+        let temp = v2;
+        v2 = v1 + v2:
+        v1 = temp;
+    }
+
+    return v2
+}
+fib2(10) //55
+```
+
+Even though both are valid solutions, method 1 is going to take up more of the computers storage than method 2.
+
+This is because as the value `n`, which is our input grows, the length of our `store` variable increases. This is called `O(n)` "linear" space complexity
+
+While as for method 2, no matter how big `n` gets we would always be able to solve the problem with just two variables `v1` and `v2`.
+This is called `O(1)` "constant" space complexity
+
+You can see how this would affect our programme if we don't understand how time and space complexity work.
+
+## Blind 75, actually Blind 76
+
+C'mon, of all the words to give this list they chose "BLIND" 😂. I have always wondered why.
+
+<img src="https://media.giphy.com/media/K0Hy2NwI8IXZK/giphy.gif" alt="Algorithms" />
+
+Day in day out, we see new algorithm questions being created. Like how many LEETCODE, Hackerrank, Coding Game, e.t.c problems can you really solve? and what is the best approach to take in your study?
+
+Then comes BLIND 75, I think it should be BLIND 76 though 😂 [check the list and see why I call it Blind 76](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
+
+I don't know who made the list, but it sure has gained a lot of traction and after going through it, I see why. There is a certain level of progression about it and it covers most of the concepts one needs to really understand how to solve any question.
+
+While going through the list I mainly made use of these Youtube channels:
+
+- [Neetcode](https://www.youtube.com/playlist?list=PLot-Xpze53ldVwtstag2TL4HQhAnC8ATf)
+- [Kevin NaughtonJr](https://www.youtube.com/@KevinNaughtonJr)
+- [Nick White](https://www.youtube.com/@NickWhite)
+
+Although none of the videos in these channels solved the algorithms in Javascript, the explanations were too good, that I was always able to come up with the corresponsing Javascript solution of my own
+
+So without further ado, here is a link to the repository:
+
+[=> BLIND 75 JAVASCRIPT](https://github.com/davidobodo/BLIND_75_JAVASCRIPT)
+
+Feel free, to create a Pull request for anything that you feel could be improved or any question not yet solved, would appreciate it 😊.
+
+In all, I think we should learn Data Structrues and Algorithms, because in the long run it would definitely make one a better developer.
+
+Cheers
