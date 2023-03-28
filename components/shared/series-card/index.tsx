@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { format } from "fecha";
+import { CSSProperties } from "react";
 
 export default function SeriesCard({
 	url,
@@ -9,6 +10,7 @@ export default function SeriesCard({
 	summary,
 	date,
 	time,
+	themeColor,
 }: {
 	url: string;
 	img: string;
@@ -16,10 +18,12 @@ export default function SeriesCard({
 	summary: string;
 	date: string;
 	time: string;
+	themeColor: string;
 }) {
+	const style: CSSProperties = { "--light-blue": themeColor ? themeColor : "#bddefd" } as unknown as CSSProperties;
 	return (
 		<Link href={url} passHref>
-			<a className={styles.container}>
+			<a className={styles.container} style={style}>
 				<div className={styles.info}>
 					<h3>{title}</h3>
 					<p className={styles.summary}>{summary}</p>
@@ -29,12 +33,14 @@ export default function SeriesCard({
 						{time} read
 					</p>
 				</div>
-				<div
-					className={styles.image}
-					style={{
-						backgroundImage: `url(${img})`,
-					}}
-				></div>
+				<div className={styles.image}>
+					<div
+						className={styles.imageInner}
+						style={{
+							backgroundImage: `url(${img})`,
+						}}
+					></div>
+				</div>
 			</a>
 		</Link>
 	);

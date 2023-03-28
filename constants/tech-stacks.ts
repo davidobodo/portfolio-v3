@@ -42,6 +42,36 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "nextjs",
 		label: "Next.js",
 	},
+	jquery: {
+		key: "jquery",
+		label: "JQuery",
+	},
+	//---------------------------------------------
+	//STATE MANAGEMENT / ARCHITECTURE
+	//---------------------------------------------
+	redux: {
+		key: "redux",
+		label: "Redux",
+	},
+	recoil: {
+		key: "recoil",
+		label: "Recoil",
+	},
+	reactquery: {
+		key: "reactquery",
+		label: "React Query",
+	},
+	graphql: {
+		key: "graphql",
+		label: "GraphQL",
+	},
+	apolloclient: {
+		key: "apolloclient",
+		label: "Aplloclient",
+	},
+	//---------------------------------------------
+	// TESTING
+	//---------------------------------------------
 	jest: {
 		key: "jest",
 		label: "Jest",
@@ -50,33 +80,24 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "rtl",
 		label: "React Testing Library",
 	},
-	reactquery: {
-		key: "reactquery",
-		label: "React Query",
+	enzyme: {
+		key: "enzyme",
+		label: "Enzyme",
 	},
-	redux: {
-		key: "redux",
-		label: "Redux",
+	pupeteer: {
+		key: "pupeteer",
+		label: "Pupeteer",
+	},
+	//---------------------------------------------
+	// CSS FRAMEWORKS
+	//---------------------------------------------
+	cssModules: {
+		key: "cssModules",
+		label: "CSS Modules",
 	},
 	styledcomponents: {
 		key: "styledcomponents",
 		label: "Styled Components",
-	},
-	graphql: {
-		key: "graphql",
-		label: "GraphQL",
-	},
-	expressjs: {
-		key: "expressjs",
-		label: "Express.js",
-	},
-	threejs: {
-		key: "threejs",
-		label: "Three.js",
-	},
-	gsap: {
-		key: "gsap",
-		label: "GSAP",
 	},
 	materialui: {
 		key: "materialui",
@@ -86,35 +107,65 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "semanticui",
 		label: "Semantic UI",
 	},
-	jquery: {
-		key: "jquery",
-		label: "JQuery",
+	chakraui: {
+		key: "chakraui",
+		label: "Chakra UI",
 	},
-	enzyme: {
-		key: "enzyme",
-		label: "Enzyme",
-	},
-
 	tailwindcss: {
 		key: "tailwindcss",
 		label: "Tailwind CSS",
 	},
-	web3: {
-		key: "web3",
-		label: "Web3",
+	antdesign: {
+		key: "antdesign",
+		label: "Ant Design",
 	},
+	bootstrap: {
+		key: "bootstrap",
+		label: "Bootstrap",
+	},
+
 	//---------------------------------------------
-	//OTHERS
+	// BACKEND
 	//---------------------------------------------
-	mongodb: {
-		key: "mongodb",
-		label: "Mongo DB",
+	expressjs: {
+		key: "expressjs",
+		label: "Express.js",
 	},
 	nodejs: {
 		key: "nodejs",
 		label: "Node.js",
 	},
-
+	mongodb: {
+		key: "mongodb",
+		label: "Mongo DB",
+	},
+	gcp: {
+		key: "gcp",
+		label: "GCP",
+	},
+	//---------------------------------------------
+	//OTHERS
+	//---------------------------------------------
+	Git: {
+		key: "git",
+		label: "Git",
+	},
+	web3: {
+		key: "web3",
+		label: "Web3",
+	},
+	threejs: {
+		key: "threejs",
+		label: "Three.js",
+	},
+	gsap: {
+		key: "gsap",
+		label: "GSAP",
+	},
+	storybook: {
+		key: "storybook",
+		label: "Storybook",
+	},
 	figma: {
 		key: "figma",
 		label: "Figma",
@@ -127,17 +178,10 @@ const TECH_STACKS: Record<string, TTech> = {
 		key: "googleanalytics",
 		label: "Google Analytics",
 	},
-	storybook: {
-		key: "storybook",
-		label: "Storybook",
-	},
 	sendgrid: {
 		key: "sendgrid",
 		label: "Sendgrid",
 	},
-	//---------------------------------------------
-	//DEPLOYMENT SERVICES
-	//---------------------------------------------
 	heroku: {
 		key: "heroku",
 		label: "Heroku",

@@ -124,7 +124,7 @@ export function Details({
 					</li>
 				</ul>
 
-				<p> &#169; 2022 David Obodo</p>
+				<p> &#169; 2023 David Obodo</p>
 			</div>
 		</div>
 	);

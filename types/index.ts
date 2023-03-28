@@ -40,6 +40,7 @@ type TPostFrontMatter = {
 	url: string;
 	ogbanner?: string;
 	bgColor?: string;
+	themeColor?: string;
 };
 
 type TPost = {

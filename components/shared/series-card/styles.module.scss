@@ -62,18 +62,25 @@
 	.image {
 		background-color: #232323;
 		border-radius: 1rem;
-		background-size: cover;
-		background-position: center;
 		order: 1;
 		min-height: 19rem;
 		border: 2px solid transparent;
 		transition: border 0.2s ease-in-out;
 		margin-bottom: 2rem;
+		overflow: hidden;
 
 		@media (min-width: $md) {
 			order: 2;
 			min-height: 36rem;
 			grid-column: 2 / span 2;
+		}
+
+		.imageInner {
+			background-size: cover;
+			background-position: center;
+			width: 100%;
+			height: 100%;
+			transition: transform 200ms ease-in-out;
 		}
 	}
 
@@ -91,6 +98,10 @@
 		}
 		.image {
 			border: 2px solid var(--light-blue);
+
+			.imageInner {
+				transform: rotate(1deg) scale(1.05);
+			}
 		}
 
 		.time {

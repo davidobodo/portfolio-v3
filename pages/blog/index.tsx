@@ -127,6 +127,7 @@ export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter
 									time={latestPost.readingTime}
 									date={latestPost.date}
 									summary={latestPost.longDescription}
+									themeColor={latestPost.themeColor ?? ""}
 								/>
 							</div>
 						</section>

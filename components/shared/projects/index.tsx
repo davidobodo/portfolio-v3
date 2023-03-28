@@ -15,7 +15,7 @@ export default function Project({
 		<>
 			{displayedProjects.length === 0 ? (
 				<div style={{ color: "#86868b", fontSize: "1.6rem", textAlign: "center", padding: "0px 2rem" }}>
-					Oops, no &quot;PUBLIC&quot; project with that tech
+					Oops, no <span style={{ color: "#fff" }}>&quot;PUBLIC&quot;</span> project with that tech
 				</div>
 			) : (
 				<>
