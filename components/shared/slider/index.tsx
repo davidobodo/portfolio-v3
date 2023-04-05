@@ -7,9 +7,11 @@ import { StaticImageData } from "next/image";
 export default function Slider({
 	items,
 	id,
+	bgColor,
 }: {
 	items: { type: "image" | "video" | "gif"; source: StaticImageData }[];
 	id: string;
+	bgColor: string;
 }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 
@@ -97,7 +99,7 @@ export default function Slider({
 					{items.map((a, i) => {
 						const { source } = a;
 						return (
-							<div key={i} className={styles.item}>
+							<div key={i} className={styles.item} style={{ backgroundColor: bgColor }}>
 								<Image src={source} alt={`Picture ${i}`} />
 							</div>
 						);

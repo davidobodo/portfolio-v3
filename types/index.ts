@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import TECH_STACKS from "#/constants/tech-stacks";
 
 type TRoles = "design" | "fe" | "be" | "teamlead";
 type TProjectType = "Web Application" | "Website" | "Learn from Tutorial" | "Experiment";
@@ -14,6 +15,8 @@ type TTimelineAction = {
 	isLabel?: boolean;
 	label?: string;
 };
+type TMediaFormats = "image" | "video" | "gif";
+type TMediaFile = { type: TMediaFormats; source: StaticImageData };
 type TProject = {
 	id: string;
 	title: string;
@@ -21,10 +24,10 @@ type TProject = {
 	sitelink: string;
 	githublink?: string;
 	roles: TRoles[];
-	tech: string[];
+	tech: Array<keyof typeof TECH_STACKS>;
 	type: TProjectType;
 	bgColor?: string;
-	media: { type: "image" | "video" | "gif"; source: StaticImageData }[];
+	media: TMediaFile[];
 	responsibilities: string;
 };
 
@@ -66,4 +69,7 @@ export type {
 	TPostFrontMatter,
 	TMdxSource,
 	TPost,
+	TMediaFile,
+	TMediaFormats,
+	TRoles,
 };

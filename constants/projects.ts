@@ -1,4 +1,6 @@
-import { TProject } from "#/types";
+import { TMediaFile, TMediaFormats, TProject, TRoles, TProjectType } from "#/types";
+import { StaticImageData } from "next/image";
+import TECH_STACKS from "#/constants/tech-stacks";
 
 import prodeus1 from "#/public/proj-prodeus-dashboard-light.jpg";
 import prodeus2 from "#/public/proj-prodeus-dashboard-dark.jpg";
@@ -34,8 +36,98 @@ import phintnftwhitelist2 from "#/public/proj-phitnftwhitelist-pending.jpg";
 import phitnft1 from "#/public/proj-phitnft-joined.jpg";
 import phitnft2 from "#/public/proj-phitnft-pending.jpg";
 import laptopPhone from "#/public/proj-laptopphone-index.gif";
+import gamespeak1 from "#/public/proj-gamespeak-connections.png";
+import gamespeak2 from "#/public/proj-gamespeak-home.png";
+import gamespeak3 from "#/public/proj-gamespeak-notifications.png";
+import gamespeak4 from "#/public/proj-gamespeak-profile.png";
+import gamespeak5 from "#/public/proj-gamespeak-settings.png";
+import gamespeak6 from "#/public/proj-gamespeak-login.png";
+
+class Project {
+	id = "";
+	title = "";
+	details = "";
+	responsibilities = "";
+	roles: TRoles[] = [];
+	sitelink = "";
+	tech: Array<keyof typeof TECH_STACKS> = [];
+	type: TProjectType;
+	bgColor = "";
+	media: TMediaFile[] = [];
+
+	constructor({ id, title, details, responsibilities, roles, sitelink, tech, type, bgColor, media }: TProject) {
+		this.id = id;
+		this.title = title;
+		this.details = details;
+		this.responsibilities = responsibilities;
+		this.roles = roles;
+		this.sitelink = sitelink;
+		this.tech = tech;
+		this.type = type;
+		this.bgColor = bgColor || "";
+		this.media = media;
+	}
+}
+
+function createMediaFile(type: TMediaFormats) {
+	return function (source: StaticImageData) {
+		return {
+			type,
+			source,
+		};
+	};
+}
+
+const createImageFile = createMediaFile("image");
 
 const PROJECTS: TProject[] = [
+	new Project({
+		id: "gamespeak",
+		title: "Gamespeak",
+
+		roles: ["fe"],
+		sitelink: "https://beta-app.gamespeak.gg/",
+		type: "Web Application",
+		bgColor: "#1F032C",
+		tech: [
+			"html",
+			"css",
+			"sass",
+			"javascript",
+			"typescript",
+			"nextjs",
+			"recoil",
+			"reactquery",
+			"jest",
+			"rtl",
+			"chakraui",
+			"git",
+		],
+		media: [
+			createImageFile(gamespeak6),
+			createImageFile(gamespeak4),
+			createImageFile(gamespeak5),
+			createImageFile(gamespeak1),
+			createImageFile(gamespeak2),
+			createImageFile(gamespeak3),
+		],
+		details: `
+			<p>Social media platform for gamers. Having all the social media features you know and love, but streamlining it for the lovely community of gamers</p>
+			<p>Visit <a href="https://beta-app.gamespeak.gg/" target="_blank">Gamespeak beta version</a> now to enjoy all the awesome features </p>
+		`,
+		responsibilities: `
+		<ul>
+		 <li>Converted over 20+ UI/UX designs into fully responsive (desktop, laptop, tablets), browser compatible web application pages</li>
+		 <li>Connected over 70+ Restful APIs in order to make the application dynamic</li>
+		 <li>Hooked up websocket connection, for realtime updates for messages and notifications</li>
+		 <li>Created dark mode for all pages in the application</li>
+		 <li>Added Progressive Web Application feature to the application</li>
+		 <li>Wrote 50+ Unit and Integration tests to achieve over 80% coverage of the application using Jest and React Testing Library</li>
+		 <li>Used effective caching strategies to improve performance of the application by 50%, due to reduction in frequency of API calls to the backend</li>
+		 <li>Structured and architected the entire frontend codebase with over 1260+ files for maximum scalability and maintainability</li>
+		</ul>
+		`,
+	}),
 	{
 		id: "prodeus",
 		title: "Prodeus",
@@ -54,7 +146,6 @@ const PROJECTS: TProject[] = [
 			<li>Responsible for about <span>98%</span> of the entire frontend architecture and codebase.</li>
 		</ul>
 		`,
-
 		roles: ["fe"],
 		sitelink: "https://www.prodeus.co/",
 		tech: [
@@ -411,7 +502,7 @@ const PROJECTS: TProject[] = [
 		roles: [],
 		sitelink: "https://d-chat-98abe.firebaseapp.com/auth",
 		githublink: "https://github.com/davidobodo/d-chat",
-		tech: ["html", "css", "sass", "react", "javascipt", "redux", "materialui", "firebase"],
+		tech: ["html", "css", "sass", "react", "javascript", "redux", "materialui", "firebase"],
 		bgColor: "#fff",
 		type: "Web Application",
 		media: [
@@ -646,7 +737,6 @@ const PROJECTS: TProject[] = [
 			"javascript",
 			"typescript",
 			"materialui",
-			"ga",
 			"graphql",
 			"apolloclient",
 			"enzyme",
