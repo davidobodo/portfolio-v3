@@ -10,6 +10,29 @@ export type SkillsDesktopProps = {
 	skillsSectionTitlteRef: Ref<HTMLHeadingElement>;
 };
 export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteRef }: SkillsDesktopProps) {
+	const displayedSkills: Array<keyof typeof TECH_STACKS> = [
+		"html",
+		"css",
+		"sass",
+		"javascript",
+		"typescript",
+		"solidity",
+	];
+	const displayedSkills2: Array<keyof typeof TECH_STACKS> = [
+		"react",
+		"nextjs",
+		"nodejs",
+		"expressjs",
+		"jest",
+		"rtl",
+		"gsap",
+		"web3",
+		"threejs",
+		"redux",
+		"reactquery",
+		"tailwindcss",
+	];
+
 	return (
 		<div className={styles.container} ref={skillsContainerRef} id="skills-section">
 			<div className={styles.contentWrapper} data-key="skills-content">
@@ -37,7 +60,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 							<section className={styles.skills} data-key="skill">
 								<h3>Languages</h3>
 								<ul>
-									{["html", "css", "sass", "javascript", "typescript", "solidity"].map((key, i) => {
+									{displayedSkills.map((key, i) => {
 										const skill = TECH_STACKS[key];
 
 										if (!skill) return null;
@@ -69,20 +92,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 							<h3>Frameworks/ Libraries/ Others</h3>
 
 							<ul>
-								{[
-									"react",
-									"nextjs",
-									"nodejs",
-									"expressjs",
-									"jest",
-									"rtl",
-									"gsap",
-									"web3",
-									"threejs",
-									"redux",
-									"reactquery",
-									"tailwindcss",
-								].map((key, i) => {
+								{displayedSkills2.map((key, i) => {
 									const skill = TECH_STACKS[key];
 									return (
 										<li key={i}>
@@ -95,8 +105,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 								})}
 							</ul>
 							<p>
-								Developers need <strong> to learn everyday </strong> so this list could get really long 😅. <br /> See
-								&nbsp;
+								Developers need <strong> to learn everyday </strong> so this list could get really long 😅. <br /> See &nbsp;
 								{/* <Link scroll={false} href="/projects?open_filter=true"> */}
 								<Link
 									scroll={false}
@@ -107,9 +116,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 										},
 									}}
 								>
-									<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>
-										more frameworks/libraries here.
-									</a>
+									<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>more frameworks/libraries here.</a>
 								</Link>
 							</p>
 						</section>

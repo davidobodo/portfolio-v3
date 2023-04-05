@@ -40,7 +40,7 @@ const metadata = {
 				title: `David Obodo | Project | ${title}`,
 				description: `${title} Project`,
 				url: `${BASE_URL}/project/${id}`,
-				image: `${BASE_URL}${media[0].source}`,
+				image: media[0] ? `${BASE_URL}${media[0].source}` : `${BASE_URL}/images/covers/projects.png`,
 			};
 		} else {
 			return {

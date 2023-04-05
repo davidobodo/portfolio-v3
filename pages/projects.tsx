@@ -28,11 +28,17 @@ import { PROJECT_NATURE } from "#/constants";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { FilterIcon } from "#/components/icons";
 import { projectAnimations } from "#/utils/animations";
-import { TFilterBy } from "#/types";
+import { TFilterBy, TProjectType } from "#/types";
 
 const { scrollToProjectsSection } = projectAnimations;
 
-function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy; initFilterKey: string }) {
+function ProjectsPage({
+	initFilterBy,
+	initFilterKey,
+}: {
+	initFilterBy: TFilterBy;
+	initFilterKey: keyof typeof TECH_STACKS | TProjectType | "all";
+}) {
 	const [initialPageLoad, setInitialPageLoad] = useState(true);
 	//---------------------------------------------------------
 	// TOGGLE FILTER DISPLAY
@@ -72,7 +78,8 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 	//---------------------------------------------------------
 	// TOGGLE PROJECTS DISPLAYED BASED ON FILTER
 	//---------------------------------------------------------
-	const [filterKey, setFilterKey] = useState(initFilterKey);
+	const [filterKey, setFilterKey] = useState<any>(initFilterKey);
+
 	const [filterBy, setFilterBy] = useState<TFilterBy>(initFilterBy);
 
 	const onSelectFilterBy = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +105,7 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 			},
 			...Object.values(TECH_STACKS),
 		];
-		currProjects = TECH_STACKS[filterKey]?.label || "All";
+		currProjects = TECH_STACKS[filterKey as keyof typeof TECH_STACKS]?.label || "All";
 	}
 
 	//---------------------------------------------------------
@@ -116,7 +123,7 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 			displayedProjects = PROJECTS;
 		} else {
 			displayedProjects = PROJECTS.filter((project) => {
-				return project.tech.includes(filterKey);
+				return project.tech.includes(filterKey as keyof typeof TECH_STACKS);
 			});
 		}
 	}
@@ -140,7 +147,7 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 		} else {
 			displayedProjects = PROJECTS.filter((project) => {
 				const { githublink, tech } = project;
-				return githublink && githublink.length > 0 && tech.includes(filterKey);
+				return githublink && githublink.length > 0 && tech.includes(filterKey as keyof typeof TECH_STACKS);
 			});
 		}
 	}
@@ -153,7 +160,7 @@ function ProjectsPage({ initFilterBy, initFilterKey }: { initFilterBy: TFilterBy
 		} else {
 			displayedProjects = PROJECTS.filter((project) => {
 				const { githublink, tech } = project;
-				return (!githublink || githublink.length === 0) && tech.includes(filterKey);
+				return (!githublink || githublink.length === 0) && tech.includes(filterKey as keyof typeof TECH_STACKS);
 			});
 		}
 	}

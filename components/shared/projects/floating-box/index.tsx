@@ -35,7 +35,7 @@ export default function Box({
 											backgroundColor: bgColor,
 										}}
 									>
-										<Image src={media[0].source} alt={title} />
+										{media[0] && <Image src={media[0].source} alt={title} />}
 									</span>
 								</li>
 							);

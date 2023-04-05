@@ -61,7 +61,7 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 		);
 	}
 
-	const { title, details, tech, roles, githublink, sitelink, media, responsibilities } = currProject;
+	const { title, details, tech, roles, githublink, sitelink, media, responsibilities, bgColor } = currProject;
 
 	return (
 		<div className={styles.container} data-key="project-info">
@@ -99,10 +99,10 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 				<div className={styles.media} ref={modalImgRef}>
 					{media.length > 1 ? (
 						<div>
-							<Slider items={media} id={currProjectId} />
+							<Slider items={media} id={currProjectId} bgColor={bgColor || "#86868b"} />
 						</div>
 					) : (
-						<SingleMediaFile file={media[0]} title={title} />
+						<SingleMediaFile file={media[0]} title={title} bgColor={bgColor || "#86868b"} />
 					)}
 				</div>
 
@@ -209,16 +209,31 @@ export default function SingleProject({ currProjectId, onClose, modalImgRef, onG
 function SingleMediaFile({
 	file,
 	title,
+	bgColor,
 }: {
 	file: { type: "image" | "video" | "gif"; source: StaticImageData };
 	title: string;
+	bgColor: string;
 }) {
+	//Can never occur, but won't hurt to have the conditional
+	if (!file) {
+		return (
+			<div
+				className={styles.image}
+				style={{
+					paddingTop: "62.5%",
+					backgroundColor: bgColor,
+				}}
+			></div>
+		);
+	}
 	if (file.type === "gif") {
 		return (
 			<div
 				className={styles.image}
 				style={{
 					paddingTop: "62.5%",
+					backgroundColor: bgColor,
 				}}
 			>
 				<Image src={file.source} alt={title} layout="fill" objectFit="cover" />
@@ -226,7 +241,12 @@ function SingleMediaFile({
 		);
 	}
 	return (
-		<div className={styles.image}>
+		<div
+			className={styles.image}
+			style={{
+				backgroundColor: bgColor,
+			}}
+		>
 			<Image src={file.source} alt={title} />
 		</div>
 	);
