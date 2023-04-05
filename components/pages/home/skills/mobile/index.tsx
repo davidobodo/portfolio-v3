@@ -12,6 +12,28 @@ export type SkillsMobileProps = {
 	mobileSkillsSectionTitlteRef: Ref<HTMLHeadingElement>;
 };
 export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSectionTitlteRef }: SkillsMobileProps) {
+	const displayedSkills: Array<keyof typeof TECH_STACKS> = [
+		"html",
+		"css",
+		"sass",
+		"javascript",
+		"typescript",
+		"solidity",
+	];
+	const displayedSkills2: Array<keyof typeof TECH_STACKS> = [
+		"react",
+		"nextjs",
+		"nodejs",
+		"expressjs",
+		"jest",
+		"gsap",
+		"web3",
+		"threejs",
+		"redux",
+		"reactquery",
+		"tailwindcss",
+		"enzyme",
+	];
 	return (
 		<>
 			<div className={styles.container} ref={mobileSkillsContainerRef} id="skills-section">
@@ -37,7 +59,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 								<section className={styles.skills} data-key="skill">
 									<h3>Languages</h3>
 									<ul>
-										{["html", "css", "sass", "javascript", "typescript", "solidity"].map((key, i) => {
+										{displayedSkills.map((key, i) => {
 											const skill = TECH_STACKS[key];
 
 											if (!skill) return null;
@@ -70,20 +92,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 								<section className={styles.skills + " " + styles.others} data-key="skill">
 									<h3>Frameworks/ Libraries/ Others</h3>
 									<ul>
-										{[
-											"react",
-											"nextjs",
-											"nodejs",
-											"expressjs",
-											"jest",
-											"gsap",
-											"web3",
-											"threejs",
-											"redux",
-											"reactquery",
-											"tailwindcss",
-											"enzyme",
-										].map((key, i) => {
+										{displayedSkills2.map((key, i) => {
 											const skill = TECH_STACKS[key];
 											return (
 												<li key={i}>
@@ -96,12 +105,9 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 										})}
 									</ul>
 									<p>
-										Developers need <strong> to learn everyday </strong> so this list could get really long 😅. <br />{" "}
-										See &nbsp;
+										Developers need <strong> to learn everyday </strong> so this list could get really long 😅. <br /> See &nbsp;
 										<Link scroll={false} href="/projects?open_filter=true">
-											<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>
-												more frameworks/libraries here.
-											</a>
+											<a onClick={() => registerEvent(events.pages.home.jumpToViewAllSkills())}>more frameworks/libraries here.</a>
 										</Link>
 									</p>
 								</section>

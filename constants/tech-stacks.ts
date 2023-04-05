@@ -1,9 +1,4 @@
-type TTech = {
-	key: string;
-	label: string;
-};
-
-const TECH_STACKS: Record<string, TTech> = {
+const TECH_STACKS = {
 	//---------------------------------------------
 	//LANGUAGES
 	//---------------------------------------------
@@ -146,7 +141,7 @@ const TECH_STACKS: Record<string, TTech> = {
 	//---------------------------------------------
 	//OTHERS
 	//---------------------------------------------
-	Git: {
+	git: {
 		key: "git",
 		label: "Git",
 	},
