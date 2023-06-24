@@ -1,0 +1,288 @@
+---
+title: Deploy expess.js app to ec2 instance
+description:
+longDescription:
+date: "2023-03-28"
+banner:
+ogbanner:
+tags:
+ - Programming
+ - aws
+ - backend
+ - express
+ - ec2
+url: /blog/deploy-express-app-to-ec2
+readingTime:
+bgColor:
+themeColor: "#FF9900"
+---
+
+<Center>TABLE OF CONTENT</Center>
+
+---
+
+1. [Create/Clone Express Server](#createclone-express-server)
+2. [Create an EC2 instance on AWS](#create-an-ec2-instance-on-aws)
+3. [Connect to EC2 instance](#connect-to-ec2-instance)
+4. [Run Express App on instance](#run-express-app-on-instance)
+5. [Keep server running even when we exit our instance](#keep-server-running-even-when-we-exit-our-instance)
+6. [Removing custom port and point to default port](#removing-custom-port-and-point-to-default-port)
+7. [Set up elastic IP](#set-up-elastic-ip)
+
+---
+
+## Create/Clone Express Server
+
+If you don't have an active express application, you can quickly clone this simply [express app](https://github.com/davidobodo/aws-express-ec2)
+
+## Create an EC2 instance on AWS
+
+An EC2 instance is basically a virtual server on the cloud
+
+<img src="/images/posts/aws-express-ec2/01_create-instance/1.png" alt="" />
+
+<img src="/images/posts/aws-express-ec2/01_create-instance/2.png" alt="" />
+
+<img src="/images/posts/aws-express-ec2/01_create-instance/3.png" alt="" />
+
+<img src="/images/posts/aws-express-ec2/01_create-instance/4.png" alt="" />
+
+<img src="/images/posts/aws-express-ec2/01_create-instance/5.png" alt="" />
+
+<img src="/images/posts/aws-express-ec2/01_create-instance/6.png" alt="" />
+
+## Connect to EC2 instance
+
+<img src="/images/posts/aws-express-ec2/02_connect-to-instance/1.png" alt="" />
+<img src="/images/posts/aws-express-ec2/02_connect-to-instance/2.png" alt="" />
+<img src="/images/posts/aws-express-ec2/02_connect-to-instance/3.png" alt="" />
+<img src="/images/posts/aws-express-ec2/02_connect-to-instance/4.png" alt="" />
+<img src="/images/posts/aws-express-ec2/02_connect-to-instance/5.png" alt="" />
+<img src="/images/posts/aws-express-ec2/02_connect-to-instance/6.png" alt="" />
+
+## Run Express App on instance
+
+So currently if we take the `Public IPV4 address` and open it on a browser tab, we would not see anything because nothing is running on our instance.
+
+Since we have used SSH to access our instance let us bring our express application into the instance with the following commands
+
+1. Clone the repo into the instance
+
+```
+git clone REPO_LINK
+```
+
+2. Install Node on the instance
+
+Install Curl on the ubuntu server
+
+```
+sudo apt-get install curl
+```
+
+Download Node.js
+
+```
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+```
+
+Install Node.js
+
+```
+sudo apt-get install nodejs
+```
+
+By now Node Package Manager has also been installed, however if you still want to install yarn you can do this
+
+```
+sudo npm install --global yarn
+```
+
+At this point you have installed all the basics, so simply run your application the same way you would do locally
+
+Get into your application
+
+```
+cd aws-express-ec2
+```
+
+Install packages with either `yarn` or `npm install`
+
+Start Node server
+
+```
+node index.js
+```
+
+Now since we set up our application to run on a certain port we need to tell our instance to allow access to that port from anywhere.
+
+We do this by modifying the security group
+
+<img src="/images/posts/aws-express-ec2/03_modify-security-group/1.png" alt="" />
+<img src="/images/posts/aws-express-ec2/03_modify-security-group/2.png" alt="" />
+<img src="/images/posts/aws-express-ec2/03_modify-security-group/3.png" alt="" />
+
+After modifying if we visit `<OUR_IPV4_ADDRESS>:<PORT_NUMBER>` we should see our application live
+
+## Keep server running even when we exit our instance
+
+Since we have finished setting up our server and we can see it running, it seems all is good to go.
+
+However if we exit the terminal, our server would also be closed.
+
+This is where `pm2` comes in. Let's install pm2 in our instance
+
+```
+sudo npm install -g pm2@latest
+```
+
+Now instead of running our application using plain now, we start it using pm2
+
+```
+pm2 start SERVER_FILE
+
+```
+
+Other useful pm2 commands include:
+
+`pm2 list` -> To list instances of pm2 running
+
+`pm2 stop index` -> Stop the pm2 instance that has name `index`
+
+Now even if we terminate our connection, our application would still be running
+
+## Removing custom port and point to default port
+
+Now we don't really want to have to put `:5005` in our IP or url(we would get to that soon) in order to access our application.
+
+We want to simply go to the base port and access our application.
+
+For that let's first of all move our PORT to an environmental variable, so we can easily change it
+
+Install dotenv package in our express application
+
+```
+yarn add dotenv
+```
+
+Now update oour server file to reference the port in the env
+
+```js
+const express = require("express");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+const app = express();
+
+app.get("/", (_req, res) => {
+	res.send("Hello from the most simply express application in the world");
+});
+
+app.listen(process.env.PORT, () => {
+	console.log(`==========APP LISTENING ON PORT ${process.env.PORT}`);
+});
+```
+
+Now create a `.env` file
+
+```
+touch .env
+```
+
+Add the port into the file
+
+```
+PORT = 5005
+```
+
+Add `.env` file to our `.gitignore` file
+
+Thats all for our local and git setups.
+
+Now connect back into your instance like you did above
+
+go into our app directory using `cd aws-express-ec2`
+
+For now stop the currently running pm2 instance
+
+```
+pm2 stop index
+```
+
+If you visit our IPV4 address with its port, you should no longer see our application running
+
+Now go into our app folder and pull latest changes from github using `git pull`
+
+After which run `yarn` or `npm i` depending on your package manager, in order to install the new `dotenv` package
+
+Now its time to create our env file
+
+```
+touch .env
+```
+
+Open env file
+
+```
+nano .env
+```
+
+Write inside
+
+```
+PORT=80
+```
+
+Now click `ctrl x` and `ctrl y` to save the file
+
+To view contents of the env file you can run
+
+```
+cat .env
+```
+
+We specified PORT 80 Because that is the default HTTP port users are usually redirected to.
+
+For the final step all we need to do is also edit our securoty group so that port `80` can also be access from anywhere
+
+<img src="/images/posts/aws-express-ec2/http-access.png" alt="" />
+
+Now simply go to our Ipv4 and our express application would be running smoothly
+
+NOTE: when starting our application we might need to add the `sudo` command since port `80` is somewhat a reserved port for HTTP
+
+## Set up elastic IP
+
+One final step in this setup, is configuring elastic IP.
+
+We have seen how to persist our server using an pm2 in our ec2 instance, however if for some reason we decide to stop our instance entirely, what happens is that AWS realeses that ipv4 address.
+
+This means when next we start our ec2 instance and want to visit our express application, it would be on an entirely different ipv4.
+
+Just experiment it.
+
+Currently our ip is ` 3.93.178.135`, let's stop our instance and restart it
+
+You see it has changed to `54.90.211.13`
+
+At the moment you might not see the need for this, but sooner or later you would have to connect your IP to a domain, and you definitely do not want to always go to your domain manager to change the IP address that it points to.
+
+<img src="/images/posts/aws-express-ec2/04_elastic-ip/1.png" alt="" />
+<img src="/images/posts/aws-express-ec2/04_elastic-ip/2.png" alt="" />
+<img src="/images/posts/aws-express-ec2/04_elastic-ip/3.png" alt="" />
+<img src="/images/posts/aws-express-ec2/04_elastic-ip/4.png" alt="" />
+<img src="/images/posts/aws-express-ec2/04_elastic-ip/5.png" alt="" />
+
+Now if we visit our instance we should see that our IPV4 now points to our elastic ip. So whether we stop our instance or not, this ip address would always point to our instance.
+More of this in the article about connecting a domain.
+
+Now to finish up, lets connect into our instance like we did above and get our application running
+
+Since everything is setup simply run
+
+```
+sudo pm2 start index.js
+```
+
+Awesome !!!
