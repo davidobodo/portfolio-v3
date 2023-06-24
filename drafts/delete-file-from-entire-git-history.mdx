@@ -1,0 +1,28 @@
+11th June 2023 Sunday
+
+If file was `.env`
+
+- STEP 1: Add file to gitignore
+
+```
+echo '.env' >> .gitignore
+```
+
+- STEP 2: Run this command
+  Replace `.env` with whatever file it is
+
+```
+git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch .env" HEAD
+```
+
+- STEP 3: Force Push
+
+```
+git push --force
+```
+
+NOTE: If you only just want to remove the file but don't care about removing it from git history just run
+
+```
+git rm -r --cached .env
+```
