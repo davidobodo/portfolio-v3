@@ -5,8 +5,7 @@ const WORK = [
 		location: "Claymont, Delaware, United States",
 		range: "May 2023 - Present",
 		url: "https://redbrickai.com/",
-		note: `Built from scratch the client side of the web application equivalent of the Prodeus <a href='https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn' target='_blank'>Google chrome extension </a>,
-            using mockups provided by a UI/UX designer as guide. 
+		note: `Working actively on RedBrick's rapid and collaborative web-based annotation platform that helps medical imaging (CT/PET/MRI/X-ray/Ultrasound etc.) AI companies/teams to accelerate their annotation and review workflows with several high-performance tools. 
             `,
 	},
 	{
