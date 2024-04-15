@@ -1,7 +1,7 @@
 const WORK = [
 	{
 		title: "Senior Frontend Engineer",
-		company: "Redbrick AI",
+		company: "RedBrick AI",
 		location: "Claymont, Delaware, United States",
 		range: "May 2023 - Present",
 		url: "https://redbrickai.com/",

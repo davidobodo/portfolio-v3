@@ -1,8 +1,28 @@
-Open [Live site](https://portfolio-v3-rho-ten.vercel.app/)
+![David Obodo's Portfolio](./public/proj-pv3-home.jpg)
 
-Tests - Create simple snapshot tests at the exact point where no grammatical error exists and use snapshot test in order to know when any text in those pages changes
+## Techstack and Services
 
-Google Recaptcha - using version 3, so it doesnt interrupt user flow, however it still prevents form from being submitted by bots and any other unnecessary spamming
+- Next.js
+- Typescript
+- CSS modules
+- SCSS
+- GSAP
+- Sendgrid
+- Google analytics
+- JEST (For some snapshot tests)
 
-For some weird reason page Exit Animation worked well on development but not on production so I had to deprecate it. Not nice in Next.js that development is not a
-mirror experience of Production
+## Contribution
+
+You can always leave a Pull request or raise an Issue, as that might be the best way for me to respond to any enquiry 🤔
+
+## Final Words
+
+Most likely with more knowledge I have now, would definitely implement a lot of things better and easier, however this was good for its time.
+
+```
+Just keep on learning and growing
+```
+
+Finally, do try not to copy every bit of the portfolio exactly as it is 😅, `everyone is creative`, so I believe you can get some inspiration from here and then transform it into something unique for yourself.
+
+Also, don't forget to star the repo if you think this is nice 😂
