@@ -128,7 +128,7 @@ export default function BlogView({
 						</div>
 					</section>
 					<section className={styles.postContentWrapper}>
-						<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle, Center }} />
+						<MDXRemote {...mdxSource} components={{ Highlight, Image, CodeTitle, Center }} frontmatter />
 					</section>
 				</div>
 				<div className={styles.shareAndInfoWrapper}>
@@ -142,34 +142,4 @@ export default function BlogView({
 			</div>
 		</Layout.BlogLayout>
 	);
-}
-
-{
-	/* <button>
-							<svg
-								width="28"
-								height="28"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="#fff"
-								fill="none"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<line x1="5" y1="12" x2="19" y2="12" />
-								<line x1="5" y1="12" x2="9" y2="16" />
-								<line x1="5" y1="12" x2="9" y2="8" />
-							</svg>
-							Back to overview
-						</button> */
-}
-
-{
-	/* <span>
-							<span className={styles.circle}></span>
-							{tags.reduce((total, a, i) => {
-								return i === 0 ? total + "" + a : total + ", " + a;
-							}, "")}
-						</span> */
 }

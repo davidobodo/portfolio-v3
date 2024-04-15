@@ -17,9 +17,10 @@ export default function PostCard({
 	time: string;
 	date: string;
 }) {
-	const isExternal = url.startsWith("http");
+	const isExternal = url ? url.startsWith("http") : false;
+
 	return (
-		<Link href={url} passHref>
+		<Link href={url ? url : ""} passHref>
 			<a className={styles.container} target={isExternal ? "_blank" : "_self"}>
 				<div className={styles.image}>
 					<div className={styles.imageInner} style={{ backgroundImage: `url(${img})` }}></div>
@@ -27,7 +28,7 @@ export default function PostCard({
 				<h3>{title}</h3>
 				<p className={styles.summary}>{subtitle}</p>
 				<p className={styles.time}>
-					{format(new Date(date), "MMMM Do, YYYY")} <span className={styles.line}></span>
+					{date && format(new Date(date), "MMMM Do, YYYY")} <span className={styles.line}></span>
 					{time} read
 				</p>
 			</a>
