@@ -1,9 +1,19 @@
 const WORK = [
 	{
+		title: "Senior Frontend Engineer",
+		company: "Redbrick AI",
+		location: "Claymont, Delaware, United States",
+		range: "May 2023 - Present",
+		url: "https://redbrickai.com/",
+		note: `Built from scratch the client side of the web application equivalent of the Prodeus <a href='https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn' target='_blank'>Google chrome extension </a>,
+            using mockups provided by a UI/UX designer as guide. 
+            `,
+	},
+	{
 		title: "Front End Developer (Remote)",
 		company: "Prodeus",
 		location: "Brooklyn, New York",
-		range: "December 2020 - Present",
+		range: "December 2020 - May 2023",
 		url: "https://www.prodeus.co/",
 		note: `Built from scratch the client side of the web application equivalent of the Prodeus <a href='https://chrome.google.com/webstore/detail/prodeus/aglakbhkijgpmoploegcpnbnedgiampn' target='_blank'>Google chrome extension </a>,
             using mockups provided by a UI/UX designer as guide. 
@@ -12,7 +22,7 @@ const WORK = [
 	{
 		title: "Front End Developer",
 		company: "Upwork/Freelancing",
-		range: "July 2019 - Present",
+		range: "July 2019 - May 2023",
 		url: "https://www.upwork.com/freelancers/~017d93e122abfca5eb/",
 		urlLabel: "Upwork profile",
 		note: `Worked with <a href="https://www.upwork.com/ag/mpaccione/" target="_blank" >M.Paccione Design & Development Agency</a> to bring ideas to life. Also, I occasionally dive into side projects when the need arises since skilled hands are always needed. More freelance projects will be shown soon in the projects section.`,

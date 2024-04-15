@@ -1,0 +1,36 @@
+- Click get started
+- Connect Github account
+- Select the repository
+- Select connecting a monorepo
+- Enter root directory of app
+  :: apps/investor-dashboard
+
+- Deploy settings
+
+```
+version: 1
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - npx yarn install
+            - export NODE_OPTIONS=--max-old-space-size=20000
+        build:
+          commands:
+            - env | grep -e NEXTAUTH_ >> .env
+            - npx turbo run build --filter=developer-dashboard
+      artifacts:
+        baseDirectory: apps/developer-dashboard/.next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+      buildPath: /
+    appRoot: apps/developer-dashboard
+```
+
+`env | grep -e NEXTAUTH_ >> .env ` => https://docs.aws.amazon.com/amplify/latest/userguide/ssr-environment-variables.html
+
+- Making environment variables accessible to server side runtime
