@@ -49,13 +49,6 @@ export function Details({
 										</a>
 									</Link>
 								</li>
-								{/* <li>
-									<Link href="/letters">
-										<a>
-											<span>Letters </span>
-										</a>
-									</Link>
-								</li> */}
 							</ul>
 						</div>
 						<div className={styles.helpfulLinks}>
@@ -82,7 +75,7 @@ export function Details({
 					</div>
 				</div>
 				<div className={styles.formSection}>
-					<Form />
+					<Form handlePageGAEvents={handlePageGAEvents} />
 				</div>
 			</div>
 			<div className={styles.social}>
@@ -101,13 +94,6 @@ export function Details({
 							</a>
 						</Link>
 					</li>
-					{/* <li>
-						<Link href="https://blog.davidobodo.com" passHref>
-							<a target="_blank" onClick={handlePageGAEvents} data-link="blog">
-								<span>Blog</span>
-							</a>
-						</Link>
-					</li> */}
 					<li>
 						<Link href="https://twitter.com/phitGeek" passHref>
 							<a target="_blank" onClick={handlePageGAEvents} data-link="twitter">
