@@ -152,6 +152,7 @@ export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
 
 	const posts = files
+		.filter((item) => item.includes(".mdx"))
 		.map((filename) => {
 			const markdownWithMeta = fs.readFileSync(path.join("posts", filename), "utf-8");
 			const { data: frontMatter } = matter(markdownWithMeta);

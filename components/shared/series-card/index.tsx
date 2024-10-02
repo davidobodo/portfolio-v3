@@ -22,13 +22,13 @@ export default function SeriesCard({
 }) {
 	const style: CSSProperties = { "--light-blue": themeColor ? themeColor : "#bddefd" } as unknown as CSSProperties;
 	return (
-		<Link href={url} passHref>
+		<Link href={url ?? ""} passHref>
 			<a className={styles.container} style={style}>
 				<div className={styles.info}>
 					<h3>{title}</h3>
 					<p className={styles.summary}>{summary}</p>
 					<p className={styles.time}>
-						{format(new Date(date), "MMMM Do, YYYY")}
+						{date && format(new Date(date), "MMMM Do, YYYY")}
 						<span className={styles.line}></span>
 						{time} read
 					</p>
