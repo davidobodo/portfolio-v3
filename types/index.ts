@@ -44,6 +44,7 @@ type TPostFrontMatter = {
 	ogbanner?: string;
 	bgColor?: string;
 	themeColor?: string;
+	bgFit: string;
 };
 
 type TPost = {

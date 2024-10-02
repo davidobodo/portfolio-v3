@@ -104,7 +104,7 @@ export default function BlogView({
 		);
 	}
 
-	const { title, description, date, banner, bannerAlt, readingTime, bgColor, themeColor } = frontMatter;
+	const { title, description, date, banner, bannerAlt, readingTime, bgColor, themeColor, bgFit } = frontMatter;
 
 	const style: CSSProperties = { "--light-blue": themeColor ? themeColor : "#bddefd" } as unknown as CSSProperties;
 	return (
@@ -124,7 +124,7 @@ export default function BlogView({
 							</span>
 						</p>
 						<div className={styles.image} style={{ backgroundColor: bgColor ? bgColor : "#000" }}>
-							{banner && <Image src={banner} layout="fill" objectFit="contain" alt={bannerAlt} />}
+							{banner && <Image src={banner} layout="fill" objectFit={(bgFit as any) ?? ("contain" as any)} alt={bannerAlt} />}
 						</div>
 					</section>
 					<section className={styles.postContentWrapper}>

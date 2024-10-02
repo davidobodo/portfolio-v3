@@ -53,6 +53,7 @@ export const getPostFromSlug = (slug: string): TPost => {
 				ogbanner: data.ogbanner ?? "",
 				bgColor: data.bgColor ?? "",
 				themeColor: data.themeColor ?? "",
+				bgFit: data.bgFit ?? "",
 			},
 		};
 	} catch (e) {
