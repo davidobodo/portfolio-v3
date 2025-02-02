@@ -133,7 +133,7 @@ export default function BlogLayout({ children }: { children: JSX.Element }) {
 						</li>
 					</ul>
 
-					<p> &#169; 2024 David Obodo</p>
+					<p> &#169; 2025 David Obodo</p>
 				</footer>
 			</div>
 		</div>

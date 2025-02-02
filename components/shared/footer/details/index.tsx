@@ -110,7 +110,7 @@ export function Details({
 					</li>
 				</ul>
 
-				<p> &#169; 2024 David Obodo</p>
+				<p> &#169; 2025 David Obodo</p>
 			</div>
 		</div>
 	);
