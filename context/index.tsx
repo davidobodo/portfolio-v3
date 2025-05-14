@@ -52,3 +52,4 @@ const AnimationsProvider = ({ children }: { children: JSX.Element | JSX.Element[
 };
 
 export { AnimationsProvider, useAnimationsContext };
+export { MotionPreferenceProvider, useMotionPreference } from "./MotionPreferenceContext";

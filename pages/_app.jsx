@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useRegisterGsapScrollTrigger, useSmoothScroll } from "#/hooks";
 import { Common, Awwwards } from "#/components";
 import { AnimationsProvider } from "#/context";
+import { MotionPreferenceProvider } from "#/context";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "#/styles/prism-overrides.css";
@@ -40,10 +41,12 @@ function MyApp({ Component, pageProps }) {
 			<Awwwards />
 
 			{Component.withAnim ? (
-				<AnimationsProvider>
-					<Component {...pageProps} />
-					<Common />
-				</AnimationsProvider>
+				<MotionPreferenceProvider>
+					<AnimationsProvider>
+						<Component {...pageProps} />
+						<Common />
+					</AnimationsProvider>
+				</MotionPreferenceProvider>
 			) : (
 				<Component {...pageProps} />
 			)}
