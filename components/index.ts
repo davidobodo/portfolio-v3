@@ -1,5 +1,6 @@
 import Shared from "./shared";
 import Pages from "./pages";
+import MotionPreferenceModal from "./shared/modal/motion-preference-modal";
 
 const {
 	Projects,
@@ -91,4 +92,5 @@ export {
 	BlogView,
 	ErrorBoundary,
 	Awwwards,
+	MotionPreferenceModal,
 };

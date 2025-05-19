@@ -24,7 +24,7 @@ import PostCard from "./post-card";
 import SeriesCard from "./series-card";
 import Awwwards from "./awwwards";
 
-const { ProjectModal, ModalWrapper, ProjectsFilterModal } = Modals;
+const { ProjectModal, ModalWrapper, ProjectsFilterModal, MotionPreferenceModal } = Modals;
 
 const Shared = {
 	Projects,
@@ -54,6 +54,7 @@ const Shared = {
 	PostCard,
 	SeriesCard,
 	Awwwards,
+	MotionPreferenceModal,
 };
 
 export default Shared;

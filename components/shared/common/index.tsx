@@ -1,7 +1,12 @@
 import styles from "./styles.module.scss";
-import { RouteTransitionOverlay, ScrollToTop, ProgressBar, Preloader } from "#/components";
+import { RouteTransitionOverlay, ScrollToTop, ProgressBar, Preloader, MotionPreferenceModal } from "#/components";
+import useMotionPreferenceModal from "#/hooks/useMotionPreferenceModal";
 
 export default function Common() {
+	const { showModal, handlePreferenceSelect } = useMotionPreferenceModal();
+
+	console.log(showModal, "SHOW MODAL");
+
 	return (
 		<>
 			<Preloader />
@@ -9,6 +14,7 @@ export default function Common() {
 			<RouteTransitionOverlay />
 			<ScrollToTop />
 			<ProgressBar />
+			<MotionPreferenceModal isOpen={showModal} onSelect={handlePreferenceSelect} />
 		</>
 	);
 }

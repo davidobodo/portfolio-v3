@@ -123,3 +123,14 @@ h6 {
 .grecaptcha-badge:hover {
 	right: 0px !important;
 }
+
+/* Animation Toggle Styles */
+.animations-disabled * {
+	animation: none !important;
+	transition: none !important;
+}
+
+.animations-disabled [data-animate] {
+	opacity: 1 !important;
+	transform: none !important;
+}
