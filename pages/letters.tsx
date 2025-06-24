@@ -1,10 +1,10 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/letters.module.scss";
-import { NextPage } from "next";
 import { useRef } from "react";
-import { SingleLetter, Nav, Layout, Noise, Banners, BannerCurtain, Footer } from "#/components";
+import { Nav, Layout, Noise, Banners, BannerCurtain, Footer } from "#/components";
 import { LETTERS, METADATA } from "#/constants";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
+import SingleLetter from "#/__pages/letters/single-letter";
 
 export default function Letters() {
 	const darkSectionRef = useRef(null);
@@ -23,6 +23,7 @@ export default function Letters() {
 	});
 	return (
 		<>
+
 			<Head>
 				<title>{title}</title>
 				<meta charSet="utf-8" />

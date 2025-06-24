@@ -1,7 +1,7 @@
 import { Ref } from "react";
 import styles from "./styles.module.scss";
 
-export default function Heading({ projectTitleRef }: { projectTitleRef: Ref<HTMLHeadingElement> }) {
+export default function ProjectHeading({ projectTitleRef }: { projectTitleRef: Ref<HTMLHeadingElement> }) {
 	return (
 		<h2 className={styles.sectionTitle} ref={projectTitleRef}>
 			<span>

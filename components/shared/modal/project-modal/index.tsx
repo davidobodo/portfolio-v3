@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
-import { ModalWrapper, SingleProject, Noise } from "#/components";
+import { ModalWrapper,  Noise } from "#/components";
 import { Ref } from "react";
+import SingleProject from "#/__pages/single-project/SingleProject";
 
 type Props = {
 	selectedProjectId: string;

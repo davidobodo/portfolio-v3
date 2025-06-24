@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 import { TECH_STACKS } from "#/constants";
 import { Ref } from "react";
-import { FaintBgText } from "#/components";
 import { events, registerEvent } from "#/utils/analytics/events";
 import Link from "next/link";
+import FaintBgText from "../../faint-bg-text";
 
 export type SkillsDesktopProps = {
 	skillsContainerRef: Ref<HTMLDivElement>;

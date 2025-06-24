@@ -1,11 +1,13 @@
 import Head from "next/head";
-import { Nav, Layout, Noise, SingleProject, Footer } from "#/components";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useSelectProjectAnimation, useSingleProjectPageInit } from "#/hooks";
 import { projectAnimations } from "#/utils/animations";
 import { METADATA, PROJECTS } from "#/constants";
 import { useAnimationsContext } from "#/context";
+import SingleProject from "#/__pages/single-project/SingleProject";
+import Nav from "#/components/shared/nav";
+import { Layout, Noise, Footer } from "#/components";
 const { removeCurrentProject } = projectAnimations;
 
 type Props = {
@@ -79,6 +81,10 @@ export default function Project(props: Props) {
 
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+
+
+
+
 			<Nav headerSectionLogoMode="light" hasBackdropFilter={true} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef} pathname="/projects/[id]">
 				<div ref={modalRef}>

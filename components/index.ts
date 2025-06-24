@@ -1,5 +1,4 @@
 import Shared from "./shared";
-import Pages from "./pages";
 
 const {
 	Projects,
@@ -31,32 +30,12 @@ const {
 	Awwwards,
 } = Shared;
 
-const { HomePage, LettersPage, SingleProject, Blog } = Pages;
-const { Thoughts, Work, Skills, FaintBgText, ProjectsHeading, Excellence } = HomePage;
-const { SingleLetter } = LettersPage;
-const {
-	Highlight,
-	CodeTitle,
-	Center,
-	MyInformation,
-	SimilarArticles,
-	ShareArticle,
-	TopProgress,
-	BlogView,
-	ErrorBoundary,
-} = Blog;
+
 
 export {
-	Thoughts,
 	Banners,
 	Layout,
-	Work,
-	Skills,
-	FaintBgText,
-	SingleLetter,
-	ProjectsHeading,
-	Excellence,
-	SingleProject,
+
 	Projects,
 	Footer,
 	ScrollAlert,
@@ -81,14 +60,5 @@ export {
 	Preloader,
 	PostCard,
 	SeriesCard,
-	Highlight,
-	CodeTitle,
-	Center,
-	SimilarArticles,
-	MyInformation,
-	ShareArticle,
-	TopProgress,
-	BlogView,
-	ErrorBoundary,
 	Awwwards,
 };

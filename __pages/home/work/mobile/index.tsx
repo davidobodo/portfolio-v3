@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { WORK } from "#/constants";
-import { FaintBgText } from "#/components";
 import { Ref } from "react";
+import FaintBgText from "../../faint-bg-text";
 
 export type WorkMobileProps = {
 	mobileWorkContainerRef: Ref<HTMLDivElement>;

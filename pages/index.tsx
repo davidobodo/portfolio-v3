@@ -19,22 +19,24 @@ import {
 import {
 	Banners,
 	AlternatingOpacity,
-	Work,
-	Thoughts,
-	Skills,
 	Projects,
 	Layout,
 	ProjectModal,
 	Nav,
 	BannerCurtain,
-	ProjectsHeading,
 	Noise,
-	Excellence,
 	Footer,
 	ProjectsViewSelector,
 } from "#/components";
 import { ExternalLink } from "#/components/icons";
 import { events, registerEvent } from "#/utils/analytics/events";
+
+import Work from "#/__pages/home/work";
+import ThoughtOne from "#/__pages/home/thoughts/one";
+import ThoughtTwo from "#/__pages/home/thoughts/two";
+import Excellence from "#/__pages/home/excellence";
+import Skills from "#/__pages/home/home_skills";
+import ProjectsHeading from "#/__pages/home/projects-heading/ProjectsHeading";
 
 export default function Home({ initSectionId }: { initSectionId: string }) {
 	//-----------------------------------------
@@ -76,6 +78,8 @@ export default function Home({ initSectionId }: { initSectionId: string }) {
 	const { title, description, url, image } = METADATA["home"];
 	return (
 		<>
+
+
 			<Head>
 				<title>{title}</title>
 				<meta charSet="utf-8" />
@@ -109,6 +113,8 @@ export default function Home({ initSectionId }: { initSectionId: string }) {
 
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+
+
 			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
 			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
@@ -125,7 +131,8 @@ export default function Home({ initSectionId }: { initSectionId: string }) {
 						/>
 					</div>
 
-					<Thoughts.One textWrapperRef={thoughtOneText} />
+
+					<ThoughtOne textWrapperRef={thoughtOneText} />
 
 					<div className={styles.excellenceWrapper} id="excellence">
 						<Excellence containerRef={containerRef} containerWidth={containerWidth} />
@@ -139,7 +146,7 @@ export default function Home({ initSectionId }: { initSectionId: string }) {
 						/>
 					</div>
 
-					<Thoughts.Two textWrapperRef={thoughtTwoText} />
+					<ThoughtTwo textWrapperRef={thoughtTwoText} />
 
 					<div id="projects-list">
 						<ProjectsHeading projectTitleRef={projectTitleRef} />
