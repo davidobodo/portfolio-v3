@@ -4,10 +4,11 @@ import matter from "gray-matter";
 import Head from "next/head";
 import styles from "#/styles/_pages/blog.module.scss";
 import { METADATA } from "#/constants";
-import { PostCard, SeriesCard, Layout, MyInformation } from "#/components";
+import { PostCard, SeriesCard, Layout,  } from "#/components";
 import { SearchIcon } from "#/components/icons";
 import React, { useState } from "react";
 import { TPostFrontMatter } from "#/types";
+import MyInformation from "#/__pages/blog/my-information";
 export default function Blog({ posts }: { posts: { frontMatter: TPostFrontMatter; slug: string }[] }) {
 	const latestPost = posts[0].frontMatter;
 	const remainingPosts = posts.slice(1);

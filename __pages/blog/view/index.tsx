@@ -4,17 +4,17 @@ import { format } from "fecha";
 import { MDXRemote } from "next-mdx-remote";
 import {
 	Layout,
-	Highlight,
-	CodeTitle,
-	Center,
-	SimilarArticles,
-	MyInformation,
-	ShareArticle,
-	TopProgress,
 } from "#/components";
 import { createCopyButton, highlightCode } from "#/utils";
 import { TPostFrontMatter, TMdxSource, TPost } from "#/types";
 import styles from "./styles.module.scss";
+import Highlight from "../highlight";
+import CodeTitle from "../code-title";
+import Center from "../center";
+import SimilarArticles from "../similar-articles";
+import MyInformation from "../my-information";
+import ShareArticle from "../share-article";
+import TopProgress from "../top-progress";
 
 export default function BlogView({
 	slug,
@@ -84,6 +84,7 @@ export default function BlogView({
 	if (!frontMatter) {
 		return (
 			<Layout.BlogLayout>
+
 				<>
 					<TopProgress />
 					<div className={styles.notFound}>

@@ -1,11 +1,11 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { TECH_STACKS } from "#/constants";
-import { FaintBgText } from "#/components";
 import { Ref } from "react";
 import { events, registerEvent } from "#/utils/analytics/events";
 import Image from "next/image";
 import handImg from "#/public/home-hand.jpg";
+import FaintBgText from "../../faint-bg-text";
 
 export type SkillsMobileProps = {
 	mobileSkillsContainerRef: Ref<HTMLDivElement>;
@@ -36,6 +36,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 	];
 	return (
 		<>
+
 			<div className={styles.container} ref={mobileSkillsContainerRef} id="skills-section">
 				<div className={styles.contentWrapper} data-key="skills-content">
 					<div className={styles.wrapper}>

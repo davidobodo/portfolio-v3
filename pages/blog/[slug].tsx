@@ -4,9 +4,10 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BASE_URL } from "#/constants";
 import { serialize } from "next-mdx-remote/serialize";
-import { BlogView, ErrorBoundary } from "#/components";
 import { TPostFrontMatter, TMdxSource, TPost } from "#/types";
 import { getAllPosts, getPostFromSlug, getSlugs } from "#/utils/blog";
+import ErrorBoundary from "#/__pages/blog/error-boundary";
+import BlogView from "#/__pages/blog/view";
 export default function Post({
 	frontMatter,
 	mdxSource,
@@ -27,6 +28,8 @@ export default function Post({
 
 	return (
 		<>
+
+
 			<ErrorBoundary>
 				<Head>
 					<title>{seo.title}</title>
