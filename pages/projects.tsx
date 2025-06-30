@@ -2,7 +2,6 @@ import Head from "next/head";
 import { NextPageContext } from "next";
 import {
 	Noise,
-	Banners,
 	Nav,
 	ProjectModal,
 	Layout,
@@ -29,6 +28,7 @@ import { events, registerEvent } from "#/utils/analytics/events";
 import { FilterIcon } from "#/components/icons";
 import { projectAnimations } from "#/utils/animations";
 import { TFilterBy, TProjectType } from "#/types";
+import OtherPagesBanner from "#/components/shared/banners/other-pages/OtherPagesBanner";
 
 const { scrollToProjectsSection } = projectAnimations;
 
@@ -178,6 +178,7 @@ function ProjectsPage({
 
 	return (
 		<>
+
 			<Head>
 				<title>{title}</title>
 				<meta charSet="utf-8" />
@@ -208,7 +209,7 @@ function ProjectsPage({
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
-			<Banners.OtherPages
+			<OtherPagesBanner
 				texts={["Projects", "Playground", "Replicas", "xperiments"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}

@@ -1,7 +1,7 @@
-import styles from "./styles.module.scss";
+import styles from "./OtherPagesBanner.module.scss";
 import { Ref, RefObject } from "react";
 import { ScrollAlert } from "#/components";
-export default function Banner({
+export default function OtherPagesBanner({
 	texts,
 	textWrapperRef,
 	scrollIndicatorRef,

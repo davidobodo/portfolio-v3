@@ -1,7 +1,6 @@
 import Layout from "./layout";
 import Footer from "./footer";
 import ScrollAlert from "./scroll-alert";
-import Banners from "./banners";
 import Nav from "./nav";
 import DarkRadialGradient from "./dark-radial-gradient";
 import Noise from "./noise";
@@ -30,7 +29,6 @@ const Shared = {
 	Projects,
 	Footer,
 	ScrollAlert,
-	Banners,
 	Nav,
 	Radio,
 	DarkRadialGradient,

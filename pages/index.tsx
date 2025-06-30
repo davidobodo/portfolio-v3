@@ -17,7 +17,6 @@ import {
 	useProjectsCurrentView,
 } from "#/hooks";
 import {
-	Banners,
 	AlternatingOpacity,
 	Projects,
 	Layout,
@@ -37,6 +36,7 @@ import ThoughtTwo from "#/__pages/home/thoughts/two";
 import Excellence from "#/__pages/home/excellence";
 import Skills from "#/__pages/home/home_skills";
 import ProjectsHeading from "#/__pages/home/projects-heading/ProjectsHeading";
+import HomePageBanner from "#/components/shared/banners/home-page/HomePageBanner";
 
 export default function Home({ initSectionId }: { initSectionId: string }) {
 	const { title, description, url, image } = METADATA["home"];
@@ -135,7 +135,7 @@ function WithMotion({ initSectionId }: { initSectionId: string }) {
 		<>
 			<Nav showInBanner={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
-			<Banners.HomePage bannerRef={bannerRef} bannerHeight={bannerHeight} />
+			<HomePageBanner bannerRef={bannerRef} bannerHeight={bannerHeight} />
 			<Layout.DarkSection darkSectionRef={darkSectionRef} bannerHeight={bannerHeight}>
 				<div className={styles.content}>
 					<div className={styles.aboutWrapper} id="about">

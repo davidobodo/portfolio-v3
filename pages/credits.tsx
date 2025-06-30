@@ -1,11 +1,12 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/credits.module.scss";
-import { Noise, Nav, Layout, Banners, BannerCurtain, AlternatingOpacity, Footer } from "#/components";
+import { Noise, Nav, Layout, BannerCurtain, AlternatingOpacity, Footer } from "#/components";
 import { useGenericPageInit, useWindowSize, useAlternateTextOpacity, useIsomorphicLayoutEffect } from "#/hooks";
 import { useRef } from "react";
 import { otherSharedAnimations } from "#/utils/animations";
 import { events, registerEvent } from "#/utils/analytics/events";
 import { CREDIT_NOTE, METADATA } from "#/constants";
+import OtherPagesBanner from "#/components/shared/banners/other-pages/OtherPagesBanner";
 
 const { fadeIn } = otherSharedAnimations;
 type TCredit = {
@@ -101,7 +102,7 @@ export default function Credit() {
 
 			<BannerCurtain containerRef={blackCoverRef} />
 
-			<Banners.OtherPages
+			<OtherPagesBanner
 				texts={["Design", "_________", "Credits", "_________"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}

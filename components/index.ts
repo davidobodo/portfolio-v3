@@ -4,7 +4,6 @@ const {
 	Projects,
 	Footer,
 	ScrollAlert,
-	Banners,
 	Nav,
 	Radio,
 	DarkRadialGradient,
@@ -33,7 +32,6 @@ const {
 
 
 export {
-	Banners,
 	Layout,
 
 	Projects,

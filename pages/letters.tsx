@@ -1,10 +1,11 @@
 import Head from "next/head";
 import styles from "#/styles/_pages/letters.module.scss";
 import { useRef } from "react";
-import { Nav, Layout, Noise, Banners, BannerCurtain, Footer } from "#/components";
+import { Nav, Layout, Noise, BannerCurtain, Footer } from "#/components";
 import { LETTERS, METADATA } from "#/constants";
 import { useGenericPageInit, useWindowSize } from "#/hooks";
 import SingleLetter from "#/__pages/letters/single-letter";
+import OtherPagesBanner from "#/components/shared/banners/other-pages/OtherPagesBanner";
 
 export default function Letters() {
 	const darkSectionRef = useRef(null);
@@ -54,7 +55,8 @@ export default function Letters() {
 			</Head>
 			<Nav hasBackdropFilter={false} />
 			<BannerCurtain containerRef={blackCoverRef} />
-			<Banners.OtherPages
+
+			<OtherPagesBanner
 				texts={["Letters", "Thoughts", "Stories", "Ideas"]}
 				textWrapperRef={textWrapperRef}
 				scrollIndicatorRef={scrollIndicatorRef}

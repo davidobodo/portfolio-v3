@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from "./HomePageBanner.module.scss";
 import Heading from "./heading";
 import { RefObject } from "react";
 import { ScrollAlert } from "#/components";
@@ -10,7 +10,7 @@ type Props = {
 	bannerHeight: number | undefined;
 };
 
-export default function Banner({ bannerRef, bannerHeight }: Props) {
+export default function HomePageBanner({ bannerRef, bannerHeight }: Props) {
 	const fieldA = "SOFTWARE";
 	const fieldB = "DEVELOPER";
 	const nameA = "DAVID";
