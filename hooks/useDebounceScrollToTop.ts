@@ -2,7 +2,7 @@ import { useMemo, useEffect } from "react";
 import debounce from "lodash.debounce";
 import useWindowSize from "./useWindowSize";
 
-export default function useDebounceScrollToTop() {
+export default function useDebounceScrollToTop({ isStatic }: { isStatic: boolean }) {
 	const { innerWidth } = useWindowSize();
 	const debouncedHandler = useMemo(
 		() =>
@@ -16,6 +16,8 @@ export default function useDebounceScrollToTop() {
 		[]
 	);
 	useEffect(() => {
-		debouncedHandler();
-	}, [innerWidth]);
+		if (!isStatic) {
+			debouncedHandler();
+		}
+	}, [innerWidth, isStatic]);
 }

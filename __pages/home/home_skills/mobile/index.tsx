@@ -10,8 +10,9 @@ import FaintBgText from "../../faint-bg-text";
 export type SkillsMobileProps = {
 	mobileSkillsContainerRef: Ref<HTMLDivElement>;
 	mobileSkillsSectionTitlteRef: Ref<HTMLHeadingElement>;
+	isStatic: boolean;
 };
-export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSectionTitlteRef }: SkillsMobileProps) {
+export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSectionTitlteRef, isStatic }: SkillsMobileProps) {
 	const displayedSkills: Array<keyof typeof TECH_STACKS> = [
 		"html",
 		"css",
@@ -21,7 +22,7 @@ export default function SkillsMobile({ mobileSkillsContainerRef, mobileSkillsSec
 		"solidity",
 	];
 	const displayedSkills2: Array<keyof typeof TECH_STACKS> = [
-		"react",
+		"react",	
 		"nextjs",
 		"nodejs",
 		"expressjs",

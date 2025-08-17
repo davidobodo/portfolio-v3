@@ -17,15 +17,16 @@ type Props = {
 	windowInnerWidth: number;
 	darkSectionRef: RefObject<HTMLDivElement>;
 	initSectionId: string;
+	isStatic?: boolean;
 };
 
 const sectionIds = ["about", "work", "excellence", "skills", "footer"];
 
-export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef, initSectionId }: Props) {
+export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkSectionRef, initSectionId, isStatic = false }: Props) {
 	const { initialAppLoad, exitAnimation, setInitialAppLoad } = useAnimationsContext();
 	const { bannerHeight } = useSetBannerHeight({ windowInnerHeight, windowInnerWidth });
 
-	useDebounceScrollToTop();
+	useDebounceScrollToTop({ isStatic });
 	//-----------------------------------------
 	// BANNER ANIMATION
 	//-----------------------------------------
@@ -82,6 +83,7 @@ export default function useHomeInit({ windowInnerHeight, windowInnerWidth, darkS
 	};
 
 	useIsomorphicLayoutEffect(() => {
+		
 		const callback = () => {
 			const tl = initPage();
 

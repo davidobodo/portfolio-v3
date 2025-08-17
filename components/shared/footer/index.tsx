@@ -6,9 +6,10 @@ import { events, registerEvent } from "#/utils/analytics/events";
 import { Details } from "./details";
 import { otherSharedAnimations } from "#/utils/animations";
 import { useAnimationsContext } from "#/context";
+import classNames from "classnames";
 
 const { openContactCurtain } = otherSharedAnimations;
-export default function Contact() {
+export default function Footer({ isStatic }: { isStatic?: boolean }) {
 	const { innerHeight, innerWidth } = useWindowSize();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -108,8 +109,11 @@ export default function Contact() {
 	};
 
 	return (
-		<footer ref={wrapperRef} className={styles.wrapper}>
+		<footer ref={wrapperRef} className={classNames(styles.wrapper, { [styles.isStatic]: isStatic })}>
 			<Details containerRef={containerRef} isFooterFixed={isFooterFixed} handlePageGAEvents={handlePageGAEvents} />
+
+
+{isStatic ? null : 
 
 			<div className={styles.placeholderWrapper}>
 				<SectionPlaceholder
@@ -117,6 +121,8 @@ export default function Contact() {
 					containerRef={placeholderRef}
 				/>
 			</div>
+}
+
 
 			<div className={styles.blackCurtain} data-key="contact-curtain"></div>
 		</footer>

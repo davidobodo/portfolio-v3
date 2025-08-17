@@ -5,10 +5,12 @@ export default function Heading({
 	text,
 	textRef,
 	revealOrigin,
+	isStatic,
 }: {
 	text: string;
 	textRef?: Ref<HTMLHeadingElement>;
 	revealOrigin: "right" | "left";
+	isStatic?: boolean;
 }) {
 	return (
 		<h1 ref={textRef} className={styles.bigText}>
@@ -19,7 +21,7 @@ export default function Heading({
 							<span
 								data-key="letter"
 								style={{
-									transform: revealOrigin === "right" ? "translateX(200px)" : "translateX(-200px)",
+									transform: isStatic ? "translateX(0)" : revealOrigin === "right" ? "translateX(200px)" : "translateX(-200px)",
 								}}
 							>
 								{item}

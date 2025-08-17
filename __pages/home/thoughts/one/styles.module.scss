@@ -53,8 +53,22 @@
 			}
 
 			strong {
-				.wordWrapper {
+				.wordWrapper {	
 					color: var(--white);
+				}
+			}
+		}
+	}
+}
+
+.isStatic {
+	.paragraphWrapper {
+		.paragraph {
+			.wordWrapper {
+				opacity: 1 !important;
+
+				.word {
+					transform: translateY(0) !important;
 				}
 			}
 		}

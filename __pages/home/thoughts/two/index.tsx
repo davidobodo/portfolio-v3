@@ -1,7 +1,8 @@
 import styles from "./styles.module.scss";
 import { Ref } from "react";
+import classNames from "classnames";
 
-export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTMLDivElement> }) {
+export default function ThoughtTwo({ textWrapperRef, isStatic }: { textWrapperRef: Ref<HTMLDivElement>, isStatic?: boolean }) {
 	const firstParagraph = [
 		{
 			sentence: "Truth is, the life of a programmer requires one to",
@@ -49,7 +50,7 @@ export default function ThoughtTwo({ textWrapperRef }: { textWrapperRef: Ref<HTM
 	];
 
 	return (
-		<div className={styles.container}>
+		<div className={classNames(styles.container, { [styles.isStatic]: isStatic })}>
 			<div></div>
 			<div className={styles.rightSection}>
 				<div className={styles.paragraphWrapper} ref={textWrapperRef}>

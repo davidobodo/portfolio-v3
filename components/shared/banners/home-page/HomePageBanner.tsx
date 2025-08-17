@@ -4,26 +4,46 @@ import { RefObject } from "react";
 import { ScrollAlert } from "#/components";
 import Image from "next/image";
 import bannerImg from "#/public/home-banner.jpg";
+import classNames from "classnames";
 
 type Props = {
 	bannerRef: RefObject<HTMLDivElement>;
 	bannerHeight: number | undefined;
+	isStatic?: boolean;
 };
 
-export default function HomePageBanner({ bannerRef, bannerHeight }: Props) {
+export default function HomePageBanner({ bannerRef, bannerHeight, isStatic }: Props) {
 	const fieldA = "SOFTWARE";
 	const fieldB = "DEVELOPER";
 	const nameA = "DAVID";
 	const nameB = "OBODO";
 
+
+	function renderBannerHeight(){
+		if(isStatic){
+			if(bannerHeight){
+				return bannerHeight + "px"
+			}
+			return "100vh"
+		}
+		return bannerHeight + "px"
+	}
+
+
 	return (
 		<>
-			<header className={styles.banner} ref={bannerRef} style={{ minHeight: bannerHeight + "px" }}>
+			<header
+				className={classNames(styles.banner, {
+					[styles.isStatic]: isStatic,
+				})}
+				ref={bannerRef}
+				style={{ minHeight: renderBannerHeight() }}
+			>
 				<div className={styles.topSection}>
 					<div className={styles.topSectionTexts}>
 						<div data-key="field">
-							<Heading text={fieldA} revealOrigin="left" />
-							<Heading text={fieldB} revealOrigin="left" />
+							<Heading text={fieldA} revealOrigin="left" isStatic={isStatic} />
+							<Heading text={fieldB} revealOrigin="left" isStatic={isStatic} />
 						</div>
 						<h2 className={styles.subfieldwrapper}>
 							<div className={styles.subfieldtext} data-key="sub-field">
@@ -54,8 +74,8 @@ export default function HomePageBanner({ bannerRef, bannerHeight }: Props) {
 						</h2>
 
 						<div data-key="name">
-							<Heading text={nameA} revealOrigin="right" />
-							<Heading text={nameB} revealOrigin="right" />
+							<Heading text={nameA} revealOrigin="right" isStatic={isStatic} />
+							<Heading text={nameB} revealOrigin="right" isStatic={isStatic} />
 						</div>
 					</div>
 				</div>

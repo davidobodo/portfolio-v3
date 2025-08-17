@@ -1,15 +1,17 @@
-import styles from "./styles.module.scss";
+import styles from "./SkillsDesktop.module.scss";
 import { TECH_STACKS } from "#/constants";
 import { Ref } from "react";
 import { events, registerEvent } from "#/utils/analytics/events";
 import Link from "next/link";
 import FaintBgText from "../../faint-bg-text";
+import classNames from "classnames";
 
 export type SkillsDesktopProps = {
 	skillsContainerRef: Ref<HTMLDivElement>;
 	skillsSectionTitlteRef: Ref<HTMLHeadingElement>;
+	isStatic?: boolean;
 };
-export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteRef }: SkillsDesktopProps) {
+export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteRef, isStatic }: SkillsDesktopProps) {
 	const displayedSkills: Array<keyof typeof TECH_STACKS> = [
 		"html",
 		"css",
@@ -34,7 +36,7 @@ export default function SkillsDesktop({ skillsContainerRef, skillsSectionTitlteR
 	];
 
 	return (
-		<div className={styles.container} ref={skillsContainerRef} id="skills-section">
+		<div className={classNames(styles.container, { [styles.isStatic]: isStatic })} ref={skillsContainerRef} id="skills-section">
 			<div className={styles.contentWrapper} data-key="skills-content">
 				<div className={styles.image} data-key="hand-image"></div>
 				<div className={styles.wrapper}>

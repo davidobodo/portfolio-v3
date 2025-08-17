@@ -1,7 +1,8 @@
 import styles from "./styles.module.scss";
 import { Ref } from "react";
+import classNames from "classnames";
 
-export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTMLDivElement> }) {
+export default function ThoughtOne({ textWrapperRef, isStatic }: { textWrapperRef: Ref<HTMLDivElement>, isStatic?: boolean }) {
 	const firstParagraph = [
 		{
 			sentence: "The things we make and the ",
@@ -101,7 +102,7 @@ export default function ThoughtOne({ textWrapperRef }: { textWrapperRef: Ref<HTM
 	];
 
 	return (
-		<div className={styles.container}>
+		<div className={classNames(styles.container, { [styles.isStatic]: isStatic })}>
 			<div className={styles.containerInner}>
 				<div className={styles.paragraphWrapper} ref={textWrapperRef}>
 					<p className={styles.paragraph}>

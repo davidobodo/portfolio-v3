@@ -6,6 +6,7 @@ import FaintBgText from "../../faint-bg-text";
 export type WorkDesktopProps = {
 	workContainerRef: Ref<HTMLDivElement>;
 	onWorkDetailsKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+	isStatic?: boolean;
 };
 
 export default function ViewDesktop({ workContainerRef, onWorkDetailsKeyDown }: WorkDesktopProps) {

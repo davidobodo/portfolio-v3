@@ -10,7 +10,7 @@ import "#/styles/prism-overrides.css";
 
 function MyApp({ Component, pageProps }) {
 	//Register gsap
-	useRegisterGsapScrollTrigger();
+	// useRegisterGsapScrollTrigger();
 
 	//Add smoothscroll polyfill for safari
 	useSmoothScroll();

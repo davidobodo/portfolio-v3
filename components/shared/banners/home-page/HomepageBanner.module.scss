@@ -180,3 +180,26 @@
 		}
 	}
 }
+
+//==============================================
+// STATIC STYLES
+//==============================================
+.isStatic {
+	.topSection {
+		.topSectionTexts {
+			.subfieldwrapper {
+				.subfieldtext {
+					transform: translateY(0);
+				}
+			}
+		}
+	}
+
+	.desktopImage {
+		display: block;
+
+		.blind {
+			display: none !important;
+		}
+	}
+}

@@ -56,4 +56,15 @@
 			}
 		}
 	}
+
+	&.isStatic{
+
+		span{
+
+			span{
+				transform: translate(0rem, 0rem);
+			}
+		}
+
+	}
 }

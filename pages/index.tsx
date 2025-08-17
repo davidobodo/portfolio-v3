@@ -16,17 +16,7 @@ import {
 	useExcellenceAnimation,
 	useProjectsCurrentView,
 } from "#/hooks";
-import {
-	AlternatingOpacity,
-	Projects,
-	Layout,
-	ProjectModal,
-	Nav,
-	BannerCurtain,
-	Noise,
-	Footer,
-	ProjectsViewSelector,
-} from "#/components";
+import { Projects, Layout, ProjectModal, Nav, BannerCurtain, Noise, Footer, ProjectsViewSelector } from "#/components";
 import { ExternalLink } from "#/components/icons";
 import { events, registerEvent } from "#/utils/analytics/events";
 
@@ -37,6 +27,7 @@ import Excellence from "#/__pages/home/excellence";
 import Skills from "#/__pages/home/home_skills";
 import ProjectsHeading from "#/__pages/home/projects-heading/ProjectsHeading";
 import HomePageBanner from "#/components/shared/banners/home-page/HomePageBanner";
+import AlternatingOpacity from "#/components/shared/alternating-opacity/AlternatingOpacity";
 
 export default function Home({ initSectionId }: { initSectionId: string }) {
 	const { title, description, url, image } = METADATA["home"];
@@ -86,11 +77,72 @@ export default function Home({ initSectionId }: { initSectionId: string }) {
 // Home.withAnim = true;
 Home.withAnim = false;
 
-
 function WithNoMotion({ initSectionId }: { initSectionId: string }) {
+	const darkSectionRef = useRef<HTMLDivElement>(null);
+	const { innerHeight: windowInnerHeight, innerWidth: windowInnerWidth } = useWindowSize();
+	const { bannerRef, blackCoverRef, bannerHeight } = useHomePageInit({
+		windowInnerHeight,
+		windowInnerWidth,
+		darkSectionRef,
+		initSectionId,
+		isStatic: true,
+	});
+
 	return (
 		<>
 			<Nav showInBanner={false} />
+			<HomePageBanner bannerRef={null} bannerHeight={bannerHeight} isStatic={true} />
+
+			<div className={styles.content}>
+				<AlternatingOpacity textsListRef={null} isStatic={true} />
+				<div id="work" style={{ backgroundColor: "purple" }}>
+					<Work workContainerRef={null} mobileWorkContainerRef={null} onWorkDetailsKeyDown={() => {}} isStatic={true} />
+				</div>
+
+				<ThoughtOne textWrapperRef={null} isStatic={true} />
+
+				<div id="skills">
+					<Skills
+						skillsContainerRef={null}
+						skillsSectionTitlteRef={null}
+						mobileSkillsContainerRef={null}
+						mobileSkillsSectionTitlteRef={null}
+						isStatic={true}
+					/>
+				</div>
+
+				<ThoughtTwo textWrapperRef={null} isStatic={true} />
+
+				<div id="projects-list">
+					<ProjectsHeading projectTitleRef={null} isStatic={true} />
+
+					<div className={styles.viewSelectorWrapper}>
+						<div></div>
+						<ProjectsViewSelector currentView={"grid"} handleSetCurrentView={() => {}} />
+					</div>
+					<Projects onViewProject={() => {}} displayedProjects={PROJECTS.slice(0, 8)} currentView={"grid"} />
+				</div>
+
+				<div className={styles.projectsBtnWrapper}>
+					<Link href="/projects" scroll={false}>
+						<a onClick={() => {}}>
+							More Projects
+							<ExternalLink />
+						</a>
+					</Link>
+				</div>
+
+				{/* <Work => 
+				workContainerRef={null}
+				mobileWorkContainerRef={null}
+				onWorkDetailsKeyDown={() => {}}
+				isStatic={true}
+			/> */}
+			</div>
+
+			<div id="footer">
+				<Footer isStatic={true} />
+			</div>
 		</>
 	);
 }

@@ -218,3 +218,12 @@
 	transform-origin: bottom;
 	z-index: 0;
 }
+
+
+.isStatic{
+
+	.container{
+		position: relative !important	;
+	}
+
+}

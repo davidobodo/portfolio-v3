@@ -13,6 +13,7 @@
 		display: flex;
 		align-items: center; // In order to position the actual skills content in the center
 		width: 100%;
+		background-color: red;
 
 		.image {
 			position: absolute;
@@ -21,7 +22,6 @@
 			max-width: 68rem;
 			max-height: 90rem;
 			background-color: #28282b;
-			top: 10rem;
 			top: 50%;
 			transform: translateY(-50%);
 			background-size: cover;
@@ -29,7 +29,6 @@
 			background-repeat: no-repeat;
 			background-image: url(/home-hand-2.jpg);
 			width: 0px;
-
 		}
 
 		.wrapper {
@@ -167,6 +166,55 @@
 							grid-template-columns: 1fr 1fr;
 							grid-column-gap: 4rem;
 						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.isStatic {
+	&.container {
+		min-height: auto;
+	}
+
+	.contentWrapper {
+		position: relative;
+		.image {
+			width: 29vw;
+			// transform: translateY(0);
+			// top: 0;
+		}
+
+		.wrapper {
+			.heading {
+				.subTitle {
+					span {
+						overflow: visible;
+
+						span {
+							transform: translate(0, 0);
+						}
+					}
+				}
+			}
+
+			.skillsList {
+				.skills {
+					h3 {
+						opacity: 1;
+					}
+
+					ul {
+						li {
+							span {
+								transform: translateY(0);
+							}
+						}
+					}
+
+					p {
+						opacity: 1;
 					}
 				}
 			}

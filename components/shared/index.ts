@@ -11,7 +11,6 @@ import SectionPlaceholder from "./section-placeholder";
 import BannerCurtain from "./banner-curtain";
 import Projects from "./projects";
 import Spinner from "./spinner";
-import AlternatingOpacity from "./alternating-opacity";
 import ProgressBar from "./progress-bar";
 import RouteTransitionOverlay from "./page-transition-overlay";
 import ProjectsViewSelector from "./projects/projects-view-selector";
@@ -42,7 +41,6 @@ const Shared = {
 	SectionPlaceholder,
 	BannerCurtain,
 	Spinner,
-	AlternatingOpacity,
 	ProgressBar,
 	ProjectsViewSelector,
 	Slider,
