@@ -102,7 +102,7 @@ export function Details({
 						</Link>
 					</li>
 					<li>
-						<Link href="mailto: contact@davidobodo.com" passHref>
+						<Link href="mailto: davidobodo@liquidargent.com" passHref>
 							<a target="_blank" onClick={handlePageGAEvents} data-link="email">
 								<span>Email</span>
 							</a>
