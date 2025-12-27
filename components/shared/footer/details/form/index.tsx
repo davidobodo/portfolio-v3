@@ -21,14 +21,14 @@ function BaseForm({
 				<p>If you have requests or questions, kindly do not hesitate to contact me.</p>
 			</section>
 
-			<Link href="mailto: contact@davidobodo.com" passHref>
+			<Link href="mailto: davidobodo@liquidargent.com" passHref>
 				<a
 					target="_blank"
 					onClick={handlePageGAEvents}
 					data-link="email"
 					style={{ textTransform: "lowercase", fontSize: "3rem" }}
 				>
-					<span>contact@davidobodo.com</span>
+					<span>davidobodo@liquidargent.com</span>
 				</a>
 			</Link>
 		</>
